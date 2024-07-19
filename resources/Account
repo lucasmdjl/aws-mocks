@@ -1,0 +1,12 @@
+accept-primary-email-update
+delete-alternate-contact
+disable-region
+enable-region
+get-alternate-contact
+get-contact-information
+get-primary-email
+get-region-opt-status
+list-regions
+put-alternate-contact
+put-contact-information
+start-primary-email-update

@@ -36,4 +36,6 @@ pub mod api_gateway;
 pub mod s3;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
+#[cfg(feature="account")]
+pub mod account;
 

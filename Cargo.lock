@@ -158,6 +158,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-account"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "82004e7583fae0a402f0ddac9b75e6ca735c1eae61177b8582ad766a47211f79"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-apigateway"
 version = "1.36.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -672,6 +694,7 @@ version = "0.1.0"
 dependencies = [
  "aws-config",
  "aws-sdk-accessanalyzer",
+ "aws-sdk-account",
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
  "aws-sdk-cognitoidentityprovider",
