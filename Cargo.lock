@@ -1282,6 +1282,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-transcribe"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d38e71573658600968cf3a2b6545ce1c3328587097df96dc20c6a4649dac89ca"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sigv4"
 version = "1.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1555,6 +1577,7 @@ dependencies = [
  "aws-sdk-sns",
  "aws-sdk-sqs",
  "aws-sdk-ssm",
+ "aws-sdk-transcribe",
  "mockall",
 ]
 

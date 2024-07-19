@@ -82,6 +82,8 @@ pub mod code_commit;
 pub mod code_pipeline;
 #[cfg(feature="macie2")]
 pub mod macie2;
+#[cfg(feature="transcribe")]
+pub mod transcribe;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
 #[cfg(feature="cloud-trail")]
