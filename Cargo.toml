@@ -16,6 +16,7 @@ aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
+aws-sdk-elasticache = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
 aws-sdk-secretsmanager = { version = "1", optional = true, features = ["test-util"] }
@@ -26,6 +27,7 @@ api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
+elasti-cache = ["dep:aws-sdk-elasticache"]
 kms = ["dep:aws-sdk-kms"]
 s3 = ["dep:aws-sdk-s3"]
 secrets-manager = ["dep:aws-sdk-secretsmanager"]
