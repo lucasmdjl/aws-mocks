@@ -82,6 +82,8 @@ pub mod cloud_trail;
 pub mod global_accelerator;
 #[cfg(feature="cloud-formation")]
 pub mod cloud_formation;
+#[cfg(feature="data-pipeline")]
+pub mod data_pipeline;
 #[cfg(feature="sage-maker")]
 pub mod sage_maker;
 #[cfg(feature="sns")]
