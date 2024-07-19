@@ -71,6 +71,7 @@ The following AWS services are currently supported and the feature to enable it:
 | EC2                     | ec2                       |
 | EKS                     | eks                       |
 | ElastiCache             | elasti-cache              |
+| Glue                    | glue                      | 
 | IAM                     | iam                       |
 | KMS                     | kms                       |
 | RDS                     | rds                       |

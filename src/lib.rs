@@ -56,6 +56,8 @@ pub mod sage_maker;
 pub mod sns;
 #[cfg(feature="account")]
 pub mod account;
+#[cfg(feature="glue")]
+pub mod glue;
 #[cfg(feature="iam")]
 pub mod iam;
 #[cfg(feature="cloud-front")]
