@@ -522,6 +522,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-databrew"
+version = "1.35.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8634a0abcb050603bc9ecbf9c5b4a407e549104aeaab67b1d1b4d7b4d5af6a91"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-datapipeline"
 version = "1.35.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1412,6 +1434,7 @@ dependencies = [
  "aws-sdk-codecommit",
  "aws-sdk-codepipeline",
  "aws-sdk-cognitoidentityprovider",
+ "aws-sdk-databrew",
  "aws-sdk-datapipeline",
  "aws-sdk-directconnect",
  "aws-sdk-dynamodb",

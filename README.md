@@ -77,6 +77,7 @@ The following AWS services are currently supported and the feature to enable it:
 | CodeBuild               | code-build                |
 | CodeCommit              | code-commit               |
 | CodePipeline            | code-pipeline             |
+| DataBrew                | data-brew                 |
 | DataPipeline            | data-pipeline             |
 | DirectConnect           | direct-connect            |
 | DynamoDB                | dynamo-db                 |

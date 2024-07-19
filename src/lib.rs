@@ -92,6 +92,8 @@ pub mod sns;
 pub mod open_search;
 #[cfg(feature="account")]
 pub mod account;
+#[cfg(feature="data-brew")]
+pub mod data_brew;
 #[cfg(feature="glue")]
 pub mod glue;
 #[cfg(feature="backup")]

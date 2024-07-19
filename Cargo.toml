@@ -30,6 +30,7 @@ aws-sdk-codebuild = { version = "1", optional = true }
 aws-sdk-codecommit = { version = "1", optional = true }
 aws-sdk-codepipeline = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
+aws-sdk-databrew = { version = "1", optional = true }
 aws-sdk-datapipeline = { version = "1", optional = true }
 aws-sdk-directconnect = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
@@ -76,6 +77,7 @@ code-build = ["dep:aws-sdk-codebuild"]
 code-commit = ["dep:aws-sdk-codecommit"]
 code-pipeline = ["dep:aws-sdk-codepipeline"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
+data-brew = ["dep:aws-sdk-databrew"]
 data-pipeline = ["dep:aws-sdk-datapipeline"]
 direct-connect = ["dep:aws-sdk-directconnect"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
