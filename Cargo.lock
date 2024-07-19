@@ -524,6 +524,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-redshift"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2423bc4b2e2773d50518b5d3dd50b414f4322abdd7b1c768fcb9a1dc557ead66"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-query",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-smithy-xml",
+ "aws-types",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-s3"
 version = "1.41.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -983,6 +1006,7 @@ dependencies = [
  "aws-sdk-kms",
  "aws-sdk-lambda",
  "aws-sdk-rds",
+ "aws-sdk-redshift",
  "aws-sdk-s3",
  "aws-sdk-sagemaker",
  "aws-sdk-secretsmanager",

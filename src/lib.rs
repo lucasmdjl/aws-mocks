@@ -62,6 +62,8 @@ pub mod account;
 pub mod glue;
 #[cfg(feature="iam")]
 pub mod iam;
+#[cfg(feature="redshift")]
+pub mod redshift;
 #[cfg(feature="cloud-front")]
 pub mod cloud_front;
 
