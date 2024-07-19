@@ -55,13 +55,31 @@ async fn test() {
 ```
 
 ## Supported Services
-The following AWS services are currently supported:
-- ApiGateway
-- CognitoIdentityProvider
-- DynamoDB
-- KMS
-- S3
-- SecretsManager
+The following AWS services are currently supported and the feature to enable it:
+
+| Service                 | Feature                   |
+|-------------------------|---------------------------|
+| AccessAnalyzer          | access-analyzer           |
+| Account                 | account                   |
+| ACM                     | acm                       |
+| ApiGateway              | api-gateway               |
+| ApiGateway V2           | api-gateway-v2            |
+| CloudFront              | cloud-front               |
+| CloudWatch              | cloud-watch               |
+| CognitoIdentityProvider | cognito-identity-provider |
+| DynamoDB                | dynamo-db                 |
+| EC2                     | ec2                       |
+| EKS                     | eks                       |
+| ElastiCache             | elasti-cache              |
+| IAM                     | iam                       |
+| KMS                     | kms                       |
+| RDS                     | rds                       |
+| S3                      | s3                        |
+| SageMaker               | sage-maker                |
+| SecretsManager          | secrets-manager           |
+| SNS                     | sns                       |
+| SQS                     | sqs                       |
+| SSM                     | ssm                       |
 
 ## Contributing
 Contributions are welcome! If you find any issues or have any feature requests, please open an issue or submit a pull request.
