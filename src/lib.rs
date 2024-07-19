@@ -56,6 +56,8 @@ pub mod dynamo_db;
 pub mod sage_maker;
 #[cfg(feature="sns")]
 pub mod sns;
+#[cfg(feature="open-search")]
+pub mod open_search;
 #[cfg(feature="account")]
 pub mod account;
 #[cfg(feature="glue")]
