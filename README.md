@@ -62,6 +62,7 @@ The following AWS services are currently supported and the feature to enable it:
 | AccessAnalyzer          | access-analyzer           |
 | Account                 | account                   |
 | ACM                     | acm                       |
+| Amplify                 | amplify                   |
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |
 | Batch                   | batch                     |

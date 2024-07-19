@@ -28,6 +28,8 @@ pub mod emr;
 pub mod api_gateway_v2;
 #[cfg(feature="kinesis")]
 pub mod kinesis;
+#[cfg(feature="amplify")]
+pub mod amplify;
 #[cfg(feature="ssm")]
 pub mod ssm;
 #[cfg(feature="mq")]
