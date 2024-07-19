@@ -18,6 +18,8 @@
  */
 #[cfg(feature="elastic-beanstalk")]
 pub mod elastic_beanstalk;
+#[cfg(feature="direct-connect")]
+pub mod direct_connect;
 #[cfg(feature="kms")]
 pub mod kms;
 #[cfg(feature="rds")]

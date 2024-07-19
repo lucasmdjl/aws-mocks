@@ -476,6 +476,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-directconnect"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4d85c02717d92b0f5535219a0876b9e81244746a5dd7a83d144cd6ac106cb718"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-dynamodb"
 version = "1.38.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1297,6 +1319,7 @@ dependencies = [
  "aws-sdk-codecommit",
  "aws-sdk-codepipeline",
  "aws-sdk-cognitoidentityprovider",
+ "aws-sdk-directconnect",
  "aws-sdk-dynamodb",
  "aws-sdk-ec2",
  "aws-sdk-efs",
