@@ -18,6 +18,8 @@
  */
 #[cfg(feature="kms")]
 pub mod kms;
+#[cfg(feature="api-gateway-v2")]
+pub mod api_gateway_v2;
 #[cfg(feature="cognito-identity-provider")]
 pub mod cognito_identity_provider;
 #[cfg(feature="secrets-manager")]
