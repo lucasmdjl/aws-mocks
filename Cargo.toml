@@ -22,7 +22,7 @@ aws-sdk-ec2 = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
-aws-sdk-secretsmanager = { version = "1", optional = true, features = ["test-util"] }
+aws-sdk-secretsmanager = { version = "1", optional = true }
 mockall = { version = "0.12", optional = true }
 
 [features]
