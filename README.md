@@ -108,6 +108,7 @@ The following AWS services are currently supported and the feature to enable it:
 | SQS                     | sqs                       |
 | SSM                     | ssm                       |
 | Transcribe              | transcribe                |
+| Translate               | translate                 |
 
 ## Contributing
 Contributions are welcome! If you find any issues or have any feature requests, please open an issue or submit a pull request.

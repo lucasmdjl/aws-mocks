@@ -54,6 +54,8 @@ pub mod cloud_watch;
 pub mod ec2;
 #[cfg(feature="cognito-identity-provider")]
 pub mod cognito_identity_provider;
+#[cfg(feature="translate")]
+pub mod translate;
 #[cfg(feature="efs")]
 pub mod efs;
 #[cfg(feature="secrets-manager")]

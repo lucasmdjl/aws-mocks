@@ -61,6 +61,7 @@ aws-sdk-sqs = { version = "1", optional = true }
 aws-sdk-ssm = { version = "1", optional = true }
 aws-sdk-secretsmanager = { version = "1", optional = true }
 aws-sdk-transcribe = { version = "1", optional = true }
+aws-sdk-translate = { version = "1", optional = true }
 mockall = { version = "0.12", optional = true }
 
 [features]
@@ -113,4 +114,5 @@ sqs = ["dep:aws-sdk-sqs"]
 ssm = ["dep:aws-sdk-ssm"]
 secrets-manager = ["dep:aws-sdk-secretsmanager"]
 transcribe = ["dep:aws-sdk-transcribe"]
+translate = ["dep:aws-sdk-translate"]
 mockall = ["dep:mockall"]
