@@ -50,4 +50,6 @@ pub mod dynamo_db;
 pub mod sns;
 #[cfg(feature="account")]
 pub mod account;
+#[cfg(feature="cloud-front")]
+pub mod cloud_front;
 
