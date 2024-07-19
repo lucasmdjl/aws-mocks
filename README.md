@@ -93,6 +93,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Kinesis                 | kinesis                   |
 | KMS                     | kms                       |
 | Lambda                  | lambda                    |
+| Macie 2                 | macie2                    |
 | MQ                      | mq                        |
 | OpenSearch              | open-search               |
 | QuickSight              | quick-sight               |

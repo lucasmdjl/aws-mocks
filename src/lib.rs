@@ -76,6 +76,8 @@ pub mod sqs;
 pub mod code_commit;
 #[cfg(feature="code-pipeline")]
 pub mod code_pipeline;
+#[cfg(feature="macie2")]
+pub mod macie2;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
 #[cfg(feature="cloud-trail")]
