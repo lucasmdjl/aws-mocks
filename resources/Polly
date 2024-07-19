@@ -1,0 +1,9 @@
+delete-lexicon
+describe-voices
+get-lexicon
+get-speech-synthesis-task
+list-lexicons
+list-speech-synthesis-tasks
+put-lexicon
+start-speech-synthesis-task
+synthesize-speech

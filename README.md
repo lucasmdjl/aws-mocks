@@ -96,6 +96,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Macie 2                 | macie2                    |
 | MQ                      | mq                        |
 | OpenSearch              | open-search               |
+| Polly                   | polly                     |
 | QuickSight              | quick-sight               |
 | RDS                     | rds                       |
 | Redshift                | redshift                  |

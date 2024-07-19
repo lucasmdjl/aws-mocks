@@ -952,6 +952,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-polly"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8c67b16680391442b11bf4af83d76056de451b0b9ce03b2f834eef514af799b8"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-sigv4",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-quicksight"
 version = "1.43.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1498,6 +1521,7 @@ dependencies = [
  "aws-sdk-macie2",
  "aws-sdk-mq",
  "aws-sdk-opensearch",
+ "aws-sdk-polly",
  "aws-sdk-quicksight",
  "aws-sdk-rds",
  "aws-sdk-redshift",

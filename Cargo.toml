@@ -49,6 +49,7 @@ aws-sdk-lambda = { version = "1", optional = true }
 aws-sdk-macie2 = { version = "1", optional = true }
 aws-sdk-mq = { version = "1", optional = true }
 aws-sdk-opensearch = { version = "1", optional = true }
+aws-sdk-polly = { version = "1", optional = true }
 aws-sdk-quicksight = { version = "1", optional = true }
 aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-redshift = { version = "1", optional = true }
@@ -98,6 +99,7 @@ lambda = ["dep:aws-sdk-lambda"]
 macie2 = ["dep:aws-sdk-macie2"]
 mq = ["dep:aws-sdk-mq"]
 open-search = ["dep:aws-sdk-opensearch"]
+polly = ["dep:aws-sdk-polly"]
 quick-sight = ["dep:aws-sdk-quicksight"]
 rds = ["dep:aws-sdk-rds"]
 redshift = ["dep:aws-sdk-redshift"]

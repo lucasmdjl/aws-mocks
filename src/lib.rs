@@ -16,6 +16,8 @@
  * You should have received a copy of the GNU General Public License
  * along with this program. If not, see <https://www.gnu.org/licenses/>.
  */
+#[cfg(feature="polly")]
+pub mod polly;
 #[cfg(feature="elastic-beanstalk")]
 pub mod elastic_beanstalk;
 #[cfg(feature="direct-connect")]
