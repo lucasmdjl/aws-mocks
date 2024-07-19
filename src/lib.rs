@@ -42,6 +42,8 @@ pub mod s3;
 pub mod sqs;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
+#[cfg(feature="sns")]
+pub mod sns;
 #[cfg(feature="account")]
 pub mod account;
 
