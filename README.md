@@ -80,6 +80,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Kinesis                 | kinesis                   |
 | KMS                     | kms                       |
 | Lambda                  | lambda                    |
+| MQ                      | mq                        |
 | OpenSearch              | open-search               |
 | RDS                     | rds                       |
 | Redshift                | redshift                  |

@@ -33,6 +33,7 @@ aws-sdk-iam = { version = "1", optional = true }
 aws-sdk-kinesis = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
 aws-sdk-lambda = { version = "1", optional = true }
+aws-sdk-mq = { version = "1", optional = true }
 aws-sdk-opensearch = { version = "1", optional = true }
 aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-redshift = { version = "1", optional = true }
@@ -66,6 +67,7 @@ iam = ["dep:aws-sdk-iam"]
 kinesis = ["dep:aws-sdk-kinesis"]
 kms = ["dep:aws-sdk-kms"]
 lambda = ["dep:aws-sdk-lambda"]
+mq = ["dep:aws-sdk-mq"]
 open-search = ["dep:aws-sdk-opensearch"]
 rds = ["dep:aws-sdk-rds"]
 redshift = ["dep:aws-sdk-redshift"]

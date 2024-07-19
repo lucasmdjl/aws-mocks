@@ -30,6 +30,8 @@ pub mod api_gateway_v2;
 pub mod kinesis;
 #[cfg(feature="ssm")]
 pub mod ssm;
+#[cfg(feature="mq")]
+pub mod mq;
 #[cfg(feature="access-analyzer")]
 pub mod access_analyzer;
 #[cfg(feature="acm")]

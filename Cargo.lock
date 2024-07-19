@@ -591,6 +591,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-mq"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b4e419f62912cbddf292bb7bfe22b3b2a1feceeaeb57e58c049ae5cd29e6128f"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-opensearch"
 version = "1.44.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1121,6 +1144,7 @@ dependencies = [
  "aws-sdk-kinesis",
  "aws-sdk-kms",
  "aws-sdk-lambda",
+ "aws-sdk-mq",
  "aws-sdk-opensearch",
  "aws-sdk-rds",
  "aws-sdk-redshift",
