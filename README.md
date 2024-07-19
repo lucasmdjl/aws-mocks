@@ -8,14 +8,14 @@ This library provides a set of mocks for various AWS services, allowing you to t
 
 ## Installation
 
-Add `aws_mocks` to your `Cargo.toml` file with the features corresponding to the services you need:
+Add `aws_mock` to your `Cargo.toml` file with the features corresponding to the services you need:
 
 ```toml
 [dependencies]
-aws_mocks = { version = "0.1.0", features = ["s3", "api-gateway", "kms"]}
+aws_mock = { version = "0.1.0", features = ["s3", "api-gateway", "kms"]}
 
 [dev-dependencies]
-aws_mocks = { version = "0.1.0", features = ["mockall"]}
+aws_mock = { version = "0.1.0", features = ["mockall"]}
 ```
 
 ## Usage
