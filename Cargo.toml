@@ -1,0 +1,30 @@
+[package]
+name = "aws_mock"
+version = "0.1.0"
+edition = "2021"
+license = "GPL-3.0-or-later"
+repository = "https://github.com/lucasmdjl/aws-mock"
+description = "A mocking library for AWS. This is NOT an official AWS library."
+readme = "README.md"
+keywords = ["AWS", "mock", "testing"]
+categories = ["development-tools::testing"]
+
+[dependencies]
+aws-config = { version = "1.1.10", optional = false }
+
+aws-sdk-apigateway = { version = "1", optional = true }
+aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
+aws-sdk-dynamodb = { version = "1", optional = true }
+aws-sdk-kms = { version = "1", optional = true }
+aws-sdk-s3 = { version = "1", optional = true }
+aws-sdk-secretsmanager = { version = "1", optional = true, features = ["test-util"] }
+mockall = { version = "0.12", optional = true }
+
+[features]
+api-gateway = ["dep:aws-sdk-apigateway"]
+cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
+dynamo-db = ["dep:aws-sdk-dynamodb"]
+kms = ["dep:aws-sdk-kms"]
+s3 = ["dep:aws-sdk-s3"]
+secrets-manager = ["dep:aws-sdk-secretsmanager"]
+mocks = ["dep:mockall"]
