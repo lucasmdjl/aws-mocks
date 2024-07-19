@@ -68,6 +68,8 @@ pub mod code_commit;
 pub mod code_pipeline;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
+#[cfg(feature="cloud-formation")]
+pub mod cloud_formation;
 #[cfg(feature="sage-maker")]
 pub mod sage_maker;
 #[cfg(feature="sns")]

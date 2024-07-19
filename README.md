@@ -65,6 +65,7 @@ The following AWS services are currently supported and the feature to enable it:
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |
 | Batch                   | batch                     |
+| CloudFormation          | cloud-formation           |
 | CloudFront              | cloud-front               |
 | CloudWatch              | cloud-watch               |
 | CognitoIdentityProvider | cognito-identity-provider |

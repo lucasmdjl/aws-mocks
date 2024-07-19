@@ -18,6 +18,7 @@ aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-batch = { version = "1", optional = true }
+aws-sdk-cloudformation = { version = "1", optional = true }
 aws-sdk-cloudfront = { version = "1", optional = true }
 aws-sdk-cloudwatch = { version = "1", optional = true }
 aws-sdk-codebuild = { version = "1", optional = true }
@@ -55,6 +56,7 @@ acm = ["dep:aws-sdk-acm"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 batch = ["dep:aws-sdk-batch"]
+cloud-formation = ["dep:aws-sdk-cloudformation"]
 cloud-front = ["dep:aws-sdk-cloudfront"]
 cloud-watch = ["dep:aws-sdk-cloudwatch"]
 code-build = ["dep:aws-sdk-codebuild"]
