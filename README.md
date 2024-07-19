@@ -74,6 +74,7 @@ The following AWS services are currently supported and the feature to enable it:
 | EKS                     | eks                       |
 | ElastiCache             | elasti-cache              |
 | Elastic Beanstalk       | elastic-beanstalk         |
+| EMR                     | emr                       |
 | Glue                    | glue                      | 
 | IAM                     | iam                       |
 | Kinesis                 | kinesis                   |

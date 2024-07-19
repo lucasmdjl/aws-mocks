@@ -22,6 +22,8 @@ pub mod elastic_beanstalk;
 pub mod kms;
 #[cfg(feature="rds")]
 pub mod rds;
+#[cfg(feature="emr")]
+pub mod emr;
 #[cfg(feature="api-gateway-v2")]
 pub mod api_gateway_v2;
 #[cfg(feature="kinesis")]
