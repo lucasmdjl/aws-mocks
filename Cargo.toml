@@ -20,6 +20,7 @@ aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-batch = { version = "1", optional = true }
 aws-sdk-cloudfront = { version = "1", optional = true }
 aws-sdk-cloudwatch = { version = "1", optional = true }
+aws-sdk-codepipeline = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
@@ -54,6 +55,7 @@ api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 batch = ["dep:aws-sdk-batch"]
 cloud-front = ["dep:aws-sdk-cloudfront"]
 cloud-watch = ["dep:aws-sdk-cloudwatch"]
+code-pipeline = ["dep:aws-sdk-codepipeline"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]

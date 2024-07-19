@@ -296,6 +296,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-codepipeline"
+version = "1.38.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "2248127c03492231b48d674a7a4ae41d12f5753509975f302d558d4bb1b1e0e3"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-cognitoidentityprovider"
 version = "1.40.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1131,6 +1154,7 @@ dependencies = [
  "aws-sdk-batch",
  "aws-sdk-cloudfront",
  "aws-sdk-cloudwatch",
+ "aws-sdk-codepipeline",
  "aws-sdk-cognitoidentityprovider",
  "aws-sdk-dynamodb",
  "aws-sdk-ec2",
