@@ -110,6 +110,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Textract                | textract                  |
 | Transcribe              | transcribe                |
 | Translate               | translate                 |
+| X-Ray                   | x-ray                     |
 
 ## Contributing
 Contributions are welcome! If you find any issues or have any feature requests, please open an issue or submit a pull request.

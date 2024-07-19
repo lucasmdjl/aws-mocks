@@ -1350,6 +1350,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-xray"
+version = "1.35.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d37554cd0888c44eb3b3333a0b92d42110bb5b51f36c9ab9759a2d156d6d870d"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sigv4"
 version = "1.2.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1626,6 +1648,7 @@ dependencies = [
  "aws-sdk-textract",
  "aws-sdk-transcribe",
  "aws-sdk-translate",
+ "aws-sdk-xray",
  "mockall",
 ]
 

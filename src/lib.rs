@@ -78,6 +78,8 @@ pub mod s3;
 pub mod eks;
 #[cfg(feature="lambda")]
 pub mod lambda;
+#[cfg(feature="x-ray")]
+pub mod x_ray;
 #[cfg(feature="sqs")]
 pub mod sqs;
 #[cfg(feature="code-commit")]
