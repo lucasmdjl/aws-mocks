@@ -30,6 +30,7 @@ aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
 aws-sdk-sns = { version = "1", optional = true }
 aws-sdk-sqs = { version = "1", optional = true }
+aws-sdk-ssm = { version = "1", optional = true }
 aws-sdk-secretsmanager = { version = "1", optional = true }
 mockall = { version = "0.12", optional = true }
 
@@ -52,5 +53,6 @@ rds = ["dep:aws-sdk-rds"]
 s3 = ["dep:aws-sdk-s3"]
 sns = ["dep:aws-sdk-sns"]
 sqs = ["dep:aws-sdk-sqs"]
+ssm = ["dep:aws-sdk-ssm"]
 secrets-manager = ["dep:aws-sdk-secretsmanager"]
 mocks = ["dep:mockall"]
