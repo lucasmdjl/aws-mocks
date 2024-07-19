@@ -73,8 +73,12 @@ The following AWS services are currently supported and the feature to enable it:
 | ElastiCache             | elasti-cache              |
 | Glue                    | glue                      | 
 | IAM                     | iam                       |
+| Kinesis                 | kinesis                   |
 | KMS                     | kms                       |
+| Lambda                  | lambda                    |
+| OpenSearch              | open-search               |
 | RDS                     | rds                       |
+| Redshift                | redshift                  |
 | S3                      | s3                        |
 | SageMaker               | sage-maker                |
 | SecretsManager          | secrets-manager           |
