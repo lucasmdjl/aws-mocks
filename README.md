@@ -12,14 +12,16 @@ Add `aws_mock` to your `Cargo.toml` file with the features corresponding to the 
 
 ```toml
 [dependencies]
-aws_mock = { version = "0.1.0", features = ["s3", "api-gateway", "kms"]}
+aws_mock = { version = "0.2.1", features = ["s3", "api-gateway", "kms"]}
 
 [dev-dependencies]
-aws_mock = { version = "0.1.0", features = ["mockall"]}
+aws_mock = { version = "0.2.1", features = ["mockall"]}
 ```
 
 ## Usage
-To use the mocks, you need to set up the mocks you want to use and then use the aws_sdk_mock crate to swap out the real AWS SDKs with the mocks. Here's an example:
+To use the mocks, you need to add the features for the services you want to use and use the corresponding traits for dependency injection.
+Then add the `mockall` feature to your `[dev-dependencies]` and pass the mock services to your functions.
+Here's an example for S3:
 ```rust
 use aws_config::BehaviorVersion;
 use aws_mock::s3::operation::get_object::GetObjectOutput;
@@ -55,7 +57,7 @@ async fn test() {
 ```
 
 ## Supported Services
-The following AWS services are currently supported and the feature to enable it:
+The following are the AWS services currently supported and the features to enable them:
 
 | Service                 | Feature                   |
 |-------------------------|---------------------------|
