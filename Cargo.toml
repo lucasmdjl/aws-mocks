@@ -17,6 +17,7 @@ aws-sdk-account = { version = "1", optional = true }
 aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
+aws-sdk-cloudwatch = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
@@ -36,6 +37,7 @@ account = ["dep:aws-sdk-account"]
 acm = ["dep:aws-sdk-acm"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
+cloud-watch = ["dep:aws-sdk-cloudwatch"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]

@@ -226,6 +226,32 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-cloudwatch"
+version = "1.39.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a9f2462e52bc873e3038c9e90cfd8772442c07b1804c29c32a43756d22f2bee9"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-compression",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-query",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-smithy-xml",
+ "aws-types",
+ "flate2",
+ "http 0.2.12",
+ "http-body 0.4.6",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-cognitoidentityprovider"
 version = "1.40.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -617,6 +643,22 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-smithy-compression"
+version = "0.0.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "99e0add8a6b41151c16b124f9c1c5d1fe09a93698d80f4123e874455fe3da2eb"
+dependencies = [
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "bytes",
+ "flate2",
+ "http 0.2.12",
+ "http-body 0.4.6",
+ "pin-project-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-smithy-eventstream"
 version = "0.60.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -770,6 +812,7 @@ dependencies = [
  "aws-sdk-acm",
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
+ "aws-sdk-cloudwatch",
  "aws-sdk-cognitoidentityprovider",
  "aws-sdk-dynamodb",
  "aws-sdk-ec2",
@@ -1045,6 +1088,16 @@ checksum = "d013fc25338cc558c5c2cfbad646908fb23591e2404481826742b651c9af7160"
 dependencies = [
  "rand_core",
  "subtle",
+]
+
+[[package]]
+name = "flate2"
+version = "1.0.30"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "5f54427cfd1c7829e2a139fcefea601bf088ebca651d2bf53ebc600eac295dae"
+dependencies = [
+ "crc32fast",
+ "miniz_oxide",
 ]
 
 [[package]]

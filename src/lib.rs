@@ -28,6 +28,8 @@ pub mod access_analyzer;
 pub mod acm;
 #[cfg(feature="elasti-cache")]
 pub mod elasti_cache;
+#[cfg(feature="cloud-watch")]
+pub mod cloud_watch;
 #[cfg(feature="ec2")]
 pub mod ec2;
 #[cfg(feature="cognito-identity-provider")]
