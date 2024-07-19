@@ -22,6 +22,7 @@ aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
+aws-sdk-lambda = { version = "1", optional = true }
 aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
 aws-sdk-sns = { version = "1", optional = true }
@@ -40,6 +41,7 @@ dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]
 elasti-cache = ["dep:aws-sdk-elasticache"]
 kms = ["dep:aws-sdk-kms"]
+lambda = ["dep:aws-sdk-lambda"]
 rds = ["dep:aws-sdk-rds"]
 s3 = ["dep:aws-sdk-s3"]
 sns = ["dep:aws-sdk-sns"]

@@ -38,6 +38,8 @@ pub mod secrets_manager;
 pub mod api_gateway;
 #[cfg(feature="s3")]
 pub mod s3;
+#[cfg(feature="lambda")]
+pub mod lambda;
 #[cfg(feature="sqs")]
 pub mod sqs;
 #[cfg(feature="dynamo-db")]
