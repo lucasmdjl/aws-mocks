@@ -95,6 +95,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Lambda                  | lambda                    |
 | MQ                      | mq                        |
 | OpenSearch              | open-search               |
+| QuickSight              | quick-sight               |
 | RDS                     | rds                       |
 | Redshift                | redshift                  |
 | S3                      | s3                        |

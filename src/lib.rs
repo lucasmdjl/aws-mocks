@@ -56,6 +56,8 @@ pub mod cognito_identity_provider;
 pub mod efs;
 #[cfg(feature="secrets-manager")]
 pub mod secrets_manager;
+#[cfg(feature="quick-sight")]
+pub mod quick_sight;
 #[cfg(feature="code-build")]
 pub mod code_build;
 #[cfg(feature="batch")]

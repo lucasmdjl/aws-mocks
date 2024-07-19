@@ -929,6 +929,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-quicksight"
+version = "1.43.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "55c079ae37cb076ddaedc191aa41618d4a391461ff8380ed4167df2a0443b28e"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-rds"
 version = "1.45.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1452,6 +1474,7 @@ dependencies = [
  "aws-sdk-lambda",
  "aws-sdk-mq",
  "aws-sdk-opensearch",
+ "aws-sdk-quicksight",
  "aws-sdk-rds",
  "aws-sdk-redshift",
  "aws-sdk-s3",
