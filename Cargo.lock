@@ -515,6 +515,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-sagemaker"
+version = "1.60.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6652a731b15bb2e85d588e535ea2eb61aa4360b4b6f2e14afe3e9c3bb88a41fb"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-secretsmanager"
 version = "1.39.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -915,6 +938,7 @@ dependencies = [
  "aws-sdk-lambda",
  "aws-sdk-rds",
  "aws-sdk-s3",
+ "aws-sdk-sagemaker",
  "aws-sdk-secretsmanager",
  "aws-sdk-sns",
  "aws-sdk-sqs",

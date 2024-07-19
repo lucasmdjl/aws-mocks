@@ -29,6 +29,7 @@ aws-sdk-kms = { version = "1", optional = true }
 aws-sdk-lambda = { version = "1", optional = true }
 aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
+aws-sdk-sagemaker = { version = "1", optional = true }
 aws-sdk-sns = { version = "1", optional = true }
 aws-sdk-sqs = { version = "1", optional = true }
 aws-sdk-ssm = { version = "1", optional = true }
@@ -53,6 +54,7 @@ kms = ["dep:aws-sdk-kms"]
 lambda = ["dep:aws-sdk-lambda"]
 rds = ["dep:aws-sdk-rds"]
 s3 = ["dep:aws-sdk-s3"]
+sage-maker = ["dep:aws-sdk-sagemaker"]
 sns = ["dep:aws-sdk-sns"]
 sqs = ["dep:aws-sdk-sqs"]
 ssm = ["dep:aws-sdk-ssm"]

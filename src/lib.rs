@@ -50,6 +50,8 @@ pub mod lambda;
 pub mod sqs;
 #[cfg(feature="dynamo-db")]
 pub mod dynamo_db;
+#[cfg(feature="sage-maker")]
+pub mod sage_maker;
 #[cfg(feature="sns")]
 pub mod sns;
 #[cfg(feature="account")]
