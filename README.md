@@ -68,6 +68,7 @@ The following AWS services are currently supported and the feature to enable it:
 | CloudFront              | cloud-front               |
 | CloudWatch              | cloud-watch               |
 | CognitoIdentityProvider | cognito-identity-provider |
+| CodeBuild               | code-build                |
 | CodePipeline            | code-pipeline             |
 | DynamoDB                | dynamo-db                 |
 | EC2                     | ec2                       |

@@ -48,6 +48,8 @@ pub mod cognito_identity_provider;
 pub mod efs;
 #[cfg(feature="secrets-manager")]
 pub mod secrets_manager;
+#[cfg(feature="code-build")]
+pub mod code_build;
 #[cfg(feature="batch")]
 pub mod batch;
 #[cfg(feature="api-gateway")]
