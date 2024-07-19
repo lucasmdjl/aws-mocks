@@ -12,6 +12,7 @@ categories = ["development-tools::testing"]
 [dependencies]
 aws-config = { version = "1.1.10", optional = false }
 
+aws-sdk-accessanalyzer = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
@@ -24,6 +25,7 @@ aws-sdk-secretsmanager = { version = "1", optional = true, features = ["test-uti
 mockall = { version = "0.12", optional = true }
 
 [features]
+access-analyzer = ["dep:aws-sdk-accessanalyzer"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
