@@ -23,6 +23,7 @@ aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
+aws-sdk-iam = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
 aws-sdk-lambda = { version = "1", optional = true }
 aws-sdk-rds = { version = "1", optional = true }
@@ -44,6 +45,7 @@ cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]
 elasti-cache = ["dep:aws-sdk-elasticache"]
+iam = ["dep:aws-sdk-iam"]
 kms = ["dep:aws-sdk-kms"]
 lambda = ["dep:aws-sdk-lambda"]
 rds = ["dep:aws-sdk-rds"]
