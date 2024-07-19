@@ -226,6 +226,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-batch"
+version = "1.42.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "b0415c7757ebb7fda378635d7d394bb9b0791046cff0d5fcaba2eb29cd68b8bb"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-cloudfront"
 version = "1.37.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1061,6 +1083,7 @@ dependencies = [
  "aws-sdk-acm",
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
+ "aws-sdk-batch",
  "aws-sdk-cloudfront",
  "aws-sdk-cloudwatch",
  "aws-sdk-cognitoidentityprovider",

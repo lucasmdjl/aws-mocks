@@ -44,6 +44,8 @@ pub mod cognito_identity_provider;
 pub mod efs;
 #[cfg(feature="secrets-manager")]
 pub mod secrets_manager;
+#[cfg(feature="batch")]
+pub mod batch;
 #[cfg(feature="api-gateway")]
 pub mod api_gateway;
 #[cfg(feature="s3")]
