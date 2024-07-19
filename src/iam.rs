@@ -1305,7 +1305,7 @@ impl <T: IAMClient> IAMClient for &T {
         (*self).upload_ssh_public_key(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edIAMClient {}
     impl IAMClient for edIAMClient {

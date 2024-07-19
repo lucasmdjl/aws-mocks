@@ -489,7 +489,7 @@ impl <T: DynamoDBClient> DynamoDBClient for &T {
         (*self).update_time_to_live(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edDynamoDBClient {}
     impl DynamoDBClient for edDynamoDBClient {

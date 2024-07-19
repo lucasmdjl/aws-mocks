@@ -2713,7 +2713,7 @@ impl <T: SageMakerClient> SageMakerClient for &T {
         (*self).update_workteam(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edSageMakerClient {}
     impl SageMakerClient for edSageMakerClient {

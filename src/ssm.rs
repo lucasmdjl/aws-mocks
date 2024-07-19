@@ -1153,7 +1153,7 @@ impl <T: SSMClient> SSMClient for &T {
         (*self).update_service_setting(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edSSMClient {}
     impl SSMClient for edSSMClient {

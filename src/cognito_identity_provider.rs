@@ -857,7 +857,7 @@ impl <T: CognitoIdentityProviderClient> CognitoIdentityProviderClient for &T {
         (*self).verify_user_attribute(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edCognitoIdentityProviderClient {}
     impl CognitoIdentityProviderClient for edCognitoIdentityProviderClient {

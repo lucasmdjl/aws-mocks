@@ -313,7 +313,7 @@ impl <T: AccessAnalyzerClient> AccessAnalyzerClient for &T {
         (*self).validate_policy(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edAccessAnalyzerClient {}
     impl AccessAnalyzerClient for edAccessAnalyzerClient {

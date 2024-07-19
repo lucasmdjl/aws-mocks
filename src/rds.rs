@@ -1321,7 +1321,7 @@ impl <T: RDSClient> RDSClient for &T {
         (*self).switchover_read_replica(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edRDSClient {}
     impl RDSClient for edRDSClient {

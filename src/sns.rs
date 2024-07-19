@@ -369,7 +369,7 @@ impl <T: SNSClient> SNSClient for &T {
         (*self).verify_sms_sandbox_phone_number(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edSNSClient {}
     impl SNSClient for edSNSClient {

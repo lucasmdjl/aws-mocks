@@ -481,7 +481,7 @@ impl <T: EKSClient> EKSClient for &T {
         (*self).update_pod_identity_association(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edEKSClient {}
     impl EKSClient for edEKSClient {

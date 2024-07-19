@@ -217,7 +217,7 @@ impl <T: SQSClient> SQSClient for &T {
         (*self).untag_queue(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edSQSClient {}
     impl SQSClient for edSQSClient {

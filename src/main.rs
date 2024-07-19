@@ -154,7 +154,7 @@ fn create_trait_borrow_impl(name: &str, methods: &[&str]) -> String {
 
 fn create_mock(name: &str, methods: &[&str]) -> String {
     format!(
-        "#[cfg(feature = \"mocks\")]
+        "#[cfg(feature = \"mockall\")]
 mockall::mock! {{
     pub ed{name}Client {{}}
     impl {name}Client for ed{name}Client {{

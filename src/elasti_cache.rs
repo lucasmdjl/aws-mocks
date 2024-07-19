@@ -633,7 +633,7 @@ impl <T: ElastiCacheClient> ElastiCacheClient for &T {
         (*self).test_migration(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edElastiCacheClient {}
     impl ElastiCacheClient for edElastiCacheClient {

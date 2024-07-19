@@ -545,7 +545,7 @@ impl <T: LambdaClient> LambdaClient for &T {
         (*self).update_function_url_config(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edLambdaClient {}
     impl LambdaClient for edLambdaClient {

@@ -609,7 +609,7 @@ impl <T: ApiGatewayV2Client> ApiGatewayV2Client for &T {
         (*self).update_vpc_link(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edApiGatewayV2Client {}
     impl ApiGatewayV2Client for edApiGatewayV2Client {

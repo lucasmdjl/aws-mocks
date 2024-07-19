@@ -129,7 +129,7 @@ impl <T: AccountClient> AccountClient for &T {
         (*self).start_primary_email_update(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edAccountClient {}
     impl AccountClient for edAccountClient {

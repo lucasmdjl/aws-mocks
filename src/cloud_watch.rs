@@ -337,7 +337,7 @@ impl <T: CloudWatchClient> CloudWatchClient for &T {
         (*self).untag_resource(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edCloudWatchClient {}
     impl CloudWatchClient for edCloudWatchClient {

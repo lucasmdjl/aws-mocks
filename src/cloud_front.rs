@@ -921,7 +921,7 @@ impl <T: CloudFrontClient> CloudFrontClient for &T {
         (*self).update_streaming_distribution(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edCloudFrontClient {}
     impl CloudFrontClient for edCloudFrontClient {

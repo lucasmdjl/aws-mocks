@@ -153,7 +153,7 @@ impl <T: ACMClient> ACMClient for &T {
         (*self).update_certificate_options(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edACMClient {}
     impl ACMClient for edACMClient {

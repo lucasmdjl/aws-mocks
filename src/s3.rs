@@ -793,7 +793,7 @@ impl <T: S3Client> S3Client for &T {
         (*self).write_get_object_response(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edS3Client {}
     impl S3Client for edS3Client {

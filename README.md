@@ -15,7 +15,7 @@ Add `aws_mocks` to your `Cargo.toml` file with the features corresponding to the
 aws_mocks = { version = "0.1.0", features = ["s3", "api-gateway", "kms"]}
 
 [dev-dependencies]
-aws_mocks = { version = "0.1.0", features = ["mocks"]}
+aws_mocks = { version = "0.1.0", features = ["mockall"]}
 ```
 
 ## Usage

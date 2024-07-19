@@ -457,7 +457,7 @@ impl <T: KMSClient> KMSClient for &T {
         (*self).verify_mac(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edKMSClient {}
     impl KMSClient for edKMSClient {

@@ -217,7 +217,7 @@ impl <T: SecretsManagerClient> SecretsManagerClient for &T {
         (*self).validate_resource_policy(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edSecretsManagerClient {}
     impl SecretsManagerClient for edSecretsManagerClient {

@@ -5017,7 +5017,7 @@ impl <T: EC2Client> EC2Client for &T {
         (*self).withdraw_byoip_cidr(builder)
     }
 }
-#[cfg(feature = "mocks")]
+#[cfg(feature = "mockall")]
 mockall::mock! {
     pub edEC2Client {}
     impl EC2Client for edEC2Client {
