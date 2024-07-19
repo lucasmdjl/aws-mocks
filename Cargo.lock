@@ -1043,6 +1043,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-rekognition"
+version = "1.38.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "23a2377cd6d22ccf8eb084819e5e8f12de87dd5518fcbe57beb71596627ae8bc"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-s3"
 version = "1.41.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1525,6 +1548,7 @@ dependencies = [
  "aws-sdk-quicksight",
  "aws-sdk-rds",
  "aws-sdk-redshift",
+ "aws-sdk-rekognition",
  "aws-sdk-s3",
  "aws-sdk-sagemaker",
  "aws-sdk-secretsmanager",

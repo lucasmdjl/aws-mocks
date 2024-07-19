@@ -100,6 +100,7 @@ The following AWS services are currently supported and the feature to enable it:
 | QuickSight              | quick-sight               |
 | RDS                     | rds                       |
 | Redshift                | redshift                  |
+| Rekognition             | rekognition               |
 | S3                      | s3                        |
 | SageMaker               | sage-maker                |
 | SecretsManager          | secrets-manager           |

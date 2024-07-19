@@ -60,6 +60,8 @@ pub mod efs;
 pub mod secrets_manager;
 #[cfg(feature="quick-sight")]
 pub mod quick_sight;
+#[cfg(feature="rekognition")]
+pub mod rekognition;
 #[cfg(feature="code-build")]
 pub mod code_build;
 #[cfg(feature="batch")]
