@@ -107,6 +107,7 @@ The following AWS services are currently supported and the feature to enable it:
 | SNS                     | sns                       |
 | SQS                     | sqs                       |
 | SSM                     | ssm                       |
+| Textract                | textract                  |
 | Transcribe              | transcribe                |
 | Translate               | translate                 |
 

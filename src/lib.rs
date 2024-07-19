@@ -58,6 +58,8 @@ pub mod cognito_identity_provider;
 pub mod translate;
 #[cfg(feature="efs")]
 pub mod efs;
+#[cfg(feature="textract")]
+pub mod textract;
 #[cfg(feature="secrets-manager")]
 pub mod secrets_manager;
 #[cfg(feature="quick-sight")]

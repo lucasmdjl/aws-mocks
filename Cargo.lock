@@ -1282,6 +1282,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-textract"
+version = "1.35.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "87423596f651d7a7e7be4bfd2392ab38d8384bdacf2fc18291ba81e4f543e472"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-transcribe"
 version = "1.36.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1600,6 +1623,7 @@ dependencies = [
  "aws-sdk-sns",
  "aws-sdk-sqs",
  "aws-sdk-ssm",
+ "aws-sdk-textract",
  "aws-sdk-transcribe",
  "aws-sdk-translate",
  "mockall",
