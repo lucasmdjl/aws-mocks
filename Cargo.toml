@@ -22,6 +22,7 @@ aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
 aws-sdk-kms = { version = "1", optional = true }
+aws-sdk-rds = { version = "1", optional = true }
 aws-sdk-s3 = { version = "1", optional = true }
 aws-sdk-secretsmanager = { version = "1", optional = true }
 mockall = { version = "0.12", optional = true }
@@ -37,6 +38,7 @@ dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]
 elasti-cache = ["dep:aws-sdk-elasticache"]
 kms = ["dep:aws-sdk-kms"]
+rds = ["dep:aws-sdk-rds"]
 s3 = ["dep:aws-sdk-s3"]
 secrets-manager = ["dep:aws-sdk-secretsmanager"]
 mocks = ["dep:mockall"]

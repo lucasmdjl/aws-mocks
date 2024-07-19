@@ -18,6 +18,8 @@
  */
 #[cfg(feature="kms")]
 pub mod kms;
+#[cfg(feature="rds")]
+pub mod rds;
 #[cfg(feature="api-gateway-v2")]
 pub mod api_gateway_v2;
 #[cfg(feature="access-analyzer")]
