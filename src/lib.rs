@@ -22,6 +22,8 @@ pub mod kms;
 pub mod api_gateway_v2;
 #[cfg(feature="access-analyzer")]
 pub mod access_analyzer;
+#[cfg(feature="acm")]
+pub mod acm;
 #[cfg(feature="elasti-cache")]
 pub mod elasti_cache;
 #[cfg(feature="ec2")]

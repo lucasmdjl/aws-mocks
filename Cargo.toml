@@ -14,6 +14,7 @@ aws-config = { version = "1.1.10", optional = false }
 
 aws-sdk-accessanalyzer = { version = "1", optional = true }
 aws-sdk-account = { version = "1", optional = true }
+aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
@@ -28,6 +29,7 @@ mockall = { version = "0.12", optional = true }
 [features]
 access-analyzer = ["dep:aws-sdk-accessanalyzer"]
 account = ["dep:aws-sdk-account"]
+acm = ["dep:aws-sdk-acm"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
