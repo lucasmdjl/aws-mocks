@@ -24,6 +24,7 @@ aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
 aws-sdk-eks = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
+aws-sdk-elasticbeanstalk = { version = "1", optional = true }
 aws-sdk-glue = { version = "1", optional = true }
 aws-sdk-iam = { version = "1", optional = true }
 aws-sdk-kinesis = { version = "1", optional = true }
@@ -53,6 +54,7 @@ dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]
 eks = ["dep:aws-sdk-eks"]
 elasti-cache = ["dep:aws-sdk-elasticache"]
+elastic-beanstalk = ["dep:aws-sdk-elasticbeanstalk"]
 glue = ["dep:aws-sdk-glue"]
 iam = ["dep:aws-sdk-iam"]
 kinesis = ["dep:aws-sdk-kinesis"]
