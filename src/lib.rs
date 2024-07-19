@@ -22,6 +22,8 @@ pub mod kms;
 pub mod rds;
 #[cfg(feature="api-gateway-v2")]
 pub mod api_gateway_v2;
+#[cfg(feature="kinesis")]
+pub mod kinesis;
 #[cfg(feature="ssm")]
 pub mod ssm;
 #[cfg(feature="access-analyzer")]

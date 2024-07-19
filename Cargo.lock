@@ -434,6 +434,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-kinesis"
+version = "1.35.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "84e1824095695caa7286efcc70a02686e9a99064cea2174df97324f0a397951c"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-kms"
 version = "1.36.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -957,6 +979,7 @@ dependencies = [
  "aws-sdk-elasticache",
  "aws-sdk-glue",
  "aws-sdk-iam",
+ "aws-sdk-kinesis",
  "aws-sdk-kms",
  "aws-sdk-lambda",
  "aws-sdk-rds",
