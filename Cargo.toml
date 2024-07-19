@@ -22,6 +22,7 @@ aws-sdk-cloudwatch = { version = "1", optional = true }
 aws-sdk-cognitoidentityprovider = { version = "1", optional = true }
 aws-sdk-dynamodb = { version = "1", optional = true }
 aws-sdk-ec2 = { version = "1", optional = true }
+aws-sdk-efs = { version = "1", optional = true }
 aws-sdk-eks = { version = "1", optional = true }
 aws-sdk-elasticache = { version = "1", optional = true }
 aws-sdk-elasticbeanstalk = { version = "1", optional = true }
@@ -52,6 +53,7 @@ cloud-watch = ["dep:aws-sdk-cloudwatch"]
 cognito-identity-provider = ["dep:aws-sdk-cognitoidentityprovider"]
 dynamo-db = ["dep:aws-sdk-dynamodb"]
 ec2 = ["dep:aws-sdk-ec2"]
+efs = ["dep:aws-sdk-efs"]
 eks = ["dep:aws-sdk-eks"]
 elasti-cache = ["dep:aws-sdk-elasticache"]
 elastic-beanstalk = ["dep:aws-sdk-elasticbeanstalk"]

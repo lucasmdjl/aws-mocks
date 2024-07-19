@@ -69,6 +69,7 @@ The following AWS services are currently supported and the feature to enable it:
 | CognitoIdentityProvider | cognito-identity-provider |
 | DynamoDB                | dynamo-db                 |
 | EC2                     | ec2                       |
+| EFS                     | efs                       |
 | EKS                     | eks                       |
 | ElastiCache             | elasti-cache              |
 | Elastic Beanstalk       | elastic-beanstalk         |
