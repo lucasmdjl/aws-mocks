@@ -659,6 +659,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-globalaccelerator"
+version = "1.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a0d7c438e007478bfd9f0d387de99dbd999232d76526c41027f17cab5123b446"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-glue"
 version = "1.47.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1327,6 +1350,7 @@ dependencies = [
  "aws-sdk-elasticache",
  "aws-sdk-elasticbeanstalk",
  "aws-sdk-emr",
+ "aws-sdk-globalaccelerator",
  "aws-sdk-glue",
  "aws-sdk-iam",
  "aws-sdk-kinesis",

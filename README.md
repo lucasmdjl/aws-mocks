@@ -83,6 +83,7 @@ The following AWS services are currently supported and the feature to enable it:
 | ElastiCache             | elasti-cache              |
 | Elastic Beanstalk       | elastic-beanstalk         |
 | EMR                     | emr                       |
+| GlobalAccelerator       | global-accelerator        | 
 | Glue                    | glue                      | 
 | IAM                     | iam                       |
 | Kinesis                 | kinesis                   |

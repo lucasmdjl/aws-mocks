@@ -76,6 +76,8 @@ pub mod code_pipeline;
 pub mod dynamo_db;
 #[cfg(feature="cloud-trail")]
 pub mod cloud_trail;
+#[cfg(feature="global-accelerator")]
+pub mod global_accelerator;
 #[cfg(feature="cloud-formation")]
 pub mod cloud_formation;
 #[cfg(feature="sage-maker")]
