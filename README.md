@@ -69,6 +69,7 @@ The following AWS services are currently supported and the feature to enable it:
 | CloudWatch              | cloud-watch               |
 | CognitoIdentityProvider | cognito-identity-provider |
 | CodeBuild               | code-build                |
+| CodeCommit              | code-commit               |
 | CodePipeline            | code-pipeline             |
 | DynamoDB                | dynamo-db                 |
 | EC2                     | ec2                       |

@@ -62,6 +62,8 @@ pub mod eks;
 pub mod lambda;
 #[cfg(feature="sqs")]
 pub mod sqs;
+#[cfg(feature="code-commit")]
+pub mod code_commit;
 #[cfg(feature="code-pipeline")]
 pub mod code_pipeline;
 #[cfg(feature="dynamo-db")]
