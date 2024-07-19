@@ -270,6 +270,29 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-backup"
+version = "1.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "3f2c5bb3f7611a268b42adf934725c7285fd357d3d3b8bd91656b10fc9c49a5d"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-batch"
 version = "1.42.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1333,6 +1356,7 @@ dependencies = [
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
  "aws-sdk-appsync",
+ "aws-sdk-backup",
  "aws-sdk-batch",
  "aws-sdk-cloudformation",
  "aws-sdk-cloudfront",

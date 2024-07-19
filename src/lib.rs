@@ -90,6 +90,8 @@ pub mod open_search;
 pub mod account;
 #[cfg(feature="glue")]
 pub mod glue;
+#[cfg(feature="backup")]
+pub mod backup;
 #[cfg(feature="iam")]
 pub mod iam;
 #[cfg(feature="redshift")]
