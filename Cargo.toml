@@ -22,6 +22,7 @@ aws-sdk-appsync = { version = "1", optional = true }
 aws-sdk-batch = { version = "1", optional = true }
 aws-sdk-cloudformation = { version = "1", optional = true }
 aws-sdk-cloudfront = { version = "1", optional = true }
+aws-sdk-cloudtrail = { version = "1", optional = true }
 aws-sdk-cloudwatch = { version = "1", optional = true }
 aws-sdk-codebuild = { version = "1", optional = true }
 aws-sdk-codecommit = { version = "1", optional = true }
@@ -62,6 +63,7 @@ app-sync = ["dep:aws-sdk-appsync"]
 batch = ["dep:aws-sdk-batch"]
 cloud-formation = ["dep:aws-sdk-cloudformation"]
 cloud-front = ["dep:aws-sdk-cloudfront"]
+cloud-trail = ["dep:aws-sdk-cloudtrail"]
 cloud-watch = ["dep:aws-sdk-cloudwatch"]
 code-build = ["dep:aws-sdk-codebuild"]
 code-commit = ["dep:aws-sdk-codecommit"]

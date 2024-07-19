@@ -69,6 +69,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Batch                   | batch                     |
 | CloudFormation          | cloud-formation           |
 | CloudFront              | cloud-front               |
+| CloudTrail              | cloud-trail               |
 | CloudWatch              | cloud-watch               |
 | CognitoIdentityProvider | cognito-identity-provider |
 | CodeBuild               | code-build                |
