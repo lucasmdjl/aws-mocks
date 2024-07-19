@@ -26,6 +26,8 @@ pub mod rds;
 pub mod emr;
 #[cfg(feature="api-gateway-v2")]
 pub mod api_gateway_v2;
+#[cfg(feature="app-sync")]
+pub mod app_sync;
 #[cfg(feature="kinesis")]
 pub mod kinesis;
 #[cfg(feature="amplify")]

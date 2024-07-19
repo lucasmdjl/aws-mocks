@@ -18,6 +18,7 @@ aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-amplify = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
+aws-sdk-appsync = { version = "1", optional = true }
 aws-sdk-batch = { version = "1", optional = true }
 aws-sdk-cloudformation = { version = "1", optional = true }
 aws-sdk-cloudfront = { version = "1", optional = true }
@@ -57,6 +58,7 @@ acm = ["dep:aws-sdk-acm"]
 amplify = ["dep:aws-sdk-amplify"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
+app-sync = ["dep:aws-sdk-appsync"]
 batch = ["dep:aws-sdk-batch"]
 cloud-formation = ["dep:aws-sdk-cloudformation"]
 cloud-front = ["dep:aws-sdk-cloudfront"]

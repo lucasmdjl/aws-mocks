@@ -65,6 +65,7 @@ The following AWS services are currently supported and the feature to enable it:
 | Amplify                 | amplify                   |
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |
+| AppSync                 | app-sync                  |
 | Batch                   | batch                     |
 | CloudFormation          | cloud-formation           |
 | CloudFront              | cloud-front               |

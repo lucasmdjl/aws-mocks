@@ -248,6 +248,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-appsync"
+version = "1.39.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "014308c7f4a7ca0d347d9d0fc228a2762bcada16fd9236b48e963dfcfc71e10b"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-batch"
 version = "1.42.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1243,6 +1265,7 @@ dependencies = [
  "aws-sdk-amplify",
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
+ "aws-sdk-appsync",
  "aws-sdk-batch",
  "aws-sdk-cloudformation",
  "aws-sdk-cloudfront",
