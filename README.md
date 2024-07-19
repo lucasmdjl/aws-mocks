@@ -66,6 +66,7 @@ The following AWS services are currently supported and the feature to enable it:
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |
 | AppSync                 | app-sync                  |
+| Athena                  | athena                    |
 | Backup                  | backup                    |
 | Batch                   | batch                     |
 | CloudFormation          | cloud-formation           |

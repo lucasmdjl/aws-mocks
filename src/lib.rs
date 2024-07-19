@@ -36,6 +36,8 @@ pub mod kinesis;
 pub mod amplify;
 #[cfg(feature="ssm")]
 pub mod ssm;
+#[cfg(feature="athena")]
+pub mod athena;
 #[cfg(feature="mq")]
 pub mod mq;
 #[cfg(feature="access-analyzer")]
