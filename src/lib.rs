@@ -96,6 +96,8 @@ pub mod dynamo_db;
 pub mod cloud_trail;
 #[cfg(feature="global-accelerator")]
 pub mod global_accelerator;
+#[cfg(feature="acm-pca")]
+pub mod acm_pca;
 #[cfg(feature="cloud-formation")]
 pub mod cloud_formation;
 #[cfg(feature="data-pipeline")]
