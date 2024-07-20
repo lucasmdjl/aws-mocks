@@ -118,6 +118,8 @@ pub mod account;
 pub mod data_brew;
 #[cfg(feature="amp")]
 pub mod amp;
+#[cfg(feature="api-gateway-management")]
+pub mod api_gateway_management;
 #[cfg(feature="glue")]
 pub mod glue;
 #[cfg(feature="backup")]

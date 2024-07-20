@@ -70,6 +70,7 @@ The following are the AWS services currently supported and the features to enabl
 | Amplify Backend         | amplify-backend           |
 | Amplify UI Builder      | amplify-ui-builder        |
 | ApiGateway              | api-gateway               |
+| ApiGateway Management   | api-gateway-management    |
 | ApiGateway V2           | api-gateway-v2            |
 | AppSync                 | app-sync                  |
 | Athena                  | athena                    |
