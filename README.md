@@ -116,6 +116,8 @@ The following are the AWS services currently supported and the features to enabl
 | Translate               | translate                 |
 | X-Ray                   | x-ray                     |
 
+Not every command for every service is supported. Notably, commands that require subcommands are not yet supported.
+
 ## Contributing
 Contributions are welcome! If you find any issues or have any feature requests, please open an issue or submit a pull request.
 
