@@ -34,6 +34,8 @@ pub mod emr;
 pub mod api_gateway_v2;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
+#[cfg(feature="amplify-ui-builder")]
+pub mod amplify_ui_builder;
 #[cfg(feature="kinesis")]
 pub mod kinesis;
 #[cfg(feature="amplify")]
