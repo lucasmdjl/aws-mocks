@@ -112,6 +112,8 @@ pub mod open_search;
 pub mod account;
 #[cfg(feature="data-brew")]
 pub mod data_brew;
+#[cfg(feature="amp")]
+pub mod amp;
 #[cfg(feature="glue")]
 pub mod glue;
 #[cfg(feature="backup")]

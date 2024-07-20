@@ -65,6 +65,7 @@ The following are the AWS services currently supported and the features to enabl
 | Account                 | account                   |
 | ACM                     | acm                       |
 | ACM PCA                 | acm-pca                   |
+| AMP                     | amp                       |
 | Amplify                 | amplify                   |
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |

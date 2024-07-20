@@ -16,6 +16,7 @@ aws-sdk-accessanalyzer = { version = "1", optional = true }
 aws-sdk-account = { version = "1", optional = true }
 aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-acmpca = { version = "1", optional = true }
+aws-sdk-amp = { version = "1", optional = true }
 aws-sdk-amplify = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
@@ -72,6 +73,7 @@ access-analyzer = ["dep:aws-sdk-accessanalyzer"]
 account = ["dep:aws-sdk-account"]
 acm = ["dep:aws-sdk-acm"]
 acm-pca = ["dep:aws-sdk-acmpca"]
+amp = ["dep:aws-sdk-amp"]
 amplify = ["dep:aws-sdk-amplify"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
