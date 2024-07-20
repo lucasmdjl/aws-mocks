@@ -18,6 +18,7 @@ aws-sdk-acm = { version = "1", optional = true }
 aws-sdk-acmpca = { version = "1", optional = true }
 aws-sdk-amp = { version = "1", optional = true }
 aws-sdk-amplify = { version = "1", optional = true }
+aws-sdk-amplifybackend = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
 aws-sdk-appsync = { version = "1", optional = true }
@@ -75,6 +76,7 @@ acm = ["dep:aws-sdk-acm"]
 acm-pca = ["dep:aws-sdk-acmpca"]
 amp = ["dep:aws-sdk-amp"]
 amplify = ["dep:aws-sdk-amplify"]
+amplify-backend = ["dep:aws-sdk-amplifybackend"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
 app-sync = ["dep:aws-sdk-appsync"]

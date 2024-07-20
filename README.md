@@ -67,6 +67,7 @@ The following are the AWS services currently supported and the features to enabl
 | ACM PCA                 | acm-pca                   |
 | AMP                     | amp                       |
 | Amplify                 | amplify                   |
+| Amplify Backend         | amplify-backend           |
 | ApiGateway              | api-gateway               |
 | ApiGateway V2           | api-gateway-v2            |
 | AppSync                 | app-sync                  |

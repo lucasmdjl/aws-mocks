@@ -249,6 +249,28 @@ dependencies = [
 ]
 
 [[package]]
+name = "aws-sdk-amplifybackend"
+version = "1.35.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ada0338676d3b2e78d9aedff993a76fe17378ef98a4c6240a81d5e35ef73d314"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
 name = "aws-sdk-apigateway"
 version = "1.36.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -1648,6 +1670,7 @@ dependencies = [
  "aws-sdk-acmpca",
  "aws-sdk-amp",
  "aws-sdk-amplify",
+ "aws-sdk-amplifybackend",
  "aws-sdk-apigateway",
  "aws-sdk-apigatewayv2",
  "aws-sdk-appsync",

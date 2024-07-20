@@ -20,6 +20,8 @@
 pub mod polly;
 #[cfg(feature="elastic-beanstalk")]
 pub mod elastic_beanstalk;
+#[cfg(feature="amplify-backend")]
+pub mod amplify_backend;
 #[cfg(feature="direct-connect")]
 pub mod direct_connect;
 #[cfg(feature="kms")]
