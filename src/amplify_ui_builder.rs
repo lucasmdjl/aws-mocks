@@ -1,5 +1,5 @@
 /*
- * aws_mock - A mocking library for AWS.
+ * aws-mocks - A mocking library for AWS.
  *
  * Copyright (C) 2024 Lucas M. de Jong Larrarte
  *

@@ -1,5 +1,5 @@
 /*
- * aws_mock - A mocking library for AWS.
+ * aws-mocks - A mocking library for AWS.
  *
  * Copyright (C) 2024 Lucas M. de Jong Larrarte
  *
@@ -83,7 +83,7 @@ fn get_method_names(names: String) -> Vec<String> {
 
 fn create_copyritgh() -> String {
     "/*
- * aws_mock - A mocking library for AWS.
+ * aws-mocks - A mocking library for AWS.
  *
  * Copyright (C) 2024 Lucas M. de Jong Larrarte
  *

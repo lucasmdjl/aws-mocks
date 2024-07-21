@@ -1,9 +1,9 @@
 [package]
-name = "aws_mock"
+name = "aws-mocks"
 version = "0.2.1"
 edition = "2021"
 license = "GPL-3.0-or-later"
-repository = "https://github.com/lucasmdjl/aws-mock"
+repository = "https://github.com/lucasmdjl/aws-mocks"
 description = "A mocking library for AWS. This is NOT an official AWS library."
 readme = "README.md"
 keywords = ["AWS", "mock", "testing"]

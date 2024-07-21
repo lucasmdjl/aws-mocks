@@ -1,4 +1,4 @@
-# AWS Mock
+# AWS Mocks
 
 A mocking library for AWS. This is NOT an official AWS library.
 
@@ -8,14 +8,14 @@ This library provides a set of mocks for various AWS services, allowing you to t
 
 ## Installation
 
-Add `aws_mock` to your `Cargo.toml` file with the features corresponding to the services you need:
+Add `aws-mocks` to your `Cargo.toml` file with the features corresponding to the services you need:
 
 ```toml
 [dependencies]
-aws_mock = { version = "0.2.1", features = ["s3", "api-gateway", "kms"]}
+aws-mocks = { version = "0.2.1", features = ["s3", "api-gateway", "kms"]}
 
 [dev-dependencies]
-aws_mock = { version = "0.2.1", features = ["mockall"]}
+aws-mocks = { version = "0.2.1", features = ["mockall"]}
 ```
 
 ## Usage
@@ -24,11 +24,11 @@ Then add the `mockall` feature to your `[dev-dependencies]` and pass the mock se
 Here's an example for S3:
 ```rust
 use aws_config::BehaviorVersion;
-use aws_mock::s3::operation::get_object::GetObjectOutput;
-use aws_mock::s3::operation::get_object::GetObjectInput;
-use aws_mock::s3::S3Client;
-use aws_mock::s3::S3ClientImpl;
-use aws_mock::s3::MockedS3Client;
+use aws_mocks::s3::operation::get_object::GetObjectOutput;
+use aws_mocks::s3::operation::get_object::GetObjectInput;
+use aws_mocks::s3::S3Client;
+use aws_mocks::s3::S3ClientImpl;
+use aws_mocks::s3::MockedS3Client;
 
 #[tokio::main]
 async fn main() {
