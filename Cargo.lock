@@ -92,7 +92,7 @@ dependencies = [
 
 [[package]]
 name = "aws-mocks"
-version = "0.2.1"
+version = "0.2.2"
 dependencies = [
  "aws-config",
  "aws-sdk-accessanalyzer",
