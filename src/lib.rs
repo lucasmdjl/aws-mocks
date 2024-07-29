@@ -44,6 +44,8 @@ pub mod app_config;
 pub mod app_config_data;
 #[cfg(feature="app-fabric")]
 pub mod app_fabric;
+#[cfg(feature="app-flow")]
+pub mod app_flow;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
 #[cfg(feature="athena")]

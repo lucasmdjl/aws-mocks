@@ -75,6 +75,7 @@ The following are the AWS services currently supported and the features to enabl
 | AppConfig               | app-config                |
 | AppConfigData           | app-config-data           |
 | AppFabric               | app-fabric                |
+| AppFlow                 | app-flow                  |
 | AppSync                 | app-sync                  |
 | Athena                  | athena                    |
 | Backup                  | backup                    |
