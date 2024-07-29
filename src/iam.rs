@@ -178,6 +178,7 @@ use aws_sdk_iam::operation::upload_ssh_public_key::{builders::*, *};
 use aws_sdk_iam::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_iam::Client;
 use std::ops::Deref;
 

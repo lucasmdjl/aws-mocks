@@ -38,6 +38,7 @@ use aws_sdk_datapipeline::operation::validate_pipeline_definition::{builders::*,
 use aws_sdk_datapipeline::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_datapipeline::Client;
 use std::ops::Deref;
 

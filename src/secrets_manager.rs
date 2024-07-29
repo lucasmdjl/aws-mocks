@@ -42,6 +42,7 @@ use aws_sdk_secretsmanager::operation::validate_resource_policy::{builders::*, *
 use aws_sdk_secretsmanager::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_secretsmanager::Client;
 use std::ops::Deref;
 

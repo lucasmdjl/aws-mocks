@@ -76,6 +76,7 @@ use aws_sdk_dynamodb::operation::update_time_to_live::{builders::*, *};
 use aws_sdk_dynamodb::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_dynamodb::Client;
 use std::ops::Deref;
 

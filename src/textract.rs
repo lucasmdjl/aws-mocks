@@ -44,6 +44,7 @@ use aws_sdk_textract::operation::update_adapter::{builders::*, *};
 use aws_sdk_textract::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_textract::Client;
 use std::ops::Deref;
 

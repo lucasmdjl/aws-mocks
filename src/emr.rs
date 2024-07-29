@@ -65,6 +65,7 @@ use aws_sdk_emr::operation::update_studio_session_mapping::{builders::*, *};
 use aws_sdk_emr::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_emr::Client;
 use std::ops::Deref;
 

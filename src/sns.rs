@@ -61,6 +61,7 @@ use aws_sdk_sns::operation::verify_sms_sandbox_phone_number::{builders::*, *};
 use aws_sdk_sns::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_sns::Client;
 use std::ops::Deref;
 

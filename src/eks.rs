@@ -75,6 +75,7 @@ use aws_sdk_eks::operation::update_pod_identity_association::{builders::*, *};
 use aws_sdk_eks::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_eks::Client;
 use std::ops::Deref;
 

@@ -180,6 +180,7 @@ use aws_sdk_rds::operation::switchover_read_replica::{builders::*, *};
 use aws_sdk_rds::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_rds::Client;
 use std::ops::Deref;
 

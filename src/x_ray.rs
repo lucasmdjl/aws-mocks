@@ -49,6 +49,7 @@ use aws_sdk_xray::operation::update_sampling_rule::{builders::*, *};
 use aws_sdk_xray::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_xray::Client;
 use std::ops::Deref;
 

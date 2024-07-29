@@ -63,6 +63,7 @@ use aws_sdk_databrew::operation::update_schedule::{builders::*, *};
 use aws_sdk_databrew::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_databrew::Client;
 use std::ops::Deref;
 

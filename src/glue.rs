@@ -237,6 +237,7 @@ use aws_sdk_glue::operation::update_workflow::{builders::*, *};
 use aws_sdk_glue::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_glue::Client;
 use std::ops::Deref;
 

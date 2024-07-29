@@ -87,6 +87,7 @@ use aws_sdk_athena::operation::update_work_group::{builders::*, *};
 use aws_sdk_athena::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_athena::Client;
 use std::ops::Deref;
 

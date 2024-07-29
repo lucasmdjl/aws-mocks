@@ -59,6 +59,7 @@ use aws_sdk_codepipeline::operation::update_pipeline::{builders::*, *};
 use aws_sdk_codepipeline::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_codepipeline::Client;
 use std::ops::Deref;
 

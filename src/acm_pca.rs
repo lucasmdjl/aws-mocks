@@ -42,6 +42,7 @@ use aws_sdk_acmpca::operation::update_certificate_authority::{builders::*, *};
 use aws_sdk_acmpca::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_acmpca::Client;
 use std::ops::Deref;
 

@@ -83,6 +83,7 @@ use aws_sdk_lambda::operation::update_function_url_config::{builders::*, *};
 use aws_sdk_lambda::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_lambda::Client;
 use std::ops::Deref;
 

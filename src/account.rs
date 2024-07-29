@@ -31,6 +31,7 @@ use aws_sdk_account::operation::start_primary_email_update::{builders::*, *};
 use aws_sdk_account::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_account::Client;
 use std::ops::Deref;
 

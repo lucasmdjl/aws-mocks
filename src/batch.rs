@@ -44,6 +44,7 @@ use aws_sdk_batch::operation::update_scheduling_policy::{builders::*, *};
 use aws_sdk_batch::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_batch::Client;
 use std::ops::Deref;
 

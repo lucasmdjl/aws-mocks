@@ -47,6 +47,7 @@ use aws_sdk_efs::operation::update_file_system_protection::{builders::*, *};
 use aws_sdk_efs::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_efs::Client;
 use std::ops::Deref;
 

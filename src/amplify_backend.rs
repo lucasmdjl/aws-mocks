@@ -50,6 +50,7 @@ use aws_sdk_amplifybackend::operation::update_backend_storage::{builders::*, *};
 use aws_sdk_amplifybackend::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_amplifybackend::Client;
 use std::ops::Deref;
 

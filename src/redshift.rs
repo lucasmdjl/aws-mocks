@@ -152,6 +152,7 @@ use aws_sdk_redshift::operation::update_partner_status::{builders::*, *};
 use aws_sdk_redshift::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_redshift::Client;
 use std::ops::Deref;
 

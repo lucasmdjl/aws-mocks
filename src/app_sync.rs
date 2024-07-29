@@ -83,6 +83,7 @@ use aws_sdk_appsync::operation::update_type::{builders::*, *};
 use aws_sdk_appsync::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_appsync::Client;
 use std::ops::Deref;
 

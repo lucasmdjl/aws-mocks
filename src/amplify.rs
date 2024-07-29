@@ -56,6 +56,7 @@ use aws_sdk_amplify::operation::update_webhook::{builders::*, *};
 use aws_sdk_amplify::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_amplify::Client;
 use std::ops::Deref;
 

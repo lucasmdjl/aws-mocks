@@ -122,6 +122,7 @@ use aws_sdk_cognitoidentityprovider::operation::verify_user_attribute::{builders
 use aws_sdk_cognitoidentityprovider::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_cognitoidentityprovider::Client;
 use std::ops::Deref;
 

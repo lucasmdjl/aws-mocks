@@ -75,6 +75,7 @@ use aws_sdk_globalaccelerator::operation::withdraw_byoip_cidr::{builders::*, *};
 use aws_sdk_globalaccelerator::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_globalaccelerator::Client;
 use std::ops::Deref;
 

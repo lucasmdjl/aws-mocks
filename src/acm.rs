@@ -34,6 +34,7 @@ use aws_sdk_acm::operation::update_certificate_options::{builders::*, *};
 use aws_sdk_acm::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_acm::Client;
 use std::ops::Deref;
 

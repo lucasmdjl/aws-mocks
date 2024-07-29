@@ -78,6 +78,7 @@ use aws_sdk_directconnect::operation::update_virtual_interface_attributes::{buil
 use aws_sdk_directconnect::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_directconnect::Client;
 use std::ops::Deref;
 

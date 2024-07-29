@@ -110,6 +110,7 @@ use aws_sdk_backup::operation::update_restore_testing_selection::{builders::*, *
 use aws_sdk_backup::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_backup::Client;
 use std::ops::Deref;
 

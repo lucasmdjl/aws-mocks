@@ -50,6 +50,7 @@ use aws_sdk_kinesis::operation::update_stream_mode::{builders::*, *};
 use aws_sdk_kinesis::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_kinesis::Client;
 use std::ops::Deref;
 

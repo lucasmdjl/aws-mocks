@@ -69,6 +69,7 @@ use aws_sdk_codebuild::operation::update_webhook::{builders::*, *};
 use aws_sdk_codebuild::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_codebuild::Client;
 use std::ops::Deref;
 

@@ -196,6 +196,7 @@ use aws_sdk_quicksight::operation::update_vpc_connection::{builders::*, *};
 use aws_sdk_quicksight::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_quicksight::Client;
 use std::ops::Deref;
 

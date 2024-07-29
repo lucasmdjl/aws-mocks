@@ -100,6 +100,7 @@ use aws_sdk_macie2::operation::update_sensitivity_inspection_template::{builders
 use aws_sdk_macie2::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_macie2::Client;
 use std::ops::Deref;
 

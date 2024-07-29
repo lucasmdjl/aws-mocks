@@ -42,6 +42,7 @@ use aws_sdk_mq::operation::update_user::{builders::*, *};
 use aws_sdk_mq::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_mq::Client;
 use std::ops::Deref;
 

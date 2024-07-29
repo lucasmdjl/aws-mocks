@@ -47,6 +47,7 @@ use aws_sdk_amplifyuibuilder::operation::update_theme::{builders::*, *};
 use aws_sdk_amplifyuibuilder::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_amplifyuibuilder::Client;
 use std::ops::Deref;
 

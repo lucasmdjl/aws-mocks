@@ -642,6 +642,7 @@ use aws_sdk_ec2::operation::withdraw_byoip_cidr::{builders::*, *};
 use aws_sdk_ec2::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_ec2::Client;
 use std::ops::Deref;
 

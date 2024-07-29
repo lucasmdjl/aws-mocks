@@ -28,6 +28,7 @@ use aws_sdk_polly::operation::synthesize_speech::{builders::*, *};
 use aws_sdk_polly::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_polly::Client;
 use std::ops::Deref;
 

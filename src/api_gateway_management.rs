@@ -22,6 +22,7 @@ use aws_sdk_apigatewaymanagement::operation::post_to_connection::{builders::*, *
 use aws_sdk_apigatewaymanagement::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_apigatewaymanagement::Client;
 use std::ops::Deref;
 

@@ -68,6 +68,7 @@ use aws_sdk_cloudtrail::operation::update_trail::{builders::*, *};
 use aws_sdk_cloudtrail::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_cloudtrail::Client;
 use std::ops::Deref;
 

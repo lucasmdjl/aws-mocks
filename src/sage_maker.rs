@@ -354,6 +354,7 @@ use aws_sdk_sagemaker::operation::update_workteam::{builders::*, *};
 use aws_sdk_sagemaker::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_sagemaker::Client;
 use std::ops::Deref;
 

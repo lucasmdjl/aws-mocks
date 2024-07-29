@@ -94,6 +94,7 @@ use aws_sdk_elasticache::operation::test_migration::{builders::*, *};
 use aws_sdk_elasticache::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_elasticache::Client;
 use std::ops::Deref;
 

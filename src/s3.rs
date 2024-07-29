@@ -114,6 +114,7 @@ use aws_sdk_s3::operation::write_get_object_response::{builders::*, *};
 use aws_sdk_s3::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_s3::Client;
 use std::ops::Deref;
 

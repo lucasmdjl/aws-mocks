@@ -159,6 +159,7 @@ use aws_sdk_ssm::operation::update_service_setting::{builders::*, *};
 use aws_sdk_ssm::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_ssm::Client;
 use std::ops::Deref;
 

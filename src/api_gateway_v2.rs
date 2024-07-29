@@ -91,6 +91,7 @@ use aws_sdk_apigatewayv2::operation::update_vpc_link::{builders::*, *};
 use aws_sdk_apigatewayv2::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_apigatewayv2::Client;
 use std::ops::Deref;
 

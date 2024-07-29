@@ -101,6 +101,7 @@ use aws_sdk_cloudformation::operation::validate_template::{builders::*, *};
 use aws_sdk_cloudformation::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_cloudformation::Client;
 use std::ops::Deref;
 

@@ -57,6 +57,7 @@ use aws_sdk_cloudwatch::operation::untag_resource::{builders::*, *};
 use aws_sdk_cloudwatch::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_cloudwatch::Client;
 use std::ops::Deref;
 

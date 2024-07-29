@@ -42,6 +42,7 @@ use aws_sdk_sqs::operation::untag_queue::{builders::*, *};
 use aws_sdk_sqs::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_sqs::Client;
 use std::ops::Deref;
 

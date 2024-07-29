@@ -66,6 +66,7 @@ use aws_sdk_elasticbeanstalk::operation::validate_configuration_settings::{build
 use aws_sdk_elasticbeanstalk::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_elasticbeanstalk::Client;
 use std::ops::Deref;
 

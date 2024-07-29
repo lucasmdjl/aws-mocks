@@ -98,6 +98,7 @@ use aws_sdk_codecommit::operation::update_repository_name::{builders::*, *};
 use aws_sdk_codecommit::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_codecommit::Client;
 use std::ops::Deref;
 

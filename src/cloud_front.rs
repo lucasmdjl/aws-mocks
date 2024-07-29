@@ -130,6 +130,7 @@ use aws_sdk_cloudfront::operation::update_streaming_distribution::{builders::*, 
 use aws_sdk_cloudfront::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_cloudfront::Client;
 use std::ops::Deref;
 

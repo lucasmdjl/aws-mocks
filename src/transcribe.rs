@@ -62,6 +62,7 @@ use aws_sdk_transcribe::operation::update_vocabulary_filter::{builders::*, *};
 use aws_sdk_transcribe::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_transcribe::Client;
 use std::ops::Deref;
 

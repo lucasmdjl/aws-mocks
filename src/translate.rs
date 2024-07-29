@@ -38,6 +38,7 @@ use aws_sdk_translate::operation::update_parallel_data::{builders::*, *};
 use aws_sdk_translate::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_translate::Client;
 use std::ops::Deref;
 

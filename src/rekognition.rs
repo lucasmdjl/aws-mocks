@@ -94,6 +94,7 @@ use aws_sdk_rekognition::operation::update_stream_processor::{builders::*, *};
 use aws_sdk_rekognition::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
+#[allow(hidden_glob_reexports)]
 use aws_sdk_rekognition::Client;
 use std::ops::Deref;
 
