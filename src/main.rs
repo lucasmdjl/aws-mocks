@@ -21,7 +21,8 @@ use std::fs;
 
 fn main() {
     let paths = fs::read_dir("./resources").unwrap();
-    let paths = paths.map(|path| path.unwrap().file_name().into_string().unwrap()).collect::<Vec<_>>();
+    let mut paths = paths.map(|path| path.unwrap().file_name().into_string().unwrap()).collect::<Vec<_>>();
+    paths.sort_by(|one, other| one.to_ascii_lowercase().cmp(&other.to_ascii_lowercase()));
     generate_files(&paths.iter().map(String::as_str).collect::<Vec<_>>());
 }
 
