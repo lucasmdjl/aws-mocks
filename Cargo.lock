@@ -110,6 +110,7 @@ dependencies = [
  "aws-sdk-appconfigdata",
  "aws-sdk-appfabric",
  "aws-sdk-appflow",
+ "aws-sdk-apprunner",
  "aws-sdk-appsync",
  "aws-sdk-athena",
  "aws-sdk-backup",
@@ -512,6 +513,28 @@ dependencies = [
  "aws-types",
  "bytes",
  "fastrand",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
+name = "aws-sdk-apprunner"
+version = "1.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "6ef78ac88cd7914487d0d44a77d3f277f0c9e417e408deebff638c266abb4839"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
  "http 0.2.12",
  "once_cell",
  "regex-lite",
