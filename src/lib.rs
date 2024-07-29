@@ -42,6 +42,8 @@ pub mod api_gateway_v2;
 pub mod app_config;
 #[cfg(feature="app-config-data")]
 pub mod app_config_data;
+#[cfg(feature="app-fabric")]
+pub mod app_fabric;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
 #[cfg(feature="athena")]

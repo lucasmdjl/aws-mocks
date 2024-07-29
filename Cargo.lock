@@ -108,6 +108,7 @@ dependencies = [
  "aws-sdk-apigatewayv2",
  "aws-sdk-appconfig",
  "aws-sdk-appconfigdata",
+ "aws-sdk-appfabric",
  "aws-sdk-appsync",
  "aws-sdk-athena",
  "aws-sdk-backup",
@@ -464,6 +465,29 @@ dependencies = [
  "aws-smithy-types",
  "aws-types",
  "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
+name = "aws-sdk-appfabric"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "80705089f4e8365682ee4d91c84f48987e6cf476981feaba5ca0332cf4dca71e"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
  "http 0.2.12",
  "once_cell",
  "regex-lite",
