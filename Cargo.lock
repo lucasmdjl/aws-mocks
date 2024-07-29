@@ -113,6 +113,7 @@ dependencies = [
  "aws-sdk-appintegrations",
  "aws-sdk-appmesh",
  "aws-sdk-apprunner",
+ "aws-sdk-appstream",
  "aws-sdk-appsync",
  "aws-sdk-apptest",
  "aws-sdk-athena",
@@ -573,6 +574,28 @@ name = "aws-sdk-apprunner"
 version = "1.37.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "6ef78ac88cd7914487d0d44a77d3f277f0c9e417e408deebff638c266abb4839"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
+name = "aws-sdk-appstream"
+version = "1.36.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "4a8681aa4b24f09c6d81638395371643d2fd2339d1bda89e0819904f8fd40df9"
 dependencies = [
  "aws-credential-types",
  "aws-runtime",

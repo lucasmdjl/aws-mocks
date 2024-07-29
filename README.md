@@ -79,6 +79,7 @@ The following are the AWS services currently supported and the features to enabl
 | AppIntegrations         | app-integrations          |
 | AppMesh                 | app-mesh                  |
 | AppRunner               | app-runner                |
+| AppStream               | app-stream                |
 | AppSync                 | app-sync                  |
 | AppTest                 | app-test                  |
 | Athena                  | athena                    |

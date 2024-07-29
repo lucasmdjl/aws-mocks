@@ -52,6 +52,8 @@ pub mod app_integrations;
 pub mod app_mesh;
 #[cfg(feature="app-runner")]
 pub mod app_runner;
+#[cfg(feature="app-stream")]
+pub mod app_stream;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
 #[cfg(feature="app-test")]
