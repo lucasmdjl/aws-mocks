@@ -112,6 +112,7 @@ dependencies = [
  "aws-sdk-appflow",
  "aws-sdk-apprunner",
  "aws-sdk-appsync",
+ "aws-sdk-apptest",
  "aws-sdk-athena",
  "aws-sdk-backup",
  "aws-sdk-batch",
@@ -557,6 +558,29 @@ dependencies = [
  "aws-smithy-types",
  "aws-types",
  "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
+name = "aws-sdk-apptest"
+version = "1.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "a4ae2322655b50f1da11f9c79e44493133030dc986996dab6d4f7ac03b03466f"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "fastrand",
  "http 0.2.12",
  "once_cell",
  "regex-lite",

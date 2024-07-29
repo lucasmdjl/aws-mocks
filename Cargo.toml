@@ -29,6 +29,7 @@ aws-sdk-appfabric = { version = "1", optional = true }
 aws-sdk-appflow = { version = "1", optional = true }
 aws-sdk-apprunner = { version = "1", optional = true }
 aws-sdk-appsync = { version = "1", optional = true }
+aws-sdk-apptest = { version = "1", optional = true }
 aws-sdk-athena = { version = "1", optional = true }
 aws-sdk-backup = { version = "1", optional = true }
 aws-sdk-batch = { version = "1", optional = true }
@@ -94,6 +95,7 @@ app-fabric = ["dep:aws-sdk-appfabric"]
 app-flow = ["dep:aws-sdk-appflow"]
 app-runner = ["dep:aws-sdk-apprunner"]
 app-sync = ["dep:aws-sdk-appsync"]
+app-test = ["dep:aws-sdk-apptest"]
 athena = ["dep:aws-sdk-athena"]
 backup = ["dep:aws-sdk-backup"]
 batch = ["dep:aws-sdk-batch"]

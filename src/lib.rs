@@ -50,6 +50,8 @@ pub mod app_flow;
 pub mod app_runner;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
+#[cfg(feature="app-test")]
+pub mod app_test;
 #[cfg(feature="athena")]
 pub mod athena;
 #[cfg(feature="backup")]

@@ -78,6 +78,7 @@ The following are the AWS services currently supported and the features to enabl
 | AppFlow                 | app-flow                  |
 | AppRunner               | app-runner                |
 | AppSync                 | app-sync                  |
+| AppTest                 | app-test                  |
 | Athena                  | athena                    |
 | Backup                  | backup                    |
 | Batch                   | batch                     |
