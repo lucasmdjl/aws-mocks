@@ -23,6 +23,7 @@ use aws_sdk_apigatewaymanagement::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_apigatewaymanagement::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_apigatewaymanagement::*;
 
@@ -46,15 +47,17 @@ impl ApiGatewayManagementClient for ApiGatewayManagementClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: ApiGatewayManagementClient> ApiGatewayManagementClient for &T {
+impl <T> ApiGatewayManagementClient for T
+where T: Deref,
+      T::Target: ApiGatewayManagementClient {
     fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>> {
-        (*self).delete_connection(builder)
+        self.deref().delete_connection(builder)
     }
     fn get_connection(&self, builder: GetConnectionInputBuilder) -> impl Future<Output = Result<GetConnectionOutput, SdkError<GetConnectionError>>> {
-        (*self).get_connection(builder)
+        self.deref().get_connection(builder)
     }
     fn post_to_connection(&self, builder: PostToConnectionInputBuilder) -> impl Future<Output = Result<PostToConnectionOutput, SdkError<PostToConnectionError>>> {
-        (*self).post_to_connection(builder)
+        self.deref().post_to_connection(builder)
     }
 }
 #[cfg(feature = "mockall")]

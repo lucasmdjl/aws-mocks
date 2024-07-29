@@ -238,6 +238,7 @@ use aws_sdk_glue::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_glue::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_glue::*;
 
@@ -1121,660 +1122,662 @@ impl GlueClient for GlueClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: GlueClient> GlueClient for &T {
+impl <T> GlueClient for T
+where T: Deref,
+      T::Target: GlueClient {
     fn batch_create_partition(&self, builder: BatchCreatePartitionInputBuilder) -> impl Future<Output = Result<BatchCreatePartitionOutput, SdkError<BatchCreatePartitionError>>> {
-        (*self).batch_create_partition(builder)
+        self.deref().batch_create_partition(builder)
     }
     fn batch_delete_connection(&self, builder: BatchDeleteConnectionInputBuilder) -> impl Future<Output = Result<BatchDeleteConnectionOutput, SdkError<BatchDeleteConnectionError>>> {
-        (*self).batch_delete_connection(builder)
+        self.deref().batch_delete_connection(builder)
     }
     fn batch_delete_partition(&self, builder: BatchDeletePartitionInputBuilder) -> impl Future<Output = Result<BatchDeletePartitionOutput, SdkError<BatchDeletePartitionError>>> {
-        (*self).batch_delete_partition(builder)
+        self.deref().batch_delete_partition(builder)
     }
     fn batch_delete_table(&self, builder: BatchDeleteTableInputBuilder) -> impl Future<Output = Result<BatchDeleteTableOutput, SdkError<BatchDeleteTableError>>> {
-        (*self).batch_delete_table(builder)
+        self.deref().batch_delete_table(builder)
     }
     fn batch_delete_table_version(&self, builder: BatchDeleteTableVersionInputBuilder) -> impl Future<Output = Result<BatchDeleteTableVersionOutput, SdkError<BatchDeleteTableVersionError>>> {
-        (*self).batch_delete_table_version(builder)
+        self.deref().batch_delete_table_version(builder)
     }
     fn batch_get_blueprints(&self, builder: BatchGetBlueprintsInputBuilder) -> impl Future<Output = Result<BatchGetBlueprintsOutput, SdkError<BatchGetBlueprintsError>>> {
-        (*self).batch_get_blueprints(builder)
+        self.deref().batch_get_blueprints(builder)
     }
     fn batch_get_crawlers(&self, builder: BatchGetCrawlersInputBuilder) -> impl Future<Output = Result<BatchGetCrawlersOutput, SdkError<BatchGetCrawlersError>>> {
-        (*self).batch_get_crawlers(builder)
+        self.deref().batch_get_crawlers(builder)
     }
     fn batch_get_custom_entity_types(&self, builder: BatchGetCustomEntityTypesInputBuilder) -> impl Future<Output = Result<BatchGetCustomEntityTypesOutput, SdkError<BatchGetCustomEntityTypesError>>> {
-        (*self).batch_get_custom_entity_types(builder)
+        self.deref().batch_get_custom_entity_types(builder)
     }
     fn batch_get_data_quality_result(&self, builder: BatchGetDataQualityResultInputBuilder) -> impl Future<Output = Result<BatchGetDataQualityResultOutput, SdkError<BatchGetDataQualityResultError>>> {
-        (*self).batch_get_data_quality_result(builder)
+        self.deref().batch_get_data_quality_result(builder)
     }
     fn batch_get_dev_endpoints(&self, builder: BatchGetDevEndpointsInputBuilder) -> impl Future<Output = Result<BatchGetDevEndpointsOutput, SdkError<BatchGetDevEndpointsError>>> {
-        (*self).batch_get_dev_endpoints(builder)
+        self.deref().batch_get_dev_endpoints(builder)
     }
     fn batch_get_jobs(&self, builder: BatchGetJobsInputBuilder) -> impl Future<Output = Result<BatchGetJobsOutput, SdkError<BatchGetJobsError>>> {
-        (*self).batch_get_jobs(builder)
+        self.deref().batch_get_jobs(builder)
     }
     fn batch_get_partition(&self, builder: BatchGetPartitionInputBuilder) -> impl Future<Output = Result<BatchGetPartitionOutput, SdkError<BatchGetPartitionError>>> {
-        (*self).batch_get_partition(builder)
+        self.deref().batch_get_partition(builder)
     }
     fn batch_get_table_optimizer(&self, builder: BatchGetTableOptimizerInputBuilder) -> impl Future<Output = Result<BatchGetTableOptimizerOutput, SdkError<BatchGetTableOptimizerError>>> {
-        (*self).batch_get_table_optimizer(builder)
+        self.deref().batch_get_table_optimizer(builder)
     }
     fn batch_get_triggers(&self, builder: BatchGetTriggersInputBuilder) -> impl Future<Output = Result<BatchGetTriggersOutput, SdkError<BatchGetTriggersError>>> {
-        (*self).batch_get_triggers(builder)
+        self.deref().batch_get_triggers(builder)
     }
     fn batch_get_workflows(&self, builder: BatchGetWorkflowsInputBuilder) -> impl Future<Output = Result<BatchGetWorkflowsOutput, SdkError<BatchGetWorkflowsError>>> {
-        (*self).batch_get_workflows(builder)
+        self.deref().batch_get_workflows(builder)
     }
     fn batch_stop_job_run(&self, builder: BatchStopJobRunInputBuilder) -> impl Future<Output = Result<BatchStopJobRunOutput, SdkError<BatchStopJobRunError>>> {
-        (*self).batch_stop_job_run(builder)
+        self.deref().batch_stop_job_run(builder)
     }
     fn batch_update_partition(&self, builder: BatchUpdatePartitionInputBuilder) -> impl Future<Output = Result<BatchUpdatePartitionOutput, SdkError<BatchUpdatePartitionError>>> {
-        (*self).batch_update_partition(builder)
+        self.deref().batch_update_partition(builder)
     }
     fn cancel_data_quality_rule_recommendation_run(&self, builder: CancelDataQualityRuleRecommendationRunInputBuilder) -> impl Future<Output = Result<CancelDataQualityRuleRecommendationRunOutput, SdkError<CancelDataQualityRuleRecommendationRunError>>> {
-        (*self).cancel_data_quality_rule_recommendation_run(builder)
+        self.deref().cancel_data_quality_rule_recommendation_run(builder)
     }
     fn cancel_data_quality_ruleset_evaluation_run(&self, builder: CancelDataQualityRulesetEvaluationRunInputBuilder) -> impl Future<Output = Result<CancelDataQualityRulesetEvaluationRunOutput, SdkError<CancelDataQualityRulesetEvaluationRunError>>> {
-        (*self).cancel_data_quality_ruleset_evaluation_run(builder)
+        self.deref().cancel_data_quality_ruleset_evaluation_run(builder)
     }
     fn cancel_ml_task_run(&self, builder: CancelMlTaskRunInputBuilder) -> impl Future<Output = Result<CancelMlTaskRunOutput, SdkError<CancelMLTaskRunError>>> {
-        (*self).cancel_ml_task_run(builder)
+        self.deref().cancel_ml_task_run(builder)
     }
     fn cancel_statement(&self, builder: CancelStatementInputBuilder) -> impl Future<Output = Result<CancelStatementOutput, SdkError<CancelStatementError>>> {
-        (*self).cancel_statement(builder)
+        self.deref().cancel_statement(builder)
     }
     fn check_schema_version_validity(&self, builder: CheckSchemaVersionValidityInputBuilder) -> impl Future<Output = Result<CheckSchemaVersionValidityOutput, SdkError<CheckSchemaVersionValidityError>>> {
-        (*self).check_schema_version_validity(builder)
+        self.deref().check_schema_version_validity(builder)
     }
     fn create_blueprint(&self, builder: CreateBlueprintInputBuilder) -> impl Future<Output = Result<CreateBlueprintOutput, SdkError<CreateBlueprintError>>> {
-        (*self).create_blueprint(builder)
+        self.deref().create_blueprint(builder)
     }
     fn create_classifier(&self, builder: CreateClassifierInputBuilder) -> impl Future<Output = Result<CreateClassifierOutput, SdkError<CreateClassifierError>>> {
-        (*self).create_classifier(builder)
+        self.deref().create_classifier(builder)
     }
     fn create_connection(&self, builder: CreateConnectionInputBuilder) -> impl Future<Output = Result<CreateConnectionOutput, SdkError<CreateConnectionError>>> {
-        (*self).create_connection(builder)
+        self.deref().create_connection(builder)
     }
     fn create_crawler(&self, builder: CreateCrawlerInputBuilder) -> impl Future<Output = Result<CreateCrawlerOutput, SdkError<CreateCrawlerError>>> {
-        (*self).create_crawler(builder)
+        self.deref().create_crawler(builder)
     }
     fn create_custom_entity_type(&self, builder: CreateCustomEntityTypeInputBuilder) -> impl Future<Output = Result<CreateCustomEntityTypeOutput, SdkError<CreateCustomEntityTypeError>>> {
-        (*self).create_custom_entity_type(builder)
+        self.deref().create_custom_entity_type(builder)
     }
     fn create_data_quality_ruleset(&self, builder: CreateDataQualityRulesetInputBuilder) -> impl Future<Output = Result<CreateDataQualityRulesetOutput, SdkError<CreateDataQualityRulesetError>>> {
-        (*self).create_data_quality_ruleset(builder)
+        self.deref().create_data_quality_ruleset(builder)
     }
     fn create_database(&self, builder: CreateDatabaseInputBuilder) -> impl Future<Output = Result<CreateDatabaseOutput, SdkError<CreateDatabaseError>>> {
-        (*self).create_database(builder)
+        self.deref().create_database(builder)
     }
     fn create_dev_endpoint(&self, builder: CreateDevEndpointInputBuilder) -> impl Future<Output = Result<CreateDevEndpointOutput, SdkError<CreateDevEndpointError>>> {
-        (*self).create_dev_endpoint(builder)
+        self.deref().create_dev_endpoint(builder)
     }
     fn create_job(&self, builder: CreateJobInputBuilder) -> impl Future<Output = Result<CreateJobOutput, SdkError<CreateJobError>>> {
-        (*self).create_job(builder)
+        self.deref().create_job(builder)
     }
     fn create_ml_transform(&self, builder: CreateMlTransformInputBuilder) -> impl Future<Output = Result<CreateMlTransformOutput, SdkError<CreateMLTransformError>>> {
-        (*self).create_ml_transform(builder)
+        self.deref().create_ml_transform(builder)
     }
     fn create_partition(&self, builder: CreatePartitionInputBuilder) -> impl Future<Output = Result<CreatePartitionOutput, SdkError<CreatePartitionError>>> {
-        (*self).create_partition(builder)
+        self.deref().create_partition(builder)
     }
     fn create_partition_index(&self, builder: CreatePartitionIndexInputBuilder) -> impl Future<Output = Result<CreatePartitionIndexOutput, SdkError<CreatePartitionIndexError>>> {
-        (*self).create_partition_index(builder)
+        self.deref().create_partition_index(builder)
     }
     fn create_registry(&self, builder: CreateRegistryInputBuilder) -> impl Future<Output = Result<CreateRegistryOutput, SdkError<CreateRegistryError>>> {
-        (*self).create_registry(builder)
+        self.deref().create_registry(builder)
     }
     fn create_schema(&self, builder: CreateSchemaInputBuilder) -> impl Future<Output = Result<CreateSchemaOutput, SdkError<CreateSchemaError>>> {
-        (*self).create_schema(builder)
+        self.deref().create_schema(builder)
     }
     fn create_script(&self, builder: CreateScriptInputBuilder) -> impl Future<Output = Result<CreateScriptOutput, SdkError<CreateScriptError>>> {
-        (*self).create_script(builder)
+        self.deref().create_script(builder)
     }
     fn create_security_configuration(&self, builder: CreateSecurityConfigurationInputBuilder) -> impl Future<Output = Result<CreateSecurityConfigurationOutput, SdkError<CreateSecurityConfigurationError>>> {
-        (*self).create_security_configuration(builder)
+        self.deref().create_security_configuration(builder)
     }
     fn create_session(&self, builder: CreateSessionInputBuilder) -> impl Future<Output = Result<CreateSessionOutput, SdkError<CreateSessionError>>> {
-        (*self).create_session(builder)
+        self.deref().create_session(builder)
     }
     fn create_table(&self, builder: CreateTableInputBuilder) -> impl Future<Output = Result<CreateTableOutput, SdkError<CreateTableError>>> {
-        (*self).create_table(builder)
+        self.deref().create_table(builder)
     }
     fn create_table_optimizer(&self, builder: CreateTableOptimizerInputBuilder) -> impl Future<Output = Result<CreateTableOptimizerOutput, SdkError<CreateTableOptimizerError>>> {
-        (*self).create_table_optimizer(builder)
+        self.deref().create_table_optimizer(builder)
     }
     fn create_trigger(&self, builder: CreateTriggerInputBuilder) -> impl Future<Output = Result<CreateTriggerOutput, SdkError<CreateTriggerError>>> {
-        (*self).create_trigger(builder)
+        self.deref().create_trigger(builder)
     }
     fn create_usage_profile(&self, builder: CreateUsageProfileInputBuilder) -> impl Future<Output = Result<CreateUsageProfileOutput, SdkError<CreateUsageProfileError>>> {
-        (*self).create_usage_profile(builder)
+        self.deref().create_usage_profile(builder)
     }
     fn create_user_defined_function(&self, builder: CreateUserDefinedFunctionInputBuilder) -> impl Future<Output = Result<CreateUserDefinedFunctionOutput, SdkError<CreateUserDefinedFunctionError>>> {
-        (*self).create_user_defined_function(builder)
+        self.deref().create_user_defined_function(builder)
     }
     fn create_workflow(&self, builder: CreateWorkflowInputBuilder) -> impl Future<Output = Result<CreateWorkflowOutput, SdkError<CreateWorkflowError>>> {
-        (*self).create_workflow(builder)
+        self.deref().create_workflow(builder)
     }
     fn delete_blueprint(&self, builder: DeleteBlueprintInputBuilder) -> impl Future<Output = Result<DeleteBlueprintOutput, SdkError<DeleteBlueprintError>>> {
-        (*self).delete_blueprint(builder)
+        self.deref().delete_blueprint(builder)
     }
     fn delete_classifier(&self, builder: DeleteClassifierInputBuilder) -> impl Future<Output = Result<DeleteClassifierOutput, SdkError<DeleteClassifierError>>> {
-        (*self).delete_classifier(builder)
+        self.deref().delete_classifier(builder)
     }
     fn delete_column_statistics_for_partition(&self, builder: DeleteColumnStatisticsForPartitionInputBuilder) -> impl Future<Output = Result<DeleteColumnStatisticsForPartitionOutput, SdkError<DeleteColumnStatisticsForPartitionError>>> {
-        (*self).delete_column_statistics_for_partition(builder)
+        self.deref().delete_column_statistics_for_partition(builder)
     }
     fn delete_column_statistics_for_table(&self, builder: DeleteColumnStatisticsForTableInputBuilder) -> impl Future<Output = Result<DeleteColumnStatisticsForTableOutput, SdkError<DeleteColumnStatisticsForTableError>>> {
-        (*self).delete_column_statistics_for_table(builder)
+        self.deref().delete_column_statistics_for_table(builder)
     }
     fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>> {
-        (*self).delete_connection(builder)
+        self.deref().delete_connection(builder)
     }
     fn delete_crawler(&self, builder: DeleteCrawlerInputBuilder) -> impl Future<Output = Result<DeleteCrawlerOutput, SdkError<DeleteCrawlerError>>> {
-        (*self).delete_crawler(builder)
+        self.deref().delete_crawler(builder)
     }
     fn delete_custom_entity_type(&self, builder: DeleteCustomEntityTypeInputBuilder) -> impl Future<Output = Result<DeleteCustomEntityTypeOutput, SdkError<DeleteCustomEntityTypeError>>> {
-        (*self).delete_custom_entity_type(builder)
+        self.deref().delete_custom_entity_type(builder)
     }
     fn delete_data_quality_ruleset(&self, builder: DeleteDataQualityRulesetInputBuilder) -> impl Future<Output = Result<DeleteDataQualityRulesetOutput, SdkError<DeleteDataQualityRulesetError>>> {
-        (*self).delete_data_quality_ruleset(builder)
+        self.deref().delete_data_quality_ruleset(builder)
     }
     fn delete_database(&self, builder: DeleteDatabaseInputBuilder) -> impl Future<Output = Result<DeleteDatabaseOutput, SdkError<DeleteDatabaseError>>> {
-        (*self).delete_database(builder)
+        self.deref().delete_database(builder)
     }
     fn delete_dev_endpoint(&self, builder: DeleteDevEndpointInputBuilder) -> impl Future<Output = Result<DeleteDevEndpointOutput, SdkError<DeleteDevEndpointError>>> {
-        (*self).delete_dev_endpoint(builder)
+        self.deref().delete_dev_endpoint(builder)
     }
     fn delete_job(&self, builder: DeleteJobInputBuilder) -> impl Future<Output = Result<DeleteJobOutput, SdkError<DeleteJobError>>> {
-        (*self).delete_job(builder)
+        self.deref().delete_job(builder)
     }
     fn delete_ml_transform(&self, builder: DeleteMlTransformInputBuilder) -> impl Future<Output = Result<DeleteMlTransformOutput, SdkError<DeleteMLTransformError>>> {
-        (*self).delete_ml_transform(builder)
+        self.deref().delete_ml_transform(builder)
     }
     fn delete_partition(&self, builder: DeletePartitionInputBuilder) -> impl Future<Output = Result<DeletePartitionOutput, SdkError<DeletePartitionError>>> {
-        (*self).delete_partition(builder)
+        self.deref().delete_partition(builder)
     }
     fn delete_partition_index(&self, builder: DeletePartitionIndexInputBuilder) -> impl Future<Output = Result<DeletePartitionIndexOutput, SdkError<DeletePartitionIndexError>>> {
-        (*self).delete_partition_index(builder)
+        self.deref().delete_partition_index(builder)
     }
     fn delete_registry(&self, builder: DeleteRegistryInputBuilder) -> impl Future<Output = Result<DeleteRegistryOutput, SdkError<DeleteRegistryError>>> {
-        (*self).delete_registry(builder)
+        self.deref().delete_registry(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_schema(&self, builder: DeleteSchemaInputBuilder) -> impl Future<Output = Result<DeleteSchemaOutput, SdkError<DeleteSchemaError>>> {
-        (*self).delete_schema(builder)
+        self.deref().delete_schema(builder)
     }
     fn delete_schema_versions(&self, builder: DeleteSchemaVersionsInputBuilder) -> impl Future<Output = Result<DeleteSchemaVersionsOutput, SdkError<DeleteSchemaVersionsError>>> {
-        (*self).delete_schema_versions(builder)
+        self.deref().delete_schema_versions(builder)
     }
     fn delete_security_configuration(&self, builder: DeleteSecurityConfigurationInputBuilder) -> impl Future<Output = Result<DeleteSecurityConfigurationOutput, SdkError<DeleteSecurityConfigurationError>>> {
-        (*self).delete_security_configuration(builder)
+        self.deref().delete_security_configuration(builder)
     }
     fn delete_session(&self, builder: DeleteSessionInputBuilder) -> impl Future<Output = Result<DeleteSessionOutput, SdkError<DeleteSessionError>>> {
-        (*self).delete_session(builder)
+        self.deref().delete_session(builder)
     }
     fn delete_table(&self, builder: DeleteTableInputBuilder) -> impl Future<Output = Result<DeleteTableOutput, SdkError<DeleteTableError>>> {
-        (*self).delete_table(builder)
+        self.deref().delete_table(builder)
     }
     fn delete_table_optimizer(&self, builder: DeleteTableOptimizerInputBuilder) -> impl Future<Output = Result<DeleteTableOptimizerOutput, SdkError<DeleteTableOptimizerError>>> {
-        (*self).delete_table_optimizer(builder)
+        self.deref().delete_table_optimizer(builder)
     }
     fn delete_table_version(&self, builder: DeleteTableVersionInputBuilder) -> impl Future<Output = Result<DeleteTableVersionOutput, SdkError<DeleteTableVersionError>>> {
-        (*self).delete_table_version(builder)
+        self.deref().delete_table_version(builder)
     }
     fn delete_trigger(&self, builder: DeleteTriggerInputBuilder) -> impl Future<Output = Result<DeleteTriggerOutput, SdkError<DeleteTriggerError>>> {
-        (*self).delete_trigger(builder)
+        self.deref().delete_trigger(builder)
     }
     fn delete_usage_profile(&self, builder: DeleteUsageProfileInputBuilder) -> impl Future<Output = Result<DeleteUsageProfileOutput, SdkError<DeleteUsageProfileError>>> {
-        (*self).delete_usage_profile(builder)
+        self.deref().delete_usage_profile(builder)
     }
     fn delete_user_defined_function(&self, builder: DeleteUserDefinedFunctionInputBuilder) -> impl Future<Output = Result<DeleteUserDefinedFunctionOutput, SdkError<DeleteUserDefinedFunctionError>>> {
-        (*self).delete_user_defined_function(builder)
+        self.deref().delete_user_defined_function(builder)
     }
     fn delete_workflow(&self, builder: DeleteWorkflowInputBuilder) -> impl Future<Output = Result<DeleteWorkflowOutput, SdkError<DeleteWorkflowError>>> {
-        (*self).delete_workflow(builder)
+        self.deref().delete_workflow(builder)
     }
     fn get_blueprint(&self, builder: GetBlueprintInputBuilder) -> impl Future<Output = Result<GetBlueprintOutput, SdkError<GetBlueprintError>>> {
-        (*self).get_blueprint(builder)
+        self.deref().get_blueprint(builder)
     }
     fn get_blueprint_run(&self, builder: GetBlueprintRunInputBuilder) -> impl Future<Output = Result<GetBlueprintRunOutput, SdkError<GetBlueprintRunError>>> {
-        (*self).get_blueprint_run(builder)
+        self.deref().get_blueprint_run(builder)
     }
     fn get_blueprint_runs(&self, builder: GetBlueprintRunsInputBuilder) -> impl Future<Output = Result<GetBlueprintRunsOutput, SdkError<GetBlueprintRunsError>>> {
-        (*self).get_blueprint_runs(builder)
+        self.deref().get_blueprint_runs(builder)
     }
     fn get_catalog_import_status(&self, builder: GetCatalogImportStatusInputBuilder) -> impl Future<Output = Result<GetCatalogImportStatusOutput, SdkError<GetCatalogImportStatusError>>> {
-        (*self).get_catalog_import_status(builder)
+        self.deref().get_catalog_import_status(builder)
     }
     fn get_classifier(&self, builder: GetClassifierInputBuilder) -> impl Future<Output = Result<GetClassifierOutput, SdkError<GetClassifierError>>> {
-        (*self).get_classifier(builder)
+        self.deref().get_classifier(builder)
     }
     fn get_classifiers(&self, builder: GetClassifiersInputBuilder) -> impl Future<Output = Result<GetClassifiersOutput, SdkError<GetClassifiersError>>> {
-        (*self).get_classifiers(builder)
+        self.deref().get_classifiers(builder)
     }
     fn get_column_statistics_for_partition(&self, builder: GetColumnStatisticsForPartitionInputBuilder) -> impl Future<Output = Result<GetColumnStatisticsForPartitionOutput, SdkError<GetColumnStatisticsForPartitionError>>> {
-        (*self).get_column_statistics_for_partition(builder)
+        self.deref().get_column_statistics_for_partition(builder)
     }
     fn get_column_statistics_for_table(&self, builder: GetColumnStatisticsForTableInputBuilder) -> impl Future<Output = Result<GetColumnStatisticsForTableOutput, SdkError<GetColumnStatisticsForTableError>>> {
-        (*self).get_column_statistics_for_table(builder)
+        self.deref().get_column_statistics_for_table(builder)
     }
     fn get_column_statistics_task_run(&self, builder: GetColumnStatisticsTaskRunInputBuilder) -> impl Future<Output = Result<GetColumnStatisticsTaskRunOutput, SdkError<GetColumnStatisticsTaskRunError>>> {
-        (*self).get_column_statistics_task_run(builder)
+        self.deref().get_column_statistics_task_run(builder)
     }
     fn get_column_statistics_task_runs(&self, builder: GetColumnStatisticsTaskRunsInputBuilder) -> impl Future<Output = Result<GetColumnStatisticsTaskRunsOutput, SdkError<GetColumnStatisticsTaskRunsError>>> {
-        (*self).get_column_statistics_task_runs(builder)
+        self.deref().get_column_statistics_task_runs(builder)
     }
     fn get_connection(&self, builder: GetConnectionInputBuilder) -> impl Future<Output = Result<GetConnectionOutput, SdkError<GetConnectionError>>> {
-        (*self).get_connection(builder)
+        self.deref().get_connection(builder)
     }
     fn get_connections(&self, builder: GetConnectionsInputBuilder) -> impl Future<Output = Result<GetConnectionsOutput, SdkError<GetConnectionsError>>> {
-        (*self).get_connections(builder)
+        self.deref().get_connections(builder)
     }
     fn get_crawler(&self, builder: GetCrawlerInputBuilder) -> impl Future<Output = Result<GetCrawlerOutput, SdkError<GetCrawlerError>>> {
-        (*self).get_crawler(builder)
+        self.deref().get_crawler(builder)
     }
     fn get_crawler_metrics(&self, builder: GetCrawlerMetricsInputBuilder) -> impl Future<Output = Result<GetCrawlerMetricsOutput, SdkError<GetCrawlerMetricsError>>> {
-        (*self).get_crawler_metrics(builder)
+        self.deref().get_crawler_metrics(builder)
     }
     fn get_crawlers(&self, builder: GetCrawlersInputBuilder) -> impl Future<Output = Result<GetCrawlersOutput, SdkError<GetCrawlersError>>> {
-        (*self).get_crawlers(builder)
+        self.deref().get_crawlers(builder)
     }
     fn get_custom_entity_type(&self, builder: GetCustomEntityTypeInputBuilder) -> impl Future<Output = Result<GetCustomEntityTypeOutput, SdkError<GetCustomEntityTypeError>>> {
-        (*self).get_custom_entity_type(builder)
+        self.deref().get_custom_entity_type(builder)
     }
     fn get_data_catalog_encryption_settings(&self, builder: GetDataCatalogEncryptionSettingsInputBuilder) -> impl Future<Output = Result<GetDataCatalogEncryptionSettingsOutput, SdkError<GetDataCatalogEncryptionSettingsError>>> {
-        (*self).get_data_catalog_encryption_settings(builder)
+        self.deref().get_data_catalog_encryption_settings(builder)
     }
     fn get_data_quality_result(&self, builder: GetDataQualityResultInputBuilder) -> impl Future<Output = Result<GetDataQualityResultOutput, SdkError<GetDataQualityResultError>>> {
-        (*self).get_data_quality_result(builder)
+        self.deref().get_data_quality_result(builder)
     }
     fn get_data_quality_rule_recommendation_run(&self, builder: GetDataQualityRuleRecommendationRunInputBuilder) -> impl Future<Output = Result<GetDataQualityRuleRecommendationRunOutput, SdkError<GetDataQualityRuleRecommendationRunError>>> {
-        (*self).get_data_quality_rule_recommendation_run(builder)
+        self.deref().get_data_quality_rule_recommendation_run(builder)
     }
     fn get_data_quality_ruleset(&self, builder: GetDataQualityRulesetInputBuilder) -> impl Future<Output = Result<GetDataQualityRulesetOutput, SdkError<GetDataQualityRulesetError>>> {
-        (*self).get_data_quality_ruleset(builder)
+        self.deref().get_data_quality_ruleset(builder)
     }
     fn get_data_quality_ruleset_evaluation_run(&self, builder: GetDataQualityRulesetEvaluationRunInputBuilder) -> impl Future<Output = Result<GetDataQualityRulesetEvaluationRunOutput, SdkError<GetDataQualityRulesetEvaluationRunError>>> {
-        (*self).get_data_quality_ruleset_evaluation_run(builder)
+        self.deref().get_data_quality_ruleset_evaluation_run(builder)
     }
     fn get_database(&self, builder: GetDatabaseInputBuilder) -> impl Future<Output = Result<GetDatabaseOutput, SdkError<GetDatabaseError>>> {
-        (*self).get_database(builder)
+        self.deref().get_database(builder)
     }
     fn get_databases(&self, builder: GetDatabasesInputBuilder) -> impl Future<Output = Result<GetDatabasesOutput, SdkError<GetDatabasesError>>> {
-        (*self).get_databases(builder)
+        self.deref().get_databases(builder)
     }
     fn get_dataflow_graph(&self, builder: GetDataflowGraphInputBuilder) -> impl Future<Output = Result<GetDataflowGraphOutput, SdkError<GetDataflowGraphError>>> {
-        (*self).get_dataflow_graph(builder)
+        self.deref().get_dataflow_graph(builder)
     }
     fn get_dev_endpoint(&self, builder: GetDevEndpointInputBuilder) -> impl Future<Output = Result<GetDevEndpointOutput, SdkError<GetDevEndpointError>>> {
-        (*self).get_dev_endpoint(builder)
+        self.deref().get_dev_endpoint(builder)
     }
     fn get_dev_endpoints(&self, builder: GetDevEndpointsInputBuilder) -> impl Future<Output = Result<GetDevEndpointsOutput, SdkError<GetDevEndpointsError>>> {
-        (*self).get_dev_endpoints(builder)
+        self.deref().get_dev_endpoints(builder)
     }
     fn get_job(&self, builder: GetJobInputBuilder) -> impl Future<Output = Result<GetJobOutput, SdkError<GetJobError>>> {
-        (*self).get_job(builder)
+        self.deref().get_job(builder)
     }
     fn get_job_bookmark(&self, builder: GetJobBookmarkInputBuilder) -> impl Future<Output = Result<GetJobBookmarkOutput, SdkError<GetJobBookmarkError>>> {
-        (*self).get_job_bookmark(builder)
+        self.deref().get_job_bookmark(builder)
     }
     fn get_job_run(&self, builder: GetJobRunInputBuilder) -> impl Future<Output = Result<GetJobRunOutput, SdkError<GetJobRunError>>> {
-        (*self).get_job_run(builder)
+        self.deref().get_job_run(builder)
     }
     fn get_job_runs(&self, builder: GetJobRunsInputBuilder) -> impl Future<Output = Result<GetJobRunsOutput, SdkError<GetJobRunsError>>> {
-        (*self).get_job_runs(builder)
+        self.deref().get_job_runs(builder)
     }
     fn get_jobs(&self, builder: GetJobsInputBuilder) -> impl Future<Output = Result<GetJobsOutput, SdkError<GetJobsError>>> {
-        (*self).get_jobs(builder)
+        self.deref().get_jobs(builder)
     }
     fn get_mapping(&self, builder: GetMappingInputBuilder) -> impl Future<Output = Result<GetMappingOutput, SdkError<GetMappingError>>> {
-        (*self).get_mapping(builder)
+        self.deref().get_mapping(builder)
     }
     fn get_ml_task_run(&self, builder: GetMlTaskRunInputBuilder) -> impl Future<Output = Result<GetMlTaskRunOutput, SdkError<GetMLTaskRunError>>> {
-        (*self).get_ml_task_run(builder)
+        self.deref().get_ml_task_run(builder)
     }
     fn get_ml_task_runs(&self, builder: GetMlTaskRunsInputBuilder) -> impl Future<Output = Result<GetMlTaskRunsOutput, SdkError<GetMLTaskRunsError>>> {
-        (*self).get_ml_task_runs(builder)
+        self.deref().get_ml_task_runs(builder)
     }
     fn get_ml_transform(&self, builder: GetMlTransformInputBuilder) -> impl Future<Output = Result<GetMlTransformOutput, SdkError<GetMLTransformError>>> {
-        (*self).get_ml_transform(builder)
+        self.deref().get_ml_transform(builder)
     }
     fn get_ml_transforms(&self, builder: GetMlTransformsInputBuilder) -> impl Future<Output = Result<GetMlTransformsOutput, SdkError<GetMLTransformsError>>> {
-        (*self).get_ml_transforms(builder)
+        self.deref().get_ml_transforms(builder)
     }
     fn get_partition(&self, builder: GetPartitionInputBuilder) -> impl Future<Output = Result<GetPartitionOutput, SdkError<GetPartitionError>>> {
-        (*self).get_partition(builder)
+        self.deref().get_partition(builder)
     }
     fn get_partition_indexes(&self, builder: GetPartitionIndexesInputBuilder) -> impl Future<Output = Result<GetPartitionIndexesOutput, SdkError<GetPartitionIndexesError>>> {
-        (*self).get_partition_indexes(builder)
+        self.deref().get_partition_indexes(builder)
     }
     fn get_partitions(&self, builder: GetPartitionsInputBuilder) -> impl Future<Output = Result<GetPartitionsOutput, SdkError<GetPartitionsError>>> {
-        (*self).get_partitions(builder)
+        self.deref().get_partitions(builder)
     }
     fn get_plan(&self, builder: GetPlanInputBuilder) -> impl Future<Output = Result<GetPlanOutput, SdkError<GetPlanError>>> {
-        (*self).get_plan(builder)
+        self.deref().get_plan(builder)
     }
     fn get_registry(&self, builder: GetRegistryInputBuilder) -> impl Future<Output = Result<GetRegistryOutput, SdkError<GetRegistryError>>> {
-        (*self).get_registry(builder)
+        self.deref().get_registry(builder)
     }
     fn get_resource_policies(&self, builder: GetResourcePoliciesInputBuilder) -> impl Future<Output = Result<GetResourcePoliciesOutput, SdkError<GetResourcePoliciesError>>> {
-        (*self).get_resource_policies(builder)
+        self.deref().get_resource_policies(builder)
     }
     fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> {
-        (*self).get_resource_policy(builder)
+        self.deref().get_resource_policy(builder)
     }
     fn get_schema(&self, builder: GetSchemaInputBuilder) -> impl Future<Output = Result<GetSchemaOutput, SdkError<GetSchemaError>>> {
-        (*self).get_schema(builder)
+        self.deref().get_schema(builder)
     }
     fn get_schema_by_definition(&self, builder: GetSchemaByDefinitionInputBuilder) -> impl Future<Output = Result<GetSchemaByDefinitionOutput, SdkError<GetSchemaByDefinitionError>>> {
-        (*self).get_schema_by_definition(builder)
+        self.deref().get_schema_by_definition(builder)
     }
     fn get_schema_version(&self, builder: GetSchemaVersionInputBuilder) -> impl Future<Output = Result<GetSchemaVersionOutput, SdkError<GetSchemaVersionError>>> {
-        (*self).get_schema_version(builder)
+        self.deref().get_schema_version(builder)
     }
     fn get_schema_versions_diff(&self, builder: GetSchemaVersionsDiffInputBuilder) -> impl Future<Output = Result<GetSchemaVersionsDiffOutput, SdkError<GetSchemaVersionsDiffError>>> {
-        (*self).get_schema_versions_diff(builder)
+        self.deref().get_schema_versions_diff(builder)
     }
     fn get_security_configuration(&self, builder: GetSecurityConfigurationInputBuilder) -> impl Future<Output = Result<GetSecurityConfigurationOutput, SdkError<GetSecurityConfigurationError>>> {
-        (*self).get_security_configuration(builder)
+        self.deref().get_security_configuration(builder)
     }
     fn get_security_configurations(&self, builder: GetSecurityConfigurationsInputBuilder) -> impl Future<Output = Result<GetSecurityConfigurationsOutput, SdkError<GetSecurityConfigurationsError>>> {
-        (*self).get_security_configurations(builder)
+        self.deref().get_security_configurations(builder)
     }
     fn get_session(&self, builder: GetSessionInputBuilder) -> impl Future<Output = Result<GetSessionOutput, SdkError<GetSessionError>>> {
-        (*self).get_session(builder)
+        self.deref().get_session(builder)
     }
     fn get_statement(&self, builder: GetStatementInputBuilder) -> impl Future<Output = Result<GetStatementOutput, SdkError<GetStatementError>>> {
-        (*self).get_statement(builder)
+        self.deref().get_statement(builder)
     }
     fn get_table(&self, builder: GetTableInputBuilder) -> impl Future<Output = Result<GetTableOutput, SdkError<GetTableError>>> {
-        (*self).get_table(builder)
+        self.deref().get_table(builder)
     }
     fn get_table_optimizer(&self, builder: GetTableOptimizerInputBuilder) -> impl Future<Output = Result<GetTableOptimizerOutput, SdkError<GetTableOptimizerError>>> {
-        (*self).get_table_optimizer(builder)
+        self.deref().get_table_optimizer(builder)
     }
     fn get_table_version(&self, builder: GetTableVersionInputBuilder) -> impl Future<Output = Result<GetTableVersionOutput, SdkError<GetTableVersionError>>> {
-        (*self).get_table_version(builder)
+        self.deref().get_table_version(builder)
     }
     fn get_table_versions(&self, builder: GetTableVersionsInputBuilder) -> impl Future<Output = Result<GetTableVersionsOutput, SdkError<GetTableVersionsError>>> {
-        (*self).get_table_versions(builder)
+        self.deref().get_table_versions(builder)
     }
     fn get_tables(&self, builder: GetTablesInputBuilder) -> impl Future<Output = Result<GetTablesOutput, SdkError<GetTablesError>>> {
-        (*self).get_tables(builder)
+        self.deref().get_tables(builder)
     }
     fn get_tags(&self, builder: GetTagsInputBuilder) -> impl Future<Output = Result<GetTagsOutput, SdkError<GetTagsError>>> {
-        (*self).get_tags(builder)
+        self.deref().get_tags(builder)
     }
     fn get_trigger(&self, builder: GetTriggerInputBuilder) -> impl Future<Output = Result<GetTriggerOutput, SdkError<GetTriggerError>>> {
-        (*self).get_trigger(builder)
+        self.deref().get_trigger(builder)
     }
     fn get_triggers(&self, builder: GetTriggersInputBuilder) -> impl Future<Output = Result<GetTriggersOutput, SdkError<GetTriggersError>>> {
-        (*self).get_triggers(builder)
+        self.deref().get_triggers(builder)
     }
     fn get_unfiltered_partition_metadata(&self, builder: GetUnfilteredPartitionMetadataInputBuilder) -> impl Future<Output = Result<GetUnfilteredPartitionMetadataOutput, SdkError<GetUnfilteredPartitionMetadataError>>> {
-        (*self).get_unfiltered_partition_metadata(builder)
+        self.deref().get_unfiltered_partition_metadata(builder)
     }
     fn get_unfiltered_partitions_metadata(&self, builder: GetUnfilteredPartitionsMetadataInputBuilder) -> impl Future<Output = Result<GetUnfilteredPartitionsMetadataOutput, SdkError<GetUnfilteredPartitionsMetadataError>>> {
-        (*self).get_unfiltered_partitions_metadata(builder)
+        self.deref().get_unfiltered_partitions_metadata(builder)
     }
     fn get_unfiltered_table_metadata(&self, builder: GetUnfilteredTableMetadataInputBuilder) -> impl Future<Output = Result<GetUnfilteredTableMetadataOutput, SdkError<GetUnfilteredTableMetadataError>>> {
-        (*self).get_unfiltered_table_metadata(builder)
+        self.deref().get_unfiltered_table_metadata(builder)
     }
     fn get_usage_profile(&self, builder: GetUsageProfileInputBuilder) -> impl Future<Output = Result<GetUsageProfileOutput, SdkError<GetUsageProfileError>>> {
-        (*self).get_usage_profile(builder)
+        self.deref().get_usage_profile(builder)
     }
     fn get_user_defined_function(&self, builder: GetUserDefinedFunctionInputBuilder) -> impl Future<Output = Result<GetUserDefinedFunctionOutput, SdkError<GetUserDefinedFunctionError>>> {
-        (*self).get_user_defined_function(builder)
+        self.deref().get_user_defined_function(builder)
     }
     fn get_user_defined_functions(&self, builder: GetUserDefinedFunctionsInputBuilder) -> impl Future<Output = Result<GetUserDefinedFunctionsOutput, SdkError<GetUserDefinedFunctionsError>>> {
-        (*self).get_user_defined_functions(builder)
+        self.deref().get_user_defined_functions(builder)
     }
     fn get_workflow(&self, builder: GetWorkflowInputBuilder) -> impl Future<Output = Result<GetWorkflowOutput, SdkError<GetWorkflowError>>> {
-        (*self).get_workflow(builder)
+        self.deref().get_workflow(builder)
     }
     fn get_workflow_run(&self, builder: GetWorkflowRunInputBuilder) -> impl Future<Output = Result<GetWorkflowRunOutput, SdkError<GetWorkflowRunError>>> {
-        (*self).get_workflow_run(builder)
+        self.deref().get_workflow_run(builder)
     }
     fn get_workflow_run_properties(&self, builder: GetWorkflowRunPropertiesInputBuilder) -> impl Future<Output = Result<GetWorkflowRunPropertiesOutput, SdkError<GetWorkflowRunPropertiesError>>> {
-        (*self).get_workflow_run_properties(builder)
+        self.deref().get_workflow_run_properties(builder)
     }
     fn get_workflow_runs(&self, builder: GetWorkflowRunsInputBuilder) -> impl Future<Output = Result<GetWorkflowRunsOutput, SdkError<GetWorkflowRunsError>>> {
-        (*self).get_workflow_runs(builder)
+        self.deref().get_workflow_runs(builder)
     }
     fn import_catalog_to_glue(&self, builder: ImportCatalogToGlueInputBuilder) -> impl Future<Output = Result<ImportCatalogToGlueOutput, SdkError<ImportCatalogToGlueError>>> {
-        (*self).import_catalog_to_glue(builder)
+        self.deref().import_catalog_to_glue(builder)
     }
     fn list_blueprints(&self, builder: ListBlueprintsInputBuilder) -> impl Future<Output = Result<ListBlueprintsOutput, SdkError<ListBlueprintsError>>> {
-        (*self).list_blueprints(builder)
+        self.deref().list_blueprints(builder)
     }
     fn list_column_statistics_task_runs(&self, builder: ListColumnStatisticsTaskRunsInputBuilder) -> impl Future<Output = Result<ListColumnStatisticsTaskRunsOutput, SdkError<ListColumnStatisticsTaskRunsError>>> {
-        (*self).list_column_statistics_task_runs(builder)
+        self.deref().list_column_statistics_task_runs(builder)
     }
     fn list_crawlers(&self, builder: ListCrawlersInputBuilder) -> impl Future<Output = Result<ListCrawlersOutput, SdkError<ListCrawlersError>>> {
-        (*self).list_crawlers(builder)
+        self.deref().list_crawlers(builder)
     }
     fn list_crawls(&self, builder: ListCrawlsInputBuilder) -> impl Future<Output = Result<ListCrawlsOutput, SdkError<ListCrawlsError>>> {
-        (*self).list_crawls(builder)
+        self.deref().list_crawls(builder)
     }
     fn list_custom_entity_types(&self, builder: ListCustomEntityTypesInputBuilder) -> impl Future<Output = Result<ListCustomEntityTypesOutput, SdkError<ListCustomEntityTypesError>>> {
-        (*self).list_custom_entity_types(builder)
+        self.deref().list_custom_entity_types(builder)
     }
     fn list_data_quality_results(&self, builder: ListDataQualityResultsInputBuilder) -> impl Future<Output = Result<ListDataQualityResultsOutput, SdkError<ListDataQualityResultsError>>> {
-        (*self).list_data_quality_results(builder)
+        self.deref().list_data_quality_results(builder)
     }
     fn list_data_quality_rule_recommendation_runs(&self, builder: ListDataQualityRuleRecommendationRunsInputBuilder) -> impl Future<Output = Result<ListDataQualityRuleRecommendationRunsOutput, SdkError<ListDataQualityRuleRecommendationRunsError>>> {
-        (*self).list_data_quality_rule_recommendation_runs(builder)
+        self.deref().list_data_quality_rule_recommendation_runs(builder)
     }
     fn list_data_quality_ruleset_evaluation_runs(&self, builder: ListDataQualityRulesetEvaluationRunsInputBuilder) -> impl Future<Output = Result<ListDataQualityRulesetEvaluationRunsOutput, SdkError<ListDataQualityRulesetEvaluationRunsError>>> {
-        (*self).list_data_quality_ruleset_evaluation_runs(builder)
+        self.deref().list_data_quality_ruleset_evaluation_runs(builder)
     }
     fn list_data_quality_rulesets(&self, builder: ListDataQualityRulesetsInputBuilder) -> impl Future<Output = Result<ListDataQualityRulesetsOutput, SdkError<ListDataQualityRulesetsError>>> {
-        (*self).list_data_quality_rulesets(builder)
+        self.deref().list_data_quality_rulesets(builder)
     }
     fn list_dev_endpoints(&self, builder: ListDevEndpointsInputBuilder) -> impl Future<Output = Result<ListDevEndpointsOutput, SdkError<ListDevEndpointsError>>> {
-        (*self).list_dev_endpoints(builder)
+        self.deref().list_dev_endpoints(builder)
     }
     fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>> {
-        (*self).list_jobs(builder)
+        self.deref().list_jobs(builder)
     }
     fn list_ml_transforms(&self, builder: ListMlTransformsInputBuilder) -> impl Future<Output = Result<ListMlTransformsOutput, SdkError<ListMLTransformsError>>> {
-        (*self).list_ml_transforms(builder)
+        self.deref().list_ml_transforms(builder)
     }
     fn list_registries(&self, builder: ListRegistriesInputBuilder) -> impl Future<Output = Result<ListRegistriesOutput, SdkError<ListRegistriesError>>> {
-        (*self).list_registries(builder)
+        self.deref().list_registries(builder)
     }
     fn list_schema_versions(&self, builder: ListSchemaVersionsInputBuilder) -> impl Future<Output = Result<ListSchemaVersionsOutput, SdkError<ListSchemaVersionsError>>> {
-        (*self).list_schema_versions(builder)
+        self.deref().list_schema_versions(builder)
     }
     fn list_schemas(&self, builder: ListSchemasInputBuilder) -> impl Future<Output = Result<ListSchemasOutput, SdkError<ListSchemasError>>> {
-        (*self).list_schemas(builder)
+        self.deref().list_schemas(builder)
     }
     fn list_sessions(&self, builder: ListSessionsInputBuilder) -> impl Future<Output = Result<ListSessionsOutput, SdkError<ListSessionsError>>> {
-        (*self).list_sessions(builder)
+        self.deref().list_sessions(builder)
     }
     fn list_statements(&self, builder: ListStatementsInputBuilder) -> impl Future<Output = Result<ListStatementsOutput, SdkError<ListStatementsError>>> {
-        (*self).list_statements(builder)
+        self.deref().list_statements(builder)
     }
     fn list_table_optimizer_runs(&self, builder: ListTableOptimizerRunsInputBuilder) -> impl Future<Output = Result<ListTableOptimizerRunsOutput, SdkError<ListTableOptimizerRunsError>>> {
-        (*self).list_table_optimizer_runs(builder)
+        self.deref().list_table_optimizer_runs(builder)
     }
     fn list_triggers(&self, builder: ListTriggersInputBuilder) -> impl Future<Output = Result<ListTriggersOutput, SdkError<ListTriggersError>>> {
-        (*self).list_triggers(builder)
+        self.deref().list_triggers(builder)
     }
     fn list_usage_profiles(&self, builder: ListUsageProfilesInputBuilder) -> impl Future<Output = Result<ListUsageProfilesOutput, SdkError<ListUsageProfilesError>>> {
-        (*self).list_usage_profiles(builder)
+        self.deref().list_usage_profiles(builder)
     }
     fn list_workflows(&self, builder: ListWorkflowsInputBuilder) -> impl Future<Output = Result<ListWorkflowsOutput, SdkError<ListWorkflowsError>>> {
-        (*self).list_workflows(builder)
+        self.deref().list_workflows(builder)
     }
     fn put_data_catalog_encryption_settings(&self, builder: PutDataCatalogEncryptionSettingsInputBuilder) -> impl Future<Output = Result<PutDataCatalogEncryptionSettingsOutput, SdkError<PutDataCatalogEncryptionSettingsError>>> {
-        (*self).put_data_catalog_encryption_settings(builder)
+        self.deref().put_data_catalog_encryption_settings(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn put_schema_version_metadata(&self, builder: PutSchemaVersionMetadataInputBuilder) -> impl Future<Output = Result<PutSchemaVersionMetadataOutput, SdkError<PutSchemaVersionMetadataError>>> {
-        (*self).put_schema_version_metadata(builder)
+        self.deref().put_schema_version_metadata(builder)
     }
     fn put_workflow_run_properties(&self, builder: PutWorkflowRunPropertiesInputBuilder) -> impl Future<Output = Result<PutWorkflowRunPropertiesOutput, SdkError<PutWorkflowRunPropertiesError>>> {
-        (*self).put_workflow_run_properties(builder)
+        self.deref().put_workflow_run_properties(builder)
     }
     fn query_schema_version_metadata(&self, builder: QuerySchemaVersionMetadataInputBuilder) -> impl Future<Output = Result<QuerySchemaVersionMetadataOutput, SdkError<QuerySchemaVersionMetadataError>>> {
-        (*self).query_schema_version_metadata(builder)
+        self.deref().query_schema_version_metadata(builder)
     }
     fn register_schema_version(&self, builder: RegisterSchemaVersionInputBuilder) -> impl Future<Output = Result<RegisterSchemaVersionOutput, SdkError<RegisterSchemaVersionError>>> {
-        (*self).register_schema_version(builder)
+        self.deref().register_schema_version(builder)
     }
     fn remove_schema_version_metadata(&self, builder: RemoveSchemaVersionMetadataInputBuilder) -> impl Future<Output = Result<RemoveSchemaVersionMetadataOutput, SdkError<RemoveSchemaVersionMetadataError>>> {
-        (*self).remove_schema_version_metadata(builder)
+        self.deref().remove_schema_version_metadata(builder)
     }
     fn reset_job_bookmark(&self, builder: ResetJobBookmarkInputBuilder) -> impl Future<Output = Result<ResetJobBookmarkOutput, SdkError<ResetJobBookmarkError>>> {
-        (*self).reset_job_bookmark(builder)
+        self.deref().reset_job_bookmark(builder)
     }
     fn resume_workflow_run(&self, builder: ResumeWorkflowRunInputBuilder) -> impl Future<Output = Result<ResumeWorkflowRunOutput, SdkError<ResumeWorkflowRunError>>> {
-        (*self).resume_workflow_run(builder)
+        self.deref().resume_workflow_run(builder)
     }
     fn run_statement(&self, builder: RunStatementInputBuilder) -> impl Future<Output = Result<RunStatementOutput, SdkError<RunStatementError>>> {
-        (*self).run_statement(builder)
+        self.deref().run_statement(builder)
     }
     fn search_tables(&self, builder: SearchTablesInputBuilder) -> impl Future<Output = Result<SearchTablesOutput, SdkError<SearchTablesError>>> {
-        (*self).search_tables(builder)
+        self.deref().search_tables(builder)
     }
     fn start_blueprint_run(&self, builder: StartBlueprintRunInputBuilder) -> impl Future<Output = Result<StartBlueprintRunOutput, SdkError<StartBlueprintRunError>>> {
-        (*self).start_blueprint_run(builder)
+        self.deref().start_blueprint_run(builder)
     }
     fn start_column_statistics_task_run(&self, builder: StartColumnStatisticsTaskRunInputBuilder) -> impl Future<Output = Result<StartColumnStatisticsTaskRunOutput, SdkError<StartColumnStatisticsTaskRunError>>> {
-        (*self).start_column_statistics_task_run(builder)
+        self.deref().start_column_statistics_task_run(builder)
     }
     fn start_crawler(&self, builder: StartCrawlerInputBuilder) -> impl Future<Output = Result<StartCrawlerOutput, SdkError<StartCrawlerError>>> {
-        (*self).start_crawler(builder)
+        self.deref().start_crawler(builder)
     }
     fn start_crawler_schedule(&self, builder: StartCrawlerScheduleInputBuilder) -> impl Future<Output = Result<StartCrawlerScheduleOutput, SdkError<StartCrawlerScheduleError>>> {
-        (*self).start_crawler_schedule(builder)
+        self.deref().start_crawler_schedule(builder)
     }
     fn start_data_quality_rule_recommendation_run(&self, builder: StartDataQualityRuleRecommendationRunInputBuilder) -> impl Future<Output = Result<StartDataQualityRuleRecommendationRunOutput, SdkError<StartDataQualityRuleRecommendationRunError>>> {
-        (*self).start_data_quality_rule_recommendation_run(builder)
+        self.deref().start_data_quality_rule_recommendation_run(builder)
     }
     fn start_data_quality_ruleset_evaluation_run(&self, builder: StartDataQualityRulesetEvaluationRunInputBuilder) -> impl Future<Output = Result<StartDataQualityRulesetEvaluationRunOutput, SdkError<StartDataQualityRulesetEvaluationRunError>>> {
-        (*self).start_data_quality_ruleset_evaluation_run(builder)
+        self.deref().start_data_quality_ruleset_evaluation_run(builder)
     }
     fn start_export_labels_task_run(&self, builder: StartExportLabelsTaskRunInputBuilder) -> impl Future<Output = Result<StartExportLabelsTaskRunOutput, SdkError<StartExportLabelsTaskRunError>>> {
-        (*self).start_export_labels_task_run(builder)
+        self.deref().start_export_labels_task_run(builder)
     }
     fn start_import_labels_task_run(&self, builder: StartImportLabelsTaskRunInputBuilder) -> impl Future<Output = Result<StartImportLabelsTaskRunOutput, SdkError<StartImportLabelsTaskRunError>>> {
-        (*self).start_import_labels_task_run(builder)
+        self.deref().start_import_labels_task_run(builder)
     }
     fn start_job_run(&self, builder: StartJobRunInputBuilder) -> impl Future<Output = Result<StartJobRunOutput, SdkError<StartJobRunError>>> {
-        (*self).start_job_run(builder)
+        self.deref().start_job_run(builder)
     }
     fn start_ml_evaluation_task_run(&self, builder: StartMlEvaluationTaskRunInputBuilder) -> impl Future<Output = Result<StartMlEvaluationTaskRunOutput, SdkError<StartMLEvaluationTaskRunError>>> {
-        (*self).start_ml_evaluation_task_run(builder)
+        self.deref().start_ml_evaluation_task_run(builder)
     }
     fn start_ml_labeling_set_generation_task_run(&self, builder: StartMlLabelingSetGenerationTaskRunInputBuilder) -> impl Future<Output = Result<StartMlLabelingSetGenerationTaskRunOutput, SdkError<StartMLLabelingSetGenerationTaskRunError>>> {
-        (*self).start_ml_labeling_set_generation_task_run(builder)
+        self.deref().start_ml_labeling_set_generation_task_run(builder)
     }
     fn start_trigger(&self, builder: StartTriggerInputBuilder) -> impl Future<Output = Result<StartTriggerOutput, SdkError<StartTriggerError>>> {
-        (*self).start_trigger(builder)
+        self.deref().start_trigger(builder)
     }
     fn start_workflow_run(&self, builder: StartWorkflowRunInputBuilder) -> impl Future<Output = Result<StartWorkflowRunOutput, SdkError<StartWorkflowRunError>>> {
-        (*self).start_workflow_run(builder)
+        self.deref().start_workflow_run(builder)
     }
     fn stop_column_statistics_task_run(&self, builder: StopColumnStatisticsTaskRunInputBuilder) -> impl Future<Output = Result<StopColumnStatisticsTaskRunOutput, SdkError<StopColumnStatisticsTaskRunError>>> {
-        (*self).stop_column_statistics_task_run(builder)
+        self.deref().stop_column_statistics_task_run(builder)
     }
     fn stop_crawler(&self, builder: StopCrawlerInputBuilder) -> impl Future<Output = Result<StopCrawlerOutput, SdkError<StopCrawlerError>>> {
-        (*self).stop_crawler(builder)
+        self.deref().stop_crawler(builder)
     }
     fn stop_crawler_schedule(&self, builder: StopCrawlerScheduleInputBuilder) -> impl Future<Output = Result<StopCrawlerScheduleOutput, SdkError<StopCrawlerScheduleError>>> {
-        (*self).stop_crawler_schedule(builder)
+        self.deref().stop_crawler_schedule(builder)
     }
     fn stop_session(&self, builder: StopSessionInputBuilder) -> impl Future<Output = Result<StopSessionOutput, SdkError<StopSessionError>>> {
-        (*self).stop_session(builder)
+        self.deref().stop_session(builder)
     }
     fn stop_trigger(&self, builder: StopTriggerInputBuilder) -> impl Future<Output = Result<StopTriggerOutput, SdkError<StopTriggerError>>> {
-        (*self).stop_trigger(builder)
+        self.deref().stop_trigger(builder)
     }
     fn stop_workflow_run(&self, builder: StopWorkflowRunInputBuilder) -> impl Future<Output = Result<StopWorkflowRunOutput, SdkError<StopWorkflowRunError>>> {
-        (*self).stop_workflow_run(builder)
+        self.deref().stop_workflow_run(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_blueprint(&self, builder: UpdateBlueprintInputBuilder) -> impl Future<Output = Result<UpdateBlueprintOutput, SdkError<UpdateBlueprintError>>> {
-        (*self).update_blueprint(builder)
+        self.deref().update_blueprint(builder)
     }
     fn update_classifier(&self, builder: UpdateClassifierInputBuilder) -> impl Future<Output = Result<UpdateClassifierOutput, SdkError<UpdateClassifierError>>> {
-        (*self).update_classifier(builder)
+        self.deref().update_classifier(builder)
     }
     fn update_column_statistics_for_partition(&self, builder: UpdateColumnStatisticsForPartitionInputBuilder) -> impl Future<Output = Result<UpdateColumnStatisticsForPartitionOutput, SdkError<UpdateColumnStatisticsForPartitionError>>> {
-        (*self).update_column_statistics_for_partition(builder)
+        self.deref().update_column_statistics_for_partition(builder)
     }
     fn update_column_statistics_for_table(&self, builder: UpdateColumnStatisticsForTableInputBuilder) -> impl Future<Output = Result<UpdateColumnStatisticsForTableOutput, SdkError<UpdateColumnStatisticsForTableError>>> {
-        (*self).update_column_statistics_for_table(builder)
+        self.deref().update_column_statistics_for_table(builder)
     }
     fn update_connection(&self, builder: UpdateConnectionInputBuilder) -> impl Future<Output = Result<UpdateConnectionOutput, SdkError<UpdateConnectionError>>> {
-        (*self).update_connection(builder)
+        self.deref().update_connection(builder)
     }
     fn update_crawler(&self, builder: UpdateCrawlerInputBuilder) -> impl Future<Output = Result<UpdateCrawlerOutput, SdkError<UpdateCrawlerError>>> {
-        (*self).update_crawler(builder)
+        self.deref().update_crawler(builder)
     }
     fn update_crawler_schedule(&self, builder: UpdateCrawlerScheduleInputBuilder) -> impl Future<Output = Result<UpdateCrawlerScheduleOutput, SdkError<UpdateCrawlerScheduleError>>> {
-        (*self).update_crawler_schedule(builder)
+        self.deref().update_crawler_schedule(builder)
     }
     fn update_data_quality_ruleset(&self, builder: UpdateDataQualityRulesetInputBuilder) -> impl Future<Output = Result<UpdateDataQualityRulesetOutput, SdkError<UpdateDataQualityRulesetError>>> {
-        (*self).update_data_quality_ruleset(builder)
+        self.deref().update_data_quality_ruleset(builder)
     }
     fn update_database(&self, builder: UpdateDatabaseInputBuilder) -> impl Future<Output = Result<UpdateDatabaseOutput, SdkError<UpdateDatabaseError>>> {
-        (*self).update_database(builder)
+        self.deref().update_database(builder)
     }
     fn update_dev_endpoint(&self, builder: UpdateDevEndpointInputBuilder) -> impl Future<Output = Result<UpdateDevEndpointOutput, SdkError<UpdateDevEndpointError>>> {
-        (*self).update_dev_endpoint(builder)
+        self.deref().update_dev_endpoint(builder)
     }
     fn update_job(&self, builder: UpdateJobInputBuilder) -> impl Future<Output = Result<UpdateJobOutput, SdkError<UpdateJobError>>> {
-        (*self).update_job(builder)
+        self.deref().update_job(builder)
     }
     fn update_job_from_source_control(&self, builder: UpdateJobFromSourceControlInputBuilder) -> impl Future<Output = Result<UpdateJobFromSourceControlOutput, SdkError<UpdateJobFromSourceControlError>>> {
-        (*self).update_job_from_source_control(builder)
+        self.deref().update_job_from_source_control(builder)
     }
     fn update_ml_transform(&self, builder: UpdateMlTransformInputBuilder) -> impl Future<Output = Result<UpdateMlTransformOutput, SdkError<UpdateMLTransformError>>> {
-        (*self).update_ml_transform(builder)
+        self.deref().update_ml_transform(builder)
     }
     fn update_partition(&self, builder: UpdatePartitionInputBuilder) -> impl Future<Output = Result<UpdatePartitionOutput, SdkError<UpdatePartitionError>>> {
-        (*self).update_partition(builder)
+        self.deref().update_partition(builder)
     }
     fn update_registry(&self, builder: UpdateRegistryInputBuilder) -> impl Future<Output = Result<UpdateRegistryOutput, SdkError<UpdateRegistryError>>> {
-        (*self).update_registry(builder)
+        self.deref().update_registry(builder)
     }
     fn update_schema(&self, builder: UpdateSchemaInputBuilder) -> impl Future<Output = Result<UpdateSchemaOutput, SdkError<UpdateSchemaError>>> {
-        (*self).update_schema(builder)
+        self.deref().update_schema(builder)
     }
     fn update_source_control_from_job(&self, builder: UpdateSourceControlFromJobInputBuilder) -> impl Future<Output = Result<UpdateSourceControlFromJobOutput, SdkError<UpdateSourceControlFromJobError>>> {
-        (*self).update_source_control_from_job(builder)
+        self.deref().update_source_control_from_job(builder)
     }
     fn update_table(&self, builder: UpdateTableInputBuilder) -> impl Future<Output = Result<UpdateTableOutput, SdkError<UpdateTableError>>> {
-        (*self).update_table(builder)
+        self.deref().update_table(builder)
     }
     fn update_table_optimizer(&self, builder: UpdateTableOptimizerInputBuilder) -> impl Future<Output = Result<UpdateTableOptimizerOutput, SdkError<UpdateTableOptimizerError>>> {
-        (*self).update_table_optimizer(builder)
+        self.deref().update_table_optimizer(builder)
     }
     fn update_trigger(&self, builder: UpdateTriggerInputBuilder) -> impl Future<Output = Result<UpdateTriggerOutput, SdkError<UpdateTriggerError>>> {
-        (*self).update_trigger(builder)
+        self.deref().update_trigger(builder)
     }
     fn update_usage_profile(&self, builder: UpdateUsageProfileInputBuilder) -> impl Future<Output = Result<UpdateUsageProfileOutput, SdkError<UpdateUsageProfileError>>> {
-        (*self).update_usage_profile(builder)
+        self.deref().update_usage_profile(builder)
     }
     fn update_user_defined_function(&self, builder: UpdateUserDefinedFunctionInputBuilder) -> impl Future<Output = Result<UpdateUserDefinedFunctionOutput, SdkError<UpdateUserDefinedFunctionError>>> {
-        (*self).update_user_defined_function(builder)
+        self.deref().update_user_defined_function(builder)
     }
     fn update_workflow(&self, builder: UpdateWorkflowInputBuilder) -> impl Future<Output = Result<UpdateWorkflowOutput, SdkError<UpdateWorkflowError>>> {
-        (*self).update_workflow(builder)
+        self.deref().update_workflow(builder)
     }
 }
 #[cfg(feature = "mockall")]

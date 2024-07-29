@@ -48,6 +48,7 @@ use aws_sdk_amplifyuibuilder::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_amplifyuibuilder::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_amplifyuibuilder::*;
 
@@ -171,90 +172,92 @@ impl AmplifyUiBuilderClient for AmplifyUiBuilderClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AmplifyUiBuilderClient> AmplifyUiBuilderClient for &T {
+impl <T> AmplifyUiBuilderClient for T
+where T: Deref,
+      T::Target: AmplifyUiBuilderClient {
     fn create_component(&self, builder: CreateComponentInputBuilder) -> impl Future<Output = Result<CreateComponentOutput, SdkError<CreateComponentError>>> {
-        (*self).create_component(builder)
+        self.deref().create_component(builder)
     }
     fn create_form(&self, builder: CreateFormInputBuilder) -> impl Future<Output = Result<CreateFormOutput, SdkError<CreateFormError>>> {
-        (*self).create_form(builder)
+        self.deref().create_form(builder)
     }
     fn create_theme(&self, builder: CreateThemeInputBuilder) -> impl Future<Output = Result<CreateThemeOutput, SdkError<CreateThemeError>>> {
-        (*self).create_theme(builder)
+        self.deref().create_theme(builder)
     }
     fn delete_component(&self, builder: DeleteComponentInputBuilder) -> impl Future<Output = Result<DeleteComponentOutput, SdkError<DeleteComponentError>>> {
-        (*self).delete_component(builder)
+        self.deref().delete_component(builder)
     }
     fn delete_form(&self, builder: DeleteFormInputBuilder) -> impl Future<Output = Result<DeleteFormOutput, SdkError<DeleteFormError>>> {
-        (*self).delete_form(builder)
+        self.deref().delete_form(builder)
     }
     fn delete_theme(&self, builder: DeleteThemeInputBuilder) -> impl Future<Output = Result<DeleteThemeOutput, SdkError<DeleteThemeError>>> {
-        (*self).delete_theme(builder)
+        self.deref().delete_theme(builder)
     }
     fn exchange_code_for_token(&self, builder: ExchangeCodeForTokenInputBuilder) -> impl Future<Output = Result<ExchangeCodeForTokenOutput, SdkError<ExchangeCodeForTokenError>>> {
-        (*self).exchange_code_for_token(builder)
+        self.deref().exchange_code_for_token(builder)
     }
     fn export_components(&self, builder: ExportComponentsInputBuilder) -> impl Future<Output = Result<ExportComponentsOutput, SdkError<ExportComponentsError>>> {
-        (*self).export_components(builder)
+        self.deref().export_components(builder)
     }
     fn export_forms(&self, builder: ExportFormsInputBuilder) -> impl Future<Output = Result<ExportFormsOutput, SdkError<ExportFormsError>>> {
-        (*self).export_forms(builder)
+        self.deref().export_forms(builder)
     }
     fn export_themes(&self, builder: ExportThemesInputBuilder) -> impl Future<Output = Result<ExportThemesOutput, SdkError<ExportThemesError>>> {
-        (*self).export_themes(builder)
+        self.deref().export_themes(builder)
     }
     fn get_codegen_job(&self, builder: GetCodegenJobInputBuilder) -> impl Future<Output = Result<GetCodegenJobOutput, SdkError<GetCodegenJobError>>> {
-        (*self).get_codegen_job(builder)
+        self.deref().get_codegen_job(builder)
     }
     fn get_component(&self, builder: GetComponentInputBuilder) -> impl Future<Output = Result<GetComponentOutput, SdkError<GetComponentError>>> {
-        (*self).get_component(builder)
+        self.deref().get_component(builder)
     }
     fn get_form(&self, builder: GetFormInputBuilder) -> impl Future<Output = Result<GetFormOutput, SdkError<GetFormError>>> {
-        (*self).get_form(builder)
+        self.deref().get_form(builder)
     }
     fn get_metadata(&self, builder: GetMetadataInputBuilder) -> impl Future<Output = Result<GetMetadataOutput, SdkError<GetMetadataError>>> {
-        (*self).get_metadata(builder)
+        self.deref().get_metadata(builder)
     }
     fn get_theme(&self, builder: GetThemeInputBuilder) -> impl Future<Output = Result<GetThemeOutput, SdkError<GetThemeError>>> {
-        (*self).get_theme(builder)
+        self.deref().get_theme(builder)
     }
     fn list_codegen_jobs(&self, builder: ListCodegenJobsInputBuilder) -> impl Future<Output = Result<ListCodegenJobsOutput, SdkError<ListCodegenJobsError>>> {
-        (*self).list_codegen_jobs(builder)
+        self.deref().list_codegen_jobs(builder)
     }
     fn list_components(&self, builder: ListComponentsInputBuilder) -> impl Future<Output = Result<ListComponentsOutput, SdkError<ListComponentsError>>> {
-        (*self).list_components(builder)
+        self.deref().list_components(builder)
     }
     fn list_forms(&self, builder: ListFormsInputBuilder) -> impl Future<Output = Result<ListFormsOutput, SdkError<ListFormsError>>> {
-        (*self).list_forms(builder)
+        self.deref().list_forms(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_themes(&self, builder: ListThemesInputBuilder) -> impl Future<Output = Result<ListThemesOutput, SdkError<ListThemesError>>> {
-        (*self).list_themes(builder)
+        self.deref().list_themes(builder)
     }
     fn put_metadata_flag(&self, builder: PutMetadataFlagInputBuilder) -> impl Future<Output = Result<PutMetadataFlagOutput, SdkError<PutMetadataFlagError>>> {
-        (*self).put_metadata_flag(builder)
+        self.deref().put_metadata_flag(builder)
     }
     fn refresh_token(&self, builder: RefreshTokenInputBuilder) -> impl Future<Output = Result<RefreshTokenOutput, SdkError<RefreshTokenError>>> {
-        (*self).refresh_token(builder)
+        self.deref().refresh_token(builder)
     }
     fn start_codegen_job(&self, builder: StartCodegenJobInputBuilder) -> impl Future<Output = Result<StartCodegenJobOutput, SdkError<StartCodegenJobError>>> {
-        (*self).start_codegen_job(builder)
+        self.deref().start_codegen_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_component(&self, builder: UpdateComponentInputBuilder) -> impl Future<Output = Result<UpdateComponentOutput, SdkError<UpdateComponentError>>> {
-        (*self).update_component(builder)
+        self.deref().update_component(builder)
     }
     fn update_form(&self, builder: UpdateFormInputBuilder) -> impl Future<Output = Result<UpdateFormOutput, SdkError<UpdateFormError>>> {
-        (*self).update_form(builder)
+        self.deref().update_form(builder)
     }
     fn update_theme(&self, builder: UpdateThemeInputBuilder) -> impl Future<Output = Result<UpdateThemeOutput, SdkError<UpdateThemeError>>> {
-        (*self).update_theme(builder)
+        self.deref().update_theme(builder)
     }
 }
 #[cfg(feature = "mockall")]

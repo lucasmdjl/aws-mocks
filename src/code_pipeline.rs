@@ -60,6 +60,7 @@ use aws_sdk_codepipeline::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_codepipeline::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_codepipeline::*;
 
@@ -231,126 +232,128 @@ impl CodePipelineClient for CodePipelineClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CodePipelineClient> CodePipelineClient for &T {
+impl <T> CodePipelineClient for T
+where T: Deref,
+      T::Target: CodePipelineClient {
     fn acknowledge_job(&self, builder: AcknowledgeJobInputBuilder) -> impl Future<Output = Result<AcknowledgeJobOutput, SdkError<AcknowledgeJobError>>> {
-        (*self).acknowledge_job(builder)
+        self.deref().acknowledge_job(builder)
     }
     fn acknowledge_third_party_job(&self, builder: AcknowledgeThirdPartyJobInputBuilder) -> impl Future<Output = Result<AcknowledgeThirdPartyJobOutput, SdkError<AcknowledgeThirdPartyJobError>>> {
-        (*self).acknowledge_third_party_job(builder)
+        self.deref().acknowledge_third_party_job(builder)
     }
     fn create_custom_action_type(&self, builder: CreateCustomActionTypeInputBuilder) -> impl Future<Output = Result<CreateCustomActionTypeOutput, SdkError<CreateCustomActionTypeError>>> {
-        (*self).create_custom_action_type(builder)
+        self.deref().create_custom_action_type(builder)
     }
     fn create_pipeline(&self, builder: CreatePipelineInputBuilder) -> impl Future<Output = Result<CreatePipelineOutput, SdkError<CreatePipelineError>>> {
-        (*self).create_pipeline(builder)
+        self.deref().create_pipeline(builder)
     }
     fn delete_custom_action_type(&self, builder: DeleteCustomActionTypeInputBuilder) -> impl Future<Output = Result<DeleteCustomActionTypeOutput, SdkError<DeleteCustomActionTypeError>>> {
-        (*self).delete_custom_action_type(builder)
+        self.deref().delete_custom_action_type(builder)
     }
     fn delete_pipeline(&self, builder: DeletePipelineInputBuilder) -> impl Future<Output = Result<DeletePipelineOutput, SdkError<DeletePipelineError>>> {
-        (*self).delete_pipeline(builder)
+        self.deref().delete_pipeline(builder)
     }
     fn delete_webhook(&self, builder: DeleteWebhookInputBuilder) -> impl Future<Output = Result<DeleteWebhookOutput, SdkError<DeleteWebhookError>>> {
-        (*self).delete_webhook(builder)
+        self.deref().delete_webhook(builder)
     }
     fn deregister_webhook_with_third_party(&self, builder: DeregisterWebhookWithThirdPartyInputBuilder) -> impl Future<Output = Result<DeregisterWebhookWithThirdPartyOutput, SdkError<DeregisterWebhookWithThirdPartyError>>> {
-        (*self).deregister_webhook_with_third_party(builder)
+        self.deref().deregister_webhook_with_third_party(builder)
     }
     fn disable_stage_transition(&self, builder: DisableStageTransitionInputBuilder) -> impl Future<Output = Result<DisableStageTransitionOutput, SdkError<DisableStageTransitionError>>> {
-        (*self).disable_stage_transition(builder)
+        self.deref().disable_stage_transition(builder)
     }
     fn enable_stage_transition(&self, builder: EnableStageTransitionInputBuilder) -> impl Future<Output = Result<EnableStageTransitionOutput, SdkError<EnableStageTransitionError>>> {
-        (*self).enable_stage_transition(builder)
+        self.deref().enable_stage_transition(builder)
     }
     fn get_action_type(&self, builder: GetActionTypeInputBuilder) -> impl Future<Output = Result<GetActionTypeOutput, SdkError<GetActionTypeError>>> {
-        (*self).get_action_type(builder)
+        self.deref().get_action_type(builder)
     }
     fn get_job_details(&self, builder: GetJobDetailsInputBuilder) -> impl Future<Output = Result<GetJobDetailsOutput, SdkError<GetJobDetailsError>>> {
-        (*self).get_job_details(builder)
+        self.deref().get_job_details(builder)
     }
     fn get_pipeline(&self, builder: GetPipelineInputBuilder) -> impl Future<Output = Result<GetPipelineOutput, SdkError<GetPipelineError>>> {
-        (*self).get_pipeline(builder)
+        self.deref().get_pipeline(builder)
     }
     fn get_pipeline_execution(&self, builder: GetPipelineExecutionInputBuilder) -> impl Future<Output = Result<GetPipelineExecutionOutput, SdkError<GetPipelineExecutionError>>> {
-        (*self).get_pipeline_execution(builder)
+        self.deref().get_pipeline_execution(builder)
     }
     fn get_pipeline_state(&self, builder: GetPipelineStateInputBuilder) -> impl Future<Output = Result<GetPipelineStateOutput, SdkError<GetPipelineStateError>>> {
-        (*self).get_pipeline_state(builder)
+        self.deref().get_pipeline_state(builder)
     }
     fn get_third_party_job_details(&self, builder: GetThirdPartyJobDetailsInputBuilder) -> impl Future<Output = Result<GetThirdPartyJobDetailsOutput, SdkError<GetThirdPartyJobDetailsError>>> {
-        (*self).get_third_party_job_details(builder)
+        self.deref().get_third_party_job_details(builder)
     }
     fn list_action_executions(&self, builder: ListActionExecutionsInputBuilder) -> impl Future<Output = Result<ListActionExecutionsOutput, SdkError<ListActionExecutionsError>>> {
-        (*self).list_action_executions(builder)
+        self.deref().list_action_executions(builder)
     }
     fn list_action_types(&self, builder: ListActionTypesInputBuilder) -> impl Future<Output = Result<ListActionTypesOutput, SdkError<ListActionTypesError>>> {
-        (*self).list_action_types(builder)
+        self.deref().list_action_types(builder)
     }
     fn list_pipeline_executions(&self, builder: ListPipelineExecutionsInputBuilder) -> impl Future<Output = Result<ListPipelineExecutionsOutput, SdkError<ListPipelineExecutionsError>>> {
-        (*self).list_pipeline_executions(builder)
+        self.deref().list_pipeline_executions(builder)
     }
     fn list_pipelines(&self, builder: ListPipelinesInputBuilder) -> impl Future<Output = Result<ListPipelinesOutput, SdkError<ListPipelinesError>>> {
-        (*self).list_pipelines(builder)
+        self.deref().list_pipelines(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_webhooks(&self, builder: ListWebhooksInputBuilder) -> impl Future<Output = Result<ListWebhooksOutput, SdkError<ListWebhooksError>>> {
-        (*self).list_webhooks(builder)
+        self.deref().list_webhooks(builder)
     }
     fn poll_for_jobs(&self, builder: PollForJobsInputBuilder) -> impl Future<Output = Result<PollForJobsOutput, SdkError<PollForJobsError>>> {
-        (*self).poll_for_jobs(builder)
+        self.deref().poll_for_jobs(builder)
     }
     fn poll_for_third_party_jobs(&self, builder: PollForThirdPartyJobsInputBuilder) -> impl Future<Output = Result<PollForThirdPartyJobsOutput, SdkError<PollForThirdPartyJobsError>>> {
-        (*self).poll_for_third_party_jobs(builder)
+        self.deref().poll_for_third_party_jobs(builder)
     }
     fn put_action_revision(&self, builder: PutActionRevisionInputBuilder) -> impl Future<Output = Result<PutActionRevisionOutput, SdkError<PutActionRevisionError>>> {
-        (*self).put_action_revision(builder)
+        self.deref().put_action_revision(builder)
     }
     fn put_approval_result(&self, builder: PutApprovalResultInputBuilder) -> impl Future<Output = Result<PutApprovalResultOutput, SdkError<PutApprovalResultError>>> {
-        (*self).put_approval_result(builder)
+        self.deref().put_approval_result(builder)
     }
     fn put_job_failure_result(&self, builder: PutJobFailureResultInputBuilder) -> impl Future<Output = Result<PutJobFailureResultOutput, SdkError<PutJobFailureResultError>>> {
-        (*self).put_job_failure_result(builder)
+        self.deref().put_job_failure_result(builder)
     }
     fn put_job_success_result(&self, builder: PutJobSuccessResultInputBuilder) -> impl Future<Output = Result<PutJobSuccessResultOutput, SdkError<PutJobSuccessResultError>>> {
-        (*self).put_job_success_result(builder)
+        self.deref().put_job_success_result(builder)
     }
     fn put_third_party_job_failure_result(&self, builder: PutThirdPartyJobFailureResultInputBuilder) -> impl Future<Output = Result<PutThirdPartyJobFailureResultOutput, SdkError<PutThirdPartyJobFailureResultError>>> {
-        (*self).put_third_party_job_failure_result(builder)
+        self.deref().put_third_party_job_failure_result(builder)
     }
     fn put_third_party_job_success_result(&self, builder: PutThirdPartyJobSuccessResultInputBuilder) -> impl Future<Output = Result<PutThirdPartyJobSuccessResultOutput, SdkError<PutThirdPartyJobSuccessResultError>>> {
-        (*self).put_third_party_job_success_result(builder)
+        self.deref().put_third_party_job_success_result(builder)
     }
     fn put_webhook(&self, builder: PutWebhookInputBuilder) -> impl Future<Output = Result<PutWebhookOutput, SdkError<PutWebhookError>>> {
-        (*self).put_webhook(builder)
+        self.deref().put_webhook(builder)
     }
     fn register_webhook_with_third_party(&self, builder: RegisterWebhookWithThirdPartyInputBuilder) -> impl Future<Output = Result<RegisterWebhookWithThirdPartyOutput, SdkError<RegisterWebhookWithThirdPartyError>>> {
-        (*self).register_webhook_with_third_party(builder)
+        self.deref().register_webhook_with_third_party(builder)
     }
     fn retry_stage_execution(&self, builder: RetryStageExecutionInputBuilder) -> impl Future<Output = Result<RetryStageExecutionOutput, SdkError<RetryStageExecutionError>>> {
-        (*self).retry_stage_execution(builder)
+        self.deref().retry_stage_execution(builder)
     }
     fn rollback_stage(&self, builder: RollbackStageInputBuilder) -> impl Future<Output = Result<RollbackStageOutput, SdkError<RollbackStageError>>> {
-        (*self).rollback_stage(builder)
+        self.deref().rollback_stage(builder)
     }
     fn start_pipeline_execution(&self, builder: StartPipelineExecutionInputBuilder) -> impl Future<Output = Result<StartPipelineExecutionOutput, SdkError<StartPipelineExecutionError>>> {
-        (*self).start_pipeline_execution(builder)
+        self.deref().start_pipeline_execution(builder)
     }
     fn stop_pipeline_execution(&self, builder: StopPipelineExecutionInputBuilder) -> impl Future<Output = Result<StopPipelineExecutionOutput, SdkError<StopPipelineExecutionError>>> {
-        (*self).stop_pipeline_execution(builder)
+        self.deref().stop_pipeline_execution(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_action_type(&self, builder: UpdateActionTypeInputBuilder) -> impl Future<Output = Result<UpdateActionTypeOutput, SdkError<UpdateActionTypeError>>> {
-        (*self).update_action_type(builder)
+        self.deref().update_action_type(builder)
     }
     fn update_pipeline(&self, builder: UpdatePipelineInputBuilder) -> impl Future<Output = Result<UpdatePipelineOutput, SdkError<UpdatePipelineError>>> {
-        (*self).update_pipeline(builder)
+        self.deref().update_pipeline(builder)
     }
 }
 #[cfg(feature = "mockall")]

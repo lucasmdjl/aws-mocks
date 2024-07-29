@@ -35,6 +35,7 @@ use aws_sdk_acm::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_acm::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_acm::*;
 
@@ -106,51 +107,53 @@ impl ACMClient for ACMClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: ACMClient> ACMClient for &T {
+impl <T> ACMClient for T
+where T: Deref,
+      T::Target: ACMClient {
     fn add_tags_to_certificate(&self, builder: AddTagsToCertificateInputBuilder) -> impl Future<Output = Result<AddTagsToCertificateOutput, SdkError<AddTagsToCertificateError>>> {
-        (*self).add_tags_to_certificate(builder)
+        self.deref().add_tags_to_certificate(builder)
     }
     fn delete_certificate(&self, builder: DeleteCertificateInputBuilder) -> impl Future<Output = Result<DeleteCertificateOutput, SdkError<DeleteCertificateError>>> {
-        (*self).delete_certificate(builder)
+        self.deref().delete_certificate(builder)
     }
     fn describe_certificate(&self, builder: DescribeCertificateInputBuilder) -> impl Future<Output = Result<DescribeCertificateOutput, SdkError<DescribeCertificateError>>> {
-        (*self).describe_certificate(builder)
+        self.deref().describe_certificate(builder)
     }
     fn export_certificate(&self, builder: ExportCertificateInputBuilder) -> impl Future<Output = Result<ExportCertificateOutput, SdkError<ExportCertificateError>>> {
-        (*self).export_certificate(builder)
+        self.deref().export_certificate(builder)
     }
     fn get_account_configuration(&self, builder: GetAccountConfigurationInputBuilder) -> impl Future<Output = Result<GetAccountConfigurationOutput, SdkError<GetAccountConfigurationError>>> {
-        (*self).get_account_configuration(builder)
+        self.deref().get_account_configuration(builder)
     }
     fn get_certificate(&self, builder: GetCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateOutput, SdkError<GetCertificateError>>> {
-        (*self).get_certificate(builder)
+        self.deref().get_certificate(builder)
     }
     fn import_certificate(&self, builder: ImportCertificateInputBuilder) -> impl Future<Output = Result<ImportCertificateOutput, SdkError<ImportCertificateError>>> {
-        (*self).import_certificate(builder)
+        self.deref().import_certificate(builder)
     }
     fn list_certificates(&self, builder: ListCertificatesInputBuilder) -> impl Future<Output = Result<ListCertificatesOutput, SdkError<ListCertificatesError>>> {
-        (*self).list_certificates(builder)
+        self.deref().list_certificates(builder)
     }
     fn list_tags_for_certificate(&self, builder: ListTagsForCertificateInputBuilder) -> impl Future<Output = Result<ListTagsForCertificateOutput, SdkError<ListTagsForCertificateError>>> {
-        (*self).list_tags_for_certificate(builder)
+        self.deref().list_tags_for_certificate(builder)
     }
     fn put_account_configuration(&self, builder: PutAccountConfigurationInputBuilder) -> impl Future<Output = Result<PutAccountConfigurationOutput, SdkError<PutAccountConfigurationError>>> {
-        (*self).put_account_configuration(builder)
+        self.deref().put_account_configuration(builder)
     }
     fn remove_tags_from_certificate(&self, builder: RemoveTagsFromCertificateInputBuilder) -> impl Future<Output = Result<RemoveTagsFromCertificateOutput, SdkError<RemoveTagsFromCertificateError>>> {
-        (*self).remove_tags_from_certificate(builder)
+        self.deref().remove_tags_from_certificate(builder)
     }
     fn renew_certificate(&self, builder: RenewCertificateInputBuilder) -> impl Future<Output = Result<RenewCertificateOutput, SdkError<RenewCertificateError>>> {
-        (*self).renew_certificate(builder)
+        self.deref().renew_certificate(builder)
     }
     fn request_certificate(&self, builder: RequestCertificateInputBuilder) -> impl Future<Output = Result<RequestCertificateOutput, SdkError<RequestCertificateError>>> {
-        (*self).request_certificate(builder)
+        self.deref().request_certificate(builder)
     }
     fn resend_validation_email(&self, builder: ResendValidationEmailInputBuilder) -> impl Future<Output = Result<ResendValidationEmailOutput, SdkError<ResendValidationEmailError>>> {
-        (*self).resend_validation_email(builder)
+        self.deref().resend_validation_email(builder)
     }
     fn update_certificate_options(&self, builder: UpdateCertificateOptionsInputBuilder) -> impl Future<Output = Result<UpdateCertificateOptionsOutput, SdkError<UpdateCertificateOptionsError>>> {
-        (*self).update_certificate_options(builder)
+        self.deref().update_certificate_options(builder)
     }
 }
 #[cfg(feature = "mockall")]

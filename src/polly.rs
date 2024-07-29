@@ -29,6 +29,7 @@ use aws_sdk_polly::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_polly::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_polly::*;
 
@@ -76,33 +77,35 @@ impl PollyClient for PollyClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: PollyClient> PollyClient for &T {
+impl <T> PollyClient for T
+where T: Deref,
+      T::Target: PollyClient {
     fn delete_lexicon(&self, builder: DeleteLexiconInputBuilder) -> impl Future<Output = Result<DeleteLexiconOutput, SdkError<DeleteLexiconError>>> {
-        (*self).delete_lexicon(builder)
+        self.deref().delete_lexicon(builder)
     }
     fn describe_voices(&self, builder: DescribeVoicesInputBuilder) -> impl Future<Output = Result<DescribeVoicesOutput, SdkError<DescribeVoicesError>>> {
-        (*self).describe_voices(builder)
+        self.deref().describe_voices(builder)
     }
     fn get_lexicon(&self, builder: GetLexiconInputBuilder) -> impl Future<Output = Result<GetLexiconOutput, SdkError<GetLexiconError>>> {
-        (*self).get_lexicon(builder)
+        self.deref().get_lexicon(builder)
     }
     fn get_speech_synthesis_task(&self, builder: GetSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<GetSpeechSynthesisTaskOutput, SdkError<GetSpeechSynthesisTaskError>>> {
-        (*self).get_speech_synthesis_task(builder)
+        self.deref().get_speech_synthesis_task(builder)
     }
     fn list_lexicons(&self, builder: ListLexiconsInputBuilder) -> impl Future<Output = Result<ListLexiconsOutput, SdkError<ListLexiconsError>>> {
-        (*self).list_lexicons(builder)
+        self.deref().list_lexicons(builder)
     }
     fn list_speech_synthesis_tasks(&self, builder: ListSpeechSynthesisTasksInputBuilder) -> impl Future<Output = Result<ListSpeechSynthesisTasksOutput, SdkError<ListSpeechSynthesisTasksError>>> {
-        (*self).list_speech_synthesis_tasks(builder)
+        self.deref().list_speech_synthesis_tasks(builder)
     }
     fn put_lexicon(&self, builder: PutLexiconInputBuilder) -> impl Future<Output = Result<PutLexiconOutput, SdkError<PutLexiconError>>> {
-        (*self).put_lexicon(builder)
+        self.deref().put_lexicon(builder)
     }
     fn start_speech_synthesis_task(&self, builder: StartSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<StartSpeechSynthesisTaskOutput, SdkError<StartSpeechSynthesisTaskError>>> {
-        (*self).start_speech_synthesis_task(builder)
+        self.deref().start_speech_synthesis_task(builder)
     }
     fn synthesize_speech(&self, builder: SynthesizeSpeechInputBuilder) -> impl Future<Output = Result<SynthesizeSpeechOutput, SdkError<SynthesizeSpeechError>>> {
-        (*self).synthesize_speech(builder)
+        self.deref().synthesize_speech(builder)
     }
 }
 #[cfg(feature = "mockall")]

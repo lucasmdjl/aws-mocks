@@ -45,6 +45,7 @@ use aws_sdk_batch::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_batch::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_batch::*;
 
@@ -156,81 +157,83 @@ impl BatchClient for BatchClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: BatchClient> BatchClient for &T {
+impl <T> BatchClient for T
+where T: Deref,
+      T::Target: BatchClient {
     fn cancel_job(&self, builder: CancelJobInputBuilder) -> impl Future<Output = Result<CancelJobOutput, SdkError<CancelJobError>>> {
-        (*self).cancel_job(builder)
+        self.deref().cancel_job(builder)
     }
     fn create_compute_environment(&self, builder: CreateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<CreateComputeEnvironmentOutput, SdkError<CreateComputeEnvironmentError>>> {
-        (*self).create_compute_environment(builder)
+        self.deref().create_compute_environment(builder)
     }
     fn create_job_queue(&self, builder: CreateJobQueueInputBuilder) -> impl Future<Output = Result<CreateJobQueueOutput, SdkError<CreateJobQueueError>>> {
-        (*self).create_job_queue(builder)
+        self.deref().create_job_queue(builder)
     }
     fn create_scheduling_policy(&self, builder: CreateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<CreateSchedulingPolicyOutput, SdkError<CreateSchedulingPolicyError>>> {
-        (*self).create_scheduling_policy(builder)
+        self.deref().create_scheduling_policy(builder)
     }
     fn delete_compute_environment(&self, builder: DeleteComputeEnvironmentInputBuilder) -> impl Future<Output = Result<DeleteComputeEnvironmentOutput, SdkError<DeleteComputeEnvironmentError>>> {
-        (*self).delete_compute_environment(builder)
+        self.deref().delete_compute_environment(builder)
     }
     fn delete_job_queue(&self, builder: DeleteJobQueueInputBuilder) -> impl Future<Output = Result<DeleteJobQueueOutput, SdkError<DeleteJobQueueError>>> {
-        (*self).delete_job_queue(builder)
+        self.deref().delete_job_queue(builder)
     }
     fn delete_scheduling_policy(&self, builder: DeleteSchedulingPolicyInputBuilder) -> impl Future<Output = Result<DeleteSchedulingPolicyOutput, SdkError<DeleteSchedulingPolicyError>>> {
-        (*self).delete_scheduling_policy(builder)
+        self.deref().delete_scheduling_policy(builder)
     }
     fn deregister_job_definition(&self, builder: DeregisterJobDefinitionInputBuilder) -> impl Future<Output = Result<DeregisterJobDefinitionOutput, SdkError<DeregisterJobDefinitionError>>> {
-        (*self).deregister_job_definition(builder)
+        self.deref().deregister_job_definition(builder)
     }
     fn describe_compute_environments(&self, builder: DescribeComputeEnvironmentsInputBuilder) -> impl Future<Output = Result<DescribeComputeEnvironmentsOutput, SdkError<DescribeComputeEnvironmentsError>>> {
-        (*self).describe_compute_environments(builder)
+        self.deref().describe_compute_environments(builder)
     }
     fn describe_job_definitions(&self, builder: DescribeJobDefinitionsInputBuilder) -> impl Future<Output = Result<DescribeJobDefinitionsOutput, SdkError<DescribeJobDefinitionsError>>> {
-        (*self).describe_job_definitions(builder)
+        self.deref().describe_job_definitions(builder)
     }
     fn describe_job_queues(&self, builder: DescribeJobQueuesInputBuilder) -> impl Future<Output = Result<DescribeJobQueuesOutput, SdkError<DescribeJobQueuesError>>> {
-        (*self).describe_job_queues(builder)
+        self.deref().describe_job_queues(builder)
     }
     fn describe_jobs(&self, builder: DescribeJobsInputBuilder) -> impl Future<Output = Result<DescribeJobsOutput, SdkError<DescribeJobsError>>> {
-        (*self).describe_jobs(builder)
+        self.deref().describe_jobs(builder)
     }
     fn describe_scheduling_policies(&self, builder: DescribeSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<DescribeSchedulingPoliciesOutput, SdkError<DescribeSchedulingPoliciesError>>> {
-        (*self).describe_scheduling_policies(builder)
+        self.deref().describe_scheduling_policies(builder)
     }
     fn get_job_queue_snapshot(&self, builder: GetJobQueueSnapshotInputBuilder) -> impl Future<Output = Result<GetJobQueueSnapshotOutput, SdkError<GetJobQueueSnapshotError>>> {
-        (*self).get_job_queue_snapshot(builder)
+        self.deref().get_job_queue_snapshot(builder)
     }
     fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>> {
-        (*self).list_jobs(builder)
+        self.deref().list_jobs(builder)
     }
     fn list_scheduling_policies(&self, builder: ListSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<ListSchedulingPoliciesOutput, SdkError<ListSchedulingPoliciesError>>> {
-        (*self).list_scheduling_policies(builder)
+        self.deref().list_scheduling_policies(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn register_job_definition(&self, builder: RegisterJobDefinitionInputBuilder) -> impl Future<Output = Result<RegisterJobDefinitionOutput, SdkError<RegisterJobDefinitionError>>> {
-        (*self).register_job_definition(builder)
+        self.deref().register_job_definition(builder)
     }
     fn submit_job(&self, builder: SubmitJobInputBuilder) -> impl Future<Output = Result<SubmitJobOutput, SdkError<SubmitJobError>>> {
-        (*self).submit_job(builder)
+        self.deref().submit_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn terminate_job(&self, builder: TerminateJobInputBuilder) -> impl Future<Output = Result<TerminateJobOutput, SdkError<TerminateJobError>>> {
-        (*self).terminate_job(builder)
+        self.deref().terminate_job(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_compute_environment(&self, builder: UpdateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<UpdateComputeEnvironmentOutput, SdkError<UpdateComputeEnvironmentError>>> {
-        (*self).update_compute_environment(builder)
+        self.deref().update_compute_environment(builder)
     }
     fn update_job_queue(&self, builder: UpdateJobQueueInputBuilder) -> impl Future<Output = Result<UpdateJobQueueOutput, SdkError<UpdateJobQueueError>>> {
-        (*self).update_job_queue(builder)
+        self.deref().update_job_queue(builder)
     }
     fn update_scheduling_policy(&self, builder: UpdateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<UpdateSchedulingPolicyOutput, SdkError<UpdateSchedulingPolicyError>>> {
-        (*self).update_scheduling_policy(builder)
+        self.deref().update_scheduling_policy(builder)
     }
 }
 #[cfg(feature = "mockall")]

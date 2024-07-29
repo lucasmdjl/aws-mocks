@@ -43,6 +43,7 @@ use aws_sdk_secretsmanager::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_secretsmanager::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_secretsmanager::*;
 
@@ -146,75 +147,77 @@ impl SecretsManagerClient for SecretsManagerClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: SecretsManagerClient> SecretsManagerClient for &T {
+impl <T> SecretsManagerClient for T
+where T: Deref,
+      T::Target: SecretsManagerClient {
     fn batch_get_secret_value(&self, builder: BatchGetSecretValueInputBuilder) -> impl Future<Output = Result<BatchGetSecretValueOutput, SdkError<BatchGetSecretValueError>>> {
-        (*self).batch_get_secret_value(builder)
+        self.deref().batch_get_secret_value(builder)
     }
     fn cancel_rotate_secret(&self, builder: CancelRotateSecretInputBuilder) -> impl Future<Output = Result<CancelRotateSecretOutput, SdkError<CancelRotateSecretError>>> {
-        (*self).cancel_rotate_secret(builder)
+        self.deref().cancel_rotate_secret(builder)
     }
     fn create_secret(&self, builder: CreateSecretInputBuilder) -> impl Future<Output = Result<CreateSecretOutput, SdkError<CreateSecretError>>> {
-        (*self).create_secret(builder)
+        self.deref().create_secret(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_secret(&self, builder: DeleteSecretInputBuilder) -> impl Future<Output = Result<DeleteSecretOutput, SdkError<DeleteSecretError>>> {
-        (*self).delete_secret(builder)
+        self.deref().delete_secret(builder)
     }
     fn describe_secret(&self, builder: DescribeSecretInputBuilder) -> impl Future<Output = Result<DescribeSecretOutput, SdkError<DescribeSecretError>>> {
-        (*self).describe_secret(builder)
+        self.deref().describe_secret(builder)
     }
     fn get_random_password(&self, builder: GetRandomPasswordInputBuilder) -> impl Future<Output = Result<GetRandomPasswordOutput, SdkError<GetRandomPasswordError>>> {
-        (*self).get_random_password(builder)
+        self.deref().get_random_password(builder)
     }
     fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> {
-        (*self).get_resource_policy(builder)
+        self.deref().get_resource_policy(builder)
     }
     fn get_secret_value(&self, builder: GetSecretValueInputBuilder) -> impl Future<Output = Result<GetSecretValueOutput, SdkError<GetSecretValueError>>> {
-        (*self).get_secret_value(builder)
+        self.deref().get_secret_value(builder)
     }
     fn list_secret_version_ids(&self, builder: ListSecretVersionIdsInputBuilder) -> impl Future<Output = Result<ListSecretVersionIdsOutput, SdkError<ListSecretVersionIdsError>>> {
-        (*self).list_secret_version_ids(builder)
+        self.deref().list_secret_version_ids(builder)
     }
     fn list_secrets(&self, builder: ListSecretsInputBuilder) -> impl Future<Output = Result<ListSecretsOutput, SdkError<ListSecretsError>>> {
-        (*self).list_secrets(builder)
+        self.deref().list_secrets(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn put_secret_value(&self, builder: PutSecretValueInputBuilder) -> impl Future<Output = Result<PutSecretValueOutput, SdkError<PutSecretValueError>>> {
-        (*self).put_secret_value(builder)
+        self.deref().put_secret_value(builder)
     }
     fn remove_regions_from_replication(&self, builder: RemoveRegionsFromReplicationInputBuilder) -> impl Future<Output = Result<RemoveRegionsFromReplicationOutput, SdkError<RemoveRegionsFromReplicationError>>> {
-        (*self).remove_regions_from_replication(builder)
+        self.deref().remove_regions_from_replication(builder)
     }
     fn replicate_secret_to_regions(&self, builder: ReplicateSecretToRegionsInputBuilder) -> impl Future<Output = Result<ReplicateSecretToRegionsOutput, SdkError<ReplicateSecretToRegionsError>>> {
-        (*self).replicate_secret_to_regions(builder)
+        self.deref().replicate_secret_to_regions(builder)
     }
     fn restore_secret(&self, builder: RestoreSecretInputBuilder) -> impl Future<Output = Result<RestoreSecretOutput, SdkError<RestoreSecretError>>> {
-        (*self).restore_secret(builder)
+        self.deref().restore_secret(builder)
     }
     fn rotate_secret(&self, builder: RotateSecretInputBuilder) -> impl Future<Output = Result<RotateSecretOutput, SdkError<RotateSecretError>>> {
-        (*self).rotate_secret(builder)
+        self.deref().rotate_secret(builder)
     }
     fn stop_replication_to_replica(&self, builder: StopReplicationToReplicaInputBuilder) -> impl Future<Output = Result<StopReplicationToReplicaOutput, SdkError<StopReplicationToReplicaError>>> {
-        (*self).stop_replication_to_replica(builder)
+        self.deref().stop_replication_to_replica(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_secret(&self, builder: UpdateSecretInputBuilder) -> impl Future<Output = Result<UpdateSecretOutput, SdkError<UpdateSecretError>>> {
-        (*self).update_secret(builder)
+        self.deref().update_secret(builder)
     }
     fn update_secret_version_stage(&self, builder: UpdateSecretVersionStageInputBuilder) -> impl Future<Output = Result<UpdateSecretVersionStageOutput, SdkError<UpdateSecretVersionStageError>>> {
-        (*self).update_secret_version_stage(builder)
+        self.deref().update_secret_version_stage(builder)
     }
     fn validate_resource_policy(&self, builder: ValidateResourcePolicyInputBuilder) -> impl Future<Output = Result<ValidateResourcePolicyOutput, SdkError<ValidateResourcePolicyError>>> {
-        (*self).validate_resource_policy(builder)
+        self.deref().validate_resource_policy(builder)
     }
 }
 #[cfg(feature = "mockall")]

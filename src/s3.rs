@@ -115,6 +115,7 @@ use aws_sdk_s3::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_s3::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_s3::*;
 
@@ -506,291 +507,293 @@ impl S3Client for S3ClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: S3Client> S3Client for &T {
+impl <T> S3Client for T
+where T: Deref,
+      T::Target: S3Client {
     fn abort_multipart_upload(&self, builder: AbortMultipartUploadInputBuilder) -> impl Future<Output = Result<AbortMultipartUploadOutput, SdkError<AbortMultipartUploadError>>> {
-        (*self).abort_multipart_upload(builder)
+        self.deref().abort_multipart_upload(builder)
     }
     fn complete_multipart_upload(&self, builder: CompleteMultipartUploadInputBuilder) -> impl Future<Output = Result<CompleteMultipartUploadOutput, SdkError<CompleteMultipartUploadError>>> {
-        (*self).complete_multipart_upload(builder)
+        self.deref().complete_multipart_upload(builder)
     }
     fn copy_object(&self, builder: CopyObjectInputBuilder) -> impl Future<Output = Result<CopyObjectOutput, SdkError<CopyObjectError>>> {
-        (*self).copy_object(builder)
+        self.deref().copy_object(builder)
     }
     fn create_bucket(&self, builder: CreateBucketInputBuilder) -> impl Future<Output = Result<CreateBucketOutput, SdkError<CreateBucketError>>> {
-        (*self).create_bucket(builder)
+        self.deref().create_bucket(builder)
     }
     fn create_multipart_upload(&self, builder: CreateMultipartUploadInputBuilder) -> impl Future<Output = Result<CreateMultipartUploadOutput, SdkError<CreateMultipartUploadError>>> {
-        (*self).create_multipart_upload(builder)
+        self.deref().create_multipart_upload(builder)
     }
     fn create_session(&self, builder: CreateSessionInputBuilder) -> impl Future<Output = Result<CreateSessionOutput, SdkError<CreateSessionError>>> {
-        (*self).create_session(builder)
+        self.deref().create_session(builder)
     }
     fn delete_bucket(&self, builder: DeleteBucketInputBuilder) -> impl Future<Output = Result<DeleteBucketOutput, SdkError<DeleteBucketError>>> {
-        (*self).delete_bucket(builder)
+        self.deref().delete_bucket(builder)
     }
     fn delete_bucket_analytics_configuration(&self, builder: DeleteBucketAnalyticsConfigurationInputBuilder) -> impl Future<Output = Result<DeleteBucketAnalyticsConfigurationOutput, SdkError<DeleteBucketAnalyticsConfigurationError>>> {
-        (*self).delete_bucket_analytics_configuration(builder)
+        self.deref().delete_bucket_analytics_configuration(builder)
     }
     fn delete_bucket_cors(&self, builder: DeleteBucketCorsInputBuilder) -> impl Future<Output = Result<DeleteBucketCorsOutput, SdkError<DeleteBucketCorsError>>> {
-        (*self).delete_bucket_cors(builder)
+        self.deref().delete_bucket_cors(builder)
     }
     fn delete_bucket_encryption(&self, builder: DeleteBucketEncryptionInputBuilder) -> impl Future<Output = Result<DeleteBucketEncryptionOutput, SdkError<DeleteBucketEncryptionError>>> {
-        (*self).delete_bucket_encryption(builder)
+        self.deref().delete_bucket_encryption(builder)
     }
     fn delete_bucket_intelligent_tiering_configuration(&self, builder: DeleteBucketIntelligentTieringConfigurationInputBuilder) -> impl Future<Output = Result<DeleteBucketIntelligentTieringConfigurationOutput, SdkError<DeleteBucketIntelligentTieringConfigurationError>>> {
-        (*self).delete_bucket_intelligent_tiering_configuration(builder)
+        self.deref().delete_bucket_intelligent_tiering_configuration(builder)
     }
     fn delete_bucket_inventory_configuration(&self, builder: DeleteBucketInventoryConfigurationInputBuilder) -> impl Future<Output = Result<DeleteBucketInventoryConfigurationOutput, SdkError<DeleteBucketInventoryConfigurationError>>> {
-        (*self).delete_bucket_inventory_configuration(builder)
+        self.deref().delete_bucket_inventory_configuration(builder)
     }
     fn delete_bucket_lifecycle(&self, builder: DeleteBucketLifecycleInputBuilder) -> impl Future<Output = Result<DeleteBucketLifecycleOutput, SdkError<DeleteBucketLifecycleError>>> {
-        (*self).delete_bucket_lifecycle(builder)
+        self.deref().delete_bucket_lifecycle(builder)
     }
     fn delete_bucket_metrics_configuration(&self, builder: DeleteBucketMetricsConfigurationInputBuilder) -> impl Future<Output = Result<DeleteBucketMetricsConfigurationOutput, SdkError<DeleteBucketMetricsConfigurationError>>> {
-        (*self).delete_bucket_metrics_configuration(builder)
+        self.deref().delete_bucket_metrics_configuration(builder)
     }
     fn delete_bucket_ownership_controls(&self, builder: DeleteBucketOwnershipControlsInputBuilder) -> impl Future<Output = Result<DeleteBucketOwnershipControlsOutput, SdkError<DeleteBucketOwnershipControlsError>>> {
-        (*self).delete_bucket_ownership_controls(builder)
+        self.deref().delete_bucket_ownership_controls(builder)
     }
     fn delete_bucket_policy(&self, builder: DeleteBucketPolicyInputBuilder) -> impl Future<Output = Result<DeleteBucketPolicyOutput, SdkError<DeleteBucketPolicyError>>> {
-        (*self).delete_bucket_policy(builder)
+        self.deref().delete_bucket_policy(builder)
     }
     fn delete_bucket_replication(&self, builder: DeleteBucketReplicationInputBuilder) -> impl Future<Output = Result<DeleteBucketReplicationOutput, SdkError<DeleteBucketReplicationError>>> {
-        (*self).delete_bucket_replication(builder)
+        self.deref().delete_bucket_replication(builder)
     }
     fn delete_bucket_tagging(&self, builder: DeleteBucketTaggingInputBuilder) -> impl Future<Output = Result<DeleteBucketTaggingOutput, SdkError<DeleteBucketTaggingError>>> {
-        (*self).delete_bucket_tagging(builder)
+        self.deref().delete_bucket_tagging(builder)
     }
     fn delete_bucket_website(&self, builder: DeleteBucketWebsiteInputBuilder) -> impl Future<Output = Result<DeleteBucketWebsiteOutput, SdkError<DeleteBucketWebsiteError>>> {
-        (*self).delete_bucket_website(builder)
+        self.deref().delete_bucket_website(builder)
     }
     fn delete_object(&self, builder: DeleteObjectInputBuilder) -> impl Future<Output = Result<DeleteObjectOutput, SdkError<DeleteObjectError>>> {
-        (*self).delete_object(builder)
+        self.deref().delete_object(builder)
     }
     fn delete_object_tagging(&self, builder: DeleteObjectTaggingInputBuilder) -> impl Future<Output = Result<DeleteObjectTaggingOutput, SdkError<DeleteObjectTaggingError>>> {
-        (*self).delete_object_tagging(builder)
+        self.deref().delete_object_tagging(builder)
     }
     fn delete_objects(&self, builder: DeleteObjectsInputBuilder) -> impl Future<Output = Result<DeleteObjectsOutput, SdkError<DeleteObjectsError>>> {
-        (*self).delete_objects(builder)
+        self.deref().delete_objects(builder)
     }
     fn delete_public_access_block(&self, builder: DeletePublicAccessBlockInputBuilder) -> impl Future<Output = Result<DeletePublicAccessBlockOutput, SdkError<DeletePublicAccessBlockError>>> {
-        (*self).delete_public_access_block(builder)
+        self.deref().delete_public_access_block(builder)
     }
     fn get_bucket_accelerate_configuration(&self, builder: GetBucketAccelerateConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketAccelerateConfigurationOutput, SdkError<GetBucketAccelerateConfigurationError>>> {
-        (*self).get_bucket_accelerate_configuration(builder)
+        self.deref().get_bucket_accelerate_configuration(builder)
     }
     fn get_bucket_acl(&self, builder: GetBucketAclInputBuilder) -> impl Future<Output = Result<GetBucketAclOutput, SdkError<GetBucketAclError>>> {
-        (*self).get_bucket_acl(builder)
+        self.deref().get_bucket_acl(builder)
     }
     fn get_bucket_analytics_configuration(&self, builder: GetBucketAnalyticsConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketAnalyticsConfigurationOutput, SdkError<GetBucketAnalyticsConfigurationError>>> {
-        (*self).get_bucket_analytics_configuration(builder)
+        self.deref().get_bucket_analytics_configuration(builder)
     }
     fn get_bucket_cors(&self, builder: GetBucketCorsInputBuilder) -> impl Future<Output = Result<GetBucketCorsOutput, SdkError<GetBucketCorsError>>> {
-        (*self).get_bucket_cors(builder)
+        self.deref().get_bucket_cors(builder)
     }
     fn get_bucket_encryption(&self, builder: GetBucketEncryptionInputBuilder) -> impl Future<Output = Result<GetBucketEncryptionOutput, SdkError<GetBucketEncryptionError>>> {
-        (*self).get_bucket_encryption(builder)
+        self.deref().get_bucket_encryption(builder)
     }
     fn get_bucket_intelligent_tiering_configuration(&self, builder: GetBucketIntelligentTieringConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketIntelligentTieringConfigurationOutput, SdkError<GetBucketIntelligentTieringConfigurationError>>> {
-        (*self).get_bucket_intelligent_tiering_configuration(builder)
+        self.deref().get_bucket_intelligent_tiering_configuration(builder)
     }
     fn get_bucket_inventory_configuration(&self, builder: GetBucketInventoryConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketInventoryConfigurationOutput, SdkError<GetBucketInventoryConfigurationError>>> {
-        (*self).get_bucket_inventory_configuration(builder)
+        self.deref().get_bucket_inventory_configuration(builder)
     }
     fn get_bucket_lifecycle_configuration(&self, builder: GetBucketLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketLifecycleConfigurationOutput, SdkError<GetBucketLifecycleConfigurationError>>> {
-        (*self).get_bucket_lifecycle_configuration(builder)
+        self.deref().get_bucket_lifecycle_configuration(builder)
     }
     fn get_bucket_location(&self, builder: GetBucketLocationInputBuilder) -> impl Future<Output = Result<GetBucketLocationOutput, SdkError<GetBucketLocationError>>> {
-        (*self).get_bucket_location(builder)
+        self.deref().get_bucket_location(builder)
     }
     fn get_bucket_logging(&self, builder: GetBucketLoggingInputBuilder) -> impl Future<Output = Result<GetBucketLoggingOutput, SdkError<GetBucketLoggingError>>> {
-        (*self).get_bucket_logging(builder)
+        self.deref().get_bucket_logging(builder)
     }
     fn get_bucket_metrics_configuration(&self, builder: GetBucketMetricsConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketMetricsConfigurationOutput, SdkError<GetBucketMetricsConfigurationError>>> {
-        (*self).get_bucket_metrics_configuration(builder)
+        self.deref().get_bucket_metrics_configuration(builder)
     }
     fn get_bucket_notification_configuration(&self, builder: GetBucketNotificationConfigurationInputBuilder) -> impl Future<Output = Result<GetBucketNotificationConfigurationOutput, SdkError<GetBucketNotificationConfigurationError>>> {
-        (*self).get_bucket_notification_configuration(builder)
+        self.deref().get_bucket_notification_configuration(builder)
     }
     fn get_bucket_ownership_controls(&self, builder: GetBucketOwnershipControlsInputBuilder) -> impl Future<Output = Result<GetBucketOwnershipControlsOutput, SdkError<GetBucketOwnershipControlsError>>> {
-        (*self).get_bucket_ownership_controls(builder)
+        self.deref().get_bucket_ownership_controls(builder)
     }
     fn get_bucket_policy(&self, builder: GetBucketPolicyInputBuilder) -> impl Future<Output = Result<GetBucketPolicyOutput, SdkError<GetBucketPolicyError>>> {
-        (*self).get_bucket_policy(builder)
+        self.deref().get_bucket_policy(builder)
     }
     fn get_bucket_policy_status(&self, builder: GetBucketPolicyStatusInputBuilder) -> impl Future<Output = Result<GetBucketPolicyStatusOutput, SdkError<GetBucketPolicyStatusError>>> {
-        (*self).get_bucket_policy_status(builder)
+        self.deref().get_bucket_policy_status(builder)
     }
     fn get_bucket_replication(&self, builder: GetBucketReplicationInputBuilder) -> impl Future<Output = Result<GetBucketReplicationOutput, SdkError<GetBucketReplicationError>>> {
-        (*self).get_bucket_replication(builder)
+        self.deref().get_bucket_replication(builder)
     }
     fn get_bucket_request_payment(&self, builder: GetBucketRequestPaymentInputBuilder) -> impl Future<Output = Result<GetBucketRequestPaymentOutput, SdkError<GetBucketRequestPaymentError>>> {
-        (*self).get_bucket_request_payment(builder)
+        self.deref().get_bucket_request_payment(builder)
     }
     fn get_bucket_tagging(&self, builder: GetBucketTaggingInputBuilder) -> impl Future<Output = Result<GetBucketTaggingOutput, SdkError<GetBucketTaggingError>>> {
-        (*self).get_bucket_tagging(builder)
+        self.deref().get_bucket_tagging(builder)
     }
     fn get_bucket_versioning(&self, builder: GetBucketVersioningInputBuilder) -> impl Future<Output = Result<GetBucketVersioningOutput, SdkError<GetBucketVersioningError>>> {
-        (*self).get_bucket_versioning(builder)
+        self.deref().get_bucket_versioning(builder)
     }
     fn get_bucket_website(&self, builder: GetBucketWebsiteInputBuilder) -> impl Future<Output = Result<GetBucketWebsiteOutput, SdkError<GetBucketWebsiteError>>> {
-        (*self).get_bucket_website(builder)
+        self.deref().get_bucket_website(builder)
     }
     fn get_object(&self, builder: GetObjectInputBuilder) -> impl Future<Output = Result<GetObjectOutput, SdkError<GetObjectError>>> {
-        (*self).get_object(builder)
+        self.deref().get_object(builder)
     }
     fn get_object_acl(&self, builder: GetObjectAclInputBuilder) -> impl Future<Output = Result<GetObjectAclOutput, SdkError<GetObjectAclError>>> {
-        (*self).get_object_acl(builder)
+        self.deref().get_object_acl(builder)
     }
     fn get_object_attributes(&self, builder: GetObjectAttributesInputBuilder) -> impl Future<Output = Result<GetObjectAttributesOutput, SdkError<GetObjectAttributesError>>> {
-        (*self).get_object_attributes(builder)
+        self.deref().get_object_attributes(builder)
     }
     fn get_object_legal_hold(&self, builder: GetObjectLegalHoldInputBuilder) -> impl Future<Output = Result<GetObjectLegalHoldOutput, SdkError<GetObjectLegalHoldError>>> {
-        (*self).get_object_legal_hold(builder)
+        self.deref().get_object_legal_hold(builder)
     }
     fn get_object_lock_configuration(&self, builder: GetObjectLockConfigurationInputBuilder) -> impl Future<Output = Result<GetObjectLockConfigurationOutput, SdkError<GetObjectLockConfigurationError>>> {
-        (*self).get_object_lock_configuration(builder)
+        self.deref().get_object_lock_configuration(builder)
     }
     fn get_object_retention(&self, builder: GetObjectRetentionInputBuilder) -> impl Future<Output = Result<GetObjectRetentionOutput, SdkError<GetObjectRetentionError>>> {
-        (*self).get_object_retention(builder)
+        self.deref().get_object_retention(builder)
     }
     fn get_object_tagging(&self, builder: GetObjectTaggingInputBuilder) -> impl Future<Output = Result<GetObjectTaggingOutput, SdkError<GetObjectTaggingError>>> {
-        (*self).get_object_tagging(builder)
+        self.deref().get_object_tagging(builder)
     }
     fn get_object_torrent(&self, builder: GetObjectTorrentInputBuilder) -> impl Future<Output = Result<GetObjectTorrentOutput, SdkError<GetObjectTorrentError>>> {
-        (*self).get_object_torrent(builder)
+        self.deref().get_object_torrent(builder)
     }
     fn get_public_access_block(&self, builder: GetPublicAccessBlockInputBuilder) -> impl Future<Output = Result<GetPublicAccessBlockOutput, SdkError<GetPublicAccessBlockError>>> {
-        (*self).get_public_access_block(builder)
+        self.deref().get_public_access_block(builder)
     }
     fn head_bucket(&self, builder: HeadBucketInputBuilder) -> impl Future<Output = Result<HeadBucketOutput, SdkError<HeadBucketError>>> {
-        (*self).head_bucket(builder)
+        self.deref().head_bucket(builder)
     }
     fn head_object(&self, builder: HeadObjectInputBuilder) -> impl Future<Output = Result<HeadObjectOutput, SdkError<HeadObjectError>>> {
-        (*self).head_object(builder)
+        self.deref().head_object(builder)
     }
     fn list_bucket_analytics_configurations(&self, builder: ListBucketAnalyticsConfigurationsInputBuilder) -> impl Future<Output = Result<ListBucketAnalyticsConfigurationsOutput, SdkError<ListBucketAnalyticsConfigurationsError>>> {
-        (*self).list_bucket_analytics_configurations(builder)
+        self.deref().list_bucket_analytics_configurations(builder)
     }
     fn list_bucket_intelligent_tiering_configurations(&self, builder: ListBucketIntelligentTieringConfigurationsInputBuilder) -> impl Future<Output = Result<ListBucketIntelligentTieringConfigurationsOutput, SdkError<ListBucketIntelligentTieringConfigurationsError>>> {
-        (*self).list_bucket_intelligent_tiering_configurations(builder)
+        self.deref().list_bucket_intelligent_tiering_configurations(builder)
     }
     fn list_bucket_inventory_configurations(&self, builder: ListBucketInventoryConfigurationsInputBuilder) -> impl Future<Output = Result<ListBucketInventoryConfigurationsOutput, SdkError<ListBucketInventoryConfigurationsError>>> {
-        (*self).list_bucket_inventory_configurations(builder)
+        self.deref().list_bucket_inventory_configurations(builder)
     }
     fn list_bucket_metrics_configurations(&self, builder: ListBucketMetricsConfigurationsInputBuilder) -> impl Future<Output = Result<ListBucketMetricsConfigurationsOutput, SdkError<ListBucketMetricsConfigurationsError>>> {
-        (*self).list_bucket_metrics_configurations(builder)
+        self.deref().list_bucket_metrics_configurations(builder)
     }
     fn list_buckets(&self, builder: ListBucketsInputBuilder) -> impl Future<Output = Result<ListBucketsOutput, SdkError<ListBucketsError>>> {
-        (*self).list_buckets(builder)
+        self.deref().list_buckets(builder)
     }
     fn list_directory_buckets(&self, builder: ListDirectoryBucketsInputBuilder) -> impl Future<Output = Result<ListDirectoryBucketsOutput, SdkError<ListDirectoryBucketsError>>> {
-        (*self).list_directory_buckets(builder)
+        self.deref().list_directory_buckets(builder)
     }
     fn list_multipart_uploads(&self, builder: ListMultipartUploadsInputBuilder) -> impl Future<Output = Result<ListMultipartUploadsOutput, SdkError<ListMultipartUploadsError>>> {
-        (*self).list_multipart_uploads(builder)
+        self.deref().list_multipart_uploads(builder)
     }
     fn list_object_versions(&self, builder: ListObjectVersionsInputBuilder) -> impl Future<Output = Result<ListObjectVersionsOutput, SdkError<ListObjectVersionsError>>> {
-        (*self).list_object_versions(builder)
+        self.deref().list_object_versions(builder)
     }
     fn list_objects(&self, builder: ListObjectsInputBuilder) -> impl Future<Output = Result<ListObjectsOutput, SdkError<ListObjectsError>>> {
-        (*self).list_objects(builder)
+        self.deref().list_objects(builder)
     }
     fn list_objects_v2(&self, builder: ListObjectsV2InputBuilder) -> impl Future<Output = Result<ListObjectsV2Output, SdkError<ListObjectsV2Error>>> {
-        (*self).list_objects_v2(builder)
+        self.deref().list_objects_v2(builder)
     }
     fn list_parts(&self, builder: ListPartsInputBuilder) -> impl Future<Output = Result<ListPartsOutput, SdkError<ListPartsError>>> {
-        (*self).list_parts(builder)
+        self.deref().list_parts(builder)
     }
     fn put_bucket_accelerate_configuration(&self, builder: PutBucketAccelerateConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketAccelerateConfigurationOutput, SdkError<PutBucketAccelerateConfigurationError>>> {
-        (*self).put_bucket_accelerate_configuration(builder)
+        self.deref().put_bucket_accelerate_configuration(builder)
     }
     fn put_bucket_acl(&self, builder: PutBucketAclInputBuilder) -> impl Future<Output = Result<PutBucketAclOutput, SdkError<PutBucketAclError>>> {
-        (*self).put_bucket_acl(builder)
+        self.deref().put_bucket_acl(builder)
     }
     fn put_bucket_analytics_configuration(&self, builder: PutBucketAnalyticsConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketAnalyticsConfigurationOutput, SdkError<PutBucketAnalyticsConfigurationError>>> {
-        (*self).put_bucket_analytics_configuration(builder)
+        self.deref().put_bucket_analytics_configuration(builder)
     }
     fn put_bucket_cors(&self, builder: PutBucketCorsInputBuilder) -> impl Future<Output = Result<PutBucketCorsOutput, SdkError<PutBucketCorsError>>> {
-        (*self).put_bucket_cors(builder)
+        self.deref().put_bucket_cors(builder)
     }
     fn put_bucket_encryption(&self, builder: PutBucketEncryptionInputBuilder) -> impl Future<Output = Result<PutBucketEncryptionOutput, SdkError<PutBucketEncryptionError>>> {
-        (*self).put_bucket_encryption(builder)
+        self.deref().put_bucket_encryption(builder)
     }
     fn put_bucket_intelligent_tiering_configuration(&self, builder: PutBucketIntelligentTieringConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketIntelligentTieringConfigurationOutput, SdkError<PutBucketIntelligentTieringConfigurationError>>> {
-        (*self).put_bucket_intelligent_tiering_configuration(builder)
+        self.deref().put_bucket_intelligent_tiering_configuration(builder)
     }
     fn put_bucket_inventory_configuration(&self, builder: PutBucketInventoryConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketInventoryConfigurationOutput, SdkError<PutBucketInventoryConfigurationError>>> {
-        (*self).put_bucket_inventory_configuration(builder)
+        self.deref().put_bucket_inventory_configuration(builder)
     }
     fn put_bucket_lifecycle_configuration(&self, builder: PutBucketLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketLifecycleConfigurationOutput, SdkError<PutBucketLifecycleConfigurationError>>> {
-        (*self).put_bucket_lifecycle_configuration(builder)
+        self.deref().put_bucket_lifecycle_configuration(builder)
     }
     fn put_bucket_logging(&self, builder: PutBucketLoggingInputBuilder) -> impl Future<Output = Result<PutBucketLoggingOutput, SdkError<PutBucketLoggingError>>> {
-        (*self).put_bucket_logging(builder)
+        self.deref().put_bucket_logging(builder)
     }
     fn put_bucket_metrics_configuration(&self, builder: PutBucketMetricsConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketMetricsConfigurationOutput, SdkError<PutBucketMetricsConfigurationError>>> {
-        (*self).put_bucket_metrics_configuration(builder)
+        self.deref().put_bucket_metrics_configuration(builder)
     }
     fn put_bucket_notification_configuration(&self, builder: PutBucketNotificationConfigurationInputBuilder) -> impl Future<Output = Result<PutBucketNotificationConfigurationOutput, SdkError<PutBucketNotificationConfigurationError>>> {
-        (*self).put_bucket_notification_configuration(builder)
+        self.deref().put_bucket_notification_configuration(builder)
     }
     fn put_bucket_ownership_controls(&self, builder: PutBucketOwnershipControlsInputBuilder) -> impl Future<Output = Result<PutBucketOwnershipControlsOutput, SdkError<PutBucketOwnershipControlsError>>> {
-        (*self).put_bucket_ownership_controls(builder)
+        self.deref().put_bucket_ownership_controls(builder)
     }
     fn put_bucket_policy(&self, builder: PutBucketPolicyInputBuilder) -> impl Future<Output = Result<PutBucketPolicyOutput, SdkError<PutBucketPolicyError>>> {
-        (*self).put_bucket_policy(builder)
+        self.deref().put_bucket_policy(builder)
     }
     fn put_bucket_replication(&self, builder: PutBucketReplicationInputBuilder) -> impl Future<Output = Result<PutBucketReplicationOutput, SdkError<PutBucketReplicationError>>> {
-        (*self).put_bucket_replication(builder)
+        self.deref().put_bucket_replication(builder)
     }
     fn put_bucket_request_payment(&self, builder: PutBucketRequestPaymentInputBuilder) -> impl Future<Output = Result<PutBucketRequestPaymentOutput, SdkError<PutBucketRequestPaymentError>>> {
-        (*self).put_bucket_request_payment(builder)
+        self.deref().put_bucket_request_payment(builder)
     }
     fn put_bucket_tagging(&self, builder: PutBucketTaggingInputBuilder) -> impl Future<Output = Result<PutBucketTaggingOutput, SdkError<PutBucketTaggingError>>> {
-        (*self).put_bucket_tagging(builder)
+        self.deref().put_bucket_tagging(builder)
     }
     fn put_bucket_versioning(&self, builder: PutBucketVersioningInputBuilder) -> impl Future<Output = Result<PutBucketVersioningOutput, SdkError<PutBucketVersioningError>>> {
-        (*self).put_bucket_versioning(builder)
+        self.deref().put_bucket_versioning(builder)
     }
     fn put_bucket_website(&self, builder: PutBucketWebsiteInputBuilder) -> impl Future<Output = Result<PutBucketWebsiteOutput, SdkError<PutBucketWebsiteError>>> {
-        (*self).put_bucket_website(builder)
+        self.deref().put_bucket_website(builder)
     }
     fn put_object(&self, builder: PutObjectInputBuilder) -> impl Future<Output = Result<PutObjectOutput, SdkError<PutObjectError>>> {
-        (*self).put_object(builder)
+        self.deref().put_object(builder)
     }
     fn put_object_acl(&self, builder: PutObjectAclInputBuilder) -> impl Future<Output = Result<PutObjectAclOutput, SdkError<PutObjectAclError>>> {
-        (*self).put_object_acl(builder)
+        self.deref().put_object_acl(builder)
     }
     fn put_object_legal_hold(&self, builder: PutObjectLegalHoldInputBuilder) -> impl Future<Output = Result<PutObjectLegalHoldOutput, SdkError<PutObjectLegalHoldError>>> {
-        (*self).put_object_legal_hold(builder)
+        self.deref().put_object_legal_hold(builder)
     }
     fn put_object_lock_configuration(&self, builder: PutObjectLockConfigurationInputBuilder) -> impl Future<Output = Result<PutObjectLockConfigurationOutput, SdkError<PutObjectLockConfigurationError>>> {
-        (*self).put_object_lock_configuration(builder)
+        self.deref().put_object_lock_configuration(builder)
     }
     fn put_object_retention(&self, builder: PutObjectRetentionInputBuilder) -> impl Future<Output = Result<PutObjectRetentionOutput, SdkError<PutObjectRetentionError>>> {
-        (*self).put_object_retention(builder)
+        self.deref().put_object_retention(builder)
     }
     fn put_object_tagging(&self, builder: PutObjectTaggingInputBuilder) -> impl Future<Output = Result<PutObjectTaggingOutput, SdkError<PutObjectTaggingError>>> {
-        (*self).put_object_tagging(builder)
+        self.deref().put_object_tagging(builder)
     }
     fn put_public_access_block(&self, builder: PutPublicAccessBlockInputBuilder) -> impl Future<Output = Result<PutPublicAccessBlockOutput, SdkError<PutPublicAccessBlockError>>> {
-        (*self).put_public_access_block(builder)
+        self.deref().put_public_access_block(builder)
     }
     fn restore_object(&self, builder: RestoreObjectInputBuilder) -> impl Future<Output = Result<RestoreObjectOutput, SdkError<RestoreObjectError>>> {
-        (*self).restore_object(builder)
+        self.deref().restore_object(builder)
     }
     fn select_object_content(&self, builder: SelectObjectContentInputBuilder) -> impl Future<Output = Result<SelectObjectContentOutput, SdkError<SelectObjectContentError>>> {
-        (*self).select_object_content(builder)
+        self.deref().select_object_content(builder)
     }
     fn upload_part(&self, builder: UploadPartInputBuilder) -> impl Future<Output = Result<UploadPartOutput, SdkError<UploadPartError>>> {
-        (*self).upload_part(builder)
+        self.deref().upload_part(builder)
     }
     fn upload_part_copy(&self, builder: UploadPartCopyInputBuilder) -> impl Future<Output = Result<UploadPartCopyOutput, SdkError<UploadPartCopyError>>> {
-        (*self).upload_part_copy(builder)
+        self.deref().upload_part_copy(builder)
     }
     fn write_get_object_response(&self, builder: WriteGetObjectResponseInputBuilder) -> impl Future<Output = Result<WriteGetObjectResponseOutput, SdkError<WriteGetObjectResponseError>>> {
-        (*self).write_get_object_response(builder)
+        self.deref().write_get_object_response(builder)
     }
 }
 #[cfg(feature = "mockall")]

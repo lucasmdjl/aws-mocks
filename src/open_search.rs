@@ -83,6 +83,7 @@ use aws_sdk_opensearch::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_opensearch::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_opensearch::*;
 
@@ -346,195 +347,197 @@ impl OpenSearchClient for OpenSearchClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: OpenSearchClient> OpenSearchClient for &T {
+impl <T> OpenSearchClient for T
+where T: Deref,
+      T::Target: OpenSearchClient {
     fn accept_inbound_connection(&self, builder: AcceptInboundConnectionInputBuilder) -> impl Future<Output = Result<AcceptInboundConnectionOutput, SdkError<AcceptInboundConnectionError>>> {
-        (*self).accept_inbound_connection(builder)
+        self.deref().accept_inbound_connection(builder)
     }
     fn add_data_source(&self, builder: AddDataSourceInputBuilder) -> impl Future<Output = Result<AddDataSourceOutput, SdkError<AddDataSourceError>>> {
-        (*self).add_data_source(builder)
+        self.deref().add_data_source(builder)
     }
     fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>> {
-        (*self).add_tags(builder)
+        self.deref().add_tags(builder)
     }
     fn associate_package(&self, builder: AssociatePackageInputBuilder) -> impl Future<Output = Result<AssociatePackageOutput, SdkError<AssociatePackageError>>> {
-        (*self).associate_package(builder)
+        self.deref().associate_package(builder)
     }
     fn authorize_vpc_endpoint_access(&self, builder: AuthorizeVpcEndpointAccessInputBuilder) -> impl Future<Output = Result<AuthorizeVpcEndpointAccessOutput, SdkError<AuthorizeVpcEndpointAccessError>>> {
-        (*self).authorize_vpc_endpoint_access(builder)
+        self.deref().authorize_vpc_endpoint_access(builder)
     }
     fn cancel_domain_config_change(&self, builder: CancelDomainConfigChangeInputBuilder) -> impl Future<Output = Result<CancelDomainConfigChangeOutput, SdkError<CancelDomainConfigChangeError>>> {
-        (*self).cancel_domain_config_change(builder)
+        self.deref().cancel_domain_config_change(builder)
     }
     fn cancel_service_software_update(&self, builder: CancelServiceSoftwareUpdateInputBuilder) -> impl Future<Output = Result<CancelServiceSoftwareUpdateOutput, SdkError<CancelServiceSoftwareUpdateError>>> {
-        (*self).cancel_service_software_update(builder)
+        self.deref().cancel_service_software_update(builder)
     }
     fn create_domain(&self, builder: CreateDomainInputBuilder) -> impl Future<Output = Result<CreateDomainOutput, SdkError<CreateDomainError>>> {
-        (*self).create_domain(builder)
+        self.deref().create_domain(builder)
     }
     fn create_outbound_connection(&self, builder: CreateOutboundConnectionInputBuilder) -> impl Future<Output = Result<CreateOutboundConnectionOutput, SdkError<CreateOutboundConnectionError>>> {
-        (*self).create_outbound_connection(builder)
+        self.deref().create_outbound_connection(builder)
     }
     fn create_package(&self, builder: CreatePackageInputBuilder) -> impl Future<Output = Result<CreatePackageOutput, SdkError<CreatePackageError>>> {
-        (*self).create_package(builder)
+        self.deref().create_package(builder)
     }
     fn create_vpc_endpoint(&self, builder: CreateVpcEndpointInputBuilder) -> impl Future<Output = Result<CreateVpcEndpointOutput, SdkError<CreateVpcEndpointError>>> {
-        (*self).create_vpc_endpoint(builder)
+        self.deref().create_vpc_endpoint(builder)
     }
     fn delete_data_source(&self, builder: DeleteDataSourceInputBuilder) -> impl Future<Output = Result<DeleteDataSourceOutput, SdkError<DeleteDataSourceError>>> {
-        (*self).delete_data_source(builder)
+        self.deref().delete_data_source(builder)
     }
     fn delete_domain(&self, builder: DeleteDomainInputBuilder) -> impl Future<Output = Result<DeleteDomainOutput, SdkError<DeleteDomainError>>> {
-        (*self).delete_domain(builder)
+        self.deref().delete_domain(builder)
     }
     fn delete_inbound_connection(&self, builder: DeleteInboundConnectionInputBuilder) -> impl Future<Output = Result<DeleteInboundConnectionOutput, SdkError<DeleteInboundConnectionError>>> {
-        (*self).delete_inbound_connection(builder)
+        self.deref().delete_inbound_connection(builder)
     }
     fn delete_outbound_connection(&self, builder: DeleteOutboundConnectionInputBuilder) -> impl Future<Output = Result<DeleteOutboundConnectionOutput, SdkError<DeleteOutboundConnectionError>>> {
-        (*self).delete_outbound_connection(builder)
+        self.deref().delete_outbound_connection(builder)
     }
     fn delete_package(&self, builder: DeletePackageInputBuilder) -> impl Future<Output = Result<DeletePackageOutput, SdkError<DeletePackageError>>> {
-        (*self).delete_package(builder)
+        self.deref().delete_package(builder)
     }
     fn delete_vpc_endpoint(&self, builder: DeleteVpcEndpointInputBuilder) -> impl Future<Output = Result<DeleteVpcEndpointOutput, SdkError<DeleteVpcEndpointError>>> {
-        (*self).delete_vpc_endpoint(builder)
+        self.deref().delete_vpc_endpoint(builder)
     }
     fn describe_domain(&self, builder: DescribeDomainInputBuilder) -> impl Future<Output = Result<DescribeDomainOutput, SdkError<DescribeDomainError>>> {
-        (*self).describe_domain(builder)
+        self.deref().describe_domain(builder)
     }
     fn describe_domain_auto_tunes(&self, builder: DescribeDomainAutoTunesInputBuilder) -> impl Future<Output = Result<DescribeDomainAutoTunesOutput, SdkError<DescribeDomainAutoTunesError>>> {
-        (*self).describe_domain_auto_tunes(builder)
+        self.deref().describe_domain_auto_tunes(builder)
     }
     fn describe_domain_change_progress(&self, builder: DescribeDomainChangeProgressInputBuilder) -> impl Future<Output = Result<DescribeDomainChangeProgressOutput, SdkError<DescribeDomainChangeProgressError>>> {
-        (*self).describe_domain_change_progress(builder)
+        self.deref().describe_domain_change_progress(builder)
     }
     fn describe_domain_config(&self, builder: DescribeDomainConfigInputBuilder) -> impl Future<Output = Result<DescribeDomainConfigOutput, SdkError<DescribeDomainConfigError>>> {
-        (*self).describe_domain_config(builder)
+        self.deref().describe_domain_config(builder)
     }
     fn describe_domain_health(&self, builder: DescribeDomainHealthInputBuilder) -> impl Future<Output = Result<DescribeDomainHealthOutput, SdkError<DescribeDomainHealthError>>> {
-        (*self).describe_domain_health(builder)
+        self.deref().describe_domain_health(builder)
     }
     fn describe_domain_nodes(&self, builder: DescribeDomainNodesInputBuilder) -> impl Future<Output = Result<DescribeDomainNodesOutput, SdkError<DescribeDomainNodesError>>> {
-        (*self).describe_domain_nodes(builder)
+        self.deref().describe_domain_nodes(builder)
     }
     fn describe_domains(&self, builder: DescribeDomainsInputBuilder) -> impl Future<Output = Result<DescribeDomainsOutput, SdkError<DescribeDomainsError>>> {
-        (*self).describe_domains(builder)
+        self.deref().describe_domains(builder)
     }
     fn describe_dry_run_progress(&self, builder: DescribeDryRunProgressInputBuilder) -> impl Future<Output = Result<DescribeDryRunProgressOutput, SdkError<DescribeDryRunProgressError>>> {
-        (*self).describe_dry_run_progress(builder)
+        self.deref().describe_dry_run_progress(builder)
     }
     fn describe_inbound_connections(&self, builder: DescribeInboundConnectionsInputBuilder) -> impl Future<Output = Result<DescribeInboundConnectionsOutput, SdkError<DescribeInboundConnectionsError>>> {
-        (*self).describe_inbound_connections(builder)
+        self.deref().describe_inbound_connections(builder)
     }
     fn describe_instance_type_limits(&self, builder: DescribeInstanceTypeLimitsInputBuilder) -> impl Future<Output = Result<DescribeInstanceTypeLimitsOutput, SdkError<DescribeInstanceTypeLimitsError>>> {
-        (*self).describe_instance_type_limits(builder)
+        self.deref().describe_instance_type_limits(builder)
     }
     fn describe_outbound_connections(&self, builder: DescribeOutboundConnectionsInputBuilder) -> impl Future<Output = Result<DescribeOutboundConnectionsOutput, SdkError<DescribeOutboundConnectionsError>>> {
-        (*self).describe_outbound_connections(builder)
+        self.deref().describe_outbound_connections(builder)
     }
     fn describe_packages(&self, builder: DescribePackagesInputBuilder) -> impl Future<Output = Result<DescribePackagesOutput, SdkError<DescribePackagesError>>> {
-        (*self).describe_packages(builder)
+        self.deref().describe_packages(builder)
     }
     fn describe_reserved_instance_offerings(&self, builder: DescribeReservedInstanceOfferingsInputBuilder) -> impl Future<Output = Result<DescribeReservedInstanceOfferingsOutput, SdkError<DescribeReservedInstanceOfferingsError>>> {
-        (*self).describe_reserved_instance_offerings(builder)
+        self.deref().describe_reserved_instance_offerings(builder)
     }
     fn describe_reserved_instances(&self, builder: DescribeReservedInstancesInputBuilder) -> impl Future<Output = Result<DescribeReservedInstancesOutput, SdkError<DescribeReservedInstancesError>>> {
-        (*self).describe_reserved_instances(builder)
+        self.deref().describe_reserved_instances(builder)
     }
     fn describe_vpc_endpoints(&self, builder: DescribeVpcEndpointsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointsOutput, SdkError<DescribeVpcEndpointsError>>> {
-        (*self).describe_vpc_endpoints(builder)
+        self.deref().describe_vpc_endpoints(builder)
     }
     fn dissociate_package(&self, builder: DissociatePackageInputBuilder) -> impl Future<Output = Result<DissociatePackageOutput, SdkError<DissociatePackageError>>> {
-        (*self).dissociate_package(builder)
+        self.deref().dissociate_package(builder)
     }
     fn get_compatible_versions(&self, builder: GetCompatibleVersionsInputBuilder) -> impl Future<Output = Result<GetCompatibleVersionsOutput, SdkError<GetCompatibleVersionsError>>> {
-        (*self).get_compatible_versions(builder)
+        self.deref().get_compatible_versions(builder)
     }
     fn get_data_source(&self, builder: GetDataSourceInputBuilder) -> impl Future<Output = Result<GetDataSourceOutput, SdkError<GetDataSourceError>>> {
-        (*self).get_data_source(builder)
+        self.deref().get_data_source(builder)
     }
     fn get_domain_maintenance_status(&self, builder: GetDomainMaintenanceStatusInputBuilder) -> impl Future<Output = Result<GetDomainMaintenanceStatusOutput, SdkError<GetDomainMaintenanceStatusError>>> {
-        (*self).get_domain_maintenance_status(builder)
+        self.deref().get_domain_maintenance_status(builder)
     }
     fn get_package_version_history(&self, builder: GetPackageVersionHistoryInputBuilder) -> impl Future<Output = Result<GetPackageVersionHistoryOutput, SdkError<GetPackageVersionHistoryError>>> {
-        (*self).get_package_version_history(builder)
+        self.deref().get_package_version_history(builder)
     }
     fn get_upgrade_history(&self, builder: GetUpgradeHistoryInputBuilder) -> impl Future<Output = Result<GetUpgradeHistoryOutput, SdkError<GetUpgradeHistoryError>>> {
-        (*self).get_upgrade_history(builder)
+        self.deref().get_upgrade_history(builder)
     }
     fn get_upgrade_status(&self, builder: GetUpgradeStatusInputBuilder) -> impl Future<Output = Result<GetUpgradeStatusOutput, SdkError<GetUpgradeStatusError>>> {
-        (*self).get_upgrade_status(builder)
+        self.deref().get_upgrade_status(builder)
     }
     fn list_data_sources(&self, builder: ListDataSourcesInputBuilder) -> impl Future<Output = Result<ListDataSourcesOutput, SdkError<ListDataSourcesError>>> {
-        (*self).list_data_sources(builder)
+        self.deref().list_data_sources(builder)
     }
     fn list_domain_maintenances(&self, builder: ListDomainMaintenancesInputBuilder) -> impl Future<Output = Result<ListDomainMaintenancesOutput, SdkError<ListDomainMaintenancesError>>> {
-        (*self).list_domain_maintenances(builder)
+        self.deref().list_domain_maintenances(builder)
     }
     fn list_domain_names(&self, builder: ListDomainNamesInputBuilder) -> impl Future<Output = Result<ListDomainNamesOutput, SdkError<ListDomainNamesError>>> {
-        (*self).list_domain_names(builder)
+        self.deref().list_domain_names(builder)
     }
     fn list_domains_for_package(&self, builder: ListDomainsForPackageInputBuilder) -> impl Future<Output = Result<ListDomainsForPackageOutput, SdkError<ListDomainsForPackageError>>> {
-        (*self).list_domains_for_package(builder)
+        self.deref().list_domains_for_package(builder)
     }
     fn list_instance_type_details(&self, builder: ListInstanceTypeDetailsInputBuilder) -> impl Future<Output = Result<ListInstanceTypeDetailsOutput, SdkError<ListInstanceTypeDetailsError>>> {
-        (*self).list_instance_type_details(builder)
+        self.deref().list_instance_type_details(builder)
     }
     fn list_packages_for_domain(&self, builder: ListPackagesForDomainInputBuilder) -> impl Future<Output = Result<ListPackagesForDomainOutput, SdkError<ListPackagesForDomainError>>> {
-        (*self).list_packages_for_domain(builder)
+        self.deref().list_packages_for_domain(builder)
     }
     fn list_scheduled_actions(&self, builder: ListScheduledActionsInputBuilder) -> impl Future<Output = Result<ListScheduledActionsOutput, SdkError<ListScheduledActionsError>>> {
-        (*self).list_scheduled_actions(builder)
+        self.deref().list_scheduled_actions(builder)
     }
     fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> {
-        (*self).list_tags(builder)
+        self.deref().list_tags(builder)
     }
     fn list_versions(&self, builder: ListVersionsInputBuilder) -> impl Future<Output = Result<ListVersionsOutput, SdkError<ListVersionsError>>> {
-        (*self).list_versions(builder)
+        self.deref().list_versions(builder)
     }
     fn list_vpc_endpoint_access(&self, builder: ListVpcEndpointAccessInputBuilder) -> impl Future<Output = Result<ListVpcEndpointAccessOutput, SdkError<ListVpcEndpointAccessError>>> {
-        (*self).list_vpc_endpoint_access(builder)
+        self.deref().list_vpc_endpoint_access(builder)
     }
     fn list_vpc_endpoints(&self, builder: ListVpcEndpointsInputBuilder) -> impl Future<Output = Result<ListVpcEndpointsOutput, SdkError<ListVpcEndpointsError>>> {
-        (*self).list_vpc_endpoints(builder)
+        self.deref().list_vpc_endpoints(builder)
     }
     fn list_vpc_endpoints_for_domain(&self, builder: ListVpcEndpointsForDomainInputBuilder) -> impl Future<Output = Result<ListVpcEndpointsForDomainOutput, SdkError<ListVpcEndpointsForDomainError>>> {
-        (*self).list_vpc_endpoints_for_domain(builder)
+        self.deref().list_vpc_endpoints_for_domain(builder)
     }
     fn purchase_reserved_instance_offering(&self, builder: PurchaseReservedInstanceOfferingInputBuilder) -> impl Future<Output = Result<PurchaseReservedInstanceOfferingOutput, SdkError<PurchaseReservedInstanceOfferingError>>> {
-        (*self).purchase_reserved_instance_offering(builder)
+        self.deref().purchase_reserved_instance_offering(builder)
     }
     fn reject_inbound_connection(&self, builder: RejectInboundConnectionInputBuilder) -> impl Future<Output = Result<RejectInboundConnectionOutput, SdkError<RejectInboundConnectionError>>> {
-        (*self).reject_inbound_connection(builder)
+        self.deref().reject_inbound_connection(builder)
     }
     fn remove_tags(&self, builder: RemoveTagsInputBuilder) -> impl Future<Output = Result<RemoveTagsOutput, SdkError<RemoveTagsError>>> {
-        (*self).remove_tags(builder)
+        self.deref().remove_tags(builder)
     }
     fn revoke_vpc_endpoint_access(&self, builder: RevokeVpcEndpointAccessInputBuilder) -> impl Future<Output = Result<RevokeVpcEndpointAccessOutput, SdkError<RevokeVpcEndpointAccessError>>> {
-        (*self).revoke_vpc_endpoint_access(builder)
+        self.deref().revoke_vpc_endpoint_access(builder)
     }
     fn start_domain_maintenance(&self, builder: StartDomainMaintenanceInputBuilder) -> impl Future<Output = Result<StartDomainMaintenanceOutput, SdkError<StartDomainMaintenanceError>>> {
-        (*self).start_domain_maintenance(builder)
+        self.deref().start_domain_maintenance(builder)
     }
     fn start_service_software_update(&self, builder: StartServiceSoftwareUpdateInputBuilder) -> impl Future<Output = Result<StartServiceSoftwareUpdateOutput, SdkError<StartServiceSoftwareUpdateError>>> {
-        (*self).start_service_software_update(builder)
+        self.deref().start_service_software_update(builder)
     }
     fn update_data_source(&self, builder: UpdateDataSourceInputBuilder) -> impl Future<Output = Result<UpdateDataSourceOutput, SdkError<UpdateDataSourceError>>> {
-        (*self).update_data_source(builder)
+        self.deref().update_data_source(builder)
     }
     fn update_domain_config(&self, builder: UpdateDomainConfigInputBuilder) -> impl Future<Output = Result<UpdateDomainConfigOutput, SdkError<UpdateDomainConfigError>>> {
-        (*self).update_domain_config(builder)
+        self.deref().update_domain_config(builder)
     }
     fn update_package(&self, builder: UpdatePackageInputBuilder) -> impl Future<Output = Result<UpdatePackageOutput, SdkError<UpdatePackageError>>> {
-        (*self).update_package(builder)
+        self.deref().update_package(builder)
     }
     fn update_scheduled_action(&self, builder: UpdateScheduledActionInputBuilder) -> impl Future<Output = Result<UpdateScheduledActionOutput, SdkError<UpdateScheduledActionError>>> {
-        (*self).update_scheduled_action(builder)
+        self.deref().update_scheduled_action(builder)
     }
     fn update_vpc_endpoint(&self, builder: UpdateVpcEndpointInputBuilder) -> impl Future<Output = Result<UpdateVpcEndpointOutput, SdkError<UpdateVpcEndpointError>>> {
-        (*self).update_vpc_endpoint(builder)
+        self.deref().update_vpc_endpoint(builder)
     }
     fn upgrade_domain(&self, builder: UpgradeDomainInputBuilder) -> impl Future<Output = Result<UpgradeDomainOutput, SdkError<UpgradeDomainError>>> {
-        (*self).upgrade_domain(builder)
+        self.deref().upgrade_domain(builder)
     }
 }
 #[cfg(feature = "mockall")]

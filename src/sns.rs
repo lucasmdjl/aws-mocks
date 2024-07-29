@@ -62,6 +62,7 @@ use aws_sdk_sns::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_sns::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_sns::*;
 
@@ -241,132 +242,134 @@ impl SNSClient for SNSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: SNSClient> SNSClient for &T {
+impl <T> SNSClient for T
+where T: Deref,
+      T::Target: SNSClient {
     fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>> {
-        (*self).add_permission(builder)
+        self.deref().add_permission(builder)
     }
     fn check_if_phone_number_is_opted_out(&self, builder: CheckIfPhoneNumberIsOptedOutInputBuilder) -> impl Future<Output = Result<CheckIfPhoneNumberIsOptedOutOutput, SdkError<CheckIfPhoneNumberIsOptedOutError>>> {
-        (*self).check_if_phone_number_is_opted_out(builder)
+        self.deref().check_if_phone_number_is_opted_out(builder)
     }
     fn confirm_subscription(&self, builder: ConfirmSubscriptionInputBuilder) -> impl Future<Output = Result<ConfirmSubscriptionOutput, SdkError<ConfirmSubscriptionError>>> {
-        (*self).confirm_subscription(builder)
+        self.deref().confirm_subscription(builder)
     }
     fn create_platform_application(&self, builder: CreatePlatformApplicationInputBuilder) -> impl Future<Output = Result<CreatePlatformApplicationOutput, SdkError<CreatePlatformApplicationError>>> {
-        (*self).create_platform_application(builder)
+        self.deref().create_platform_application(builder)
     }
     fn create_platform_endpoint(&self, builder: CreatePlatformEndpointInputBuilder) -> impl Future<Output = Result<CreatePlatformEndpointOutput, SdkError<CreatePlatformEndpointError>>> {
-        (*self).create_platform_endpoint(builder)
+        self.deref().create_platform_endpoint(builder)
     }
     fn create_sms_sandbox_phone_number(&self, builder: CreateSmsSandboxPhoneNumberInputBuilder) -> impl Future<Output = Result<CreateSmsSandboxPhoneNumberOutput, SdkError<CreateSMSSandboxPhoneNumberError>>> {
-        (*self).create_sms_sandbox_phone_number(builder)
+        self.deref().create_sms_sandbox_phone_number(builder)
     }
     fn create_topic(&self, builder: CreateTopicInputBuilder) -> impl Future<Output = Result<CreateTopicOutput, SdkError<CreateTopicError>>> {
-        (*self).create_topic(builder)
+        self.deref().create_topic(builder)
     }
     fn delete_endpoint(&self, builder: DeleteEndpointInputBuilder) -> impl Future<Output = Result<DeleteEndpointOutput, SdkError<DeleteEndpointError>>> {
-        (*self).delete_endpoint(builder)
+        self.deref().delete_endpoint(builder)
     }
     fn delete_platform_application(&self, builder: DeletePlatformApplicationInputBuilder) -> impl Future<Output = Result<DeletePlatformApplicationOutput, SdkError<DeletePlatformApplicationError>>> {
-        (*self).delete_platform_application(builder)
+        self.deref().delete_platform_application(builder)
     }
     fn delete_sms_sandbox_phone_number(&self, builder: DeleteSmsSandboxPhoneNumberInputBuilder) -> impl Future<Output = Result<DeleteSmsSandboxPhoneNumberOutput, SdkError<DeleteSMSSandboxPhoneNumberError>>> {
-        (*self).delete_sms_sandbox_phone_number(builder)
+        self.deref().delete_sms_sandbox_phone_number(builder)
     }
     fn delete_topic(&self, builder: DeleteTopicInputBuilder) -> impl Future<Output = Result<DeleteTopicOutput, SdkError<DeleteTopicError>>> {
-        (*self).delete_topic(builder)
+        self.deref().delete_topic(builder)
     }
     fn get_data_protection_policy(&self, builder: GetDataProtectionPolicyInputBuilder) -> impl Future<Output = Result<GetDataProtectionPolicyOutput, SdkError<GetDataProtectionPolicyError>>> {
-        (*self).get_data_protection_policy(builder)
+        self.deref().get_data_protection_policy(builder)
     }
     fn get_endpoint_attributes(&self, builder: GetEndpointAttributesInputBuilder) -> impl Future<Output = Result<GetEndpointAttributesOutput, SdkError<GetEndpointAttributesError>>> {
-        (*self).get_endpoint_attributes(builder)
+        self.deref().get_endpoint_attributes(builder)
     }
     fn get_platform_application_attributes(&self, builder: GetPlatformApplicationAttributesInputBuilder) -> impl Future<Output = Result<GetPlatformApplicationAttributesOutput, SdkError<GetPlatformApplicationAttributesError>>> {
-        (*self).get_platform_application_attributes(builder)
+        self.deref().get_platform_application_attributes(builder)
     }
     fn get_sms_attributes(&self, builder: GetSmsAttributesInputBuilder) -> impl Future<Output = Result<GetSmsAttributesOutput, SdkError<GetSMSAttributesError>>> {
-        (*self).get_sms_attributes(builder)
+        self.deref().get_sms_attributes(builder)
     }
     fn get_sms_sandbox_account_status(&self, builder: GetSmsSandboxAccountStatusInputBuilder) -> impl Future<Output = Result<GetSmsSandboxAccountStatusOutput, SdkError<GetSMSSandboxAccountStatusError>>> {
-        (*self).get_sms_sandbox_account_status(builder)
+        self.deref().get_sms_sandbox_account_status(builder)
     }
     fn get_subscription_attributes(&self, builder: GetSubscriptionAttributesInputBuilder) -> impl Future<Output = Result<GetSubscriptionAttributesOutput, SdkError<GetSubscriptionAttributesError>>> {
-        (*self).get_subscription_attributes(builder)
+        self.deref().get_subscription_attributes(builder)
     }
     fn get_topic_attributes(&self, builder: GetTopicAttributesInputBuilder) -> impl Future<Output = Result<GetTopicAttributesOutput, SdkError<GetTopicAttributesError>>> {
-        (*self).get_topic_attributes(builder)
+        self.deref().get_topic_attributes(builder)
     }
     fn list_endpoints_by_platform_application(&self, builder: ListEndpointsByPlatformApplicationInputBuilder) -> impl Future<Output = Result<ListEndpointsByPlatformApplicationOutput, SdkError<ListEndpointsByPlatformApplicationError>>> {
-        (*self).list_endpoints_by_platform_application(builder)
+        self.deref().list_endpoints_by_platform_application(builder)
     }
     fn list_origination_numbers(&self, builder: ListOriginationNumbersInputBuilder) -> impl Future<Output = Result<ListOriginationNumbersOutput, SdkError<ListOriginationNumbersError>>> {
-        (*self).list_origination_numbers(builder)
+        self.deref().list_origination_numbers(builder)
     }
     fn list_phone_numbers_opted_out(&self, builder: ListPhoneNumbersOptedOutInputBuilder) -> impl Future<Output = Result<ListPhoneNumbersOptedOutOutput, SdkError<ListPhoneNumbersOptedOutError>>> {
-        (*self).list_phone_numbers_opted_out(builder)
+        self.deref().list_phone_numbers_opted_out(builder)
     }
     fn list_platform_applications(&self, builder: ListPlatformApplicationsInputBuilder) -> impl Future<Output = Result<ListPlatformApplicationsOutput, SdkError<ListPlatformApplicationsError>>> {
-        (*self).list_platform_applications(builder)
+        self.deref().list_platform_applications(builder)
     }
     fn list_sms_sandbox_phone_numbers(&self, builder: ListSmsSandboxPhoneNumbersInputBuilder) -> impl Future<Output = Result<ListSmsSandboxPhoneNumbersOutput, SdkError<ListSMSSandboxPhoneNumbersError>>> {
-        (*self).list_sms_sandbox_phone_numbers(builder)
+        self.deref().list_sms_sandbox_phone_numbers(builder)
     }
     fn list_subscriptions(&self, builder: ListSubscriptionsInputBuilder) -> impl Future<Output = Result<ListSubscriptionsOutput, SdkError<ListSubscriptionsError>>> {
-        (*self).list_subscriptions(builder)
+        self.deref().list_subscriptions(builder)
     }
     fn list_subscriptions_by_topic(&self, builder: ListSubscriptionsByTopicInputBuilder) -> impl Future<Output = Result<ListSubscriptionsByTopicOutput, SdkError<ListSubscriptionsByTopicError>>> {
-        (*self).list_subscriptions_by_topic(builder)
+        self.deref().list_subscriptions_by_topic(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_topics(&self, builder: ListTopicsInputBuilder) -> impl Future<Output = Result<ListTopicsOutput, SdkError<ListTopicsError>>> {
-        (*self).list_topics(builder)
+        self.deref().list_topics(builder)
     }
     fn opt_in_phone_number(&self, builder: OptInPhoneNumberInputBuilder) -> impl Future<Output = Result<OptInPhoneNumberOutput, SdkError<OptInPhoneNumberError>>> {
-        (*self).opt_in_phone_number(builder)
+        self.deref().opt_in_phone_number(builder)
     }
     fn publish(&self, builder: PublishInputBuilder) -> impl Future<Output = Result<PublishOutput, SdkError<PublishError>>> {
-        (*self).publish(builder)
+        self.deref().publish(builder)
     }
     fn publish_batch(&self, builder: PublishBatchInputBuilder) -> impl Future<Output = Result<PublishBatchOutput, SdkError<PublishBatchError>>> {
-        (*self).publish_batch(builder)
+        self.deref().publish_batch(builder)
     }
     fn put_data_protection_policy(&self, builder: PutDataProtectionPolicyInputBuilder) -> impl Future<Output = Result<PutDataProtectionPolicyOutput, SdkError<PutDataProtectionPolicyError>>> {
-        (*self).put_data_protection_policy(builder)
+        self.deref().put_data_protection_policy(builder)
     }
     fn remove_permission(&self, builder: RemovePermissionInputBuilder) -> impl Future<Output = Result<RemovePermissionOutput, SdkError<RemovePermissionError>>> {
-        (*self).remove_permission(builder)
+        self.deref().remove_permission(builder)
     }
     fn set_endpoint_attributes(&self, builder: SetEndpointAttributesInputBuilder) -> impl Future<Output = Result<SetEndpointAttributesOutput, SdkError<SetEndpointAttributesError>>> {
-        (*self).set_endpoint_attributes(builder)
+        self.deref().set_endpoint_attributes(builder)
     }
     fn set_platform_application_attributes(&self, builder: SetPlatformApplicationAttributesInputBuilder) -> impl Future<Output = Result<SetPlatformApplicationAttributesOutput, SdkError<SetPlatformApplicationAttributesError>>> {
-        (*self).set_platform_application_attributes(builder)
+        self.deref().set_platform_application_attributes(builder)
     }
     fn set_sms_attributes(&self, builder: SetSmsAttributesInputBuilder) -> impl Future<Output = Result<SetSmsAttributesOutput, SdkError<SetSMSAttributesError>>> {
-        (*self).set_sms_attributes(builder)
+        self.deref().set_sms_attributes(builder)
     }
     fn set_subscription_attributes(&self, builder: SetSubscriptionAttributesInputBuilder) -> impl Future<Output = Result<SetSubscriptionAttributesOutput, SdkError<SetSubscriptionAttributesError>>> {
-        (*self).set_subscription_attributes(builder)
+        self.deref().set_subscription_attributes(builder)
     }
     fn set_topic_attributes(&self, builder: SetTopicAttributesInputBuilder) -> impl Future<Output = Result<SetTopicAttributesOutput, SdkError<SetTopicAttributesError>>> {
-        (*self).set_topic_attributes(builder)
+        self.deref().set_topic_attributes(builder)
     }
     fn subscribe(&self, builder: SubscribeInputBuilder) -> impl Future<Output = Result<SubscribeOutput, SdkError<SubscribeError>>> {
-        (*self).subscribe(builder)
+        self.deref().subscribe(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn unsubscribe(&self, builder: UnsubscribeInputBuilder) -> impl Future<Output = Result<UnsubscribeOutput, SdkError<UnsubscribeError>>> {
-        (*self).unsubscribe(builder)
+        self.deref().unsubscribe(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn verify_sms_sandbox_phone_number(&self, builder: VerifySmsSandboxPhoneNumberInputBuilder) -> impl Future<Output = Result<VerifySmsSandboxPhoneNumberOutput, SdkError<VerifySMSSandboxPhoneNumberError>>> {
-        (*self).verify_sms_sandbox_phone_number(builder)
+        self.deref().verify_sms_sandbox_phone_number(builder)
     }
 }
 #[cfg(feature = "mockall")]

@@ -76,6 +76,7 @@ use aws_sdk_eks::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_eks::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_eks::*;
 
@@ -311,174 +312,176 @@ impl EKSClient for EKSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: EKSClient> EKSClient for &T {
+impl <T> EKSClient for T
+where T: Deref,
+      T::Target: EKSClient {
     fn associate_access_policy(&self, builder: AssociateAccessPolicyInputBuilder) -> impl Future<Output = Result<AssociateAccessPolicyOutput, SdkError<AssociateAccessPolicyError>>> {
-        (*self).associate_access_policy(builder)
+        self.deref().associate_access_policy(builder)
     }
     fn associate_encryption_config(&self, builder: AssociateEncryptionConfigInputBuilder) -> impl Future<Output = Result<AssociateEncryptionConfigOutput, SdkError<AssociateEncryptionConfigError>>> {
-        (*self).associate_encryption_config(builder)
+        self.deref().associate_encryption_config(builder)
     }
     fn associate_identity_provider_config(&self, builder: AssociateIdentityProviderConfigInputBuilder) -> impl Future<Output = Result<AssociateIdentityProviderConfigOutput, SdkError<AssociateIdentityProviderConfigError>>> {
-        (*self).associate_identity_provider_config(builder)
+        self.deref().associate_identity_provider_config(builder)
     }
     fn create_access_entry(&self, builder: CreateAccessEntryInputBuilder) -> impl Future<Output = Result<CreateAccessEntryOutput, SdkError<CreateAccessEntryError>>> {
-        (*self).create_access_entry(builder)
+        self.deref().create_access_entry(builder)
     }
     fn create_addon(&self, builder: CreateAddonInputBuilder) -> impl Future<Output = Result<CreateAddonOutput, SdkError<CreateAddonError>>> {
-        (*self).create_addon(builder)
+        self.deref().create_addon(builder)
     }
     fn create_cluster(&self, builder: CreateClusterInputBuilder) -> impl Future<Output = Result<CreateClusterOutput, SdkError<CreateClusterError>>> {
-        (*self).create_cluster(builder)
+        self.deref().create_cluster(builder)
     }
     fn create_eks_anywhere_subscription(&self, builder: CreateEksAnywhereSubscriptionInputBuilder) -> impl Future<Output = Result<CreateEksAnywhereSubscriptionOutput, SdkError<CreateEksAnywhereSubscriptionError>>> {
-        (*self).create_eks_anywhere_subscription(builder)
+        self.deref().create_eks_anywhere_subscription(builder)
     }
     fn create_fargate_profile(&self, builder: CreateFargateProfileInputBuilder) -> impl Future<Output = Result<CreateFargateProfileOutput, SdkError<CreateFargateProfileError>>> {
-        (*self).create_fargate_profile(builder)
+        self.deref().create_fargate_profile(builder)
     }
     fn create_nodegroup(&self, builder: CreateNodegroupInputBuilder) -> impl Future<Output = Result<CreateNodegroupOutput, SdkError<CreateNodegroupError>>> {
-        (*self).create_nodegroup(builder)
+        self.deref().create_nodegroup(builder)
     }
     fn create_pod_identity_association(&self, builder: CreatePodIdentityAssociationInputBuilder) -> impl Future<Output = Result<CreatePodIdentityAssociationOutput, SdkError<CreatePodIdentityAssociationError>>> {
-        (*self).create_pod_identity_association(builder)
+        self.deref().create_pod_identity_association(builder)
     }
     fn delete_access_entry(&self, builder: DeleteAccessEntryInputBuilder) -> impl Future<Output = Result<DeleteAccessEntryOutput, SdkError<DeleteAccessEntryError>>> {
-        (*self).delete_access_entry(builder)
+        self.deref().delete_access_entry(builder)
     }
     fn delete_addon(&self, builder: DeleteAddonInputBuilder) -> impl Future<Output = Result<DeleteAddonOutput, SdkError<DeleteAddonError>>> {
-        (*self).delete_addon(builder)
+        self.deref().delete_addon(builder)
     }
     fn delete_cluster(&self, builder: DeleteClusterInputBuilder) -> impl Future<Output = Result<DeleteClusterOutput, SdkError<DeleteClusterError>>> {
-        (*self).delete_cluster(builder)
+        self.deref().delete_cluster(builder)
     }
     fn delete_eks_anywhere_subscription(&self, builder: DeleteEksAnywhereSubscriptionInputBuilder) -> impl Future<Output = Result<DeleteEksAnywhereSubscriptionOutput, SdkError<DeleteEksAnywhereSubscriptionError>>> {
-        (*self).delete_eks_anywhere_subscription(builder)
+        self.deref().delete_eks_anywhere_subscription(builder)
     }
     fn delete_fargate_profile(&self, builder: DeleteFargateProfileInputBuilder) -> impl Future<Output = Result<DeleteFargateProfileOutput, SdkError<DeleteFargateProfileError>>> {
-        (*self).delete_fargate_profile(builder)
+        self.deref().delete_fargate_profile(builder)
     }
     fn delete_nodegroup(&self, builder: DeleteNodegroupInputBuilder) -> impl Future<Output = Result<DeleteNodegroupOutput, SdkError<DeleteNodegroupError>>> {
-        (*self).delete_nodegroup(builder)
+        self.deref().delete_nodegroup(builder)
     }
     fn delete_pod_identity_association(&self, builder: DeletePodIdentityAssociationInputBuilder) -> impl Future<Output = Result<DeletePodIdentityAssociationOutput, SdkError<DeletePodIdentityAssociationError>>> {
-        (*self).delete_pod_identity_association(builder)
+        self.deref().delete_pod_identity_association(builder)
     }
     fn deregister_cluster(&self, builder: DeregisterClusterInputBuilder) -> impl Future<Output = Result<DeregisterClusterOutput, SdkError<DeregisterClusterError>>> {
-        (*self).deregister_cluster(builder)
+        self.deref().deregister_cluster(builder)
     }
     fn describe_access_entry(&self, builder: DescribeAccessEntryInputBuilder) -> impl Future<Output = Result<DescribeAccessEntryOutput, SdkError<DescribeAccessEntryError>>> {
-        (*self).describe_access_entry(builder)
+        self.deref().describe_access_entry(builder)
     }
     fn describe_addon(&self, builder: DescribeAddonInputBuilder) -> impl Future<Output = Result<DescribeAddonOutput, SdkError<DescribeAddonError>>> {
-        (*self).describe_addon(builder)
+        self.deref().describe_addon(builder)
     }
     fn describe_addon_configuration(&self, builder: DescribeAddonConfigurationInputBuilder) -> impl Future<Output = Result<DescribeAddonConfigurationOutput, SdkError<DescribeAddonConfigurationError>>> {
-        (*self).describe_addon_configuration(builder)
+        self.deref().describe_addon_configuration(builder)
     }
     fn describe_addon_versions(&self, builder: DescribeAddonVersionsInputBuilder) -> impl Future<Output = Result<DescribeAddonVersionsOutput, SdkError<DescribeAddonVersionsError>>> {
-        (*self).describe_addon_versions(builder)
+        self.deref().describe_addon_versions(builder)
     }
     fn describe_cluster(&self, builder: DescribeClusterInputBuilder) -> impl Future<Output = Result<DescribeClusterOutput, SdkError<DescribeClusterError>>> {
-        (*self).describe_cluster(builder)
+        self.deref().describe_cluster(builder)
     }
     fn describe_eks_anywhere_subscription(&self, builder: DescribeEksAnywhereSubscriptionInputBuilder) -> impl Future<Output = Result<DescribeEksAnywhereSubscriptionOutput, SdkError<DescribeEksAnywhereSubscriptionError>>> {
-        (*self).describe_eks_anywhere_subscription(builder)
+        self.deref().describe_eks_anywhere_subscription(builder)
     }
     fn describe_fargate_profile(&self, builder: DescribeFargateProfileInputBuilder) -> impl Future<Output = Result<DescribeFargateProfileOutput, SdkError<DescribeFargateProfileError>>> {
-        (*self).describe_fargate_profile(builder)
+        self.deref().describe_fargate_profile(builder)
     }
     fn describe_identity_provider_config(&self, builder: DescribeIdentityProviderConfigInputBuilder) -> impl Future<Output = Result<DescribeIdentityProviderConfigOutput, SdkError<DescribeIdentityProviderConfigError>>> {
-        (*self).describe_identity_provider_config(builder)
+        self.deref().describe_identity_provider_config(builder)
     }
     fn describe_insight(&self, builder: DescribeInsightInputBuilder) -> impl Future<Output = Result<DescribeInsightOutput, SdkError<DescribeInsightError>>> {
-        (*self).describe_insight(builder)
+        self.deref().describe_insight(builder)
     }
     fn describe_nodegroup(&self, builder: DescribeNodegroupInputBuilder) -> impl Future<Output = Result<DescribeNodegroupOutput, SdkError<DescribeNodegroupError>>> {
-        (*self).describe_nodegroup(builder)
+        self.deref().describe_nodegroup(builder)
     }
     fn describe_pod_identity_association(&self, builder: DescribePodIdentityAssociationInputBuilder) -> impl Future<Output = Result<DescribePodIdentityAssociationOutput, SdkError<DescribePodIdentityAssociationError>>> {
-        (*self).describe_pod_identity_association(builder)
+        self.deref().describe_pod_identity_association(builder)
     }
     fn describe_update(&self, builder: DescribeUpdateInputBuilder) -> impl Future<Output = Result<DescribeUpdateOutput, SdkError<DescribeUpdateError>>> {
-        (*self).describe_update(builder)
+        self.deref().describe_update(builder)
     }
     fn disassociate_access_policy(&self, builder: DisassociateAccessPolicyInputBuilder) -> impl Future<Output = Result<DisassociateAccessPolicyOutput, SdkError<DisassociateAccessPolicyError>>> {
-        (*self).disassociate_access_policy(builder)
+        self.deref().disassociate_access_policy(builder)
     }
     fn disassociate_identity_provider_config(&self, builder: DisassociateIdentityProviderConfigInputBuilder) -> impl Future<Output = Result<DisassociateIdentityProviderConfigOutput, SdkError<DisassociateIdentityProviderConfigError>>> {
-        (*self).disassociate_identity_provider_config(builder)
+        self.deref().disassociate_identity_provider_config(builder)
     }
     fn list_access_entries(&self, builder: ListAccessEntriesInputBuilder) -> impl Future<Output = Result<ListAccessEntriesOutput, SdkError<ListAccessEntriesError>>> {
-        (*self).list_access_entries(builder)
+        self.deref().list_access_entries(builder)
     }
     fn list_access_policies(&self, builder: ListAccessPoliciesInputBuilder) -> impl Future<Output = Result<ListAccessPoliciesOutput, SdkError<ListAccessPoliciesError>>> {
-        (*self).list_access_policies(builder)
+        self.deref().list_access_policies(builder)
     }
     fn list_addons(&self, builder: ListAddonsInputBuilder) -> impl Future<Output = Result<ListAddonsOutput, SdkError<ListAddonsError>>> {
-        (*self).list_addons(builder)
+        self.deref().list_addons(builder)
     }
     fn list_associated_access_policies(&self, builder: ListAssociatedAccessPoliciesInputBuilder) -> impl Future<Output = Result<ListAssociatedAccessPoliciesOutput, SdkError<ListAssociatedAccessPoliciesError>>> {
-        (*self).list_associated_access_policies(builder)
+        self.deref().list_associated_access_policies(builder)
     }
     fn list_clusters(&self, builder: ListClustersInputBuilder) -> impl Future<Output = Result<ListClustersOutput, SdkError<ListClustersError>>> {
-        (*self).list_clusters(builder)
+        self.deref().list_clusters(builder)
     }
     fn list_eks_anywhere_subscriptions(&self, builder: ListEksAnywhereSubscriptionsInputBuilder) -> impl Future<Output = Result<ListEksAnywhereSubscriptionsOutput, SdkError<ListEksAnywhereSubscriptionsError>>> {
-        (*self).list_eks_anywhere_subscriptions(builder)
+        self.deref().list_eks_anywhere_subscriptions(builder)
     }
     fn list_fargate_profiles(&self, builder: ListFargateProfilesInputBuilder) -> impl Future<Output = Result<ListFargateProfilesOutput, SdkError<ListFargateProfilesError>>> {
-        (*self).list_fargate_profiles(builder)
+        self.deref().list_fargate_profiles(builder)
     }
     fn list_identity_provider_configs(&self, builder: ListIdentityProviderConfigsInputBuilder) -> impl Future<Output = Result<ListIdentityProviderConfigsOutput, SdkError<ListIdentityProviderConfigsError>>> {
-        (*self).list_identity_provider_configs(builder)
+        self.deref().list_identity_provider_configs(builder)
     }
     fn list_insights(&self, builder: ListInsightsInputBuilder) -> impl Future<Output = Result<ListInsightsOutput, SdkError<ListInsightsError>>> {
-        (*self).list_insights(builder)
+        self.deref().list_insights(builder)
     }
     fn list_nodegroups(&self, builder: ListNodegroupsInputBuilder) -> impl Future<Output = Result<ListNodegroupsOutput, SdkError<ListNodegroupsError>>> {
-        (*self).list_nodegroups(builder)
+        self.deref().list_nodegroups(builder)
     }
     fn list_pod_identity_associations(&self, builder: ListPodIdentityAssociationsInputBuilder) -> impl Future<Output = Result<ListPodIdentityAssociationsOutput, SdkError<ListPodIdentityAssociationsError>>> {
-        (*self).list_pod_identity_associations(builder)
+        self.deref().list_pod_identity_associations(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_updates(&self, builder: ListUpdatesInputBuilder) -> impl Future<Output = Result<ListUpdatesOutput, SdkError<ListUpdatesError>>> {
-        (*self).list_updates(builder)
+        self.deref().list_updates(builder)
     }
     fn register_cluster(&self, builder: RegisterClusterInputBuilder) -> impl Future<Output = Result<RegisterClusterOutput, SdkError<RegisterClusterError>>> {
-        (*self).register_cluster(builder)
+        self.deref().register_cluster(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_access_entry(&self, builder: UpdateAccessEntryInputBuilder) -> impl Future<Output = Result<UpdateAccessEntryOutput, SdkError<UpdateAccessEntryError>>> {
-        (*self).update_access_entry(builder)
+        self.deref().update_access_entry(builder)
     }
     fn update_addon(&self, builder: UpdateAddonInputBuilder) -> impl Future<Output = Result<UpdateAddonOutput, SdkError<UpdateAddonError>>> {
-        (*self).update_addon(builder)
+        self.deref().update_addon(builder)
     }
     fn update_cluster_config(&self, builder: UpdateClusterConfigInputBuilder) -> impl Future<Output = Result<UpdateClusterConfigOutput, SdkError<UpdateClusterConfigError>>> {
-        (*self).update_cluster_config(builder)
+        self.deref().update_cluster_config(builder)
     }
     fn update_cluster_version(&self, builder: UpdateClusterVersionInputBuilder) -> impl Future<Output = Result<UpdateClusterVersionOutput, SdkError<UpdateClusterVersionError>>> {
-        (*self).update_cluster_version(builder)
+        self.deref().update_cluster_version(builder)
     }
     fn update_eks_anywhere_subscription(&self, builder: UpdateEksAnywhereSubscriptionInputBuilder) -> impl Future<Output = Result<UpdateEksAnywhereSubscriptionOutput, SdkError<UpdateEksAnywhereSubscriptionError>>> {
-        (*self).update_eks_anywhere_subscription(builder)
+        self.deref().update_eks_anywhere_subscription(builder)
     }
     fn update_nodegroup_config(&self, builder: UpdateNodegroupConfigInputBuilder) -> impl Future<Output = Result<UpdateNodegroupConfigOutput, SdkError<UpdateNodegroupConfigError>>> {
-        (*self).update_nodegroup_config(builder)
+        self.deref().update_nodegroup_config(builder)
     }
     fn update_nodegroup_version(&self, builder: UpdateNodegroupVersionInputBuilder) -> impl Future<Output = Result<UpdateNodegroupVersionOutput, SdkError<UpdateNodegroupVersionError>>> {
-        (*self).update_nodegroup_version(builder)
+        self.deref().update_nodegroup_version(builder)
     }
     fn update_pod_identity_association(&self, builder: UpdatePodIdentityAssociationInputBuilder) -> impl Future<Output = Result<UpdatePodIdentityAssociationOutput, SdkError<UpdatePodIdentityAssociationError>>> {
-        (*self).update_pod_identity_association(builder)
+        self.deref().update_pod_identity_association(builder)
     }
 }
 #[cfg(feature = "mockall")]

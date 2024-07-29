@@ -51,6 +51,7 @@ use aws_sdk_kinesis::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_kinesis::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_kinesis::*;
 
@@ -186,99 +187,101 @@ impl KinesisClient for KinesisClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: KinesisClient> KinesisClient for &T {
+impl <T> KinesisClient for T
+where T: Deref,
+      T::Target: KinesisClient {
     fn add_tags_to_stream(&self, builder: AddTagsToStreamInputBuilder) -> impl Future<Output = Result<AddTagsToStreamOutput, SdkError<AddTagsToStreamError>>> {
-        (*self).add_tags_to_stream(builder)
+        self.deref().add_tags_to_stream(builder)
     }
     fn create_stream(&self, builder: CreateStreamInputBuilder) -> impl Future<Output = Result<CreateStreamOutput, SdkError<CreateStreamError>>> {
-        (*self).create_stream(builder)
+        self.deref().create_stream(builder)
     }
     fn decrease_stream_retention_period(&self, builder: DecreaseStreamRetentionPeriodInputBuilder) -> impl Future<Output = Result<DecreaseStreamRetentionPeriodOutput, SdkError<DecreaseStreamRetentionPeriodError>>> {
-        (*self).decrease_stream_retention_period(builder)
+        self.deref().decrease_stream_retention_period(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_stream(&self, builder: DeleteStreamInputBuilder) -> impl Future<Output = Result<DeleteStreamOutput, SdkError<DeleteStreamError>>> {
-        (*self).delete_stream(builder)
+        self.deref().delete_stream(builder)
     }
     fn deregister_stream_consumer(&self, builder: DeregisterStreamConsumerInputBuilder) -> impl Future<Output = Result<DeregisterStreamConsumerOutput, SdkError<DeregisterStreamConsumerError>>> {
-        (*self).deregister_stream_consumer(builder)
+        self.deref().deregister_stream_consumer(builder)
     }
     fn describe_limits(&self, builder: DescribeLimitsInputBuilder) -> impl Future<Output = Result<DescribeLimitsOutput, SdkError<DescribeLimitsError>>> {
-        (*self).describe_limits(builder)
+        self.deref().describe_limits(builder)
     }
     fn describe_stream(&self, builder: DescribeStreamInputBuilder) -> impl Future<Output = Result<DescribeStreamOutput, SdkError<DescribeStreamError>>> {
-        (*self).describe_stream(builder)
+        self.deref().describe_stream(builder)
     }
     fn describe_stream_consumer(&self, builder: DescribeStreamConsumerInputBuilder) -> impl Future<Output = Result<DescribeStreamConsumerOutput, SdkError<DescribeStreamConsumerError>>> {
-        (*self).describe_stream_consumer(builder)
+        self.deref().describe_stream_consumer(builder)
     }
     fn describe_stream_summary(&self, builder: DescribeStreamSummaryInputBuilder) -> impl Future<Output = Result<DescribeStreamSummaryOutput, SdkError<DescribeStreamSummaryError>>> {
-        (*self).describe_stream_summary(builder)
+        self.deref().describe_stream_summary(builder)
     }
     fn disable_enhanced_monitoring(&self, builder: DisableEnhancedMonitoringInputBuilder) -> impl Future<Output = Result<DisableEnhancedMonitoringOutput, SdkError<DisableEnhancedMonitoringError>>> {
-        (*self).disable_enhanced_monitoring(builder)
+        self.deref().disable_enhanced_monitoring(builder)
     }
     fn enable_enhanced_monitoring(&self, builder: EnableEnhancedMonitoringInputBuilder) -> impl Future<Output = Result<EnableEnhancedMonitoringOutput, SdkError<EnableEnhancedMonitoringError>>> {
-        (*self).enable_enhanced_monitoring(builder)
+        self.deref().enable_enhanced_monitoring(builder)
     }
     fn get_records(&self, builder: GetRecordsInputBuilder) -> impl Future<Output = Result<GetRecordsOutput, SdkError<GetRecordsError>>> {
-        (*self).get_records(builder)
+        self.deref().get_records(builder)
     }
     fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> {
-        (*self).get_resource_policy(builder)
+        self.deref().get_resource_policy(builder)
     }
     fn get_shard_iterator(&self, builder: GetShardIteratorInputBuilder) -> impl Future<Output = Result<GetShardIteratorOutput, SdkError<GetShardIteratorError>>> {
-        (*self).get_shard_iterator(builder)
+        self.deref().get_shard_iterator(builder)
     }
     fn increase_stream_retention_period(&self, builder: IncreaseStreamRetentionPeriodInputBuilder) -> impl Future<Output = Result<IncreaseStreamRetentionPeriodOutput, SdkError<IncreaseStreamRetentionPeriodError>>> {
-        (*self).increase_stream_retention_period(builder)
+        self.deref().increase_stream_retention_period(builder)
     }
     fn list_shards(&self, builder: ListShardsInputBuilder) -> impl Future<Output = Result<ListShardsOutput, SdkError<ListShardsError>>> {
-        (*self).list_shards(builder)
+        self.deref().list_shards(builder)
     }
     fn list_stream_consumers(&self, builder: ListStreamConsumersInputBuilder) -> impl Future<Output = Result<ListStreamConsumersOutput, SdkError<ListStreamConsumersError>>> {
-        (*self).list_stream_consumers(builder)
+        self.deref().list_stream_consumers(builder)
     }
     fn list_streams(&self, builder: ListStreamsInputBuilder) -> impl Future<Output = Result<ListStreamsOutput, SdkError<ListStreamsError>>> {
-        (*self).list_streams(builder)
+        self.deref().list_streams(builder)
     }
     fn list_tags_for_stream(&self, builder: ListTagsForStreamInputBuilder) -> impl Future<Output = Result<ListTagsForStreamOutput, SdkError<ListTagsForStreamError>>> {
-        (*self).list_tags_for_stream(builder)
+        self.deref().list_tags_for_stream(builder)
     }
     fn merge_shards(&self, builder: MergeShardsInputBuilder) -> impl Future<Output = Result<MergeShardsOutput, SdkError<MergeShardsError>>> {
-        (*self).merge_shards(builder)
+        self.deref().merge_shards(builder)
     }
     fn put_record(&self, builder: PutRecordInputBuilder) -> impl Future<Output = Result<PutRecordOutput, SdkError<PutRecordError>>> {
-        (*self).put_record(builder)
+        self.deref().put_record(builder)
     }
     fn put_records(&self, builder: PutRecordsInputBuilder) -> impl Future<Output = Result<PutRecordsOutput, SdkError<PutRecordsError>>> {
-        (*self).put_records(builder)
+        self.deref().put_records(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn register_stream_consumer(&self, builder: RegisterStreamConsumerInputBuilder) -> impl Future<Output = Result<RegisterStreamConsumerOutput, SdkError<RegisterStreamConsumerError>>> {
-        (*self).register_stream_consumer(builder)
+        self.deref().register_stream_consumer(builder)
     }
     fn remove_tags_from_stream(&self, builder: RemoveTagsFromStreamInputBuilder) -> impl Future<Output = Result<RemoveTagsFromStreamOutput, SdkError<RemoveTagsFromStreamError>>> {
-        (*self).remove_tags_from_stream(builder)
+        self.deref().remove_tags_from_stream(builder)
     }
     fn split_shard(&self, builder: SplitShardInputBuilder) -> impl Future<Output = Result<SplitShardOutput, SdkError<SplitShardError>>> {
-        (*self).split_shard(builder)
+        self.deref().split_shard(builder)
     }
     fn start_stream_encryption(&self, builder: StartStreamEncryptionInputBuilder) -> impl Future<Output = Result<StartStreamEncryptionOutput, SdkError<StartStreamEncryptionError>>> {
-        (*self).start_stream_encryption(builder)
+        self.deref().start_stream_encryption(builder)
     }
     fn stop_stream_encryption(&self, builder: StopStreamEncryptionInputBuilder) -> impl Future<Output = Result<StopStreamEncryptionOutput, SdkError<StopStreamEncryptionError>>> {
-        (*self).stop_stream_encryption(builder)
+        self.deref().stop_stream_encryption(builder)
     }
     fn update_shard_count(&self, builder: UpdateShardCountInputBuilder) -> impl Future<Output = Result<UpdateShardCountOutput, SdkError<UpdateShardCountError>>> {
-        (*self).update_shard_count(builder)
+        self.deref().update_shard_count(builder)
     }
     fn update_stream_mode(&self, builder: UpdateStreamModeInputBuilder) -> impl Future<Output = Result<UpdateStreamModeOutput, SdkError<UpdateStreamModeError>>> {
-        (*self).update_stream_mode(builder)
+        self.deref().update_stream_mode(builder)
     }
 }
 #[cfg(feature = "mockall")]

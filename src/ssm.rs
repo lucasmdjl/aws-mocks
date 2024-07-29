@@ -160,6 +160,7 @@ use aws_sdk_ssm::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_ssm::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_ssm::*;
 
@@ -731,426 +732,428 @@ impl SSMClient for SSMClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: SSMClient> SSMClient for &T {
+impl <T> SSMClient for T
+where T: Deref,
+      T::Target: SSMClient {
     fn add_tags_to_resource(&self, builder: AddTagsToResourceInputBuilder) -> impl Future<Output = Result<AddTagsToResourceOutput, SdkError<AddTagsToResourceError>>> {
-        (*self).add_tags_to_resource(builder)
+        self.deref().add_tags_to_resource(builder)
     }
     fn associate_ops_item_related_item(&self, builder: AssociateOpsItemRelatedItemInputBuilder) -> impl Future<Output = Result<AssociateOpsItemRelatedItemOutput, SdkError<AssociateOpsItemRelatedItemError>>> {
-        (*self).associate_ops_item_related_item(builder)
+        self.deref().associate_ops_item_related_item(builder)
     }
     fn cancel_command(&self, builder: CancelCommandInputBuilder) -> impl Future<Output = Result<CancelCommandOutput, SdkError<CancelCommandError>>> {
-        (*self).cancel_command(builder)
+        self.deref().cancel_command(builder)
     }
     fn cancel_maintenance_window_execution(&self, builder: CancelMaintenanceWindowExecutionInputBuilder) -> impl Future<Output = Result<CancelMaintenanceWindowExecutionOutput, SdkError<CancelMaintenanceWindowExecutionError>>> {
-        (*self).cancel_maintenance_window_execution(builder)
+        self.deref().cancel_maintenance_window_execution(builder)
     }
     fn create_activation(&self, builder: CreateActivationInputBuilder) -> impl Future<Output = Result<CreateActivationOutput, SdkError<CreateActivationError>>> {
-        (*self).create_activation(builder)
+        self.deref().create_activation(builder)
     }
     fn create_association(&self, builder: CreateAssociationInputBuilder) -> impl Future<Output = Result<CreateAssociationOutput, SdkError<CreateAssociationError>>> {
-        (*self).create_association(builder)
+        self.deref().create_association(builder)
     }
     fn create_association_batch(&self, builder: CreateAssociationBatchInputBuilder) -> impl Future<Output = Result<CreateAssociationBatchOutput, SdkError<CreateAssociationBatchError>>> {
-        (*self).create_association_batch(builder)
+        self.deref().create_association_batch(builder)
     }
     fn create_document(&self, builder: CreateDocumentInputBuilder) -> impl Future<Output = Result<CreateDocumentOutput, SdkError<CreateDocumentError>>> {
-        (*self).create_document(builder)
+        self.deref().create_document(builder)
     }
     fn create_maintenance_window(&self, builder: CreateMaintenanceWindowInputBuilder) -> impl Future<Output = Result<CreateMaintenanceWindowOutput, SdkError<CreateMaintenanceWindowError>>> {
-        (*self).create_maintenance_window(builder)
+        self.deref().create_maintenance_window(builder)
     }
     fn create_ops_item(&self, builder: CreateOpsItemInputBuilder) -> impl Future<Output = Result<CreateOpsItemOutput, SdkError<CreateOpsItemError>>> {
-        (*self).create_ops_item(builder)
+        self.deref().create_ops_item(builder)
     }
     fn create_ops_metadata(&self, builder: CreateOpsMetadataInputBuilder) -> impl Future<Output = Result<CreateOpsMetadataOutput, SdkError<CreateOpsMetadataError>>> {
-        (*self).create_ops_metadata(builder)
+        self.deref().create_ops_metadata(builder)
     }
     fn create_patch_baseline(&self, builder: CreatePatchBaselineInputBuilder) -> impl Future<Output = Result<CreatePatchBaselineOutput, SdkError<CreatePatchBaselineError>>> {
-        (*self).create_patch_baseline(builder)
+        self.deref().create_patch_baseline(builder)
     }
     fn create_resource_data_sync(&self, builder: CreateResourceDataSyncInputBuilder) -> impl Future<Output = Result<CreateResourceDataSyncOutput, SdkError<CreateResourceDataSyncError>>> {
-        (*self).create_resource_data_sync(builder)
+        self.deref().create_resource_data_sync(builder)
     }
     fn delete_activation(&self, builder: DeleteActivationInputBuilder) -> impl Future<Output = Result<DeleteActivationOutput, SdkError<DeleteActivationError>>> {
-        (*self).delete_activation(builder)
+        self.deref().delete_activation(builder)
     }
     fn delete_association(&self, builder: DeleteAssociationInputBuilder) -> impl Future<Output = Result<DeleteAssociationOutput, SdkError<DeleteAssociationError>>> {
-        (*self).delete_association(builder)
+        self.deref().delete_association(builder)
     }
     fn delete_document(&self, builder: DeleteDocumentInputBuilder) -> impl Future<Output = Result<DeleteDocumentOutput, SdkError<DeleteDocumentError>>> {
-        (*self).delete_document(builder)
+        self.deref().delete_document(builder)
     }
     fn delete_inventory(&self, builder: DeleteInventoryInputBuilder) -> impl Future<Output = Result<DeleteInventoryOutput, SdkError<DeleteInventoryError>>> {
-        (*self).delete_inventory(builder)
+        self.deref().delete_inventory(builder)
     }
     fn delete_maintenance_window(&self, builder: DeleteMaintenanceWindowInputBuilder) -> impl Future<Output = Result<DeleteMaintenanceWindowOutput, SdkError<DeleteMaintenanceWindowError>>> {
-        (*self).delete_maintenance_window(builder)
+        self.deref().delete_maintenance_window(builder)
     }
     fn delete_ops_item(&self, builder: DeleteOpsItemInputBuilder) -> impl Future<Output = Result<DeleteOpsItemOutput, SdkError<DeleteOpsItemError>>> {
-        (*self).delete_ops_item(builder)
+        self.deref().delete_ops_item(builder)
     }
     fn delete_ops_metadata(&self, builder: DeleteOpsMetadataInputBuilder) -> impl Future<Output = Result<DeleteOpsMetadataOutput, SdkError<DeleteOpsMetadataError>>> {
-        (*self).delete_ops_metadata(builder)
+        self.deref().delete_ops_metadata(builder)
     }
     fn delete_parameter(&self, builder: DeleteParameterInputBuilder) -> impl Future<Output = Result<DeleteParameterOutput, SdkError<DeleteParameterError>>> {
-        (*self).delete_parameter(builder)
+        self.deref().delete_parameter(builder)
     }
     fn delete_parameters(&self, builder: DeleteParametersInputBuilder) -> impl Future<Output = Result<DeleteParametersOutput, SdkError<DeleteParametersError>>> {
-        (*self).delete_parameters(builder)
+        self.deref().delete_parameters(builder)
     }
     fn delete_patch_baseline(&self, builder: DeletePatchBaselineInputBuilder) -> impl Future<Output = Result<DeletePatchBaselineOutput, SdkError<DeletePatchBaselineError>>> {
-        (*self).delete_patch_baseline(builder)
+        self.deref().delete_patch_baseline(builder)
     }
     fn delete_resource_data_sync(&self, builder: DeleteResourceDataSyncInputBuilder) -> impl Future<Output = Result<DeleteResourceDataSyncOutput, SdkError<DeleteResourceDataSyncError>>> {
-        (*self).delete_resource_data_sync(builder)
+        self.deref().delete_resource_data_sync(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn deregister_managed_instance(&self, builder: DeregisterManagedInstanceInputBuilder) -> impl Future<Output = Result<DeregisterManagedInstanceOutput, SdkError<DeregisterManagedInstanceError>>> {
-        (*self).deregister_managed_instance(builder)
+        self.deref().deregister_managed_instance(builder)
     }
     fn deregister_patch_baseline_for_patch_group(&self, builder: DeregisterPatchBaselineForPatchGroupInputBuilder) -> impl Future<Output = Result<DeregisterPatchBaselineForPatchGroupOutput, SdkError<DeregisterPatchBaselineForPatchGroupError>>> {
-        (*self).deregister_patch_baseline_for_patch_group(builder)
+        self.deref().deregister_patch_baseline_for_patch_group(builder)
     }
     fn deregister_target_from_maintenance_window(&self, builder: DeregisterTargetFromMaintenanceWindowInputBuilder) -> impl Future<Output = Result<DeregisterTargetFromMaintenanceWindowOutput, SdkError<DeregisterTargetFromMaintenanceWindowError>>> {
-        (*self).deregister_target_from_maintenance_window(builder)
+        self.deref().deregister_target_from_maintenance_window(builder)
     }
     fn deregister_task_from_maintenance_window(&self, builder: DeregisterTaskFromMaintenanceWindowInputBuilder) -> impl Future<Output = Result<DeregisterTaskFromMaintenanceWindowOutput, SdkError<DeregisterTaskFromMaintenanceWindowError>>> {
-        (*self).deregister_task_from_maintenance_window(builder)
+        self.deref().deregister_task_from_maintenance_window(builder)
     }
     fn describe_activations(&self, builder: DescribeActivationsInputBuilder) -> impl Future<Output = Result<DescribeActivationsOutput, SdkError<DescribeActivationsError>>> {
-        (*self).describe_activations(builder)
+        self.deref().describe_activations(builder)
     }
     fn describe_association(&self, builder: DescribeAssociationInputBuilder) -> impl Future<Output = Result<DescribeAssociationOutput, SdkError<DescribeAssociationError>>> {
-        (*self).describe_association(builder)
+        self.deref().describe_association(builder)
     }
     fn describe_association_execution_targets(&self, builder: DescribeAssociationExecutionTargetsInputBuilder) -> impl Future<Output = Result<DescribeAssociationExecutionTargetsOutput, SdkError<DescribeAssociationExecutionTargetsError>>> {
-        (*self).describe_association_execution_targets(builder)
+        self.deref().describe_association_execution_targets(builder)
     }
     fn describe_association_executions(&self, builder: DescribeAssociationExecutionsInputBuilder) -> impl Future<Output = Result<DescribeAssociationExecutionsOutput, SdkError<DescribeAssociationExecutionsError>>> {
-        (*self).describe_association_executions(builder)
+        self.deref().describe_association_executions(builder)
     }
     fn describe_automation_executions(&self, builder: DescribeAutomationExecutionsInputBuilder) -> impl Future<Output = Result<DescribeAutomationExecutionsOutput, SdkError<DescribeAutomationExecutionsError>>> {
-        (*self).describe_automation_executions(builder)
+        self.deref().describe_automation_executions(builder)
     }
     fn describe_automation_step_executions(&self, builder: DescribeAutomationStepExecutionsInputBuilder) -> impl Future<Output = Result<DescribeAutomationStepExecutionsOutput, SdkError<DescribeAutomationStepExecutionsError>>> {
-        (*self).describe_automation_step_executions(builder)
+        self.deref().describe_automation_step_executions(builder)
     }
     fn describe_available_patches(&self, builder: DescribeAvailablePatchesInputBuilder) -> impl Future<Output = Result<DescribeAvailablePatchesOutput, SdkError<DescribeAvailablePatchesError>>> {
-        (*self).describe_available_patches(builder)
+        self.deref().describe_available_patches(builder)
     }
     fn describe_document(&self, builder: DescribeDocumentInputBuilder) -> impl Future<Output = Result<DescribeDocumentOutput, SdkError<DescribeDocumentError>>> {
-        (*self).describe_document(builder)
+        self.deref().describe_document(builder)
     }
     fn describe_document_permission(&self, builder: DescribeDocumentPermissionInputBuilder) -> impl Future<Output = Result<DescribeDocumentPermissionOutput, SdkError<DescribeDocumentPermissionError>>> {
-        (*self).describe_document_permission(builder)
+        self.deref().describe_document_permission(builder)
     }
     fn describe_effective_instance_associations(&self, builder: DescribeEffectiveInstanceAssociationsInputBuilder) -> impl Future<Output = Result<DescribeEffectiveInstanceAssociationsOutput, SdkError<DescribeEffectiveInstanceAssociationsError>>> {
-        (*self).describe_effective_instance_associations(builder)
+        self.deref().describe_effective_instance_associations(builder)
     }
     fn describe_effective_patches_for_patch_baseline(&self, builder: DescribeEffectivePatchesForPatchBaselineInputBuilder) -> impl Future<Output = Result<DescribeEffectivePatchesForPatchBaselineOutput, SdkError<DescribeEffectivePatchesForPatchBaselineError>>> {
-        (*self).describe_effective_patches_for_patch_baseline(builder)
+        self.deref().describe_effective_patches_for_patch_baseline(builder)
     }
     fn describe_instance_associations_status(&self, builder: DescribeInstanceAssociationsStatusInputBuilder) -> impl Future<Output = Result<DescribeInstanceAssociationsStatusOutput, SdkError<DescribeInstanceAssociationsStatusError>>> {
-        (*self).describe_instance_associations_status(builder)
+        self.deref().describe_instance_associations_status(builder)
     }
     fn describe_instance_information(&self, builder: DescribeInstanceInformationInputBuilder) -> impl Future<Output = Result<DescribeInstanceInformationOutput, SdkError<DescribeInstanceInformationError>>> {
-        (*self).describe_instance_information(builder)
+        self.deref().describe_instance_information(builder)
     }
     fn describe_instance_patch_states(&self, builder: DescribeInstancePatchStatesInputBuilder) -> impl Future<Output = Result<DescribeInstancePatchStatesOutput, SdkError<DescribeInstancePatchStatesError>>> {
-        (*self).describe_instance_patch_states(builder)
+        self.deref().describe_instance_patch_states(builder)
     }
     fn describe_instance_patch_states_for_patch_group(&self, builder: DescribeInstancePatchStatesForPatchGroupInputBuilder) -> impl Future<Output = Result<DescribeInstancePatchStatesForPatchGroupOutput, SdkError<DescribeInstancePatchStatesForPatchGroupError>>> {
-        (*self).describe_instance_patch_states_for_patch_group(builder)
+        self.deref().describe_instance_patch_states_for_patch_group(builder)
     }
     fn describe_instance_patches(&self, builder: DescribeInstancePatchesInputBuilder) -> impl Future<Output = Result<DescribeInstancePatchesOutput, SdkError<DescribeInstancePatchesError>>> {
-        (*self).describe_instance_patches(builder)
+        self.deref().describe_instance_patches(builder)
     }
     fn describe_instance_properties(&self, builder: DescribeInstancePropertiesInputBuilder) -> impl Future<Output = Result<DescribeInstancePropertiesOutput, SdkError<DescribeInstancePropertiesError>>> {
-        (*self).describe_instance_properties(builder)
+        self.deref().describe_instance_properties(builder)
     }
     fn describe_inventory_deletions(&self, builder: DescribeInventoryDeletionsInputBuilder) -> impl Future<Output = Result<DescribeInventoryDeletionsOutput, SdkError<DescribeInventoryDeletionsError>>> {
-        (*self).describe_inventory_deletions(builder)
+        self.deref().describe_inventory_deletions(builder)
     }
     fn describe_maintenance_window_execution_task_invocations(&self, builder: DescribeMaintenanceWindowExecutionTaskInvocationsInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowExecutionTaskInvocationsOutput, SdkError<DescribeMaintenanceWindowExecutionTaskInvocationsError>>> {
-        (*self).describe_maintenance_window_execution_task_invocations(builder)
+        self.deref().describe_maintenance_window_execution_task_invocations(builder)
     }
     fn describe_maintenance_window_execution_tasks(&self, builder: DescribeMaintenanceWindowExecutionTasksInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowExecutionTasksOutput, SdkError<DescribeMaintenanceWindowExecutionTasksError>>> {
-        (*self).describe_maintenance_window_execution_tasks(builder)
+        self.deref().describe_maintenance_window_execution_tasks(builder)
     }
     fn describe_maintenance_window_executions(&self, builder: DescribeMaintenanceWindowExecutionsInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowExecutionsOutput, SdkError<DescribeMaintenanceWindowExecutionsError>>> {
-        (*self).describe_maintenance_window_executions(builder)
+        self.deref().describe_maintenance_window_executions(builder)
     }
     fn describe_maintenance_window_schedule(&self, builder: DescribeMaintenanceWindowScheduleInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowScheduleOutput, SdkError<DescribeMaintenanceWindowScheduleError>>> {
-        (*self).describe_maintenance_window_schedule(builder)
+        self.deref().describe_maintenance_window_schedule(builder)
     }
     fn describe_maintenance_window_targets(&self, builder: DescribeMaintenanceWindowTargetsInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowTargetsOutput, SdkError<DescribeMaintenanceWindowTargetsError>>> {
-        (*self).describe_maintenance_window_targets(builder)
+        self.deref().describe_maintenance_window_targets(builder)
     }
     fn describe_maintenance_window_tasks(&self, builder: DescribeMaintenanceWindowTasksInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowTasksOutput, SdkError<DescribeMaintenanceWindowTasksError>>> {
-        (*self).describe_maintenance_window_tasks(builder)
+        self.deref().describe_maintenance_window_tasks(builder)
     }
     fn describe_maintenance_windows(&self, builder: DescribeMaintenanceWindowsInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowsOutput, SdkError<DescribeMaintenanceWindowsError>>> {
-        (*self).describe_maintenance_windows(builder)
+        self.deref().describe_maintenance_windows(builder)
     }
     fn describe_maintenance_windows_for_target(&self, builder: DescribeMaintenanceWindowsForTargetInputBuilder) -> impl Future<Output = Result<DescribeMaintenanceWindowsForTargetOutput, SdkError<DescribeMaintenanceWindowsForTargetError>>> {
-        (*self).describe_maintenance_windows_for_target(builder)
+        self.deref().describe_maintenance_windows_for_target(builder)
     }
     fn describe_ops_items(&self, builder: DescribeOpsItemsInputBuilder) -> impl Future<Output = Result<DescribeOpsItemsOutput, SdkError<DescribeOpsItemsError>>> {
-        (*self).describe_ops_items(builder)
+        self.deref().describe_ops_items(builder)
     }
     fn describe_parameters(&self, builder: DescribeParametersInputBuilder) -> impl Future<Output = Result<DescribeParametersOutput, SdkError<DescribeParametersError>>> {
-        (*self).describe_parameters(builder)
+        self.deref().describe_parameters(builder)
     }
     fn describe_patch_baselines(&self, builder: DescribePatchBaselinesInputBuilder) -> impl Future<Output = Result<DescribePatchBaselinesOutput, SdkError<DescribePatchBaselinesError>>> {
-        (*self).describe_patch_baselines(builder)
+        self.deref().describe_patch_baselines(builder)
     }
     fn describe_patch_group_state(&self, builder: DescribePatchGroupStateInputBuilder) -> impl Future<Output = Result<DescribePatchGroupStateOutput, SdkError<DescribePatchGroupStateError>>> {
-        (*self).describe_patch_group_state(builder)
+        self.deref().describe_patch_group_state(builder)
     }
     fn describe_patch_groups(&self, builder: DescribePatchGroupsInputBuilder) -> impl Future<Output = Result<DescribePatchGroupsOutput, SdkError<DescribePatchGroupsError>>> {
-        (*self).describe_patch_groups(builder)
+        self.deref().describe_patch_groups(builder)
     }
     fn describe_patch_properties(&self, builder: DescribePatchPropertiesInputBuilder) -> impl Future<Output = Result<DescribePatchPropertiesOutput, SdkError<DescribePatchPropertiesError>>> {
-        (*self).describe_patch_properties(builder)
+        self.deref().describe_patch_properties(builder)
     }
     fn describe_sessions(&self, builder: DescribeSessionsInputBuilder) -> impl Future<Output = Result<DescribeSessionsOutput, SdkError<DescribeSessionsError>>> {
-        (*self).describe_sessions(builder)
+        self.deref().describe_sessions(builder)
     }
     fn disassociate_ops_item_related_item(&self, builder: DisassociateOpsItemRelatedItemInputBuilder) -> impl Future<Output = Result<DisassociateOpsItemRelatedItemOutput, SdkError<DisassociateOpsItemRelatedItemError>>> {
-        (*self).disassociate_ops_item_related_item(builder)
+        self.deref().disassociate_ops_item_related_item(builder)
     }
     fn get_automation_execution(&self, builder: GetAutomationExecutionInputBuilder) -> impl Future<Output = Result<GetAutomationExecutionOutput, SdkError<GetAutomationExecutionError>>> {
-        (*self).get_automation_execution(builder)
+        self.deref().get_automation_execution(builder)
     }
     fn get_calendar_state(&self, builder: GetCalendarStateInputBuilder) -> impl Future<Output = Result<GetCalendarStateOutput, SdkError<GetCalendarStateError>>> {
-        (*self).get_calendar_state(builder)
+        self.deref().get_calendar_state(builder)
     }
     fn get_command_invocation(&self, builder: GetCommandInvocationInputBuilder) -> impl Future<Output = Result<GetCommandInvocationOutput, SdkError<GetCommandInvocationError>>> {
-        (*self).get_command_invocation(builder)
+        self.deref().get_command_invocation(builder)
     }
     fn get_connection_status(&self, builder: GetConnectionStatusInputBuilder) -> impl Future<Output = Result<GetConnectionStatusOutput, SdkError<GetConnectionStatusError>>> {
-        (*self).get_connection_status(builder)
+        self.deref().get_connection_status(builder)
     }
     fn get_default_patch_baseline(&self, builder: GetDefaultPatchBaselineInputBuilder) -> impl Future<Output = Result<GetDefaultPatchBaselineOutput, SdkError<GetDefaultPatchBaselineError>>> {
-        (*self).get_default_patch_baseline(builder)
+        self.deref().get_default_patch_baseline(builder)
     }
     fn get_deployable_patch_snapshot_for_instance(&self, builder: GetDeployablePatchSnapshotForInstanceInputBuilder) -> impl Future<Output = Result<GetDeployablePatchSnapshotForInstanceOutput, SdkError<GetDeployablePatchSnapshotForInstanceError>>> {
-        (*self).get_deployable_patch_snapshot_for_instance(builder)
+        self.deref().get_deployable_patch_snapshot_for_instance(builder)
     }
     fn get_document(&self, builder: GetDocumentInputBuilder) -> impl Future<Output = Result<GetDocumentOutput, SdkError<GetDocumentError>>> {
-        (*self).get_document(builder)
+        self.deref().get_document(builder)
     }
     fn get_inventory(&self, builder: GetInventoryInputBuilder) -> impl Future<Output = Result<GetInventoryOutput, SdkError<GetInventoryError>>> {
-        (*self).get_inventory(builder)
+        self.deref().get_inventory(builder)
     }
     fn get_inventory_schema(&self, builder: GetInventorySchemaInputBuilder) -> impl Future<Output = Result<GetInventorySchemaOutput, SdkError<GetInventorySchemaError>>> {
-        (*self).get_inventory_schema(builder)
+        self.deref().get_inventory_schema(builder)
     }
     fn get_maintenance_window(&self, builder: GetMaintenanceWindowInputBuilder) -> impl Future<Output = Result<GetMaintenanceWindowOutput, SdkError<GetMaintenanceWindowError>>> {
-        (*self).get_maintenance_window(builder)
+        self.deref().get_maintenance_window(builder)
     }
     fn get_maintenance_window_execution(&self, builder: GetMaintenanceWindowExecutionInputBuilder) -> impl Future<Output = Result<GetMaintenanceWindowExecutionOutput, SdkError<GetMaintenanceWindowExecutionError>>> {
-        (*self).get_maintenance_window_execution(builder)
+        self.deref().get_maintenance_window_execution(builder)
     }
     fn get_maintenance_window_execution_task(&self, builder: GetMaintenanceWindowExecutionTaskInputBuilder) -> impl Future<Output = Result<GetMaintenanceWindowExecutionTaskOutput, SdkError<GetMaintenanceWindowExecutionTaskError>>> {
-        (*self).get_maintenance_window_execution_task(builder)
+        self.deref().get_maintenance_window_execution_task(builder)
     }
     fn get_maintenance_window_execution_task_invocation(&self, builder: GetMaintenanceWindowExecutionTaskInvocationInputBuilder) -> impl Future<Output = Result<GetMaintenanceWindowExecutionTaskInvocationOutput, SdkError<GetMaintenanceWindowExecutionTaskInvocationError>>> {
-        (*self).get_maintenance_window_execution_task_invocation(builder)
+        self.deref().get_maintenance_window_execution_task_invocation(builder)
     }
     fn get_maintenance_window_task(&self, builder: GetMaintenanceWindowTaskInputBuilder) -> impl Future<Output = Result<GetMaintenanceWindowTaskOutput, SdkError<GetMaintenanceWindowTaskError>>> {
-        (*self).get_maintenance_window_task(builder)
+        self.deref().get_maintenance_window_task(builder)
     }
     fn get_ops_item(&self, builder: GetOpsItemInputBuilder) -> impl Future<Output = Result<GetOpsItemOutput, SdkError<GetOpsItemError>>> {
-        (*self).get_ops_item(builder)
+        self.deref().get_ops_item(builder)
     }
     fn get_ops_metadata(&self, builder: GetOpsMetadataInputBuilder) -> impl Future<Output = Result<GetOpsMetadataOutput, SdkError<GetOpsMetadataError>>> {
-        (*self).get_ops_metadata(builder)
+        self.deref().get_ops_metadata(builder)
     }
     fn get_ops_summary(&self, builder: GetOpsSummaryInputBuilder) -> impl Future<Output = Result<GetOpsSummaryOutput, SdkError<GetOpsSummaryError>>> {
-        (*self).get_ops_summary(builder)
+        self.deref().get_ops_summary(builder)
     }
     fn get_parameter(&self, builder: GetParameterInputBuilder) -> impl Future<Output = Result<GetParameterOutput, SdkError<GetParameterError>>> {
-        (*self).get_parameter(builder)
+        self.deref().get_parameter(builder)
     }
     fn get_parameter_history(&self, builder: GetParameterHistoryInputBuilder) -> impl Future<Output = Result<GetParameterHistoryOutput, SdkError<GetParameterHistoryError>>> {
-        (*self).get_parameter_history(builder)
+        self.deref().get_parameter_history(builder)
     }
     fn get_parameters(&self, builder: GetParametersInputBuilder) -> impl Future<Output = Result<GetParametersOutput, SdkError<GetParametersError>>> {
-        (*self).get_parameters(builder)
+        self.deref().get_parameters(builder)
     }
     fn get_parameters_by_path(&self, builder: GetParametersByPathInputBuilder) -> impl Future<Output = Result<GetParametersByPathOutput, SdkError<GetParametersByPathError>>> {
-        (*self).get_parameters_by_path(builder)
+        self.deref().get_parameters_by_path(builder)
     }
     fn get_patch_baseline(&self, builder: GetPatchBaselineInputBuilder) -> impl Future<Output = Result<GetPatchBaselineOutput, SdkError<GetPatchBaselineError>>> {
-        (*self).get_patch_baseline(builder)
+        self.deref().get_patch_baseline(builder)
     }
     fn get_patch_baseline_for_patch_group(&self, builder: GetPatchBaselineForPatchGroupInputBuilder) -> impl Future<Output = Result<GetPatchBaselineForPatchGroupOutput, SdkError<GetPatchBaselineForPatchGroupError>>> {
-        (*self).get_patch_baseline_for_patch_group(builder)
+        self.deref().get_patch_baseline_for_patch_group(builder)
     }
     fn get_resource_policies(&self, builder: GetResourcePoliciesInputBuilder) -> impl Future<Output = Result<GetResourcePoliciesOutput, SdkError<GetResourcePoliciesError>>> {
-        (*self).get_resource_policies(builder)
+        self.deref().get_resource_policies(builder)
     }
     fn get_service_setting(&self, builder: GetServiceSettingInputBuilder) -> impl Future<Output = Result<GetServiceSettingOutput, SdkError<GetServiceSettingError>>> {
-        (*self).get_service_setting(builder)
+        self.deref().get_service_setting(builder)
     }
     fn label_parameter_version(&self, builder: LabelParameterVersionInputBuilder) -> impl Future<Output = Result<LabelParameterVersionOutput, SdkError<LabelParameterVersionError>>> {
-        (*self).label_parameter_version(builder)
+        self.deref().label_parameter_version(builder)
     }
     fn list_association_versions(&self, builder: ListAssociationVersionsInputBuilder) -> impl Future<Output = Result<ListAssociationVersionsOutput, SdkError<ListAssociationVersionsError>>> {
-        (*self).list_association_versions(builder)
+        self.deref().list_association_versions(builder)
     }
     fn list_associations(&self, builder: ListAssociationsInputBuilder) -> impl Future<Output = Result<ListAssociationsOutput, SdkError<ListAssociationsError>>> {
-        (*self).list_associations(builder)
+        self.deref().list_associations(builder)
     }
     fn list_command_invocations(&self, builder: ListCommandInvocationsInputBuilder) -> impl Future<Output = Result<ListCommandInvocationsOutput, SdkError<ListCommandInvocationsError>>> {
-        (*self).list_command_invocations(builder)
+        self.deref().list_command_invocations(builder)
     }
     fn list_commands(&self, builder: ListCommandsInputBuilder) -> impl Future<Output = Result<ListCommandsOutput, SdkError<ListCommandsError>>> {
-        (*self).list_commands(builder)
+        self.deref().list_commands(builder)
     }
     fn list_compliance_items(&self, builder: ListComplianceItemsInputBuilder) -> impl Future<Output = Result<ListComplianceItemsOutput, SdkError<ListComplianceItemsError>>> {
-        (*self).list_compliance_items(builder)
+        self.deref().list_compliance_items(builder)
     }
     fn list_compliance_summaries(&self, builder: ListComplianceSummariesInputBuilder) -> impl Future<Output = Result<ListComplianceSummariesOutput, SdkError<ListComplianceSummariesError>>> {
-        (*self).list_compliance_summaries(builder)
+        self.deref().list_compliance_summaries(builder)
     }
     fn list_document_metadata_history(&self, builder: ListDocumentMetadataHistoryInputBuilder) -> impl Future<Output = Result<ListDocumentMetadataHistoryOutput, SdkError<ListDocumentMetadataHistoryError>>> {
-        (*self).list_document_metadata_history(builder)
+        self.deref().list_document_metadata_history(builder)
     }
     fn list_document_versions(&self, builder: ListDocumentVersionsInputBuilder) -> impl Future<Output = Result<ListDocumentVersionsOutput, SdkError<ListDocumentVersionsError>>> {
-        (*self).list_document_versions(builder)
+        self.deref().list_document_versions(builder)
     }
     fn list_documents(&self, builder: ListDocumentsInputBuilder) -> impl Future<Output = Result<ListDocumentsOutput, SdkError<ListDocumentsError>>> {
-        (*self).list_documents(builder)
+        self.deref().list_documents(builder)
     }
     fn list_inventory_entries(&self, builder: ListInventoryEntriesInputBuilder) -> impl Future<Output = Result<ListInventoryEntriesOutput, SdkError<ListInventoryEntriesError>>> {
-        (*self).list_inventory_entries(builder)
+        self.deref().list_inventory_entries(builder)
     }
     fn list_ops_item_events(&self, builder: ListOpsItemEventsInputBuilder) -> impl Future<Output = Result<ListOpsItemEventsOutput, SdkError<ListOpsItemEventsError>>> {
-        (*self).list_ops_item_events(builder)
+        self.deref().list_ops_item_events(builder)
     }
     fn list_ops_item_related_items(&self, builder: ListOpsItemRelatedItemsInputBuilder) -> impl Future<Output = Result<ListOpsItemRelatedItemsOutput, SdkError<ListOpsItemRelatedItemsError>>> {
-        (*self).list_ops_item_related_items(builder)
+        self.deref().list_ops_item_related_items(builder)
     }
     fn list_ops_metadata(&self, builder: ListOpsMetadataInputBuilder) -> impl Future<Output = Result<ListOpsMetadataOutput, SdkError<ListOpsMetadataError>>> {
-        (*self).list_ops_metadata(builder)
+        self.deref().list_ops_metadata(builder)
     }
     fn list_resource_compliance_summaries(&self, builder: ListResourceComplianceSummariesInputBuilder) -> impl Future<Output = Result<ListResourceComplianceSummariesOutput, SdkError<ListResourceComplianceSummariesError>>> {
-        (*self).list_resource_compliance_summaries(builder)
+        self.deref().list_resource_compliance_summaries(builder)
     }
     fn list_resource_data_sync(&self, builder: ListResourceDataSyncInputBuilder) -> impl Future<Output = Result<ListResourceDataSyncOutput, SdkError<ListResourceDataSyncError>>> {
-        (*self).list_resource_data_sync(builder)
+        self.deref().list_resource_data_sync(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn modify_document_permission(&self, builder: ModifyDocumentPermissionInputBuilder) -> impl Future<Output = Result<ModifyDocumentPermissionOutput, SdkError<ModifyDocumentPermissionError>>> {
-        (*self).modify_document_permission(builder)
+        self.deref().modify_document_permission(builder)
     }
     fn put_compliance_items(&self, builder: PutComplianceItemsInputBuilder) -> impl Future<Output = Result<PutComplianceItemsOutput, SdkError<PutComplianceItemsError>>> {
-        (*self).put_compliance_items(builder)
+        self.deref().put_compliance_items(builder)
     }
     fn put_inventory(&self, builder: PutInventoryInputBuilder) -> impl Future<Output = Result<PutInventoryOutput, SdkError<PutInventoryError>>> {
-        (*self).put_inventory(builder)
+        self.deref().put_inventory(builder)
     }
     fn put_parameter(&self, builder: PutParameterInputBuilder) -> impl Future<Output = Result<PutParameterOutput, SdkError<PutParameterError>>> {
-        (*self).put_parameter(builder)
+        self.deref().put_parameter(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn register_default_patch_baseline(&self, builder: RegisterDefaultPatchBaselineInputBuilder) -> impl Future<Output = Result<RegisterDefaultPatchBaselineOutput, SdkError<RegisterDefaultPatchBaselineError>>> {
-        (*self).register_default_patch_baseline(builder)
+        self.deref().register_default_patch_baseline(builder)
     }
     fn register_patch_baseline_for_patch_group(&self, builder: RegisterPatchBaselineForPatchGroupInputBuilder) -> impl Future<Output = Result<RegisterPatchBaselineForPatchGroupOutput, SdkError<RegisterPatchBaselineForPatchGroupError>>> {
-        (*self).register_patch_baseline_for_patch_group(builder)
+        self.deref().register_patch_baseline_for_patch_group(builder)
     }
     fn register_target_with_maintenance_window(&self, builder: RegisterTargetWithMaintenanceWindowInputBuilder) -> impl Future<Output = Result<RegisterTargetWithMaintenanceWindowOutput, SdkError<RegisterTargetWithMaintenanceWindowError>>> {
-        (*self).register_target_with_maintenance_window(builder)
+        self.deref().register_target_with_maintenance_window(builder)
     }
     fn register_task_with_maintenance_window(&self, builder: RegisterTaskWithMaintenanceWindowInputBuilder) -> impl Future<Output = Result<RegisterTaskWithMaintenanceWindowOutput, SdkError<RegisterTaskWithMaintenanceWindowError>>> {
-        (*self).register_task_with_maintenance_window(builder)
+        self.deref().register_task_with_maintenance_window(builder)
     }
     fn remove_tags_from_resource(&self, builder: RemoveTagsFromResourceInputBuilder) -> impl Future<Output = Result<RemoveTagsFromResourceOutput, SdkError<RemoveTagsFromResourceError>>> {
-        (*self).remove_tags_from_resource(builder)
+        self.deref().remove_tags_from_resource(builder)
     }
     fn reset_service_setting(&self, builder: ResetServiceSettingInputBuilder) -> impl Future<Output = Result<ResetServiceSettingOutput, SdkError<ResetServiceSettingError>>> {
-        (*self).reset_service_setting(builder)
+        self.deref().reset_service_setting(builder)
     }
     fn resume_session(&self, builder: ResumeSessionInputBuilder) -> impl Future<Output = Result<ResumeSessionOutput, SdkError<ResumeSessionError>>> {
-        (*self).resume_session(builder)
+        self.deref().resume_session(builder)
     }
     fn send_automation_signal(&self, builder: SendAutomationSignalInputBuilder) -> impl Future<Output = Result<SendAutomationSignalOutput, SdkError<SendAutomationSignalError>>> {
-        (*self).send_automation_signal(builder)
+        self.deref().send_automation_signal(builder)
     }
     fn send_command(&self, builder: SendCommandInputBuilder) -> impl Future<Output = Result<SendCommandOutput, SdkError<SendCommandError>>> {
-        (*self).send_command(builder)
+        self.deref().send_command(builder)
     }
     fn start_associations_once(&self, builder: StartAssociationsOnceInputBuilder) -> impl Future<Output = Result<StartAssociationsOnceOutput, SdkError<StartAssociationsOnceError>>> {
-        (*self).start_associations_once(builder)
+        self.deref().start_associations_once(builder)
     }
     fn start_automation_execution(&self, builder: StartAutomationExecutionInputBuilder) -> impl Future<Output = Result<StartAutomationExecutionOutput, SdkError<StartAutomationExecutionError>>> {
-        (*self).start_automation_execution(builder)
+        self.deref().start_automation_execution(builder)
     }
     fn start_change_request_execution(&self, builder: StartChangeRequestExecutionInputBuilder) -> impl Future<Output = Result<StartChangeRequestExecutionOutput, SdkError<StartChangeRequestExecutionError>>> {
-        (*self).start_change_request_execution(builder)
+        self.deref().start_change_request_execution(builder)
     }
     fn start_session(&self, builder: StartSessionInputBuilder) -> impl Future<Output = Result<StartSessionOutput, SdkError<StartSessionError>>> {
-        (*self).start_session(builder)
+        self.deref().start_session(builder)
     }
     fn stop_automation_execution(&self, builder: StopAutomationExecutionInputBuilder) -> impl Future<Output = Result<StopAutomationExecutionOutput, SdkError<StopAutomationExecutionError>>> {
-        (*self).stop_automation_execution(builder)
+        self.deref().stop_automation_execution(builder)
     }
     fn terminate_session(&self, builder: TerminateSessionInputBuilder) -> impl Future<Output = Result<TerminateSessionOutput, SdkError<TerminateSessionError>>> {
-        (*self).terminate_session(builder)
+        self.deref().terminate_session(builder)
     }
     fn unlabel_parameter_version(&self, builder: UnlabelParameterVersionInputBuilder) -> impl Future<Output = Result<UnlabelParameterVersionOutput, SdkError<UnlabelParameterVersionError>>> {
-        (*self).unlabel_parameter_version(builder)
+        self.deref().unlabel_parameter_version(builder)
     }
     fn update_association(&self, builder: UpdateAssociationInputBuilder) -> impl Future<Output = Result<UpdateAssociationOutput, SdkError<UpdateAssociationError>>> {
-        (*self).update_association(builder)
+        self.deref().update_association(builder)
     }
     fn update_association_status(&self, builder: UpdateAssociationStatusInputBuilder) -> impl Future<Output = Result<UpdateAssociationStatusOutput, SdkError<UpdateAssociationStatusError>>> {
-        (*self).update_association_status(builder)
+        self.deref().update_association_status(builder)
     }
     fn update_document(&self, builder: UpdateDocumentInputBuilder) -> impl Future<Output = Result<UpdateDocumentOutput, SdkError<UpdateDocumentError>>> {
-        (*self).update_document(builder)
+        self.deref().update_document(builder)
     }
     fn update_document_default_version(&self, builder: UpdateDocumentDefaultVersionInputBuilder) -> impl Future<Output = Result<UpdateDocumentDefaultVersionOutput, SdkError<UpdateDocumentDefaultVersionError>>> {
-        (*self).update_document_default_version(builder)
+        self.deref().update_document_default_version(builder)
     }
     fn update_document_metadata(&self, builder: UpdateDocumentMetadataInputBuilder) -> impl Future<Output = Result<UpdateDocumentMetadataOutput, SdkError<UpdateDocumentMetadataError>>> {
-        (*self).update_document_metadata(builder)
+        self.deref().update_document_metadata(builder)
     }
     fn update_maintenance_window(&self, builder: UpdateMaintenanceWindowInputBuilder) -> impl Future<Output = Result<UpdateMaintenanceWindowOutput, SdkError<UpdateMaintenanceWindowError>>> {
-        (*self).update_maintenance_window(builder)
+        self.deref().update_maintenance_window(builder)
     }
     fn update_maintenance_window_target(&self, builder: UpdateMaintenanceWindowTargetInputBuilder) -> impl Future<Output = Result<UpdateMaintenanceWindowTargetOutput, SdkError<UpdateMaintenanceWindowTargetError>>> {
-        (*self).update_maintenance_window_target(builder)
+        self.deref().update_maintenance_window_target(builder)
     }
     fn update_maintenance_window_task(&self, builder: UpdateMaintenanceWindowTaskInputBuilder) -> impl Future<Output = Result<UpdateMaintenanceWindowTaskOutput, SdkError<UpdateMaintenanceWindowTaskError>>> {
-        (*self).update_maintenance_window_task(builder)
+        self.deref().update_maintenance_window_task(builder)
     }
     fn update_managed_instance_role(&self, builder: UpdateManagedInstanceRoleInputBuilder) -> impl Future<Output = Result<UpdateManagedInstanceRoleOutput, SdkError<UpdateManagedInstanceRoleError>>> {
-        (*self).update_managed_instance_role(builder)
+        self.deref().update_managed_instance_role(builder)
     }
     fn update_ops_item(&self, builder: UpdateOpsItemInputBuilder) -> impl Future<Output = Result<UpdateOpsItemOutput, SdkError<UpdateOpsItemError>>> {
-        (*self).update_ops_item(builder)
+        self.deref().update_ops_item(builder)
     }
     fn update_ops_metadata(&self, builder: UpdateOpsMetadataInputBuilder) -> impl Future<Output = Result<UpdateOpsMetadataOutput, SdkError<UpdateOpsMetadataError>>> {
-        (*self).update_ops_metadata(builder)
+        self.deref().update_ops_metadata(builder)
     }
     fn update_patch_baseline(&self, builder: UpdatePatchBaselineInputBuilder) -> impl Future<Output = Result<UpdatePatchBaselineOutput, SdkError<UpdatePatchBaselineError>>> {
-        (*self).update_patch_baseline(builder)
+        self.deref().update_patch_baseline(builder)
     }
     fn update_resource_data_sync(&self, builder: UpdateResourceDataSyncInputBuilder) -> impl Future<Output = Result<UpdateResourceDataSyncOutput, SdkError<UpdateResourceDataSyncError>>> {
-        (*self).update_resource_data_sync(builder)
+        self.deref().update_resource_data_sync(builder)
     }
     fn update_service_setting(&self, builder: UpdateServiceSettingInputBuilder) -> impl Future<Output = Result<UpdateServiceSettingOutput, SdkError<UpdateServiceSettingError>>> {
-        (*self).update_service_setting(builder)
+        self.deref().update_service_setting(builder)
     }
 }
 #[cfg(feature = "mockall")]

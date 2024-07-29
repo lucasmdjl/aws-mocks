@@ -70,6 +70,7 @@ use aws_sdk_codebuild::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_codebuild::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_codebuild::*;
 
@@ -281,156 +282,158 @@ impl CodeBuildClient for CodeBuildClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CodeBuildClient> CodeBuildClient for &T {
+impl <T> CodeBuildClient for T
+where T: Deref,
+      T::Target: CodeBuildClient {
     fn batch_delete_builds(&self, builder: BatchDeleteBuildsInputBuilder) -> impl Future<Output = Result<BatchDeleteBuildsOutput, SdkError<BatchDeleteBuildsError>>> {
-        (*self).batch_delete_builds(builder)
+        self.deref().batch_delete_builds(builder)
     }
     fn batch_get_build_batches(&self, builder: BatchGetBuildBatchesInputBuilder) -> impl Future<Output = Result<BatchGetBuildBatchesOutput, SdkError<BatchGetBuildBatchesError>>> {
-        (*self).batch_get_build_batches(builder)
+        self.deref().batch_get_build_batches(builder)
     }
     fn batch_get_builds(&self, builder: BatchGetBuildsInputBuilder) -> impl Future<Output = Result<BatchGetBuildsOutput, SdkError<BatchGetBuildsError>>> {
-        (*self).batch_get_builds(builder)
+        self.deref().batch_get_builds(builder)
     }
     fn batch_get_fleets(&self, builder: BatchGetFleetsInputBuilder) -> impl Future<Output = Result<BatchGetFleetsOutput, SdkError<BatchGetFleetsError>>> {
-        (*self).batch_get_fleets(builder)
+        self.deref().batch_get_fleets(builder)
     }
     fn batch_get_projects(&self, builder: BatchGetProjectsInputBuilder) -> impl Future<Output = Result<BatchGetProjectsOutput, SdkError<BatchGetProjectsError>>> {
-        (*self).batch_get_projects(builder)
+        self.deref().batch_get_projects(builder)
     }
     fn batch_get_report_groups(&self, builder: BatchGetReportGroupsInputBuilder) -> impl Future<Output = Result<BatchGetReportGroupsOutput, SdkError<BatchGetReportGroupsError>>> {
-        (*self).batch_get_report_groups(builder)
+        self.deref().batch_get_report_groups(builder)
     }
     fn batch_get_reports(&self, builder: BatchGetReportsInputBuilder) -> impl Future<Output = Result<BatchGetReportsOutput, SdkError<BatchGetReportsError>>> {
-        (*self).batch_get_reports(builder)
+        self.deref().batch_get_reports(builder)
     }
     fn create_fleet(&self, builder: CreateFleetInputBuilder) -> impl Future<Output = Result<CreateFleetOutput, SdkError<CreateFleetError>>> {
-        (*self).create_fleet(builder)
+        self.deref().create_fleet(builder)
     }
     fn create_project(&self, builder: CreateProjectInputBuilder) -> impl Future<Output = Result<CreateProjectOutput, SdkError<CreateProjectError>>> {
-        (*self).create_project(builder)
+        self.deref().create_project(builder)
     }
     fn create_report_group(&self, builder: CreateReportGroupInputBuilder) -> impl Future<Output = Result<CreateReportGroupOutput, SdkError<CreateReportGroupError>>> {
-        (*self).create_report_group(builder)
+        self.deref().create_report_group(builder)
     }
     fn create_webhook(&self, builder: CreateWebhookInputBuilder) -> impl Future<Output = Result<CreateWebhookOutput, SdkError<CreateWebhookError>>> {
-        (*self).create_webhook(builder)
+        self.deref().create_webhook(builder)
     }
     fn delete_build_batch(&self, builder: DeleteBuildBatchInputBuilder) -> impl Future<Output = Result<DeleteBuildBatchOutput, SdkError<DeleteBuildBatchError>>> {
-        (*self).delete_build_batch(builder)
+        self.deref().delete_build_batch(builder)
     }
     fn delete_fleet(&self, builder: DeleteFleetInputBuilder) -> impl Future<Output = Result<DeleteFleetOutput, SdkError<DeleteFleetError>>> {
-        (*self).delete_fleet(builder)
+        self.deref().delete_fleet(builder)
     }
     fn delete_project(&self, builder: DeleteProjectInputBuilder) -> impl Future<Output = Result<DeleteProjectOutput, SdkError<DeleteProjectError>>> {
-        (*self).delete_project(builder)
+        self.deref().delete_project(builder)
     }
     fn delete_report(&self, builder: DeleteReportInputBuilder) -> impl Future<Output = Result<DeleteReportOutput, SdkError<DeleteReportError>>> {
-        (*self).delete_report(builder)
+        self.deref().delete_report(builder)
     }
     fn delete_report_group(&self, builder: DeleteReportGroupInputBuilder) -> impl Future<Output = Result<DeleteReportGroupOutput, SdkError<DeleteReportGroupError>>> {
-        (*self).delete_report_group(builder)
+        self.deref().delete_report_group(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_source_credentials(&self, builder: DeleteSourceCredentialsInputBuilder) -> impl Future<Output = Result<DeleteSourceCredentialsOutput, SdkError<DeleteSourceCredentialsError>>> {
-        (*self).delete_source_credentials(builder)
+        self.deref().delete_source_credentials(builder)
     }
     fn delete_webhook(&self, builder: DeleteWebhookInputBuilder) -> impl Future<Output = Result<DeleteWebhookOutput, SdkError<DeleteWebhookError>>> {
-        (*self).delete_webhook(builder)
+        self.deref().delete_webhook(builder)
     }
     fn describe_code_coverages(&self, builder: DescribeCodeCoveragesInputBuilder) -> impl Future<Output = Result<DescribeCodeCoveragesOutput, SdkError<DescribeCodeCoveragesError>>> {
-        (*self).describe_code_coverages(builder)
+        self.deref().describe_code_coverages(builder)
     }
     fn describe_test_cases(&self, builder: DescribeTestCasesInputBuilder) -> impl Future<Output = Result<DescribeTestCasesOutput, SdkError<DescribeTestCasesError>>> {
-        (*self).describe_test_cases(builder)
+        self.deref().describe_test_cases(builder)
     }
     fn get_report_group_trend(&self, builder: GetReportGroupTrendInputBuilder) -> impl Future<Output = Result<GetReportGroupTrendOutput, SdkError<GetReportGroupTrendError>>> {
-        (*self).get_report_group_trend(builder)
+        self.deref().get_report_group_trend(builder)
     }
     fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> {
-        (*self).get_resource_policy(builder)
+        self.deref().get_resource_policy(builder)
     }
     fn import_source_credentials(&self, builder: ImportSourceCredentialsInputBuilder) -> impl Future<Output = Result<ImportSourceCredentialsOutput, SdkError<ImportSourceCredentialsError>>> {
-        (*self).import_source_credentials(builder)
+        self.deref().import_source_credentials(builder)
     }
     fn invalidate_project_cache(&self, builder: InvalidateProjectCacheInputBuilder) -> impl Future<Output = Result<InvalidateProjectCacheOutput, SdkError<InvalidateProjectCacheError>>> {
-        (*self).invalidate_project_cache(builder)
+        self.deref().invalidate_project_cache(builder)
     }
     fn list_build_batches(&self, builder: ListBuildBatchesInputBuilder) -> impl Future<Output = Result<ListBuildBatchesOutput, SdkError<ListBuildBatchesError>>> {
-        (*self).list_build_batches(builder)
+        self.deref().list_build_batches(builder)
     }
     fn list_build_batches_for_project(&self, builder: ListBuildBatchesForProjectInputBuilder) -> impl Future<Output = Result<ListBuildBatchesForProjectOutput, SdkError<ListBuildBatchesForProjectError>>> {
-        (*self).list_build_batches_for_project(builder)
+        self.deref().list_build_batches_for_project(builder)
     }
     fn list_builds(&self, builder: ListBuildsInputBuilder) -> impl Future<Output = Result<ListBuildsOutput, SdkError<ListBuildsError>>> {
-        (*self).list_builds(builder)
+        self.deref().list_builds(builder)
     }
     fn list_builds_for_project(&self, builder: ListBuildsForProjectInputBuilder) -> impl Future<Output = Result<ListBuildsForProjectOutput, SdkError<ListBuildsForProjectError>>> {
-        (*self).list_builds_for_project(builder)
+        self.deref().list_builds_for_project(builder)
     }
     fn list_curated_environment_images(&self, builder: ListCuratedEnvironmentImagesInputBuilder) -> impl Future<Output = Result<ListCuratedEnvironmentImagesOutput, SdkError<ListCuratedEnvironmentImagesError>>> {
-        (*self).list_curated_environment_images(builder)
+        self.deref().list_curated_environment_images(builder)
     }
     fn list_fleets(&self, builder: ListFleetsInputBuilder) -> impl Future<Output = Result<ListFleetsOutput, SdkError<ListFleetsError>>> {
-        (*self).list_fleets(builder)
+        self.deref().list_fleets(builder)
     }
     fn list_projects(&self, builder: ListProjectsInputBuilder) -> impl Future<Output = Result<ListProjectsOutput, SdkError<ListProjectsError>>> {
-        (*self).list_projects(builder)
+        self.deref().list_projects(builder)
     }
     fn list_report_groups(&self, builder: ListReportGroupsInputBuilder) -> impl Future<Output = Result<ListReportGroupsOutput, SdkError<ListReportGroupsError>>> {
-        (*self).list_report_groups(builder)
+        self.deref().list_report_groups(builder)
     }
     fn list_reports(&self, builder: ListReportsInputBuilder) -> impl Future<Output = Result<ListReportsOutput, SdkError<ListReportsError>>> {
-        (*self).list_reports(builder)
+        self.deref().list_reports(builder)
     }
     fn list_reports_for_report_group(&self, builder: ListReportsForReportGroupInputBuilder) -> impl Future<Output = Result<ListReportsForReportGroupOutput, SdkError<ListReportsForReportGroupError>>> {
-        (*self).list_reports_for_report_group(builder)
+        self.deref().list_reports_for_report_group(builder)
     }
     fn list_shared_projects(&self, builder: ListSharedProjectsInputBuilder) -> impl Future<Output = Result<ListSharedProjectsOutput, SdkError<ListSharedProjectsError>>> {
-        (*self).list_shared_projects(builder)
+        self.deref().list_shared_projects(builder)
     }
     fn list_shared_report_groups(&self, builder: ListSharedReportGroupsInputBuilder) -> impl Future<Output = Result<ListSharedReportGroupsOutput, SdkError<ListSharedReportGroupsError>>> {
-        (*self).list_shared_report_groups(builder)
+        self.deref().list_shared_report_groups(builder)
     }
     fn list_source_credentials(&self, builder: ListSourceCredentialsInputBuilder) -> impl Future<Output = Result<ListSourceCredentialsOutput, SdkError<ListSourceCredentialsError>>> {
-        (*self).list_source_credentials(builder)
+        self.deref().list_source_credentials(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn retry_build(&self, builder: RetryBuildInputBuilder) -> impl Future<Output = Result<RetryBuildOutput, SdkError<RetryBuildError>>> {
-        (*self).retry_build(builder)
+        self.deref().retry_build(builder)
     }
     fn retry_build_batch(&self, builder: RetryBuildBatchInputBuilder) -> impl Future<Output = Result<RetryBuildBatchOutput, SdkError<RetryBuildBatchError>>> {
-        (*self).retry_build_batch(builder)
+        self.deref().retry_build_batch(builder)
     }
     fn start_build(&self, builder: StartBuildInputBuilder) -> impl Future<Output = Result<StartBuildOutput, SdkError<StartBuildError>>> {
-        (*self).start_build(builder)
+        self.deref().start_build(builder)
     }
     fn start_build_batch(&self, builder: StartBuildBatchInputBuilder) -> impl Future<Output = Result<StartBuildBatchOutput, SdkError<StartBuildBatchError>>> {
-        (*self).start_build_batch(builder)
+        self.deref().start_build_batch(builder)
     }
     fn stop_build(&self, builder: StopBuildInputBuilder) -> impl Future<Output = Result<StopBuildOutput, SdkError<StopBuildError>>> {
-        (*self).stop_build(builder)
+        self.deref().stop_build(builder)
     }
     fn stop_build_batch(&self, builder: StopBuildBatchInputBuilder) -> impl Future<Output = Result<StopBuildBatchOutput, SdkError<StopBuildBatchError>>> {
-        (*self).stop_build_batch(builder)
+        self.deref().stop_build_batch(builder)
     }
     fn update_fleet(&self, builder: UpdateFleetInputBuilder) -> impl Future<Output = Result<UpdateFleetOutput, SdkError<UpdateFleetError>>> {
-        (*self).update_fleet(builder)
+        self.deref().update_fleet(builder)
     }
     fn update_project(&self, builder: UpdateProjectInputBuilder) -> impl Future<Output = Result<UpdateProjectOutput, SdkError<UpdateProjectError>>> {
-        (*self).update_project(builder)
+        self.deref().update_project(builder)
     }
     fn update_project_visibility(&self, builder: UpdateProjectVisibilityInputBuilder) -> impl Future<Output = Result<UpdateProjectVisibilityOutput, SdkError<UpdateProjectVisibilityError>>> {
-        (*self).update_project_visibility(builder)
+        self.deref().update_project_visibility(builder)
     }
     fn update_report_group(&self, builder: UpdateReportGroupInputBuilder) -> impl Future<Output = Result<UpdateReportGroupOutput, SdkError<UpdateReportGroupError>>> {
-        (*self).update_report_group(builder)
+        self.deref().update_report_group(builder)
     }
     fn update_webhook(&self, builder: UpdateWebhookInputBuilder) -> impl Future<Output = Result<UpdateWebhookOutput, SdkError<UpdateWebhookError>>> {
-        (*self).update_webhook(builder)
+        self.deref().update_webhook(builder)
     }
 }
 #[cfg(feature = "mockall")]

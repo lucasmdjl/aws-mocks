@@ -84,6 +84,7 @@ use aws_sdk_appsync::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_appsync::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_appsync::*;
 
@@ -351,198 +352,200 @@ impl AppSyncClient for AppSyncClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AppSyncClient> AppSyncClient for &T {
+impl <T> AppSyncClient for T
+where T: Deref,
+      T::Target: AppSyncClient {
     fn associate_api(&self, builder: AssociateApiInputBuilder) -> impl Future<Output = Result<AssociateApiOutput, SdkError<AssociateApiError>>> {
-        (*self).associate_api(builder)
+        self.deref().associate_api(builder)
     }
     fn associate_merged_graphql_api(&self, builder: AssociateMergedGraphqlApiInputBuilder) -> impl Future<Output = Result<AssociateMergedGraphqlApiOutput, SdkError<AssociateMergedGraphqlApiError>>> {
-        (*self).associate_merged_graphql_api(builder)
+        self.deref().associate_merged_graphql_api(builder)
     }
     fn associate_source_graphql_api(&self, builder: AssociateSourceGraphqlApiInputBuilder) -> impl Future<Output = Result<AssociateSourceGraphqlApiOutput, SdkError<AssociateSourceGraphqlApiError>>> {
-        (*self).associate_source_graphql_api(builder)
+        self.deref().associate_source_graphql_api(builder)
     }
     fn create_api_cache(&self, builder: CreateApiCacheInputBuilder) -> impl Future<Output = Result<CreateApiCacheOutput, SdkError<CreateApiCacheError>>> {
-        (*self).create_api_cache(builder)
+        self.deref().create_api_cache(builder)
     }
     fn create_api_key(&self, builder: CreateApiKeyInputBuilder) -> impl Future<Output = Result<CreateApiKeyOutput, SdkError<CreateApiKeyError>>> {
-        (*self).create_api_key(builder)
+        self.deref().create_api_key(builder)
     }
     fn create_data_source(&self, builder: CreateDataSourceInputBuilder) -> impl Future<Output = Result<CreateDataSourceOutput, SdkError<CreateDataSourceError>>> {
-        (*self).create_data_source(builder)
+        self.deref().create_data_source(builder)
     }
     fn create_domain_name(&self, builder: CreateDomainNameInputBuilder) -> impl Future<Output = Result<CreateDomainNameOutput, SdkError<CreateDomainNameError>>> {
-        (*self).create_domain_name(builder)
+        self.deref().create_domain_name(builder)
     }
     fn create_function(&self, builder: CreateFunctionInputBuilder) -> impl Future<Output = Result<CreateFunctionOutput, SdkError<CreateFunctionError>>> {
-        (*self).create_function(builder)
+        self.deref().create_function(builder)
     }
     fn create_graphql_api(&self, builder: CreateGraphqlApiInputBuilder) -> impl Future<Output = Result<CreateGraphqlApiOutput, SdkError<CreateGraphqlApiError>>> {
-        (*self).create_graphql_api(builder)
+        self.deref().create_graphql_api(builder)
     }
     fn create_resolver(&self, builder: CreateResolverInputBuilder) -> impl Future<Output = Result<CreateResolverOutput, SdkError<CreateResolverError>>> {
-        (*self).create_resolver(builder)
+        self.deref().create_resolver(builder)
     }
     fn create_type(&self, builder: CreateTypeInputBuilder) -> impl Future<Output = Result<CreateTypeOutput, SdkError<CreateTypeError>>> {
-        (*self).create_type(builder)
+        self.deref().create_type(builder)
     }
     fn delete_api_cache(&self, builder: DeleteApiCacheInputBuilder) -> impl Future<Output = Result<DeleteApiCacheOutput, SdkError<DeleteApiCacheError>>> {
-        (*self).delete_api_cache(builder)
+        self.deref().delete_api_cache(builder)
     }
     fn delete_api_key(&self, builder: DeleteApiKeyInputBuilder) -> impl Future<Output = Result<DeleteApiKeyOutput, SdkError<DeleteApiKeyError>>> {
-        (*self).delete_api_key(builder)
+        self.deref().delete_api_key(builder)
     }
     fn delete_data_source(&self, builder: DeleteDataSourceInputBuilder) -> impl Future<Output = Result<DeleteDataSourceOutput, SdkError<DeleteDataSourceError>>> {
-        (*self).delete_data_source(builder)
+        self.deref().delete_data_source(builder)
     }
     fn delete_domain_name(&self, builder: DeleteDomainNameInputBuilder) -> impl Future<Output = Result<DeleteDomainNameOutput, SdkError<DeleteDomainNameError>>> {
-        (*self).delete_domain_name(builder)
+        self.deref().delete_domain_name(builder)
     }
     fn delete_function(&self, builder: DeleteFunctionInputBuilder) -> impl Future<Output = Result<DeleteFunctionOutput, SdkError<DeleteFunctionError>>> {
-        (*self).delete_function(builder)
+        self.deref().delete_function(builder)
     }
     fn delete_graphql_api(&self, builder: DeleteGraphqlApiInputBuilder) -> impl Future<Output = Result<DeleteGraphqlApiOutput, SdkError<DeleteGraphqlApiError>>> {
-        (*self).delete_graphql_api(builder)
+        self.deref().delete_graphql_api(builder)
     }
     fn delete_resolver(&self, builder: DeleteResolverInputBuilder) -> impl Future<Output = Result<DeleteResolverOutput, SdkError<DeleteResolverError>>> {
-        (*self).delete_resolver(builder)
+        self.deref().delete_resolver(builder)
     }
     fn delete_type(&self, builder: DeleteTypeInputBuilder) -> impl Future<Output = Result<DeleteTypeOutput, SdkError<DeleteTypeError>>> {
-        (*self).delete_type(builder)
+        self.deref().delete_type(builder)
     }
     fn disassociate_api(&self, builder: DisassociateApiInputBuilder) -> impl Future<Output = Result<DisassociateApiOutput, SdkError<DisassociateApiError>>> {
-        (*self).disassociate_api(builder)
+        self.deref().disassociate_api(builder)
     }
     fn disassociate_merged_graphql_api(&self, builder: DisassociateMergedGraphqlApiInputBuilder) -> impl Future<Output = Result<DisassociateMergedGraphqlApiOutput, SdkError<DisassociateMergedGraphqlApiError>>> {
-        (*self).disassociate_merged_graphql_api(builder)
+        self.deref().disassociate_merged_graphql_api(builder)
     }
     fn disassociate_source_graphql_api(&self, builder: DisassociateSourceGraphqlApiInputBuilder) -> impl Future<Output = Result<DisassociateSourceGraphqlApiOutput, SdkError<DisassociateSourceGraphqlApiError>>> {
-        (*self).disassociate_source_graphql_api(builder)
+        self.deref().disassociate_source_graphql_api(builder)
     }
     fn evaluate_code(&self, builder: EvaluateCodeInputBuilder) -> impl Future<Output = Result<EvaluateCodeOutput, SdkError<EvaluateCodeError>>> {
-        (*self).evaluate_code(builder)
+        self.deref().evaluate_code(builder)
     }
     fn evaluate_mapping_template(&self, builder: EvaluateMappingTemplateInputBuilder) -> impl Future<Output = Result<EvaluateMappingTemplateOutput, SdkError<EvaluateMappingTemplateError>>> {
-        (*self).evaluate_mapping_template(builder)
+        self.deref().evaluate_mapping_template(builder)
     }
     fn flush_api_cache(&self, builder: FlushApiCacheInputBuilder) -> impl Future<Output = Result<FlushApiCacheOutput, SdkError<FlushApiCacheError>>> {
-        (*self).flush_api_cache(builder)
+        self.deref().flush_api_cache(builder)
     }
     fn get_api_association(&self, builder: GetApiAssociationInputBuilder) -> impl Future<Output = Result<GetApiAssociationOutput, SdkError<GetApiAssociationError>>> {
-        (*self).get_api_association(builder)
+        self.deref().get_api_association(builder)
     }
     fn get_api_cache(&self, builder: GetApiCacheInputBuilder) -> impl Future<Output = Result<GetApiCacheOutput, SdkError<GetApiCacheError>>> {
-        (*self).get_api_cache(builder)
+        self.deref().get_api_cache(builder)
     }
     fn get_data_source(&self, builder: GetDataSourceInputBuilder) -> impl Future<Output = Result<GetDataSourceOutput, SdkError<GetDataSourceError>>> {
-        (*self).get_data_source(builder)
+        self.deref().get_data_source(builder)
     }
     fn get_data_source_introspection(&self, builder: GetDataSourceIntrospectionInputBuilder) -> impl Future<Output = Result<GetDataSourceIntrospectionOutput, SdkError<GetDataSourceIntrospectionError>>> {
-        (*self).get_data_source_introspection(builder)
+        self.deref().get_data_source_introspection(builder)
     }
     fn get_domain_name(&self, builder: GetDomainNameInputBuilder) -> impl Future<Output = Result<GetDomainNameOutput, SdkError<GetDomainNameError>>> {
-        (*self).get_domain_name(builder)
+        self.deref().get_domain_name(builder)
     }
     fn get_function(&self, builder: GetFunctionInputBuilder) -> impl Future<Output = Result<GetFunctionOutput, SdkError<GetFunctionError>>> {
-        (*self).get_function(builder)
+        self.deref().get_function(builder)
     }
     fn get_graphql_api(&self, builder: GetGraphqlApiInputBuilder) -> impl Future<Output = Result<GetGraphqlApiOutput, SdkError<GetGraphqlApiError>>> {
-        (*self).get_graphql_api(builder)
+        self.deref().get_graphql_api(builder)
     }
     fn get_graphql_api_environment_variables(&self, builder: GetGraphqlApiEnvironmentVariablesInputBuilder) -> impl Future<Output = Result<GetGraphqlApiEnvironmentVariablesOutput, SdkError<GetGraphqlApiEnvironmentVariablesError>>> {
-        (*self).get_graphql_api_environment_variables(builder)
+        self.deref().get_graphql_api_environment_variables(builder)
     }
     fn get_introspection_schema(&self, builder: GetIntrospectionSchemaInputBuilder) -> impl Future<Output = Result<GetIntrospectionSchemaOutput, SdkError<GetIntrospectionSchemaError>>> {
-        (*self).get_introspection_schema(builder)
+        self.deref().get_introspection_schema(builder)
     }
     fn get_resolver(&self, builder: GetResolverInputBuilder) -> impl Future<Output = Result<GetResolverOutput, SdkError<GetResolverError>>> {
-        (*self).get_resolver(builder)
+        self.deref().get_resolver(builder)
     }
     fn get_schema_creation_status(&self, builder: GetSchemaCreationStatusInputBuilder) -> impl Future<Output = Result<GetSchemaCreationStatusOutput, SdkError<GetSchemaCreationStatusError>>> {
-        (*self).get_schema_creation_status(builder)
+        self.deref().get_schema_creation_status(builder)
     }
     fn get_source_api_association(&self, builder: GetSourceApiAssociationInputBuilder) -> impl Future<Output = Result<GetSourceApiAssociationOutput, SdkError<GetSourceApiAssociationError>>> {
-        (*self).get_source_api_association(builder)
+        self.deref().get_source_api_association(builder)
     }
     fn get_type(&self, builder: GetTypeInputBuilder) -> impl Future<Output = Result<GetTypeOutput, SdkError<GetTypeError>>> {
-        (*self).get_type(builder)
+        self.deref().get_type(builder)
     }
     fn list_api_keys(&self, builder: ListApiKeysInputBuilder) -> impl Future<Output = Result<ListApiKeysOutput, SdkError<ListApiKeysError>>> {
-        (*self).list_api_keys(builder)
+        self.deref().list_api_keys(builder)
     }
     fn list_data_sources(&self, builder: ListDataSourcesInputBuilder) -> impl Future<Output = Result<ListDataSourcesOutput, SdkError<ListDataSourcesError>>> {
-        (*self).list_data_sources(builder)
+        self.deref().list_data_sources(builder)
     }
     fn list_domain_names(&self, builder: ListDomainNamesInputBuilder) -> impl Future<Output = Result<ListDomainNamesOutput, SdkError<ListDomainNamesError>>> {
-        (*self).list_domain_names(builder)
+        self.deref().list_domain_names(builder)
     }
     fn list_functions(&self, builder: ListFunctionsInputBuilder) -> impl Future<Output = Result<ListFunctionsOutput, SdkError<ListFunctionsError>>> {
-        (*self).list_functions(builder)
+        self.deref().list_functions(builder)
     }
     fn list_graphql_apis(&self, builder: ListGraphqlApisInputBuilder) -> impl Future<Output = Result<ListGraphqlApisOutput, SdkError<ListGraphqlApisError>>> {
-        (*self).list_graphql_apis(builder)
+        self.deref().list_graphql_apis(builder)
     }
     fn list_resolvers(&self, builder: ListResolversInputBuilder) -> impl Future<Output = Result<ListResolversOutput, SdkError<ListResolversError>>> {
-        (*self).list_resolvers(builder)
+        self.deref().list_resolvers(builder)
     }
     fn list_resolvers_by_function(&self, builder: ListResolversByFunctionInputBuilder) -> impl Future<Output = Result<ListResolversByFunctionOutput, SdkError<ListResolversByFunctionError>>> {
-        (*self).list_resolvers_by_function(builder)
+        self.deref().list_resolvers_by_function(builder)
     }
     fn list_source_api_associations(&self, builder: ListSourceApiAssociationsInputBuilder) -> impl Future<Output = Result<ListSourceApiAssociationsOutput, SdkError<ListSourceApiAssociationsError>>> {
-        (*self).list_source_api_associations(builder)
+        self.deref().list_source_api_associations(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_types(&self, builder: ListTypesInputBuilder) -> impl Future<Output = Result<ListTypesOutput, SdkError<ListTypesError>>> {
-        (*self).list_types(builder)
+        self.deref().list_types(builder)
     }
     fn list_types_by_association(&self, builder: ListTypesByAssociationInputBuilder) -> impl Future<Output = Result<ListTypesByAssociationOutput, SdkError<ListTypesByAssociationError>>> {
-        (*self).list_types_by_association(builder)
+        self.deref().list_types_by_association(builder)
     }
     fn put_graphql_api_environment_variables(&self, builder: PutGraphqlApiEnvironmentVariablesInputBuilder) -> impl Future<Output = Result<PutGraphqlApiEnvironmentVariablesOutput, SdkError<PutGraphqlApiEnvironmentVariablesError>>> {
-        (*self).put_graphql_api_environment_variables(builder)
+        self.deref().put_graphql_api_environment_variables(builder)
     }
     fn start_data_source_introspection(&self, builder: StartDataSourceIntrospectionInputBuilder) -> impl Future<Output = Result<StartDataSourceIntrospectionOutput, SdkError<StartDataSourceIntrospectionError>>> {
-        (*self).start_data_source_introspection(builder)
+        self.deref().start_data_source_introspection(builder)
     }
     fn start_schema_creation(&self, builder: StartSchemaCreationInputBuilder) -> impl Future<Output = Result<StartSchemaCreationOutput, SdkError<StartSchemaCreationError>>> {
-        (*self).start_schema_creation(builder)
+        self.deref().start_schema_creation(builder)
     }
     fn start_schema_merge(&self, builder: StartSchemaMergeInputBuilder) -> impl Future<Output = Result<StartSchemaMergeOutput, SdkError<StartSchemaMergeError>>> {
-        (*self).start_schema_merge(builder)
+        self.deref().start_schema_merge(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_api_cache(&self, builder: UpdateApiCacheInputBuilder) -> impl Future<Output = Result<UpdateApiCacheOutput, SdkError<UpdateApiCacheError>>> {
-        (*self).update_api_cache(builder)
+        self.deref().update_api_cache(builder)
     }
     fn update_api_key(&self, builder: UpdateApiKeyInputBuilder) -> impl Future<Output = Result<UpdateApiKeyOutput, SdkError<UpdateApiKeyError>>> {
-        (*self).update_api_key(builder)
+        self.deref().update_api_key(builder)
     }
     fn update_data_source(&self, builder: UpdateDataSourceInputBuilder) -> impl Future<Output = Result<UpdateDataSourceOutput, SdkError<UpdateDataSourceError>>> {
-        (*self).update_data_source(builder)
+        self.deref().update_data_source(builder)
     }
     fn update_domain_name(&self, builder: UpdateDomainNameInputBuilder) -> impl Future<Output = Result<UpdateDomainNameOutput, SdkError<UpdateDomainNameError>>> {
-        (*self).update_domain_name(builder)
+        self.deref().update_domain_name(builder)
     }
     fn update_function(&self, builder: UpdateFunctionInputBuilder) -> impl Future<Output = Result<UpdateFunctionOutput, SdkError<UpdateFunctionError>>> {
-        (*self).update_function(builder)
+        self.deref().update_function(builder)
     }
     fn update_graphql_api(&self, builder: UpdateGraphqlApiInputBuilder) -> impl Future<Output = Result<UpdateGraphqlApiOutput, SdkError<UpdateGraphqlApiError>>> {
-        (*self).update_graphql_api(builder)
+        self.deref().update_graphql_api(builder)
     }
     fn update_resolver(&self, builder: UpdateResolverInputBuilder) -> impl Future<Output = Result<UpdateResolverOutput, SdkError<UpdateResolverError>>> {
-        (*self).update_resolver(builder)
+        self.deref().update_resolver(builder)
     }
     fn update_source_api_association(&self, builder: UpdateSourceApiAssociationInputBuilder) -> impl Future<Output = Result<UpdateSourceApiAssociationOutput, SdkError<UpdateSourceApiAssociationError>>> {
-        (*self).update_source_api_association(builder)
+        self.deref().update_source_api_association(builder)
     }
     fn update_type(&self, builder: UpdateTypeInputBuilder) -> impl Future<Output = Result<UpdateTypeOutput, SdkError<UpdateTypeError>>> {
-        (*self).update_type(builder)
+        self.deref().update_type(builder)
     }
 }
 #[cfg(feature = "mockall")]

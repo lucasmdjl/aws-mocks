@@ -102,6 +102,7 @@ use aws_sdk_cloudformation::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_cloudformation::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_cloudformation::*;
 
@@ -441,252 +442,254 @@ impl CloudFormationClient for CloudFormationClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CloudFormationClient> CloudFormationClient for &T {
+impl <T> CloudFormationClient for T
+where T: Deref,
+      T::Target: CloudFormationClient {
     fn activate_organizations_access(&self, builder: ActivateOrganizationsAccessInputBuilder) -> impl Future<Output = Result<ActivateOrganizationsAccessOutput, SdkError<ActivateOrganizationsAccessError>>> {
-        (*self).activate_organizations_access(builder)
+        self.deref().activate_organizations_access(builder)
     }
     fn activate_type(&self, builder: ActivateTypeInputBuilder) -> impl Future<Output = Result<ActivateTypeOutput, SdkError<ActivateTypeError>>> {
-        (*self).activate_type(builder)
+        self.deref().activate_type(builder)
     }
     fn batch_describe_type_configurations(&self, builder: BatchDescribeTypeConfigurationsInputBuilder) -> impl Future<Output = Result<BatchDescribeTypeConfigurationsOutput, SdkError<BatchDescribeTypeConfigurationsError>>> {
-        (*self).batch_describe_type_configurations(builder)
+        self.deref().batch_describe_type_configurations(builder)
     }
     fn cancel_update_stack(&self, builder: CancelUpdateStackInputBuilder) -> impl Future<Output = Result<CancelUpdateStackOutput, SdkError<CancelUpdateStackError>>> {
-        (*self).cancel_update_stack(builder)
+        self.deref().cancel_update_stack(builder)
     }
     fn continue_update_rollback(&self, builder: ContinueUpdateRollbackInputBuilder) -> impl Future<Output = Result<ContinueUpdateRollbackOutput, SdkError<ContinueUpdateRollbackError>>> {
-        (*self).continue_update_rollback(builder)
+        self.deref().continue_update_rollback(builder)
     }
     fn create_change_set(&self, builder: CreateChangeSetInputBuilder) -> impl Future<Output = Result<CreateChangeSetOutput, SdkError<CreateChangeSetError>>> {
-        (*self).create_change_set(builder)
+        self.deref().create_change_set(builder)
     }
     fn create_generated_template(&self, builder: CreateGeneratedTemplateInputBuilder) -> impl Future<Output = Result<CreateGeneratedTemplateOutput, SdkError<CreateGeneratedTemplateError>>> {
-        (*self).create_generated_template(builder)
+        self.deref().create_generated_template(builder)
     }
     fn create_stack(&self, builder: CreateStackInputBuilder) -> impl Future<Output = Result<CreateStackOutput, SdkError<CreateStackError>>> {
-        (*self).create_stack(builder)
+        self.deref().create_stack(builder)
     }
     fn create_stack_instances(&self, builder: CreateStackInstancesInputBuilder) -> impl Future<Output = Result<CreateStackInstancesOutput, SdkError<CreateStackInstancesError>>> {
-        (*self).create_stack_instances(builder)
+        self.deref().create_stack_instances(builder)
     }
     fn create_stack_set(&self, builder: CreateStackSetInputBuilder) -> impl Future<Output = Result<CreateStackSetOutput, SdkError<CreateStackSetError>>> {
-        (*self).create_stack_set(builder)
+        self.deref().create_stack_set(builder)
     }
     fn deactivate_organizations_access(&self, builder: DeactivateOrganizationsAccessInputBuilder) -> impl Future<Output = Result<DeactivateOrganizationsAccessOutput, SdkError<DeactivateOrganizationsAccessError>>> {
-        (*self).deactivate_organizations_access(builder)
+        self.deref().deactivate_organizations_access(builder)
     }
     fn deactivate_type(&self, builder: DeactivateTypeInputBuilder) -> impl Future<Output = Result<DeactivateTypeOutput, SdkError<DeactivateTypeError>>> {
-        (*self).deactivate_type(builder)
+        self.deref().deactivate_type(builder)
     }
     fn delete_change_set(&self, builder: DeleteChangeSetInputBuilder) -> impl Future<Output = Result<DeleteChangeSetOutput, SdkError<DeleteChangeSetError>>> {
-        (*self).delete_change_set(builder)
+        self.deref().delete_change_set(builder)
     }
     fn delete_generated_template(&self, builder: DeleteGeneratedTemplateInputBuilder) -> impl Future<Output = Result<DeleteGeneratedTemplateOutput, SdkError<DeleteGeneratedTemplateError>>> {
-        (*self).delete_generated_template(builder)
+        self.deref().delete_generated_template(builder)
     }
     fn delete_stack(&self, builder: DeleteStackInputBuilder) -> impl Future<Output = Result<DeleteStackOutput, SdkError<DeleteStackError>>> {
-        (*self).delete_stack(builder)
+        self.deref().delete_stack(builder)
     }
     fn delete_stack_instances(&self, builder: DeleteStackInstancesInputBuilder) -> impl Future<Output = Result<DeleteStackInstancesOutput, SdkError<DeleteStackInstancesError>>> {
-        (*self).delete_stack_instances(builder)
+        self.deref().delete_stack_instances(builder)
     }
     fn delete_stack_set(&self, builder: DeleteStackSetInputBuilder) -> impl Future<Output = Result<DeleteStackSetOutput, SdkError<DeleteStackSetError>>> {
-        (*self).delete_stack_set(builder)
+        self.deref().delete_stack_set(builder)
     }
     fn deregister_type(&self, builder: DeregisterTypeInputBuilder) -> impl Future<Output = Result<DeregisterTypeOutput, SdkError<DeregisterTypeError>>> {
-        (*self).deregister_type(builder)
+        self.deref().deregister_type(builder)
     }
     fn describe_account_limits(&self, builder: DescribeAccountLimitsInputBuilder) -> impl Future<Output = Result<DescribeAccountLimitsOutput, SdkError<DescribeAccountLimitsError>>> {
-        (*self).describe_account_limits(builder)
+        self.deref().describe_account_limits(builder)
     }
     fn describe_change_set(&self, builder: DescribeChangeSetInputBuilder) -> impl Future<Output = Result<DescribeChangeSetOutput, SdkError<DescribeChangeSetError>>> {
-        (*self).describe_change_set(builder)
+        self.deref().describe_change_set(builder)
     }
     fn describe_change_set_hooks(&self, builder: DescribeChangeSetHooksInputBuilder) -> impl Future<Output = Result<DescribeChangeSetHooksOutput, SdkError<DescribeChangeSetHooksError>>> {
-        (*self).describe_change_set_hooks(builder)
+        self.deref().describe_change_set_hooks(builder)
     }
     fn describe_generated_template(&self, builder: DescribeGeneratedTemplateInputBuilder) -> impl Future<Output = Result<DescribeGeneratedTemplateOutput, SdkError<DescribeGeneratedTemplateError>>> {
-        (*self).describe_generated_template(builder)
+        self.deref().describe_generated_template(builder)
     }
     fn describe_organizations_access(&self, builder: DescribeOrganizationsAccessInputBuilder) -> impl Future<Output = Result<DescribeOrganizationsAccessOutput, SdkError<DescribeOrganizationsAccessError>>> {
-        (*self).describe_organizations_access(builder)
+        self.deref().describe_organizations_access(builder)
     }
     fn describe_publisher(&self, builder: DescribePublisherInputBuilder) -> impl Future<Output = Result<DescribePublisherOutput, SdkError<DescribePublisherError>>> {
-        (*self).describe_publisher(builder)
+        self.deref().describe_publisher(builder)
     }
     fn describe_resource_scan(&self, builder: DescribeResourceScanInputBuilder) -> impl Future<Output = Result<DescribeResourceScanOutput, SdkError<DescribeResourceScanError>>> {
-        (*self).describe_resource_scan(builder)
+        self.deref().describe_resource_scan(builder)
     }
     fn describe_stack_drift_detection_status(&self, builder: DescribeStackDriftDetectionStatusInputBuilder) -> impl Future<Output = Result<DescribeStackDriftDetectionStatusOutput, SdkError<DescribeStackDriftDetectionStatusError>>> {
-        (*self).describe_stack_drift_detection_status(builder)
+        self.deref().describe_stack_drift_detection_status(builder)
     }
     fn describe_stack_events(&self, builder: DescribeStackEventsInputBuilder) -> impl Future<Output = Result<DescribeStackEventsOutput, SdkError<DescribeStackEventsError>>> {
-        (*self).describe_stack_events(builder)
+        self.deref().describe_stack_events(builder)
     }
     fn describe_stack_instance(&self, builder: DescribeStackInstanceInputBuilder) -> impl Future<Output = Result<DescribeStackInstanceOutput, SdkError<DescribeStackInstanceError>>> {
-        (*self).describe_stack_instance(builder)
+        self.deref().describe_stack_instance(builder)
     }
     fn describe_stack_resource(&self, builder: DescribeStackResourceInputBuilder) -> impl Future<Output = Result<DescribeStackResourceOutput, SdkError<DescribeStackResourceError>>> {
-        (*self).describe_stack_resource(builder)
+        self.deref().describe_stack_resource(builder)
     }
     fn describe_stack_resource_drifts(&self, builder: DescribeStackResourceDriftsInputBuilder) -> impl Future<Output = Result<DescribeStackResourceDriftsOutput, SdkError<DescribeStackResourceDriftsError>>> {
-        (*self).describe_stack_resource_drifts(builder)
+        self.deref().describe_stack_resource_drifts(builder)
     }
     fn describe_stack_resources(&self, builder: DescribeStackResourcesInputBuilder) -> impl Future<Output = Result<DescribeStackResourcesOutput, SdkError<DescribeStackResourcesError>>> {
-        (*self).describe_stack_resources(builder)
+        self.deref().describe_stack_resources(builder)
     }
     fn describe_stack_set(&self, builder: DescribeStackSetInputBuilder) -> impl Future<Output = Result<DescribeStackSetOutput, SdkError<DescribeStackSetError>>> {
-        (*self).describe_stack_set(builder)
+        self.deref().describe_stack_set(builder)
     }
     fn describe_stack_set_operation(&self, builder: DescribeStackSetOperationInputBuilder) -> impl Future<Output = Result<DescribeStackSetOperationOutput, SdkError<DescribeStackSetOperationError>>> {
-        (*self).describe_stack_set_operation(builder)
+        self.deref().describe_stack_set_operation(builder)
     }
     fn describe_stacks(&self, builder: DescribeStacksInputBuilder) -> impl Future<Output = Result<DescribeStacksOutput, SdkError<DescribeStacksError>>> {
-        (*self).describe_stacks(builder)
+        self.deref().describe_stacks(builder)
     }
     fn describe_type(&self, builder: DescribeTypeInputBuilder) -> impl Future<Output = Result<DescribeTypeOutput, SdkError<DescribeTypeError>>> {
-        (*self).describe_type(builder)
+        self.deref().describe_type(builder)
     }
     fn describe_type_registration(&self, builder: DescribeTypeRegistrationInputBuilder) -> impl Future<Output = Result<DescribeTypeRegistrationOutput, SdkError<DescribeTypeRegistrationError>>> {
-        (*self).describe_type_registration(builder)
+        self.deref().describe_type_registration(builder)
     }
     fn detect_stack_drift(&self, builder: DetectStackDriftInputBuilder) -> impl Future<Output = Result<DetectStackDriftOutput, SdkError<DetectStackDriftError>>> {
-        (*self).detect_stack_drift(builder)
+        self.deref().detect_stack_drift(builder)
     }
     fn detect_stack_resource_drift(&self, builder: DetectStackResourceDriftInputBuilder) -> impl Future<Output = Result<DetectStackResourceDriftOutput, SdkError<DetectStackResourceDriftError>>> {
-        (*self).detect_stack_resource_drift(builder)
+        self.deref().detect_stack_resource_drift(builder)
     }
     fn detect_stack_set_drift(&self, builder: DetectStackSetDriftInputBuilder) -> impl Future<Output = Result<DetectStackSetDriftOutput, SdkError<DetectStackSetDriftError>>> {
-        (*self).detect_stack_set_drift(builder)
+        self.deref().detect_stack_set_drift(builder)
     }
     fn estimate_template_cost(&self, builder: EstimateTemplateCostInputBuilder) -> impl Future<Output = Result<EstimateTemplateCostOutput, SdkError<EstimateTemplateCostError>>> {
-        (*self).estimate_template_cost(builder)
+        self.deref().estimate_template_cost(builder)
     }
     fn execute_change_set(&self, builder: ExecuteChangeSetInputBuilder) -> impl Future<Output = Result<ExecuteChangeSetOutput, SdkError<ExecuteChangeSetError>>> {
-        (*self).execute_change_set(builder)
+        self.deref().execute_change_set(builder)
     }
     fn get_generated_template(&self, builder: GetGeneratedTemplateInputBuilder) -> impl Future<Output = Result<GetGeneratedTemplateOutput, SdkError<GetGeneratedTemplateError>>> {
-        (*self).get_generated_template(builder)
+        self.deref().get_generated_template(builder)
     }
     fn get_stack_policy(&self, builder: GetStackPolicyInputBuilder) -> impl Future<Output = Result<GetStackPolicyOutput, SdkError<GetStackPolicyError>>> {
-        (*self).get_stack_policy(builder)
+        self.deref().get_stack_policy(builder)
     }
     fn get_template(&self, builder: GetTemplateInputBuilder) -> impl Future<Output = Result<GetTemplateOutput, SdkError<GetTemplateError>>> {
-        (*self).get_template(builder)
+        self.deref().get_template(builder)
     }
     fn get_template_summary(&self, builder: GetTemplateSummaryInputBuilder) -> impl Future<Output = Result<GetTemplateSummaryOutput, SdkError<GetTemplateSummaryError>>> {
-        (*self).get_template_summary(builder)
+        self.deref().get_template_summary(builder)
     }
     fn import_stacks_to_stack_set(&self, builder: ImportStacksToStackSetInputBuilder) -> impl Future<Output = Result<ImportStacksToStackSetOutput, SdkError<ImportStacksToStackSetError>>> {
-        (*self).import_stacks_to_stack_set(builder)
+        self.deref().import_stacks_to_stack_set(builder)
     }
     fn list_change_sets(&self, builder: ListChangeSetsInputBuilder) -> impl Future<Output = Result<ListChangeSetsOutput, SdkError<ListChangeSetsError>>> {
-        (*self).list_change_sets(builder)
+        self.deref().list_change_sets(builder)
     }
     fn list_exports(&self, builder: ListExportsInputBuilder) -> impl Future<Output = Result<ListExportsOutput, SdkError<ListExportsError>>> {
-        (*self).list_exports(builder)
+        self.deref().list_exports(builder)
     }
     fn list_generated_templates(&self, builder: ListGeneratedTemplatesInputBuilder) -> impl Future<Output = Result<ListGeneratedTemplatesOutput, SdkError<ListGeneratedTemplatesError>>> {
-        (*self).list_generated_templates(builder)
+        self.deref().list_generated_templates(builder)
     }
     fn list_imports(&self, builder: ListImportsInputBuilder) -> impl Future<Output = Result<ListImportsOutput, SdkError<ListImportsError>>> {
-        (*self).list_imports(builder)
+        self.deref().list_imports(builder)
     }
     fn list_resource_scan_related_resources(&self, builder: ListResourceScanRelatedResourcesInputBuilder) -> impl Future<Output = Result<ListResourceScanRelatedResourcesOutput, SdkError<ListResourceScanRelatedResourcesError>>> {
-        (*self).list_resource_scan_related_resources(builder)
+        self.deref().list_resource_scan_related_resources(builder)
     }
     fn list_resource_scan_resources(&self, builder: ListResourceScanResourcesInputBuilder) -> impl Future<Output = Result<ListResourceScanResourcesOutput, SdkError<ListResourceScanResourcesError>>> {
-        (*self).list_resource_scan_resources(builder)
+        self.deref().list_resource_scan_resources(builder)
     }
     fn list_resource_scans(&self, builder: ListResourceScansInputBuilder) -> impl Future<Output = Result<ListResourceScansOutput, SdkError<ListResourceScansError>>> {
-        (*self).list_resource_scans(builder)
+        self.deref().list_resource_scans(builder)
     }
     fn list_stack_instance_resource_drifts(&self, builder: ListStackInstanceResourceDriftsInputBuilder) -> impl Future<Output = Result<ListStackInstanceResourceDriftsOutput, SdkError<ListStackInstanceResourceDriftsError>>> {
-        (*self).list_stack_instance_resource_drifts(builder)
+        self.deref().list_stack_instance_resource_drifts(builder)
     }
     fn list_stack_instances(&self, builder: ListStackInstancesInputBuilder) -> impl Future<Output = Result<ListStackInstancesOutput, SdkError<ListStackInstancesError>>> {
-        (*self).list_stack_instances(builder)
+        self.deref().list_stack_instances(builder)
     }
     fn list_stack_resources(&self, builder: ListStackResourcesInputBuilder) -> impl Future<Output = Result<ListStackResourcesOutput, SdkError<ListStackResourcesError>>> {
-        (*self).list_stack_resources(builder)
+        self.deref().list_stack_resources(builder)
     }
     fn list_stack_set_auto_deployment_targets(&self, builder: ListStackSetAutoDeploymentTargetsInputBuilder) -> impl Future<Output = Result<ListStackSetAutoDeploymentTargetsOutput, SdkError<ListStackSetAutoDeploymentTargetsError>>> {
-        (*self).list_stack_set_auto_deployment_targets(builder)
+        self.deref().list_stack_set_auto_deployment_targets(builder)
     }
     fn list_stack_set_operation_results(&self, builder: ListStackSetOperationResultsInputBuilder) -> impl Future<Output = Result<ListStackSetOperationResultsOutput, SdkError<ListStackSetOperationResultsError>>> {
-        (*self).list_stack_set_operation_results(builder)
+        self.deref().list_stack_set_operation_results(builder)
     }
     fn list_stack_set_operations(&self, builder: ListStackSetOperationsInputBuilder) -> impl Future<Output = Result<ListStackSetOperationsOutput, SdkError<ListStackSetOperationsError>>> {
-        (*self).list_stack_set_operations(builder)
+        self.deref().list_stack_set_operations(builder)
     }
     fn list_stack_sets(&self, builder: ListStackSetsInputBuilder) -> impl Future<Output = Result<ListStackSetsOutput, SdkError<ListStackSetsError>>> {
-        (*self).list_stack_sets(builder)
+        self.deref().list_stack_sets(builder)
     }
     fn list_stacks(&self, builder: ListStacksInputBuilder) -> impl Future<Output = Result<ListStacksOutput, SdkError<ListStacksError>>> {
-        (*self).list_stacks(builder)
+        self.deref().list_stacks(builder)
     }
     fn list_type_registrations(&self, builder: ListTypeRegistrationsInputBuilder) -> impl Future<Output = Result<ListTypeRegistrationsOutput, SdkError<ListTypeRegistrationsError>>> {
-        (*self).list_type_registrations(builder)
+        self.deref().list_type_registrations(builder)
     }
     fn list_type_versions(&self, builder: ListTypeVersionsInputBuilder) -> impl Future<Output = Result<ListTypeVersionsOutput, SdkError<ListTypeVersionsError>>> {
-        (*self).list_type_versions(builder)
+        self.deref().list_type_versions(builder)
     }
     fn list_types(&self, builder: ListTypesInputBuilder) -> impl Future<Output = Result<ListTypesOutput, SdkError<ListTypesError>>> {
-        (*self).list_types(builder)
+        self.deref().list_types(builder)
     }
     fn publish_type(&self, builder: PublishTypeInputBuilder) -> impl Future<Output = Result<PublishTypeOutput, SdkError<PublishTypeError>>> {
-        (*self).publish_type(builder)
+        self.deref().publish_type(builder)
     }
     fn record_handler_progress(&self, builder: RecordHandlerProgressInputBuilder) -> impl Future<Output = Result<RecordHandlerProgressOutput, SdkError<RecordHandlerProgressError>>> {
-        (*self).record_handler_progress(builder)
+        self.deref().record_handler_progress(builder)
     }
     fn register_publisher(&self, builder: RegisterPublisherInputBuilder) -> impl Future<Output = Result<RegisterPublisherOutput, SdkError<RegisterPublisherError>>> {
-        (*self).register_publisher(builder)
+        self.deref().register_publisher(builder)
     }
     fn register_type(&self, builder: RegisterTypeInputBuilder) -> impl Future<Output = Result<RegisterTypeOutput, SdkError<RegisterTypeError>>> {
-        (*self).register_type(builder)
+        self.deref().register_type(builder)
     }
     fn rollback_stack(&self, builder: RollbackStackInputBuilder) -> impl Future<Output = Result<RollbackStackOutput, SdkError<RollbackStackError>>> {
-        (*self).rollback_stack(builder)
+        self.deref().rollback_stack(builder)
     }
     fn set_stack_policy(&self, builder: SetStackPolicyInputBuilder) -> impl Future<Output = Result<SetStackPolicyOutput, SdkError<SetStackPolicyError>>> {
-        (*self).set_stack_policy(builder)
+        self.deref().set_stack_policy(builder)
     }
     fn set_type_configuration(&self, builder: SetTypeConfigurationInputBuilder) -> impl Future<Output = Result<SetTypeConfigurationOutput, SdkError<SetTypeConfigurationError>>> {
-        (*self).set_type_configuration(builder)
+        self.deref().set_type_configuration(builder)
     }
     fn set_type_default_version(&self, builder: SetTypeDefaultVersionInputBuilder) -> impl Future<Output = Result<SetTypeDefaultVersionOutput, SdkError<SetTypeDefaultVersionError>>> {
-        (*self).set_type_default_version(builder)
+        self.deref().set_type_default_version(builder)
     }
     fn signal_resource(&self, builder: SignalResourceInputBuilder) -> impl Future<Output = Result<SignalResourceOutput, SdkError<SignalResourceError>>> {
-        (*self).signal_resource(builder)
+        self.deref().signal_resource(builder)
     }
     fn start_resource_scan(&self, builder: StartResourceScanInputBuilder) -> impl Future<Output = Result<StartResourceScanOutput, SdkError<StartResourceScanError>>> {
-        (*self).start_resource_scan(builder)
+        self.deref().start_resource_scan(builder)
     }
     fn stop_stack_set_operation(&self, builder: StopStackSetOperationInputBuilder) -> impl Future<Output = Result<StopStackSetOperationOutput, SdkError<StopStackSetOperationError>>> {
-        (*self).stop_stack_set_operation(builder)
+        self.deref().stop_stack_set_operation(builder)
     }
     fn test_type(&self, builder: TestTypeInputBuilder) -> impl Future<Output = Result<TestTypeOutput, SdkError<TestTypeError>>> {
-        (*self).test_type(builder)
+        self.deref().test_type(builder)
     }
     fn update_generated_template(&self, builder: UpdateGeneratedTemplateInputBuilder) -> impl Future<Output = Result<UpdateGeneratedTemplateOutput, SdkError<UpdateGeneratedTemplateError>>> {
-        (*self).update_generated_template(builder)
+        self.deref().update_generated_template(builder)
     }
     fn update_stack(&self, builder: UpdateStackInputBuilder) -> impl Future<Output = Result<UpdateStackOutput, SdkError<UpdateStackError>>> {
-        (*self).update_stack(builder)
+        self.deref().update_stack(builder)
     }
     fn update_stack_instances(&self, builder: UpdateStackInstancesInputBuilder) -> impl Future<Output = Result<UpdateStackInstancesOutput, SdkError<UpdateStackInstancesError>>> {
-        (*self).update_stack_instances(builder)
+        self.deref().update_stack_instances(builder)
     }
     fn update_stack_set(&self, builder: UpdateStackSetInputBuilder) -> impl Future<Output = Result<UpdateStackSetOutput, SdkError<UpdateStackSetError>>> {
-        (*self).update_stack_set(builder)
+        self.deref().update_stack_set(builder)
     }
     fn update_termination_protection(&self, builder: UpdateTerminationProtectionInputBuilder) -> impl Future<Output = Result<UpdateTerminationProtectionOutput, SdkError<UpdateTerminationProtectionError>>> {
-        (*self).update_termination_protection(builder)
+        self.deref().update_termination_protection(builder)
     }
     fn validate_template(&self, builder: ValidateTemplateInputBuilder) -> impl Future<Output = Result<ValidateTemplateOutput, SdkError<ValidateTemplateError>>> {
-        (*self).validate_template(builder)
+        self.deref().validate_template(builder)
     }
 }
 #[cfg(feature = "mockall")]

@@ -88,6 +88,7 @@ use aws_sdk_athena::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_athena::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_athena::*;
 
@@ -371,210 +372,212 @@ impl AthenaClient for AthenaClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AthenaClient> AthenaClient for &T {
+impl <T> AthenaClient for T
+where T: Deref,
+      T::Target: AthenaClient {
     fn batch_get_named_query(&self, builder: BatchGetNamedQueryInputBuilder) -> impl Future<Output = Result<BatchGetNamedQueryOutput, SdkError<BatchGetNamedQueryError>>> {
-        (*self).batch_get_named_query(builder)
+        self.deref().batch_get_named_query(builder)
     }
     fn batch_get_prepared_statement(&self, builder: BatchGetPreparedStatementInputBuilder) -> impl Future<Output = Result<BatchGetPreparedStatementOutput, SdkError<BatchGetPreparedStatementError>>> {
-        (*self).batch_get_prepared_statement(builder)
+        self.deref().batch_get_prepared_statement(builder)
     }
     fn batch_get_query_execution(&self, builder: BatchGetQueryExecutionInputBuilder) -> impl Future<Output = Result<BatchGetQueryExecutionOutput, SdkError<BatchGetQueryExecutionError>>> {
-        (*self).batch_get_query_execution(builder)
+        self.deref().batch_get_query_execution(builder)
     }
     fn cancel_capacity_reservation(&self, builder: CancelCapacityReservationInputBuilder) -> impl Future<Output = Result<CancelCapacityReservationOutput, SdkError<CancelCapacityReservationError>>> {
-        (*self).cancel_capacity_reservation(builder)
+        self.deref().cancel_capacity_reservation(builder)
     }
     fn create_capacity_reservation(&self, builder: CreateCapacityReservationInputBuilder) -> impl Future<Output = Result<CreateCapacityReservationOutput, SdkError<CreateCapacityReservationError>>> {
-        (*self).create_capacity_reservation(builder)
+        self.deref().create_capacity_reservation(builder)
     }
     fn create_data_catalog(&self, builder: CreateDataCatalogInputBuilder) -> impl Future<Output = Result<CreateDataCatalogOutput, SdkError<CreateDataCatalogError>>> {
-        (*self).create_data_catalog(builder)
+        self.deref().create_data_catalog(builder)
     }
     fn create_named_query(&self, builder: CreateNamedQueryInputBuilder) -> impl Future<Output = Result<CreateNamedQueryOutput, SdkError<CreateNamedQueryError>>> {
-        (*self).create_named_query(builder)
+        self.deref().create_named_query(builder)
     }
     fn create_notebook(&self, builder: CreateNotebookInputBuilder) -> impl Future<Output = Result<CreateNotebookOutput, SdkError<CreateNotebookError>>> {
-        (*self).create_notebook(builder)
+        self.deref().create_notebook(builder)
     }
     fn create_prepared_statement(&self, builder: CreatePreparedStatementInputBuilder) -> impl Future<Output = Result<CreatePreparedStatementOutput, SdkError<CreatePreparedStatementError>>> {
-        (*self).create_prepared_statement(builder)
+        self.deref().create_prepared_statement(builder)
     }
     fn create_presigned_notebook_url(&self, builder: CreatePresignedNotebookUrlInputBuilder) -> impl Future<Output = Result<CreatePresignedNotebookUrlOutput, SdkError<CreatePresignedNotebookUrlError>>> {
-        (*self).create_presigned_notebook_url(builder)
+        self.deref().create_presigned_notebook_url(builder)
     }
     fn create_work_group(&self, builder: CreateWorkGroupInputBuilder) -> impl Future<Output = Result<CreateWorkGroupOutput, SdkError<CreateWorkGroupError>>> {
-        (*self).create_work_group(builder)
+        self.deref().create_work_group(builder)
     }
     fn delete_capacity_reservation(&self, builder: DeleteCapacityReservationInputBuilder) -> impl Future<Output = Result<DeleteCapacityReservationOutput, SdkError<DeleteCapacityReservationError>>> {
-        (*self).delete_capacity_reservation(builder)
+        self.deref().delete_capacity_reservation(builder)
     }
     fn delete_data_catalog(&self, builder: DeleteDataCatalogInputBuilder) -> impl Future<Output = Result<DeleteDataCatalogOutput, SdkError<DeleteDataCatalogError>>> {
-        (*self).delete_data_catalog(builder)
+        self.deref().delete_data_catalog(builder)
     }
     fn delete_named_query(&self, builder: DeleteNamedQueryInputBuilder) -> impl Future<Output = Result<DeleteNamedQueryOutput, SdkError<DeleteNamedQueryError>>> {
-        (*self).delete_named_query(builder)
+        self.deref().delete_named_query(builder)
     }
     fn delete_notebook(&self, builder: DeleteNotebookInputBuilder) -> impl Future<Output = Result<DeleteNotebookOutput, SdkError<DeleteNotebookError>>> {
-        (*self).delete_notebook(builder)
+        self.deref().delete_notebook(builder)
     }
     fn delete_prepared_statement(&self, builder: DeletePreparedStatementInputBuilder) -> impl Future<Output = Result<DeletePreparedStatementOutput, SdkError<DeletePreparedStatementError>>> {
-        (*self).delete_prepared_statement(builder)
+        self.deref().delete_prepared_statement(builder)
     }
     fn delete_work_group(&self, builder: DeleteWorkGroupInputBuilder) -> impl Future<Output = Result<DeleteWorkGroupOutput, SdkError<DeleteWorkGroupError>>> {
-        (*self).delete_work_group(builder)
+        self.deref().delete_work_group(builder)
     }
     fn export_notebook(&self, builder: ExportNotebookInputBuilder) -> impl Future<Output = Result<ExportNotebookOutput, SdkError<ExportNotebookError>>> {
-        (*self).export_notebook(builder)
+        self.deref().export_notebook(builder)
     }
     fn get_calculation_execution(&self, builder: GetCalculationExecutionInputBuilder) -> impl Future<Output = Result<GetCalculationExecutionOutput, SdkError<GetCalculationExecutionError>>> {
-        (*self).get_calculation_execution(builder)
+        self.deref().get_calculation_execution(builder)
     }
     fn get_calculation_execution_code(&self, builder: GetCalculationExecutionCodeInputBuilder) -> impl Future<Output = Result<GetCalculationExecutionCodeOutput, SdkError<GetCalculationExecutionCodeError>>> {
-        (*self).get_calculation_execution_code(builder)
+        self.deref().get_calculation_execution_code(builder)
     }
     fn get_calculation_execution_status(&self, builder: GetCalculationExecutionStatusInputBuilder) -> impl Future<Output = Result<GetCalculationExecutionStatusOutput, SdkError<GetCalculationExecutionStatusError>>> {
-        (*self).get_calculation_execution_status(builder)
+        self.deref().get_calculation_execution_status(builder)
     }
     fn get_capacity_assignment_configuration(&self, builder: GetCapacityAssignmentConfigurationInputBuilder) -> impl Future<Output = Result<GetCapacityAssignmentConfigurationOutput, SdkError<GetCapacityAssignmentConfigurationError>>> {
-        (*self).get_capacity_assignment_configuration(builder)
+        self.deref().get_capacity_assignment_configuration(builder)
     }
     fn get_capacity_reservation(&self, builder: GetCapacityReservationInputBuilder) -> impl Future<Output = Result<GetCapacityReservationOutput, SdkError<GetCapacityReservationError>>> {
-        (*self).get_capacity_reservation(builder)
+        self.deref().get_capacity_reservation(builder)
     }
     fn get_data_catalog(&self, builder: GetDataCatalogInputBuilder) -> impl Future<Output = Result<GetDataCatalogOutput, SdkError<GetDataCatalogError>>> {
-        (*self).get_data_catalog(builder)
+        self.deref().get_data_catalog(builder)
     }
     fn get_database(&self, builder: GetDatabaseInputBuilder) -> impl Future<Output = Result<GetDatabaseOutput, SdkError<GetDatabaseError>>> {
-        (*self).get_database(builder)
+        self.deref().get_database(builder)
     }
     fn get_named_query(&self, builder: GetNamedQueryInputBuilder) -> impl Future<Output = Result<GetNamedQueryOutput, SdkError<GetNamedQueryError>>> {
-        (*self).get_named_query(builder)
+        self.deref().get_named_query(builder)
     }
     fn get_notebook_metadata(&self, builder: GetNotebookMetadataInputBuilder) -> impl Future<Output = Result<GetNotebookMetadataOutput, SdkError<GetNotebookMetadataError>>> {
-        (*self).get_notebook_metadata(builder)
+        self.deref().get_notebook_metadata(builder)
     }
     fn get_prepared_statement(&self, builder: GetPreparedStatementInputBuilder) -> impl Future<Output = Result<GetPreparedStatementOutput, SdkError<GetPreparedStatementError>>> {
-        (*self).get_prepared_statement(builder)
+        self.deref().get_prepared_statement(builder)
     }
     fn get_query_execution(&self, builder: GetQueryExecutionInputBuilder) -> impl Future<Output = Result<GetQueryExecutionOutput, SdkError<GetQueryExecutionError>>> {
-        (*self).get_query_execution(builder)
+        self.deref().get_query_execution(builder)
     }
     fn get_query_results(&self, builder: GetQueryResultsInputBuilder) -> impl Future<Output = Result<GetQueryResultsOutput, SdkError<GetQueryResultsError>>> {
-        (*self).get_query_results(builder)
+        self.deref().get_query_results(builder)
     }
     fn get_query_runtime_statistics(&self, builder: GetQueryRuntimeStatisticsInputBuilder) -> impl Future<Output = Result<GetQueryRuntimeStatisticsOutput, SdkError<GetQueryRuntimeStatisticsError>>> {
-        (*self).get_query_runtime_statistics(builder)
+        self.deref().get_query_runtime_statistics(builder)
     }
     fn get_session(&self, builder: GetSessionInputBuilder) -> impl Future<Output = Result<GetSessionOutput, SdkError<GetSessionError>>> {
-        (*self).get_session(builder)
+        self.deref().get_session(builder)
     }
     fn get_session_status(&self, builder: GetSessionStatusInputBuilder) -> impl Future<Output = Result<GetSessionStatusOutput, SdkError<GetSessionStatusError>>> {
-        (*self).get_session_status(builder)
+        self.deref().get_session_status(builder)
     }
     fn get_table_metadata(&self, builder: GetTableMetadataInputBuilder) -> impl Future<Output = Result<GetTableMetadataOutput, SdkError<GetTableMetadataError>>> {
-        (*self).get_table_metadata(builder)
+        self.deref().get_table_metadata(builder)
     }
     fn get_work_group(&self, builder: GetWorkGroupInputBuilder) -> impl Future<Output = Result<GetWorkGroupOutput, SdkError<GetWorkGroupError>>> {
-        (*self).get_work_group(builder)
+        self.deref().get_work_group(builder)
     }
     fn import_notebook(&self, builder: ImportNotebookInputBuilder) -> impl Future<Output = Result<ImportNotebookOutput, SdkError<ImportNotebookError>>> {
-        (*self).import_notebook(builder)
+        self.deref().import_notebook(builder)
     }
     fn list_application_dpu_sizes(&self, builder: ListApplicationDpuSizesInputBuilder) -> impl Future<Output = Result<ListApplicationDpuSizesOutput, SdkError<ListApplicationDPUSizesError>>> {
-        (*self).list_application_dpu_sizes(builder)
+        self.deref().list_application_dpu_sizes(builder)
     }
     fn list_calculation_executions(&self, builder: ListCalculationExecutionsInputBuilder) -> impl Future<Output = Result<ListCalculationExecutionsOutput, SdkError<ListCalculationExecutionsError>>> {
-        (*self).list_calculation_executions(builder)
+        self.deref().list_calculation_executions(builder)
     }
     fn list_capacity_reservations(&self, builder: ListCapacityReservationsInputBuilder) -> impl Future<Output = Result<ListCapacityReservationsOutput, SdkError<ListCapacityReservationsError>>> {
-        (*self).list_capacity_reservations(builder)
+        self.deref().list_capacity_reservations(builder)
     }
     fn list_data_catalogs(&self, builder: ListDataCatalogsInputBuilder) -> impl Future<Output = Result<ListDataCatalogsOutput, SdkError<ListDataCatalogsError>>> {
-        (*self).list_data_catalogs(builder)
+        self.deref().list_data_catalogs(builder)
     }
     fn list_databases(&self, builder: ListDatabasesInputBuilder) -> impl Future<Output = Result<ListDatabasesOutput, SdkError<ListDatabasesError>>> {
-        (*self).list_databases(builder)
+        self.deref().list_databases(builder)
     }
     fn list_engine_versions(&self, builder: ListEngineVersionsInputBuilder) -> impl Future<Output = Result<ListEngineVersionsOutput, SdkError<ListEngineVersionsError>>> {
-        (*self).list_engine_versions(builder)
+        self.deref().list_engine_versions(builder)
     }
     fn list_executors(&self, builder: ListExecutorsInputBuilder) -> impl Future<Output = Result<ListExecutorsOutput, SdkError<ListExecutorsError>>> {
-        (*self).list_executors(builder)
+        self.deref().list_executors(builder)
     }
     fn list_named_queries(&self, builder: ListNamedQueriesInputBuilder) -> impl Future<Output = Result<ListNamedQueriesOutput, SdkError<ListNamedQueriesError>>> {
-        (*self).list_named_queries(builder)
+        self.deref().list_named_queries(builder)
     }
     fn list_notebook_metadata(&self, builder: ListNotebookMetadataInputBuilder) -> impl Future<Output = Result<ListNotebookMetadataOutput, SdkError<ListNotebookMetadataError>>> {
-        (*self).list_notebook_metadata(builder)
+        self.deref().list_notebook_metadata(builder)
     }
     fn list_notebook_sessions(&self, builder: ListNotebookSessionsInputBuilder) -> impl Future<Output = Result<ListNotebookSessionsOutput, SdkError<ListNotebookSessionsError>>> {
-        (*self).list_notebook_sessions(builder)
+        self.deref().list_notebook_sessions(builder)
     }
     fn list_prepared_statements(&self, builder: ListPreparedStatementsInputBuilder) -> impl Future<Output = Result<ListPreparedStatementsOutput, SdkError<ListPreparedStatementsError>>> {
-        (*self).list_prepared_statements(builder)
+        self.deref().list_prepared_statements(builder)
     }
     fn list_query_executions(&self, builder: ListQueryExecutionsInputBuilder) -> impl Future<Output = Result<ListQueryExecutionsOutput, SdkError<ListQueryExecutionsError>>> {
-        (*self).list_query_executions(builder)
+        self.deref().list_query_executions(builder)
     }
     fn list_sessions(&self, builder: ListSessionsInputBuilder) -> impl Future<Output = Result<ListSessionsOutput, SdkError<ListSessionsError>>> {
-        (*self).list_sessions(builder)
+        self.deref().list_sessions(builder)
     }
     fn list_table_metadata(&self, builder: ListTableMetadataInputBuilder) -> impl Future<Output = Result<ListTableMetadataOutput, SdkError<ListTableMetadataError>>> {
-        (*self).list_table_metadata(builder)
+        self.deref().list_table_metadata(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_work_groups(&self, builder: ListWorkGroupsInputBuilder) -> impl Future<Output = Result<ListWorkGroupsOutput, SdkError<ListWorkGroupsError>>> {
-        (*self).list_work_groups(builder)
+        self.deref().list_work_groups(builder)
     }
     fn put_capacity_assignment_configuration(&self, builder: PutCapacityAssignmentConfigurationInputBuilder) -> impl Future<Output = Result<PutCapacityAssignmentConfigurationOutput, SdkError<PutCapacityAssignmentConfigurationError>>> {
-        (*self).put_capacity_assignment_configuration(builder)
+        self.deref().put_capacity_assignment_configuration(builder)
     }
     fn start_calculation_execution(&self, builder: StartCalculationExecutionInputBuilder) -> impl Future<Output = Result<StartCalculationExecutionOutput, SdkError<StartCalculationExecutionError>>> {
-        (*self).start_calculation_execution(builder)
+        self.deref().start_calculation_execution(builder)
     }
     fn start_query_execution(&self, builder: StartQueryExecutionInputBuilder) -> impl Future<Output = Result<StartQueryExecutionOutput, SdkError<StartQueryExecutionError>>> {
-        (*self).start_query_execution(builder)
+        self.deref().start_query_execution(builder)
     }
     fn start_session(&self, builder: StartSessionInputBuilder) -> impl Future<Output = Result<StartSessionOutput, SdkError<StartSessionError>>> {
-        (*self).start_session(builder)
+        self.deref().start_session(builder)
     }
     fn stop_calculation_execution(&self, builder: StopCalculationExecutionInputBuilder) -> impl Future<Output = Result<StopCalculationExecutionOutput, SdkError<StopCalculationExecutionError>>> {
-        (*self).stop_calculation_execution(builder)
+        self.deref().stop_calculation_execution(builder)
     }
     fn stop_query_execution(&self, builder: StopQueryExecutionInputBuilder) -> impl Future<Output = Result<StopQueryExecutionOutput, SdkError<StopQueryExecutionError>>> {
-        (*self).stop_query_execution(builder)
+        self.deref().stop_query_execution(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn terminate_session(&self, builder: TerminateSessionInputBuilder) -> impl Future<Output = Result<TerminateSessionOutput, SdkError<TerminateSessionError>>> {
-        (*self).terminate_session(builder)
+        self.deref().terminate_session(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_capacity_reservation(&self, builder: UpdateCapacityReservationInputBuilder) -> impl Future<Output = Result<UpdateCapacityReservationOutput, SdkError<UpdateCapacityReservationError>>> {
-        (*self).update_capacity_reservation(builder)
+        self.deref().update_capacity_reservation(builder)
     }
     fn update_data_catalog(&self, builder: UpdateDataCatalogInputBuilder) -> impl Future<Output = Result<UpdateDataCatalogOutput, SdkError<UpdateDataCatalogError>>> {
-        (*self).update_data_catalog(builder)
+        self.deref().update_data_catalog(builder)
     }
     fn update_named_query(&self, builder: UpdateNamedQueryInputBuilder) -> impl Future<Output = Result<UpdateNamedQueryOutput, SdkError<UpdateNamedQueryError>>> {
-        (*self).update_named_query(builder)
+        self.deref().update_named_query(builder)
     }
     fn update_notebook(&self, builder: UpdateNotebookInputBuilder) -> impl Future<Output = Result<UpdateNotebookOutput, SdkError<UpdateNotebookError>>> {
-        (*self).update_notebook(builder)
+        self.deref().update_notebook(builder)
     }
     fn update_notebook_metadata(&self, builder: UpdateNotebookMetadataInputBuilder) -> impl Future<Output = Result<UpdateNotebookMetadataOutput, SdkError<UpdateNotebookMetadataError>>> {
-        (*self).update_notebook_metadata(builder)
+        self.deref().update_notebook_metadata(builder)
     }
     fn update_prepared_statement(&self, builder: UpdatePreparedStatementInputBuilder) -> impl Future<Output = Result<UpdatePreparedStatementOutput, SdkError<UpdatePreparedStatementError>>> {
-        (*self).update_prepared_statement(builder)
+        self.deref().update_prepared_statement(builder)
     }
     fn update_work_group(&self, builder: UpdateWorkGroupInputBuilder) -> impl Future<Output = Result<UpdateWorkGroupOutput, SdkError<UpdateWorkGroupError>>> {
-        (*self).update_work_group(builder)
+        self.deref().update_work_group(builder)
     }
 }
 #[cfg(feature = "mockall")]

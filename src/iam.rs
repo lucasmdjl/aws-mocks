@@ -179,6 +179,7 @@ use aws_sdk_iam::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_iam::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_iam::*;
 
@@ -826,483 +827,485 @@ impl IAMClient for IAMClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: IAMClient> IAMClient for &T {
+impl <T> IAMClient for T
+where T: Deref,
+      T::Target: IAMClient {
     fn add_client_id_to_open_id_connect_provider(&self, builder: AddClientIdToOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<AddClientIdToOpenIdConnectProviderOutput, SdkError<AddClientIDToOpenIDConnectProviderError>>> {
-        (*self).add_client_id_to_open_id_connect_provider(builder)
+        self.deref().add_client_id_to_open_id_connect_provider(builder)
     }
     fn add_role_to_instance_profile(&self, builder: AddRoleToInstanceProfileInputBuilder) -> impl Future<Output = Result<AddRoleToInstanceProfileOutput, SdkError<AddRoleToInstanceProfileError>>> {
-        (*self).add_role_to_instance_profile(builder)
+        self.deref().add_role_to_instance_profile(builder)
     }
     fn add_user_to_group(&self, builder: AddUserToGroupInputBuilder) -> impl Future<Output = Result<AddUserToGroupOutput, SdkError<AddUserToGroupError>>> {
-        (*self).add_user_to_group(builder)
+        self.deref().add_user_to_group(builder)
     }
     fn attach_group_policy(&self, builder: AttachGroupPolicyInputBuilder) -> impl Future<Output = Result<AttachGroupPolicyOutput, SdkError<AttachGroupPolicyError>>> {
-        (*self).attach_group_policy(builder)
+        self.deref().attach_group_policy(builder)
     }
     fn attach_role_policy(&self, builder: AttachRolePolicyInputBuilder) -> impl Future<Output = Result<AttachRolePolicyOutput, SdkError<AttachRolePolicyError>>> {
-        (*self).attach_role_policy(builder)
+        self.deref().attach_role_policy(builder)
     }
     fn attach_user_policy(&self, builder: AttachUserPolicyInputBuilder) -> impl Future<Output = Result<AttachUserPolicyOutput, SdkError<AttachUserPolicyError>>> {
-        (*self).attach_user_policy(builder)
+        self.deref().attach_user_policy(builder)
     }
     fn change_password(&self, builder: ChangePasswordInputBuilder) -> impl Future<Output = Result<ChangePasswordOutput, SdkError<ChangePasswordError>>> {
-        (*self).change_password(builder)
+        self.deref().change_password(builder)
     }
     fn create_access_key(&self, builder: CreateAccessKeyInputBuilder) -> impl Future<Output = Result<CreateAccessKeyOutput, SdkError<CreateAccessKeyError>>> {
-        (*self).create_access_key(builder)
+        self.deref().create_access_key(builder)
     }
     fn create_account_alias(&self, builder: CreateAccountAliasInputBuilder) -> impl Future<Output = Result<CreateAccountAliasOutput, SdkError<CreateAccountAliasError>>> {
-        (*self).create_account_alias(builder)
+        self.deref().create_account_alias(builder)
     }
     fn create_group(&self, builder: CreateGroupInputBuilder) -> impl Future<Output = Result<CreateGroupOutput, SdkError<CreateGroupError>>> {
-        (*self).create_group(builder)
+        self.deref().create_group(builder)
     }
     fn create_instance_profile(&self, builder: CreateInstanceProfileInputBuilder) -> impl Future<Output = Result<CreateInstanceProfileOutput, SdkError<CreateInstanceProfileError>>> {
-        (*self).create_instance_profile(builder)
+        self.deref().create_instance_profile(builder)
     }
     fn create_login_profile(&self, builder: CreateLoginProfileInputBuilder) -> impl Future<Output = Result<CreateLoginProfileOutput, SdkError<CreateLoginProfileError>>> {
-        (*self).create_login_profile(builder)
+        self.deref().create_login_profile(builder)
     }
     fn create_open_id_connect_provider(&self, builder: CreateOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<CreateOpenIdConnectProviderOutput, SdkError<CreateOpenIDConnectProviderError>>> {
-        (*self).create_open_id_connect_provider(builder)
+        self.deref().create_open_id_connect_provider(builder)
     }
     fn create_policy(&self, builder: CreatePolicyInputBuilder) -> impl Future<Output = Result<CreatePolicyOutput, SdkError<CreatePolicyError>>> {
-        (*self).create_policy(builder)
+        self.deref().create_policy(builder)
     }
     fn create_policy_version(&self, builder: CreatePolicyVersionInputBuilder) -> impl Future<Output = Result<CreatePolicyVersionOutput, SdkError<CreatePolicyVersionError>>> {
-        (*self).create_policy_version(builder)
+        self.deref().create_policy_version(builder)
     }
     fn create_role(&self, builder: CreateRoleInputBuilder) -> impl Future<Output = Result<CreateRoleOutput, SdkError<CreateRoleError>>> {
-        (*self).create_role(builder)
+        self.deref().create_role(builder)
     }
     fn create_saml_provider(&self, builder: CreateSamlProviderInputBuilder) -> impl Future<Output = Result<CreateSamlProviderOutput, SdkError<CreateSAMLProviderError>>> {
-        (*self).create_saml_provider(builder)
+        self.deref().create_saml_provider(builder)
     }
     fn create_service_linked_role(&self, builder: CreateServiceLinkedRoleInputBuilder) -> impl Future<Output = Result<CreateServiceLinkedRoleOutput, SdkError<CreateServiceLinkedRoleError>>> {
-        (*self).create_service_linked_role(builder)
+        self.deref().create_service_linked_role(builder)
     }
     fn create_service_specific_credential(&self, builder: CreateServiceSpecificCredentialInputBuilder) -> impl Future<Output = Result<CreateServiceSpecificCredentialOutput, SdkError<CreateServiceSpecificCredentialError>>> {
-        (*self).create_service_specific_credential(builder)
+        self.deref().create_service_specific_credential(builder)
     }
     fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>> {
-        (*self).create_user(builder)
+        self.deref().create_user(builder)
     }
     fn create_virtual_mfa_device(&self, builder: CreateVirtualMfaDeviceInputBuilder) -> impl Future<Output = Result<CreateVirtualMfaDeviceOutput, SdkError<CreateVirtualMFADeviceError>>> {
-        (*self).create_virtual_mfa_device(builder)
+        self.deref().create_virtual_mfa_device(builder)
     }
     fn deactivate_mfa_device(&self, builder: DeactivateMfaDeviceInputBuilder) -> impl Future<Output = Result<DeactivateMfaDeviceOutput, SdkError<DeactivateMFADeviceError>>> {
-        (*self).deactivate_mfa_device(builder)
+        self.deref().deactivate_mfa_device(builder)
     }
     fn delete_access_key(&self, builder: DeleteAccessKeyInputBuilder) -> impl Future<Output = Result<DeleteAccessKeyOutput, SdkError<DeleteAccessKeyError>>> {
-        (*self).delete_access_key(builder)
+        self.deref().delete_access_key(builder)
     }
     fn delete_account_alias(&self, builder: DeleteAccountAliasInputBuilder) -> impl Future<Output = Result<DeleteAccountAliasOutput, SdkError<DeleteAccountAliasError>>> {
-        (*self).delete_account_alias(builder)
+        self.deref().delete_account_alias(builder)
     }
     fn delete_account_password_policy(&self, builder: DeleteAccountPasswordPolicyInputBuilder) -> impl Future<Output = Result<DeleteAccountPasswordPolicyOutput, SdkError<DeleteAccountPasswordPolicyError>>> {
-        (*self).delete_account_password_policy(builder)
+        self.deref().delete_account_password_policy(builder)
     }
     fn delete_group(&self, builder: DeleteGroupInputBuilder) -> impl Future<Output = Result<DeleteGroupOutput, SdkError<DeleteGroupError>>> {
-        (*self).delete_group(builder)
+        self.deref().delete_group(builder)
     }
     fn delete_group_policy(&self, builder: DeleteGroupPolicyInputBuilder) -> impl Future<Output = Result<DeleteGroupPolicyOutput, SdkError<DeleteGroupPolicyError>>> {
-        (*self).delete_group_policy(builder)
+        self.deref().delete_group_policy(builder)
     }
     fn delete_instance_profile(&self, builder: DeleteInstanceProfileInputBuilder) -> impl Future<Output = Result<DeleteInstanceProfileOutput, SdkError<DeleteInstanceProfileError>>> {
-        (*self).delete_instance_profile(builder)
+        self.deref().delete_instance_profile(builder)
     }
     fn delete_login_profile(&self, builder: DeleteLoginProfileInputBuilder) -> impl Future<Output = Result<DeleteLoginProfileOutput, SdkError<DeleteLoginProfileError>>> {
-        (*self).delete_login_profile(builder)
+        self.deref().delete_login_profile(builder)
     }
     fn delete_open_id_connect_provider(&self, builder: DeleteOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<DeleteOpenIdConnectProviderOutput, SdkError<DeleteOpenIDConnectProviderError>>> {
-        (*self).delete_open_id_connect_provider(builder)
+        self.deref().delete_open_id_connect_provider(builder)
     }
     fn delete_policy(&self, builder: DeletePolicyInputBuilder) -> impl Future<Output = Result<DeletePolicyOutput, SdkError<DeletePolicyError>>> {
-        (*self).delete_policy(builder)
+        self.deref().delete_policy(builder)
     }
     fn delete_policy_version(&self, builder: DeletePolicyVersionInputBuilder) -> impl Future<Output = Result<DeletePolicyVersionOutput, SdkError<DeletePolicyVersionError>>> {
-        (*self).delete_policy_version(builder)
+        self.deref().delete_policy_version(builder)
     }
     fn delete_role(&self, builder: DeleteRoleInputBuilder) -> impl Future<Output = Result<DeleteRoleOutput, SdkError<DeleteRoleError>>> {
-        (*self).delete_role(builder)
+        self.deref().delete_role(builder)
     }
     fn delete_role_permissions_boundary(&self, builder: DeleteRolePermissionsBoundaryInputBuilder) -> impl Future<Output = Result<DeleteRolePermissionsBoundaryOutput, SdkError<DeleteRolePermissionsBoundaryError>>> {
-        (*self).delete_role_permissions_boundary(builder)
+        self.deref().delete_role_permissions_boundary(builder)
     }
     fn delete_role_policy(&self, builder: DeleteRolePolicyInputBuilder) -> impl Future<Output = Result<DeleteRolePolicyOutput, SdkError<DeleteRolePolicyError>>> {
-        (*self).delete_role_policy(builder)
+        self.deref().delete_role_policy(builder)
     }
     fn delete_saml_provider(&self, builder: DeleteSamlProviderInputBuilder) -> impl Future<Output = Result<DeleteSamlProviderOutput, SdkError<DeleteSAMLProviderError>>> {
-        (*self).delete_saml_provider(builder)
+        self.deref().delete_saml_provider(builder)
     }
     fn delete_server_certificate(&self, builder: DeleteServerCertificateInputBuilder) -> impl Future<Output = Result<DeleteServerCertificateOutput, SdkError<DeleteServerCertificateError>>> {
-        (*self).delete_server_certificate(builder)
+        self.deref().delete_server_certificate(builder)
     }
     fn delete_service_linked_role(&self, builder: DeleteServiceLinkedRoleInputBuilder) -> impl Future<Output = Result<DeleteServiceLinkedRoleOutput, SdkError<DeleteServiceLinkedRoleError>>> {
-        (*self).delete_service_linked_role(builder)
+        self.deref().delete_service_linked_role(builder)
     }
     fn delete_service_specific_credential(&self, builder: DeleteServiceSpecificCredentialInputBuilder) -> impl Future<Output = Result<DeleteServiceSpecificCredentialOutput, SdkError<DeleteServiceSpecificCredentialError>>> {
-        (*self).delete_service_specific_credential(builder)
+        self.deref().delete_service_specific_credential(builder)
     }
     fn delete_signing_certificate(&self, builder: DeleteSigningCertificateInputBuilder) -> impl Future<Output = Result<DeleteSigningCertificateOutput, SdkError<DeleteSigningCertificateError>>> {
-        (*self).delete_signing_certificate(builder)
+        self.deref().delete_signing_certificate(builder)
     }
     fn delete_ssh_public_key(&self, builder: DeleteSshPublicKeyInputBuilder) -> impl Future<Output = Result<DeleteSshPublicKeyOutput, SdkError<DeleteSSHPublicKeyError>>> {
-        (*self).delete_ssh_public_key(builder)
+        self.deref().delete_ssh_public_key(builder)
     }
     fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> {
-        (*self).delete_user(builder)
+        self.deref().delete_user(builder)
     }
     fn delete_user_permissions_boundary(&self, builder: DeleteUserPermissionsBoundaryInputBuilder) -> impl Future<Output = Result<DeleteUserPermissionsBoundaryOutput, SdkError<DeleteUserPermissionsBoundaryError>>> {
-        (*self).delete_user_permissions_boundary(builder)
+        self.deref().delete_user_permissions_boundary(builder)
     }
     fn delete_user_policy(&self, builder: DeleteUserPolicyInputBuilder) -> impl Future<Output = Result<DeleteUserPolicyOutput, SdkError<DeleteUserPolicyError>>> {
-        (*self).delete_user_policy(builder)
+        self.deref().delete_user_policy(builder)
     }
     fn delete_virtual_mfa_device(&self, builder: DeleteVirtualMfaDeviceInputBuilder) -> impl Future<Output = Result<DeleteVirtualMfaDeviceOutput, SdkError<DeleteVirtualMFADeviceError>>> {
-        (*self).delete_virtual_mfa_device(builder)
+        self.deref().delete_virtual_mfa_device(builder)
     }
     fn detach_group_policy(&self, builder: DetachGroupPolicyInputBuilder) -> impl Future<Output = Result<DetachGroupPolicyOutput, SdkError<DetachGroupPolicyError>>> {
-        (*self).detach_group_policy(builder)
+        self.deref().detach_group_policy(builder)
     }
     fn detach_role_policy(&self, builder: DetachRolePolicyInputBuilder) -> impl Future<Output = Result<DetachRolePolicyOutput, SdkError<DetachRolePolicyError>>> {
-        (*self).detach_role_policy(builder)
+        self.deref().detach_role_policy(builder)
     }
     fn detach_user_policy(&self, builder: DetachUserPolicyInputBuilder) -> impl Future<Output = Result<DetachUserPolicyOutput, SdkError<DetachUserPolicyError>>> {
-        (*self).detach_user_policy(builder)
+        self.deref().detach_user_policy(builder)
     }
     fn enable_mfa_device(&self, builder: EnableMfaDeviceInputBuilder) -> impl Future<Output = Result<EnableMfaDeviceOutput, SdkError<EnableMFADeviceError>>> {
-        (*self).enable_mfa_device(builder)
+        self.deref().enable_mfa_device(builder)
     }
     fn generate_credential_report(&self, builder: GenerateCredentialReportInputBuilder) -> impl Future<Output = Result<GenerateCredentialReportOutput, SdkError<GenerateCredentialReportError>>> {
-        (*self).generate_credential_report(builder)
+        self.deref().generate_credential_report(builder)
     }
     fn generate_organizations_access_report(&self, builder: GenerateOrganizationsAccessReportInputBuilder) -> impl Future<Output = Result<GenerateOrganizationsAccessReportOutput, SdkError<GenerateOrganizationsAccessReportError>>> {
-        (*self).generate_organizations_access_report(builder)
+        self.deref().generate_organizations_access_report(builder)
     }
     fn generate_service_last_accessed_details(&self, builder: GenerateServiceLastAccessedDetailsInputBuilder) -> impl Future<Output = Result<GenerateServiceLastAccessedDetailsOutput, SdkError<GenerateServiceLastAccessedDetailsError>>> {
-        (*self).generate_service_last_accessed_details(builder)
+        self.deref().generate_service_last_accessed_details(builder)
     }
     fn get_access_key_last_used(&self, builder: GetAccessKeyLastUsedInputBuilder) -> impl Future<Output = Result<GetAccessKeyLastUsedOutput, SdkError<GetAccessKeyLastUsedError>>> {
-        (*self).get_access_key_last_used(builder)
+        self.deref().get_access_key_last_used(builder)
     }
     fn get_account_authorization_details(&self, builder: GetAccountAuthorizationDetailsInputBuilder) -> impl Future<Output = Result<GetAccountAuthorizationDetailsOutput, SdkError<GetAccountAuthorizationDetailsError>>> {
-        (*self).get_account_authorization_details(builder)
+        self.deref().get_account_authorization_details(builder)
     }
     fn get_account_password_policy(&self, builder: GetAccountPasswordPolicyInputBuilder) -> impl Future<Output = Result<GetAccountPasswordPolicyOutput, SdkError<GetAccountPasswordPolicyError>>> {
-        (*self).get_account_password_policy(builder)
+        self.deref().get_account_password_policy(builder)
     }
     fn get_account_summary(&self, builder: GetAccountSummaryInputBuilder) -> impl Future<Output = Result<GetAccountSummaryOutput, SdkError<GetAccountSummaryError>>> {
-        (*self).get_account_summary(builder)
+        self.deref().get_account_summary(builder)
     }
     fn get_context_keys_for_custom_policy(&self, builder: GetContextKeysForCustomPolicyInputBuilder) -> impl Future<Output = Result<GetContextKeysForCustomPolicyOutput, SdkError<GetContextKeysForCustomPolicyError>>> {
-        (*self).get_context_keys_for_custom_policy(builder)
+        self.deref().get_context_keys_for_custom_policy(builder)
     }
     fn get_context_keys_for_principal_policy(&self, builder: GetContextKeysForPrincipalPolicyInputBuilder) -> impl Future<Output = Result<GetContextKeysForPrincipalPolicyOutput, SdkError<GetContextKeysForPrincipalPolicyError>>> {
-        (*self).get_context_keys_for_principal_policy(builder)
+        self.deref().get_context_keys_for_principal_policy(builder)
     }
     fn get_credential_report(&self, builder: GetCredentialReportInputBuilder) -> impl Future<Output = Result<GetCredentialReportOutput, SdkError<GetCredentialReportError>>> {
-        (*self).get_credential_report(builder)
+        self.deref().get_credential_report(builder)
     }
     fn get_group(&self, builder: GetGroupInputBuilder) -> impl Future<Output = Result<GetGroupOutput, SdkError<GetGroupError>>> {
-        (*self).get_group(builder)
+        self.deref().get_group(builder)
     }
     fn get_group_policy(&self, builder: GetGroupPolicyInputBuilder) -> impl Future<Output = Result<GetGroupPolicyOutput, SdkError<GetGroupPolicyError>>> {
-        (*self).get_group_policy(builder)
+        self.deref().get_group_policy(builder)
     }
     fn get_instance_profile(&self, builder: GetInstanceProfileInputBuilder) -> impl Future<Output = Result<GetInstanceProfileOutput, SdkError<GetInstanceProfileError>>> {
-        (*self).get_instance_profile(builder)
+        self.deref().get_instance_profile(builder)
     }
     fn get_login_profile(&self, builder: GetLoginProfileInputBuilder) -> impl Future<Output = Result<GetLoginProfileOutput, SdkError<GetLoginProfileError>>> {
-        (*self).get_login_profile(builder)
+        self.deref().get_login_profile(builder)
     }
     fn get_mfa_device(&self, builder: GetMfaDeviceInputBuilder) -> impl Future<Output = Result<GetMfaDeviceOutput, SdkError<GetMFADeviceError>>> {
-        (*self).get_mfa_device(builder)
+        self.deref().get_mfa_device(builder)
     }
     fn get_open_id_connect_provider(&self, builder: GetOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<GetOpenIdConnectProviderOutput, SdkError<GetOpenIDConnectProviderError>>> {
-        (*self).get_open_id_connect_provider(builder)
+        self.deref().get_open_id_connect_provider(builder)
     }
     fn get_organizations_access_report(&self, builder: GetOrganizationsAccessReportInputBuilder) -> impl Future<Output = Result<GetOrganizationsAccessReportOutput, SdkError<GetOrganizationsAccessReportError>>> {
-        (*self).get_organizations_access_report(builder)
+        self.deref().get_organizations_access_report(builder)
     }
     fn get_policy(&self, builder: GetPolicyInputBuilder) -> impl Future<Output = Result<GetPolicyOutput, SdkError<GetPolicyError>>> {
-        (*self).get_policy(builder)
+        self.deref().get_policy(builder)
     }
     fn get_policy_version(&self, builder: GetPolicyVersionInputBuilder) -> impl Future<Output = Result<GetPolicyVersionOutput, SdkError<GetPolicyVersionError>>> {
-        (*self).get_policy_version(builder)
+        self.deref().get_policy_version(builder)
     }
     fn get_role(&self, builder: GetRoleInputBuilder) -> impl Future<Output = Result<GetRoleOutput, SdkError<GetRoleError>>> {
-        (*self).get_role(builder)
+        self.deref().get_role(builder)
     }
     fn get_role_policy(&self, builder: GetRolePolicyInputBuilder) -> impl Future<Output = Result<GetRolePolicyOutput, SdkError<GetRolePolicyError>>> {
-        (*self).get_role_policy(builder)
+        self.deref().get_role_policy(builder)
     }
     fn get_saml_provider(&self, builder: GetSamlProviderInputBuilder) -> impl Future<Output = Result<GetSamlProviderOutput, SdkError<GetSAMLProviderError>>> {
-        (*self).get_saml_provider(builder)
+        self.deref().get_saml_provider(builder)
     }
     fn get_server_certificate(&self, builder: GetServerCertificateInputBuilder) -> impl Future<Output = Result<GetServerCertificateOutput, SdkError<GetServerCertificateError>>> {
-        (*self).get_server_certificate(builder)
+        self.deref().get_server_certificate(builder)
     }
     fn get_service_last_accessed_details(&self, builder: GetServiceLastAccessedDetailsInputBuilder) -> impl Future<Output = Result<GetServiceLastAccessedDetailsOutput, SdkError<GetServiceLastAccessedDetailsError>>> {
-        (*self).get_service_last_accessed_details(builder)
+        self.deref().get_service_last_accessed_details(builder)
     }
     fn get_service_last_accessed_details_with_entities(&self, builder: GetServiceLastAccessedDetailsWithEntitiesInputBuilder) -> impl Future<Output = Result<GetServiceLastAccessedDetailsWithEntitiesOutput, SdkError<GetServiceLastAccessedDetailsWithEntitiesError>>> {
-        (*self).get_service_last_accessed_details_with_entities(builder)
+        self.deref().get_service_last_accessed_details_with_entities(builder)
     }
     fn get_service_linked_role_deletion_status(&self, builder: GetServiceLinkedRoleDeletionStatusInputBuilder) -> impl Future<Output = Result<GetServiceLinkedRoleDeletionStatusOutput, SdkError<GetServiceLinkedRoleDeletionStatusError>>> {
-        (*self).get_service_linked_role_deletion_status(builder)
+        self.deref().get_service_linked_role_deletion_status(builder)
     }
     fn get_ssh_public_key(&self, builder: GetSshPublicKeyInputBuilder) -> impl Future<Output = Result<GetSshPublicKeyOutput, SdkError<GetSSHPublicKeyError>>> {
-        (*self).get_ssh_public_key(builder)
+        self.deref().get_ssh_public_key(builder)
     }
     fn get_user(&self, builder: GetUserInputBuilder) -> impl Future<Output = Result<GetUserOutput, SdkError<GetUserError>>> {
-        (*self).get_user(builder)
+        self.deref().get_user(builder)
     }
     fn get_user_policy(&self, builder: GetUserPolicyInputBuilder) -> impl Future<Output = Result<GetUserPolicyOutput, SdkError<GetUserPolicyError>>> {
-        (*self).get_user_policy(builder)
+        self.deref().get_user_policy(builder)
     }
     fn list_access_keys(&self, builder: ListAccessKeysInputBuilder) -> impl Future<Output = Result<ListAccessKeysOutput, SdkError<ListAccessKeysError>>> {
-        (*self).list_access_keys(builder)
+        self.deref().list_access_keys(builder)
     }
     fn list_account_aliases(&self, builder: ListAccountAliasesInputBuilder) -> impl Future<Output = Result<ListAccountAliasesOutput, SdkError<ListAccountAliasesError>>> {
-        (*self).list_account_aliases(builder)
+        self.deref().list_account_aliases(builder)
     }
     fn list_attached_group_policies(&self, builder: ListAttachedGroupPoliciesInputBuilder) -> impl Future<Output = Result<ListAttachedGroupPoliciesOutput, SdkError<ListAttachedGroupPoliciesError>>> {
-        (*self).list_attached_group_policies(builder)
+        self.deref().list_attached_group_policies(builder)
     }
     fn list_attached_role_policies(&self, builder: ListAttachedRolePoliciesInputBuilder) -> impl Future<Output = Result<ListAttachedRolePoliciesOutput, SdkError<ListAttachedRolePoliciesError>>> {
-        (*self).list_attached_role_policies(builder)
+        self.deref().list_attached_role_policies(builder)
     }
     fn list_attached_user_policies(&self, builder: ListAttachedUserPoliciesInputBuilder) -> impl Future<Output = Result<ListAttachedUserPoliciesOutput, SdkError<ListAttachedUserPoliciesError>>> {
-        (*self).list_attached_user_policies(builder)
+        self.deref().list_attached_user_policies(builder)
     }
     fn list_entities_for_policy(&self, builder: ListEntitiesForPolicyInputBuilder) -> impl Future<Output = Result<ListEntitiesForPolicyOutput, SdkError<ListEntitiesForPolicyError>>> {
-        (*self).list_entities_for_policy(builder)
+        self.deref().list_entities_for_policy(builder)
     }
     fn list_group_policies(&self, builder: ListGroupPoliciesInputBuilder) -> impl Future<Output = Result<ListGroupPoliciesOutput, SdkError<ListGroupPoliciesError>>> {
-        (*self).list_group_policies(builder)
+        self.deref().list_group_policies(builder)
     }
     fn list_groups(&self, builder: ListGroupsInputBuilder) -> impl Future<Output = Result<ListGroupsOutput, SdkError<ListGroupsError>>> {
-        (*self).list_groups(builder)
+        self.deref().list_groups(builder)
     }
     fn list_groups_for_user(&self, builder: ListGroupsForUserInputBuilder) -> impl Future<Output = Result<ListGroupsForUserOutput, SdkError<ListGroupsForUserError>>> {
-        (*self).list_groups_for_user(builder)
+        self.deref().list_groups_for_user(builder)
     }
     fn list_instance_profile_tags(&self, builder: ListInstanceProfileTagsInputBuilder) -> impl Future<Output = Result<ListInstanceProfileTagsOutput, SdkError<ListInstanceProfileTagsError>>> {
-        (*self).list_instance_profile_tags(builder)
+        self.deref().list_instance_profile_tags(builder)
     }
     fn list_instance_profiles(&self, builder: ListInstanceProfilesInputBuilder) -> impl Future<Output = Result<ListInstanceProfilesOutput, SdkError<ListInstanceProfilesError>>> {
-        (*self).list_instance_profiles(builder)
+        self.deref().list_instance_profiles(builder)
     }
     fn list_instance_profiles_for_role(&self, builder: ListInstanceProfilesForRoleInputBuilder) -> impl Future<Output = Result<ListInstanceProfilesForRoleOutput, SdkError<ListInstanceProfilesForRoleError>>> {
-        (*self).list_instance_profiles_for_role(builder)
+        self.deref().list_instance_profiles_for_role(builder)
     }
     fn list_mfa_device_tags(&self, builder: ListMfaDeviceTagsInputBuilder) -> impl Future<Output = Result<ListMfaDeviceTagsOutput, SdkError<ListMFADeviceTagsError>>> {
-        (*self).list_mfa_device_tags(builder)
+        self.deref().list_mfa_device_tags(builder)
     }
     fn list_mfa_devices(&self, builder: ListMfaDevicesInputBuilder) -> impl Future<Output = Result<ListMfaDevicesOutput, SdkError<ListMFADevicesError>>> {
-        (*self).list_mfa_devices(builder)
+        self.deref().list_mfa_devices(builder)
     }
     fn list_open_id_connect_provider_tags(&self, builder: ListOpenIdConnectProviderTagsInputBuilder) -> impl Future<Output = Result<ListOpenIdConnectProviderTagsOutput, SdkError<ListOpenIDConnectProviderTagsError>>> {
-        (*self).list_open_id_connect_provider_tags(builder)
+        self.deref().list_open_id_connect_provider_tags(builder)
     }
     fn list_open_id_connect_providers(&self, builder: ListOpenIdConnectProvidersInputBuilder) -> impl Future<Output = Result<ListOpenIdConnectProvidersOutput, SdkError<ListOpenIDConnectProvidersError>>> {
-        (*self).list_open_id_connect_providers(builder)
+        self.deref().list_open_id_connect_providers(builder)
     }
     fn list_policies(&self, builder: ListPoliciesInputBuilder) -> impl Future<Output = Result<ListPoliciesOutput, SdkError<ListPoliciesError>>> {
-        (*self).list_policies(builder)
+        self.deref().list_policies(builder)
     }
     fn list_policies_granting_service_access(&self, builder: ListPoliciesGrantingServiceAccessInputBuilder) -> impl Future<Output = Result<ListPoliciesGrantingServiceAccessOutput, SdkError<ListPoliciesGrantingServiceAccessError>>> {
-        (*self).list_policies_granting_service_access(builder)
+        self.deref().list_policies_granting_service_access(builder)
     }
     fn list_policy_tags(&self, builder: ListPolicyTagsInputBuilder) -> impl Future<Output = Result<ListPolicyTagsOutput, SdkError<ListPolicyTagsError>>> {
-        (*self).list_policy_tags(builder)
+        self.deref().list_policy_tags(builder)
     }
     fn list_policy_versions(&self, builder: ListPolicyVersionsInputBuilder) -> impl Future<Output = Result<ListPolicyVersionsOutput, SdkError<ListPolicyVersionsError>>> {
-        (*self).list_policy_versions(builder)
+        self.deref().list_policy_versions(builder)
     }
     fn list_role_policies(&self, builder: ListRolePoliciesInputBuilder) -> impl Future<Output = Result<ListRolePoliciesOutput, SdkError<ListRolePoliciesError>>> {
-        (*self).list_role_policies(builder)
+        self.deref().list_role_policies(builder)
     }
     fn list_role_tags(&self, builder: ListRoleTagsInputBuilder) -> impl Future<Output = Result<ListRoleTagsOutput, SdkError<ListRoleTagsError>>> {
-        (*self).list_role_tags(builder)
+        self.deref().list_role_tags(builder)
     }
     fn list_roles(&self, builder: ListRolesInputBuilder) -> impl Future<Output = Result<ListRolesOutput, SdkError<ListRolesError>>> {
-        (*self).list_roles(builder)
+        self.deref().list_roles(builder)
     }
     fn list_saml_provider_tags(&self, builder: ListSamlProviderTagsInputBuilder) -> impl Future<Output = Result<ListSamlProviderTagsOutput, SdkError<ListSAMLProviderTagsError>>> {
-        (*self).list_saml_provider_tags(builder)
+        self.deref().list_saml_provider_tags(builder)
     }
     fn list_saml_providers(&self, builder: ListSamlProvidersInputBuilder) -> impl Future<Output = Result<ListSamlProvidersOutput, SdkError<ListSAMLProvidersError>>> {
-        (*self).list_saml_providers(builder)
+        self.deref().list_saml_providers(builder)
     }
     fn list_server_certificate_tags(&self, builder: ListServerCertificateTagsInputBuilder) -> impl Future<Output = Result<ListServerCertificateTagsOutput, SdkError<ListServerCertificateTagsError>>> {
-        (*self).list_server_certificate_tags(builder)
+        self.deref().list_server_certificate_tags(builder)
     }
     fn list_server_certificates(&self, builder: ListServerCertificatesInputBuilder) -> impl Future<Output = Result<ListServerCertificatesOutput, SdkError<ListServerCertificatesError>>> {
-        (*self).list_server_certificates(builder)
+        self.deref().list_server_certificates(builder)
     }
     fn list_service_specific_credentials(&self, builder: ListServiceSpecificCredentialsInputBuilder) -> impl Future<Output = Result<ListServiceSpecificCredentialsOutput, SdkError<ListServiceSpecificCredentialsError>>> {
-        (*self).list_service_specific_credentials(builder)
+        self.deref().list_service_specific_credentials(builder)
     }
     fn list_signing_certificates(&self, builder: ListSigningCertificatesInputBuilder) -> impl Future<Output = Result<ListSigningCertificatesOutput, SdkError<ListSigningCertificatesError>>> {
-        (*self).list_signing_certificates(builder)
+        self.deref().list_signing_certificates(builder)
     }
     fn list_ssh_public_keys(&self, builder: ListSshPublicKeysInputBuilder) -> impl Future<Output = Result<ListSshPublicKeysOutput, SdkError<ListSSHPublicKeysError>>> {
-        (*self).list_ssh_public_keys(builder)
+        self.deref().list_ssh_public_keys(builder)
     }
     fn list_user_policies(&self, builder: ListUserPoliciesInputBuilder) -> impl Future<Output = Result<ListUserPoliciesOutput, SdkError<ListUserPoliciesError>>> {
-        (*self).list_user_policies(builder)
+        self.deref().list_user_policies(builder)
     }
     fn list_user_tags(&self, builder: ListUserTagsInputBuilder) -> impl Future<Output = Result<ListUserTagsOutput, SdkError<ListUserTagsError>>> {
-        (*self).list_user_tags(builder)
+        self.deref().list_user_tags(builder)
     }
     fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>> {
-        (*self).list_users(builder)
+        self.deref().list_users(builder)
     }
     fn list_virtual_mfa_devices(&self, builder: ListVirtualMfaDevicesInputBuilder) -> impl Future<Output = Result<ListVirtualMfaDevicesOutput, SdkError<ListVirtualMFADevicesError>>> {
-        (*self).list_virtual_mfa_devices(builder)
+        self.deref().list_virtual_mfa_devices(builder)
     }
     fn put_group_policy(&self, builder: PutGroupPolicyInputBuilder) -> impl Future<Output = Result<PutGroupPolicyOutput, SdkError<PutGroupPolicyError>>> {
-        (*self).put_group_policy(builder)
+        self.deref().put_group_policy(builder)
     }
     fn put_role_permissions_boundary(&self, builder: PutRolePermissionsBoundaryInputBuilder) -> impl Future<Output = Result<PutRolePermissionsBoundaryOutput, SdkError<PutRolePermissionsBoundaryError>>> {
-        (*self).put_role_permissions_boundary(builder)
+        self.deref().put_role_permissions_boundary(builder)
     }
     fn put_role_policy(&self, builder: PutRolePolicyInputBuilder) -> impl Future<Output = Result<PutRolePolicyOutput, SdkError<PutRolePolicyError>>> {
-        (*self).put_role_policy(builder)
+        self.deref().put_role_policy(builder)
     }
     fn put_user_permissions_boundary(&self, builder: PutUserPermissionsBoundaryInputBuilder) -> impl Future<Output = Result<PutUserPermissionsBoundaryOutput, SdkError<PutUserPermissionsBoundaryError>>> {
-        (*self).put_user_permissions_boundary(builder)
+        self.deref().put_user_permissions_boundary(builder)
     }
     fn put_user_policy(&self, builder: PutUserPolicyInputBuilder) -> impl Future<Output = Result<PutUserPolicyOutput, SdkError<PutUserPolicyError>>> {
-        (*self).put_user_policy(builder)
+        self.deref().put_user_policy(builder)
     }
     fn remove_client_id_from_open_id_connect_provider(&self, builder: RemoveClientIdFromOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<RemoveClientIdFromOpenIdConnectProviderOutput, SdkError<RemoveClientIDFromOpenIDConnectProviderError>>> {
-        (*self).remove_client_id_from_open_id_connect_provider(builder)
+        self.deref().remove_client_id_from_open_id_connect_provider(builder)
     }
     fn remove_role_from_instance_profile(&self, builder: RemoveRoleFromInstanceProfileInputBuilder) -> impl Future<Output = Result<RemoveRoleFromInstanceProfileOutput, SdkError<RemoveRoleFromInstanceProfileError>>> {
-        (*self).remove_role_from_instance_profile(builder)
+        self.deref().remove_role_from_instance_profile(builder)
     }
     fn remove_user_from_group(&self, builder: RemoveUserFromGroupInputBuilder) -> impl Future<Output = Result<RemoveUserFromGroupOutput, SdkError<RemoveUserFromGroupError>>> {
-        (*self).remove_user_from_group(builder)
+        self.deref().remove_user_from_group(builder)
     }
     fn reset_service_specific_credential(&self, builder: ResetServiceSpecificCredentialInputBuilder) -> impl Future<Output = Result<ResetServiceSpecificCredentialOutput, SdkError<ResetServiceSpecificCredentialError>>> {
-        (*self).reset_service_specific_credential(builder)
+        self.deref().reset_service_specific_credential(builder)
     }
     fn resync_mfa_device(&self, builder: ResyncMfaDeviceInputBuilder) -> impl Future<Output = Result<ResyncMfaDeviceOutput, SdkError<ResyncMFADeviceError>>> {
-        (*self).resync_mfa_device(builder)
+        self.deref().resync_mfa_device(builder)
     }
     fn set_default_policy_version(&self, builder: SetDefaultPolicyVersionInputBuilder) -> impl Future<Output = Result<SetDefaultPolicyVersionOutput, SdkError<SetDefaultPolicyVersionError>>> {
-        (*self).set_default_policy_version(builder)
+        self.deref().set_default_policy_version(builder)
     }
     fn set_security_token_service_preferences(&self, builder: SetSecurityTokenServicePreferencesInputBuilder) -> impl Future<Output = Result<SetSecurityTokenServicePreferencesOutput, SdkError<SetSecurityTokenServicePreferencesError>>> {
-        (*self).set_security_token_service_preferences(builder)
+        self.deref().set_security_token_service_preferences(builder)
     }
     fn simulate_custom_policy(&self, builder: SimulateCustomPolicyInputBuilder) -> impl Future<Output = Result<SimulateCustomPolicyOutput, SdkError<SimulateCustomPolicyError>>> {
-        (*self).simulate_custom_policy(builder)
+        self.deref().simulate_custom_policy(builder)
     }
     fn simulate_principal_policy(&self, builder: SimulatePrincipalPolicyInputBuilder) -> impl Future<Output = Result<SimulatePrincipalPolicyOutput, SdkError<SimulatePrincipalPolicyError>>> {
-        (*self).simulate_principal_policy(builder)
+        self.deref().simulate_principal_policy(builder)
     }
     fn tag_instance_profile(&self, builder: TagInstanceProfileInputBuilder) -> impl Future<Output = Result<TagInstanceProfileOutput, SdkError<TagInstanceProfileError>>> {
-        (*self).tag_instance_profile(builder)
+        self.deref().tag_instance_profile(builder)
     }
     fn tag_mfa_device(&self, builder: TagMfaDeviceInputBuilder) -> impl Future<Output = Result<TagMfaDeviceOutput, SdkError<TagMFADeviceError>>> {
-        (*self).tag_mfa_device(builder)
+        self.deref().tag_mfa_device(builder)
     }
     fn tag_open_id_connect_provider(&self, builder: TagOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<TagOpenIdConnectProviderOutput, SdkError<TagOpenIDConnectProviderError>>> {
-        (*self).tag_open_id_connect_provider(builder)
+        self.deref().tag_open_id_connect_provider(builder)
     }
     fn tag_policy(&self, builder: TagPolicyInputBuilder) -> impl Future<Output = Result<TagPolicyOutput, SdkError<TagPolicyError>>> {
-        (*self).tag_policy(builder)
+        self.deref().tag_policy(builder)
     }
     fn tag_role(&self, builder: TagRoleInputBuilder) -> impl Future<Output = Result<TagRoleOutput, SdkError<TagRoleError>>> {
-        (*self).tag_role(builder)
+        self.deref().tag_role(builder)
     }
     fn tag_saml_provider(&self, builder: TagSamlProviderInputBuilder) -> impl Future<Output = Result<TagSamlProviderOutput, SdkError<TagSAMLProviderError>>> {
-        (*self).tag_saml_provider(builder)
+        self.deref().tag_saml_provider(builder)
     }
     fn tag_server_certificate(&self, builder: TagServerCertificateInputBuilder) -> impl Future<Output = Result<TagServerCertificateOutput, SdkError<TagServerCertificateError>>> {
-        (*self).tag_server_certificate(builder)
+        self.deref().tag_server_certificate(builder)
     }
     fn tag_user(&self, builder: TagUserInputBuilder) -> impl Future<Output = Result<TagUserOutput, SdkError<TagUserError>>> {
-        (*self).tag_user(builder)
+        self.deref().tag_user(builder)
     }
     fn untag_instance_profile(&self, builder: UntagInstanceProfileInputBuilder) -> impl Future<Output = Result<UntagInstanceProfileOutput, SdkError<UntagInstanceProfileError>>> {
-        (*self).untag_instance_profile(builder)
+        self.deref().untag_instance_profile(builder)
     }
     fn untag_mfa_device(&self, builder: UntagMfaDeviceInputBuilder) -> impl Future<Output = Result<UntagMfaDeviceOutput, SdkError<UntagMFADeviceError>>> {
-        (*self).untag_mfa_device(builder)
+        self.deref().untag_mfa_device(builder)
     }
     fn untag_open_id_connect_provider(&self, builder: UntagOpenIdConnectProviderInputBuilder) -> impl Future<Output = Result<UntagOpenIdConnectProviderOutput, SdkError<UntagOpenIDConnectProviderError>>> {
-        (*self).untag_open_id_connect_provider(builder)
+        self.deref().untag_open_id_connect_provider(builder)
     }
     fn untag_policy(&self, builder: UntagPolicyInputBuilder) -> impl Future<Output = Result<UntagPolicyOutput, SdkError<UntagPolicyError>>> {
-        (*self).untag_policy(builder)
+        self.deref().untag_policy(builder)
     }
     fn untag_role(&self, builder: UntagRoleInputBuilder) -> impl Future<Output = Result<UntagRoleOutput, SdkError<UntagRoleError>>> {
-        (*self).untag_role(builder)
+        self.deref().untag_role(builder)
     }
     fn untag_saml_provider(&self, builder: UntagSamlProviderInputBuilder) -> impl Future<Output = Result<UntagSamlProviderOutput, SdkError<UntagSAMLProviderError>>> {
-        (*self).untag_saml_provider(builder)
+        self.deref().untag_saml_provider(builder)
     }
     fn untag_server_certificate(&self, builder: UntagServerCertificateInputBuilder) -> impl Future<Output = Result<UntagServerCertificateOutput, SdkError<UntagServerCertificateError>>> {
-        (*self).untag_server_certificate(builder)
+        self.deref().untag_server_certificate(builder)
     }
     fn untag_user(&self, builder: UntagUserInputBuilder) -> impl Future<Output = Result<UntagUserOutput, SdkError<UntagUserError>>> {
-        (*self).untag_user(builder)
+        self.deref().untag_user(builder)
     }
     fn update_access_key(&self, builder: UpdateAccessKeyInputBuilder) -> impl Future<Output = Result<UpdateAccessKeyOutput, SdkError<UpdateAccessKeyError>>> {
-        (*self).update_access_key(builder)
+        self.deref().update_access_key(builder)
     }
     fn update_account_password_policy(&self, builder: UpdateAccountPasswordPolicyInputBuilder) -> impl Future<Output = Result<UpdateAccountPasswordPolicyOutput, SdkError<UpdateAccountPasswordPolicyError>>> {
-        (*self).update_account_password_policy(builder)
+        self.deref().update_account_password_policy(builder)
     }
     fn update_assume_role_policy(&self, builder: UpdateAssumeRolePolicyInputBuilder) -> impl Future<Output = Result<UpdateAssumeRolePolicyOutput, SdkError<UpdateAssumeRolePolicyError>>> {
-        (*self).update_assume_role_policy(builder)
+        self.deref().update_assume_role_policy(builder)
     }
     fn update_group(&self, builder: UpdateGroupInputBuilder) -> impl Future<Output = Result<UpdateGroupOutput, SdkError<UpdateGroupError>>> {
-        (*self).update_group(builder)
+        self.deref().update_group(builder)
     }
     fn update_login_profile(&self, builder: UpdateLoginProfileInputBuilder) -> impl Future<Output = Result<UpdateLoginProfileOutput, SdkError<UpdateLoginProfileError>>> {
-        (*self).update_login_profile(builder)
+        self.deref().update_login_profile(builder)
     }
     fn update_open_id_connect_provider_thumbprint(&self, builder: UpdateOpenIdConnectProviderThumbprintInputBuilder) -> impl Future<Output = Result<UpdateOpenIdConnectProviderThumbprintOutput, SdkError<UpdateOpenIDConnectProviderThumbprintError>>> {
-        (*self).update_open_id_connect_provider_thumbprint(builder)
+        self.deref().update_open_id_connect_provider_thumbprint(builder)
     }
     fn update_role(&self, builder: UpdateRoleInputBuilder) -> impl Future<Output = Result<UpdateRoleOutput, SdkError<UpdateRoleError>>> {
-        (*self).update_role(builder)
+        self.deref().update_role(builder)
     }
     fn update_role_description(&self, builder: UpdateRoleDescriptionInputBuilder) -> impl Future<Output = Result<UpdateRoleDescriptionOutput, SdkError<UpdateRoleDescriptionError>>> {
-        (*self).update_role_description(builder)
+        self.deref().update_role_description(builder)
     }
     fn update_saml_provider(&self, builder: UpdateSamlProviderInputBuilder) -> impl Future<Output = Result<UpdateSamlProviderOutput, SdkError<UpdateSAMLProviderError>>> {
-        (*self).update_saml_provider(builder)
+        self.deref().update_saml_provider(builder)
     }
     fn update_server_certificate(&self, builder: UpdateServerCertificateInputBuilder) -> impl Future<Output = Result<UpdateServerCertificateOutput, SdkError<UpdateServerCertificateError>>> {
-        (*self).update_server_certificate(builder)
+        self.deref().update_server_certificate(builder)
     }
     fn update_service_specific_credential(&self, builder: UpdateServiceSpecificCredentialInputBuilder) -> impl Future<Output = Result<UpdateServiceSpecificCredentialOutput, SdkError<UpdateServiceSpecificCredentialError>>> {
-        (*self).update_service_specific_credential(builder)
+        self.deref().update_service_specific_credential(builder)
     }
     fn update_signing_certificate(&self, builder: UpdateSigningCertificateInputBuilder) -> impl Future<Output = Result<UpdateSigningCertificateOutput, SdkError<UpdateSigningCertificateError>>> {
-        (*self).update_signing_certificate(builder)
+        self.deref().update_signing_certificate(builder)
     }
     fn update_ssh_public_key(&self, builder: UpdateSshPublicKeyInputBuilder) -> impl Future<Output = Result<UpdateSshPublicKeyOutput, SdkError<UpdateSSHPublicKeyError>>> {
-        (*self).update_ssh_public_key(builder)
+        self.deref().update_ssh_public_key(builder)
     }
     fn update_user(&self, builder: UpdateUserInputBuilder) -> impl Future<Output = Result<UpdateUserOutput, SdkError<UpdateUserError>>> {
-        (*self).update_user(builder)
+        self.deref().update_user(builder)
     }
     fn upload_server_certificate(&self, builder: UploadServerCertificateInputBuilder) -> impl Future<Output = Result<UploadServerCertificateOutput, SdkError<UploadServerCertificateError>>> {
-        (*self).upload_server_certificate(builder)
+        self.deref().upload_server_certificate(builder)
     }
     fn upload_signing_certificate(&self, builder: UploadSigningCertificateInputBuilder) -> impl Future<Output = Result<UploadSigningCertificateOutput, SdkError<UploadSigningCertificateError>>> {
-        (*self).upload_signing_certificate(builder)
+        self.deref().upload_signing_certificate(builder)
     }
     fn upload_ssh_public_key(&self, builder: UploadSshPublicKeyInputBuilder) -> impl Future<Output = Result<UploadSshPublicKeyOutput, SdkError<UploadSSHPublicKeyError>>> {
-        (*self).upload_ssh_public_key(builder)
+        self.deref().upload_ssh_public_key(builder)
     }
 }
 #[cfg(feature = "mockall")]

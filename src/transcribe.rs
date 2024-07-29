@@ -63,6 +63,7 @@ use aws_sdk_transcribe::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_transcribe::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_transcribe::*;
 
@@ -246,135 +247,137 @@ impl TranscribeClient for TranscribeClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: TranscribeClient> TranscribeClient for &T {
+impl <T> TranscribeClient for T
+where T: Deref,
+      T::Target: TranscribeClient {
     fn create_call_analytics_category(&self, builder: CreateCallAnalyticsCategoryInputBuilder) -> impl Future<Output = Result<CreateCallAnalyticsCategoryOutput, SdkError<CreateCallAnalyticsCategoryError>>> {
-        (*self).create_call_analytics_category(builder)
+        self.deref().create_call_analytics_category(builder)
     }
     fn create_language_model(&self, builder: CreateLanguageModelInputBuilder) -> impl Future<Output = Result<CreateLanguageModelOutput, SdkError<CreateLanguageModelError>>> {
-        (*self).create_language_model(builder)
+        self.deref().create_language_model(builder)
     }
     fn create_medical_vocabulary(&self, builder: CreateMedicalVocabularyInputBuilder) -> impl Future<Output = Result<CreateMedicalVocabularyOutput, SdkError<CreateMedicalVocabularyError>>> {
-        (*self).create_medical_vocabulary(builder)
+        self.deref().create_medical_vocabulary(builder)
     }
     fn create_vocabulary(&self, builder: CreateVocabularyInputBuilder) -> impl Future<Output = Result<CreateVocabularyOutput, SdkError<CreateVocabularyError>>> {
-        (*self).create_vocabulary(builder)
+        self.deref().create_vocabulary(builder)
     }
     fn create_vocabulary_filter(&self, builder: CreateVocabularyFilterInputBuilder) -> impl Future<Output = Result<CreateVocabularyFilterOutput, SdkError<CreateVocabularyFilterError>>> {
-        (*self).create_vocabulary_filter(builder)
+        self.deref().create_vocabulary_filter(builder)
     }
     fn delete_call_analytics_category(&self, builder: DeleteCallAnalyticsCategoryInputBuilder) -> impl Future<Output = Result<DeleteCallAnalyticsCategoryOutput, SdkError<DeleteCallAnalyticsCategoryError>>> {
-        (*self).delete_call_analytics_category(builder)
+        self.deref().delete_call_analytics_category(builder)
     }
     fn delete_call_analytics_job(&self, builder: DeleteCallAnalyticsJobInputBuilder) -> impl Future<Output = Result<DeleteCallAnalyticsJobOutput, SdkError<DeleteCallAnalyticsJobError>>> {
-        (*self).delete_call_analytics_job(builder)
+        self.deref().delete_call_analytics_job(builder)
     }
     fn delete_language_model(&self, builder: DeleteLanguageModelInputBuilder) -> impl Future<Output = Result<DeleteLanguageModelOutput, SdkError<DeleteLanguageModelError>>> {
-        (*self).delete_language_model(builder)
+        self.deref().delete_language_model(builder)
     }
     fn delete_medical_scribe_job(&self, builder: DeleteMedicalScribeJobInputBuilder) -> impl Future<Output = Result<DeleteMedicalScribeJobOutput, SdkError<DeleteMedicalScribeJobError>>> {
-        (*self).delete_medical_scribe_job(builder)
+        self.deref().delete_medical_scribe_job(builder)
     }
     fn delete_medical_transcription_job(&self, builder: DeleteMedicalTranscriptionJobInputBuilder) -> impl Future<Output = Result<DeleteMedicalTranscriptionJobOutput, SdkError<DeleteMedicalTranscriptionJobError>>> {
-        (*self).delete_medical_transcription_job(builder)
+        self.deref().delete_medical_transcription_job(builder)
     }
     fn delete_medical_vocabulary(&self, builder: DeleteMedicalVocabularyInputBuilder) -> impl Future<Output = Result<DeleteMedicalVocabularyOutput, SdkError<DeleteMedicalVocabularyError>>> {
-        (*self).delete_medical_vocabulary(builder)
+        self.deref().delete_medical_vocabulary(builder)
     }
     fn delete_transcription_job(&self, builder: DeleteTranscriptionJobInputBuilder) -> impl Future<Output = Result<DeleteTranscriptionJobOutput, SdkError<DeleteTranscriptionJobError>>> {
-        (*self).delete_transcription_job(builder)
+        self.deref().delete_transcription_job(builder)
     }
     fn delete_vocabulary(&self, builder: DeleteVocabularyInputBuilder) -> impl Future<Output = Result<DeleteVocabularyOutput, SdkError<DeleteVocabularyError>>> {
-        (*self).delete_vocabulary(builder)
+        self.deref().delete_vocabulary(builder)
     }
     fn delete_vocabulary_filter(&self, builder: DeleteVocabularyFilterInputBuilder) -> impl Future<Output = Result<DeleteVocabularyFilterOutput, SdkError<DeleteVocabularyFilterError>>> {
-        (*self).delete_vocabulary_filter(builder)
+        self.deref().delete_vocabulary_filter(builder)
     }
     fn describe_language_model(&self, builder: DescribeLanguageModelInputBuilder) -> impl Future<Output = Result<DescribeLanguageModelOutput, SdkError<DescribeLanguageModelError>>> {
-        (*self).describe_language_model(builder)
+        self.deref().describe_language_model(builder)
     }
     fn get_call_analytics_category(&self, builder: GetCallAnalyticsCategoryInputBuilder) -> impl Future<Output = Result<GetCallAnalyticsCategoryOutput, SdkError<GetCallAnalyticsCategoryError>>> {
-        (*self).get_call_analytics_category(builder)
+        self.deref().get_call_analytics_category(builder)
     }
     fn get_call_analytics_job(&self, builder: GetCallAnalyticsJobInputBuilder) -> impl Future<Output = Result<GetCallAnalyticsJobOutput, SdkError<GetCallAnalyticsJobError>>> {
-        (*self).get_call_analytics_job(builder)
+        self.deref().get_call_analytics_job(builder)
     }
     fn get_medical_scribe_job(&self, builder: GetMedicalScribeJobInputBuilder) -> impl Future<Output = Result<GetMedicalScribeJobOutput, SdkError<GetMedicalScribeJobError>>> {
-        (*self).get_medical_scribe_job(builder)
+        self.deref().get_medical_scribe_job(builder)
     }
     fn get_medical_transcription_job(&self, builder: GetMedicalTranscriptionJobInputBuilder) -> impl Future<Output = Result<GetMedicalTranscriptionJobOutput, SdkError<GetMedicalTranscriptionJobError>>> {
-        (*self).get_medical_transcription_job(builder)
+        self.deref().get_medical_transcription_job(builder)
     }
     fn get_medical_vocabulary(&self, builder: GetMedicalVocabularyInputBuilder) -> impl Future<Output = Result<GetMedicalVocabularyOutput, SdkError<GetMedicalVocabularyError>>> {
-        (*self).get_medical_vocabulary(builder)
+        self.deref().get_medical_vocabulary(builder)
     }
     fn get_transcription_job(&self, builder: GetTranscriptionJobInputBuilder) -> impl Future<Output = Result<GetTranscriptionJobOutput, SdkError<GetTranscriptionJobError>>> {
-        (*self).get_transcription_job(builder)
+        self.deref().get_transcription_job(builder)
     }
     fn get_vocabulary(&self, builder: GetVocabularyInputBuilder) -> impl Future<Output = Result<GetVocabularyOutput, SdkError<GetVocabularyError>>> {
-        (*self).get_vocabulary(builder)
+        self.deref().get_vocabulary(builder)
     }
     fn get_vocabulary_filter(&self, builder: GetVocabularyFilterInputBuilder) -> impl Future<Output = Result<GetVocabularyFilterOutput, SdkError<GetVocabularyFilterError>>> {
-        (*self).get_vocabulary_filter(builder)
+        self.deref().get_vocabulary_filter(builder)
     }
     fn list_call_analytics_categories(&self, builder: ListCallAnalyticsCategoriesInputBuilder) -> impl Future<Output = Result<ListCallAnalyticsCategoriesOutput, SdkError<ListCallAnalyticsCategoriesError>>> {
-        (*self).list_call_analytics_categories(builder)
+        self.deref().list_call_analytics_categories(builder)
     }
     fn list_call_analytics_jobs(&self, builder: ListCallAnalyticsJobsInputBuilder) -> impl Future<Output = Result<ListCallAnalyticsJobsOutput, SdkError<ListCallAnalyticsJobsError>>> {
-        (*self).list_call_analytics_jobs(builder)
+        self.deref().list_call_analytics_jobs(builder)
     }
     fn list_language_models(&self, builder: ListLanguageModelsInputBuilder) -> impl Future<Output = Result<ListLanguageModelsOutput, SdkError<ListLanguageModelsError>>> {
-        (*self).list_language_models(builder)
+        self.deref().list_language_models(builder)
     }
     fn list_medical_scribe_jobs(&self, builder: ListMedicalScribeJobsInputBuilder) -> impl Future<Output = Result<ListMedicalScribeJobsOutput, SdkError<ListMedicalScribeJobsError>>> {
-        (*self).list_medical_scribe_jobs(builder)
+        self.deref().list_medical_scribe_jobs(builder)
     }
     fn list_medical_transcription_jobs(&self, builder: ListMedicalTranscriptionJobsInputBuilder) -> impl Future<Output = Result<ListMedicalTranscriptionJobsOutput, SdkError<ListMedicalTranscriptionJobsError>>> {
-        (*self).list_medical_transcription_jobs(builder)
+        self.deref().list_medical_transcription_jobs(builder)
     }
     fn list_medical_vocabularies(&self, builder: ListMedicalVocabulariesInputBuilder) -> impl Future<Output = Result<ListMedicalVocabulariesOutput, SdkError<ListMedicalVocabulariesError>>> {
-        (*self).list_medical_vocabularies(builder)
+        self.deref().list_medical_vocabularies(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_transcription_jobs(&self, builder: ListTranscriptionJobsInputBuilder) -> impl Future<Output = Result<ListTranscriptionJobsOutput, SdkError<ListTranscriptionJobsError>>> {
-        (*self).list_transcription_jobs(builder)
+        self.deref().list_transcription_jobs(builder)
     }
     fn list_vocabularies(&self, builder: ListVocabulariesInputBuilder) -> impl Future<Output = Result<ListVocabulariesOutput, SdkError<ListVocabulariesError>>> {
-        (*self).list_vocabularies(builder)
+        self.deref().list_vocabularies(builder)
     }
     fn list_vocabulary_filters(&self, builder: ListVocabularyFiltersInputBuilder) -> impl Future<Output = Result<ListVocabularyFiltersOutput, SdkError<ListVocabularyFiltersError>>> {
-        (*self).list_vocabulary_filters(builder)
+        self.deref().list_vocabulary_filters(builder)
     }
     fn start_call_analytics_job(&self, builder: StartCallAnalyticsJobInputBuilder) -> impl Future<Output = Result<StartCallAnalyticsJobOutput, SdkError<StartCallAnalyticsJobError>>> {
-        (*self).start_call_analytics_job(builder)
+        self.deref().start_call_analytics_job(builder)
     }
     fn start_medical_scribe_job(&self, builder: StartMedicalScribeJobInputBuilder) -> impl Future<Output = Result<StartMedicalScribeJobOutput, SdkError<StartMedicalScribeJobError>>> {
-        (*self).start_medical_scribe_job(builder)
+        self.deref().start_medical_scribe_job(builder)
     }
     fn start_medical_transcription_job(&self, builder: StartMedicalTranscriptionJobInputBuilder) -> impl Future<Output = Result<StartMedicalTranscriptionJobOutput, SdkError<StartMedicalTranscriptionJobError>>> {
-        (*self).start_medical_transcription_job(builder)
+        self.deref().start_medical_transcription_job(builder)
     }
     fn start_transcription_job(&self, builder: StartTranscriptionJobInputBuilder) -> impl Future<Output = Result<StartTranscriptionJobOutput, SdkError<StartTranscriptionJobError>>> {
-        (*self).start_transcription_job(builder)
+        self.deref().start_transcription_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_call_analytics_category(&self, builder: UpdateCallAnalyticsCategoryInputBuilder) -> impl Future<Output = Result<UpdateCallAnalyticsCategoryOutput, SdkError<UpdateCallAnalyticsCategoryError>>> {
-        (*self).update_call_analytics_category(builder)
+        self.deref().update_call_analytics_category(builder)
     }
     fn update_medical_vocabulary(&self, builder: UpdateMedicalVocabularyInputBuilder) -> impl Future<Output = Result<UpdateMedicalVocabularyOutput, SdkError<UpdateMedicalVocabularyError>>> {
-        (*self).update_medical_vocabulary(builder)
+        self.deref().update_medical_vocabulary(builder)
     }
     fn update_vocabulary(&self, builder: UpdateVocabularyInputBuilder) -> impl Future<Output = Result<UpdateVocabularyOutput, SdkError<UpdateVocabularyError>>> {
-        (*self).update_vocabulary(builder)
+        self.deref().update_vocabulary(builder)
     }
     fn update_vocabulary_filter(&self, builder: UpdateVocabularyFilterInputBuilder) -> impl Future<Output = Result<UpdateVocabularyFilterOutput, SdkError<UpdateVocabularyFilterError>>> {
-        (*self).update_vocabulary_filter(builder)
+        self.deref().update_vocabulary_filter(builder)
     }
 }
 #[cfg(feature = "mockall")]

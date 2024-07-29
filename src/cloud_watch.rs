@@ -58,6 +58,7 @@ use aws_sdk_cloudwatch::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_cloudwatch::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_cloudwatch::*;
 
@@ -221,120 +222,122 @@ impl CloudWatchClient for CloudWatchClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CloudWatchClient> CloudWatchClient for &T {
+impl <T> CloudWatchClient for T
+where T: Deref,
+      T::Target: CloudWatchClient {
     fn delete_alarms(&self, builder: DeleteAlarmsInputBuilder) -> impl Future<Output = Result<DeleteAlarmsOutput, SdkError<DeleteAlarmsError>>> {
-        (*self).delete_alarms(builder)
+        self.deref().delete_alarms(builder)
     }
     fn delete_anomaly_detector(&self, builder: DeleteAnomalyDetectorInputBuilder) -> impl Future<Output = Result<DeleteAnomalyDetectorOutput, SdkError<DeleteAnomalyDetectorError>>> {
-        (*self).delete_anomaly_detector(builder)
+        self.deref().delete_anomaly_detector(builder)
     }
     fn delete_dashboards(&self, builder: DeleteDashboardsInputBuilder) -> impl Future<Output = Result<DeleteDashboardsOutput, SdkError<DeleteDashboardsError>>> {
-        (*self).delete_dashboards(builder)
+        self.deref().delete_dashboards(builder)
     }
     fn delete_insight_rules(&self, builder: DeleteInsightRulesInputBuilder) -> impl Future<Output = Result<DeleteInsightRulesOutput, SdkError<DeleteInsightRulesError>>> {
-        (*self).delete_insight_rules(builder)
+        self.deref().delete_insight_rules(builder)
     }
     fn delete_metric_stream(&self, builder: DeleteMetricStreamInputBuilder) -> impl Future<Output = Result<DeleteMetricStreamOutput, SdkError<DeleteMetricStreamError>>> {
-        (*self).delete_metric_stream(builder)
+        self.deref().delete_metric_stream(builder)
     }
     fn describe_alarm_history(&self, builder: DescribeAlarmHistoryInputBuilder) -> impl Future<Output = Result<DescribeAlarmHistoryOutput, SdkError<DescribeAlarmHistoryError>>> {
-        (*self).describe_alarm_history(builder)
+        self.deref().describe_alarm_history(builder)
     }
     fn describe_alarms(&self, builder: DescribeAlarmsInputBuilder) -> impl Future<Output = Result<DescribeAlarmsOutput, SdkError<DescribeAlarmsError>>> {
-        (*self).describe_alarms(builder)
+        self.deref().describe_alarms(builder)
     }
     fn describe_alarms_for_metric(&self, builder: DescribeAlarmsForMetricInputBuilder) -> impl Future<Output = Result<DescribeAlarmsForMetricOutput, SdkError<DescribeAlarmsForMetricError>>> {
-        (*self).describe_alarms_for_metric(builder)
+        self.deref().describe_alarms_for_metric(builder)
     }
     fn describe_anomaly_detectors(&self, builder: DescribeAnomalyDetectorsInputBuilder) -> impl Future<Output = Result<DescribeAnomalyDetectorsOutput, SdkError<DescribeAnomalyDetectorsError>>> {
-        (*self).describe_anomaly_detectors(builder)
+        self.deref().describe_anomaly_detectors(builder)
     }
     fn describe_insight_rules(&self, builder: DescribeInsightRulesInputBuilder) -> impl Future<Output = Result<DescribeInsightRulesOutput, SdkError<DescribeInsightRulesError>>> {
-        (*self).describe_insight_rules(builder)
+        self.deref().describe_insight_rules(builder)
     }
     fn disable_alarm_actions(&self, builder: DisableAlarmActionsInputBuilder) -> impl Future<Output = Result<DisableAlarmActionsOutput, SdkError<DisableAlarmActionsError>>> {
-        (*self).disable_alarm_actions(builder)
+        self.deref().disable_alarm_actions(builder)
     }
     fn disable_insight_rules(&self, builder: DisableInsightRulesInputBuilder) -> impl Future<Output = Result<DisableInsightRulesOutput, SdkError<DisableInsightRulesError>>> {
-        (*self).disable_insight_rules(builder)
+        self.deref().disable_insight_rules(builder)
     }
     fn enable_alarm_actions(&self, builder: EnableAlarmActionsInputBuilder) -> impl Future<Output = Result<EnableAlarmActionsOutput, SdkError<EnableAlarmActionsError>>> {
-        (*self).enable_alarm_actions(builder)
+        self.deref().enable_alarm_actions(builder)
     }
     fn enable_insight_rules(&self, builder: EnableInsightRulesInputBuilder) -> impl Future<Output = Result<EnableInsightRulesOutput, SdkError<EnableInsightRulesError>>> {
-        (*self).enable_insight_rules(builder)
+        self.deref().enable_insight_rules(builder)
     }
     fn get_dashboard(&self, builder: GetDashboardInputBuilder) -> impl Future<Output = Result<GetDashboardOutput, SdkError<GetDashboardError>>> {
-        (*self).get_dashboard(builder)
+        self.deref().get_dashboard(builder)
     }
     fn get_insight_rule_report(&self, builder: GetInsightRuleReportInputBuilder) -> impl Future<Output = Result<GetInsightRuleReportOutput, SdkError<GetInsightRuleReportError>>> {
-        (*self).get_insight_rule_report(builder)
+        self.deref().get_insight_rule_report(builder)
     }
     fn get_metric_data(&self, builder: GetMetricDataInputBuilder) -> impl Future<Output = Result<GetMetricDataOutput, SdkError<GetMetricDataError>>> {
-        (*self).get_metric_data(builder)
+        self.deref().get_metric_data(builder)
     }
     fn get_metric_statistics(&self, builder: GetMetricStatisticsInputBuilder) -> impl Future<Output = Result<GetMetricStatisticsOutput, SdkError<GetMetricStatisticsError>>> {
-        (*self).get_metric_statistics(builder)
+        self.deref().get_metric_statistics(builder)
     }
     fn get_metric_stream(&self, builder: GetMetricStreamInputBuilder) -> impl Future<Output = Result<GetMetricStreamOutput, SdkError<GetMetricStreamError>>> {
-        (*self).get_metric_stream(builder)
+        self.deref().get_metric_stream(builder)
     }
     fn get_metric_widget_image(&self, builder: GetMetricWidgetImageInputBuilder) -> impl Future<Output = Result<GetMetricWidgetImageOutput, SdkError<GetMetricWidgetImageError>>> {
-        (*self).get_metric_widget_image(builder)
+        self.deref().get_metric_widget_image(builder)
     }
     fn list_dashboards(&self, builder: ListDashboardsInputBuilder) -> impl Future<Output = Result<ListDashboardsOutput, SdkError<ListDashboardsError>>> {
-        (*self).list_dashboards(builder)
+        self.deref().list_dashboards(builder)
     }
     fn list_managed_insight_rules(&self, builder: ListManagedInsightRulesInputBuilder) -> impl Future<Output = Result<ListManagedInsightRulesOutput, SdkError<ListManagedInsightRulesError>>> {
-        (*self).list_managed_insight_rules(builder)
+        self.deref().list_managed_insight_rules(builder)
     }
     fn list_metric_streams(&self, builder: ListMetricStreamsInputBuilder) -> impl Future<Output = Result<ListMetricStreamsOutput, SdkError<ListMetricStreamsError>>> {
-        (*self).list_metric_streams(builder)
+        self.deref().list_metric_streams(builder)
     }
     fn list_metrics(&self, builder: ListMetricsInputBuilder) -> impl Future<Output = Result<ListMetricsOutput, SdkError<ListMetricsError>>> {
-        (*self).list_metrics(builder)
+        self.deref().list_metrics(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn put_anomaly_detector(&self, builder: PutAnomalyDetectorInputBuilder) -> impl Future<Output = Result<PutAnomalyDetectorOutput, SdkError<PutAnomalyDetectorError>>> {
-        (*self).put_anomaly_detector(builder)
+        self.deref().put_anomaly_detector(builder)
     }
     fn put_composite_alarm(&self, builder: PutCompositeAlarmInputBuilder) -> impl Future<Output = Result<PutCompositeAlarmOutput, SdkError<PutCompositeAlarmError>>> {
-        (*self).put_composite_alarm(builder)
+        self.deref().put_composite_alarm(builder)
     }
     fn put_dashboard(&self, builder: PutDashboardInputBuilder) -> impl Future<Output = Result<PutDashboardOutput, SdkError<PutDashboardError>>> {
-        (*self).put_dashboard(builder)
+        self.deref().put_dashboard(builder)
     }
     fn put_insight_rule(&self, builder: PutInsightRuleInputBuilder) -> impl Future<Output = Result<PutInsightRuleOutput, SdkError<PutInsightRuleError>>> {
-        (*self).put_insight_rule(builder)
+        self.deref().put_insight_rule(builder)
     }
     fn put_managed_insight_rules(&self, builder: PutManagedInsightRulesInputBuilder) -> impl Future<Output = Result<PutManagedInsightRulesOutput, SdkError<PutManagedInsightRulesError>>> {
-        (*self).put_managed_insight_rules(builder)
+        self.deref().put_managed_insight_rules(builder)
     }
     fn put_metric_alarm(&self, builder: PutMetricAlarmInputBuilder) -> impl Future<Output = Result<PutMetricAlarmOutput, SdkError<PutMetricAlarmError>>> {
-        (*self).put_metric_alarm(builder)
+        self.deref().put_metric_alarm(builder)
     }
     fn put_metric_data(&self, builder: PutMetricDataInputBuilder) -> impl Future<Output = Result<PutMetricDataOutput, SdkError<PutMetricDataError>>> {
-        (*self).put_metric_data(builder)
+        self.deref().put_metric_data(builder)
     }
     fn put_metric_stream(&self, builder: PutMetricStreamInputBuilder) -> impl Future<Output = Result<PutMetricStreamOutput, SdkError<PutMetricStreamError>>> {
-        (*self).put_metric_stream(builder)
+        self.deref().put_metric_stream(builder)
     }
     fn set_alarm_state(&self, builder: SetAlarmStateInputBuilder) -> impl Future<Output = Result<SetAlarmStateOutput, SdkError<SetAlarmStateError>>> {
-        (*self).set_alarm_state(builder)
+        self.deref().set_alarm_state(builder)
     }
     fn start_metric_streams(&self, builder: StartMetricStreamsInputBuilder) -> impl Future<Output = Result<StartMetricStreamsOutput, SdkError<StartMetricStreamsError>>> {
-        (*self).start_metric_streams(builder)
+        self.deref().start_metric_streams(builder)
     }
     fn stop_metric_streams(&self, builder: StopMetricStreamsInputBuilder) -> impl Future<Output = Result<StopMetricStreamsOutput, SdkError<StopMetricStreamsError>>> {
-        (*self).stop_metric_streams(builder)
+        self.deref().stop_metric_streams(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
 }
 #[cfg(feature = "mockall")]

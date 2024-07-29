@@ -32,6 +32,7 @@ use aws_sdk_account::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_account::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_account::*;
 
@@ -91,42 +92,44 @@ impl AccountClient for AccountClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AccountClient> AccountClient for &T {
+impl <T> AccountClient for T
+where T: Deref,
+      T::Target: AccountClient {
     fn accept_primary_email_update(&self, builder: AcceptPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<AcceptPrimaryEmailUpdateOutput, SdkError<AcceptPrimaryEmailUpdateError>>> {
-        (*self).accept_primary_email_update(builder)
+        self.deref().accept_primary_email_update(builder)
     }
     fn delete_alternate_contact(&self, builder: DeleteAlternateContactInputBuilder) -> impl Future<Output = Result<DeleteAlternateContactOutput, SdkError<DeleteAlternateContactError>>> {
-        (*self).delete_alternate_contact(builder)
+        self.deref().delete_alternate_contact(builder)
     }
     fn disable_region(&self, builder: DisableRegionInputBuilder) -> impl Future<Output = Result<DisableRegionOutput, SdkError<DisableRegionError>>> {
-        (*self).disable_region(builder)
+        self.deref().disable_region(builder)
     }
     fn enable_region(&self, builder: EnableRegionInputBuilder) -> impl Future<Output = Result<EnableRegionOutput, SdkError<EnableRegionError>>> {
-        (*self).enable_region(builder)
+        self.deref().enable_region(builder)
     }
     fn get_alternate_contact(&self, builder: GetAlternateContactInputBuilder) -> impl Future<Output = Result<GetAlternateContactOutput, SdkError<GetAlternateContactError>>> {
-        (*self).get_alternate_contact(builder)
+        self.deref().get_alternate_contact(builder)
     }
     fn get_contact_information(&self, builder: GetContactInformationInputBuilder) -> impl Future<Output = Result<GetContactInformationOutput, SdkError<GetContactInformationError>>> {
-        (*self).get_contact_information(builder)
+        self.deref().get_contact_information(builder)
     }
     fn get_primary_email(&self, builder: GetPrimaryEmailInputBuilder) -> impl Future<Output = Result<GetPrimaryEmailOutput, SdkError<GetPrimaryEmailError>>> {
-        (*self).get_primary_email(builder)
+        self.deref().get_primary_email(builder)
     }
     fn get_region_opt_status(&self, builder: GetRegionOptStatusInputBuilder) -> impl Future<Output = Result<GetRegionOptStatusOutput, SdkError<GetRegionOptStatusError>>> {
-        (*self).get_region_opt_status(builder)
+        self.deref().get_region_opt_status(builder)
     }
     fn list_regions(&self, builder: ListRegionsInputBuilder) -> impl Future<Output = Result<ListRegionsOutput, SdkError<ListRegionsError>>> {
-        (*self).list_regions(builder)
+        self.deref().list_regions(builder)
     }
     fn put_alternate_contact(&self, builder: PutAlternateContactInputBuilder) -> impl Future<Output = Result<PutAlternateContactOutput, SdkError<PutAlternateContactError>>> {
-        (*self).put_alternate_contact(builder)
+        self.deref().put_alternate_contact(builder)
     }
     fn put_contact_information(&self, builder: PutContactInformationInputBuilder) -> impl Future<Output = Result<PutContactInformationOutput, SdkError<PutContactInformationError>>> {
-        (*self).put_contact_information(builder)
+        self.deref().put_contact_information(builder)
     }
     fn start_primary_email_update(&self, builder: StartPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<StartPrimaryEmailUpdateOutput, SdkError<StartPrimaryEmailUpdateError>>> {
-        (*self).start_primary_email_update(builder)
+        self.deref().start_primary_email_update(builder)
     }
 }
 #[cfg(feature = "mockall")]

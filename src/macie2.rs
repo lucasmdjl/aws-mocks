@@ -101,6 +101,7 @@ use aws_sdk_macie2::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_macie2::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_macie2::*;
 
@@ -436,249 +437,251 @@ impl Macie2Client for Macie2ClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: Macie2Client> Macie2Client for &T {
+impl <T> Macie2Client for T
+where T: Deref,
+      T::Target: Macie2Client {
     fn accept_invitation(&self, builder: AcceptInvitationInputBuilder) -> impl Future<Output = Result<AcceptInvitationOutput, SdkError<AcceptInvitationError>>> {
-        (*self).accept_invitation(builder)
+        self.deref().accept_invitation(builder)
     }
     fn batch_get_custom_data_identifiers(&self, builder: BatchGetCustomDataIdentifiersInputBuilder) -> impl Future<Output = Result<BatchGetCustomDataIdentifiersOutput, SdkError<BatchGetCustomDataIdentifiersError>>> {
-        (*self).batch_get_custom_data_identifiers(builder)
+        self.deref().batch_get_custom_data_identifiers(builder)
     }
     fn batch_update_automated_discovery_accounts(&self, builder: BatchUpdateAutomatedDiscoveryAccountsInputBuilder) -> impl Future<Output = Result<BatchUpdateAutomatedDiscoveryAccountsOutput, SdkError<BatchUpdateAutomatedDiscoveryAccountsError>>> {
-        (*self).batch_update_automated_discovery_accounts(builder)
+        self.deref().batch_update_automated_discovery_accounts(builder)
     }
     fn create_allow_list(&self, builder: CreateAllowListInputBuilder) -> impl Future<Output = Result<CreateAllowListOutput, SdkError<CreateAllowListError>>> {
-        (*self).create_allow_list(builder)
+        self.deref().create_allow_list(builder)
     }
     fn create_classification_job(&self, builder: CreateClassificationJobInputBuilder) -> impl Future<Output = Result<CreateClassificationJobOutput, SdkError<CreateClassificationJobError>>> {
-        (*self).create_classification_job(builder)
+        self.deref().create_classification_job(builder)
     }
     fn create_custom_data_identifier(&self, builder: CreateCustomDataIdentifierInputBuilder) -> impl Future<Output = Result<CreateCustomDataIdentifierOutput, SdkError<CreateCustomDataIdentifierError>>> {
-        (*self).create_custom_data_identifier(builder)
+        self.deref().create_custom_data_identifier(builder)
     }
     fn create_findings_filter(&self, builder: CreateFindingsFilterInputBuilder) -> impl Future<Output = Result<CreateFindingsFilterOutput, SdkError<CreateFindingsFilterError>>> {
-        (*self).create_findings_filter(builder)
+        self.deref().create_findings_filter(builder)
     }
     fn create_invitations(&self, builder: CreateInvitationsInputBuilder) -> impl Future<Output = Result<CreateInvitationsOutput, SdkError<CreateInvitationsError>>> {
-        (*self).create_invitations(builder)
+        self.deref().create_invitations(builder)
     }
     fn create_member(&self, builder: CreateMemberInputBuilder) -> impl Future<Output = Result<CreateMemberOutput, SdkError<CreateMemberError>>> {
-        (*self).create_member(builder)
+        self.deref().create_member(builder)
     }
     fn create_sample_findings(&self, builder: CreateSampleFindingsInputBuilder) -> impl Future<Output = Result<CreateSampleFindingsOutput, SdkError<CreateSampleFindingsError>>> {
-        (*self).create_sample_findings(builder)
+        self.deref().create_sample_findings(builder)
     }
     fn decline_invitations(&self, builder: DeclineInvitationsInputBuilder) -> impl Future<Output = Result<DeclineInvitationsOutput, SdkError<DeclineInvitationsError>>> {
-        (*self).decline_invitations(builder)
+        self.deref().decline_invitations(builder)
     }
     fn delete_allow_list(&self, builder: DeleteAllowListInputBuilder) -> impl Future<Output = Result<DeleteAllowListOutput, SdkError<DeleteAllowListError>>> {
-        (*self).delete_allow_list(builder)
+        self.deref().delete_allow_list(builder)
     }
     fn delete_custom_data_identifier(&self, builder: DeleteCustomDataIdentifierInputBuilder) -> impl Future<Output = Result<DeleteCustomDataIdentifierOutput, SdkError<DeleteCustomDataIdentifierError>>> {
-        (*self).delete_custom_data_identifier(builder)
+        self.deref().delete_custom_data_identifier(builder)
     }
     fn delete_findings_filter(&self, builder: DeleteFindingsFilterInputBuilder) -> impl Future<Output = Result<DeleteFindingsFilterOutput, SdkError<DeleteFindingsFilterError>>> {
-        (*self).delete_findings_filter(builder)
+        self.deref().delete_findings_filter(builder)
     }
     fn delete_invitations(&self, builder: DeleteInvitationsInputBuilder) -> impl Future<Output = Result<DeleteInvitationsOutput, SdkError<DeleteInvitationsError>>> {
-        (*self).delete_invitations(builder)
+        self.deref().delete_invitations(builder)
     }
     fn delete_member(&self, builder: DeleteMemberInputBuilder) -> impl Future<Output = Result<DeleteMemberOutput, SdkError<DeleteMemberError>>> {
-        (*self).delete_member(builder)
+        self.deref().delete_member(builder)
     }
     fn describe_buckets(&self, builder: DescribeBucketsInputBuilder) -> impl Future<Output = Result<DescribeBucketsOutput, SdkError<DescribeBucketsError>>> {
-        (*self).describe_buckets(builder)
+        self.deref().describe_buckets(builder)
     }
     fn describe_classification_job(&self, builder: DescribeClassificationJobInputBuilder) -> impl Future<Output = Result<DescribeClassificationJobOutput, SdkError<DescribeClassificationJobError>>> {
-        (*self).describe_classification_job(builder)
+        self.deref().describe_classification_job(builder)
     }
     fn describe_organization_configuration(&self, builder: DescribeOrganizationConfigurationInputBuilder) -> impl Future<Output = Result<DescribeOrganizationConfigurationOutput, SdkError<DescribeOrganizationConfigurationError>>> {
-        (*self).describe_organization_configuration(builder)
+        self.deref().describe_organization_configuration(builder)
     }
     fn disable_macie(&self, builder: DisableMacieInputBuilder) -> impl Future<Output = Result<DisableMacieOutput, SdkError<DisableMacieError>>> {
-        (*self).disable_macie(builder)
+        self.deref().disable_macie(builder)
     }
     fn disable_organization_admin_account(&self, builder: DisableOrganizationAdminAccountInputBuilder) -> impl Future<Output = Result<DisableOrganizationAdminAccountOutput, SdkError<DisableOrganizationAdminAccountError>>> {
-        (*self).disable_organization_admin_account(builder)
+        self.deref().disable_organization_admin_account(builder)
     }
     fn disassociate_from_administrator_account(&self, builder: DisassociateFromAdministratorAccountInputBuilder) -> impl Future<Output = Result<DisassociateFromAdministratorAccountOutput, SdkError<DisassociateFromAdministratorAccountError>>> {
-        (*self).disassociate_from_administrator_account(builder)
+        self.deref().disassociate_from_administrator_account(builder)
     }
     fn disassociate_from_master_account(&self, builder: DisassociateFromMasterAccountInputBuilder) -> impl Future<Output = Result<DisassociateFromMasterAccountOutput, SdkError<DisassociateFromMasterAccountError>>> {
-        (*self).disassociate_from_master_account(builder)
+        self.deref().disassociate_from_master_account(builder)
     }
     fn disassociate_member(&self, builder: DisassociateMemberInputBuilder) -> impl Future<Output = Result<DisassociateMemberOutput, SdkError<DisassociateMemberError>>> {
-        (*self).disassociate_member(builder)
+        self.deref().disassociate_member(builder)
     }
     fn enable_macie(&self, builder: EnableMacieInputBuilder) -> impl Future<Output = Result<EnableMacieOutput, SdkError<EnableMacieError>>> {
-        (*self).enable_macie(builder)
+        self.deref().enable_macie(builder)
     }
     fn enable_organization_admin_account(&self, builder: EnableOrganizationAdminAccountInputBuilder) -> impl Future<Output = Result<EnableOrganizationAdminAccountOutput, SdkError<EnableOrganizationAdminAccountError>>> {
-        (*self).enable_organization_admin_account(builder)
+        self.deref().enable_organization_admin_account(builder)
     }
     fn get_administrator_account(&self, builder: GetAdministratorAccountInputBuilder) -> impl Future<Output = Result<GetAdministratorAccountOutput, SdkError<GetAdministratorAccountError>>> {
-        (*self).get_administrator_account(builder)
+        self.deref().get_administrator_account(builder)
     }
     fn get_allow_list(&self, builder: GetAllowListInputBuilder) -> impl Future<Output = Result<GetAllowListOutput, SdkError<GetAllowListError>>> {
-        (*self).get_allow_list(builder)
+        self.deref().get_allow_list(builder)
     }
     fn get_automated_discovery_configuration(&self, builder: GetAutomatedDiscoveryConfigurationInputBuilder) -> impl Future<Output = Result<GetAutomatedDiscoveryConfigurationOutput, SdkError<GetAutomatedDiscoveryConfigurationError>>> {
-        (*self).get_automated_discovery_configuration(builder)
+        self.deref().get_automated_discovery_configuration(builder)
     }
     fn get_bucket_statistics(&self, builder: GetBucketStatisticsInputBuilder) -> impl Future<Output = Result<GetBucketStatisticsOutput, SdkError<GetBucketStatisticsError>>> {
-        (*self).get_bucket_statistics(builder)
+        self.deref().get_bucket_statistics(builder)
     }
     fn get_classification_export_configuration(&self, builder: GetClassificationExportConfigurationInputBuilder) -> impl Future<Output = Result<GetClassificationExportConfigurationOutput, SdkError<GetClassificationExportConfigurationError>>> {
-        (*self).get_classification_export_configuration(builder)
+        self.deref().get_classification_export_configuration(builder)
     }
     fn get_classification_scope(&self, builder: GetClassificationScopeInputBuilder) -> impl Future<Output = Result<GetClassificationScopeOutput, SdkError<GetClassificationScopeError>>> {
-        (*self).get_classification_scope(builder)
+        self.deref().get_classification_scope(builder)
     }
     fn get_custom_data_identifier(&self, builder: GetCustomDataIdentifierInputBuilder) -> impl Future<Output = Result<GetCustomDataIdentifierOutput, SdkError<GetCustomDataIdentifierError>>> {
-        (*self).get_custom_data_identifier(builder)
+        self.deref().get_custom_data_identifier(builder)
     }
     fn get_finding_statistics(&self, builder: GetFindingStatisticsInputBuilder) -> impl Future<Output = Result<GetFindingStatisticsOutput, SdkError<GetFindingStatisticsError>>> {
-        (*self).get_finding_statistics(builder)
+        self.deref().get_finding_statistics(builder)
     }
     fn get_findings(&self, builder: GetFindingsInputBuilder) -> impl Future<Output = Result<GetFindingsOutput, SdkError<GetFindingsError>>> {
-        (*self).get_findings(builder)
+        self.deref().get_findings(builder)
     }
     fn get_findings_filter(&self, builder: GetFindingsFilterInputBuilder) -> impl Future<Output = Result<GetFindingsFilterOutput, SdkError<GetFindingsFilterError>>> {
-        (*self).get_findings_filter(builder)
+        self.deref().get_findings_filter(builder)
     }
     fn get_findings_publication_configuration(&self, builder: GetFindingsPublicationConfigurationInputBuilder) -> impl Future<Output = Result<GetFindingsPublicationConfigurationOutput, SdkError<GetFindingsPublicationConfigurationError>>> {
-        (*self).get_findings_publication_configuration(builder)
+        self.deref().get_findings_publication_configuration(builder)
     }
     fn get_invitations_count(&self, builder: GetInvitationsCountInputBuilder) -> impl Future<Output = Result<GetInvitationsCountOutput, SdkError<GetInvitationsCountError>>> {
-        (*self).get_invitations_count(builder)
+        self.deref().get_invitations_count(builder)
     }
     fn get_macie_session(&self, builder: GetMacieSessionInputBuilder) -> impl Future<Output = Result<GetMacieSessionOutput, SdkError<GetMacieSessionError>>> {
-        (*self).get_macie_session(builder)
+        self.deref().get_macie_session(builder)
     }
     fn get_master_account(&self, builder: GetMasterAccountInputBuilder) -> impl Future<Output = Result<GetMasterAccountOutput, SdkError<GetMasterAccountError>>> {
-        (*self).get_master_account(builder)
+        self.deref().get_master_account(builder)
     }
     fn get_member(&self, builder: GetMemberInputBuilder) -> impl Future<Output = Result<GetMemberOutput, SdkError<GetMemberError>>> {
-        (*self).get_member(builder)
+        self.deref().get_member(builder)
     }
     fn get_resource_profile(&self, builder: GetResourceProfileInputBuilder) -> impl Future<Output = Result<GetResourceProfileOutput, SdkError<GetResourceProfileError>>> {
-        (*self).get_resource_profile(builder)
+        self.deref().get_resource_profile(builder)
     }
     fn get_reveal_configuration(&self, builder: GetRevealConfigurationInputBuilder) -> impl Future<Output = Result<GetRevealConfigurationOutput, SdkError<GetRevealConfigurationError>>> {
-        (*self).get_reveal_configuration(builder)
+        self.deref().get_reveal_configuration(builder)
     }
     fn get_sensitive_data_occurrences(&self, builder: GetSensitiveDataOccurrencesInputBuilder) -> impl Future<Output = Result<GetSensitiveDataOccurrencesOutput, SdkError<GetSensitiveDataOccurrencesError>>> {
-        (*self).get_sensitive_data_occurrences(builder)
+        self.deref().get_sensitive_data_occurrences(builder)
     }
     fn get_sensitive_data_occurrences_availability(&self, builder: GetSensitiveDataOccurrencesAvailabilityInputBuilder) -> impl Future<Output = Result<GetSensitiveDataOccurrencesAvailabilityOutput, SdkError<GetSensitiveDataOccurrencesAvailabilityError>>> {
-        (*self).get_sensitive_data_occurrences_availability(builder)
+        self.deref().get_sensitive_data_occurrences_availability(builder)
     }
     fn get_sensitivity_inspection_template(&self, builder: GetSensitivityInspectionTemplateInputBuilder) -> impl Future<Output = Result<GetSensitivityInspectionTemplateOutput, SdkError<GetSensitivityInspectionTemplateError>>> {
-        (*self).get_sensitivity_inspection_template(builder)
+        self.deref().get_sensitivity_inspection_template(builder)
     }
     fn get_usage_statistics(&self, builder: GetUsageStatisticsInputBuilder) -> impl Future<Output = Result<GetUsageStatisticsOutput, SdkError<GetUsageStatisticsError>>> {
-        (*self).get_usage_statistics(builder)
+        self.deref().get_usage_statistics(builder)
     }
     fn get_usage_totals(&self, builder: GetUsageTotalsInputBuilder) -> impl Future<Output = Result<GetUsageTotalsOutput, SdkError<GetUsageTotalsError>>> {
-        (*self).get_usage_totals(builder)
+        self.deref().get_usage_totals(builder)
     }
     fn list_allow_lists(&self, builder: ListAllowListsInputBuilder) -> impl Future<Output = Result<ListAllowListsOutput, SdkError<ListAllowListsError>>> {
-        (*self).list_allow_lists(builder)
+        self.deref().list_allow_lists(builder)
     }
     fn list_automated_discovery_accounts(&self, builder: ListAutomatedDiscoveryAccountsInputBuilder) -> impl Future<Output = Result<ListAutomatedDiscoveryAccountsOutput, SdkError<ListAutomatedDiscoveryAccountsError>>> {
-        (*self).list_automated_discovery_accounts(builder)
+        self.deref().list_automated_discovery_accounts(builder)
     }
     fn list_classification_jobs(&self, builder: ListClassificationJobsInputBuilder) -> impl Future<Output = Result<ListClassificationJobsOutput, SdkError<ListClassificationJobsError>>> {
-        (*self).list_classification_jobs(builder)
+        self.deref().list_classification_jobs(builder)
     }
     fn list_classification_scopes(&self, builder: ListClassificationScopesInputBuilder) -> impl Future<Output = Result<ListClassificationScopesOutput, SdkError<ListClassificationScopesError>>> {
-        (*self).list_classification_scopes(builder)
+        self.deref().list_classification_scopes(builder)
     }
     fn list_custom_data_identifiers(&self, builder: ListCustomDataIdentifiersInputBuilder) -> impl Future<Output = Result<ListCustomDataIdentifiersOutput, SdkError<ListCustomDataIdentifiersError>>> {
-        (*self).list_custom_data_identifiers(builder)
+        self.deref().list_custom_data_identifiers(builder)
     }
     fn list_findings(&self, builder: ListFindingsInputBuilder) -> impl Future<Output = Result<ListFindingsOutput, SdkError<ListFindingsError>>> {
-        (*self).list_findings(builder)
+        self.deref().list_findings(builder)
     }
     fn list_findings_filters(&self, builder: ListFindingsFiltersInputBuilder) -> impl Future<Output = Result<ListFindingsFiltersOutput, SdkError<ListFindingsFiltersError>>> {
-        (*self).list_findings_filters(builder)
+        self.deref().list_findings_filters(builder)
     }
     fn list_invitations(&self, builder: ListInvitationsInputBuilder) -> impl Future<Output = Result<ListInvitationsOutput, SdkError<ListInvitationsError>>> {
-        (*self).list_invitations(builder)
+        self.deref().list_invitations(builder)
     }
     fn list_managed_data_identifiers(&self, builder: ListManagedDataIdentifiersInputBuilder) -> impl Future<Output = Result<ListManagedDataIdentifiersOutput, SdkError<ListManagedDataIdentifiersError>>> {
-        (*self).list_managed_data_identifiers(builder)
+        self.deref().list_managed_data_identifiers(builder)
     }
     fn list_members(&self, builder: ListMembersInputBuilder) -> impl Future<Output = Result<ListMembersOutput, SdkError<ListMembersError>>> {
-        (*self).list_members(builder)
+        self.deref().list_members(builder)
     }
     fn list_organization_admin_accounts(&self, builder: ListOrganizationAdminAccountsInputBuilder) -> impl Future<Output = Result<ListOrganizationAdminAccountsOutput, SdkError<ListOrganizationAdminAccountsError>>> {
-        (*self).list_organization_admin_accounts(builder)
+        self.deref().list_organization_admin_accounts(builder)
     }
     fn list_resource_profile_artifacts(&self, builder: ListResourceProfileArtifactsInputBuilder) -> impl Future<Output = Result<ListResourceProfileArtifactsOutput, SdkError<ListResourceProfileArtifactsError>>> {
-        (*self).list_resource_profile_artifacts(builder)
+        self.deref().list_resource_profile_artifacts(builder)
     }
     fn list_resource_profile_detections(&self, builder: ListResourceProfileDetectionsInputBuilder) -> impl Future<Output = Result<ListResourceProfileDetectionsOutput, SdkError<ListResourceProfileDetectionsError>>> {
-        (*self).list_resource_profile_detections(builder)
+        self.deref().list_resource_profile_detections(builder)
     }
     fn list_sensitivity_inspection_templates(&self, builder: ListSensitivityInspectionTemplatesInputBuilder) -> impl Future<Output = Result<ListSensitivityInspectionTemplatesOutput, SdkError<ListSensitivityInspectionTemplatesError>>> {
-        (*self).list_sensitivity_inspection_templates(builder)
+        self.deref().list_sensitivity_inspection_templates(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn put_classification_export_configuration(&self, builder: PutClassificationExportConfigurationInputBuilder) -> impl Future<Output = Result<PutClassificationExportConfigurationOutput, SdkError<PutClassificationExportConfigurationError>>> {
-        (*self).put_classification_export_configuration(builder)
+        self.deref().put_classification_export_configuration(builder)
     }
     fn put_findings_publication_configuration(&self, builder: PutFindingsPublicationConfigurationInputBuilder) -> impl Future<Output = Result<PutFindingsPublicationConfigurationOutput, SdkError<PutFindingsPublicationConfigurationError>>> {
-        (*self).put_findings_publication_configuration(builder)
+        self.deref().put_findings_publication_configuration(builder)
     }
     fn search_resources(&self, builder: SearchResourcesInputBuilder) -> impl Future<Output = Result<SearchResourcesOutput, SdkError<SearchResourcesError>>> {
-        (*self).search_resources(builder)
+        self.deref().search_resources(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn test_custom_data_identifier(&self, builder: TestCustomDataIdentifierInputBuilder) -> impl Future<Output = Result<TestCustomDataIdentifierOutput, SdkError<TestCustomDataIdentifierError>>> {
-        (*self).test_custom_data_identifier(builder)
+        self.deref().test_custom_data_identifier(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_allow_list(&self, builder: UpdateAllowListInputBuilder) -> impl Future<Output = Result<UpdateAllowListOutput, SdkError<UpdateAllowListError>>> {
-        (*self).update_allow_list(builder)
+        self.deref().update_allow_list(builder)
     }
     fn update_automated_discovery_configuration(&self, builder: UpdateAutomatedDiscoveryConfigurationInputBuilder) -> impl Future<Output = Result<UpdateAutomatedDiscoveryConfigurationOutput, SdkError<UpdateAutomatedDiscoveryConfigurationError>>> {
-        (*self).update_automated_discovery_configuration(builder)
+        self.deref().update_automated_discovery_configuration(builder)
     }
     fn update_classification_job(&self, builder: UpdateClassificationJobInputBuilder) -> impl Future<Output = Result<UpdateClassificationJobOutput, SdkError<UpdateClassificationJobError>>> {
-        (*self).update_classification_job(builder)
+        self.deref().update_classification_job(builder)
     }
     fn update_classification_scope(&self, builder: UpdateClassificationScopeInputBuilder) -> impl Future<Output = Result<UpdateClassificationScopeOutput, SdkError<UpdateClassificationScopeError>>> {
-        (*self).update_classification_scope(builder)
+        self.deref().update_classification_scope(builder)
     }
     fn update_findings_filter(&self, builder: UpdateFindingsFilterInputBuilder) -> impl Future<Output = Result<UpdateFindingsFilterOutput, SdkError<UpdateFindingsFilterError>>> {
-        (*self).update_findings_filter(builder)
+        self.deref().update_findings_filter(builder)
     }
     fn update_macie_session(&self, builder: UpdateMacieSessionInputBuilder) -> impl Future<Output = Result<UpdateMacieSessionOutput, SdkError<UpdateMacieSessionError>>> {
-        (*self).update_macie_session(builder)
+        self.deref().update_macie_session(builder)
     }
     fn update_member_session(&self, builder: UpdateMemberSessionInputBuilder) -> impl Future<Output = Result<UpdateMemberSessionOutput, SdkError<UpdateMemberSessionError>>> {
-        (*self).update_member_session(builder)
+        self.deref().update_member_session(builder)
     }
     fn update_organization_configuration(&self, builder: UpdateOrganizationConfigurationInputBuilder) -> impl Future<Output = Result<UpdateOrganizationConfigurationOutput, SdkError<UpdateOrganizationConfigurationError>>> {
-        (*self).update_organization_configuration(builder)
+        self.deref().update_organization_configuration(builder)
     }
     fn update_resource_profile(&self, builder: UpdateResourceProfileInputBuilder) -> impl Future<Output = Result<UpdateResourceProfileOutput, SdkError<UpdateResourceProfileError>>> {
-        (*self).update_resource_profile(builder)
+        self.deref().update_resource_profile(builder)
     }
     fn update_resource_profile_detections(&self, builder: UpdateResourceProfileDetectionsInputBuilder) -> impl Future<Output = Result<UpdateResourceProfileDetectionsOutput, SdkError<UpdateResourceProfileDetectionsError>>> {
-        (*self).update_resource_profile_detections(builder)
+        self.deref().update_resource_profile_detections(builder)
     }
     fn update_reveal_configuration(&self, builder: UpdateRevealConfigurationInputBuilder) -> impl Future<Output = Result<UpdateRevealConfigurationOutput, SdkError<UpdateRevealConfigurationError>>> {
-        (*self).update_reveal_configuration(builder)
+        self.deref().update_reveal_configuration(builder)
     }
     fn update_sensitivity_inspection_template(&self, builder: UpdateSensitivityInspectionTemplateInputBuilder) -> impl Future<Output = Result<UpdateSensitivityInspectionTemplateOutput, SdkError<UpdateSensitivityInspectionTemplateError>>> {
-        (*self).update_sensitivity_inspection_template(builder)
+        self.deref().update_sensitivity_inspection_template(builder)
     }
 }
 #[cfg(feature = "mockall")]

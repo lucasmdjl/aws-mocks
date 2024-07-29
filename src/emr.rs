@@ -66,6 +66,7 @@ use aws_sdk_emr::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_emr::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_emr::*;
 
@@ -261,144 +262,146 @@ impl EMRClient for EMRClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: EMRClient> EMRClient for &T {
+impl <T> EMRClient for T
+where T: Deref,
+      T::Target: EMRClient {
     fn add_instance_fleet(&self, builder: AddInstanceFleetInputBuilder) -> impl Future<Output = Result<AddInstanceFleetOutput, SdkError<AddInstanceFleetError>>> {
-        (*self).add_instance_fleet(builder)
+        self.deref().add_instance_fleet(builder)
     }
     fn add_instance_groups(&self, builder: AddInstanceGroupsInputBuilder) -> impl Future<Output = Result<AddInstanceGroupsOutput, SdkError<AddInstanceGroupsError>>> {
-        (*self).add_instance_groups(builder)
+        self.deref().add_instance_groups(builder)
     }
     fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>> {
-        (*self).add_tags(builder)
+        self.deref().add_tags(builder)
     }
     fn cancel_steps(&self, builder: CancelStepsInputBuilder) -> impl Future<Output = Result<CancelStepsOutput, SdkError<CancelStepsError>>> {
-        (*self).cancel_steps(builder)
+        self.deref().cancel_steps(builder)
     }
     fn create_security_configuration(&self, builder: CreateSecurityConfigurationInputBuilder) -> impl Future<Output = Result<CreateSecurityConfigurationOutput, SdkError<CreateSecurityConfigurationError>>> {
-        (*self).create_security_configuration(builder)
+        self.deref().create_security_configuration(builder)
     }
     fn create_studio(&self, builder: CreateStudioInputBuilder) -> impl Future<Output = Result<CreateStudioOutput, SdkError<CreateStudioError>>> {
-        (*self).create_studio(builder)
+        self.deref().create_studio(builder)
     }
     fn create_studio_session_mapping(&self, builder: CreateStudioSessionMappingInputBuilder) -> impl Future<Output = Result<CreateStudioSessionMappingOutput, SdkError<CreateStudioSessionMappingError>>> {
-        (*self).create_studio_session_mapping(builder)
+        self.deref().create_studio_session_mapping(builder)
     }
     fn delete_security_configuration(&self, builder: DeleteSecurityConfigurationInputBuilder) -> impl Future<Output = Result<DeleteSecurityConfigurationOutput, SdkError<DeleteSecurityConfigurationError>>> {
-        (*self).delete_security_configuration(builder)
+        self.deref().delete_security_configuration(builder)
     }
     fn delete_studio(&self, builder: DeleteStudioInputBuilder) -> impl Future<Output = Result<DeleteStudioOutput, SdkError<DeleteStudioError>>> {
-        (*self).delete_studio(builder)
+        self.deref().delete_studio(builder)
     }
     fn delete_studio_session_mapping(&self, builder: DeleteStudioSessionMappingInputBuilder) -> impl Future<Output = Result<DeleteStudioSessionMappingOutput, SdkError<DeleteStudioSessionMappingError>>> {
-        (*self).delete_studio_session_mapping(builder)
+        self.deref().delete_studio_session_mapping(builder)
     }
     fn describe_cluster(&self, builder: DescribeClusterInputBuilder) -> impl Future<Output = Result<DescribeClusterOutput, SdkError<DescribeClusterError>>> {
-        (*self).describe_cluster(builder)
+        self.deref().describe_cluster(builder)
     }
     fn describe_notebook_execution(&self, builder: DescribeNotebookExecutionInputBuilder) -> impl Future<Output = Result<DescribeNotebookExecutionOutput, SdkError<DescribeNotebookExecutionError>>> {
-        (*self).describe_notebook_execution(builder)
+        self.deref().describe_notebook_execution(builder)
     }
     fn describe_release_label(&self, builder: DescribeReleaseLabelInputBuilder) -> impl Future<Output = Result<DescribeReleaseLabelOutput, SdkError<DescribeReleaseLabelError>>> {
-        (*self).describe_release_label(builder)
+        self.deref().describe_release_label(builder)
     }
     fn describe_security_configuration(&self, builder: DescribeSecurityConfigurationInputBuilder) -> impl Future<Output = Result<DescribeSecurityConfigurationOutput, SdkError<DescribeSecurityConfigurationError>>> {
-        (*self).describe_security_configuration(builder)
+        self.deref().describe_security_configuration(builder)
     }
     fn describe_step(&self, builder: DescribeStepInputBuilder) -> impl Future<Output = Result<DescribeStepOutput, SdkError<DescribeStepError>>> {
-        (*self).describe_step(builder)
+        self.deref().describe_step(builder)
     }
     fn describe_studio(&self, builder: DescribeStudioInputBuilder) -> impl Future<Output = Result<DescribeStudioOutput, SdkError<DescribeStudioError>>> {
-        (*self).describe_studio(builder)
+        self.deref().describe_studio(builder)
     }
     fn get_auto_termination_policy(&self, builder: GetAutoTerminationPolicyInputBuilder) -> impl Future<Output = Result<GetAutoTerminationPolicyOutput, SdkError<GetAutoTerminationPolicyError>>> {
-        (*self).get_auto_termination_policy(builder)
+        self.deref().get_auto_termination_policy(builder)
     }
     fn get_block_public_access_configuration(&self, builder: GetBlockPublicAccessConfigurationInputBuilder) -> impl Future<Output = Result<GetBlockPublicAccessConfigurationOutput, SdkError<GetBlockPublicAccessConfigurationError>>> {
-        (*self).get_block_public_access_configuration(builder)
+        self.deref().get_block_public_access_configuration(builder)
     }
     fn get_cluster_session_credentials(&self, builder: GetClusterSessionCredentialsInputBuilder) -> impl Future<Output = Result<GetClusterSessionCredentialsOutput, SdkError<GetClusterSessionCredentialsError>>> {
-        (*self).get_cluster_session_credentials(builder)
+        self.deref().get_cluster_session_credentials(builder)
     }
     fn get_managed_scaling_policy(&self, builder: GetManagedScalingPolicyInputBuilder) -> impl Future<Output = Result<GetManagedScalingPolicyOutput, SdkError<GetManagedScalingPolicyError>>> {
-        (*self).get_managed_scaling_policy(builder)
+        self.deref().get_managed_scaling_policy(builder)
     }
     fn get_studio_session_mapping(&self, builder: GetStudioSessionMappingInputBuilder) -> impl Future<Output = Result<GetStudioSessionMappingOutput, SdkError<GetStudioSessionMappingError>>> {
-        (*self).get_studio_session_mapping(builder)
+        self.deref().get_studio_session_mapping(builder)
     }
     fn list_clusters(&self, builder: ListClustersInputBuilder) -> impl Future<Output = Result<ListClustersOutput, SdkError<ListClustersError>>> {
-        (*self).list_clusters(builder)
+        self.deref().list_clusters(builder)
     }
     fn list_instance_fleets(&self, builder: ListInstanceFleetsInputBuilder) -> impl Future<Output = Result<ListInstanceFleetsOutput, SdkError<ListInstanceFleetsError>>> {
-        (*self).list_instance_fleets(builder)
+        self.deref().list_instance_fleets(builder)
     }
     fn list_instances(&self, builder: ListInstancesInputBuilder) -> impl Future<Output = Result<ListInstancesOutput, SdkError<ListInstancesError>>> {
-        (*self).list_instances(builder)
+        self.deref().list_instances(builder)
     }
     fn list_notebook_executions(&self, builder: ListNotebookExecutionsInputBuilder) -> impl Future<Output = Result<ListNotebookExecutionsOutput, SdkError<ListNotebookExecutionsError>>> {
-        (*self).list_notebook_executions(builder)
+        self.deref().list_notebook_executions(builder)
     }
     fn list_release_labels(&self, builder: ListReleaseLabelsInputBuilder) -> impl Future<Output = Result<ListReleaseLabelsOutput, SdkError<ListReleaseLabelsError>>> {
-        (*self).list_release_labels(builder)
+        self.deref().list_release_labels(builder)
     }
     fn list_security_configurations(&self, builder: ListSecurityConfigurationsInputBuilder) -> impl Future<Output = Result<ListSecurityConfigurationsOutput, SdkError<ListSecurityConfigurationsError>>> {
-        (*self).list_security_configurations(builder)
+        self.deref().list_security_configurations(builder)
     }
     fn list_steps(&self, builder: ListStepsInputBuilder) -> impl Future<Output = Result<ListStepsOutput, SdkError<ListStepsError>>> {
-        (*self).list_steps(builder)
+        self.deref().list_steps(builder)
     }
     fn list_studio_session_mappings(&self, builder: ListStudioSessionMappingsInputBuilder) -> impl Future<Output = Result<ListStudioSessionMappingsOutput, SdkError<ListStudioSessionMappingsError>>> {
-        (*self).list_studio_session_mappings(builder)
+        self.deref().list_studio_session_mappings(builder)
     }
     fn list_studios(&self, builder: ListStudiosInputBuilder) -> impl Future<Output = Result<ListStudiosOutput, SdkError<ListStudiosError>>> {
-        (*self).list_studios(builder)
+        self.deref().list_studios(builder)
     }
     fn list_supported_instance_types(&self, builder: ListSupportedInstanceTypesInputBuilder) -> impl Future<Output = Result<ListSupportedInstanceTypesOutput, SdkError<ListSupportedInstanceTypesError>>> {
-        (*self).list_supported_instance_types(builder)
+        self.deref().list_supported_instance_types(builder)
     }
     fn modify_cluster(&self, builder: ModifyClusterInputBuilder) -> impl Future<Output = Result<ModifyClusterOutput, SdkError<ModifyClusterError>>> {
-        (*self).modify_cluster(builder)
+        self.deref().modify_cluster(builder)
     }
     fn modify_instance_fleet(&self, builder: ModifyInstanceFleetInputBuilder) -> impl Future<Output = Result<ModifyInstanceFleetOutput, SdkError<ModifyInstanceFleetError>>> {
-        (*self).modify_instance_fleet(builder)
+        self.deref().modify_instance_fleet(builder)
     }
     fn modify_instance_groups(&self, builder: ModifyInstanceGroupsInputBuilder) -> impl Future<Output = Result<ModifyInstanceGroupsOutput, SdkError<ModifyInstanceGroupsError>>> {
-        (*self).modify_instance_groups(builder)
+        self.deref().modify_instance_groups(builder)
     }
     fn put_auto_scaling_policy(&self, builder: PutAutoScalingPolicyInputBuilder) -> impl Future<Output = Result<PutAutoScalingPolicyOutput, SdkError<PutAutoScalingPolicyError>>> {
-        (*self).put_auto_scaling_policy(builder)
+        self.deref().put_auto_scaling_policy(builder)
     }
     fn put_auto_termination_policy(&self, builder: PutAutoTerminationPolicyInputBuilder) -> impl Future<Output = Result<PutAutoTerminationPolicyOutput, SdkError<PutAutoTerminationPolicyError>>> {
-        (*self).put_auto_termination_policy(builder)
+        self.deref().put_auto_termination_policy(builder)
     }
     fn put_block_public_access_configuration(&self, builder: PutBlockPublicAccessConfigurationInputBuilder) -> impl Future<Output = Result<PutBlockPublicAccessConfigurationOutput, SdkError<PutBlockPublicAccessConfigurationError>>> {
-        (*self).put_block_public_access_configuration(builder)
+        self.deref().put_block_public_access_configuration(builder)
     }
     fn put_managed_scaling_policy(&self, builder: PutManagedScalingPolicyInputBuilder) -> impl Future<Output = Result<PutManagedScalingPolicyOutput, SdkError<PutManagedScalingPolicyError>>> {
-        (*self).put_managed_scaling_policy(builder)
+        self.deref().put_managed_scaling_policy(builder)
     }
     fn remove_auto_scaling_policy(&self, builder: RemoveAutoScalingPolicyInputBuilder) -> impl Future<Output = Result<RemoveAutoScalingPolicyOutput, SdkError<RemoveAutoScalingPolicyError>>> {
-        (*self).remove_auto_scaling_policy(builder)
+        self.deref().remove_auto_scaling_policy(builder)
     }
     fn remove_auto_termination_policy(&self, builder: RemoveAutoTerminationPolicyInputBuilder) -> impl Future<Output = Result<RemoveAutoTerminationPolicyOutput, SdkError<RemoveAutoTerminationPolicyError>>> {
-        (*self).remove_auto_termination_policy(builder)
+        self.deref().remove_auto_termination_policy(builder)
     }
     fn remove_managed_scaling_policy(&self, builder: RemoveManagedScalingPolicyInputBuilder) -> impl Future<Output = Result<RemoveManagedScalingPolicyOutput, SdkError<RemoveManagedScalingPolicyError>>> {
-        (*self).remove_managed_scaling_policy(builder)
+        self.deref().remove_managed_scaling_policy(builder)
     }
     fn remove_tags(&self, builder: RemoveTagsInputBuilder) -> impl Future<Output = Result<RemoveTagsOutput, SdkError<RemoveTagsError>>> {
-        (*self).remove_tags(builder)
+        self.deref().remove_tags(builder)
     }
     fn start_notebook_execution(&self, builder: StartNotebookExecutionInputBuilder) -> impl Future<Output = Result<StartNotebookExecutionOutput, SdkError<StartNotebookExecutionError>>> {
-        (*self).start_notebook_execution(builder)
+        self.deref().start_notebook_execution(builder)
     }
     fn stop_notebook_execution(&self, builder: StopNotebookExecutionInputBuilder) -> impl Future<Output = Result<StopNotebookExecutionOutput, SdkError<StopNotebookExecutionError>>> {
-        (*self).stop_notebook_execution(builder)
+        self.deref().stop_notebook_execution(builder)
     }
     fn update_studio(&self, builder: UpdateStudioInputBuilder) -> impl Future<Output = Result<UpdateStudioOutput, SdkError<UpdateStudioError>>> {
-        (*self).update_studio(builder)
+        self.deref().update_studio(builder)
     }
     fn update_studio_session_mapping(&self, builder: UpdateStudioSessionMappingInputBuilder) -> impl Future<Output = Result<UpdateStudioSessionMappingOutput, SdkError<UpdateStudioSessionMappingError>>> {
-        (*self).update_studio_session_mapping(builder)
+        self.deref().update_studio_session_mapping(builder)
     }
 }
 #[cfg(feature = "mockall")]

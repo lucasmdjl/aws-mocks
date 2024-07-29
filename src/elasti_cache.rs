@@ -95,6 +95,7 @@ use aws_sdk_elasticache::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_elasticache::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_elasticache::*;
 
@@ -406,231 +407,233 @@ impl ElastiCacheClient for ElastiCacheClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: ElastiCacheClient> ElastiCacheClient for &T {
+impl <T> ElastiCacheClient for T
+where T: Deref,
+      T::Target: ElastiCacheClient {
     fn add_tags_to_resource(&self, builder: AddTagsToResourceInputBuilder) -> impl Future<Output = Result<AddTagsToResourceOutput, SdkError<AddTagsToResourceError>>> {
-        (*self).add_tags_to_resource(builder)
+        self.deref().add_tags_to_resource(builder)
     }
     fn authorize_cache_security_group_ingress(&self, builder: AuthorizeCacheSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<AuthorizeCacheSecurityGroupIngressOutput, SdkError<AuthorizeCacheSecurityGroupIngressError>>> {
-        (*self).authorize_cache_security_group_ingress(builder)
+        self.deref().authorize_cache_security_group_ingress(builder)
     }
     fn batch_apply_update_action(&self, builder: BatchApplyUpdateActionInputBuilder) -> impl Future<Output = Result<BatchApplyUpdateActionOutput, SdkError<BatchApplyUpdateActionError>>> {
-        (*self).batch_apply_update_action(builder)
+        self.deref().batch_apply_update_action(builder)
     }
     fn batch_stop_update_action(&self, builder: BatchStopUpdateActionInputBuilder) -> impl Future<Output = Result<BatchStopUpdateActionOutput, SdkError<BatchStopUpdateActionError>>> {
-        (*self).batch_stop_update_action(builder)
+        self.deref().batch_stop_update_action(builder)
     }
     fn complete_migration(&self, builder: CompleteMigrationInputBuilder) -> impl Future<Output = Result<CompleteMigrationOutput, SdkError<CompleteMigrationError>>> {
-        (*self).complete_migration(builder)
+        self.deref().complete_migration(builder)
     }
     fn copy_serverless_cache_snapshot(&self, builder: CopyServerlessCacheSnapshotInputBuilder) -> impl Future<Output = Result<CopyServerlessCacheSnapshotOutput, SdkError<CopyServerlessCacheSnapshotError>>> {
-        (*self).copy_serverless_cache_snapshot(builder)
+        self.deref().copy_serverless_cache_snapshot(builder)
     }
     fn copy_snapshot(&self, builder: CopySnapshotInputBuilder) -> impl Future<Output = Result<CopySnapshotOutput, SdkError<CopySnapshotError>>> {
-        (*self).copy_snapshot(builder)
+        self.deref().copy_snapshot(builder)
     }
     fn create_cache_cluster(&self, builder: CreateCacheClusterInputBuilder) -> impl Future<Output = Result<CreateCacheClusterOutput, SdkError<CreateCacheClusterError>>> {
-        (*self).create_cache_cluster(builder)
+        self.deref().create_cache_cluster(builder)
     }
     fn create_cache_parameter_group(&self, builder: CreateCacheParameterGroupInputBuilder) -> impl Future<Output = Result<CreateCacheParameterGroupOutput, SdkError<CreateCacheParameterGroupError>>> {
-        (*self).create_cache_parameter_group(builder)
+        self.deref().create_cache_parameter_group(builder)
     }
     fn create_cache_security_group(&self, builder: CreateCacheSecurityGroupInputBuilder) -> impl Future<Output = Result<CreateCacheSecurityGroupOutput, SdkError<CreateCacheSecurityGroupError>>> {
-        (*self).create_cache_security_group(builder)
+        self.deref().create_cache_security_group(builder)
     }
     fn create_cache_subnet_group(&self, builder: CreateCacheSubnetGroupInputBuilder) -> impl Future<Output = Result<CreateCacheSubnetGroupOutput, SdkError<CreateCacheSubnetGroupError>>> {
-        (*self).create_cache_subnet_group(builder)
+        self.deref().create_cache_subnet_group(builder)
     }
     fn create_global_replication_group(&self, builder: CreateGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<CreateGlobalReplicationGroupOutput, SdkError<CreateGlobalReplicationGroupError>>> {
-        (*self).create_global_replication_group(builder)
+        self.deref().create_global_replication_group(builder)
     }
     fn create_replication_group(&self, builder: CreateReplicationGroupInputBuilder) -> impl Future<Output = Result<CreateReplicationGroupOutput, SdkError<CreateReplicationGroupError>>> {
-        (*self).create_replication_group(builder)
+        self.deref().create_replication_group(builder)
     }
     fn create_serverless_cache(&self, builder: CreateServerlessCacheInputBuilder) -> impl Future<Output = Result<CreateServerlessCacheOutput, SdkError<CreateServerlessCacheError>>> {
-        (*self).create_serverless_cache(builder)
+        self.deref().create_serverless_cache(builder)
     }
     fn create_serverless_cache_snapshot(&self, builder: CreateServerlessCacheSnapshotInputBuilder) -> impl Future<Output = Result<CreateServerlessCacheSnapshotOutput, SdkError<CreateServerlessCacheSnapshotError>>> {
-        (*self).create_serverless_cache_snapshot(builder)
+        self.deref().create_serverless_cache_snapshot(builder)
     }
     fn create_snapshot(&self, builder: CreateSnapshotInputBuilder) -> impl Future<Output = Result<CreateSnapshotOutput, SdkError<CreateSnapshotError>>> {
-        (*self).create_snapshot(builder)
+        self.deref().create_snapshot(builder)
     }
     fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>> {
-        (*self).create_user(builder)
+        self.deref().create_user(builder)
     }
     fn create_user_group(&self, builder: CreateUserGroupInputBuilder) -> impl Future<Output = Result<CreateUserGroupOutput, SdkError<CreateUserGroupError>>> {
-        (*self).create_user_group(builder)
+        self.deref().create_user_group(builder)
     }
     fn decrease_node_groups_in_global_replication_group(&self, builder: DecreaseNodeGroupsInGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<DecreaseNodeGroupsInGlobalReplicationGroupOutput, SdkError<DecreaseNodeGroupsInGlobalReplicationGroupError>>> {
-        (*self).decrease_node_groups_in_global_replication_group(builder)
+        self.deref().decrease_node_groups_in_global_replication_group(builder)
     }
     fn decrease_replica_count(&self, builder: DecreaseReplicaCountInputBuilder) -> impl Future<Output = Result<DecreaseReplicaCountOutput, SdkError<DecreaseReplicaCountError>>> {
-        (*self).decrease_replica_count(builder)
+        self.deref().decrease_replica_count(builder)
     }
     fn delete_cache_cluster(&self, builder: DeleteCacheClusterInputBuilder) -> impl Future<Output = Result<DeleteCacheClusterOutput, SdkError<DeleteCacheClusterError>>> {
-        (*self).delete_cache_cluster(builder)
+        self.deref().delete_cache_cluster(builder)
     }
     fn delete_cache_parameter_group(&self, builder: DeleteCacheParameterGroupInputBuilder) -> impl Future<Output = Result<DeleteCacheParameterGroupOutput, SdkError<DeleteCacheParameterGroupError>>> {
-        (*self).delete_cache_parameter_group(builder)
+        self.deref().delete_cache_parameter_group(builder)
     }
     fn delete_cache_security_group(&self, builder: DeleteCacheSecurityGroupInputBuilder) -> impl Future<Output = Result<DeleteCacheSecurityGroupOutput, SdkError<DeleteCacheSecurityGroupError>>> {
-        (*self).delete_cache_security_group(builder)
+        self.deref().delete_cache_security_group(builder)
     }
     fn delete_cache_subnet_group(&self, builder: DeleteCacheSubnetGroupInputBuilder) -> impl Future<Output = Result<DeleteCacheSubnetGroupOutput, SdkError<DeleteCacheSubnetGroupError>>> {
-        (*self).delete_cache_subnet_group(builder)
+        self.deref().delete_cache_subnet_group(builder)
     }
     fn delete_global_replication_group(&self, builder: DeleteGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<DeleteGlobalReplicationGroupOutput, SdkError<DeleteGlobalReplicationGroupError>>> {
-        (*self).delete_global_replication_group(builder)
+        self.deref().delete_global_replication_group(builder)
     }
     fn delete_replication_group(&self, builder: DeleteReplicationGroupInputBuilder) -> impl Future<Output = Result<DeleteReplicationGroupOutput, SdkError<DeleteReplicationGroupError>>> {
-        (*self).delete_replication_group(builder)
+        self.deref().delete_replication_group(builder)
     }
     fn delete_serverless_cache(&self, builder: DeleteServerlessCacheInputBuilder) -> impl Future<Output = Result<DeleteServerlessCacheOutput, SdkError<DeleteServerlessCacheError>>> {
-        (*self).delete_serverless_cache(builder)
+        self.deref().delete_serverless_cache(builder)
     }
     fn delete_serverless_cache_snapshot(&self, builder: DeleteServerlessCacheSnapshotInputBuilder) -> impl Future<Output = Result<DeleteServerlessCacheSnapshotOutput, SdkError<DeleteServerlessCacheSnapshotError>>> {
-        (*self).delete_serverless_cache_snapshot(builder)
+        self.deref().delete_serverless_cache_snapshot(builder)
     }
     fn delete_snapshot(&self, builder: DeleteSnapshotInputBuilder) -> impl Future<Output = Result<DeleteSnapshotOutput, SdkError<DeleteSnapshotError>>> {
-        (*self).delete_snapshot(builder)
+        self.deref().delete_snapshot(builder)
     }
     fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> {
-        (*self).delete_user(builder)
+        self.deref().delete_user(builder)
     }
     fn delete_user_group(&self, builder: DeleteUserGroupInputBuilder) -> impl Future<Output = Result<DeleteUserGroupOutput, SdkError<DeleteUserGroupError>>> {
-        (*self).delete_user_group(builder)
+        self.deref().delete_user_group(builder)
     }
     fn describe_cache_clusters(&self, builder: DescribeCacheClustersInputBuilder) -> impl Future<Output = Result<DescribeCacheClustersOutput, SdkError<DescribeCacheClustersError>>> {
-        (*self).describe_cache_clusters(builder)
+        self.deref().describe_cache_clusters(builder)
     }
     fn describe_cache_engine_versions(&self, builder: DescribeCacheEngineVersionsInputBuilder) -> impl Future<Output = Result<DescribeCacheEngineVersionsOutput, SdkError<DescribeCacheEngineVersionsError>>> {
-        (*self).describe_cache_engine_versions(builder)
+        self.deref().describe_cache_engine_versions(builder)
     }
     fn describe_cache_parameter_groups(&self, builder: DescribeCacheParameterGroupsInputBuilder) -> impl Future<Output = Result<DescribeCacheParameterGroupsOutput, SdkError<DescribeCacheParameterGroupsError>>> {
-        (*self).describe_cache_parameter_groups(builder)
+        self.deref().describe_cache_parameter_groups(builder)
     }
     fn describe_cache_parameters(&self, builder: DescribeCacheParametersInputBuilder) -> impl Future<Output = Result<DescribeCacheParametersOutput, SdkError<DescribeCacheParametersError>>> {
-        (*self).describe_cache_parameters(builder)
+        self.deref().describe_cache_parameters(builder)
     }
     fn describe_cache_security_groups(&self, builder: DescribeCacheSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeCacheSecurityGroupsOutput, SdkError<DescribeCacheSecurityGroupsError>>> {
-        (*self).describe_cache_security_groups(builder)
+        self.deref().describe_cache_security_groups(builder)
     }
     fn describe_cache_subnet_groups(&self, builder: DescribeCacheSubnetGroupsInputBuilder) -> impl Future<Output = Result<DescribeCacheSubnetGroupsOutput, SdkError<DescribeCacheSubnetGroupsError>>> {
-        (*self).describe_cache_subnet_groups(builder)
+        self.deref().describe_cache_subnet_groups(builder)
     }
     fn describe_engine_default_parameters(&self, builder: DescribeEngineDefaultParametersInputBuilder) -> impl Future<Output = Result<DescribeEngineDefaultParametersOutput, SdkError<DescribeEngineDefaultParametersError>>> {
-        (*self).describe_engine_default_parameters(builder)
+        self.deref().describe_engine_default_parameters(builder)
     }
     fn describe_events(&self, builder: DescribeEventsInputBuilder) -> impl Future<Output = Result<DescribeEventsOutput, SdkError<DescribeEventsError>>> {
-        (*self).describe_events(builder)
+        self.deref().describe_events(builder)
     }
     fn describe_global_replication_groups(&self, builder: DescribeGlobalReplicationGroupsInputBuilder) -> impl Future<Output = Result<DescribeGlobalReplicationGroupsOutput, SdkError<DescribeGlobalReplicationGroupsError>>> {
-        (*self).describe_global_replication_groups(builder)
+        self.deref().describe_global_replication_groups(builder)
     }
     fn describe_replication_groups(&self, builder: DescribeReplicationGroupsInputBuilder) -> impl Future<Output = Result<DescribeReplicationGroupsOutput, SdkError<DescribeReplicationGroupsError>>> {
-        (*self).describe_replication_groups(builder)
+        self.deref().describe_replication_groups(builder)
     }
     fn describe_reserved_cache_nodes(&self, builder: DescribeReservedCacheNodesInputBuilder) -> impl Future<Output = Result<DescribeReservedCacheNodesOutput, SdkError<DescribeReservedCacheNodesError>>> {
-        (*self).describe_reserved_cache_nodes(builder)
+        self.deref().describe_reserved_cache_nodes(builder)
     }
     fn describe_reserved_cache_nodes_offerings(&self, builder: DescribeReservedCacheNodesOfferingsInputBuilder) -> impl Future<Output = Result<DescribeReservedCacheNodesOfferingsOutput, SdkError<DescribeReservedCacheNodesOfferingsError>>> {
-        (*self).describe_reserved_cache_nodes_offerings(builder)
+        self.deref().describe_reserved_cache_nodes_offerings(builder)
     }
     fn describe_serverless_cache_snapshots(&self, builder: DescribeServerlessCacheSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeServerlessCacheSnapshotsOutput, SdkError<DescribeServerlessCacheSnapshotsError>>> {
-        (*self).describe_serverless_cache_snapshots(builder)
+        self.deref().describe_serverless_cache_snapshots(builder)
     }
     fn describe_serverless_caches(&self, builder: DescribeServerlessCachesInputBuilder) -> impl Future<Output = Result<DescribeServerlessCachesOutput, SdkError<DescribeServerlessCachesError>>> {
-        (*self).describe_serverless_caches(builder)
+        self.deref().describe_serverless_caches(builder)
     }
     fn describe_service_updates(&self, builder: DescribeServiceUpdatesInputBuilder) -> impl Future<Output = Result<DescribeServiceUpdatesOutput, SdkError<DescribeServiceUpdatesError>>> {
-        (*self).describe_service_updates(builder)
+        self.deref().describe_service_updates(builder)
     }
     fn describe_snapshots(&self, builder: DescribeSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeSnapshotsOutput, SdkError<DescribeSnapshotsError>>> {
-        (*self).describe_snapshots(builder)
+        self.deref().describe_snapshots(builder)
     }
     fn describe_update_actions(&self, builder: DescribeUpdateActionsInputBuilder) -> impl Future<Output = Result<DescribeUpdateActionsOutput, SdkError<DescribeUpdateActionsError>>> {
-        (*self).describe_update_actions(builder)
+        self.deref().describe_update_actions(builder)
     }
     fn describe_user_groups(&self, builder: DescribeUserGroupsInputBuilder) -> impl Future<Output = Result<DescribeUserGroupsOutput, SdkError<DescribeUserGroupsError>>> {
-        (*self).describe_user_groups(builder)
+        self.deref().describe_user_groups(builder)
     }
     fn describe_users(&self, builder: DescribeUsersInputBuilder) -> impl Future<Output = Result<DescribeUsersOutput, SdkError<DescribeUsersError>>> {
-        (*self).describe_users(builder)
+        self.deref().describe_users(builder)
     }
     fn disassociate_global_replication_group(&self, builder: DisassociateGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<DisassociateGlobalReplicationGroupOutput, SdkError<DisassociateGlobalReplicationGroupError>>> {
-        (*self).disassociate_global_replication_group(builder)
+        self.deref().disassociate_global_replication_group(builder)
     }
     fn export_serverless_cache_snapshot(&self, builder: ExportServerlessCacheSnapshotInputBuilder) -> impl Future<Output = Result<ExportServerlessCacheSnapshotOutput, SdkError<ExportServerlessCacheSnapshotError>>> {
-        (*self).export_serverless_cache_snapshot(builder)
+        self.deref().export_serverless_cache_snapshot(builder)
     }
     fn failover_global_replication_group(&self, builder: FailoverGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<FailoverGlobalReplicationGroupOutput, SdkError<FailoverGlobalReplicationGroupError>>> {
-        (*self).failover_global_replication_group(builder)
+        self.deref().failover_global_replication_group(builder)
     }
     fn increase_node_groups_in_global_replication_group(&self, builder: IncreaseNodeGroupsInGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<IncreaseNodeGroupsInGlobalReplicationGroupOutput, SdkError<IncreaseNodeGroupsInGlobalReplicationGroupError>>> {
-        (*self).increase_node_groups_in_global_replication_group(builder)
+        self.deref().increase_node_groups_in_global_replication_group(builder)
     }
     fn increase_replica_count(&self, builder: IncreaseReplicaCountInputBuilder) -> impl Future<Output = Result<IncreaseReplicaCountOutput, SdkError<IncreaseReplicaCountError>>> {
-        (*self).increase_replica_count(builder)
+        self.deref().increase_replica_count(builder)
     }
     fn list_allowed_node_type_modifications(&self, builder: ListAllowedNodeTypeModificationsInputBuilder) -> impl Future<Output = Result<ListAllowedNodeTypeModificationsOutput, SdkError<ListAllowedNodeTypeModificationsError>>> {
-        (*self).list_allowed_node_type_modifications(builder)
+        self.deref().list_allowed_node_type_modifications(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn modify_cache_cluster(&self, builder: ModifyCacheClusterInputBuilder) -> impl Future<Output = Result<ModifyCacheClusterOutput, SdkError<ModifyCacheClusterError>>> {
-        (*self).modify_cache_cluster(builder)
+        self.deref().modify_cache_cluster(builder)
     }
     fn modify_cache_parameter_group(&self, builder: ModifyCacheParameterGroupInputBuilder) -> impl Future<Output = Result<ModifyCacheParameterGroupOutput, SdkError<ModifyCacheParameterGroupError>>> {
-        (*self).modify_cache_parameter_group(builder)
+        self.deref().modify_cache_parameter_group(builder)
     }
     fn modify_cache_subnet_group(&self, builder: ModifyCacheSubnetGroupInputBuilder) -> impl Future<Output = Result<ModifyCacheSubnetGroupOutput, SdkError<ModifyCacheSubnetGroupError>>> {
-        (*self).modify_cache_subnet_group(builder)
+        self.deref().modify_cache_subnet_group(builder)
     }
     fn modify_global_replication_group(&self, builder: ModifyGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<ModifyGlobalReplicationGroupOutput, SdkError<ModifyGlobalReplicationGroupError>>> {
-        (*self).modify_global_replication_group(builder)
+        self.deref().modify_global_replication_group(builder)
     }
     fn modify_replication_group(&self, builder: ModifyReplicationGroupInputBuilder) -> impl Future<Output = Result<ModifyReplicationGroupOutput, SdkError<ModifyReplicationGroupError>>> {
-        (*self).modify_replication_group(builder)
+        self.deref().modify_replication_group(builder)
     }
     fn modify_replication_group_shard_configuration(&self, builder: ModifyReplicationGroupShardConfigurationInputBuilder) -> impl Future<Output = Result<ModifyReplicationGroupShardConfigurationOutput, SdkError<ModifyReplicationGroupShardConfigurationError>>> {
-        (*self).modify_replication_group_shard_configuration(builder)
+        self.deref().modify_replication_group_shard_configuration(builder)
     }
     fn modify_serverless_cache(&self, builder: ModifyServerlessCacheInputBuilder) -> impl Future<Output = Result<ModifyServerlessCacheOutput, SdkError<ModifyServerlessCacheError>>> {
-        (*self).modify_serverless_cache(builder)
+        self.deref().modify_serverless_cache(builder)
     }
     fn modify_user(&self, builder: ModifyUserInputBuilder) -> impl Future<Output = Result<ModifyUserOutput, SdkError<ModifyUserError>>> {
-        (*self).modify_user(builder)
+        self.deref().modify_user(builder)
     }
     fn modify_user_group(&self, builder: ModifyUserGroupInputBuilder) -> impl Future<Output = Result<ModifyUserGroupOutput, SdkError<ModifyUserGroupError>>> {
-        (*self).modify_user_group(builder)
+        self.deref().modify_user_group(builder)
     }
     fn purchase_reserved_cache_nodes_offering(&self, builder: PurchaseReservedCacheNodesOfferingInputBuilder) -> impl Future<Output = Result<PurchaseReservedCacheNodesOfferingOutput, SdkError<PurchaseReservedCacheNodesOfferingError>>> {
-        (*self).purchase_reserved_cache_nodes_offering(builder)
+        self.deref().purchase_reserved_cache_nodes_offering(builder)
     }
     fn rebalance_slots_in_global_replication_group(&self, builder: RebalanceSlotsInGlobalReplicationGroupInputBuilder) -> impl Future<Output = Result<RebalanceSlotsInGlobalReplicationGroupOutput, SdkError<RebalanceSlotsInGlobalReplicationGroupError>>> {
-        (*self).rebalance_slots_in_global_replication_group(builder)
+        self.deref().rebalance_slots_in_global_replication_group(builder)
     }
     fn reboot_cache_cluster(&self, builder: RebootCacheClusterInputBuilder) -> impl Future<Output = Result<RebootCacheClusterOutput, SdkError<RebootCacheClusterError>>> {
-        (*self).reboot_cache_cluster(builder)
+        self.deref().reboot_cache_cluster(builder)
     }
     fn remove_tags_from_resource(&self, builder: RemoveTagsFromResourceInputBuilder) -> impl Future<Output = Result<RemoveTagsFromResourceOutput, SdkError<RemoveTagsFromResourceError>>> {
-        (*self).remove_tags_from_resource(builder)
+        self.deref().remove_tags_from_resource(builder)
     }
     fn reset_cache_parameter_group(&self, builder: ResetCacheParameterGroupInputBuilder) -> impl Future<Output = Result<ResetCacheParameterGroupOutput, SdkError<ResetCacheParameterGroupError>>> {
-        (*self).reset_cache_parameter_group(builder)
+        self.deref().reset_cache_parameter_group(builder)
     }
     fn revoke_cache_security_group_ingress(&self, builder: RevokeCacheSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<RevokeCacheSecurityGroupIngressOutput, SdkError<RevokeCacheSecurityGroupIngressError>>> {
-        (*self).revoke_cache_security_group_ingress(builder)
+        self.deref().revoke_cache_security_group_ingress(builder)
     }
     fn start_migration(&self, builder: StartMigrationInputBuilder) -> impl Future<Output = Result<StartMigrationOutput, SdkError<StartMigrationError>>> {
-        (*self).start_migration(builder)
+        self.deref().start_migration(builder)
     }
     fn test_failover(&self, builder: TestFailoverInputBuilder) -> impl Future<Output = Result<TestFailoverOutput, SdkError<TestFailoverError>>> {
-        (*self).test_failover(builder)
+        self.deref().test_failover(builder)
     }
     fn test_migration(&self, builder: TestMigrationInputBuilder) -> impl Future<Output = Result<TestMigrationOutput, SdkError<TestMigrationError>>> {
-        (*self).test_migration(builder)
+        self.deref().test_migration(builder)
     }
 }
 #[cfg(feature = "mockall")]

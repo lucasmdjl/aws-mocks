@@ -39,6 +39,7 @@ use aws_sdk_datapipeline::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_datapipeline::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_datapipeline::*;
 
@@ -126,63 +127,65 @@ impl DataPipelineClient for DataPipelineClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: DataPipelineClient> DataPipelineClient for &T {
+impl <T> DataPipelineClient for T
+where T: Deref,
+      T::Target: DataPipelineClient {
     fn activate_pipeline(&self, builder: ActivatePipelineInputBuilder) -> impl Future<Output = Result<ActivatePipelineOutput, SdkError<ActivatePipelineError>>> {
-        (*self).activate_pipeline(builder)
+        self.deref().activate_pipeline(builder)
     }
     fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>> {
-        (*self).add_tags(builder)
+        self.deref().add_tags(builder)
     }
     fn create_pipeline(&self, builder: CreatePipelineInputBuilder) -> impl Future<Output = Result<CreatePipelineOutput, SdkError<CreatePipelineError>>> {
-        (*self).create_pipeline(builder)
+        self.deref().create_pipeline(builder)
     }
     fn deactivate_pipeline(&self, builder: DeactivatePipelineInputBuilder) -> impl Future<Output = Result<DeactivatePipelineOutput, SdkError<DeactivatePipelineError>>> {
-        (*self).deactivate_pipeline(builder)
+        self.deref().deactivate_pipeline(builder)
     }
     fn delete_pipeline(&self, builder: DeletePipelineInputBuilder) -> impl Future<Output = Result<DeletePipelineOutput, SdkError<DeletePipelineError>>> {
-        (*self).delete_pipeline(builder)
+        self.deref().delete_pipeline(builder)
     }
     fn describe_objects(&self, builder: DescribeObjectsInputBuilder) -> impl Future<Output = Result<DescribeObjectsOutput, SdkError<DescribeObjectsError>>> {
-        (*self).describe_objects(builder)
+        self.deref().describe_objects(builder)
     }
     fn describe_pipelines(&self, builder: DescribePipelinesInputBuilder) -> impl Future<Output = Result<DescribePipelinesOutput, SdkError<DescribePipelinesError>>> {
-        (*self).describe_pipelines(builder)
+        self.deref().describe_pipelines(builder)
     }
     fn evaluate_expression(&self, builder: EvaluateExpressionInputBuilder) -> impl Future<Output = Result<EvaluateExpressionOutput, SdkError<EvaluateExpressionError>>> {
-        (*self).evaluate_expression(builder)
+        self.deref().evaluate_expression(builder)
     }
     fn get_pipeline_definition(&self, builder: GetPipelineDefinitionInputBuilder) -> impl Future<Output = Result<GetPipelineDefinitionOutput, SdkError<GetPipelineDefinitionError>>> {
-        (*self).get_pipeline_definition(builder)
+        self.deref().get_pipeline_definition(builder)
     }
     fn list_pipelines(&self, builder: ListPipelinesInputBuilder) -> impl Future<Output = Result<ListPipelinesOutput, SdkError<ListPipelinesError>>> {
-        (*self).list_pipelines(builder)
+        self.deref().list_pipelines(builder)
     }
     fn poll_for_task(&self, builder: PollForTaskInputBuilder) -> impl Future<Output = Result<PollForTaskOutput, SdkError<PollForTaskError>>> {
-        (*self).poll_for_task(builder)
+        self.deref().poll_for_task(builder)
     }
     fn put_pipeline_definition(&self, builder: PutPipelineDefinitionInputBuilder) -> impl Future<Output = Result<PutPipelineDefinitionOutput, SdkError<PutPipelineDefinitionError>>> {
-        (*self).put_pipeline_definition(builder)
+        self.deref().put_pipeline_definition(builder)
     }
     fn query_objects(&self, builder: QueryObjectsInputBuilder) -> impl Future<Output = Result<QueryObjectsOutput, SdkError<QueryObjectsError>>> {
-        (*self).query_objects(builder)
+        self.deref().query_objects(builder)
     }
     fn remove_tags(&self, builder: RemoveTagsInputBuilder) -> impl Future<Output = Result<RemoveTagsOutput, SdkError<RemoveTagsError>>> {
-        (*self).remove_tags(builder)
+        self.deref().remove_tags(builder)
     }
     fn report_task_progress(&self, builder: ReportTaskProgressInputBuilder) -> impl Future<Output = Result<ReportTaskProgressOutput, SdkError<ReportTaskProgressError>>> {
-        (*self).report_task_progress(builder)
+        self.deref().report_task_progress(builder)
     }
     fn report_task_runner_heartbeat(&self, builder: ReportTaskRunnerHeartbeatInputBuilder) -> impl Future<Output = Result<ReportTaskRunnerHeartbeatOutput, SdkError<ReportTaskRunnerHeartbeatError>>> {
-        (*self).report_task_runner_heartbeat(builder)
+        self.deref().report_task_runner_heartbeat(builder)
     }
     fn set_status(&self, builder: SetStatusInputBuilder) -> impl Future<Output = Result<SetStatusOutput, SdkError<SetStatusError>>> {
-        (*self).set_status(builder)
+        self.deref().set_status(builder)
     }
     fn set_task_status(&self, builder: SetTaskStatusInputBuilder) -> impl Future<Output = Result<SetTaskStatusOutput, SdkError<SetTaskStatusError>>> {
-        (*self).set_task_status(builder)
+        self.deref().set_task_status(builder)
     }
     fn validate_pipeline_definition(&self, builder: ValidatePipelineDefinitionInputBuilder) -> impl Future<Output = Result<ValidatePipelineDefinitionOutput, SdkError<ValidatePipelineDefinitionError>>> {
-        (*self).validate_pipeline_definition(builder)
+        self.deref().validate_pipeline_definition(builder)
     }
 }
 #[cfg(feature = "mockall")]

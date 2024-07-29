@@ -112,6 +112,7 @@ use {pack}::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use {pack}::Client;
+use std::ops::Deref;
 
 pub use {pack}::*;
 "
@@ -147,7 +148,9 @@ fn create_trait_impl(name: &str, methods: &[&str]) -> String {
 
 fn create_trait_borrow_impl(name: &str, methods: &[&str]) -> String {
     format!(
-        "impl <T: {name}Client> {name}Client for &T {{
+        "impl <T> {name}Client for T
+where T: Deref,
+      T::Target: {name}Client {{
 {borrow_impl_methods}
 }}", borrow_impl_methods = create_trait_borrow_impl_methods(methods))
 }
@@ -188,7 +191,7 @@ fn create_trait_borrow_impl_methods(methods: &[&str]) -> String {
         let camel_method = snake_to_camel(method);
         format!(
 "    fn {method}(&self, builder: {camel_method}InputBuilder) -> impl Future<Output = Result<{camel_method}Output, SdkError<{camel_method}Error>>> {{
-        (*self).{method}(builder)
+        self.deref().{method}(builder)
     }}",
         )
     }).collect::<Vec<_>>().join("\n")

@@ -131,6 +131,7 @@ use aws_sdk_cloudfront::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_cloudfront::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_cloudfront::*;
 
@@ -586,339 +587,341 @@ impl CloudFrontClient for CloudFrontClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CloudFrontClient> CloudFrontClient for &T {
+impl <T> CloudFrontClient for T
+where T: Deref,
+      T::Target: CloudFrontClient {
     fn associate_alias(&self, builder: AssociateAliasInputBuilder) -> impl Future<Output = Result<AssociateAliasOutput, SdkError<AssociateAliasError>>> {
-        (*self).associate_alias(builder)
+        self.deref().associate_alias(builder)
     }
     fn copy_distribution(&self, builder: CopyDistributionInputBuilder) -> impl Future<Output = Result<CopyDistributionOutput, SdkError<CopyDistributionError>>> {
-        (*self).copy_distribution(builder)
+        self.deref().copy_distribution(builder)
     }
     fn create_cache_policy(&self, builder: CreateCachePolicyInputBuilder) -> impl Future<Output = Result<CreateCachePolicyOutput, SdkError<CreateCachePolicyError>>> {
-        (*self).create_cache_policy(builder)
+        self.deref().create_cache_policy(builder)
     }
     fn create_cloud_front_origin_access_identity(&self, builder: CreateCloudFrontOriginAccessIdentityInputBuilder) -> impl Future<Output = Result<CreateCloudFrontOriginAccessIdentityOutput, SdkError<CreateCloudFrontOriginAccessIdentityError>>> {
-        (*self).create_cloud_front_origin_access_identity(builder)
+        self.deref().create_cloud_front_origin_access_identity(builder)
     }
     fn create_continuous_deployment_policy(&self, builder: CreateContinuousDeploymentPolicyInputBuilder) -> impl Future<Output = Result<CreateContinuousDeploymentPolicyOutput, SdkError<CreateContinuousDeploymentPolicyError>>> {
-        (*self).create_continuous_deployment_policy(builder)
+        self.deref().create_continuous_deployment_policy(builder)
     }
     fn create_distribution(&self, builder: CreateDistributionInputBuilder) -> impl Future<Output = Result<CreateDistributionOutput, SdkError<CreateDistributionError>>> {
-        (*self).create_distribution(builder)
+        self.deref().create_distribution(builder)
     }
     fn create_distribution_with_tags(&self, builder: CreateDistributionWithTagsInputBuilder) -> impl Future<Output = Result<CreateDistributionWithTagsOutput, SdkError<CreateDistributionWithTagsError>>> {
-        (*self).create_distribution_with_tags(builder)
+        self.deref().create_distribution_with_tags(builder)
     }
     fn create_field_level_encryption_config(&self, builder: CreateFieldLevelEncryptionConfigInputBuilder) -> impl Future<Output = Result<CreateFieldLevelEncryptionConfigOutput, SdkError<CreateFieldLevelEncryptionConfigError>>> {
-        (*self).create_field_level_encryption_config(builder)
+        self.deref().create_field_level_encryption_config(builder)
     }
     fn create_field_level_encryption_profile(&self, builder: CreateFieldLevelEncryptionProfileInputBuilder) -> impl Future<Output = Result<CreateFieldLevelEncryptionProfileOutput, SdkError<CreateFieldLevelEncryptionProfileError>>> {
-        (*self).create_field_level_encryption_profile(builder)
+        self.deref().create_field_level_encryption_profile(builder)
     }
     fn create_function(&self, builder: CreateFunctionInputBuilder) -> impl Future<Output = Result<CreateFunctionOutput, SdkError<CreateFunctionError>>> {
-        (*self).create_function(builder)
+        self.deref().create_function(builder)
     }
     fn create_invalidation(&self, builder: CreateInvalidationInputBuilder) -> impl Future<Output = Result<CreateInvalidationOutput, SdkError<CreateInvalidationError>>> {
-        (*self).create_invalidation(builder)
+        self.deref().create_invalidation(builder)
     }
     fn create_key_group(&self, builder: CreateKeyGroupInputBuilder) -> impl Future<Output = Result<CreateKeyGroupOutput, SdkError<CreateKeyGroupError>>> {
-        (*self).create_key_group(builder)
+        self.deref().create_key_group(builder)
     }
     fn create_key_value_store(&self, builder: CreateKeyValueStoreInputBuilder) -> impl Future<Output = Result<CreateKeyValueStoreOutput, SdkError<CreateKeyValueStoreError>>> {
-        (*self).create_key_value_store(builder)
+        self.deref().create_key_value_store(builder)
     }
     fn create_monitoring_subscription(&self, builder: CreateMonitoringSubscriptionInputBuilder) -> impl Future<Output = Result<CreateMonitoringSubscriptionOutput, SdkError<CreateMonitoringSubscriptionError>>> {
-        (*self).create_monitoring_subscription(builder)
+        self.deref().create_monitoring_subscription(builder)
     }
     fn create_origin_access_control(&self, builder: CreateOriginAccessControlInputBuilder) -> impl Future<Output = Result<CreateOriginAccessControlOutput, SdkError<CreateOriginAccessControlError>>> {
-        (*self).create_origin_access_control(builder)
+        self.deref().create_origin_access_control(builder)
     }
     fn create_origin_request_policy(&self, builder: CreateOriginRequestPolicyInputBuilder) -> impl Future<Output = Result<CreateOriginRequestPolicyOutput, SdkError<CreateOriginRequestPolicyError>>> {
-        (*self).create_origin_request_policy(builder)
+        self.deref().create_origin_request_policy(builder)
     }
     fn create_public_key(&self, builder: CreatePublicKeyInputBuilder) -> impl Future<Output = Result<CreatePublicKeyOutput, SdkError<CreatePublicKeyError>>> {
-        (*self).create_public_key(builder)
+        self.deref().create_public_key(builder)
     }
     fn create_realtime_log_config(&self, builder: CreateRealtimeLogConfigInputBuilder) -> impl Future<Output = Result<CreateRealtimeLogConfigOutput, SdkError<CreateRealtimeLogConfigError>>> {
-        (*self).create_realtime_log_config(builder)
+        self.deref().create_realtime_log_config(builder)
     }
     fn create_response_headers_policy(&self, builder: CreateResponseHeadersPolicyInputBuilder) -> impl Future<Output = Result<CreateResponseHeadersPolicyOutput, SdkError<CreateResponseHeadersPolicyError>>> {
-        (*self).create_response_headers_policy(builder)
+        self.deref().create_response_headers_policy(builder)
     }
     fn create_streaming_distribution(&self, builder: CreateStreamingDistributionInputBuilder) -> impl Future<Output = Result<CreateStreamingDistributionOutput, SdkError<CreateStreamingDistributionError>>> {
-        (*self).create_streaming_distribution(builder)
+        self.deref().create_streaming_distribution(builder)
     }
     fn create_streaming_distribution_with_tags(&self, builder: CreateStreamingDistributionWithTagsInputBuilder) -> impl Future<Output = Result<CreateStreamingDistributionWithTagsOutput, SdkError<CreateStreamingDistributionWithTagsError>>> {
-        (*self).create_streaming_distribution_with_tags(builder)
+        self.deref().create_streaming_distribution_with_tags(builder)
     }
     fn delete_cache_policy(&self, builder: DeleteCachePolicyInputBuilder) -> impl Future<Output = Result<DeleteCachePolicyOutput, SdkError<DeleteCachePolicyError>>> {
-        (*self).delete_cache_policy(builder)
+        self.deref().delete_cache_policy(builder)
     }
     fn delete_cloud_front_origin_access_identity(&self, builder: DeleteCloudFrontOriginAccessIdentityInputBuilder) -> impl Future<Output = Result<DeleteCloudFrontOriginAccessIdentityOutput, SdkError<DeleteCloudFrontOriginAccessIdentityError>>> {
-        (*self).delete_cloud_front_origin_access_identity(builder)
+        self.deref().delete_cloud_front_origin_access_identity(builder)
     }
     fn delete_continuous_deployment_policy(&self, builder: DeleteContinuousDeploymentPolicyInputBuilder) -> impl Future<Output = Result<DeleteContinuousDeploymentPolicyOutput, SdkError<DeleteContinuousDeploymentPolicyError>>> {
-        (*self).delete_continuous_deployment_policy(builder)
+        self.deref().delete_continuous_deployment_policy(builder)
     }
     fn delete_distribution(&self, builder: DeleteDistributionInputBuilder) -> impl Future<Output = Result<DeleteDistributionOutput, SdkError<DeleteDistributionError>>> {
-        (*self).delete_distribution(builder)
+        self.deref().delete_distribution(builder)
     }
     fn delete_field_level_encryption_config(&self, builder: DeleteFieldLevelEncryptionConfigInputBuilder) -> impl Future<Output = Result<DeleteFieldLevelEncryptionConfigOutput, SdkError<DeleteFieldLevelEncryptionConfigError>>> {
-        (*self).delete_field_level_encryption_config(builder)
+        self.deref().delete_field_level_encryption_config(builder)
     }
     fn delete_field_level_encryption_profile(&self, builder: DeleteFieldLevelEncryptionProfileInputBuilder) -> impl Future<Output = Result<DeleteFieldLevelEncryptionProfileOutput, SdkError<DeleteFieldLevelEncryptionProfileError>>> {
-        (*self).delete_field_level_encryption_profile(builder)
+        self.deref().delete_field_level_encryption_profile(builder)
     }
     fn delete_function(&self, builder: DeleteFunctionInputBuilder) -> impl Future<Output = Result<DeleteFunctionOutput, SdkError<DeleteFunctionError>>> {
-        (*self).delete_function(builder)
+        self.deref().delete_function(builder)
     }
     fn delete_key_group(&self, builder: DeleteKeyGroupInputBuilder) -> impl Future<Output = Result<DeleteKeyGroupOutput, SdkError<DeleteKeyGroupError>>> {
-        (*self).delete_key_group(builder)
+        self.deref().delete_key_group(builder)
     }
     fn delete_key_value_store(&self, builder: DeleteKeyValueStoreInputBuilder) -> impl Future<Output = Result<DeleteKeyValueStoreOutput, SdkError<DeleteKeyValueStoreError>>> {
-        (*self).delete_key_value_store(builder)
+        self.deref().delete_key_value_store(builder)
     }
     fn delete_monitoring_subscription(&self, builder: DeleteMonitoringSubscriptionInputBuilder) -> impl Future<Output = Result<DeleteMonitoringSubscriptionOutput, SdkError<DeleteMonitoringSubscriptionError>>> {
-        (*self).delete_monitoring_subscription(builder)
+        self.deref().delete_monitoring_subscription(builder)
     }
     fn delete_origin_access_control(&self, builder: DeleteOriginAccessControlInputBuilder) -> impl Future<Output = Result<DeleteOriginAccessControlOutput, SdkError<DeleteOriginAccessControlError>>> {
-        (*self).delete_origin_access_control(builder)
+        self.deref().delete_origin_access_control(builder)
     }
     fn delete_origin_request_policy(&self, builder: DeleteOriginRequestPolicyInputBuilder) -> impl Future<Output = Result<DeleteOriginRequestPolicyOutput, SdkError<DeleteOriginRequestPolicyError>>> {
-        (*self).delete_origin_request_policy(builder)
+        self.deref().delete_origin_request_policy(builder)
     }
     fn delete_public_key(&self, builder: DeletePublicKeyInputBuilder) -> impl Future<Output = Result<DeletePublicKeyOutput, SdkError<DeletePublicKeyError>>> {
-        (*self).delete_public_key(builder)
+        self.deref().delete_public_key(builder)
     }
     fn delete_realtime_log_config(&self, builder: DeleteRealtimeLogConfigInputBuilder) -> impl Future<Output = Result<DeleteRealtimeLogConfigOutput, SdkError<DeleteRealtimeLogConfigError>>> {
-        (*self).delete_realtime_log_config(builder)
+        self.deref().delete_realtime_log_config(builder)
     }
     fn delete_response_headers_policy(&self, builder: DeleteResponseHeadersPolicyInputBuilder) -> impl Future<Output = Result<DeleteResponseHeadersPolicyOutput, SdkError<DeleteResponseHeadersPolicyError>>> {
-        (*self).delete_response_headers_policy(builder)
+        self.deref().delete_response_headers_policy(builder)
     }
     fn delete_streaming_distribution(&self, builder: DeleteStreamingDistributionInputBuilder) -> impl Future<Output = Result<DeleteStreamingDistributionOutput, SdkError<DeleteStreamingDistributionError>>> {
-        (*self).delete_streaming_distribution(builder)
+        self.deref().delete_streaming_distribution(builder)
     }
     fn describe_function(&self, builder: DescribeFunctionInputBuilder) -> impl Future<Output = Result<DescribeFunctionOutput, SdkError<DescribeFunctionError>>> {
-        (*self).describe_function(builder)
+        self.deref().describe_function(builder)
     }
     fn describe_key_value_store(&self, builder: DescribeKeyValueStoreInputBuilder) -> impl Future<Output = Result<DescribeKeyValueStoreOutput, SdkError<DescribeKeyValueStoreError>>> {
-        (*self).describe_key_value_store(builder)
+        self.deref().describe_key_value_store(builder)
     }
     fn get_cache_policy(&self, builder: GetCachePolicyInputBuilder) -> impl Future<Output = Result<GetCachePolicyOutput, SdkError<GetCachePolicyError>>> {
-        (*self).get_cache_policy(builder)
+        self.deref().get_cache_policy(builder)
     }
     fn get_cache_policy_config(&self, builder: GetCachePolicyConfigInputBuilder) -> impl Future<Output = Result<GetCachePolicyConfigOutput, SdkError<GetCachePolicyConfigError>>> {
-        (*self).get_cache_policy_config(builder)
+        self.deref().get_cache_policy_config(builder)
     }
     fn get_cloud_front_origin_access_identity(&self, builder: GetCloudFrontOriginAccessIdentityInputBuilder) -> impl Future<Output = Result<GetCloudFrontOriginAccessIdentityOutput, SdkError<GetCloudFrontOriginAccessIdentityError>>> {
-        (*self).get_cloud_front_origin_access_identity(builder)
+        self.deref().get_cloud_front_origin_access_identity(builder)
     }
     fn get_cloud_front_origin_access_identity_config(&self, builder: GetCloudFrontOriginAccessIdentityConfigInputBuilder) -> impl Future<Output = Result<GetCloudFrontOriginAccessIdentityConfigOutput, SdkError<GetCloudFrontOriginAccessIdentityConfigError>>> {
-        (*self).get_cloud_front_origin_access_identity_config(builder)
+        self.deref().get_cloud_front_origin_access_identity_config(builder)
     }
     fn get_continuous_deployment_policy(&self, builder: GetContinuousDeploymentPolicyInputBuilder) -> impl Future<Output = Result<GetContinuousDeploymentPolicyOutput, SdkError<GetContinuousDeploymentPolicyError>>> {
-        (*self).get_continuous_deployment_policy(builder)
+        self.deref().get_continuous_deployment_policy(builder)
     }
     fn get_continuous_deployment_policy_config(&self, builder: GetContinuousDeploymentPolicyConfigInputBuilder) -> impl Future<Output = Result<GetContinuousDeploymentPolicyConfigOutput, SdkError<GetContinuousDeploymentPolicyConfigError>>> {
-        (*self).get_continuous_deployment_policy_config(builder)
+        self.deref().get_continuous_deployment_policy_config(builder)
     }
     fn get_distribution(&self, builder: GetDistributionInputBuilder) -> impl Future<Output = Result<GetDistributionOutput, SdkError<GetDistributionError>>> {
-        (*self).get_distribution(builder)
+        self.deref().get_distribution(builder)
     }
     fn get_distribution_config(&self, builder: GetDistributionConfigInputBuilder) -> impl Future<Output = Result<GetDistributionConfigOutput, SdkError<GetDistributionConfigError>>> {
-        (*self).get_distribution_config(builder)
+        self.deref().get_distribution_config(builder)
     }
     fn get_field_level_encryption(&self, builder: GetFieldLevelEncryptionInputBuilder) -> impl Future<Output = Result<GetFieldLevelEncryptionOutput, SdkError<GetFieldLevelEncryptionError>>> {
-        (*self).get_field_level_encryption(builder)
+        self.deref().get_field_level_encryption(builder)
     }
     fn get_field_level_encryption_config(&self, builder: GetFieldLevelEncryptionConfigInputBuilder) -> impl Future<Output = Result<GetFieldLevelEncryptionConfigOutput, SdkError<GetFieldLevelEncryptionConfigError>>> {
-        (*self).get_field_level_encryption_config(builder)
+        self.deref().get_field_level_encryption_config(builder)
     }
     fn get_field_level_encryption_profile(&self, builder: GetFieldLevelEncryptionProfileInputBuilder) -> impl Future<Output = Result<GetFieldLevelEncryptionProfileOutput, SdkError<GetFieldLevelEncryptionProfileError>>> {
-        (*self).get_field_level_encryption_profile(builder)
+        self.deref().get_field_level_encryption_profile(builder)
     }
     fn get_field_level_encryption_profile_config(&self, builder: GetFieldLevelEncryptionProfileConfigInputBuilder) -> impl Future<Output = Result<GetFieldLevelEncryptionProfileConfigOutput, SdkError<GetFieldLevelEncryptionProfileConfigError>>> {
-        (*self).get_field_level_encryption_profile_config(builder)
+        self.deref().get_field_level_encryption_profile_config(builder)
     }
     fn get_function(&self, builder: GetFunctionInputBuilder) -> impl Future<Output = Result<GetFunctionOutput, SdkError<GetFunctionError>>> {
-        (*self).get_function(builder)
+        self.deref().get_function(builder)
     }
     fn get_invalidation(&self, builder: GetInvalidationInputBuilder) -> impl Future<Output = Result<GetInvalidationOutput, SdkError<GetInvalidationError>>> {
-        (*self).get_invalidation(builder)
+        self.deref().get_invalidation(builder)
     }
     fn get_key_group(&self, builder: GetKeyGroupInputBuilder) -> impl Future<Output = Result<GetKeyGroupOutput, SdkError<GetKeyGroupError>>> {
-        (*self).get_key_group(builder)
+        self.deref().get_key_group(builder)
     }
     fn get_key_group_config(&self, builder: GetKeyGroupConfigInputBuilder) -> impl Future<Output = Result<GetKeyGroupConfigOutput, SdkError<GetKeyGroupConfigError>>> {
-        (*self).get_key_group_config(builder)
+        self.deref().get_key_group_config(builder)
     }
     fn get_monitoring_subscription(&self, builder: GetMonitoringSubscriptionInputBuilder) -> impl Future<Output = Result<GetMonitoringSubscriptionOutput, SdkError<GetMonitoringSubscriptionError>>> {
-        (*self).get_monitoring_subscription(builder)
+        self.deref().get_monitoring_subscription(builder)
     }
     fn get_origin_access_control(&self, builder: GetOriginAccessControlInputBuilder) -> impl Future<Output = Result<GetOriginAccessControlOutput, SdkError<GetOriginAccessControlError>>> {
-        (*self).get_origin_access_control(builder)
+        self.deref().get_origin_access_control(builder)
     }
     fn get_origin_access_control_config(&self, builder: GetOriginAccessControlConfigInputBuilder) -> impl Future<Output = Result<GetOriginAccessControlConfigOutput, SdkError<GetOriginAccessControlConfigError>>> {
-        (*self).get_origin_access_control_config(builder)
+        self.deref().get_origin_access_control_config(builder)
     }
     fn get_origin_request_policy(&self, builder: GetOriginRequestPolicyInputBuilder) -> impl Future<Output = Result<GetOriginRequestPolicyOutput, SdkError<GetOriginRequestPolicyError>>> {
-        (*self).get_origin_request_policy(builder)
+        self.deref().get_origin_request_policy(builder)
     }
     fn get_origin_request_policy_config(&self, builder: GetOriginRequestPolicyConfigInputBuilder) -> impl Future<Output = Result<GetOriginRequestPolicyConfigOutput, SdkError<GetOriginRequestPolicyConfigError>>> {
-        (*self).get_origin_request_policy_config(builder)
+        self.deref().get_origin_request_policy_config(builder)
     }
     fn get_public_key(&self, builder: GetPublicKeyInputBuilder) -> impl Future<Output = Result<GetPublicKeyOutput, SdkError<GetPublicKeyError>>> {
-        (*self).get_public_key(builder)
+        self.deref().get_public_key(builder)
     }
     fn get_public_key_config(&self, builder: GetPublicKeyConfigInputBuilder) -> impl Future<Output = Result<GetPublicKeyConfigOutput, SdkError<GetPublicKeyConfigError>>> {
-        (*self).get_public_key_config(builder)
+        self.deref().get_public_key_config(builder)
     }
     fn get_realtime_log_config(&self, builder: GetRealtimeLogConfigInputBuilder) -> impl Future<Output = Result<GetRealtimeLogConfigOutput, SdkError<GetRealtimeLogConfigError>>> {
-        (*self).get_realtime_log_config(builder)
+        self.deref().get_realtime_log_config(builder)
     }
     fn get_response_headers_policy(&self, builder: GetResponseHeadersPolicyInputBuilder) -> impl Future<Output = Result<GetResponseHeadersPolicyOutput, SdkError<GetResponseHeadersPolicyError>>> {
-        (*self).get_response_headers_policy(builder)
+        self.deref().get_response_headers_policy(builder)
     }
     fn get_response_headers_policy_config(&self, builder: GetResponseHeadersPolicyConfigInputBuilder) -> impl Future<Output = Result<GetResponseHeadersPolicyConfigOutput, SdkError<GetResponseHeadersPolicyConfigError>>> {
-        (*self).get_response_headers_policy_config(builder)
+        self.deref().get_response_headers_policy_config(builder)
     }
     fn get_streaming_distribution(&self, builder: GetStreamingDistributionInputBuilder) -> impl Future<Output = Result<GetStreamingDistributionOutput, SdkError<GetStreamingDistributionError>>> {
-        (*self).get_streaming_distribution(builder)
+        self.deref().get_streaming_distribution(builder)
     }
     fn get_streaming_distribution_config(&self, builder: GetStreamingDistributionConfigInputBuilder) -> impl Future<Output = Result<GetStreamingDistributionConfigOutput, SdkError<GetStreamingDistributionConfigError>>> {
-        (*self).get_streaming_distribution_config(builder)
+        self.deref().get_streaming_distribution_config(builder)
     }
     fn list_cache_policies(&self, builder: ListCachePoliciesInputBuilder) -> impl Future<Output = Result<ListCachePoliciesOutput, SdkError<ListCachePoliciesError>>> {
-        (*self).list_cache_policies(builder)
+        self.deref().list_cache_policies(builder)
     }
     fn list_cloud_front_origin_access_identities(&self, builder: ListCloudFrontOriginAccessIdentitiesInputBuilder) -> impl Future<Output = Result<ListCloudFrontOriginAccessIdentitiesOutput, SdkError<ListCloudFrontOriginAccessIdentitiesError>>> {
-        (*self).list_cloud_front_origin_access_identities(builder)
+        self.deref().list_cloud_front_origin_access_identities(builder)
     }
     fn list_conflicting_aliases(&self, builder: ListConflictingAliasesInputBuilder) -> impl Future<Output = Result<ListConflictingAliasesOutput, SdkError<ListConflictingAliasesError>>> {
-        (*self).list_conflicting_aliases(builder)
+        self.deref().list_conflicting_aliases(builder)
     }
     fn list_continuous_deployment_policies(&self, builder: ListContinuousDeploymentPoliciesInputBuilder) -> impl Future<Output = Result<ListContinuousDeploymentPoliciesOutput, SdkError<ListContinuousDeploymentPoliciesError>>> {
-        (*self).list_continuous_deployment_policies(builder)
+        self.deref().list_continuous_deployment_policies(builder)
     }
     fn list_distributions(&self, builder: ListDistributionsInputBuilder) -> impl Future<Output = Result<ListDistributionsOutput, SdkError<ListDistributionsError>>> {
-        (*self).list_distributions(builder)
+        self.deref().list_distributions(builder)
     }
     fn list_distributions_by_cache_policy_id(&self, builder: ListDistributionsByCachePolicyIdInputBuilder) -> impl Future<Output = Result<ListDistributionsByCachePolicyIdOutput, SdkError<ListDistributionsByCachePolicyIdError>>> {
-        (*self).list_distributions_by_cache_policy_id(builder)
+        self.deref().list_distributions_by_cache_policy_id(builder)
     }
     fn list_distributions_by_key_group(&self, builder: ListDistributionsByKeyGroupInputBuilder) -> impl Future<Output = Result<ListDistributionsByKeyGroupOutput, SdkError<ListDistributionsByKeyGroupError>>> {
-        (*self).list_distributions_by_key_group(builder)
+        self.deref().list_distributions_by_key_group(builder)
     }
     fn list_distributions_by_origin_request_policy_id(&self, builder: ListDistributionsByOriginRequestPolicyIdInputBuilder) -> impl Future<Output = Result<ListDistributionsByOriginRequestPolicyIdOutput, SdkError<ListDistributionsByOriginRequestPolicyIdError>>> {
-        (*self).list_distributions_by_origin_request_policy_id(builder)
+        self.deref().list_distributions_by_origin_request_policy_id(builder)
     }
     fn list_distributions_by_realtime_log_config(&self, builder: ListDistributionsByRealtimeLogConfigInputBuilder) -> impl Future<Output = Result<ListDistributionsByRealtimeLogConfigOutput, SdkError<ListDistributionsByRealtimeLogConfigError>>> {
-        (*self).list_distributions_by_realtime_log_config(builder)
+        self.deref().list_distributions_by_realtime_log_config(builder)
     }
     fn list_distributions_by_response_headers_policy_id(&self, builder: ListDistributionsByResponseHeadersPolicyIdInputBuilder) -> impl Future<Output = Result<ListDistributionsByResponseHeadersPolicyIdOutput, SdkError<ListDistributionsByResponseHeadersPolicyIdError>>> {
-        (*self).list_distributions_by_response_headers_policy_id(builder)
+        self.deref().list_distributions_by_response_headers_policy_id(builder)
     }
     fn list_distributions_by_web_acl_id(&self, builder: ListDistributionsByWebAclIdInputBuilder) -> impl Future<Output = Result<ListDistributionsByWebAclIdOutput, SdkError<ListDistributionsByWebACLIdError>>> {
-        (*self).list_distributions_by_web_acl_id(builder)
+        self.deref().list_distributions_by_web_acl_id(builder)
     }
     fn list_field_level_encryption_configs(&self, builder: ListFieldLevelEncryptionConfigsInputBuilder) -> impl Future<Output = Result<ListFieldLevelEncryptionConfigsOutput, SdkError<ListFieldLevelEncryptionConfigsError>>> {
-        (*self).list_field_level_encryption_configs(builder)
+        self.deref().list_field_level_encryption_configs(builder)
     }
     fn list_field_level_encryption_profiles(&self, builder: ListFieldLevelEncryptionProfilesInputBuilder) -> impl Future<Output = Result<ListFieldLevelEncryptionProfilesOutput, SdkError<ListFieldLevelEncryptionProfilesError>>> {
-        (*self).list_field_level_encryption_profiles(builder)
+        self.deref().list_field_level_encryption_profiles(builder)
     }
     fn list_functions(&self, builder: ListFunctionsInputBuilder) -> impl Future<Output = Result<ListFunctionsOutput, SdkError<ListFunctionsError>>> {
-        (*self).list_functions(builder)
+        self.deref().list_functions(builder)
     }
     fn list_invalidations(&self, builder: ListInvalidationsInputBuilder) -> impl Future<Output = Result<ListInvalidationsOutput, SdkError<ListInvalidationsError>>> {
-        (*self).list_invalidations(builder)
+        self.deref().list_invalidations(builder)
     }
     fn list_key_groups(&self, builder: ListKeyGroupsInputBuilder) -> impl Future<Output = Result<ListKeyGroupsOutput, SdkError<ListKeyGroupsError>>> {
-        (*self).list_key_groups(builder)
+        self.deref().list_key_groups(builder)
     }
     fn list_key_value_stores(&self, builder: ListKeyValueStoresInputBuilder) -> impl Future<Output = Result<ListKeyValueStoresOutput, SdkError<ListKeyValueStoresError>>> {
-        (*self).list_key_value_stores(builder)
+        self.deref().list_key_value_stores(builder)
     }
     fn list_origin_access_controls(&self, builder: ListOriginAccessControlsInputBuilder) -> impl Future<Output = Result<ListOriginAccessControlsOutput, SdkError<ListOriginAccessControlsError>>> {
-        (*self).list_origin_access_controls(builder)
+        self.deref().list_origin_access_controls(builder)
     }
     fn list_origin_request_policies(&self, builder: ListOriginRequestPoliciesInputBuilder) -> impl Future<Output = Result<ListOriginRequestPoliciesOutput, SdkError<ListOriginRequestPoliciesError>>> {
-        (*self).list_origin_request_policies(builder)
+        self.deref().list_origin_request_policies(builder)
     }
     fn list_public_keys(&self, builder: ListPublicKeysInputBuilder) -> impl Future<Output = Result<ListPublicKeysOutput, SdkError<ListPublicKeysError>>> {
-        (*self).list_public_keys(builder)
+        self.deref().list_public_keys(builder)
     }
     fn list_realtime_log_configs(&self, builder: ListRealtimeLogConfigsInputBuilder) -> impl Future<Output = Result<ListRealtimeLogConfigsOutput, SdkError<ListRealtimeLogConfigsError>>> {
-        (*self).list_realtime_log_configs(builder)
+        self.deref().list_realtime_log_configs(builder)
     }
     fn list_response_headers_policies(&self, builder: ListResponseHeadersPoliciesInputBuilder) -> impl Future<Output = Result<ListResponseHeadersPoliciesOutput, SdkError<ListResponseHeadersPoliciesError>>> {
-        (*self).list_response_headers_policies(builder)
+        self.deref().list_response_headers_policies(builder)
     }
     fn list_streaming_distributions(&self, builder: ListStreamingDistributionsInputBuilder) -> impl Future<Output = Result<ListStreamingDistributionsOutput, SdkError<ListStreamingDistributionsError>>> {
-        (*self).list_streaming_distributions(builder)
+        self.deref().list_streaming_distributions(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn publish_function(&self, builder: PublishFunctionInputBuilder) -> impl Future<Output = Result<PublishFunctionOutput, SdkError<PublishFunctionError>>> {
-        (*self).publish_function(builder)
+        self.deref().publish_function(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn test_function(&self, builder: TestFunctionInputBuilder) -> impl Future<Output = Result<TestFunctionOutput, SdkError<TestFunctionError>>> {
-        (*self).test_function(builder)
+        self.deref().test_function(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_cache_policy(&self, builder: UpdateCachePolicyInputBuilder) -> impl Future<Output = Result<UpdateCachePolicyOutput, SdkError<UpdateCachePolicyError>>> {
-        (*self).update_cache_policy(builder)
+        self.deref().update_cache_policy(builder)
     }
     fn update_cloud_front_origin_access_identity(&self, builder: UpdateCloudFrontOriginAccessIdentityInputBuilder) -> impl Future<Output = Result<UpdateCloudFrontOriginAccessIdentityOutput, SdkError<UpdateCloudFrontOriginAccessIdentityError>>> {
-        (*self).update_cloud_front_origin_access_identity(builder)
+        self.deref().update_cloud_front_origin_access_identity(builder)
     }
     fn update_continuous_deployment_policy(&self, builder: UpdateContinuousDeploymentPolicyInputBuilder) -> impl Future<Output = Result<UpdateContinuousDeploymentPolicyOutput, SdkError<UpdateContinuousDeploymentPolicyError>>> {
-        (*self).update_continuous_deployment_policy(builder)
+        self.deref().update_continuous_deployment_policy(builder)
     }
     fn update_distribution(&self, builder: UpdateDistributionInputBuilder) -> impl Future<Output = Result<UpdateDistributionOutput, SdkError<UpdateDistributionError>>> {
-        (*self).update_distribution(builder)
+        self.deref().update_distribution(builder)
     }
     fn update_distribution_with_staging_config(&self, builder: UpdateDistributionWithStagingConfigInputBuilder) -> impl Future<Output = Result<UpdateDistributionWithStagingConfigOutput, SdkError<UpdateDistributionWithStagingConfigError>>> {
-        (*self).update_distribution_with_staging_config(builder)
+        self.deref().update_distribution_with_staging_config(builder)
     }
     fn update_field_level_encryption_config(&self, builder: UpdateFieldLevelEncryptionConfigInputBuilder) -> impl Future<Output = Result<UpdateFieldLevelEncryptionConfigOutput, SdkError<UpdateFieldLevelEncryptionConfigError>>> {
-        (*self).update_field_level_encryption_config(builder)
+        self.deref().update_field_level_encryption_config(builder)
     }
     fn update_field_level_encryption_profile(&self, builder: UpdateFieldLevelEncryptionProfileInputBuilder) -> impl Future<Output = Result<UpdateFieldLevelEncryptionProfileOutput, SdkError<UpdateFieldLevelEncryptionProfileError>>> {
-        (*self).update_field_level_encryption_profile(builder)
+        self.deref().update_field_level_encryption_profile(builder)
     }
     fn update_function(&self, builder: UpdateFunctionInputBuilder) -> impl Future<Output = Result<UpdateFunctionOutput, SdkError<UpdateFunctionError>>> {
-        (*self).update_function(builder)
+        self.deref().update_function(builder)
     }
     fn update_key_group(&self, builder: UpdateKeyGroupInputBuilder) -> impl Future<Output = Result<UpdateKeyGroupOutput, SdkError<UpdateKeyGroupError>>> {
-        (*self).update_key_group(builder)
+        self.deref().update_key_group(builder)
     }
     fn update_key_value_store(&self, builder: UpdateKeyValueStoreInputBuilder) -> impl Future<Output = Result<UpdateKeyValueStoreOutput, SdkError<UpdateKeyValueStoreError>>> {
-        (*self).update_key_value_store(builder)
+        self.deref().update_key_value_store(builder)
     }
     fn update_origin_access_control(&self, builder: UpdateOriginAccessControlInputBuilder) -> impl Future<Output = Result<UpdateOriginAccessControlOutput, SdkError<UpdateOriginAccessControlError>>> {
-        (*self).update_origin_access_control(builder)
+        self.deref().update_origin_access_control(builder)
     }
     fn update_origin_request_policy(&self, builder: UpdateOriginRequestPolicyInputBuilder) -> impl Future<Output = Result<UpdateOriginRequestPolicyOutput, SdkError<UpdateOriginRequestPolicyError>>> {
-        (*self).update_origin_request_policy(builder)
+        self.deref().update_origin_request_policy(builder)
     }
     fn update_public_key(&self, builder: UpdatePublicKeyInputBuilder) -> impl Future<Output = Result<UpdatePublicKeyOutput, SdkError<UpdatePublicKeyError>>> {
-        (*self).update_public_key(builder)
+        self.deref().update_public_key(builder)
     }
     fn update_realtime_log_config(&self, builder: UpdateRealtimeLogConfigInputBuilder) -> impl Future<Output = Result<UpdateRealtimeLogConfigOutput, SdkError<UpdateRealtimeLogConfigError>>> {
-        (*self).update_realtime_log_config(builder)
+        self.deref().update_realtime_log_config(builder)
     }
     fn update_response_headers_policy(&self, builder: UpdateResponseHeadersPolicyInputBuilder) -> impl Future<Output = Result<UpdateResponseHeadersPolicyOutput, SdkError<UpdateResponseHeadersPolicyError>>> {
-        (*self).update_response_headers_policy(builder)
+        self.deref().update_response_headers_policy(builder)
     }
     fn update_streaming_distribution(&self, builder: UpdateStreamingDistributionInputBuilder) -> impl Future<Output = Result<UpdateStreamingDistributionOutput, SdkError<UpdateStreamingDistributionError>>> {
-        (*self).update_streaming_distribution(builder)
+        self.deref().update_streaming_distribution(builder)
     }
 }
 #[cfg(feature = "mockall")]

@@ -57,6 +57,7 @@ use aws_sdk_amplify::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_amplify::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_amplify::*;
 
@@ -216,117 +217,119 @@ impl AmplifyClient for AmplifyClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AmplifyClient> AmplifyClient for &T {
+impl <T> AmplifyClient for T
+where T: Deref,
+      T::Target: AmplifyClient {
     fn create_app(&self, builder: CreateAppInputBuilder) -> impl Future<Output = Result<CreateAppOutput, SdkError<CreateAppError>>> {
-        (*self).create_app(builder)
+        self.deref().create_app(builder)
     }
     fn create_backend_environment(&self, builder: CreateBackendEnvironmentInputBuilder) -> impl Future<Output = Result<CreateBackendEnvironmentOutput, SdkError<CreateBackendEnvironmentError>>> {
-        (*self).create_backend_environment(builder)
+        self.deref().create_backend_environment(builder)
     }
     fn create_branch(&self, builder: CreateBranchInputBuilder) -> impl Future<Output = Result<CreateBranchOutput, SdkError<CreateBranchError>>> {
-        (*self).create_branch(builder)
+        self.deref().create_branch(builder)
     }
     fn create_deployment(&self, builder: CreateDeploymentInputBuilder) -> impl Future<Output = Result<CreateDeploymentOutput, SdkError<CreateDeploymentError>>> {
-        (*self).create_deployment(builder)
+        self.deref().create_deployment(builder)
     }
     fn create_domain_association(&self, builder: CreateDomainAssociationInputBuilder) -> impl Future<Output = Result<CreateDomainAssociationOutput, SdkError<CreateDomainAssociationError>>> {
-        (*self).create_domain_association(builder)
+        self.deref().create_domain_association(builder)
     }
     fn create_webhook(&self, builder: CreateWebhookInputBuilder) -> impl Future<Output = Result<CreateWebhookOutput, SdkError<CreateWebhookError>>> {
-        (*self).create_webhook(builder)
+        self.deref().create_webhook(builder)
     }
     fn delete_app(&self, builder: DeleteAppInputBuilder) -> impl Future<Output = Result<DeleteAppOutput, SdkError<DeleteAppError>>> {
-        (*self).delete_app(builder)
+        self.deref().delete_app(builder)
     }
     fn delete_backend_environment(&self, builder: DeleteBackendEnvironmentInputBuilder) -> impl Future<Output = Result<DeleteBackendEnvironmentOutput, SdkError<DeleteBackendEnvironmentError>>> {
-        (*self).delete_backend_environment(builder)
+        self.deref().delete_backend_environment(builder)
     }
     fn delete_branch(&self, builder: DeleteBranchInputBuilder) -> impl Future<Output = Result<DeleteBranchOutput, SdkError<DeleteBranchError>>> {
-        (*self).delete_branch(builder)
+        self.deref().delete_branch(builder)
     }
     fn delete_domain_association(&self, builder: DeleteDomainAssociationInputBuilder) -> impl Future<Output = Result<DeleteDomainAssociationOutput, SdkError<DeleteDomainAssociationError>>> {
-        (*self).delete_domain_association(builder)
+        self.deref().delete_domain_association(builder)
     }
     fn delete_job(&self, builder: DeleteJobInputBuilder) -> impl Future<Output = Result<DeleteJobOutput, SdkError<DeleteJobError>>> {
-        (*self).delete_job(builder)
+        self.deref().delete_job(builder)
     }
     fn delete_webhook(&self, builder: DeleteWebhookInputBuilder) -> impl Future<Output = Result<DeleteWebhookOutput, SdkError<DeleteWebhookError>>> {
-        (*self).delete_webhook(builder)
+        self.deref().delete_webhook(builder)
     }
     fn generate_access_logs(&self, builder: GenerateAccessLogsInputBuilder) -> impl Future<Output = Result<GenerateAccessLogsOutput, SdkError<GenerateAccessLogsError>>> {
-        (*self).generate_access_logs(builder)
+        self.deref().generate_access_logs(builder)
     }
     fn get_app(&self, builder: GetAppInputBuilder) -> impl Future<Output = Result<GetAppOutput, SdkError<GetAppError>>> {
-        (*self).get_app(builder)
+        self.deref().get_app(builder)
     }
     fn get_artifact_url(&self, builder: GetArtifactUrlInputBuilder) -> impl Future<Output = Result<GetArtifactUrlOutput, SdkError<GetArtifactUrlError>>> {
-        (*self).get_artifact_url(builder)
+        self.deref().get_artifact_url(builder)
     }
     fn get_backend_environment(&self, builder: GetBackendEnvironmentInputBuilder) -> impl Future<Output = Result<GetBackendEnvironmentOutput, SdkError<GetBackendEnvironmentError>>> {
-        (*self).get_backend_environment(builder)
+        self.deref().get_backend_environment(builder)
     }
     fn get_branch(&self, builder: GetBranchInputBuilder) -> impl Future<Output = Result<GetBranchOutput, SdkError<GetBranchError>>> {
-        (*self).get_branch(builder)
+        self.deref().get_branch(builder)
     }
     fn get_domain_association(&self, builder: GetDomainAssociationInputBuilder) -> impl Future<Output = Result<GetDomainAssociationOutput, SdkError<GetDomainAssociationError>>> {
-        (*self).get_domain_association(builder)
+        self.deref().get_domain_association(builder)
     }
     fn get_job(&self, builder: GetJobInputBuilder) -> impl Future<Output = Result<GetJobOutput, SdkError<GetJobError>>> {
-        (*self).get_job(builder)
+        self.deref().get_job(builder)
     }
     fn get_webhook(&self, builder: GetWebhookInputBuilder) -> impl Future<Output = Result<GetWebhookOutput, SdkError<GetWebhookError>>> {
-        (*self).get_webhook(builder)
+        self.deref().get_webhook(builder)
     }
     fn list_apps(&self, builder: ListAppsInputBuilder) -> impl Future<Output = Result<ListAppsOutput, SdkError<ListAppsError>>> {
-        (*self).list_apps(builder)
+        self.deref().list_apps(builder)
     }
     fn list_artifacts(&self, builder: ListArtifactsInputBuilder) -> impl Future<Output = Result<ListArtifactsOutput, SdkError<ListArtifactsError>>> {
-        (*self).list_artifacts(builder)
+        self.deref().list_artifacts(builder)
     }
     fn list_backend_environments(&self, builder: ListBackendEnvironmentsInputBuilder) -> impl Future<Output = Result<ListBackendEnvironmentsOutput, SdkError<ListBackendEnvironmentsError>>> {
-        (*self).list_backend_environments(builder)
+        self.deref().list_backend_environments(builder)
     }
     fn list_branches(&self, builder: ListBranchesInputBuilder) -> impl Future<Output = Result<ListBranchesOutput, SdkError<ListBranchesError>>> {
-        (*self).list_branches(builder)
+        self.deref().list_branches(builder)
     }
     fn list_domain_associations(&self, builder: ListDomainAssociationsInputBuilder) -> impl Future<Output = Result<ListDomainAssociationsOutput, SdkError<ListDomainAssociationsError>>> {
-        (*self).list_domain_associations(builder)
+        self.deref().list_domain_associations(builder)
     }
     fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>> {
-        (*self).list_jobs(builder)
+        self.deref().list_jobs(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_webhooks(&self, builder: ListWebhooksInputBuilder) -> impl Future<Output = Result<ListWebhooksOutput, SdkError<ListWebhooksError>>> {
-        (*self).list_webhooks(builder)
+        self.deref().list_webhooks(builder)
     }
     fn start_deployment(&self, builder: StartDeploymentInputBuilder) -> impl Future<Output = Result<StartDeploymentOutput, SdkError<StartDeploymentError>>> {
-        (*self).start_deployment(builder)
+        self.deref().start_deployment(builder)
     }
     fn start_job(&self, builder: StartJobInputBuilder) -> impl Future<Output = Result<StartJobOutput, SdkError<StartJobError>>> {
-        (*self).start_job(builder)
+        self.deref().start_job(builder)
     }
     fn stop_job(&self, builder: StopJobInputBuilder) -> impl Future<Output = Result<StopJobOutput, SdkError<StopJobError>>> {
-        (*self).stop_job(builder)
+        self.deref().stop_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_app(&self, builder: UpdateAppInputBuilder) -> impl Future<Output = Result<UpdateAppOutput, SdkError<UpdateAppError>>> {
-        (*self).update_app(builder)
+        self.deref().update_app(builder)
     }
     fn update_branch(&self, builder: UpdateBranchInputBuilder) -> impl Future<Output = Result<UpdateBranchOutput, SdkError<UpdateBranchError>>> {
-        (*self).update_branch(builder)
+        self.deref().update_branch(builder)
     }
     fn update_domain_association(&self, builder: UpdateDomainAssociationInputBuilder) -> impl Future<Output = Result<UpdateDomainAssociationOutput, SdkError<UpdateDomainAssociationError>>> {
-        (*self).update_domain_association(builder)
+        self.deref().update_domain_association(builder)
     }
     fn update_webhook(&self, builder: UpdateWebhookInputBuilder) -> impl Future<Output = Result<UpdateWebhookOutput, SdkError<UpdateWebhookError>>> {
-        (*self).update_webhook(builder)
+        self.deref().update_webhook(builder)
     }
 }
 #[cfg(feature = "mockall")]

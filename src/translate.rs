@@ -39,6 +39,7 @@ use aws_sdk_translate::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_translate::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_translate::*;
 
@@ -126,63 +127,65 @@ impl TranslateClient for TranslateClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: TranslateClient> TranslateClient for &T {
+impl <T> TranslateClient for T
+where T: Deref,
+      T::Target: TranslateClient {
     fn create_parallel_data(&self, builder: CreateParallelDataInputBuilder) -> impl Future<Output = Result<CreateParallelDataOutput, SdkError<CreateParallelDataError>>> {
-        (*self).create_parallel_data(builder)
+        self.deref().create_parallel_data(builder)
     }
     fn delete_parallel_data(&self, builder: DeleteParallelDataInputBuilder) -> impl Future<Output = Result<DeleteParallelDataOutput, SdkError<DeleteParallelDataError>>> {
-        (*self).delete_parallel_data(builder)
+        self.deref().delete_parallel_data(builder)
     }
     fn delete_terminology(&self, builder: DeleteTerminologyInputBuilder) -> impl Future<Output = Result<DeleteTerminologyOutput, SdkError<DeleteTerminologyError>>> {
-        (*self).delete_terminology(builder)
+        self.deref().delete_terminology(builder)
     }
     fn describe_text_translation_job(&self, builder: DescribeTextTranslationJobInputBuilder) -> impl Future<Output = Result<DescribeTextTranslationJobOutput, SdkError<DescribeTextTranslationJobError>>> {
-        (*self).describe_text_translation_job(builder)
+        self.deref().describe_text_translation_job(builder)
     }
     fn get_parallel_data(&self, builder: GetParallelDataInputBuilder) -> impl Future<Output = Result<GetParallelDataOutput, SdkError<GetParallelDataError>>> {
-        (*self).get_parallel_data(builder)
+        self.deref().get_parallel_data(builder)
     }
     fn get_terminology(&self, builder: GetTerminologyInputBuilder) -> impl Future<Output = Result<GetTerminologyOutput, SdkError<GetTerminologyError>>> {
-        (*self).get_terminology(builder)
+        self.deref().get_terminology(builder)
     }
     fn import_terminology(&self, builder: ImportTerminologyInputBuilder) -> impl Future<Output = Result<ImportTerminologyOutput, SdkError<ImportTerminologyError>>> {
-        (*self).import_terminology(builder)
+        self.deref().import_terminology(builder)
     }
     fn list_languages(&self, builder: ListLanguagesInputBuilder) -> impl Future<Output = Result<ListLanguagesOutput, SdkError<ListLanguagesError>>> {
-        (*self).list_languages(builder)
+        self.deref().list_languages(builder)
     }
     fn list_parallel_data(&self, builder: ListParallelDataInputBuilder) -> impl Future<Output = Result<ListParallelDataOutput, SdkError<ListParallelDataError>>> {
-        (*self).list_parallel_data(builder)
+        self.deref().list_parallel_data(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_terminologies(&self, builder: ListTerminologiesInputBuilder) -> impl Future<Output = Result<ListTerminologiesOutput, SdkError<ListTerminologiesError>>> {
-        (*self).list_terminologies(builder)
+        self.deref().list_terminologies(builder)
     }
     fn list_text_translation_jobs(&self, builder: ListTextTranslationJobsInputBuilder) -> impl Future<Output = Result<ListTextTranslationJobsOutput, SdkError<ListTextTranslationJobsError>>> {
-        (*self).list_text_translation_jobs(builder)
+        self.deref().list_text_translation_jobs(builder)
     }
     fn start_text_translation_job(&self, builder: StartTextTranslationJobInputBuilder) -> impl Future<Output = Result<StartTextTranslationJobOutput, SdkError<StartTextTranslationJobError>>> {
-        (*self).start_text_translation_job(builder)
+        self.deref().start_text_translation_job(builder)
     }
     fn stop_text_translation_job(&self, builder: StopTextTranslationJobInputBuilder) -> impl Future<Output = Result<StopTextTranslationJobOutput, SdkError<StopTextTranslationJobError>>> {
-        (*self).stop_text_translation_job(builder)
+        self.deref().stop_text_translation_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn translate_document(&self, builder: TranslateDocumentInputBuilder) -> impl Future<Output = Result<TranslateDocumentOutput, SdkError<TranslateDocumentError>>> {
-        (*self).translate_document(builder)
+        self.deref().translate_document(builder)
     }
     fn translate_text(&self, builder: TranslateTextInputBuilder) -> impl Future<Output = Result<TranslateTextOutput, SdkError<TranslateTextError>>> {
-        (*self).translate_text(builder)
+        self.deref().translate_text(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_parallel_data(&self, builder: UpdateParallelDataInputBuilder) -> impl Future<Output = Result<UpdateParallelDataOutput, SdkError<UpdateParallelDataError>>> {
-        (*self).update_parallel_data(builder)
+        self.deref().update_parallel_data(builder)
     }
 }
 #[cfg(feature = "mockall")]

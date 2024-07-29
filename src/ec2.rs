@@ -643,6 +643,7 @@ use aws_sdk_ec2::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_ec2::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_ec2::*;
 
@@ -3146,1875 +3147,1877 @@ impl EC2Client for EC2ClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: EC2Client> EC2Client for &T {
+impl <T> EC2Client for T
+where T: Deref,
+      T::Target: EC2Client {
     fn accept_address_transfer(&self, builder: AcceptAddressTransferInputBuilder) -> impl Future<Output = Result<AcceptAddressTransferOutput, SdkError<AcceptAddressTransferError>>> {
-        (*self).accept_address_transfer(builder)
+        self.deref().accept_address_transfer(builder)
     }
     fn accept_reserved_instances_exchange_quote(&self, builder: AcceptReservedInstancesExchangeQuoteInputBuilder) -> impl Future<Output = Result<AcceptReservedInstancesExchangeQuoteOutput, SdkError<AcceptReservedInstancesExchangeQuoteError>>> {
-        (*self).accept_reserved_instances_exchange_quote(builder)
+        self.deref().accept_reserved_instances_exchange_quote(builder)
     }
     fn accept_transit_gateway_multicast_domain_associations(&self, builder: AcceptTransitGatewayMulticastDomainAssociationsInputBuilder) -> impl Future<Output = Result<AcceptTransitGatewayMulticastDomainAssociationsOutput, SdkError<AcceptTransitGatewayMulticastDomainAssociationsError>>> {
-        (*self).accept_transit_gateway_multicast_domain_associations(builder)
+        self.deref().accept_transit_gateway_multicast_domain_associations(builder)
     }
     fn accept_transit_gateway_peering_attachment(&self, builder: AcceptTransitGatewayPeeringAttachmentInputBuilder) -> impl Future<Output = Result<AcceptTransitGatewayPeeringAttachmentOutput, SdkError<AcceptTransitGatewayPeeringAttachmentError>>> {
-        (*self).accept_transit_gateway_peering_attachment(builder)
+        self.deref().accept_transit_gateway_peering_attachment(builder)
     }
     fn accept_transit_gateway_vpc_attachment(&self, builder: AcceptTransitGatewayVpcAttachmentInputBuilder) -> impl Future<Output = Result<AcceptTransitGatewayVpcAttachmentOutput, SdkError<AcceptTransitGatewayVpcAttachmentError>>> {
-        (*self).accept_transit_gateway_vpc_attachment(builder)
+        self.deref().accept_transit_gateway_vpc_attachment(builder)
     }
     fn accept_vpc_endpoint_connections(&self, builder: AcceptVpcEndpointConnectionsInputBuilder) -> impl Future<Output = Result<AcceptVpcEndpointConnectionsOutput, SdkError<AcceptVpcEndpointConnectionsError>>> {
-        (*self).accept_vpc_endpoint_connections(builder)
+        self.deref().accept_vpc_endpoint_connections(builder)
     }
     fn accept_vpc_peering_connection(&self, builder: AcceptVpcPeeringConnectionInputBuilder) -> impl Future<Output = Result<AcceptVpcPeeringConnectionOutput, SdkError<AcceptVpcPeeringConnectionError>>> {
-        (*self).accept_vpc_peering_connection(builder)
+        self.deref().accept_vpc_peering_connection(builder)
     }
     fn advertise_byoip_cidr(&self, builder: AdvertiseByoipCidrInputBuilder) -> impl Future<Output = Result<AdvertiseByoipCidrOutput, SdkError<AdvertiseByoipCidrError>>> {
-        (*self).advertise_byoip_cidr(builder)
+        self.deref().advertise_byoip_cidr(builder)
     }
     fn allocate_address(&self, builder: AllocateAddressInputBuilder) -> impl Future<Output = Result<AllocateAddressOutput, SdkError<AllocateAddressError>>> {
-        (*self).allocate_address(builder)
+        self.deref().allocate_address(builder)
     }
     fn allocate_hosts(&self, builder: AllocateHostsInputBuilder) -> impl Future<Output = Result<AllocateHostsOutput, SdkError<AllocateHostsError>>> {
-        (*self).allocate_hosts(builder)
+        self.deref().allocate_hosts(builder)
     }
     fn allocate_ipam_pool_cidr(&self, builder: AllocateIpamPoolCidrInputBuilder) -> impl Future<Output = Result<AllocateIpamPoolCidrOutput, SdkError<AllocateIpamPoolCidrError>>> {
-        (*self).allocate_ipam_pool_cidr(builder)
+        self.deref().allocate_ipam_pool_cidr(builder)
     }
     fn apply_security_groups_to_client_vpn_target_network(&self, builder: ApplySecurityGroupsToClientVpnTargetNetworkInputBuilder) -> impl Future<Output = Result<ApplySecurityGroupsToClientVpnTargetNetworkOutput, SdkError<ApplySecurityGroupsToClientVpnTargetNetworkError>>> {
-        (*self).apply_security_groups_to_client_vpn_target_network(builder)
+        self.deref().apply_security_groups_to_client_vpn_target_network(builder)
     }
     fn assign_ipv6_addresses(&self, builder: AssignIpv6AddressesInputBuilder) -> impl Future<Output = Result<AssignIpv6AddressesOutput, SdkError<AssignIpv6AddressesError>>> {
-        (*self).assign_ipv6_addresses(builder)
+        self.deref().assign_ipv6_addresses(builder)
     }
     fn assign_private_ip_addresses(&self, builder: AssignPrivateIpAddressesInputBuilder) -> impl Future<Output = Result<AssignPrivateIpAddressesOutput, SdkError<AssignPrivateIpAddressesError>>> {
-        (*self).assign_private_ip_addresses(builder)
+        self.deref().assign_private_ip_addresses(builder)
     }
     fn assign_private_nat_gateway_address(&self, builder: AssignPrivateNatGatewayAddressInputBuilder) -> impl Future<Output = Result<AssignPrivateNatGatewayAddressOutput, SdkError<AssignPrivateNatGatewayAddressError>>> {
-        (*self).assign_private_nat_gateway_address(builder)
+        self.deref().assign_private_nat_gateway_address(builder)
     }
     fn associate_address(&self, builder: AssociateAddressInputBuilder) -> impl Future<Output = Result<AssociateAddressOutput, SdkError<AssociateAddressError>>> {
-        (*self).associate_address(builder)
+        self.deref().associate_address(builder)
     }
     fn associate_client_vpn_target_network(&self, builder: AssociateClientVpnTargetNetworkInputBuilder) -> impl Future<Output = Result<AssociateClientVpnTargetNetworkOutput, SdkError<AssociateClientVpnTargetNetworkError>>> {
-        (*self).associate_client_vpn_target_network(builder)
+        self.deref().associate_client_vpn_target_network(builder)
     }
     fn associate_dhcp_options(&self, builder: AssociateDhcpOptionsInputBuilder) -> impl Future<Output = Result<AssociateDhcpOptionsOutput, SdkError<AssociateDhcpOptionsError>>> {
-        (*self).associate_dhcp_options(builder)
+        self.deref().associate_dhcp_options(builder)
     }
     fn associate_enclave_certificate_iam_role(&self, builder: AssociateEnclaveCertificateIamRoleInputBuilder) -> impl Future<Output = Result<AssociateEnclaveCertificateIamRoleOutput, SdkError<AssociateEnclaveCertificateIamRoleError>>> {
-        (*self).associate_enclave_certificate_iam_role(builder)
+        self.deref().associate_enclave_certificate_iam_role(builder)
     }
     fn associate_iam_instance_profile(&self, builder: AssociateIamInstanceProfileInputBuilder) -> impl Future<Output = Result<AssociateIamInstanceProfileOutput, SdkError<AssociateIamInstanceProfileError>>> {
-        (*self).associate_iam_instance_profile(builder)
+        self.deref().associate_iam_instance_profile(builder)
     }
     fn associate_instance_event_window(&self, builder: AssociateInstanceEventWindowInputBuilder) -> impl Future<Output = Result<AssociateInstanceEventWindowOutput, SdkError<AssociateInstanceEventWindowError>>> {
-        (*self).associate_instance_event_window(builder)
+        self.deref().associate_instance_event_window(builder)
     }
     fn associate_ipam_byoasn(&self, builder: AssociateIpamByoasnInputBuilder) -> impl Future<Output = Result<AssociateIpamByoasnOutput, SdkError<AssociateIpamByoasnError>>> {
-        (*self).associate_ipam_byoasn(builder)
+        self.deref().associate_ipam_byoasn(builder)
     }
     fn associate_ipam_resource_discovery(&self, builder: AssociateIpamResourceDiscoveryInputBuilder) -> impl Future<Output = Result<AssociateIpamResourceDiscoveryOutput, SdkError<AssociateIpamResourceDiscoveryError>>> {
-        (*self).associate_ipam_resource_discovery(builder)
+        self.deref().associate_ipam_resource_discovery(builder)
     }
     fn associate_nat_gateway_address(&self, builder: AssociateNatGatewayAddressInputBuilder) -> impl Future<Output = Result<AssociateNatGatewayAddressOutput, SdkError<AssociateNatGatewayAddressError>>> {
-        (*self).associate_nat_gateway_address(builder)
+        self.deref().associate_nat_gateway_address(builder)
     }
     fn associate_route_table(&self, builder: AssociateRouteTableInputBuilder) -> impl Future<Output = Result<AssociateRouteTableOutput, SdkError<AssociateRouteTableError>>> {
-        (*self).associate_route_table(builder)
+        self.deref().associate_route_table(builder)
     }
     fn associate_subnet_cidr_block(&self, builder: AssociateSubnetCidrBlockInputBuilder) -> impl Future<Output = Result<AssociateSubnetCidrBlockOutput, SdkError<AssociateSubnetCidrBlockError>>> {
-        (*self).associate_subnet_cidr_block(builder)
+        self.deref().associate_subnet_cidr_block(builder)
     }
     fn associate_transit_gateway_multicast_domain(&self, builder: AssociateTransitGatewayMulticastDomainInputBuilder) -> impl Future<Output = Result<AssociateTransitGatewayMulticastDomainOutput, SdkError<AssociateTransitGatewayMulticastDomainError>>> {
-        (*self).associate_transit_gateway_multicast_domain(builder)
+        self.deref().associate_transit_gateway_multicast_domain(builder)
     }
     fn associate_transit_gateway_policy_table(&self, builder: AssociateTransitGatewayPolicyTableInputBuilder) -> impl Future<Output = Result<AssociateTransitGatewayPolicyTableOutput, SdkError<AssociateTransitGatewayPolicyTableError>>> {
-        (*self).associate_transit_gateway_policy_table(builder)
+        self.deref().associate_transit_gateway_policy_table(builder)
     }
     fn associate_transit_gateway_route_table(&self, builder: AssociateTransitGatewayRouteTableInputBuilder) -> impl Future<Output = Result<AssociateTransitGatewayRouteTableOutput, SdkError<AssociateTransitGatewayRouteTableError>>> {
-        (*self).associate_transit_gateway_route_table(builder)
+        self.deref().associate_transit_gateway_route_table(builder)
     }
     fn associate_trunk_interface(&self, builder: AssociateTrunkInterfaceInputBuilder) -> impl Future<Output = Result<AssociateTrunkInterfaceOutput, SdkError<AssociateTrunkInterfaceError>>> {
-        (*self).associate_trunk_interface(builder)
+        self.deref().associate_trunk_interface(builder)
     }
     fn associate_vpc_cidr_block(&self, builder: AssociateVpcCidrBlockInputBuilder) -> impl Future<Output = Result<AssociateVpcCidrBlockOutput, SdkError<AssociateVpcCidrBlockError>>> {
-        (*self).associate_vpc_cidr_block(builder)
+        self.deref().associate_vpc_cidr_block(builder)
     }
     fn attach_classic_link_vpc(&self, builder: AttachClassicLinkVpcInputBuilder) -> impl Future<Output = Result<AttachClassicLinkVpcOutput, SdkError<AttachClassicLinkVpcError>>> {
-        (*self).attach_classic_link_vpc(builder)
+        self.deref().attach_classic_link_vpc(builder)
     }
     fn attach_internet_gateway(&self, builder: AttachInternetGatewayInputBuilder) -> impl Future<Output = Result<AttachInternetGatewayOutput, SdkError<AttachInternetGatewayError>>> {
-        (*self).attach_internet_gateway(builder)
+        self.deref().attach_internet_gateway(builder)
     }
     fn attach_network_interface(&self, builder: AttachNetworkInterfaceInputBuilder) -> impl Future<Output = Result<AttachNetworkInterfaceOutput, SdkError<AttachNetworkInterfaceError>>> {
-        (*self).attach_network_interface(builder)
+        self.deref().attach_network_interface(builder)
     }
     fn attach_verified_access_trust_provider(&self, builder: AttachVerifiedAccessTrustProviderInputBuilder) -> impl Future<Output = Result<AttachVerifiedAccessTrustProviderOutput, SdkError<AttachVerifiedAccessTrustProviderError>>> {
-        (*self).attach_verified_access_trust_provider(builder)
+        self.deref().attach_verified_access_trust_provider(builder)
     }
     fn attach_volume(&self, builder: AttachVolumeInputBuilder) -> impl Future<Output = Result<AttachVolumeOutput, SdkError<AttachVolumeError>>> {
-        (*self).attach_volume(builder)
+        self.deref().attach_volume(builder)
     }
     fn attach_vpn_gateway(&self, builder: AttachVpnGatewayInputBuilder) -> impl Future<Output = Result<AttachVpnGatewayOutput, SdkError<AttachVpnGatewayError>>> {
-        (*self).attach_vpn_gateway(builder)
+        self.deref().attach_vpn_gateway(builder)
     }
     fn authorize_client_vpn_ingress(&self, builder: AuthorizeClientVpnIngressInputBuilder) -> impl Future<Output = Result<AuthorizeClientVpnIngressOutput, SdkError<AuthorizeClientVpnIngressError>>> {
-        (*self).authorize_client_vpn_ingress(builder)
+        self.deref().authorize_client_vpn_ingress(builder)
     }
     fn authorize_security_group_egress(&self, builder: AuthorizeSecurityGroupEgressInputBuilder) -> impl Future<Output = Result<AuthorizeSecurityGroupEgressOutput, SdkError<AuthorizeSecurityGroupEgressError>>> {
-        (*self).authorize_security_group_egress(builder)
+        self.deref().authorize_security_group_egress(builder)
     }
     fn authorize_security_group_ingress(&self, builder: AuthorizeSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<AuthorizeSecurityGroupIngressOutput, SdkError<AuthorizeSecurityGroupIngressError>>> {
-        (*self).authorize_security_group_ingress(builder)
+        self.deref().authorize_security_group_ingress(builder)
     }
     fn bundle_instance(&self, builder: BundleInstanceInputBuilder) -> impl Future<Output = Result<BundleInstanceOutput, SdkError<BundleInstanceError>>> {
-        (*self).bundle_instance(builder)
+        self.deref().bundle_instance(builder)
     }
     fn cancel_bundle_task(&self, builder: CancelBundleTaskInputBuilder) -> impl Future<Output = Result<CancelBundleTaskOutput, SdkError<CancelBundleTaskError>>> {
-        (*self).cancel_bundle_task(builder)
+        self.deref().cancel_bundle_task(builder)
     }
     fn cancel_capacity_reservation(&self, builder: CancelCapacityReservationInputBuilder) -> impl Future<Output = Result<CancelCapacityReservationOutput, SdkError<CancelCapacityReservationError>>> {
-        (*self).cancel_capacity_reservation(builder)
+        self.deref().cancel_capacity_reservation(builder)
     }
     fn cancel_capacity_reservation_fleets(&self, builder: CancelCapacityReservationFleetsInputBuilder) -> impl Future<Output = Result<CancelCapacityReservationFleetsOutput, SdkError<CancelCapacityReservationFleetsError>>> {
-        (*self).cancel_capacity_reservation_fleets(builder)
+        self.deref().cancel_capacity_reservation_fleets(builder)
     }
     fn cancel_conversion_task(&self, builder: CancelConversionTaskInputBuilder) -> impl Future<Output = Result<CancelConversionTaskOutput, SdkError<CancelConversionTaskError>>> {
-        (*self).cancel_conversion_task(builder)
+        self.deref().cancel_conversion_task(builder)
     }
     fn cancel_export_task(&self, builder: CancelExportTaskInputBuilder) -> impl Future<Output = Result<CancelExportTaskOutput, SdkError<CancelExportTaskError>>> {
-        (*self).cancel_export_task(builder)
+        self.deref().cancel_export_task(builder)
     }
     fn cancel_image_launch_permission(&self, builder: CancelImageLaunchPermissionInputBuilder) -> impl Future<Output = Result<CancelImageLaunchPermissionOutput, SdkError<CancelImageLaunchPermissionError>>> {
-        (*self).cancel_image_launch_permission(builder)
+        self.deref().cancel_image_launch_permission(builder)
     }
     fn cancel_import_task(&self, builder: CancelImportTaskInputBuilder) -> impl Future<Output = Result<CancelImportTaskOutput, SdkError<CancelImportTaskError>>> {
-        (*self).cancel_import_task(builder)
+        self.deref().cancel_import_task(builder)
     }
     fn cancel_reserved_instances_listing(&self, builder: CancelReservedInstancesListingInputBuilder) -> impl Future<Output = Result<CancelReservedInstancesListingOutput, SdkError<CancelReservedInstancesListingError>>> {
-        (*self).cancel_reserved_instances_listing(builder)
+        self.deref().cancel_reserved_instances_listing(builder)
     }
     fn cancel_spot_fleet_requests(&self, builder: CancelSpotFleetRequestsInputBuilder) -> impl Future<Output = Result<CancelSpotFleetRequestsOutput, SdkError<CancelSpotFleetRequestsError>>> {
-        (*self).cancel_spot_fleet_requests(builder)
+        self.deref().cancel_spot_fleet_requests(builder)
     }
     fn cancel_spot_instance_requests(&self, builder: CancelSpotInstanceRequestsInputBuilder) -> impl Future<Output = Result<CancelSpotInstanceRequestsOutput, SdkError<CancelSpotInstanceRequestsError>>> {
-        (*self).cancel_spot_instance_requests(builder)
+        self.deref().cancel_spot_instance_requests(builder)
     }
     fn confirm_product_instance(&self, builder: ConfirmProductInstanceInputBuilder) -> impl Future<Output = Result<ConfirmProductInstanceOutput, SdkError<ConfirmProductInstanceError>>> {
-        (*self).confirm_product_instance(builder)
+        self.deref().confirm_product_instance(builder)
     }
     fn copy_fpga_image(&self, builder: CopyFpgaImageInputBuilder) -> impl Future<Output = Result<CopyFpgaImageOutput, SdkError<CopyFpgaImageError>>> {
-        (*self).copy_fpga_image(builder)
+        self.deref().copy_fpga_image(builder)
     }
     fn copy_image(&self, builder: CopyImageInputBuilder) -> impl Future<Output = Result<CopyImageOutput, SdkError<CopyImageError>>> {
-        (*self).copy_image(builder)
+        self.deref().copy_image(builder)
     }
     fn copy_snapshot(&self, builder: CopySnapshotInputBuilder) -> impl Future<Output = Result<CopySnapshotOutput, SdkError<CopySnapshotError>>> {
-        (*self).copy_snapshot(builder)
+        self.deref().copy_snapshot(builder)
     }
     fn create_capacity_reservation(&self, builder: CreateCapacityReservationInputBuilder) -> impl Future<Output = Result<CreateCapacityReservationOutput, SdkError<CreateCapacityReservationError>>> {
-        (*self).create_capacity_reservation(builder)
+        self.deref().create_capacity_reservation(builder)
     }
     fn create_capacity_reservation_fleet(&self, builder: CreateCapacityReservationFleetInputBuilder) -> impl Future<Output = Result<CreateCapacityReservationFleetOutput, SdkError<CreateCapacityReservationFleetError>>> {
-        (*self).create_capacity_reservation_fleet(builder)
+        self.deref().create_capacity_reservation_fleet(builder)
     }
     fn create_carrier_gateway(&self, builder: CreateCarrierGatewayInputBuilder) -> impl Future<Output = Result<CreateCarrierGatewayOutput, SdkError<CreateCarrierGatewayError>>> {
-        (*self).create_carrier_gateway(builder)
+        self.deref().create_carrier_gateway(builder)
     }
     fn create_client_vpn_endpoint(&self, builder: CreateClientVpnEndpointInputBuilder) -> impl Future<Output = Result<CreateClientVpnEndpointOutput, SdkError<CreateClientVpnEndpointError>>> {
-        (*self).create_client_vpn_endpoint(builder)
+        self.deref().create_client_vpn_endpoint(builder)
     }
     fn create_client_vpn_route(&self, builder: CreateClientVpnRouteInputBuilder) -> impl Future<Output = Result<CreateClientVpnRouteOutput, SdkError<CreateClientVpnRouteError>>> {
-        (*self).create_client_vpn_route(builder)
+        self.deref().create_client_vpn_route(builder)
     }
     fn create_coip_cidr(&self, builder: CreateCoipCidrInputBuilder) -> impl Future<Output = Result<CreateCoipCidrOutput, SdkError<CreateCoipCidrError>>> {
-        (*self).create_coip_cidr(builder)
+        self.deref().create_coip_cidr(builder)
     }
     fn create_coip_pool(&self, builder: CreateCoipPoolInputBuilder) -> impl Future<Output = Result<CreateCoipPoolOutput, SdkError<CreateCoipPoolError>>> {
-        (*self).create_coip_pool(builder)
+        self.deref().create_coip_pool(builder)
     }
     fn create_customer_gateway(&self, builder: CreateCustomerGatewayInputBuilder) -> impl Future<Output = Result<CreateCustomerGatewayOutput, SdkError<CreateCustomerGatewayError>>> {
-        (*self).create_customer_gateway(builder)
+        self.deref().create_customer_gateway(builder)
     }
     fn create_default_subnet(&self, builder: CreateDefaultSubnetInputBuilder) -> impl Future<Output = Result<CreateDefaultSubnetOutput, SdkError<CreateDefaultSubnetError>>> {
-        (*self).create_default_subnet(builder)
+        self.deref().create_default_subnet(builder)
     }
     fn create_default_vpc(&self, builder: CreateDefaultVpcInputBuilder) -> impl Future<Output = Result<CreateDefaultVpcOutput, SdkError<CreateDefaultVpcError>>> {
-        (*self).create_default_vpc(builder)
+        self.deref().create_default_vpc(builder)
     }
     fn create_dhcp_options(&self, builder: CreateDhcpOptionsInputBuilder) -> impl Future<Output = Result<CreateDhcpOptionsOutput, SdkError<CreateDhcpOptionsError>>> {
-        (*self).create_dhcp_options(builder)
+        self.deref().create_dhcp_options(builder)
     }
     fn create_egress_only_internet_gateway(&self, builder: CreateEgressOnlyInternetGatewayInputBuilder) -> impl Future<Output = Result<CreateEgressOnlyInternetGatewayOutput, SdkError<CreateEgressOnlyInternetGatewayError>>> {
-        (*self).create_egress_only_internet_gateway(builder)
+        self.deref().create_egress_only_internet_gateway(builder)
     }
     fn create_fleet(&self, builder: CreateFleetInputBuilder) -> impl Future<Output = Result<CreateFleetOutput, SdkError<CreateFleetError>>> {
-        (*self).create_fleet(builder)
+        self.deref().create_fleet(builder)
     }
     fn create_flow_logs(&self, builder: CreateFlowLogsInputBuilder) -> impl Future<Output = Result<CreateFlowLogsOutput, SdkError<CreateFlowLogsError>>> {
-        (*self).create_flow_logs(builder)
+        self.deref().create_flow_logs(builder)
     }
     fn create_fpga_image(&self, builder: CreateFpgaImageInputBuilder) -> impl Future<Output = Result<CreateFpgaImageOutput, SdkError<CreateFpgaImageError>>> {
-        (*self).create_fpga_image(builder)
+        self.deref().create_fpga_image(builder)
     }
     fn create_image(&self, builder: CreateImageInputBuilder) -> impl Future<Output = Result<CreateImageOutput, SdkError<CreateImageError>>> {
-        (*self).create_image(builder)
+        self.deref().create_image(builder)
     }
     fn create_instance_connect_endpoint(&self, builder: CreateInstanceConnectEndpointInputBuilder) -> impl Future<Output = Result<CreateInstanceConnectEndpointOutput, SdkError<CreateInstanceConnectEndpointError>>> {
-        (*self).create_instance_connect_endpoint(builder)
+        self.deref().create_instance_connect_endpoint(builder)
     }
     fn create_instance_event_window(&self, builder: CreateInstanceEventWindowInputBuilder) -> impl Future<Output = Result<CreateInstanceEventWindowOutput, SdkError<CreateInstanceEventWindowError>>> {
-        (*self).create_instance_event_window(builder)
+        self.deref().create_instance_event_window(builder)
     }
     fn create_instance_export_task(&self, builder: CreateInstanceExportTaskInputBuilder) -> impl Future<Output = Result<CreateInstanceExportTaskOutput, SdkError<CreateInstanceExportTaskError>>> {
-        (*self).create_instance_export_task(builder)
+        self.deref().create_instance_export_task(builder)
     }
     fn create_internet_gateway(&self, builder: CreateInternetGatewayInputBuilder) -> impl Future<Output = Result<CreateInternetGatewayOutput, SdkError<CreateInternetGatewayError>>> {
-        (*self).create_internet_gateway(builder)
+        self.deref().create_internet_gateway(builder)
     }
     fn create_ipam(&self, builder: CreateIpamInputBuilder) -> impl Future<Output = Result<CreateIpamOutput, SdkError<CreateIpamError>>> {
-        (*self).create_ipam(builder)
+        self.deref().create_ipam(builder)
     }
     fn create_ipam_external_resource_verification_token(&self, builder: CreateIpamExternalResourceVerificationTokenInputBuilder) -> impl Future<Output = Result<CreateIpamExternalResourceVerificationTokenOutput, SdkError<CreateIpamExternalResourceVerificationTokenError>>> {
-        (*self).create_ipam_external_resource_verification_token(builder)
+        self.deref().create_ipam_external_resource_verification_token(builder)
     }
     fn create_ipam_pool(&self, builder: CreateIpamPoolInputBuilder) -> impl Future<Output = Result<CreateIpamPoolOutput, SdkError<CreateIpamPoolError>>> {
-        (*self).create_ipam_pool(builder)
+        self.deref().create_ipam_pool(builder)
     }
     fn create_ipam_resource_discovery(&self, builder: CreateIpamResourceDiscoveryInputBuilder) -> impl Future<Output = Result<CreateIpamResourceDiscoveryOutput, SdkError<CreateIpamResourceDiscoveryError>>> {
-        (*self).create_ipam_resource_discovery(builder)
+        self.deref().create_ipam_resource_discovery(builder)
     }
     fn create_ipam_scope(&self, builder: CreateIpamScopeInputBuilder) -> impl Future<Output = Result<CreateIpamScopeOutput, SdkError<CreateIpamScopeError>>> {
-        (*self).create_ipam_scope(builder)
+        self.deref().create_ipam_scope(builder)
     }
     fn create_key_pair(&self, builder: CreateKeyPairInputBuilder) -> impl Future<Output = Result<CreateKeyPairOutput, SdkError<CreateKeyPairError>>> {
-        (*self).create_key_pair(builder)
+        self.deref().create_key_pair(builder)
     }
     fn create_launch_template(&self, builder: CreateLaunchTemplateInputBuilder) -> impl Future<Output = Result<CreateLaunchTemplateOutput, SdkError<CreateLaunchTemplateError>>> {
-        (*self).create_launch_template(builder)
+        self.deref().create_launch_template(builder)
     }
     fn create_launch_template_version(&self, builder: CreateLaunchTemplateVersionInputBuilder) -> impl Future<Output = Result<CreateLaunchTemplateVersionOutput, SdkError<CreateLaunchTemplateVersionError>>> {
-        (*self).create_launch_template_version(builder)
+        self.deref().create_launch_template_version(builder)
     }
     fn create_local_gateway_route(&self, builder: CreateLocalGatewayRouteInputBuilder) -> impl Future<Output = Result<CreateLocalGatewayRouteOutput, SdkError<CreateLocalGatewayRouteError>>> {
-        (*self).create_local_gateway_route(builder)
+        self.deref().create_local_gateway_route(builder)
     }
     fn create_local_gateway_route_table(&self, builder: CreateLocalGatewayRouteTableInputBuilder) -> impl Future<Output = Result<CreateLocalGatewayRouteTableOutput, SdkError<CreateLocalGatewayRouteTableError>>> {
-        (*self).create_local_gateway_route_table(builder)
+        self.deref().create_local_gateway_route_table(builder)
     }
     fn create_local_gateway_route_table_virtual_interface_group_association(&self, builder: CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationInputBuilder) -> impl Future<Output = Result<CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, SdkError<CreateLocalGatewayRouteTableVirtualInterfaceGroupAssociationError>>> {
-        (*self).create_local_gateway_route_table_virtual_interface_group_association(builder)
+        self.deref().create_local_gateway_route_table_virtual_interface_group_association(builder)
     }
     fn create_local_gateway_route_table_vpc_association(&self, builder: CreateLocalGatewayRouteTableVpcAssociationInputBuilder) -> impl Future<Output = Result<CreateLocalGatewayRouteTableVpcAssociationOutput, SdkError<CreateLocalGatewayRouteTableVpcAssociationError>>> {
-        (*self).create_local_gateway_route_table_vpc_association(builder)
+        self.deref().create_local_gateway_route_table_vpc_association(builder)
     }
     fn create_managed_prefix_list(&self, builder: CreateManagedPrefixListInputBuilder) -> impl Future<Output = Result<CreateManagedPrefixListOutput, SdkError<CreateManagedPrefixListError>>> {
-        (*self).create_managed_prefix_list(builder)
+        self.deref().create_managed_prefix_list(builder)
     }
     fn create_nat_gateway(&self, builder: CreateNatGatewayInputBuilder) -> impl Future<Output = Result<CreateNatGatewayOutput, SdkError<CreateNatGatewayError>>> {
-        (*self).create_nat_gateway(builder)
+        self.deref().create_nat_gateway(builder)
     }
     fn create_network_acl(&self, builder: CreateNetworkAclInputBuilder) -> impl Future<Output = Result<CreateNetworkAclOutput, SdkError<CreateNetworkAclError>>> {
-        (*self).create_network_acl(builder)
+        self.deref().create_network_acl(builder)
     }
     fn create_network_acl_entry(&self, builder: CreateNetworkAclEntryInputBuilder) -> impl Future<Output = Result<CreateNetworkAclEntryOutput, SdkError<CreateNetworkAclEntryError>>> {
-        (*self).create_network_acl_entry(builder)
+        self.deref().create_network_acl_entry(builder)
     }
     fn create_network_insights_access_scope(&self, builder: CreateNetworkInsightsAccessScopeInputBuilder) -> impl Future<Output = Result<CreateNetworkInsightsAccessScopeOutput, SdkError<CreateNetworkInsightsAccessScopeError>>> {
-        (*self).create_network_insights_access_scope(builder)
+        self.deref().create_network_insights_access_scope(builder)
     }
     fn create_network_insights_path(&self, builder: CreateNetworkInsightsPathInputBuilder) -> impl Future<Output = Result<CreateNetworkInsightsPathOutput, SdkError<CreateNetworkInsightsPathError>>> {
-        (*self).create_network_insights_path(builder)
+        self.deref().create_network_insights_path(builder)
     }
     fn create_network_interface(&self, builder: CreateNetworkInterfaceInputBuilder) -> impl Future<Output = Result<CreateNetworkInterfaceOutput, SdkError<CreateNetworkInterfaceError>>> {
-        (*self).create_network_interface(builder)
+        self.deref().create_network_interface(builder)
     }
     fn create_network_interface_permission(&self, builder: CreateNetworkInterfacePermissionInputBuilder) -> impl Future<Output = Result<CreateNetworkInterfacePermissionOutput, SdkError<CreateNetworkInterfacePermissionError>>> {
-        (*self).create_network_interface_permission(builder)
+        self.deref().create_network_interface_permission(builder)
     }
     fn create_placement_group(&self, builder: CreatePlacementGroupInputBuilder) -> impl Future<Output = Result<CreatePlacementGroupOutput, SdkError<CreatePlacementGroupError>>> {
-        (*self).create_placement_group(builder)
+        self.deref().create_placement_group(builder)
     }
     fn create_public_ipv4_pool(&self, builder: CreatePublicIpv4PoolInputBuilder) -> impl Future<Output = Result<CreatePublicIpv4PoolOutput, SdkError<CreatePublicIpv4PoolError>>> {
-        (*self).create_public_ipv4_pool(builder)
+        self.deref().create_public_ipv4_pool(builder)
     }
     fn create_replace_root_volume_task(&self, builder: CreateReplaceRootVolumeTaskInputBuilder) -> impl Future<Output = Result<CreateReplaceRootVolumeTaskOutput, SdkError<CreateReplaceRootVolumeTaskError>>> {
-        (*self).create_replace_root_volume_task(builder)
+        self.deref().create_replace_root_volume_task(builder)
     }
     fn create_reserved_instances_listing(&self, builder: CreateReservedInstancesListingInputBuilder) -> impl Future<Output = Result<CreateReservedInstancesListingOutput, SdkError<CreateReservedInstancesListingError>>> {
-        (*self).create_reserved_instances_listing(builder)
+        self.deref().create_reserved_instances_listing(builder)
     }
     fn create_restore_image_task(&self, builder: CreateRestoreImageTaskInputBuilder) -> impl Future<Output = Result<CreateRestoreImageTaskOutput, SdkError<CreateRestoreImageTaskError>>> {
-        (*self).create_restore_image_task(builder)
+        self.deref().create_restore_image_task(builder)
     }
     fn create_route(&self, builder: CreateRouteInputBuilder) -> impl Future<Output = Result<CreateRouteOutput, SdkError<CreateRouteError>>> {
-        (*self).create_route(builder)
+        self.deref().create_route(builder)
     }
     fn create_route_table(&self, builder: CreateRouteTableInputBuilder) -> impl Future<Output = Result<CreateRouteTableOutput, SdkError<CreateRouteTableError>>> {
-        (*self).create_route_table(builder)
+        self.deref().create_route_table(builder)
     }
     fn create_security_group(&self, builder: CreateSecurityGroupInputBuilder) -> impl Future<Output = Result<CreateSecurityGroupOutput, SdkError<CreateSecurityGroupError>>> {
-        (*self).create_security_group(builder)
+        self.deref().create_security_group(builder)
     }
     fn create_snapshot(&self, builder: CreateSnapshotInputBuilder) -> impl Future<Output = Result<CreateSnapshotOutput, SdkError<CreateSnapshotError>>> {
-        (*self).create_snapshot(builder)
+        self.deref().create_snapshot(builder)
     }
     fn create_snapshots(&self, builder: CreateSnapshotsInputBuilder) -> impl Future<Output = Result<CreateSnapshotsOutput, SdkError<CreateSnapshotsError>>> {
-        (*self).create_snapshots(builder)
+        self.deref().create_snapshots(builder)
     }
     fn create_spot_datafeed_subscription(&self, builder: CreateSpotDatafeedSubscriptionInputBuilder) -> impl Future<Output = Result<CreateSpotDatafeedSubscriptionOutput, SdkError<CreateSpotDatafeedSubscriptionError>>> {
-        (*self).create_spot_datafeed_subscription(builder)
+        self.deref().create_spot_datafeed_subscription(builder)
     }
     fn create_store_image_task(&self, builder: CreateStoreImageTaskInputBuilder) -> impl Future<Output = Result<CreateStoreImageTaskOutput, SdkError<CreateStoreImageTaskError>>> {
-        (*self).create_store_image_task(builder)
+        self.deref().create_store_image_task(builder)
     }
     fn create_subnet(&self, builder: CreateSubnetInputBuilder) -> impl Future<Output = Result<CreateSubnetOutput, SdkError<CreateSubnetError>>> {
-        (*self).create_subnet(builder)
+        self.deref().create_subnet(builder)
     }
     fn create_subnet_cidr_reservation(&self, builder: CreateSubnetCidrReservationInputBuilder) -> impl Future<Output = Result<CreateSubnetCidrReservationOutput, SdkError<CreateSubnetCidrReservationError>>> {
-        (*self).create_subnet_cidr_reservation(builder)
+        self.deref().create_subnet_cidr_reservation(builder)
     }
     fn create_tags(&self, builder: CreateTagsInputBuilder) -> impl Future<Output = Result<CreateTagsOutput, SdkError<CreateTagsError>>> {
-        (*self).create_tags(builder)
+        self.deref().create_tags(builder)
     }
     fn create_traffic_mirror_filter(&self, builder: CreateTrafficMirrorFilterInputBuilder) -> impl Future<Output = Result<CreateTrafficMirrorFilterOutput, SdkError<CreateTrafficMirrorFilterError>>> {
-        (*self).create_traffic_mirror_filter(builder)
+        self.deref().create_traffic_mirror_filter(builder)
     }
     fn create_traffic_mirror_filter_rule(&self, builder: CreateTrafficMirrorFilterRuleInputBuilder) -> impl Future<Output = Result<CreateTrafficMirrorFilterRuleOutput, SdkError<CreateTrafficMirrorFilterRuleError>>> {
-        (*self).create_traffic_mirror_filter_rule(builder)
+        self.deref().create_traffic_mirror_filter_rule(builder)
     }
     fn create_traffic_mirror_session(&self, builder: CreateTrafficMirrorSessionInputBuilder) -> impl Future<Output = Result<CreateTrafficMirrorSessionOutput, SdkError<CreateTrafficMirrorSessionError>>> {
-        (*self).create_traffic_mirror_session(builder)
+        self.deref().create_traffic_mirror_session(builder)
     }
     fn create_traffic_mirror_target(&self, builder: CreateTrafficMirrorTargetInputBuilder) -> impl Future<Output = Result<CreateTrafficMirrorTargetOutput, SdkError<CreateTrafficMirrorTargetError>>> {
-        (*self).create_traffic_mirror_target(builder)
+        self.deref().create_traffic_mirror_target(builder)
     }
     fn create_transit_gateway(&self, builder: CreateTransitGatewayInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayOutput, SdkError<CreateTransitGatewayError>>> {
-        (*self).create_transit_gateway(builder)
+        self.deref().create_transit_gateway(builder)
     }
     fn create_transit_gateway_connect(&self, builder: CreateTransitGatewayConnectInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayConnectOutput, SdkError<CreateTransitGatewayConnectError>>> {
-        (*self).create_transit_gateway_connect(builder)
+        self.deref().create_transit_gateway_connect(builder)
     }
     fn create_transit_gateway_connect_peer(&self, builder: CreateTransitGatewayConnectPeerInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayConnectPeerOutput, SdkError<CreateTransitGatewayConnectPeerError>>> {
-        (*self).create_transit_gateway_connect_peer(builder)
+        self.deref().create_transit_gateway_connect_peer(builder)
     }
     fn create_transit_gateway_multicast_domain(&self, builder: CreateTransitGatewayMulticastDomainInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayMulticastDomainOutput, SdkError<CreateTransitGatewayMulticastDomainError>>> {
-        (*self).create_transit_gateway_multicast_domain(builder)
+        self.deref().create_transit_gateway_multicast_domain(builder)
     }
     fn create_transit_gateway_peering_attachment(&self, builder: CreateTransitGatewayPeeringAttachmentInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayPeeringAttachmentOutput, SdkError<CreateTransitGatewayPeeringAttachmentError>>> {
-        (*self).create_transit_gateway_peering_attachment(builder)
+        self.deref().create_transit_gateway_peering_attachment(builder)
     }
     fn create_transit_gateway_policy_table(&self, builder: CreateTransitGatewayPolicyTableInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayPolicyTableOutput, SdkError<CreateTransitGatewayPolicyTableError>>> {
-        (*self).create_transit_gateway_policy_table(builder)
+        self.deref().create_transit_gateway_policy_table(builder)
     }
     fn create_transit_gateway_prefix_list_reference(&self, builder: CreateTransitGatewayPrefixListReferenceInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayPrefixListReferenceOutput, SdkError<CreateTransitGatewayPrefixListReferenceError>>> {
-        (*self).create_transit_gateway_prefix_list_reference(builder)
+        self.deref().create_transit_gateway_prefix_list_reference(builder)
     }
     fn create_transit_gateway_route(&self, builder: CreateTransitGatewayRouteInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayRouteOutput, SdkError<CreateTransitGatewayRouteError>>> {
-        (*self).create_transit_gateway_route(builder)
+        self.deref().create_transit_gateway_route(builder)
     }
     fn create_transit_gateway_route_table(&self, builder: CreateTransitGatewayRouteTableInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayRouteTableOutput, SdkError<CreateTransitGatewayRouteTableError>>> {
-        (*self).create_transit_gateway_route_table(builder)
+        self.deref().create_transit_gateway_route_table(builder)
     }
     fn create_transit_gateway_route_table_announcement(&self, builder: CreateTransitGatewayRouteTableAnnouncementInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayRouteTableAnnouncementOutput, SdkError<CreateTransitGatewayRouteTableAnnouncementError>>> {
-        (*self).create_transit_gateway_route_table_announcement(builder)
+        self.deref().create_transit_gateway_route_table_announcement(builder)
     }
     fn create_transit_gateway_vpc_attachment(&self, builder: CreateTransitGatewayVpcAttachmentInputBuilder) -> impl Future<Output = Result<CreateTransitGatewayVpcAttachmentOutput, SdkError<CreateTransitGatewayVpcAttachmentError>>> {
-        (*self).create_transit_gateway_vpc_attachment(builder)
+        self.deref().create_transit_gateway_vpc_attachment(builder)
     }
     fn create_verified_access_endpoint(&self, builder: CreateVerifiedAccessEndpointInputBuilder) -> impl Future<Output = Result<CreateVerifiedAccessEndpointOutput, SdkError<CreateVerifiedAccessEndpointError>>> {
-        (*self).create_verified_access_endpoint(builder)
+        self.deref().create_verified_access_endpoint(builder)
     }
     fn create_verified_access_group(&self, builder: CreateVerifiedAccessGroupInputBuilder) -> impl Future<Output = Result<CreateVerifiedAccessGroupOutput, SdkError<CreateVerifiedAccessGroupError>>> {
-        (*self).create_verified_access_group(builder)
+        self.deref().create_verified_access_group(builder)
     }
     fn create_verified_access_instance(&self, builder: CreateVerifiedAccessInstanceInputBuilder) -> impl Future<Output = Result<CreateVerifiedAccessInstanceOutput, SdkError<CreateVerifiedAccessInstanceError>>> {
-        (*self).create_verified_access_instance(builder)
+        self.deref().create_verified_access_instance(builder)
     }
     fn create_verified_access_trust_provider(&self, builder: CreateVerifiedAccessTrustProviderInputBuilder) -> impl Future<Output = Result<CreateVerifiedAccessTrustProviderOutput, SdkError<CreateVerifiedAccessTrustProviderError>>> {
-        (*self).create_verified_access_trust_provider(builder)
+        self.deref().create_verified_access_trust_provider(builder)
     }
     fn create_volume(&self, builder: CreateVolumeInputBuilder) -> impl Future<Output = Result<CreateVolumeOutput, SdkError<CreateVolumeError>>> {
-        (*self).create_volume(builder)
+        self.deref().create_volume(builder)
     }
     fn create_vpc(&self, builder: CreateVpcInputBuilder) -> impl Future<Output = Result<CreateVpcOutput, SdkError<CreateVpcError>>> {
-        (*self).create_vpc(builder)
+        self.deref().create_vpc(builder)
     }
     fn create_vpc_endpoint(&self, builder: CreateVpcEndpointInputBuilder) -> impl Future<Output = Result<CreateVpcEndpointOutput, SdkError<CreateVpcEndpointError>>> {
-        (*self).create_vpc_endpoint(builder)
+        self.deref().create_vpc_endpoint(builder)
     }
     fn create_vpc_endpoint_connection_notification(&self, builder: CreateVpcEndpointConnectionNotificationInputBuilder) -> impl Future<Output = Result<CreateVpcEndpointConnectionNotificationOutput, SdkError<CreateVpcEndpointConnectionNotificationError>>> {
-        (*self).create_vpc_endpoint_connection_notification(builder)
+        self.deref().create_vpc_endpoint_connection_notification(builder)
     }
     fn create_vpc_endpoint_service_configuration(&self, builder: CreateVpcEndpointServiceConfigurationInputBuilder) -> impl Future<Output = Result<CreateVpcEndpointServiceConfigurationOutput, SdkError<CreateVpcEndpointServiceConfigurationError>>> {
-        (*self).create_vpc_endpoint_service_configuration(builder)
+        self.deref().create_vpc_endpoint_service_configuration(builder)
     }
     fn create_vpc_peering_connection(&self, builder: CreateVpcPeeringConnectionInputBuilder) -> impl Future<Output = Result<CreateVpcPeeringConnectionOutput, SdkError<CreateVpcPeeringConnectionError>>> {
-        (*self).create_vpc_peering_connection(builder)
+        self.deref().create_vpc_peering_connection(builder)
     }
     fn create_vpn_connection(&self, builder: CreateVpnConnectionInputBuilder) -> impl Future<Output = Result<CreateVpnConnectionOutput, SdkError<CreateVpnConnectionError>>> {
-        (*self).create_vpn_connection(builder)
+        self.deref().create_vpn_connection(builder)
     }
     fn create_vpn_connection_route(&self, builder: CreateVpnConnectionRouteInputBuilder) -> impl Future<Output = Result<CreateVpnConnectionRouteOutput, SdkError<CreateVpnConnectionRouteError>>> {
-        (*self).create_vpn_connection_route(builder)
+        self.deref().create_vpn_connection_route(builder)
     }
     fn create_vpn_gateway(&self, builder: CreateVpnGatewayInputBuilder) -> impl Future<Output = Result<CreateVpnGatewayOutput, SdkError<CreateVpnGatewayError>>> {
-        (*self).create_vpn_gateway(builder)
+        self.deref().create_vpn_gateway(builder)
     }
     fn delete_carrier_gateway(&self, builder: DeleteCarrierGatewayInputBuilder) -> impl Future<Output = Result<DeleteCarrierGatewayOutput, SdkError<DeleteCarrierGatewayError>>> {
-        (*self).delete_carrier_gateway(builder)
+        self.deref().delete_carrier_gateway(builder)
     }
     fn delete_client_vpn_endpoint(&self, builder: DeleteClientVpnEndpointInputBuilder) -> impl Future<Output = Result<DeleteClientVpnEndpointOutput, SdkError<DeleteClientVpnEndpointError>>> {
-        (*self).delete_client_vpn_endpoint(builder)
+        self.deref().delete_client_vpn_endpoint(builder)
     }
     fn delete_client_vpn_route(&self, builder: DeleteClientVpnRouteInputBuilder) -> impl Future<Output = Result<DeleteClientVpnRouteOutput, SdkError<DeleteClientVpnRouteError>>> {
-        (*self).delete_client_vpn_route(builder)
+        self.deref().delete_client_vpn_route(builder)
     }
     fn delete_coip_cidr(&self, builder: DeleteCoipCidrInputBuilder) -> impl Future<Output = Result<DeleteCoipCidrOutput, SdkError<DeleteCoipCidrError>>> {
-        (*self).delete_coip_cidr(builder)
+        self.deref().delete_coip_cidr(builder)
     }
     fn delete_coip_pool(&self, builder: DeleteCoipPoolInputBuilder) -> impl Future<Output = Result<DeleteCoipPoolOutput, SdkError<DeleteCoipPoolError>>> {
-        (*self).delete_coip_pool(builder)
+        self.deref().delete_coip_pool(builder)
     }
     fn delete_customer_gateway(&self, builder: DeleteCustomerGatewayInputBuilder) -> impl Future<Output = Result<DeleteCustomerGatewayOutput, SdkError<DeleteCustomerGatewayError>>> {
-        (*self).delete_customer_gateway(builder)
+        self.deref().delete_customer_gateway(builder)
     }
     fn delete_dhcp_options(&self, builder: DeleteDhcpOptionsInputBuilder) -> impl Future<Output = Result<DeleteDhcpOptionsOutput, SdkError<DeleteDhcpOptionsError>>> {
-        (*self).delete_dhcp_options(builder)
+        self.deref().delete_dhcp_options(builder)
     }
     fn delete_egress_only_internet_gateway(&self, builder: DeleteEgressOnlyInternetGatewayInputBuilder) -> impl Future<Output = Result<DeleteEgressOnlyInternetGatewayOutput, SdkError<DeleteEgressOnlyInternetGatewayError>>> {
-        (*self).delete_egress_only_internet_gateway(builder)
+        self.deref().delete_egress_only_internet_gateway(builder)
     }
     fn delete_fleets(&self, builder: DeleteFleetsInputBuilder) -> impl Future<Output = Result<DeleteFleetsOutput, SdkError<DeleteFleetsError>>> {
-        (*self).delete_fleets(builder)
+        self.deref().delete_fleets(builder)
     }
     fn delete_flow_logs(&self, builder: DeleteFlowLogsInputBuilder) -> impl Future<Output = Result<DeleteFlowLogsOutput, SdkError<DeleteFlowLogsError>>> {
-        (*self).delete_flow_logs(builder)
+        self.deref().delete_flow_logs(builder)
     }
     fn delete_fpga_image(&self, builder: DeleteFpgaImageInputBuilder) -> impl Future<Output = Result<DeleteFpgaImageOutput, SdkError<DeleteFpgaImageError>>> {
-        (*self).delete_fpga_image(builder)
+        self.deref().delete_fpga_image(builder)
     }
     fn delete_instance_connect_endpoint(&self, builder: DeleteInstanceConnectEndpointInputBuilder) -> impl Future<Output = Result<DeleteInstanceConnectEndpointOutput, SdkError<DeleteInstanceConnectEndpointError>>> {
-        (*self).delete_instance_connect_endpoint(builder)
+        self.deref().delete_instance_connect_endpoint(builder)
     }
     fn delete_instance_event_window(&self, builder: DeleteInstanceEventWindowInputBuilder) -> impl Future<Output = Result<DeleteInstanceEventWindowOutput, SdkError<DeleteInstanceEventWindowError>>> {
-        (*self).delete_instance_event_window(builder)
+        self.deref().delete_instance_event_window(builder)
     }
     fn delete_internet_gateway(&self, builder: DeleteInternetGatewayInputBuilder) -> impl Future<Output = Result<DeleteInternetGatewayOutput, SdkError<DeleteInternetGatewayError>>> {
-        (*self).delete_internet_gateway(builder)
+        self.deref().delete_internet_gateway(builder)
     }
     fn delete_ipam(&self, builder: DeleteIpamInputBuilder) -> impl Future<Output = Result<DeleteIpamOutput, SdkError<DeleteIpamError>>> {
-        (*self).delete_ipam(builder)
+        self.deref().delete_ipam(builder)
     }
     fn delete_ipam_external_resource_verification_token(&self, builder: DeleteIpamExternalResourceVerificationTokenInputBuilder) -> impl Future<Output = Result<DeleteIpamExternalResourceVerificationTokenOutput, SdkError<DeleteIpamExternalResourceVerificationTokenError>>> {
-        (*self).delete_ipam_external_resource_verification_token(builder)
+        self.deref().delete_ipam_external_resource_verification_token(builder)
     }
     fn delete_ipam_pool(&self, builder: DeleteIpamPoolInputBuilder) -> impl Future<Output = Result<DeleteIpamPoolOutput, SdkError<DeleteIpamPoolError>>> {
-        (*self).delete_ipam_pool(builder)
+        self.deref().delete_ipam_pool(builder)
     }
     fn delete_ipam_resource_discovery(&self, builder: DeleteIpamResourceDiscoveryInputBuilder) -> impl Future<Output = Result<DeleteIpamResourceDiscoveryOutput, SdkError<DeleteIpamResourceDiscoveryError>>> {
-        (*self).delete_ipam_resource_discovery(builder)
+        self.deref().delete_ipam_resource_discovery(builder)
     }
     fn delete_ipam_scope(&self, builder: DeleteIpamScopeInputBuilder) -> impl Future<Output = Result<DeleteIpamScopeOutput, SdkError<DeleteIpamScopeError>>> {
-        (*self).delete_ipam_scope(builder)
+        self.deref().delete_ipam_scope(builder)
     }
     fn delete_key_pair(&self, builder: DeleteKeyPairInputBuilder) -> impl Future<Output = Result<DeleteKeyPairOutput, SdkError<DeleteKeyPairError>>> {
-        (*self).delete_key_pair(builder)
+        self.deref().delete_key_pair(builder)
     }
     fn delete_launch_template(&self, builder: DeleteLaunchTemplateInputBuilder) -> impl Future<Output = Result<DeleteLaunchTemplateOutput, SdkError<DeleteLaunchTemplateError>>> {
-        (*self).delete_launch_template(builder)
+        self.deref().delete_launch_template(builder)
     }
     fn delete_launch_template_versions(&self, builder: DeleteLaunchTemplateVersionsInputBuilder) -> impl Future<Output = Result<DeleteLaunchTemplateVersionsOutput, SdkError<DeleteLaunchTemplateVersionsError>>> {
-        (*self).delete_launch_template_versions(builder)
+        self.deref().delete_launch_template_versions(builder)
     }
     fn delete_local_gateway_route(&self, builder: DeleteLocalGatewayRouteInputBuilder) -> impl Future<Output = Result<DeleteLocalGatewayRouteOutput, SdkError<DeleteLocalGatewayRouteError>>> {
-        (*self).delete_local_gateway_route(builder)
+        self.deref().delete_local_gateway_route(builder)
     }
     fn delete_local_gateway_route_table(&self, builder: DeleteLocalGatewayRouteTableInputBuilder) -> impl Future<Output = Result<DeleteLocalGatewayRouteTableOutput, SdkError<DeleteLocalGatewayRouteTableError>>> {
-        (*self).delete_local_gateway_route_table(builder)
+        self.deref().delete_local_gateway_route_table(builder)
     }
     fn delete_local_gateway_route_table_virtual_interface_group_association(&self, builder: DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationInputBuilder) -> impl Future<Output = Result<DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationOutput, SdkError<DeleteLocalGatewayRouteTableVirtualInterfaceGroupAssociationError>>> {
-        (*self).delete_local_gateway_route_table_virtual_interface_group_association(builder)
+        self.deref().delete_local_gateway_route_table_virtual_interface_group_association(builder)
     }
     fn delete_local_gateway_route_table_vpc_association(&self, builder: DeleteLocalGatewayRouteTableVpcAssociationInputBuilder) -> impl Future<Output = Result<DeleteLocalGatewayRouteTableVpcAssociationOutput, SdkError<DeleteLocalGatewayRouteTableVpcAssociationError>>> {
-        (*self).delete_local_gateway_route_table_vpc_association(builder)
+        self.deref().delete_local_gateway_route_table_vpc_association(builder)
     }
     fn delete_managed_prefix_list(&self, builder: DeleteManagedPrefixListInputBuilder) -> impl Future<Output = Result<DeleteManagedPrefixListOutput, SdkError<DeleteManagedPrefixListError>>> {
-        (*self).delete_managed_prefix_list(builder)
+        self.deref().delete_managed_prefix_list(builder)
     }
     fn delete_nat_gateway(&self, builder: DeleteNatGatewayInputBuilder) -> impl Future<Output = Result<DeleteNatGatewayOutput, SdkError<DeleteNatGatewayError>>> {
-        (*self).delete_nat_gateway(builder)
+        self.deref().delete_nat_gateway(builder)
     }
     fn delete_network_acl(&self, builder: DeleteNetworkAclInputBuilder) -> impl Future<Output = Result<DeleteNetworkAclOutput, SdkError<DeleteNetworkAclError>>> {
-        (*self).delete_network_acl(builder)
+        self.deref().delete_network_acl(builder)
     }
     fn delete_network_acl_entry(&self, builder: DeleteNetworkAclEntryInputBuilder) -> impl Future<Output = Result<DeleteNetworkAclEntryOutput, SdkError<DeleteNetworkAclEntryError>>> {
-        (*self).delete_network_acl_entry(builder)
+        self.deref().delete_network_acl_entry(builder)
     }
     fn delete_network_insights_access_scope(&self, builder: DeleteNetworkInsightsAccessScopeInputBuilder) -> impl Future<Output = Result<DeleteNetworkInsightsAccessScopeOutput, SdkError<DeleteNetworkInsightsAccessScopeError>>> {
-        (*self).delete_network_insights_access_scope(builder)
+        self.deref().delete_network_insights_access_scope(builder)
     }
     fn delete_network_insights_access_scope_analysis(&self, builder: DeleteNetworkInsightsAccessScopeAnalysisInputBuilder) -> impl Future<Output = Result<DeleteNetworkInsightsAccessScopeAnalysisOutput, SdkError<DeleteNetworkInsightsAccessScopeAnalysisError>>> {
-        (*self).delete_network_insights_access_scope_analysis(builder)
+        self.deref().delete_network_insights_access_scope_analysis(builder)
     }
     fn delete_network_insights_analysis(&self, builder: DeleteNetworkInsightsAnalysisInputBuilder) -> impl Future<Output = Result<DeleteNetworkInsightsAnalysisOutput, SdkError<DeleteNetworkInsightsAnalysisError>>> {
-        (*self).delete_network_insights_analysis(builder)
+        self.deref().delete_network_insights_analysis(builder)
     }
     fn delete_network_insights_path(&self, builder: DeleteNetworkInsightsPathInputBuilder) -> impl Future<Output = Result<DeleteNetworkInsightsPathOutput, SdkError<DeleteNetworkInsightsPathError>>> {
-        (*self).delete_network_insights_path(builder)
+        self.deref().delete_network_insights_path(builder)
     }
     fn delete_network_interface(&self, builder: DeleteNetworkInterfaceInputBuilder) -> impl Future<Output = Result<DeleteNetworkInterfaceOutput, SdkError<DeleteNetworkInterfaceError>>> {
-        (*self).delete_network_interface(builder)
+        self.deref().delete_network_interface(builder)
     }
     fn delete_network_interface_permission(&self, builder: DeleteNetworkInterfacePermissionInputBuilder) -> impl Future<Output = Result<DeleteNetworkInterfacePermissionOutput, SdkError<DeleteNetworkInterfacePermissionError>>> {
-        (*self).delete_network_interface_permission(builder)
+        self.deref().delete_network_interface_permission(builder)
     }
     fn delete_placement_group(&self, builder: DeletePlacementGroupInputBuilder) -> impl Future<Output = Result<DeletePlacementGroupOutput, SdkError<DeletePlacementGroupError>>> {
-        (*self).delete_placement_group(builder)
+        self.deref().delete_placement_group(builder)
     }
     fn delete_public_ipv4_pool(&self, builder: DeletePublicIpv4PoolInputBuilder) -> impl Future<Output = Result<DeletePublicIpv4PoolOutput, SdkError<DeletePublicIpv4PoolError>>> {
-        (*self).delete_public_ipv4_pool(builder)
+        self.deref().delete_public_ipv4_pool(builder)
     }
     fn delete_queued_reserved_instances(&self, builder: DeleteQueuedReservedInstancesInputBuilder) -> impl Future<Output = Result<DeleteQueuedReservedInstancesOutput, SdkError<DeleteQueuedReservedInstancesError>>> {
-        (*self).delete_queued_reserved_instances(builder)
+        self.deref().delete_queued_reserved_instances(builder)
     }
     fn delete_route(&self, builder: DeleteRouteInputBuilder) -> impl Future<Output = Result<DeleteRouteOutput, SdkError<DeleteRouteError>>> {
-        (*self).delete_route(builder)
+        self.deref().delete_route(builder)
     }
     fn delete_route_table(&self, builder: DeleteRouteTableInputBuilder) -> impl Future<Output = Result<DeleteRouteTableOutput, SdkError<DeleteRouteTableError>>> {
-        (*self).delete_route_table(builder)
+        self.deref().delete_route_table(builder)
     }
     fn delete_security_group(&self, builder: DeleteSecurityGroupInputBuilder) -> impl Future<Output = Result<DeleteSecurityGroupOutput, SdkError<DeleteSecurityGroupError>>> {
-        (*self).delete_security_group(builder)
+        self.deref().delete_security_group(builder)
     }
     fn delete_snapshot(&self, builder: DeleteSnapshotInputBuilder) -> impl Future<Output = Result<DeleteSnapshotOutput, SdkError<DeleteSnapshotError>>> {
-        (*self).delete_snapshot(builder)
+        self.deref().delete_snapshot(builder)
     }
     fn delete_spot_datafeed_subscription(&self, builder: DeleteSpotDatafeedSubscriptionInputBuilder) -> impl Future<Output = Result<DeleteSpotDatafeedSubscriptionOutput, SdkError<DeleteSpotDatafeedSubscriptionError>>> {
-        (*self).delete_spot_datafeed_subscription(builder)
+        self.deref().delete_spot_datafeed_subscription(builder)
     }
     fn delete_subnet(&self, builder: DeleteSubnetInputBuilder) -> impl Future<Output = Result<DeleteSubnetOutput, SdkError<DeleteSubnetError>>> {
-        (*self).delete_subnet(builder)
+        self.deref().delete_subnet(builder)
     }
     fn delete_subnet_cidr_reservation(&self, builder: DeleteSubnetCidrReservationInputBuilder) -> impl Future<Output = Result<DeleteSubnetCidrReservationOutput, SdkError<DeleteSubnetCidrReservationError>>> {
-        (*self).delete_subnet_cidr_reservation(builder)
+        self.deref().delete_subnet_cidr_reservation(builder)
     }
     fn delete_tags(&self, builder: DeleteTagsInputBuilder) -> impl Future<Output = Result<DeleteTagsOutput, SdkError<DeleteTagsError>>> {
-        (*self).delete_tags(builder)
+        self.deref().delete_tags(builder)
     }
     fn delete_traffic_mirror_filter(&self, builder: DeleteTrafficMirrorFilterInputBuilder) -> impl Future<Output = Result<DeleteTrafficMirrorFilterOutput, SdkError<DeleteTrafficMirrorFilterError>>> {
-        (*self).delete_traffic_mirror_filter(builder)
+        self.deref().delete_traffic_mirror_filter(builder)
     }
     fn delete_traffic_mirror_filter_rule(&self, builder: DeleteTrafficMirrorFilterRuleInputBuilder) -> impl Future<Output = Result<DeleteTrafficMirrorFilterRuleOutput, SdkError<DeleteTrafficMirrorFilterRuleError>>> {
-        (*self).delete_traffic_mirror_filter_rule(builder)
+        self.deref().delete_traffic_mirror_filter_rule(builder)
     }
     fn delete_traffic_mirror_session(&self, builder: DeleteTrafficMirrorSessionInputBuilder) -> impl Future<Output = Result<DeleteTrafficMirrorSessionOutput, SdkError<DeleteTrafficMirrorSessionError>>> {
-        (*self).delete_traffic_mirror_session(builder)
+        self.deref().delete_traffic_mirror_session(builder)
     }
     fn delete_traffic_mirror_target(&self, builder: DeleteTrafficMirrorTargetInputBuilder) -> impl Future<Output = Result<DeleteTrafficMirrorTargetOutput, SdkError<DeleteTrafficMirrorTargetError>>> {
-        (*self).delete_traffic_mirror_target(builder)
+        self.deref().delete_traffic_mirror_target(builder)
     }
     fn delete_transit_gateway(&self, builder: DeleteTransitGatewayInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayOutput, SdkError<DeleteTransitGatewayError>>> {
-        (*self).delete_transit_gateway(builder)
+        self.deref().delete_transit_gateway(builder)
     }
     fn delete_transit_gateway_connect(&self, builder: DeleteTransitGatewayConnectInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayConnectOutput, SdkError<DeleteTransitGatewayConnectError>>> {
-        (*self).delete_transit_gateway_connect(builder)
+        self.deref().delete_transit_gateway_connect(builder)
     }
     fn delete_transit_gateway_connect_peer(&self, builder: DeleteTransitGatewayConnectPeerInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayConnectPeerOutput, SdkError<DeleteTransitGatewayConnectPeerError>>> {
-        (*self).delete_transit_gateway_connect_peer(builder)
+        self.deref().delete_transit_gateway_connect_peer(builder)
     }
     fn delete_transit_gateway_multicast_domain(&self, builder: DeleteTransitGatewayMulticastDomainInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayMulticastDomainOutput, SdkError<DeleteTransitGatewayMulticastDomainError>>> {
-        (*self).delete_transit_gateway_multicast_domain(builder)
+        self.deref().delete_transit_gateway_multicast_domain(builder)
     }
     fn delete_transit_gateway_peering_attachment(&self, builder: DeleteTransitGatewayPeeringAttachmentInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayPeeringAttachmentOutput, SdkError<DeleteTransitGatewayPeeringAttachmentError>>> {
-        (*self).delete_transit_gateway_peering_attachment(builder)
+        self.deref().delete_transit_gateway_peering_attachment(builder)
     }
     fn delete_transit_gateway_policy_table(&self, builder: DeleteTransitGatewayPolicyTableInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayPolicyTableOutput, SdkError<DeleteTransitGatewayPolicyTableError>>> {
-        (*self).delete_transit_gateway_policy_table(builder)
+        self.deref().delete_transit_gateway_policy_table(builder)
     }
     fn delete_transit_gateway_prefix_list_reference(&self, builder: DeleteTransitGatewayPrefixListReferenceInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayPrefixListReferenceOutput, SdkError<DeleteTransitGatewayPrefixListReferenceError>>> {
-        (*self).delete_transit_gateway_prefix_list_reference(builder)
+        self.deref().delete_transit_gateway_prefix_list_reference(builder)
     }
     fn delete_transit_gateway_route(&self, builder: DeleteTransitGatewayRouteInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayRouteOutput, SdkError<DeleteTransitGatewayRouteError>>> {
-        (*self).delete_transit_gateway_route(builder)
+        self.deref().delete_transit_gateway_route(builder)
     }
     fn delete_transit_gateway_route_table(&self, builder: DeleteTransitGatewayRouteTableInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayRouteTableOutput, SdkError<DeleteTransitGatewayRouteTableError>>> {
-        (*self).delete_transit_gateway_route_table(builder)
+        self.deref().delete_transit_gateway_route_table(builder)
     }
     fn delete_transit_gateway_route_table_announcement(&self, builder: DeleteTransitGatewayRouteTableAnnouncementInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayRouteTableAnnouncementOutput, SdkError<DeleteTransitGatewayRouteTableAnnouncementError>>> {
-        (*self).delete_transit_gateway_route_table_announcement(builder)
+        self.deref().delete_transit_gateway_route_table_announcement(builder)
     }
     fn delete_transit_gateway_vpc_attachment(&self, builder: DeleteTransitGatewayVpcAttachmentInputBuilder) -> impl Future<Output = Result<DeleteTransitGatewayVpcAttachmentOutput, SdkError<DeleteTransitGatewayVpcAttachmentError>>> {
-        (*self).delete_transit_gateway_vpc_attachment(builder)
+        self.deref().delete_transit_gateway_vpc_attachment(builder)
     }
     fn delete_verified_access_endpoint(&self, builder: DeleteVerifiedAccessEndpointInputBuilder) -> impl Future<Output = Result<DeleteVerifiedAccessEndpointOutput, SdkError<DeleteVerifiedAccessEndpointError>>> {
-        (*self).delete_verified_access_endpoint(builder)
+        self.deref().delete_verified_access_endpoint(builder)
     }
     fn delete_verified_access_group(&self, builder: DeleteVerifiedAccessGroupInputBuilder) -> impl Future<Output = Result<DeleteVerifiedAccessGroupOutput, SdkError<DeleteVerifiedAccessGroupError>>> {
-        (*self).delete_verified_access_group(builder)
+        self.deref().delete_verified_access_group(builder)
     }
     fn delete_verified_access_instance(&self, builder: DeleteVerifiedAccessInstanceInputBuilder) -> impl Future<Output = Result<DeleteVerifiedAccessInstanceOutput, SdkError<DeleteVerifiedAccessInstanceError>>> {
-        (*self).delete_verified_access_instance(builder)
+        self.deref().delete_verified_access_instance(builder)
     }
     fn delete_verified_access_trust_provider(&self, builder: DeleteVerifiedAccessTrustProviderInputBuilder) -> impl Future<Output = Result<DeleteVerifiedAccessTrustProviderOutput, SdkError<DeleteVerifiedAccessTrustProviderError>>> {
-        (*self).delete_verified_access_trust_provider(builder)
+        self.deref().delete_verified_access_trust_provider(builder)
     }
     fn delete_volume(&self, builder: DeleteVolumeInputBuilder) -> impl Future<Output = Result<DeleteVolumeOutput, SdkError<DeleteVolumeError>>> {
-        (*self).delete_volume(builder)
+        self.deref().delete_volume(builder)
     }
     fn delete_vpc(&self, builder: DeleteVpcInputBuilder) -> impl Future<Output = Result<DeleteVpcOutput, SdkError<DeleteVpcError>>> {
-        (*self).delete_vpc(builder)
+        self.deref().delete_vpc(builder)
     }
     fn delete_vpc_endpoint_connection_notifications(&self, builder: DeleteVpcEndpointConnectionNotificationsInputBuilder) -> impl Future<Output = Result<DeleteVpcEndpointConnectionNotificationsOutput, SdkError<DeleteVpcEndpointConnectionNotificationsError>>> {
-        (*self).delete_vpc_endpoint_connection_notifications(builder)
+        self.deref().delete_vpc_endpoint_connection_notifications(builder)
     }
     fn delete_vpc_endpoint_service_configurations(&self, builder: DeleteVpcEndpointServiceConfigurationsInputBuilder) -> impl Future<Output = Result<DeleteVpcEndpointServiceConfigurationsOutput, SdkError<DeleteVpcEndpointServiceConfigurationsError>>> {
-        (*self).delete_vpc_endpoint_service_configurations(builder)
+        self.deref().delete_vpc_endpoint_service_configurations(builder)
     }
     fn delete_vpc_endpoints(&self, builder: DeleteVpcEndpointsInputBuilder) -> impl Future<Output = Result<DeleteVpcEndpointsOutput, SdkError<DeleteVpcEndpointsError>>> {
-        (*self).delete_vpc_endpoints(builder)
+        self.deref().delete_vpc_endpoints(builder)
     }
     fn delete_vpc_peering_connection(&self, builder: DeleteVpcPeeringConnectionInputBuilder) -> impl Future<Output = Result<DeleteVpcPeeringConnectionOutput, SdkError<DeleteVpcPeeringConnectionError>>> {
-        (*self).delete_vpc_peering_connection(builder)
+        self.deref().delete_vpc_peering_connection(builder)
     }
     fn delete_vpn_connection(&self, builder: DeleteVpnConnectionInputBuilder) -> impl Future<Output = Result<DeleteVpnConnectionOutput, SdkError<DeleteVpnConnectionError>>> {
-        (*self).delete_vpn_connection(builder)
+        self.deref().delete_vpn_connection(builder)
     }
     fn delete_vpn_connection_route(&self, builder: DeleteVpnConnectionRouteInputBuilder) -> impl Future<Output = Result<DeleteVpnConnectionRouteOutput, SdkError<DeleteVpnConnectionRouteError>>> {
-        (*self).delete_vpn_connection_route(builder)
+        self.deref().delete_vpn_connection_route(builder)
     }
     fn delete_vpn_gateway(&self, builder: DeleteVpnGatewayInputBuilder) -> impl Future<Output = Result<DeleteVpnGatewayOutput, SdkError<DeleteVpnGatewayError>>> {
-        (*self).delete_vpn_gateway(builder)
+        self.deref().delete_vpn_gateway(builder)
     }
     fn deprovision_byoip_cidr(&self, builder: DeprovisionByoipCidrInputBuilder) -> impl Future<Output = Result<DeprovisionByoipCidrOutput, SdkError<DeprovisionByoipCidrError>>> {
-        (*self).deprovision_byoip_cidr(builder)
+        self.deref().deprovision_byoip_cidr(builder)
     }
     fn deprovision_ipam_byoasn(&self, builder: DeprovisionIpamByoasnInputBuilder) -> impl Future<Output = Result<DeprovisionIpamByoasnOutput, SdkError<DeprovisionIpamByoasnError>>> {
-        (*self).deprovision_ipam_byoasn(builder)
+        self.deref().deprovision_ipam_byoasn(builder)
     }
     fn deprovision_ipam_pool_cidr(&self, builder: DeprovisionIpamPoolCidrInputBuilder) -> impl Future<Output = Result<DeprovisionIpamPoolCidrOutput, SdkError<DeprovisionIpamPoolCidrError>>> {
-        (*self).deprovision_ipam_pool_cidr(builder)
+        self.deref().deprovision_ipam_pool_cidr(builder)
     }
     fn deprovision_public_ipv4_pool_cidr(&self, builder: DeprovisionPublicIpv4PoolCidrInputBuilder) -> impl Future<Output = Result<DeprovisionPublicIpv4PoolCidrOutput, SdkError<DeprovisionPublicIpv4PoolCidrError>>> {
-        (*self).deprovision_public_ipv4_pool_cidr(builder)
+        self.deref().deprovision_public_ipv4_pool_cidr(builder)
     }
     fn deregister_image(&self, builder: DeregisterImageInputBuilder) -> impl Future<Output = Result<DeregisterImageOutput, SdkError<DeregisterImageError>>> {
-        (*self).deregister_image(builder)
+        self.deref().deregister_image(builder)
     }
     fn deregister_instance_event_notification_attributes(&self, builder: DeregisterInstanceEventNotificationAttributesInputBuilder) -> impl Future<Output = Result<DeregisterInstanceEventNotificationAttributesOutput, SdkError<DeregisterInstanceEventNotificationAttributesError>>> {
-        (*self).deregister_instance_event_notification_attributes(builder)
+        self.deref().deregister_instance_event_notification_attributes(builder)
     }
     fn deregister_transit_gateway_multicast_group_members(&self, builder: DeregisterTransitGatewayMulticastGroupMembersInputBuilder) -> impl Future<Output = Result<DeregisterTransitGatewayMulticastGroupMembersOutput, SdkError<DeregisterTransitGatewayMulticastGroupMembersError>>> {
-        (*self).deregister_transit_gateway_multicast_group_members(builder)
+        self.deref().deregister_transit_gateway_multicast_group_members(builder)
     }
     fn deregister_transit_gateway_multicast_group_sources(&self, builder: DeregisterTransitGatewayMulticastGroupSourcesInputBuilder) -> impl Future<Output = Result<DeregisterTransitGatewayMulticastGroupSourcesOutput, SdkError<DeregisterTransitGatewayMulticastGroupSourcesError>>> {
-        (*self).deregister_transit_gateway_multicast_group_sources(builder)
+        self.deref().deregister_transit_gateway_multicast_group_sources(builder)
     }
     fn describe_account_attributes(&self, builder: DescribeAccountAttributesInputBuilder) -> impl Future<Output = Result<DescribeAccountAttributesOutput, SdkError<DescribeAccountAttributesError>>> {
-        (*self).describe_account_attributes(builder)
+        self.deref().describe_account_attributes(builder)
     }
     fn describe_address_transfers(&self, builder: DescribeAddressTransfersInputBuilder) -> impl Future<Output = Result<DescribeAddressTransfersOutput, SdkError<DescribeAddressTransfersError>>> {
-        (*self).describe_address_transfers(builder)
+        self.deref().describe_address_transfers(builder)
     }
     fn describe_addresses(&self, builder: DescribeAddressesInputBuilder) -> impl Future<Output = Result<DescribeAddressesOutput, SdkError<DescribeAddressesError>>> {
-        (*self).describe_addresses(builder)
+        self.deref().describe_addresses(builder)
     }
     fn describe_addresses_attribute(&self, builder: DescribeAddressesAttributeInputBuilder) -> impl Future<Output = Result<DescribeAddressesAttributeOutput, SdkError<DescribeAddressesAttributeError>>> {
-        (*self).describe_addresses_attribute(builder)
+        self.deref().describe_addresses_attribute(builder)
     }
     fn describe_aggregate_id_format(&self, builder: DescribeAggregateIdFormatInputBuilder) -> impl Future<Output = Result<DescribeAggregateIdFormatOutput, SdkError<DescribeAggregateIdFormatError>>> {
-        (*self).describe_aggregate_id_format(builder)
+        self.deref().describe_aggregate_id_format(builder)
     }
     fn describe_availability_zones(&self, builder: DescribeAvailabilityZonesInputBuilder) -> impl Future<Output = Result<DescribeAvailabilityZonesOutput, SdkError<DescribeAvailabilityZonesError>>> {
-        (*self).describe_availability_zones(builder)
+        self.deref().describe_availability_zones(builder)
     }
     fn describe_aws_network_performance_metric_subscriptions(&self, builder: DescribeAwsNetworkPerformanceMetricSubscriptionsInputBuilder) -> impl Future<Output = Result<DescribeAwsNetworkPerformanceMetricSubscriptionsOutput, SdkError<DescribeAwsNetworkPerformanceMetricSubscriptionsError>>> {
-        (*self).describe_aws_network_performance_metric_subscriptions(builder)
+        self.deref().describe_aws_network_performance_metric_subscriptions(builder)
     }
     fn describe_bundle_tasks(&self, builder: DescribeBundleTasksInputBuilder) -> impl Future<Output = Result<DescribeBundleTasksOutput, SdkError<DescribeBundleTasksError>>> {
-        (*self).describe_bundle_tasks(builder)
+        self.deref().describe_bundle_tasks(builder)
     }
     fn describe_byoip_cidrs(&self, builder: DescribeByoipCidrsInputBuilder) -> impl Future<Output = Result<DescribeByoipCidrsOutput, SdkError<DescribeByoipCidrsError>>> {
-        (*self).describe_byoip_cidrs(builder)
+        self.deref().describe_byoip_cidrs(builder)
     }
     fn describe_capacity_block_offerings(&self, builder: DescribeCapacityBlockOfferingsInputBuilder) -> impl Future<Output = Result<DescribeCapacityBlockOfferingsOutput, SdkError<DescribeCapacityBlockOfferingsError>>> {
-        (*self).describe_capacity_block_offerings(builder)
+        self.deref().describe_capacity_block_offerings(builder)
     }
     fn describe_capacity_reservation_fleets(&self, builder: DescribeCapacityReservationFleetsInputBuilder) -> impl Future<Output = Result<DescribeCapacityReservationFleetsOutput, SdkError<DescribeCapacityReservationFleetsError>>> {
-        (*self).describe_capacity_reservation_fleets(builder)
+        self.deref().describe_capacity_reservation_fleets(builder)
     }
     fn describe_capacity_reservations(&self, builder: DescribeCapacityReservationsInputBuilder) -> impl Future<Output = Result<DescribeCapacityReservationsOutput, SdkError<DescribeCapacityReservationsError>>> {
-        (*self).describe_capacity_reservations(builder)
+        self.deref().describe_capacity_reservations(builder)
     }
     fn describe_carrier_gateways(&self, builder: DescribeCarrierGatewaysInputBuilder) -> impl Future<Output = Result<DescribeCarrierGatewaysOutput, SdkError<DescribeCarrierGatewaysError>>> {
-        (*self).describe_carrier_gateways(builder)
+        self.deref().describe_carrier_gateways(builder)
     }
     fn describe_classic_link_instances(&self, builder: DescribeClassicLinkInstancesInputBuilder) -> impl Future<Output = Result<DescribeClassicLinkInstancesOutput, SdkError<DescribeClassicLinkInstancesError>>> {
-        (*self).describe_classic_link_instances(builder)
+        self.deref().describe_classic_link_instances(builder)
     }
     fn describe_client_vpn_authorization_rules(&self, builder: DescribeClientVpnAuthorizationRulesInputBuilder) -> impl Future<Output = Result<DescribeClientVpnAuthorizationRulesOutput, SdkError<DescribeClientVpnAuthorizationRulesError>>> {
-        (*self).describe_client_vpn_authorization_rules(builder)
+        self.deref().describe_client_vpn_authorization_rules(builder)
     }
     fn describe_client_vpn_connections(&self, builder: DescribeClientVpnConnectionsInputBuilder) -> impl Future<Output = Result<DescribeClientVpnConnectionsOutput, SdkError<DescribeClientVpnConnectionsError>>> {
-        (*self).describe_client_vpn_connections(builder)
+        self.deref().describe_client_vpn_connections(builder)
     }
     fn describe_client_vpn_endpoints(&self, builder: DescribeClientVpnEndpointsInputBuilder) -> impl Future<Output = Result<DescribeClientVpnEndpointsOutput, SdkError<DescribeClientVpnEndpointsError>>> {
-        (*self).describe_client_vpn_endpoints(builder)
+        self.deref().describe_client_vpn_endpoints(builder)
     }
     fn describe_client_vpn_routes(&self, builder: DescribeClientVpnRoutesInputBuilder) -> impl Future<Output = Result<DescribeClientVpnRoutesOutput, SdkError<DescribeClientVpnRoutesError>>> {
-        (*self).describe_client_vpn_routes(builder)
+        self.deref().describe_client_vpn_routes(builder)
     }
     fn describe_client_vpn_target_networks(&self, builder: DescribeClientVpnTargetNetworksInputBuilder) -> impl Future<Output = Result<DescribeClientVpnTargetNetworksOutput, SdkError<DescribeClientVpnTargetNetworksError>>> {
-        (*self).describe_client_vpn_target_networks(builder)
+        self.deref().describe_client_vpn_target_networks(builder)
     }
     fn describe_coip_pools(&self, builder: DescribeCoipPoolsInputBuilder) -> impl Future<Output = Result<DescribeCoipPoolsOutput, SdkError<DescribeCoipPoolsError>>> {
-        (*self).describe_coip_pools(builder)
+        self.deref().describe_coip_pools(builder)
     }
     fn describe_conversion_tasks(&self, builder: DescribeConversionTasksInputBuilder) -> impl Future<Output = Result<DescribeConversionTasksOutput, SdkError<DescribeConversionTasksError>>> {
-        (*self).describe_conversion_tasks(builder)
+        self.deref().describe_conversion_tasks(builder)
     }
     fn describe_customer_gateways(&self, builder: DescribeCustomerGatewaysInputBuilder) -> impl Future<Output = Result<DescribeCustomerGatewaysOutput, SdkError<DescribeCustomerGatewaysError>>> {
-        (*self).describe_customer_gateways(builder)
+        self.deref().describe_customer_gateways(builder)
     }
     fn describe_dhcp_options(&self, builder: DescribeDhcpOptionsInputBuilder) -> impl Future<Output = Result<DescribeDhcpOptionsOutput, SdkError<DescribeDhcpOptionsError>>> {
-        (*self).describe_dhcp_options(builder)
+        self.deref().describe_dhcp_options(builder)
     }
     fn describe_egress_only_internet_gateways(&self, builder: DescribeEgressOnlyInternetGatewaysInputBuilder) -> impl Future<Output = Result<DescribeEgressOnlyInternetGatewaysOutput, SdkError<DescribeEgressOnlyInternetGatewaysError>>> {
-        (*self).describe_egress_only_internet_gateways(builder)
+        self.deref().describe_egress_only_internet_gateways(builder)
     }
     fn describe_elastic_gpus(&self, builder: DescribeElasticGpusInputBuilder) -> impl Future<Output = Result<DescribeElasticGpusOutput, SdkError<DescribeElasticGpusError>>> {
-        (*self).describe_elastic_gpus(builder)
+        self.deref().describe_elastic_gpus(builder)
     }
     fn describe_export_image_tasks(&self, builder: DescribeExportImageTasksInputBuilder) -> impl Future<Output = Result<DescribeExportImageTasksOutput, SdkError<DescribeExportImageTasksError>>> {
-        (*self).describe_export_image_tasks(builder)
+        self.deref().describe_export_image_tasks(builder)
     }
     fn describe_export_tasks(&self, builder: DescribeExportTasksInputBuilder) -> impl Future<Output = Result<DescribeExportTasksOutput, SdkError<DescribeExportTasksError>>> {
-        (*self).describe_export_tasks(builder)
+        self.deref().describe_export_tasks(builder)
     }
     fn describe_fast_launch_images(&self, builder: DescribeFastLaunchImagesInputBuilder) -> impl Future<Output = Result<DescribeFastLaunchImagesOutput, SdkError<DescribeFastLaunchImagesError>>> {
-        (*self).describe_fast_launch_images(builder)
+        self.deref().describe_fast_launch_images(builder)
     }
     fn describe_fast_snapshot_restores(&self, builder: DescribeFastSnapshotRestoresInputBuilder) -> impl Future<Output = Result<DescribeFastSnapshotRestoresOutput, SdkError<DescribeFastSnapshotRestoresError>>> {
-        (*self).describe_fast_snapshot_restores(builder)
+        self.deref().describe_fast_snapshot_restores(builder)
     }
     fn describe_fleet_history(&self, builder: DescribeFleetHistoryInputBuilder) -> impl Future<Output = Result<DescribeFleetHistoryOutput, SdkError<DescribeFleetHistoryError>>> {
-        (*self).describe_fleet_history(builder)
+        self.deref().describe_fleet_history(builder)
     }
     fn describe_fleet_instances(&self, builder: DescribeFleetInstancesInputBuilder) -> impl Future<Output = Result<DescribeFleetInstancesOutput, SdkError<DescribeFleetInstancesError>>> {
-        (*self).describe_fleet_instances(builder)
+        self.deref().describe_fleet_instances(builder)
     }
     fn describe_fleets(&self, builder: DescribeFleetsInputBuilder) -> impl Future<Output = Result<DescribeFleetsOutput, SdkError<DescribeFleetsError>>> {
-        (*self).describe_fleets(builder)
+        self.deref().describe_fleets(builder)
     }
     fn describe_flow_logs(&self, builder: DescribeFlowLogsInputBuilder) -> impl Future<Output = Result<DescribeFlowLogsOutput, SdkError<DescribeFlowLogsError>>> {
-        (*self).describe_flow_logs(builder)
+        self.deref().describe_flow_logs(builder)
     }
     fn describe_fpga_image_attribute(&self, builder: DescribeFpgaImageAttributeInputBuilder) -> impl Future<Output = Result<DescribeFpgaImageAttributeOutput, SdkError<DescribeFpgaImageAttributeError>>> {
-        (*self).describe_fpga_image_attribute(builder)
+        self.deref().describe_fpga_image_attribute(builder)
     }
     fn describe_fpga_images(&self, builder: DescribeFpgaImagesInputBuilder) -> impl Future<Output = Result<DescribeFpgaImagesOutput, SdkError<DescribeFpgaImagesError>>> {
-        (*self).describe_fpga_images(builder)
+        self.deref().describe_fpga_images(builder)
     }
     fn describe_host_reservation_offerings(&self, builder: DescribeHostReservationOfferingsInputBuilder) -> impl Future<Output = Result<DescribeHostReservationOfferingsOutput, SdkError<DescribeHostReservationOfferingsError>>> {
-        (*self).describe_host_reservation_offerings(builder)
+        self.deref().describe_host_reservation_offerings(builder)
     }
     fn describe_host_reservations(&self, builder: DescribeHostReservationsInputBuilder) -> impl Future<Output = Result<DescribeHostReservationsOutput, SdkError<DescribeHostReservationsError>>> {
-        (*self).describe_host_reservations(builder)
+        self.deref().describe_host_reservations(builder)
     }
     fn describe_hosts(&self, builder: DescribeHostsInputBuilder) -> impl Future<Output = Result<DescribeHostsOutput, SdkError<DescribeHostsError>>> {
-        (*self).describe_hosts(builder)
+        self.deref().describe_hosts(builder)
     }
     fn describe_iam_instance_profile_associations(&self, builder: DescribeIamInstanceProfileAssociationsInputBuilder) -> impl Future<Output = Result<DescribeIamInstanceProfileAssociationsOutput, SdkError<DescribeIamInstanceProfileAssociationsError>>> {
-        (*self).describe_iam_instance_profile_associations(builder)
+        self.deref().describe_iam_instance_profile_associations(builder)
     }
     fn describe_id_format(&self, builder: DescribeIdFormatInputBuilder) -> impl Future<Output = Result<DescribeIdFormatOutput, SdkError<DescribeIdFormatError>>> {
-        (*self).describe_id_format(builder)
+        self.deref().describe_id_format(builder)
     }
     fn describe_identity_id_format(&self, builder: DescribeIdentityIdFormatInputBuilder) -> impl Future<Output = Result<DescribeIdentityIdFormatOutput, SdkError<DescribeIdentityIdFormatError>>> {
-        (*self).describe_identity_id_format(builder)
+        self.deref().describe_identity_id_format(builder)
     }
     fn describe_image_attribute(&self, builder: DescribeImageAttributeInputBuilder) -> impl Future<Output = Result<DescribeImageAttributeOutput, SdkError<DescribeImageAttributeError>>> {
-        (*self).describe_image_attribute(builder)
+        self.deref().describe_image_attribute(builder)
     }
     fn describe_images(&self, builder: DescribeImagesInputBuilder) -> impl Future<Output = Result<DescribeImagesOutput, SdkError<DescribeImagesError>>> {
-        (*self).describe_images(builder)
+        self.deref().describe_images(builder)
     }
     fn describe_import_image_tasks(&self, builder: DescribeImportImageTasksInputBuilder) -> impl Future<Output = Result<DescribeImportImageTasksOutput, SdkError<DescribeImportImageTasksError>>> {
-        (*self).describe_import_image_tasks(builder)
+        self.deref().describe_import_image_tasks(builder)
     }
     fn describe_import_snapshot_tasks(&self, builder: DescribeImportSnapshotTasksInputBuilder) -> impl Future<Output = Result<DescribeImportSnapshotTasksOutput, SdkError<DescribeImportSnapshotTasksError>>> {
-        (*self).describe_import_snapshot_tasks(builder)
+        self.deref().describe_import_snapshot_tasks(builder)
     }
     fn describe_instance_attribute(&self, builder: DescribeInstanceAttributeInputBuilder) -> impl Future<Output = Result<DescribeInstanceAttributeOutput, SdkError<DescribeInstanceAttributeError>>> {
-        (*self).describe_instance_attribute(builder)
+        self.deref().describe_instance_attribute(builder)
     }
     fn describe_instance_connect_endpoints(&self, builder: DescribeInstanceConnectEndpointsInputBuilder) -> impl Future<Output = Result<DescribeInstanceConnectEndpointsOutput, SdkError<DescribeInstanceConnectEndpointsError>>> {
-        (*self).describe_instance_connect_endpoints(builder)
+        self.deref().describe_instance_connect_endpoints(builder)
     }
     fn describe_instance_credit_specifications(&self, builder: DescribeInstanceCreditSpecificationsInputBuilder) -> impl Future<Output = Result<DescribeInstanceCreditSpecificationsOutput, SdkError<DescribeInstanceCreditSpecificationsError>>> {
-        (*self).describe_instance_credit_specifications(builder)
+        self.deref().describe_instance_credit_specifications(builder)
     }
     fn describe_instance_event_notification_attributes(&self, builder: DescribeInstanceEventNotificationAttributesInputBuilder) -> impl Future<Output = Result<DescribeInstanceEventNotificationAttributesOutput, SdkError<DescribeInstanceEventNotificationAttributesError>>> {
-        (*self).describe_instance_event_notification_attributes(builder)
+        self.deref().describe_instance_event_notification_attributes(builder)
     }
     fn describe_instance_event_windows(&self, builder: DescribeInstanceEventWindowsInputBuilder) -> impl Future<Output = Result<DescribeInstanceEventWindowsOutput, SdkError<DescribeInstanceEventWindowsError>>> {
-        (*self).describe_instance_event_windows(builder)
+        self.deref().describe_instance_event_windows(builder)
     }
     fn describe_instance_status(&self, builder: DescribeInstanceStatusInputBuilder) -> impl Future<Output = Result<DescribeInstanceStatusOutput, SdkError<DescribeInstanceStatusError>>> {
-        (*self).describe_instance_status(builder)
+        self.deref().describe_instance_status(builder)
     }
     fn describe_instance_topology(&self, builder: DescribeInstanceTopologyInputBuilder) -> impl Future<Output = Result<DescribeInstanceTopologyOutput, SdkError<DescribeInstanceTopologyError>>> {
-        (*self).describe_instance_topology(builder)
+        self.deref().describe_instance_topology(builder)
     }
     fn describe_instance_type_offerings(&self, builder: DescribeInstanceTypeOfferingsInputBuilder) -> impl Future<Output = Result<DescribeInstanceTypeOfferingsOutput, SdkError<DescribeInstanceTypeOfferingsError>>> {
-        (*self).describe_instance_type_offerings(builder)
+        self.deref().describe_instance_type_offerings(builder)
     }
     fn describe_instance_types(&self, builder: DescribeInstanceTypesInputBuilder) -> impl Future<Output = Result<DescribeInstanceTypesOutput, SdkError<DescribeInstanceTypesError>>> {
-        (*self).describe_instance_types(builder)
+        self.deref().describe_instance_types(builder)
     }
     fn describe_instances(&self, builder: DescribeInstancesInputBuilder) -> impl Future<Output = Result<DescribeInstancesOutput, SdkError<DescribeInstancesError>>> {
-        (*self).describe_instances(builder)
+        self.deref().describe_instances(builder)
     }
     fn describe_internet_gateways(&self, builder: DescribeInternetGatewaysInputBuilder) -> impl Future<Output = Result<DescribeInternetGatewaysOutput, SdkError<DescribeInternetGatewaysError>>> {
-        (*self).describe_internet_gateways(builder)
+        self.deref().describe_internet_gateways(builder)
     }
     fn describe_ipam_byoasn(&self, builder: DescribeIpamByoasnInputBuilder) -> impl Future<Output = Result<DescribeIpamByoasnOutput, SdkError<DescribeIpamByoasnError>>> {
-        (*self).describe_ipam_byoasn(builder)
+        self.deref().describe_ipam_byoasn(builder)
     }
     fn describe_ipam_external_resource_verification_tokens(&self, builder: DescribeIpamExternalResourceVerificationTokensInputBuilder) -> impl Future<Output = Result<DescribeIpamExternalResourceVerificationTokensOutput, SdkError<DescribeIpamExternalResourceVerificationTokensError>>> {
-        (*self).describe_ipam_external_resource_verification_tokens(builder)
+        self.deref().describe_ipam_external_resource_verification_tokens(builder)
     }
     fn describe_ipam_pools(&self, builder: DescribeIpamPoolsInputBuilder) -> impl Future<Output = Result<DescribeIpamPoolsOutput, SdkError<DescribeIpamPoolsError>>> {
-        (*self).describe_ipam_pools(builder)
+        self.deref().describe_ipam_pools(builder)
     }
     fn describe_ipam_resource_discoveries(&self, builder: DescribeIpamResourceDiscoveriesInputBuilder) -> impl Future<Output = Result<DescribeIpamResourceDiscoveriesOutput, SdkError<DescribeIpamResourceDiscoveriesError>>> {
-        (*self).describe_ipam_resource_discoveries(builder)
+        self.deref().describe_ipam_resource_discoveries(builder)
     }
     fn describe_ipam_resource_discovery_associations(&self, builder: DescribeIpamResourceDiscoveryAssociationsInputBuilder) -> impl Future<Output = Result<DescribeIpamResourceDiscoveryAssociationsOutput, SdkError<DescribeIpamResourceDiscoveryAssociationsError>>> {
-        (*self).describe_ipam_resource_discovery_associations(builder)
+        self.deref().describe_ipam_resource_discovery_associations(builder)
     }
     fn describe_ipam_scopes(&self, builder: DescribeIpamScopesInputBuilder) -> impl Future<Output = Result<DescribeIpamScopesOutput, SdkError<DescribeIpamScopesError>>> {
-        (*self).describe_ipam_scopes(builder)
+        self.deref().describe_ipam_scopes(builder)
     }
     fn describe_ipams(&self, builder: DescribeIpamsInputBuilder) -> impl Future<Output = Result<DescribeIpamsOutput, SdkError<DescribeIpamsError>>> {
-        (*self).describe_ipams(builder)
+        self.deref().describe_ipams(builder)
     }
     fn describe_ipv6_pools(&self, builder: DescribeIpv6PoolsInputBuilder) -> impl Future<Output = Result<DescribeIpv6PoolsOutput, SdkError<DescribeIpv6PoolsError>>> {
-        (*self).describe_ipv6_pools(builder)
+        self.deref().describe_ipv6_pools(builder)
     }
     fn describe_key_pairs(&self, builder: DescribeKeyPairsInputBuilder) -> impl Future<Output = Result<DescribeKeyPairsOutput, SdkError<DescribeKeyPairsError>>> {
-        (*self).describe_key_pairs(builder)
+        self.deref().describe_key_pairs(builder)
     }
     fn describe_launch_template_versions(&self, builder: DescribeLaunchTemplateVersionsInputBuilder) -> impl Future<Output = Result<DescribeLaunchTemplateVersionsOutput, SdkError<DescribeLaunchTemplateVersionsError>>> {
-        (*self).describe_launch_template_versions(builder)
+        self.deref().describe_launch_template_versions(builder)
     }
     fn describe_launch_templates(&self, builder: DescribeLaunchTemplatesInputBuilder) -> impl Future<Output = Result<DescribeLaunchTemplatesOutput, SdkError<DescribeLaunchTemplatesError>>> {
-        (*self).describe_launch_templates(builder)
+        self.deref().describe_launch_templates(builder)
     }
     fn describe_local_gateway_route_table_virtual_interface_group_associations(&self, builder: DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsOutput, SdkError<DescribeLocalGatewayRouteTableVirtualInterfaceGroupAssociationsError>>> {
-        (*self).describe_local_gateway_route_table_virtual_interface_group_associations(builder)
+        self.deref().describe_local_gateway_route_table_virtual_interface_group_associations(builder)
     }
     fn describe_local_gateway_route_table_vpc_associations(&self, builder: DescribeLocalGatewayRouteTableVpcAssociationsInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewayRouteTableVpcAssociationsOutput, SdkError<DescribeLocalGatewayRouteTableVpcAssociationsError>>> {
-        (*self).describe_local_gateway_route_table_vpc_associations(builder)
+        self.deref().describe_local_gateway_route_table_vpc_associations(builder)
     }
     fn describe_local_gateway_route_tables(&self, builder: DescribeLocalGatewayRouteTablesInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewayRouteTablesOutput, SdkError<DescribeLocalGatewayRouteTablesError>>> {
-        (*self).describe_local_gateway_route_tables(builder)
+        self.deref().describe_local_gateway_route_tables(builder)
     }
     fn describe_local_gateway_virtual_interface_groups(&self, builder: DescribeLocalGatewayVirtualInterfaceGroupsInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewayVirtualInterfaceGroupsOutput, SdkError<DescribeLocalGatewayVirtualInterfaceGroupsError>>> {
-        (*self).describe_local_gateway_virtual_interface_groups(builder)
+        self.deref().describe_local_gateway_virtual_interface_groups(builder)
     }
     fn describe_local_gateway_virtual_interfaces(&self, builder: DescribeLocalGatewayVirtualInterfacesInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewayVirtualInterfacesOutput, SdkError<DescribeLocalGatewayVirtualInterfacesError>>> {
-        (*self).describe_local_gateway_virtual_interfaces(builder)
+        self.deref().describe_local_gateway_virtual_interfaces(builder)
     }
     fn describe_local_gateways(&self, builder: DescribeLocalGatewaysInputBuilder) -> impl Future<Output = Result<DescribeLocalGatewaysOutput, SdkError<DescribeLocalGatewaysError>>> {
-        (*self).describe_local_gateways(builder)
+        self.deref().describe_local_gateways(builder)
     }
     fn describe_locked_snapshots(&self, builder: DescribeLockedSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeLockedSnapshotsOutput, SdkError<DescribeLockedSnapshotsError>>> {
-        (*self).describe_locked_snapshots(builder)
+        self.deref().describe_locked_snapshots(builder)
     }
     fn describe_mac_hosts(&self, builder: DescribeMacHostsInputBuilder) -> impl Future<Output = Result<DescribeMacHostsOutput, SdkError<DescribeMacHostsError>>> {
-        (*self).describe_mac_hosts(builder)
+        self.deref().describe_mac_hosts(builder)
     }
     fn describe_managed_prefix_lists(&self, builder: DescribeManagedPrefixListsInputBuilder) -> impl Future<Output = Result<DescribeManagedPrefixListsOutput, SdkError<DescribeManagedPrefixListsError>>> {
-        (*self).describe_managed_prefix_lists(builder)
+        self.deref().describe_managed_prefix_lists(builder)
     }
     fn describe_moving_addresses(&self, builder: DescribeMovingAddressesInputBuilder) -> impl Future<Output = Result<DescribeMovingAddressesOutput, SdkError<DescribeMovingAddressesError>>> {
-        (*self).describe_moving_addresses(builder)
+        self.deref().describe_moving_addresses(builder)
     }
     fn describe_nat_gateways(&self, builder: DescribeNatGatewaysInputBuilder) -> impl Future<Output = Result<DescribeNatGatewaysOutput, SdkError<DescribeNatGatewaysError>>> {
-        (*self).describe_nat_gateways(builder)
+        self.deref().describe_nat_gateways(builder)
     }
     fn describe_network_acls(&self, builder: DescribeNetworkAclsInputBuilder) -> impl Future<Output = Result<DescribeNetworkAclsOutput, SdkError<DescribeNetworkAclsError>>> {
-        (*self).describe_network_acls(builder)
+        self.deref().describe_network_acls(builder)
     }
     fn describe_network_insights_access_scope_analyses(&self, builder: DescribeNetworkInsightsAccessScopeAnalysesInputBuilder) -> impl Future<Output = Result<DescribeNetworkInsightsAccessScopeAnalysesOutput, SdkError<DescribeNetworkInsightsAccessScopeAnalysesError>>> {
-        (*self).describe_network_insights_access_scope_analyses(builder)
+        self.deref().describe_network_insights_access_scope_analyses(builder)
     }
     fn describe_network_insights_access_scopes(&self, builder: DescribeNetworkInsightsAccessScopesInputBuilder) -> impl Future<Output = Result<DescribeNetworkInsightsAccessScopesOutput, SdkError<DescribeNetworkInsightsAccessScopesError>>> {
-        (*self).describe_network_insights_access_scopes(builder)
+        self.deref().describe_network_insights_access_scopes(builder)
     }
     fn describe_network_insights_analyses(&self, builder: DescribeNetworkInsightsAnalysesInputBuilder) -> impl Future<Output = Result<DescribeNetworkInsightsAnalysesOutput, SdkError<DescribeNetworkInsightsAnalysesError>>> {
-        (*self).describe_network_insights_analyses(builder)
+        self.deref().describe_network_insights_analyses(builder)
     }
     fn describe_network_insights_paths(&self, builder: DescribeNetworkInsightsPathsInputBuilder) -> impl Future<Output = Result<DescribeNetworkInsightsPathsOutput, SdkError<DescribeNetworkInsightsPathsError>>> {
-        (*self).describe_network_insights_paths(builder)
+        self.deref().describe_network_insights_paths(builder)
     }
     fn describe_network_interface_attribute(&self, builder: DescribeNetworkInterfaceAttributeInputBuilder) -> impl Future<Output = Result<DescribeNetworkInterfaceAttributeOutput, SdkError<DescribeNetworkInterfaceAttributeError>>> {
-        (*self).describe_network_interface_attribute(builder)
+        self.deref().describe_network_interface_attribute(builder)
     }
     fn describe_network_interface_permissions(&self, builder: DescribeNetworkInterfacePermissionsInputBuilder) -> impl Future<Output = Result<DescribeNetworkInterfacePermissionsOutput, SdkError<DescribeNetworkInterfacePermissionsError>>> {
-        (*self).describe_network_interface_permissions(builder)
+        self.deref().describe_network_interface_permissions(builder)
     }
     fn describe_network_interfaces(&self, builder: DescribeNetworkInterfacesInputBuilder) -> impl Future<Output = Result<DescribeNetworkInterfacesOutput, SdkError<DescribeNetworkInterfacesError>>> {
-        (*self).describe_network_interfaces(builder)
+        self.deref().describe_network_interfaces(builder)
     }
     fn describe_placement_groups(&self, builder: DescribePlacementGroupsInputBuilder) -> impl Future<Output = Result<DescribePlacementGroupsOutput, SdkError<DescribePlacementGroupsError>>> {
-        (*self).describe_placement_groups(builder)
+        self.deref().describe_placement_groups(builder)
     }
     fn describe_prefix_lists(&self, builder: DescribePrefixListsInputBuilder) -> impl Future<Output = Result<DescribePrefixListsOutput, SdkError<DescribePrefixListsError>>> {
-        (*self).describe_prefix_lists(builder)
+        self.deref().describe_prefix_lists(builder)
     }
     fn describe_principal_id_format(&self, builder: DescribePrincipalIdFormatInputBuilder) -> impl Future<Output = Result<DescribePrincipalIdFormatOutput, SdkError<DescribePrincipalIdFormatError>>> {
-        (*self).describe_principal_id_format(builder)
+        self.deref().describe_principal_id_format(builder)
     }
     fn describe_public_ipv4_pools(&self, builder: DescribePublicIpv4PoolsInputBuilder) -> impl Future<Output = Result<DescribePublicIpv4PoolsOutput, SdkError<DescribePublicIpv4PoolsError>>> {
-        (*self).describe_public_ipv4_pools(builder)
+        self.deref().describe_public_ipv4_pools(builder)
     }
     fn describe_regions(&self, builder: DescribeRegionsInputBuilder) -> impl Future<Output = Result<DescribeRegionsOutput, SdkError<DescribeRegionsError>>> {
-        (*self).describe_regions(builder)
+        self.deref().describe_regions(builder)
     }
     fn describe_replace_root_volume_tasks(&self, builder: DescribeReplaceRootVolumeTasksInputBuilder) -> impl Future<Output = Result<DescribeReplaceRootVolumeTasksOutput, SdkError<DescribeReplaceRootVolumeTasksError>>> {
-        (*self).describe_replace_root_volume_tasks(builder)
+        self.deref().describe_replace_root_volume_tasks(builder)
     }
     fn describe_reserved_instances(&self, builder: DescribeReservedInstancesInputBuilder) -> impl Future<Output = Result<DescribeReservedInstancesOutput, SdkError<DescribeReservedInstancesError>>> {
-        (*self).describe_reserved_instances(builder)
+        self.deref().describe_reserved_instances(builder)
     }
     fn describe_reserved_instances_listings(&self, builder: DescribeReservedInstancesListingsInputBuilder) -> impl Future<Output = Result<DescribeReservedInstancesListingsOutput, SdkError<DescribeReservedInstancesListingsError>>> {
-        (*self).describe_reserved_instances_listings(builder)
+        self.deref().describe_reserved_instances_listings(builder)
     }
     fn describe_reserved_instances_modifications(&self, builder: DescribeReservedInstancesModificationsInputBuilder) -> impl Future<Output = Result<DescribeReservedInstancesModificationsOutput, SdkError<DescribeReservedInstancesModificationsError>>> {
-        (*self).describe_reserved_instances_modifications(builder)
+        self.deref().describe_reserved_instances_modifications(builder)
     }
     fn describe_reserved_instances_offerings(&self, builder: DescribeReservedInstancesOfferingsInputBuilder) -> impl Future<Output = Result<DescribeReservedInstancesOfferingsOutput, SdkError<DescribeReservedInstancesOfferingsError>>> {
-        (*self).describe_reserved_instances_offerings(builder)
+        self.deref().describe_reserved_instances_offerings(builder)
     }
     fn describe_route_tables(&self, builder: DescribeRouteTablesInputBuilder) -> impl Future<Output = Result<DescribeRouteTablesOutput, SdkError<DescribeRouteTablesError>>> {
-        (*self).describe_route_tables(builder)
+        self.deref().describe_route_tables(builder)
     }
     fn describe_scheduled_instance_availability(&self, builder: DescribeScheduledInstanceAvailabilityInputBuilder) -> impl Future<Output = Result<DescribeScheduledInstanceAvailabilityOutput, SdkError<DescribeScheduledInstanceAvailabilityError>>> {
-        (*self).describe_scheduled_instance_availability(builder)
+        self.deref().describe_scheduled_instance_availability(builder)
     }
     fn describe_scheduled_instances(&self, builder: DescribeScheduledInstancesInputBuilder) -> impl Future<Output = Result<DescribeScheduledInstancesOutput, SdkError<DescribeScheduledInstancesError>>> {
-        (*self).describe_scheduled_instances(builder)
+        self.deref().describe_scheduled_instances(builder)
     }
     fn describe_security_group_references(&self, builder: DescribeSecurityGroupReferencesInputBuilder) -> impl Future<Output = Result<DescribeSecurityGroupReferencesOutput, SdkError<DescribeSecurityGroupReferencesError>>> {
-        (*self).describe_security_group_references(builder)
+        self.deref().describe_security_group_references(builder)
     }
     fn describe_security_group_rules(&self, builder: DescribeSecurityGroupRulesInputBuilder) -> impl Future<Output = Result<DescribeSecurityGroupRulesOutput, SdkError<DescribeSecurityGroupRulesError>>> {
-        (*self).describe_security_group_rules(builder)
+        self.deref().describe_security_group_rules(builder)
     }
     fn describe_security_groups(&self, builder: DescribeSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeSecurityGroupsOutput, SdkError<DescribeSecurityGroupsError>>> {
-        (*self).describe_security_groups(builder)
+        self.deref().describe_security_groups(builder)
     }
     fn describe_snapshot_attribute(&self, builder: DescribeSnapshotAttributeInputBuilder) -> impl Future<Output = Result<DescribeSnapshotAttributeOutput, SdkError<DescribeSnapshotAttributeError>>> {
-        (*self).describe_snapshot_attribute(builder)
+        self.deref().describe_snapshot_attribute(builder)
     }
     fn describe_snapshot_tier_status(&self, builder: DescribeSnapshotTierStatusInputBuilder) -> impl Future<Output = Result<DescribeSnapshotTierStatusOutput, SdkError<DescribeSnapshotTierStatusError>>> {
-        (*self).describe_snapshot_tier_status(builder)
+        self.deref().describe_snapshot_tier_status(builder)
     }
     fn describe_snapshots(&self, builder: DescribeSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeSnapshotsOutput, SdkError<DescribeSnapshotsError>>> {
-        (*self).describe_snapshots(builder)
+        self.deref().describe_snapshots(builder)
     }
     fn describe_spot_datafeed_subscription(&self, builder: DescribeSpotDatafeedSubscriptionInputBuilder) -> impl Future<Output = Result<DescribeSpotDatafeedSubscriptionOutput, SdkError<DescribeSpotDatafeedSubscriptionError>>> {
-        (*self).describe_spot_datafeed_subscription(builder)
+        self.deref().describe_spot_datafeed_subscription(builder)
     }
     fn describe_spot_fleet_instances(&self, builder: DescribeSpotFleetInstancesInputBuilder) -> impl Future<Output = Result<DescribeSpotFleetInstancesOutput, SdkError<DescribeSpotFleetInstancesError>>> {
-        (*self).describe_spot_fleet_instances(builder)
+        self.deref().describe_spot_fleet_instances(builder)
     }
     fn describe_spot_fleet_request_history(&self, builder: DescribeSpotFleetRequestHistoryInputBuilder) -> impl Future<Output = Result<DescribeSpotFleetRequestHistoryOutput, SdkError<DescribeSpotFleetRequestHistoryError>>> {
-        (*self).describe_spot_fleet_request_history(builder)
+        self.deref().describe_spot_fleet_request_history(builder)
     }
     fn describe_spot_fleet_requests(&self, builder: DescribeSpotFleetRequestsInputBuilder) -> impl Future<Output = Result<DescribeSpotFleetRequestsOutput, SdkError<DescribeSpotFleetRequestsError>>> {
-        (*self).describe_spot_fleet_requests(builder)
+        self.deref().describe_spot_fleet_requests(builder)
     }
     fn describe_spot_instance_requests(&self, builder: DescribeSpotInstanceRequestsInputBuilder) -> impl Future<Output = Result<DescribeSpotInstanceRequestsOutput, SdkError<DescribeSpotInstanceRequestsError>>> {
-        (*self).describe_spot_instance_requests(builder)
+        self.deref().describe_spot_instance_requests(builder)
     }
     fn describe_spot_price_history(&self, builder: DescribeSpotPriceHistoryInputBuilder) -> impl Future<Output = Result<DescribeSpotPriceHistoryOutput, SdkError<DescribeSpotPriceHistoryError>>> {
-        (*self).describe_spot_price_history(builder)
+        self.deref().describe_spot_price_history(builder)
     }
     fn describe_stale_security_groups(&self, builder: DescribeStaleSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeStaleSecurityGroupsOutput, SdkError<DescribeStaleSecurityGroupsError>>> {
-        (*self).describe_stale_security_groups(builder)
+        self.deref().describe_stale_security_groups(builder)
     }
     fn describe_store_image_tasks(&self, builder: DescribeStoreImageTasksInputBuilder) -> impl Future<Output = Result<DescribeStoreImageTasksOutput, SdkError<DescribeStoreImageTasksError>>> {
-        (*self).describe_store_image_tasks(builder)
+        self.deref().describe_store_image_tasks(builder)
     }
     fn describe_subnets(&self, builder: DescribeSubnetsInputBuilder) -> impl Future<Output = Result<DescribeSubnetsOutput, SdkError<DescribeSubnetsError>>> {
-        (*self).describe_subnets(builder)
+        self.deref().describe_subnets(builder)
     }
     fn describe_tags(&self, builder: DescribeTagsInputBuilder) -> impl Future<Output = Result<DescribeTagsOutput, SdkError<DescribeTagsError>>> {
-        (*self).describe_tags(builder)
+        self.deref().describe_tags(builder)
     }
     fn describe_traffic_mirror_filter_rules(&self, builder: DescribeTrafficMirrorFilterRulesInputBuilder) -> impl Future<Output = Result<DescribeTrafficMirrorFilterRulesOutput, SdkError<DescribeTrafficMirrorFilterRulesError>>> {
-        (*self).describe_traffic_mirror_filter_rules(builder)
+        self.deref().describe_traffic_mirror_filter_rules(builder)
     }
     fn describe_traffic_mirror_filters(&self, builder: DescribeTrafficMirrorFiltersInputBuilder) -> impl Future<Output = Result<DescribeTrafficMirrorFiltersOutput, SdkError<DescribeTrafficMirrorFiltersError>>> {
-        (*self).describe_traffic_mirror_filters(builder)
+        self.deref().describe_traffic_mirror_filters(builder)
     }
     fn describe_traffic_mirror_sessions(&self, builder: DescribeTrafficMirrorSessionsInputBuilder) -> impl Future<Output = Result<DescribeTrafficMirrorSessionsOutput, SdkError<DescribeTrafficMirrorSessionsError>>> {
-        (*self).describe_traffic_mirror_sessions(builder)
+        self.deref().describe_traffic_mirror_sessions(builder)
     }
     fn describe_traffic_mirror_targets(&self, builder: DescribeTrafficMirrorTargetsInputBuilder) -> impl Future<Output = Result<DescribeTrafficMirrorTargetsOutput, SdkError<DescribeTrafficMirrorTargetsError>>> {
-        (*self).describe_traffic_mirror_targets(builder)
+        self.deref().describe_traffic_mirror_targets(builder)
     }
     fn describe_transit_gateway_attachments(&self, builder: DescribeTransitGatewayAttachmentsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayAttachmentsOutput, SdkError<DescribeTransitGatewayAttachmentsError>>> {
-        (*self).describe_transit_gateway_attachments(builder)
+        self.deref().describe_transit_gateway_attachments(builder)
     }
     fn describe_transit_gateway_connect_peers(&self, builder: DescribeTransitGatewayConnectPeersInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayConnectPeersOutput, SdkError<DescribeTransitGatewayConnectPeersError>>> {
-        (*self).describe_transit_gateway_connect_peers(builder)
+        self.deref().describe_transit_gateway_connect_peers(builder)
     }
     fn describe_transit_gateway_connects(&self, builder: DescribeTransitGatewayConnectsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayConnectsOutput, SdkError<DescribeTransitGatewayConnectsError>>> {
-        (*self).describe_transit_gateway_connects(builder)
+        self.deref().describe_transit_gateway_connects(builder)
     }
     fn describe_transit_gateway_multicast_domains(&self, builder: DescribeTransitGatewayMulticastDomainsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayMulticastDomainsOutput, SdkError<DescribeTransitGatewayMulticastDomainsError>>> {
-        (*self).describe_transit_gateway_multicast_domains(builder)
+        self.deref().describe_transit_gateway_multicast_domains(builder)
     }
     fn describe_transit_gateway_peering_attachments(&self, builder: DescribeTransitGatewayPeeringAttachmentsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayPeeringAttachmentsOutput, SdkError<DescribeTransitGatewayPeeringAttachmentsError>>> {
-        (*self).describe_transit_gateway_peering_attachments(builder)
+        self.deref().describe_transit_gateway_peering_attachments(builder)
     }
     fn describe_transit_gateway_policy_tables(&self, builder: DescribeTransitGatewayPolicyTablesInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayPolicyTablesOutput, SdkError<DescribeTransitGatewayPolicyTablesError>>> {
-        (*self).describe_transit_gateway_policy_tables(builder)
+        self.deref().describe_transit_gateway_policy_tables(builder)
     }
     fn describe_transit_gateway_route_table_announcements(&self, builder: DescribeTransitGatewayRouteTableAnnouncementsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayRouteTableAnnouncementsOutput, SdkError<DescribeTransitGatewayRouteTableAnnouncementsError>>> {
-        (*self).describe_transit_gateway_route_table_announcements(builder)
+        self.deref().describe_transit_gateway_route_table_announcements(builder)
     }
     fn describe_transit_gateway_route_tables(&self, builder: DescribeTransitGatewayRouteTablesInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayRouteTablesOutput, SdkError<DescribeTransitGatewayRouteTablesError>>> {
-        (*self).describe_transit_gateway_route_tables(builder)
+        self.deref().describe_transit_gateway_route_tables(builder)
     }
     fn describe_transit_gateway_vpc_attachments(&self, builder: DescribeTransitGatewayVpcAttachmentsInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewayVpcAttachmentsOutput, SdkError<DescribeTransitGatewayVpcAttachmentsError>>> {
-        (*self).describe_transit_gateway_vpc_attachments(builder)
+        self.deref().describe_transit_gateway_vpc_attachments(builder)
     }
     fn describe_transit_gateways(&self, builder: DescribeTransitGatewaysInputBuilder) -> impl Future<Output = Result<DescribeTransitGatewaysOutput, SdkError<DescribeTransitGatewaysError>>> {
-        (*self).describe_transit_gateways(builder)
+        self.deref().describe_transit_gateways(builder)
     }
     fn describe_trunk_interface_associations(&self, builder: DescribeTrunkInterfaceAssociationsInputBuilder) -> impl Future<Output = Result<DescribeTrunkInterfaceAssociationsOutput, SdkError<DescribeTrunkInterfaceAssociationsError>>> {
-        (*self).describe_trunk_interface_associations(builder)
+        self.deref().describe_trunk_interface_associations(builder)
     }
     fn describe_verified_access_endpoints(&self, builder: DescribeVerifiedAccessEndpointsInputBuilder) -> impl Future<Output = Result<DescribeVerifiedAccessEndpointsOutput, SdkError<DescribeVerifiedAccessEndpointsError>>> {
-        (*self).describe_verified_access_endpoints(builder)
+        self.deref().describe_verified_access_endpoints(builder)
     }
     fn describe_verified_access_groups(&self, builder: DescribeVerifiedAccessGroupsInputBuilder) -> impl Future<Output = Result<DescribeVerifiedAccessGroupsOutput, SdkError<DescribeVerifiedAccessGroupsError>>> {
-        (*self).describe_verified_access_groups(builder)
+        self.deref().describe_verified_access_groups(builder)
     }
     fn describe_verified_access_instance_logging_configurations(&self, builder: DescribeVerifiedAccessInstanceLoggingConfigurationsInputBuilder) -> impl Future<Output = Result<DescribeVerifiedAccessInstanceLoggingConfigurationsOutput, SdkError<DescribeVerifiedAccessInstanceLoggingConfigurationsError>>> {
-        (*self).describe_verified_access_instance_logging_configurations(builder)
+        self.deref().describe_verified_access_instance_logging_configurations(builder)
     }
     fn describe_verified_access_instances(&self, builder: DescribeVerifiedAccessInstancesInputBuilder) -> impl Future<Output = Result<DescribeVerifiedAccessInstancesOutput, SdkError<DescribeVerifiedAccessInstancesError>>> {
-        (*self).describe_verified_access_instances(builder)
+        self.deref().describe_verified_access_instances(builder)
     }
     fn describe_verified_access_trust_providers(&self, builder: DescribeVerifiedAccessTrustProvidersInputBuilder) -> impl Future<Output = Result<DescribeVerifiedAccessTrustProvidersOutput, SdkError<DescribeVerifiedAccessTrustProvidersError>>> {
-        (*self).describe_verified_access_trust_providers(builder)
+        self.deref().describe_verified_access_trust_providers(builder)
     }
     fn describe_volume_attribute(&self, builder: DescribeVolumeAttributeInputBuilder) -> impl Future<Output = Result<DescribeVolumeAttributeOutput, SdkError<DescribeVolumeAttributeError>>> {
-        (*self).describe_volume_attribute(builder)
+        self.deref().describe_volume_attribute(builder)
     }
     fn describe_volume_status(&self, builder: DescribeVolumeStatusInputBuilder) -> impl Future<Output = Result<DescribeVolumeStatusOutput, SdkError<DescribeVolumeStatusError>>> {
-        (*self).describe_volume_status(builder)
+        self.deref().describe_volume_status(builder)
     }
     fn describe_volumes(&self, builder: DescribeVolumesInputBuilder) -> impl Future<Output = Result<DescribeVolumesOutput, SdkError<DescribeVolumesError>>> {
-        (*self).describe_volumes(builder)
+        self.deref().describe_volumes(builder)
     }
     fn describe_volumes_modifications(&self, builder: DescribeVolumesModificationsInputBuilder) -> impl Future<Output = Result<DescribeVolumesModificationsOutput, SdkError<DescribeVolumesModificationsError>>> {
-        (*self).describe_volumes_modifications(builder)
+        self.deref().describe_volumes_modifications(builder)
     }
     fn describe_vpc_attribute(&self, builder: DescribeVpcAttributeInputBuilder) -> impl Future<Output = Result<DescribeVpcAttributeOutput, SdkError<DescribeVpcAttributeError>>> {
-        (*self).describe_vpc_attribute(builder)
+        self.deref().describe_vpc_attribute(builder)
     }
     fn describe_vpc_classic_link(&self, builder: DescribeVpcClassicLinkInputBuilder) -> impl Future<Output = Result<DescribeVpcClassicLinkOutput, SdkError<DescribeVpcClassicLinkError>>> {
-        (*self).describe_vpc_classic_link(builder)
+        self.deref().describe_vpc_classic_link(builder)
     }
     fn describe_vpc_classic_link_dns_support(&self, builder: DescribeVpcClassicLinkDnsSupportInputBuilder) -> impl Future<Output = Result<DescribeVpcClassicLinkDnsSupportOutput, SdkError<DescribeVpcClassicLinkDnsSupportError>>> {
-        (*self).describe_vpc_classic_link_dns_support(builder)
+        self.deref().describe_vpc_classic_link_dns_support(builder)
     }
     fn describe_vpc_endpoint_connection_notifications(&self, builder: DescribeVpcEndpointConnectionNotificationsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointConnectionNotificationsOutput, SdkError<DescribeVpcEndpointConnectionNotificationsError>>> {
-        (*self).describe_vpc_endpoint_connection_notifications(builder)
+        self.deref().describe_vpc_endpoint_connection_notifications(builder)
     }
     fn describe_vpc_endpoint_connections(&self, builder: DescribeVpcEndpointConnectionsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointConnectionsOutput, SdkError<DescribeVpcEndpointConnectionsError>>> {
-        (*self).describe_vpc_endpoint_connections(builder)
+        self.deref().describe_vpc_endpoint_connections(builder)
     }
     fn describe_vpc_endpoint_service_configurations(&self, builder: DescribeVpcEndpointServiceConfigurationsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointServiceConfigurationsOutput, SdkError<DescribeVpcEndpointServiceConfigurationsError>>> {
-        (*self).describe_vpc_endpoint_service_configurations(builder)
+        self.deref().describe_vpc_endpoint_service_configurations(builder)
     }
     fn describe_vpc_endpoint_service_permissions(&self, builder: DescribeVpcEndpointServicePermissionsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointServicePermissionsOutput, SdkError<DescribeVpcEndpointServicePermissionsError>>> {
-        (*self).describe_vpc_endpoint_service_permissions(builder)
+        self.deref().describe_vpc_endpoint_service_permissions(builder)
     }
     fn describe_vpc_endpoint_services(&self, builder: DescribeVpcEndpointServicesInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointServicesOutput, SdkError<DescribeVpcEndpointServicesError>>> {
-        (*self).describe_vpc_endpoint_services(builder)
+        self.deref().describe_vpc_endpoint_services(builder)
     }
     fn describe_vpc_endpoints(&self, builder: DescribeVpcEndpointsInputBuilder) -> impl Future<Output = Result<DescribeVpcEndpointsOutput, SdkError<DescribeVpcEndpointsError>>> {
-        (*self).describe_vpc_endpoints(builder)
+        self.deref().describe_vpc_endpoints(builder)
     }
     fn describe_vpc_peering_connections(&self, builder: DescribeVpcPeeringConnectionsInputBuilder) -> impl Future<Output = Result<DescribeVpcPeeringConnectionsOutput, SdkError<DescribeVpcPeeringConnectionsError>>> {
-        (*self).describe_vpc_peering_connections(builder)
+        self.deref().describe_vpc_peering_connections(builder)
     }
     fn describe_vpcs(&self, builder: DescribeVpcsInputBuilder) -> impl Future<Output = Result<DescribeVpcsOutput, SdkError<DescribeVpcsError>>> {
-        (*self).describe_vpcs(builder)
+        self.deref().describe_vpcs(builder)
     }
     fn describe_vpn_connections(&self, builder: DescribeVpnConnectionsInputBuilder) -> impl Future<Output = Result<DescribeVpnConnectionsOutput, SdkError<DescribeVpnConnectionsError>>> {
-        (*self).describe_vpn_connections(builder)
+        self.deref().describe_vpn_connections(builder)
     }
     fn describe_vpn_gateways(&self, builder: DescribeVpnGatewaysInputBuilder) -> impl Future<Output = Result<DescribeVpnGatewaysOutput, SdkError<DescribeVpnGatewaysError>>> {
-        (*self).describe_vpn_gateways(builder)
+        self.deref().describe_vpn_gateways(builder)
     }
     fn detach_classic_link_vpc(&self, builder: DetachClassicLinkVpcInputBuilder) -> impl Future<Output = Result<DetachClassicLinkVpcOutput, SdkError<DetachClassicLinkVpcError>>> {
-        (*self).detach_classic_link_vpc(builder)
+        self.deref().detach_classic_link_vpc(builder)
     }
     fn detach_internet_gateway(&self, builder: DetachInternetGatewayInputBuilder) -> impl Future<Output = Result<DetachInternetGatewayOutput, SdkError<DetachInternetGatewayError>>> {
-        (*self).detach_internet_gateway(builder)
+        self.deref().detach_internet_gateway(builder)
     }
     fn detach_network_interface(&self, builder: DetachNetworkInterfaceInputBuilder) -> impl Future<Output = Result<DetachNetworkInterfaceOutput, SdkError<DetachNetworkInterfaceError>>> {
-        (*self).detach_network_interface(builder)
+        self.deref().detach_network_interface(builder)
     }
     fn detach_verified_access_trust_provider(&self, builder: DetachVerifiedAccessTrustProviderInputBuilder) -> impl Future<Output = Result<DetachVerifiedAccessTrustProviderOutput, SdkError<DetachVerifiedAccessTrustProviderError>>> {
-        (*self).detach_verified_access_trust_provider(builder)
+        self.deref().detach_verified_access_trust_provider(builder)
     }
     fn detach_volume(&self, builder: DetachVolumeInputBuilder) -> impl Future<Output = Result<DetachVolumeOutput, SdkError<DetachVolumeError>>> {
-        (*self).detach_volume(builder)
+        self.deref().detach_volume(builder)
     }
     fn detach_vpn_gateway(&self, builder: DetachVpnGatewayInputBuilder) -> impl Future<Output = Result<DetachVpnGatewayOutput, SdkError<DetachVpnGatewayError>>> {
-        (*self).detach_vpn_gateway(builder)
+        self.deref().detach_vpn_gateway(builder)
     }
     fn disable_address_transfer(&self, builder: DisableAddressTransferInputBuilder) -> impl Future<Output = Result<DisableAddressTransferOutput, SdkError<DisableAddressTransferError>>> {
-        (*self).disable_address_transfer(builder)
+        self.deref().disable_address_transfer(builder)
     }
     fn disable_aws_network_performance_metric_subscription(&self, builder: DisableAwsNetworkPerformanceMetricSubscriptionInputBuilder) -> impl Future<Output = Result<DisableAwsNetworkPerformanceMetricSubscriptionOutput, SdkError<DisableAwsNetworkPerformanceMetricSubscriptionError>>> {
-        (*self).disable_aws_network_performance_metric_subscription(builder)
+        self.deref().disable_aws_network_performance_metric_subscription(builder)
     }
     fn disable_ebs_encryption_by_default(&self, builder: DisableEbsEncryptionByDefaultInputBuilder) -> impl Future<Output = Result<DisableEbsEncryptionByDefaultOutput, SdkError<DisableEbsEncryptionByDefaultError>>> {
-        (*self).disable_ebs_encryption_by_default(builder)
+        self.deref().disable_ebs_encryption_by_default(builder)
     }
     fn disable_fast_launch(&self, builder: DisableFastLaunchInputBuilder) -> impl Future<Output = Result<DisableFastLaunchOutput, SdkError<DisableFastLaunchError>>> {
-        (*self).disable_fast_launch(builder)
+        self.deref().disable_fast_launch(builder)
     }
     fn disable_fast_snapshot_restores(&self, builder: DisableFastSnapshotRestoresInputBuilder) -> impl Future<Output = Result<DisableFastSnapshotRestoresOutput, SdkError<DisableFastSnapshotRestoresError>>> {
-        (*self).disable_fast_snapshot_restores(builder)
+        self.deref().disable_fast_snapshot_restores(builder)
     }
     fn disable_image(&self, builder: DisableImageInputBuilder) -> impl Future<Output = Result<DisableImageOutput, SdkError<DisableImageError>>> {
-        (*self).disable_image(builder)
+        self.deref().disable_image(builder)
     }
     fn disable_image_block_public_access(&self, builder: DisableImageBlockPublicAccessInputBuilder) -> impl Future<Output = Result<DisableImageBlockPublicAccessOutput, SdkError<DisableImageBlockPublicAccessError>>> {
-        (*self).disable_image_block_public_access(builder)
+        self.deref().disable_image_block_public_access(builder)
     }
     fn disable_image_deprecation(&self, builder: DisableImageDeprecationInputBuilder) -> impl Future<Output = Result<DisableImageDeprecationOutput, SdkError<DisableImageDeprecationError>>> {
-        (*self).disable_image_deprecation(builder)
+        self.deref().disable_image_deprecation(builder)
     }
     fn disable_image_deregistration_protection(&self, builder: DisableImageDeregistrationProtectionInputBuilder) -> impl Future<Output = Result<DisableImageDeregistrationProtectionOutput, SdkError<DisableImageDeregistrationProtectionError>>> {
-        (*self).disable_image_deregistration_protection(builder)
+        self.deref().disable_image_deregistration_protection(builder)
     }
     fn disable_ipam_organization_admin_account(&self, builder: DisableIpamOrganizationAdminAccountInputBuilder) -> impl Future<Output = Result<DisableIpamOrganizationAdminAccountOutput, SdkError<DisableIpamOrganizationAdminAccountError>>> {
-        (*self).disable_ipam_organization_admin_account(builder)
+        self.deref().disable_ipam_organization_admin_account(builder)
     }
     fn disable_serial_console_access(&self, builder: DisableSerialConsoleAccessInputBuilder) -> impl Future<Output = Result<DisableSerialConsoleAccessOutput, SdkError<DisableSerialConsoleAccessError>>> {
-        (*self).disable_serial_console_access(builder)
+        self.deref().disable_serial_console_access(builder)
     }
     fn disable_snapshot_block_public_access(&self, builder: DisableSnapshotBlockPublicAccessInputBuilder) -> impl Future<Output = Result<DisableSnapshotBlockPublicAccessOutput, SdkError<DisableSnapshotBlockPublicAccessError>>> {
-        (*self).disable_snapshot_block_public_access(builder)
+        self.deref().disable_snapshot_block_public_access(builder)
     }
     fn disable_transit_gateway_route_table_propagation(&self, builder: DisableTransitGatewayRouteTablePropagationInputBuilder) -> impl Future<Output = Result<DisableTransitGatewayRouteTablePropagationOutput, SdkError<DisableTransitGatewayRouteTablePropagationError>>> {
-        (*self).disable_transit_gateway_route_table_propagation(builder)
+        self.deref().disable_transit_gateway_route_table_propagation(builder)
     }
     fn disable_vgw_route_propagation(&self, builder: DisableVgwRoutePropagationInputBuilder) -> impl Future<Output = Result<DisableVgwRoutePropagationOutput, SdkError<DisableVgwRoutePropagationError>>> {
-        (*self).disable_vgw_route_propagation(builder)
+        self.deref().disable_vgw_route_propagation(builder)
     }
     fn disable_vpc_classic_link(&self, builder: DisableVpcClassicLinkInputBuilder) -> impl Future<Output = Result<DisableVpcClassicLinkOutput, SdkError<DisableVpcClassicLinkError>>> {
-        (*self).disable_vpc_classic_link(builder)
+        self.deref().disable_vpc_classic_link(builder)
     }
     fn disable_vpc_classic_link_dns_support(&self, builder: DisableVpcClassicLinkDnsSupportInputBuilder) -> impl Future<Output = Result<DisableVpcClassicLinkDnsSupportOutput, SdkError<DisableVpcClassicLinkDnsSupportError>>> {
-        (*self).disable_vpc_classic_link_dns_support(builder)
+        self.deref().disable_vpc_classic_link_dns_support(builder)
     }
     fn disassociate_address(&self, builder: DisassociateAddressInputBuilder) -> impl Future<Output = Result<DisassociateAddressOutput, SdkError<DisassociateAddressError>>> {
-        (*self).disassociate_address(builder)
+        self.deref().disassociate_address(builder)
     }
     fn disassociate_client_vpn_target_network(&self, builder: DisassociateClientVpnTargetNetworkInputBuilder) -> impl Future<Output = Result<DisassociateClientVpnTargetNetworkOutput, SdkError<DisassociateClientVpnTargetNetworkError>>> {
-        (*self).disassociate_client_vpn_target_network(builder)
+        self.deref().disassociate_client_vpn_target_network(builder)
     }
     fn disassociate_enclave_certificate_iam_role(&self, builder: DisassociateEnclaveCertificateIamRoleInputBuilder) -> impl Future<Output = Result<DisassociateEnclaveCertificateIamRoleOutput, SdkError<DisassociateEnclaveCertificateIamRoleError>>> {
-        (*self).disassociate_enclave_certificate_iam_role(builder)
+        self.deref().disassociate_enclave_certificate_iam_role(builder)
     }
     fn disassociate_iam_instance_profile(&self, builder: DisassociateIamInstanceProfileInputBuilder) -> impl Future<Output = Result<DisassociateIamInstanceProfileOutput, SdkError<DisassociateIamInstanceProfileError>>> {
-        (*self).disassociate_iam_instance_profile(builder)
+        self.deref().disassociate_iam_instance_profile(builder)
     }
     fn disassociate_instance_event_window(&self, builder: DisassociateInstanceEventWindowInputBuilder) -> impl Future<Output = Result<DisassociateInstanceEventWindowOutput, SdkError<DisassociateInstanceEventWindowError>>> {
-        (*self).disassociate_instance_event_window(builder)
+        self.deref().disassociate_instance_event_window(builder)
     }
     fn disassociate_ipam_byoasn(&self, builder: DisassociateIpamByoasnInputBuilder) -> impl Future<Output = Result<DisassociateIpamByoasnOutput, SdkError<DisassociateIpamByoasnError>>> {
-        (*self).disassociate_ipam_byoasn(builder)
+        self.deref().disassociate_ipam_byoasn(builder)
     }
     fn disassociate_ipam_resource_discovery(&self, builder: DisassociateIpamResourceDiscoveryInputBuilder) -> impl Future<Output = Result<DisassociateIpamResourceDiscoveryOutput, SdkError<DisassociateIpamResourceDiscoveryError>>> {
-        (*self).disassociate_ipam_resource_discovery(builder)
+        self.deref().disassociate_ipam_resource_discovery(builder)
     }
     fn disassociate_nat_gateway_address(&self, builder: DisassociateNatGatewayAddressInputBuilder) -> impl Future<Output = Result<DisassociateNatGatewayAddressOutput, SdkError<DisassociateNatGatewayAddressError>>> {
-        (*self).disassociate_nat_gateway_address(builder)
+        self.deref().disassociate_nat_gateway_address(builder)
     }
     fn disassociate_route_table(&self, builder: DisassociateRouteTableInputBuilder) -> impl Future<Output = Result<DisassociateRouteTableOutput, SdkError<DisassociateRouteTableError>>> {
-        (*self).disassociate_route_table(builder)
+        self.deref().disassociate_route_table(builder)
     }
     fn disassociate_subnet_cidr_block(&self, builder: DisassociateSubnetCidrBlockInputBuilder) -> impl Future<Output = Result<DisassociateSubnetCidrBlockOutput, SdkError<DisassociateSubnetCidrBlockError>>> {
-        (*self).disassociate_subnet_cidr_block(builder)
+        self.deref().disassociate_subnet_cidr_block(builder)
     }
     fn disassociate_transit_gateway_multicast_domain(&self, builder: DisassociateTransitGatewayMulticastDomainInputBuilder) -> impl Future<Output = Result<DisassociateTransitGatewayMulticastDomainOutput, SdkError<DisassociateTransitGatewayMulticastDomainError>>> {
-        (*self).disassociate_transit_gateway_multicast_domain(builder)
+        self.deref().disassociate_transit_gateway_multicast_domain(builder)
     }
     fn disassociate_transit_gateway_policy_table(&self, builder: DisassociateTransitGatewayPolicyTableInputBuilder) -> impl Future<Output = Result<DisassociateTransitGatewayPolicyTableOutput, SdkError<DisassociateTransitGatewayPolicyTableError>>> {
-        (*self).disassociate_transit_gateway_policy_table(builder)
+        self.deref().disassociate_transit_gateway_policy_table(builder)
     }
     fn disassociate_transit_gateway_route_table(&self, builder: DisassociateTransitGatewayRouteTableInputBuilder) -> impl Future<Output = Result<DisassociateTransitGatewayRouteTableOutput, SdkError<DisassociateTransitGatewayRouteTableError>>> {
-        (*self).disassociate_transit_gateway_route_table(builder)
+        self.deref().disassociate_transit_gateway_route_table(builder)
     }
     fn disassociate_trunk_interface(&self, builder: DisassociateTrunkInterfaceInputBuilder) -> impl Future<Output = Result<DisassociateTrunkInterfaceOutput, SdkError<DisassociateTrunkInterfaceError>>> {
-        (*self).disassociate_trunk_interface(builder)
+        self.deref().disassociate_trunk_interface(builder)
     }
     fn disassociate_vpc_cidr_block(&self, builder: DisassociateVpcCidrBlockInputBuilder) -> impl Future<Output = Result<DisassociateVpcCidrBlockOutput, SdkError<DisassociateVpcCidrBlockError>>> {
-        (*self).disassociate_vpc_cidr_block(builder)
+        self.deref().disassociate_vpc_cidr_block(builder)
     }
     fn enable_address_transfer(&self, builder: EnableAddressTransferInputBuilder) -> impl Future<Output = Result<EnableAddressTransferOutput, SdkError<EnableAddressTransferError>>> {
-        (*self).enable_address_transfer(builder)
+        self.deref().enable_address_transfer(builder)
     }
     fn enable_aws_network_performance_metric_subscription(&self, builder: EnableAwsNetworkPerformanceMetricSubscriptionInputBuilder) -> impl Future<Output = Result<EnableAwsNetworkPerformanceMetricSubscriptionOutput, SdkError<EnableAwsNetworkPerformanceMetricSubscriptionError>>> {
-        (*self).enable_aws_network_performance_metric_subscription(builder)
+        self.deref().enable_aws_network_performance_metric_subscription(builder)
     }
     fn enable_ebs_encryption_by_default(&self, builder: EnableEbsEncryptionByDefaultInputBuilder) -> impl Future<Output = Result<EnableEbsEncryptionByDefaultOutput, SdkError<EnableEbsEncryptionByDefaultError>>> {
-        (*self).enable_ebs_encryption_by_default(builder)
+        self.deref().enable_ebs_encryption_by_default(builder)
     }
     fn enable_fast_launch(&self, builder: EnableFastLaunchInputBuilder) -> impl Future<Output = Result<EnableFastLaunchOutput, SdkError<EnableFastLaunchError>>> {
-        (*self).enable_fast_launch(builder)
+        self.deref().enable_fast_launch(builder)
     }
     fn enable_fast_snapshot_restores(&self, builder: EnableFastSnapshotRestoresInputBuilder) -> impl Future<Output = Result<EnableFastSnapshotRestoresOutput, SdkError<EnableFastSnapshotRestoresError>>> {
-        (*self).enable_fast_snapshot_restores(builder)
+        self.deref().enable_fast_snapshot_restores(builder)
     }
     fn enable_image(&self, builder: EnableImageInputBuilder) -> impl Future<Output = Result<EnableImageOutput, SdkError<EnableImageError>>> {
-        (*self).enable_image(builder)
+        self.deref().enable_image(builder)
     }
     fn enable_image_block_public_access(&self, builder: EnableImageBlockPublicAccessInputBuilder) -> impl Future<Output = Result<EnableImageBlockPublicAccessOutput, SdkError<EnableImageBlockPublicAccessError>>> {
-        (*self).enable_image_block_public_access(builder)
+        self.deref().enable_image_block_public_access(builder)
     }
     fn enable_image_deprecation(&self, builder: EnableImageDeprecationInputBuilder) -> impl Future<Output = Result<EnableImageDeprecationOutput, SdkError<EnableImageDeprecationError>>> {
-        (*self).enable_image_deprecation(builder)
+        self.deref().enable_image_deprecation(builder)
     }
     fn enable_image_deregistration_protection(&self, builder: EnableImageDeregistrationProtectionInputBuilder) -> impl Future<Output = Result<EnableImageDeregistrationProtectionOutput, SdkError<EnableImageDeregistrationProtectionError>>> {
-        (*self).enable_image_deregistration_protection(builder)
+        self.deref().enable_image_deregistration_protection(builder)
     }
     fn enable_ipam_organization_admin_account(&self, builder: EnableIpamOrganizationAdminAccountInputBuilder) -> impl Future<Output = Result<EnableIpamOrganizationAdminAccountOutput, SdkError<EnableIpamOrganizationAdminAccountError>>> {
-        (*self).enable_ipam_organization_admin_account(builder)
+        self.deref().enable_ipam_organization_admin_account(builder)
     }
     fn enable_reachability_analyzer_organization_sharing(&self, builder: EnableReachabilityAnalyzerOrganizationSharingInputBuilder) -> impl Future<Output = Result<EnableReachabilityAnalyzerOrganizationSharingOutput, SdkError<EnableReachabilityAnalyzerOrganizationSharingError>>> {
-        (*self).enable_reachability_analyzer_organization_sharing(builder)
+        self.deref().enable_reachability_analyzer_organization_sharing(builder)
     }
     fn enable_serial_console_access(&self, builder: EnableSerialConsoleAccessInputBuilder) -> impl Future<Output = Result<EnableSerialConsoleAccessOutput, SdkError<EnableSerialConsoleAccessError>>> {
-        (*self).enable_serial_console_access(builder)
+        self.deref().enable_serial_console_access(builder)
     }
     fn enable_snapshot_block_public_access(&self, builder: EnableSnapshotBlockPublicAccessInputBuilder) -> impl Future<Output = Result<EnableSnapshotBlockPublicAccessOutput, SdkError<EnableSnapshotBlockPublicAccessError>>> {
-        (*self).enable_snapshot_block_public_access(builder)
+        self.deref().enable_snapshot_block_public_access(builder)
     }
     fn enable_transit_gateway_route_table_propagation(&self, builder: EnableTransitGatewayRouteTablePropagationInputBuilder) -> impl Future<Output = Result<EnableTransitGatewayRouteTablePropagationOutput, SdkError<EnableTransitGatewayRouteTablePropagationError>>> {
-        (*self).enable_transit_gateway_route_table_propagation(builder)
+        self.deref().enable_transit_gateway_route_table_propagation(builder)
     }
     fn enable_vgw_route_propagation(&self, builder: EnableVgwRoutePropagationInputBuilder) -> impl Future<Output = Result<EnableVgwRoutePropagationOutput, SdkError<EnableVgwRoutePropagationError>>> {
-        (*self).enable_vgw_route_propagation(builder)
+        self.deref().enable_vgw_route_propagation(builder)
     }
     fn enable_volume_io(&self, builder: EnableVolumeIoInputBuilder) -> impl Future<Output = Result<EnableVolumeIoOutput, SdkError<EnableVolumeIOError>>> {
-        (*self).enable_volume_io(builder)
+        self.deref().enable_volume_io(builder)
     }
     fn enable_vpc_classic_link(&self, builder: EnableVpcClassicLinkInputBuilder) -> impl Future<Output = Result<EnableVpcClassicLinkOutput, SdkError<EnableVpcClassicLinkError>>> {
-        (*self).enable_vpc_classic_link(builder)
+        self.deref().enable_vpc_classic_link(builder)
     }
     fn enable_vpc_classic_link_dns_support(&self, builder: EnableVpcClassicLinkDnsSupportInputBuilder) -> impl Future<Output = Result<EnableVpcClassicLinkDnsSupportOutput, SdkError<EnableVpcClassicLinkDnsSupportError>>> {
-        (*self).enable_vpc_classic_link_dns_support(builder)
+        self.deref().enable_vpc_classic_link_dns_support(builder)
     }
     fn export_client_vpn_client_certificate_revocation_list(&self, builder: ExportClientVpnClientCertificateRevocationListInputBuilder) -> impl Future<Output = Result<ExportClientVpnClientCertificateRevocationListOutput, SdkError<ExportClientVpnClientCertificateRevocationListError>>> {
-        (*self).export_client_vpn_client_certificate_revocation_list(builder)
+        self.deref().export_client_vpn_client_certificate_revocation_list(builder)
     }
     fn export_client_vpn_client_configuration(&self, builder: ExportClientVpnClientConfigurationInputBuilder) -> impl Future<Output = Result<ExportClientVpnClientConfigurationOutput, SdkError<ExportClientVpnClientConfigurationError>>> {
-        (*self).export_client_vpn_client_configuration(builder)
+        self.deref().export_client_vpn_client_configuration(builder)
     }
     fn export_image(&self, builder: ExportImageInputBuilder) -> impl Future<Output = Result<ExportImageOutput, SdkError<ExportImageError>>> {
-        (*self).export_image(builder)
+        self.deref().export_image(builder)
     }
     fn export_transit_gateway_routes(&self, builder: ExportTransitGatewayRoutesInputBuilder) -> impl Future<Output = Result<ExportTransitGatewayRoutesOutput, SdkError<ExportTransitGatewayRoutesError>>> {
-        (*self).export_transit_gateway_routes(builder)
+        self.deref().export_transit_gateway_routes(builder)
     }
     fn get_associated_enclave_certificate_iam_roles(&self, builder: GetAssociatedEnclaveCertificateIamRolesInputBuilder) -> impl Future<Output = Result<GetAssociatedEnclaveCertificateIamRolesOutput, SdkError<GetAssociatedEnclaveCertificateIamRolesError>>> {
-        (*self).get_associated_enclave_certificate_iam_roles(builder)
+        self.deref().get_associated_enclave_certificate_iam_roles(builder)
     }
     fn get_associated_ipv6_pool_cidrs(&self, builder: GetAssociatedIpv6PoolCidrsInputBuilder) -> impl Future<Output = Result<GetAssociatedIpv6PoolCidrsOutput, SdkError<GetAssociatedIpv6PoolCidrsError>>> {
-        (*self).get_associated_ipv6_pool_cidrs(builder)
+        self.deref().get_associated_ipv6_pool_cidrs(builder)
     }
     fn get_aws_network_performance_data(&self, builder: GetAwsNetworkPerformanceDataInputBuilder) -> impl Future<Output = Result<GetAwsNetworkPerformanceDataOutput, SdkError<GetAwsNetworkPerformanceDataError>>> {
-        (*self).get_aws_network_performance_data(builder)
+        self.deref().get_aws_network_performance_data(builder)
     }
     fn get_capacity_reservation_usage(&self, builder: GetCapacityReservationUsageInputBuilder) -> impl Future<Output = Result<GetCapacityReservationUsageOutput, SdkError<GetCapacityReservationUsageError>>> {
-        (*self).get_capacity_reservation_usage(builder)
+        self.deref().get_capacity_reservation_usage(builder)
     }
     fn get_coip_pool_usage(&self, builder: GetCoipPoolUsageInputBuilder) -> impl Future<Output = Result<GetCoipPoolUsageOutput, SdkError<GetCoipPoolUsageError>>> {
-        (*self).get_coip_pool_usage(builder)
+        self.deref().get_coip_pool_usage(builder)
     }
     fn get_console_output(&self, builder: GetConsoleOutputInputBuilder) -> impl Future<Output = Result<GetConsoleOutputOutput, SdkError<GetConsoleOutputError>>> {
-        (*self).get_console_output(builder)
+        self.deref().get_console_output(builder)
     }
     fn get_console_screenshot(&self, builder: GetConsoleScreenshotInputBuilder) -> impl Future<Output = Result<GetConsoleScreenshotOutput, SdkError<GetConsoleScreenshotError>>> {
-        (*self).get_console_screenshot(builder)
+        self.deref().get_console_screenshot(builder)
     }
     fn get_default_credit_specification(&self, builder: GetDefaultCreditSpecificationInputBuilder) -> impl Future<Output = Result<GetDefaultCreditSpecificationOutput, SdkError<GetDefaultCreditSpecificationError>>> {
-        (*self).get_default_credit_specification(builder)
+        self.deref().get_default_credit_specification(builder)
     }
     fn get_ebs_default_kms_key_id(&self, builder: GetEbsDefaultKmsKeyIdInputBuilder) -> impl Future<Output = Result<GetEbsDefaultKmsKeyIdOutput, SdkError<GetEbsDefaultKmsKeyIdError>>> {
-        (*self).get_ebs_default_kms_key_id(builder)
+        self.deref().get_ebs_default_kms_key_id(builder)
     }
     fn get_ebs_encryption_by_default(&self, builder: GetEbsEncryptionByDefaultInputBuilder) -> impl Future<Output = Result<GetEbsEncryptionByDefaultOutput, SdkError<GetEbsEncryptionByDefaultError>>> {
-        (*self).get_ebs_encryption_by_default(builder)
+        self.deref().get_ebs_encryption_by_default(builder)
     }
     fn get_flow_logs_integration_template(&self, builder: GetFlowLogsIntegrationTemplateInputBuilder) -> impl Future<Output = Result<GetFlowLogsIntegrationTemplateOutput, SdkError<GetFlowLogsIntegrationTemplateError>>> {
-        (*self).get_flow_logs_integration_template(builder)
+        self.deref().get_flow_logs_integration_template(builder)
     }
     fn get_groups_for_capacity_reservation(&self, builder: GetGroupsForCapacityReservationInputBuilder) -> impl Future<Output = Result<GetGroupsForCapacityReservationOutput, SdkError<GetGroupsForCapacityReservationError>>> {
-        (*self).get_groups_for_capacity_reservation(builder)
+        self.deref().get_groups_for_capacity_reservation(builder)
     }
     fn get_host_reservation_purchase_preview(&self, builder: GetHostReservationPurchasePreviewInputBuilder) -> impl Future<Output = Result<GetHostReservationPurchasePreviewOutput, SdkError<GetHostReservationPurchasePreviewError>>> {
-        (*self).get_host_reservation_purchase_preview(builder)
+        self.deref().get_host_reservation_purchase_preview(builder)
     }
     fn get_image_block_public_access_state(&self, builder: GetImageBlockPublicAccessStateInputBuilder) -> impl Future<Output = Result<GetImageBlockPublicAccessStateOutput, SdkError<GetImageBlockPublicAccessStateError>>> {
-        (*self).get_image_block_public_access_state(builder)
+        self.deref().get_image_block_public_access_state(builder)
     }
     fn get_instance_metadata_defaults(&self, builder: GetInstanceMetadataDefaultsInputBuilder) -> impl Future<Output = Result<GetInstanceMetadataDefaultsOutput, SdkError<GetInstanceMetadataDefaultsError>>> {
-        (*self).get_instance_metadata_defaults(builder)
+        self.deref().get_instance_metadata_defaults(builder)
     }
     fn get_instance_tpm_ek_pub(&self, builder: GetInstanceTpmEkPubInputBuilder) -> impl Future<Output = Result<GetInstanceTpmEkPubOutput, SdkError<GetInstanceTpmEkPubError>>> {
-        (*self).get_instance_tpm_ek_pub(builder)
+        self.deref().get_instance_tpm_ek_pub(builder)
     }
     fn get_instance_types_from_instance_requirements(&self, builder: GetInstanceTypesFromInstanceRequirementsInputBuilder) -> impl Future<Output = Result<GetInstanceTypesFromInstanceRequirementsOutput, SdkError<GetInstanceTypesFromInstanceRequirementsError>>> {
-        (*self).get_instance_types_from_instance_requirements(builder)
+        self.deref().get_instance_types_from_instance_requirements(builder)
     }
     fn get_instance_uefi_data(&self, builder: GetInstanceUefiDataInputBuilder) -> impl Future<Output = Result<GetInstanceUefiDataOutput, SdkError<GetInstanceUefiDataError>>> {
-        (*self).get_instance_uefi_data(builder)
+        self.deref().get_instance_uefi_data(builder)
     }
     fn get_ipam_address_history(&self, builder: GetIpamAddressHistoryInputBuilder) -> impl Future<Output = Result<GetIpamAddressHistoryOutput, SdkError<GetIpamAddressHistoryError>>> {
-        (*self).get_ipam_address_history(builder)
+        self.deref().get_ipam_address_history(builder)
     }
     fn get_ipam_discovered_accounts(&self, builder: GetIpamDiscoveredAccountsInputBuilder) -> impl Future<Output = Result<GetIpamDiscoveredAccountsOutput, SdkError<GetIpamDiscoveredAccountsError>>> {
-        (*self).get_ipam_discovered_accounts(builder)
+        self.deref().get_ipam_discovered_accounts(builder)
     }
     fn get_ipam_discovered_public_addresses(&self, builder: GetIpamDiscoveredPublicAddressesInputBuilder) -> impl Future<Output = Result<GetIpamDiscoveredPublicAddressesOutput, SdkError<GetIpamDiscoveredPublicAddressesError>>> {
-        (*self).get_ipam_discovered_public_addresses(builder)
+        self.deref().get_ipam_discovered_public_addresses(builder)
     }
     fn get_ipam_discovered_resource_cidrs(&self, builder: GetIpamDiscoveredResourceCidrsInputBuilder) -> impl Future<Output = Result<GetIpamDiscoveredResourceCidrsOutput, SdkError<GetIpamDiscoveredResourceCidrsError>>> {
-        (*self).get_ipam_discovered_resource_cidrs(builder)
+        self.deref().get_ipam_discovered_resource_cidrs(builder)
     }
     fn get_ipam_pool_allocations(&self, builder: GetIpamPoolAllocationsInputBuilder) -> impl Future<Output = Result<GetIpamPoolAllocationsOutput, SdkError<GetIpamPoolAllocationsError>>> {
-        (*self).get_ipam_pool_allocations(builder)
+        self.deref().get_ipam_pool_allocations(builder)
     }
     fn get_ipam_pool_cidrs(&self, builder: GetIpamPoolCidrsInputBuilder) -> impl Future<Output = Result<GetIpamPoolCidrsOutput, SdkError<GetIpamPoolCidrsError>>> {
-        (*self).get_ipam_pool_cidrs(builder)
+        self.deref().get_ipam_pool_cidrs(builder)
     }
     fn get_ipam_resource_cidrs(&self, builder: GetIpamResourceCidrsInputBuilder) -> impl Future<Output = Result<GetIpamResourceCidrsOutput, SdkError<GetIpamResourceCidrsError>>> {
-        (*self).get_ipam_resource_cidrs(builder)
+        self.deref().get_ipam_resource_cidrs(builder)
     }
     fn get_launch_template_data(&self, builder: GetLaunchTemplateDataInputBuilder) -> impl Future<Output = Result<GetLaunchTemplateDataOutput, SdkError<GetLaunchTemplateDataError>>> {
-        (*self).get_launch_template_data(builder)
+        self.deref().get_launch_template_data(builder)
     }
     fn get_managed_prefix_list_associations(&self, builder: GetManagedPrefixListAssociationsInputBuilder) -> impl Future<Output = Result<GetManagedPrefixListAssociationsOutput, SdkError<GetManagedPrefixListAssociationsError>>> {
-        (*self).get_managed_prefix_list_associations(builder)
+        self.deref().get_managed_prefix_list_associations(builder)
     }
     fn get_managed_prefix_list_entries(&self, builder: GetManagedPrefixListEntriesInputBuilder) -> impl Future<Output = Result<GetManagedPrefixListEntriesOutput, SdkError<GetManagedPrefixListEntriesError>>> {
-        (*self).get_managed_prefix_list_entries(builder)
+        self.deref().get_managed_prefix_list_entries(builder)
     }
     fn get_network_insights_access_scope_analysis_findings(&self, builder: GetNetworkInsightsAccessScopeAnalysisFindingsInputBuilder) -> impl Future<Output = Result<GetNetworkInsightsAccessScopeAnalysisFindingsOutput, SdkError<GetNetworkInsightsAccessScopeAnalysisFindingsError>>> {
-        (*self).get_network_insights_access_scope_analysis_findings(builder)
+        self.deref().get_network_insights_access_scope_analysis_findings(builder)
     }
     fn get_network_insights_access_scope_content(&self, builder: GetNetworkInsightsAccessScopeContentInputBuilder) -> impl Future<Output = Result<GetNetworkInsightsAccessScopeContentOutput, SdkError<GetNetworkInsightsAccessScopeContentError>>> {
-        (*self).get_network_insights_access_scope_content(builder)
+        self.deref().get_network_insights_access_scope_content(builder)
     }
     fn get_password_data(&self, builder: GetPasswordDataInputBuilder) -> impl Future<Output = Result<GetPasswordDataOutput, SdkError<GetPasswordDataError>>> {
-        (*self).get_password_data(builder)
+        self.deref().get_password_data(builder)
     }
     fn get_reserved_instances_exchange_quote(&self, builder: GetReservedInstancesExchangeQuoteInputBuilder) -> impl Future<Output = Result<GetReservedInstancesExchangeQuoteOutput, SdkError<GetReservedInstancesExchangeQuoteError>>> {
-        (*self).get_reserved_instances_exchange_quote(builder)
+        self.deref().get_reserved_instances_exchange_quote(builder)
     }
     fn get_security_groups_for_vpc(&self, builder: GetSecurityGroupsForVpcInputBuilder) -> impl Future<Output = Result<GetSecurityGroupsForVpcOutput, SdkError<GetSecurityGroupsForVpcError>>> {
-        (*self).get_security_groups_for_vpc(builder)
+        self.deref().get_security_groups_for_vpc(builder)
     }
     fn get_serial_console_access_status(&self, builder: GetSerialConsoleAccessStatusInputBuilder) -> impl Future<Output = Result<GetSerialConsoleAccessStatusOutput, SdkError<GetSerialConsoleAccessStatusError>>> {
-        (*self).get_serial_console_access_status(builder)
+        self.deref().get_serial_console_access_status(builder)
     }
     fn get_snapshot_block_public_access_state(&self, builder: GetSnapshotBlockPublicAccessStateInputBuilder) -> impl Future<Output = Result<GetSnapshotBlockPublicAccessStateOutput, SdkError<GetSnapshotBlockPublicAccessStateError>>> {
-        (*self).get_snapshot_block_public_access_state(builder)
+        self.deref().get_snapshot_block_public_access_state(builder)
     }
     fn get_spot_placement_scores(&self, builder: GetSpotPlacementScoresInputBuilder) -> impl Future<Output = Result<GetSpotPlacementScoresOutput, SdkError<GetSpotPlacementScoresError>>> {
-        (*self).get_spot_placement_scores(builder)
+        self.deref().get_spot_placement_scores(builder)
     }
     fn get_subnet_cidr_reservations(&self, builder: GetSubnetCidrReservationsInputBuilder) -> impl Future<Output = Result<GetSubnetCidrReservationsOutput, SdkError<GetSubnetCidrReservationsError>>> {
-        (*self).get_subnet_cidr_reservations(builder)
+        self.deref().get_subnet_cidr_reservations(builder)
     }
     fn get_transit_gateway_attachment_propagations(&self, builder: GetTransitGatewayAttachmentPropagationsInputBuilder) -> impl Future<Output = Result<GetTransitGatewayAttachmentPropagationsOutput, SdkError<GetTransitGatewayAttachmentPropagationsError>>> {
-        (*self).get_transit_gateway_attachment_propagations(builder)
+        self.deref().get_transit_gateway_attachment_propagations(builder)
     }
     fn get_transit_gateway_multicast_domain_associations(&self, builder: GetTransitGatewayMulticastDomainAssociationsInputBuilder) -> impl Future<Output = Result<GetTransitGatewayMulticastDomainAssociationsOutput, SdkError<GetTransitGatewayMulticastDomainAssociationsError>>> {
-        (*self).get_transit_gateway_multicast_domain_associations(builder)
+        self.deref().get_transit_gateway_multicast_domain_associations(builder)
     }
     fn get_transit_gateway_policy_table_associations(&self, builder: GetTransitGatewayPolicyTableAssociationsInputBuilder) -> impl Future<Output = Result<GetTransitGatewayPolicyTableAssociationsOutput, SdkError<GetTransitGatewayPolicyTableAssociationsError>>> {
-        (*self).get_transit_gateway_policy_table_associations(builder)
+        self.deref().get_transit_gateway_policy_table_associations(builder)
     }
     fn get_transit_gateway_policy_table_entries(&self, builder: GetTransitGatewayPolicyTableEntriesInputBuilder) -> impl Future<Output = Result<GetTransitGatewayPolicyTableEntriesOutput, SdkError<GetTransitGatewayPolicyTableEntriesError>>> {
-        (*self).get_transit_gateway_policy_table_entries(builder)
+        self.deref().get_transit_gateway_policy_table_entries(builder)
     }
     fn get_transit_gateway_prefix_list_references(&self, builder: GetTransitGatewayPrefixListReferencesInputBuilder) -> impl Future<Output = Result<GetTransitGatewayPrefixListReferencesOutput, SdkError<GetTransitGatewayPrefixListReferencesError>>> {
-        (*self).get_transit_gateway_prefix_list_references(builder)
+        self.deref().get_transit_gateway_prefix_list_references(builder)
     }
     fn get_transit_gateway_route_table_associations(&self, builder: GetTransitGatewayRouteTableAssociationsInputBuilder) -> impl Future<Output = Result<GetTransitGatewayRouteTableAssociationsOutput, SdkError<GetTransitGatewayRouteTableAssociationsError>>> {
-        (*self).get_transit_gateway_route_table_associations(builder)
+        self.deref().get_transit_gateway_route_table_associations(builder)
     }
     fn get_transit_gateway_route_table_propagations(&self, builder: GetTransitGatewayRouteTablePropagationsInputBuilder) -> impl Future<Output = Result<GetTransitGatewayRouteTablePropagationsOutput, SdkError<GetTransitGatewayRouteTablePropagationsError>>> {
-        (*self).get_transit_gateway_route_table_propagations(builder)
+        self.deref().get_transit_gateway_route_table_propagations(builder)
     }
     fn get_verified_access_endpoint_policy(&self, builder: GetVerifiedAccessEndpointPolicyInputBuilder) -> impl Future<Output = Result<GetVerifiedAccessEndpointPolicyOutput, SdkError<GetVerifiedAccessEndpointPolicyError>>> {
-        (*self).get_verified_access_endpoint_policy(builder)
+        self.deref().get_verified_access_endpoint_policy(builder)
     }
     fn get_verified_access_group_policy(&self, builder: GetVerifiedAccessGroupPolicyInputBuilder) -> impl Future<Output = Result<GetVerifiedAccessGroupPolicyOutput, SdkError<GetVerifiedAccessGroupPolicyError>>> {
-        (*self).get_verified_access_group_policy(builder)
+        self.deref().get_verified_access_group_policy(builder)
     }
     fn get_vpn_connection_device_sample_configuration(&self, builder: GetVpnConnectionDeviceSampleConfigurationInputBuilder) -> impl Future<Output = Result<GetVpnConnectionDeviceSampleConfigurationOutput, SdkError<GetVpnConnectionDeviceSampleConfigurationError>>> {
-        (*self).get_vpn_connection_device_sample_configuration(builder)
+        self.deref().get_vpn_connection_device_sample_configuration(builder)
     }
     fn get_vpn_connection_device_types(&self, builder: GetVpnConnectionDeviceTypesInputBuilder) -> impl Future<Output = Result<GetVpnConnectionDeviceTypesOutput, SdkError<GetVpnConnectionDeviceTypesError>>> {
-        (*self).get_vpn_connection_device_types(builder)
+        self.deref().get_vpn_connection_device_types(builder)
     }
     fn get_vpn_tunnel_replacement_status(&self, builder: GetVpnTunnelReplacementStatusInputBuilder) -> impl Future<Output = Result<GetVpnTunnelReplacementStatusOutput, SdkError<GetVpnTunnelReplacementStatusError>>> {
-        (*self).get_vpn_tunnel_replacement_status(builder)
+        self.deref().get_vpn_tunnel_replacement_status(builder)
     }
     fn import_client_vpn_client_certificate_revocation_list(&self, builder: ImportClientVpnClientCertificateRevocationListInputBuilder) -> impl Future<Output = Result<ImportClientVpnClientCertificateRevocationListOutput, SdkError<ImportClientVpnClientCertificateRevocationListError>>> {
-        (*self).import_client_vpn_client_certificate_revocation_list(builder)
+        self.deref().import_client_vpn_client_certificate_revocation_list(builder)
     }
     fn import_image(&self, builder: ImportImageInputBuilder) -> impl Future<Output = Result<ImportImageOutput, SdkError<ImportImageError>>> {
-        (*self).import_image(builder)
+        self.deref().import_image(builder)
     }
     fn import_key_pair(&self, builder: ImportKeyPairInputBuilder) -> impl Future<Output = Result<ImportKeyPairOutput, SdkError<ImportKeyPairError>>> {
-        (*self).import_key_pair(builder)
+        self.deref().import_key_pair(builder)
     }
     fn import_snapshot(&self, builder: ImportSnapshotInputBuilder) -> impl Future<Output = Result<ImportSnapshotOutput, SdkError<ImportSnapshotError>>> {
-        (*self).import_snapshot(builder)
+        self.deref().import_snapshot(builder)
     }
     fn list_images_in_recycle_bin(&self, builder: ListImagesInRecycleBinInputBuilder) -> impl Future<Output = Result<ListImagesInRecycleBinOutput, SdkError<ListImagesInRecycleBinError>>> {
-        (*self).list_images_in_recycle_bin(builder)
+        self.deref().list_images_in_recycle_bin(builder)
     }
     fn list_snapshots_in_recycle_bin(&self, builder: ListSnapshotsInRecycleBinInputBuilder) -> impl Future<Output = Result<ListSnapshotsInRecycleBinOutput, SdkError<ListSnapshotsInRecycleBinError>>> {
-        (*self).list_snapshots_in_recycle_bin(builder)
+        self.deref().list_snapshots_in_recycle_bin(builder)
     }
     fn lock_snapshot(&self, builder: LockSnapshotInputBuilder) -> impl Future<Output = Result<LockSnapshotOutput, SdkError<LockSnapshotError>>> {
-        (*self).lock_snapshot(builder)
+        self.deref().lock_snapshot(builder)
     }
     fn modify_address_attribute(&self, builder: ModifyAddressAttributeInputBuilder) -> impl Future<Output = Result<ModifyAddressAttributeOutput, SdkError<ModifyAddressAttributeError>>> {
-        (*self).modify_address_attribute(builder)
+        self.deref().modify_address_attribute(builder)
     }
     fn modify_availability_zone_group(&self, builder: ModifyAvailabilityZoneGroupInputBuilder) -> impl Future<Output = Result<ModifyAvailabilityZoneGroupOutput, SdkError<ModifyAvailabilityZoneGroupError>>> {
-        (*self).modify_availability_zone_group(builder)
+        self.deref().modify_availability_zone_group(builder)
     }
     fn modify_capacity_reservation(&self, builder: ModifyCapacityReservationInputBuilder) -> impl Future<Output = Result<ModifyCapacityReservationOutput, SdkError<ModifyCapacityReservationError>>> {
-        (*self).modify_capacity_reservation(builder)
+        self.deref().modify_capacity_reservation(builder)
     }
     fn modify_capacity_reservation_fleet(&self, builder: ModifyCapacityReservationFleetInputBuilder) -> impl Future<Output = Result<ModifyCapacityReservationFleetOutput, SdkError<ModifyCapacityReservationFleetError>>> {
-        (*self).modify_capacity_reservation_fleet(builder)
+        self.deref().modify_capacity_reservation_fleet(builder)
     }
     fn modify_client_vpn_endpoint(&self, builder: ModifyClientVpnEndpointInputBuilder) -> impl Future<Output = Result<ModifyClientVpnEndpointOutput, SdkError<ModifyClientVpnEndpointError>>> {
-        (*self).modify_client_vpn_endpoint(builder)
+        self.deref().modify_client_vpn_endpoint(builder)
     }
     fn modify_default_credit_specification(&self, builder: ModifyDefaultCreditSpecificationInputBuilder) -> impl Future<Output = Result<ModifyDefaultCreditSpecificationOutput, SdkError<ModifyDefaultCreditSpecificationError>>> {
-        (*self).modify_default_credit_specification(builder)
+        self.deref().modify_default_credit_specification(builder)
     }
     fn modify_ebs_default_kms_key_id(&self, builder: ModifyEbsDefaultKmsKeyIdInputBuilder) -> impl Future<Output = Result<ModifyEbsDefaultKmsKeyIdOutput, SdkError<ModifyEbsDefaultKmsKeyIdError>>> {
-        (*self).modify_ebs_default_kms_key_id(builder)
+        self.deref().modify_ebs_default_kms_key_id(builder)
     }
     fn modify_fleet(&self, builder: ModifyFleetInputBuilder) -> impl Future<Output = Result<ModifyFleetOutput, SdkError<ModifyFleetError>>> {
-        (*self).modify_fleet(builder)
+        self.deref().modify_fleet(builder)
     }
     fn modify_fpga_image_attribute(&self, builder: ModifyFpgaImageAttributeInputBuilder) -> impl Future<Output = Result<ModifyFpgaImageAttributeOutput, SdkError<ModifyFpgaImageAttributeError>>> {
-        (*self).modify_fpga_image_attribute(builder)
+        self.deref().modify_fpga_image_attribute(builder)
     }
     fn modify_hosts(&self, builder: ModifyHostsInputBuilder) -> impl Future<Output = Result<ModifyHostsOutput, SdkError<ModifyHostsError>>> {
-        (*self).modify_hosts(builder)
+        self.deref().modify_hosts(builder)
     }
     fn modify_id_format(&self, builder: ModifyIdFormatInputBuilder) -> impl Future<Output = Result<ModifyIdFormatOutput, SdkError<ModifyIdFormatError>>> {
-        (*self).modify_id_format(builder)
+        self.deref().modify_id_format(builder)
     }
     fn modify_identity_id_format(&self, builder: ModifyIdentityIdFormatInputBuilder) -> impl Future<Output = Result<ModifyIdentityIdFormatOutput, SdkError<ModifyIdentityIdFormatError>>> {
-        (*self).modify_identity_id_format(builder)
+        self.deref().modify_identity_id_format(builder)
     }
     fn modify_image_attribute(&self, builder: ModifyImageAttributeInputBuilder) -> impl Future<Output = Result<ModifyImageAttributeOutput, SdkError<ModifyImageAttributeError>>> {
-        (*self).modify_image_attribute(builder)
+        self.deref().modify_image_attribute(builder)
     }
     fn modify_instance_attribute(&self, builder: ModifyInstanceAttributeInputBuilder) -> impl Future<Output = Result<ModifyInstanceAttributeOutput, SdkError<ModifyInstanceAttributeError>>> {
-        (*self).modify_instance_attribute(builder)
+        self.deref().modify_instance_attribute(builder)
     }
     fn modify_instance_capacity_reservation_attributes(&self, builder: ModifyInstanceCapacityReservationAttributesInputBuilder) -> impl Future<Output = Result<ModifyInstanceCapacityReservationAttributesOutput, SdkError<ModifyInstanceCapacityReservationAttributesError>>> {
-        (*self).modify_instance_capacity_reservation_attributes(builder)
+        self.deref().modify_instance_capacity_reservation_attributes(builder)
     }
     fn modify_instance_credit_specification(&self, builder: ModifyInstanceCreditSpecificationInputBuilder) -> impl Future<Output = Result<ModifyInstanceCreditSpecificationOutput, SdkError<ModifyInstanceCreditSpecificationError>>> {
-        (*self).modify_instance_credit_specification(builder)
+        self.deref().modify_instance_credit_specification(builder)
     }
     fn modify_instance_event_start_time(&self, builder: ModifyInstanceEventStartTimeInputBuilder) -> impl Future<Output = Result<ModifyInstanceEventStartTimeOutput, SdkError<ModifyInstanceEventStartTimeError>>> {
-        (*self).modify_instance_event_start_time(builder)
+        self.deref().modify_instance_event_start_time(builder)
     }
     fn modify_instance_event_window(&self, builder: ModifyInstanceEventWindowInputBuilder) -> impl Future<Output = Result<ModifyInstanceEventWindowOutput, SdkError<ModifyInstanceEventWindowError>>> {
-        (*self).modify_instance_event_window(builder)
+        self.deref().modify_instance_event_window(builder)
     }
     fn modify_instance_maintenance_options(&self, builder: ModifyInstanceMaintenanceOptionsInputBuilder) -> impl Future<Output = Result<ModifyInstanceMaintenanceOptionsOutput, SdkError<ModifyInstanceMaintenanceOptionsError>>> {
-        (*self).modify_instance_maintenance_options(builder)
+        self.deref().modify_instance_maintenance_options(builder)
     }
     fn modify_instance_metadata_defaults(&self, builder: ModifyInstanceMetadataDefaultsInputBuilder) -> impl Future<Output = Result<ModifyInstanceMetadataDefaultsOutput, SdkError<ModifyInstanceMetadataDefaultsError>>> {
-        (*self).modify_instance_metadata_defaults(builder)
+        self.deref().modify_instance_metadata_defaults(builder)
     }
     fn modify_instance_metadata_options(&self, builder: ModifyInstanceMetadataOptionsInputBuilder) -> impl Future<Output = Result<ModifyInstanceMetadataOptionsOutput, SdkError<ModifyInstanceMetadataOptionsError>>> {
-        (*self).modify_instance_metadata_options(builder)
+        self.deref().modify_instance_metadata_options(builder)
     }
     fn modify_instance_placement(&self, builder: ModifyInstancePlacementInputBuilder) -> impl Future<Output = Result<ModifyInstancePlacementOutput, SdkError<ModifyInstancePlacementError>>> {
-        (*self).modify_instance_placement(builder)
+        self.deref().modify_instance_placement(builder)
     }
     fn modify_ipam(&self, builder: ModifyIpamInputBuilder) -> impl Future<Output = Result<ModifyIpamOutput, SdkError<ModifyIpamError>>> {
-        (*self).modify_ipam(builder)
+        self.deref().modify_ipam(builder)
     }
     fn modify_ipam_pool(&self, builder: ModifyIpamPoolInputBuilder) -> impl Future<Output = Result<ModifyIpamPoolOutput, SdkError<ModifyIpamPoolError>>> {
-        (*self).modify_ipam_pool(builder)
+        self.deref().modify_ipam_pool(builder)
     }
     fn modify_ipam_resource_cidr(&self, builder: ModifyIpamResourceCidrInputBuilder) -> impl Future<Output = Result<ModifyIpamResourceCidrOutput, SdkError<ModifyIpamResourceCidrError>>> {
-        (*self).modify_ipam_resource_cidr(builder)
+        self.deref().modify_ipam_resource_cidr(builder)
     }
     fn modify_ipam_resource_discovery(&self, builder: ModifyIpamResourceDiscoveryInputBuilder) -> impl Future<Output = Result<ModifyIpamResourceDiscoveryOutput, SdkError<ModifyIpamResourceDiscoveryError>>> {
-        (*self).modify_ipam_resource_discovery(builder)
+        self.deref().modify_ipam_resource_discovery(builder)
     }
     fn modify_ipam_scope(&self, builder: ModifyIpamScopeInputBuilder) -> impl Future<Output = Result<ModifyIpamScopeOutput, SdkError<ModifyIpamScopeError>>> {
-        (*self).modify_ipam_scope(builder)
+        self.deref().modify_ipam_scope(builder)
     }
     fn modify_launch_template(&self, builder: ModifyLaunchTemplateInputBuilder) -> impl Future<Output = Result<ModifyLaunchTemplateOutput, SdkError<ModifyLaunchTemplateError>>> {
-        (*self).modify_launch_template(builder)
+        self.deref().modify_launch_template(builder)
     }
     fn modify_local_gateway_route(&self, builder: ModifyLocalGatewayRouteInputBuilder) -> impl Future<Output = Result<ModifyLocalGatewayRouteOutput, SdkError<ModifyLocalGatewayRouteError>>> {
-        (*self).modify_local_gateway_route(builder)
+        self.deref().modify_local_gateway_route(builder)
     }
     fn modify_managed_prefix_list(&self, builder: ModifyManagedPrefixListInputBuilder) -> impl Future<Output = Result<ModifyManagedPrefixListOutput, SdkError<ModifyManagedPrefixListError>>> {
-        (*self).modify_managed_prefix_list(builder)
+        self.deref().modify_managed_prefix_list(builder)
     }
     fn modify_network_interface_attribute(&self, builder: ModifyNetworkInterfaceAttributeInputBuilder) -> impl Future<Output = Result<ModifyNetworkInterfaceAttributeOutput, SdkError<ModifyNetworkInterfaceAttributeError>>> {
-        (*self).modify_network_interface_attribute(builder)
+        self.deref().modify_network_interface_attribute(builder)
     }
     fn modify_private_dns_name_options(&self, builder: ModifyPrivateDnsNameOptionsInputBuilder) -> impl Future<Output = Result<ModifyPrivateDnsNameOptionsOutput, SdkError<ModifyPrivateDnsNameOptionsError>>> {
-        (*self).modify_private_dns_name_options(builder)
+        self.deref().modify_private_dns_name_options(builder)
     }
     fn modify_reserved_instances(&self, builder: ModifyReservedInstancesInputBuilder) -> impl Future<Output = Result<ModifyReservedInstancesOutput, SdkError<ModifyReservedInstancesError>>> {
-        (*self).modify_reserved_instances(builder)
+        self.deref().modify_reserved_instances(builder)
     }
     fn modify_security_group_rules(&self, builder: ModifySecurityGroupRulesInputBuilder) -> impl Future<Output = Result<ModifySecurityGroupRulesOutput, SdkError<ModifySecurityGroupRulesError>>> {
-        (*self).modify_security_group_rules(builder)
+        self.deref().modify_security_group_rules(builder)
     }
     fn modify_snapshot_attribute(&self, builder: ModifySnapshotAttributeInputBuilder) -> impl Future<Output = Result<ModifySnapshotAttributeOutput, SdkError<ModifySnapshotAttributeError>>> {
-        (*self).modify_snapshot_attribute(builder)
+        self.deref().modify_snapshot_attribute(builder)
     }
     fn modify_snapshot_tier(&self, builder: ModifySnapshotTierInputBuilder) -> impl Future<Output = Result<ModifySnapshotTierOutput, SdkError<ModifySnapshotTierError>>> {
-        (*self).modify_snapshot_tier(builder)
+        self.deref().modify_snapshot_tier(builder)
     }
     fn modify_spot_fleet_request(&self, builder: ModifySpotFleetRequestInputBuilder) -> impl Future<Output = Result<ModifySpotFleetRequestOutput, SdkError<ModifySpotFleetRequestError>>> {
-        (*self).modify_spot_fleet_request(builder)
+        self.deref().modify_spot_fleet_request(builder)
     }
     fn modify_subnet_attribute(&self, builder: ModifySubnetAttributeInputBuilder) -> impl Future<Output = Result<ModifySubnetAttributeOutput, SdkError<ModifySubnetAttributeError>>> {
-        (*self).modify_subnet_attribute(builder)
+        self.deref().modify_subnet_attribute(builder)
     }
     fn modify_traffic_mirror_filter_network_services(&self, builder: ModifyTrafficMirrorFilterNetworkServicesInputBuilder) -> impl Future<Output = Result<ModifyTrafficMirrorFilterNetworkServicesOutput, SdkError<ModifyTrafficMirrorFilterNetworkServicesError>>> {
-        (*self).modify_traffic_mirror_filter_network_services(builder)
+        self.deref().modify_traffic_mirror_filter_network_services(builder)
     }
     fn modify_traffic_mirror_filter_rule(&self, builder: ModifyTrafficMirrorFilterRuleInputBuilder) -> impl Future<Output = Result<ModifyTrafficMirrorFilterRuleOutput, SdkError<ModifyTrafficMirrorFilterRuleError>>> {
-        (*self).modify_traffic_mirror_filter_rule(builder)
+        self.deref().modify_traffic_mirror_filter_rule(builder)
     }
     fn modify_traffic_mirror_session(&self, builder: ModifyTrafficMirrorSessionInputBuilder) -> impl Future<Output = Result<ModifyTrafficMirrorSessionOutput, SdkError<ModifyTrafficMirrorSessionError>>> {
-        (*self).modify_traffic_mirror_session(builder)
+        self.deref().modify_traffic_mirror_session(builder)
     }
     fn modify_transit_gateway(&self, builder: ModifyTransitGatewayInputBuilder) -> impl Future<Output = Result<ModifyTransitGatewayOutput, SdkError<ModifyTransitGatewayError>>> {
-        (*self).modify_transit_gateway(builder)
+        self.deref().modify_transit_gateway(builder)
     }
     fn modify_transit_gateway_prefix_list_reference(&self, builder: ModifyTransitGatewayPrefixListReferenceInputBuilder) -> impl Future<Output = Result<ModifyTransitGatewayPrefixListReferenceOutput, SdkError<ModifyTransitGatewayPrefixListReferenceError>>> {
-        (*self).modify_transit_gateway_prefix_list_reference(builder)
+        self.deref().modify_transit_gateway_prefix_list_reference(builder)
     }
     fn modify_transit_gateway_vpc_attachment(&self, builder: ModifyTransitGatewayVpcAttachmentInputBuilder) -> impl Future<Output = Result<ModifyTransitGatewayVpcAttachmentOutput, SdkError<ModifyTransitGatewayVpcAttachmentError>>> {
-        (*self).modify_transit_gateway_vpc_attachment(builder)
+        self.deref().modify_transit_gateway_vpc_attachment(builder)
     }
     fn modify_verified_access_endpoint(&self, builder: ModifyVerifiedAccessEndpointInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessEndpointOutput, SdkError<ModifyVerifiedAccessEndpointError>>> {
-        (*self).modify_verified_access_endpoint(builder)
+        self.deref().modify_verified_access_endpoint(builder)
     }
     fn modify_verified_access_endpoint_policy(&self, builder: ModifyVerifiedAccessEndpointPolicyInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessEndpointPolicyOutput, SdkError<ModifyVerifiedAccessEndpointPolicyError>>> {
-        (*self).modify_verified_access_endpoint_policy(builder)
+        self.deref().modify_verified_access_endpoint_policy(builder)
     }
     fn modify_verified_access_group(&self, builder: ModifyVerifiedAccessGroupInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessGroupOutput, SdkError<ModifyVerifiedAccessGroupError>>> {
-        (*self).modify_verified_access_group(builder)
+        self.deref().modify_verified_access_group(builder)
     }
     fn modify_verified_access_group_policy(&self, builder: ModifyVerifiedAccessGroupPolicyInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessGroupPolicyOutput, SdkError<ModifyVerifiedAccessGroupPolicyError>>> {
-        (*self).modify_verified_access_group_policy(builder)
+        self.deref().modify_verified_access_group_policy(builder)
     }
     fn modify_verified_access_instance(&self, builder: ModifyVerifiedAccessInstanceInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessInstanceOutput, SdkError<ModifyVerifiedAccessInstanceError>>> {
-        (*self).modify_verified_access_instance(builder)
+        self.deref().modify_verified_access_instance(builder)
     }
     fn modify_verified_access_instance_logging_configuration(&self, builder: ModifyVerifiedAccessInstanceLoggingConfigurationInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessInstanceLoggingConfigurationOutput, SdkError<ModifyVerifiedAccessInstanceLoggingConfigurationError>>> {
-        (*self).modify_verified_access_instance_logging_configuration(builder)
+        self.deref().modify_verified_access_instance_logging_configuration(builder)
     }
     fn modify_verified_access_trust_provider(&self, builder: ModifyVerifiedAccessTrustProviderInputBuilder) -> impl Future<Output = Result<ModifyVerifiedAccessTrustProviderOutput, SdkError<ModifyVerifiedAccessTrustProviderError>>> {
-        (*self).modify_verified_access_trust_provider(builder)
+        self.deref().modify_verified_access_trust_provider(builder)
     }
     fn modify_volume(&self, builder: ModifyVolumeInputBuilder) -> impl Future<Output = Result<ModifyVolumeOutput, SdkError<ModifyVolumeError>>> {
-        (*self).modify_volume(builder)
+        self.deref().modify_volume(builder)
     }
     fn modify_volume_attribute(&self, builder: ModifyVolumeAttributeInputBuilder) -> impl Future<Output = Result<ModifyVolumeAttributeOutput, SdkError<ModifyVolumeAttributeError>>> {
-        (*self).modify_volume_attribute(builder)
+        self.deref().modify_volume_attribute(builder)
     }
     fn modify_vpc_attribute(&self, builder: ModifyVpcAttributeInputBuilder) -> impl Future<Output = Result<ModifyVpcAttributeOutput, SdkError<ModifyVpcAttributeError>>> {
-        (*self).modify_vpc_attribute(builder)
+        self.deref().modify_vpc_attribute(builder)
     }
     fn modify_vpc_endpoint(&self, builder: ModifyVpcEndpointInputBuilder) -> impl Future<Output = Result<ModifyVpcEndpointOutput, SdkError<ModifyVpcEndpointError>>> {
-        (*self).modify_vpc_endpoint(builder)
+        self.deref().modify_vpc_endpoint(builder)
     }
     fn modify_vpc_endpoint_connection_notification(&self, builder: ModifyVpcEndpointConnectionNotificationInputBuilder) -> impl Future<Output = Result<ModifyVpcEndpointConnectionNotificationOutput, SdkError<ModifyVpcEndpointConnectionNotificationError>>> {
-        (*self).modify_vpc_endpoint_connection_notification(builder)
+        self.deref().modify_vpc_endpoint_connection_notification(builder)
     }
     fn modify_vpc_endpoint_service_configuration(&self, builder: ModifyVpcEndpointServiceConfigurationInputBuilder) -> impl Future<Output = Result<ModifyVpcEndpointServiceConfigurationOutput, SdkError<ModifyVpcEndpointServiceConfigurationError>>> {
-        (*self).modify_vpc_endpoint_service_configuration(builder)
+        self.deref().modify_vpc_endpoint_service_configuration(builder)
     }
     fn modify_vpc_endpoint_service_payer_responsibility(&self, builder: ModifyVpcEndpointServicePayerResponsibilityInputBuilder) -> impl Future<Output = Result<ModifyVpcEndpointServicePayerResponsibilityOutput, SdkError<ModifyVpcEndpointServicePayerResponsibilityError>>> {
-        (*self).modify_vpc_endpoint_service_payer_responsibility(builder)
+        self.deref().modify_vpc_endpoint_service_payer_responsibility(builder)
     }
     fn modify_vpc_endpoint_service_permissions(&self, builder: ModifyVpcEndpointServicePermissionsInputBuilder) -> impl Future<Output = Result<ModifyVpcEndpointServicePermissionsOutput, SdkError<ModifyVpcEndpointServicePermissionsError>>> {
-        (*self).modify_vpc_endpoint_service_permissions(builder)
+        self.deref().modify_vpc_endpoint_service_permissions(builder)
     }
     fn modify_vpc_peering_connection_options(&self, builder: ModifyVpcPeeringConnectionOptionsInputBuilder) -> impl Future<Output = Result<ModifyVpcPeeringConnectionOptionsOutput, SdkError<ModifyVpcPeeringConnectionOptionsError>>> {
-        (*self).modify_vpc_peering_connection_options(builder)
+        self.deref().modify_vpc_peering_connection_options(builder)
     }
     fn modify_vpc_tenancy(&self, builder: ModifyVpcTenancyInputBuilder) -> impl Future<Output = Result<ModifyVpcTenancyOutput, SdkError<ModifyVpcTenancyError>>> {
-        (*self).modify_vpc_tenancy(builder)
+        self.deref().modify_vpc_tenancy(builder)
     }
     fn modify_vpn_connection(&self, builder: ModifyVpnConnectionInputBuilder) -> impl Future<Output = Result<ModifyVpnConnectionOutput, SdkError<ModifyVpnConnectionError>>> {
-        (*self).modify_vpn_connection(builder)
+        self.deref().modify_vpn_connection(builder)
     }
     fn modify_vpn_connection_options(&self, builder: ModifyVpnConnectionOptionsInputBuilder) -> impl Future<Output = Result<ModifyVpnConnectionOptionsOutput, SdkError<ModifyVpnConnectionOptionsError>>> {
-        (*self).modify_vpn_connection_options(builder)
+        self.deref().modify_vpn_connection_options(builder)
     }
     fn modify_vpn_tunnel_certificate(&self, builder: ModifyVpnTunnelCertificateInputBuilder) -> impl Future<Output = Result<ModifyVpnTunnelCertificateOutput, SdkError<ModifyVpnTunnelCertificateError>>> {
-        (*self).modify_vpn_tunnel_certificate(builder)
+        self.deref().modify_vpn_tunnel_certificate(builder)
     }
     fn modify_vpn_tunnel_options(&self, builder: ModifyVpnTunnelOptionsInputBuilder) -> impl Future<Output = Result<ModifyVpnTunnelOptionsOutput, SdkError<ModifyVpnTunnelOptionsError>>> {
-        (*self).modify_vpn_tunnel_options(builder)
+        self.deref().modify_vpn_tunnel_options(builder)
     }
     fn monitor_instances(&self, builder: MonitorInstancesInputBuilder) -> impl Future<Output = Result<MonitorInstancesOutput, SdkError<MonitorInstancesError>>> {
-        (*self).monitor_instances(builder)
+        self.deref().monitor_instances(builder)
     }
     fn move_address_to_vpc(&self, builder: MoveAddressToVpcInputBuilder) -> impl Future<Output = Result<MoveAddressToVpcOutput, SdkError<MoveAddressToVpcError>>> {
-        (*self).move_address_to_vpc(builder)
+        self.deref().move_address_to_vpc(builder)
     }
     fn move_byoip_cidr_to_ipam(&self, builder: MoveByoipCidrToIpamInputBuilder) -> impl Future<Output = Result<MoveByoipCidrToIpamOutput, SdkError<MoveByoipCidrToIpamError>>> {
-        (*self).move_byoip_cidr_to_ipam(builder)
+        self.deref().move_byoip_cidr_to_ipam(builder)
     }
     fn provision_byoip_cidr(&self, builder: ProvisionByoipCidrInputBuilder) -> impl Future<Output = Result<ProvisionByoipCidrOutput, SdkError<ProvisionByoipCidrError>>> {
-        (*self).provision_byoip_cidr(builder)
+        self.deref().provision_byoip_cidr(builder)
     }
     fn provision_ipam_byoasn(&self, builder: ProvisionIpamByoasnInputBuilder) -> impl Future<Output = Result<ProvisionIpamByoasnOutput, SdkError<ProvisionIpamByoasnError>>> {
-        (*self).provision_ipam_byoasn(builder)
+        self.deref().provision_ipam_byoasn(builder)
     }
     fn provision_ipam_pool_cidr(&self, builder: ProvisionIpamPoolCidrInputBuilder) -> impl Future<Output = Result<ProvisionIpamPoolCidrOutput, SdkError<ProvisionIpamPoolCidrError>>> {
-        (*self).provision_ipam_pool_cidr(builder)
+        self.deref().provision_ipam_pool_cidr(builder)
     }
     fn provision_public_ipv4_pool_cidr(&self, builder: ProvisionPublicIpv4PoolCidrInputBuilder) -> impl Future<Output = Result<ProvisionPublicIpv4PoolCidrOutput, SdkError<ProvisionPublicIpv4PoolCidrError>>> {
-        (*self).provision_public_ipv4_pool_cidr(builder)
+        self.deref().provision_public_ipv4_pool_cidr(builder)
     }
     fn purchase_capacity_block(&self, builder: PurchaseCapacityBlockInputBuilder) -> impl Future<Output = Result<PurchaseCapacityBlockOutput, SdkError<PurchaseCapacityBlockError>>> {
-        (*self).purchase_capacity_block(builder)
+        self.deref().purchase_capacity_block(builder)
     }
     fn purchase_host_reservation(&self, builder: PurchaseHostReservationInputBuilder) -> impl Future<Output = Result<PurchaseHostReservationOutput, SdkError<PurchaseHostReservationError>>> {
-        (*self).purchase_host_reservation(builder)
+        self.deref().purchase_host_reservation(builder)
     }
     fn purchase_reserved_instances_offering(&self, builder: PurchaseReservedInstancesOfferingInputBuilder) -> impl Future<Output = Result<PurchaseReservedInstancesOfferingOutput, SdkError<PurchaseReservedInstancesOfferingError>>> {
-        (*self).purchase_reserved_instances_offering(builder)
+        self.deref().purchase_reserved_instances_offering(builder)
     }
     fn purchase_scheduled_instances(&self, builder: PurchaseScheduledInstancesInputBuilder) -> impl Future<Output = Result<PurchaseScheduledInstancesOutput, SdkError<PurchaseScheduledInstancesError>>> {
-        (*self).purchase_scheduled_instances(builder)
+        self.deref().purchase_scheduled_instances(builder)
     }
     fn reboot_instances(&self, builder: RebootInstancesInputBuilder) -> impl Future<Output = Result<RebootInstancesOutput, SdkError<RebootInstancesError>>> {
-        (*self).reboot_instances(builder)
+        self.deref().reboot_instances(builder)
     }
     fn register_image(&self, builder: RegisterImageInputBuilder) -> impl Future<Output = Result<RegisterImageOutput, SdkError<RegisterImageError>>> {
-        (*self).register_image(builder)
+        self.deref().register_image(builder)
     }
     fn register_instance_event_notification_attributes(&self, builder: RegisterInstanceEventNotificationAttributesInputBuilder) -> impl Future<Output = Result<RegisterInstanceEventNotificationAttributesOutput, SdkError<RegisterInstanceEventNotificationAttributesError>>> {
-        (*self).register_instance_event_notification_attributes(builder)
+        self.deref().register_instance_event_notification_attributes(builder)
     }
     fn register_transit_gateway_multicast_group_members(&self, builder: RegisterTransitGatewayMulticastGroupMembersInputBuilder) -> impl Future<Output = Result<RegisterTransitGatewayMulticastGroupMembersOutput, SdkError<RegisterTransitGatewayMulticastGroupMembersError>>> {
-        (*self).register_transit_gateway_multicast_group_members(builder)
+        self.deref().register_transit_gateway_multicast_group_members(builder)
     }
     fn register_transit_gateway_multicast_group_sources(&self, builder: RegisterTransitGatewayMulticastGroupSourcesInputBuilder) -> impl Future<Output = Result<RegisterTransitGatewayMulticastGroupSourcesOutput, SdkError<RegisterTransitGatewayMulticastGroupSourcesError>>> {
-        (*self).register_transit_gateway_multicast_group_sources(builder)
+        self.deref().register_transit_gateway_multicast_group_sources(builder)
     }
     fn reject_transit_gateway_multicast_domain_associations(&self, builder: RejectTransitGatewayMulticastDomainAssociationsInputBuilder) -> impl Future<Output = Result<RejectTransitGatewayMulticastDomainAssociationsOutput, SdkError<RejectTransitGatewayMulticastDomainAssociationsError>>> {
-        (*self).reject_transit_gateway_multicast_domain_associations(builder)
+        self.deref().reject_transit_gateway_multicast_domain_associations(builder)
     }
     fn reject_transit_gateway_peering_attachment(&self, builder: RejectTransitGatewayPeeringAttachmentInputBuilder) -> impl Future<Output = Result<RejectTransitGatewayPeeringAttachmentOutput, SdkError<RejectTransitGatewayPeeringAttachmentError>>> {
-        (*self).reject_transit_gateway_peering_attachment(builder)
+        self.deref().reject_transit_gateway_peering_attachment(builder)
     }
     fn reject_transit_gateway_vpc_attachment(&self, builder: RejectTransitGatewayVpcAttachmentInputBuilder) -> impl Future<Output = Result<RejectTransitGatewayVpcAttachmentOutput, SdkError<RejectTransitGatewayVpcAttachmentError>>> {
-        (*self).reject_transit_gateway_vpc_attachment(builder)
+        self.deref().reject_transit_gateway_vpc_attachment(builder)
     }
     fn reject_vpc_endpoint_connections(&self, builder: RejectVpcEndpointConnectionsInputBuilder) -> impl Future<Output = Result<RejectVpcEndpointConnectionsOutput, SdkError<RejectVpcEndpointConnectionsError>>> {
-        (*self).reject_vpc_endpoint_connections(builder)
+        self.deref().reject_vpc_endpoint_connections(builder)
     }
     fn reject_vpc_peering_connection(&self, builder: RejectVpcPeeringConnectionInputBuilder) -> impl Future<Output = Result<RejectVpcPeeringConnectionOutput, SdkError<RejectVpcPeeringConnectionError>>> {
-        (*self).reject_vpc_peering_connection(builder)
+        self.deref().reject_vpc_peering_connection(builder)
     }
     fn release_address(&self, builder: ReleaseAddressInputBuilder) -> impl Future<Output = Result<ReleaseAddressOutput, SdkError<ReleaseAddressError>>> {
-        (*self).release_address(builder)
+        self.deref().release_address(builder)
     }
     fn release_hosts(&self, builder: ReleaseHostsInputBuilder) -> impl Future<Output = Result<ReleaseHostsOutput, SdkError<ReleaseHostsError>>> {
-        (*self).release_hosts(builder)
+        self.deref().release_hosts(builder)
     }
     fn release_ipam_pool_allocation(&self, builder: ReleaseIpamPoolAllocationInputBuilder) -> impl Future<Output = Result<ReleaseIpamPoolAllocationOutput, SdkError<ReleaseIpamPoolAllocationError>>> {
-        (*self).release_ipam_pool_allocation(builder)
+        self.deref().release_ipam_pool_allocation(builder)
     }
     fn replace_iam_instance_profile_association(&self, builder: ReplaceIamInstanceProfileAssociationInputBuilder) -> impl Future<Output = Result<ReplaceIamInstanceProfileAssociationOutput, SdkError<ReplaceIamInstanceProfileAssociationError>>> {
-        (*self).replace_iam_instance_profile_association(builder)
+        self.deref().replace_iam_instance_profile_association(builder)
     }
     fn replace_network_acl_association(&self, builder: ReplaceNetworkAclAssociationInputBuilder) -> impl Future<Output = Result<ReplaceNetworkAclAssociationOutput, SdkError<ReplaceNetworkAclAssociationError>>> {
-        (*self).replace_network_acl_association(builder)
+        self.deref().replace_network_acl_association(builder)
     }
     fn replace_network_acl_entry(&self, builder: ReplaceNetworkAclEntryInputBuilder) -> impl Future<Output = Result<ReplaceNetworkAclEntryOutput, SdkError<ReplaceNetworkAclEntryError>>> {
-        (*self).replace_network_acl_entry(builder)
+        self.deref().replace_network_acl_entry(builder)
     }
     fn replace_route(&self, builder: ReplaceRouteInputBuilder) -> impl Future<Output = Result<ReplaceRouteOutput, SdkError<ReplaceRouteError>>> {
-        (*self).replace_route(builder)
+        self.deref().replace_route(builder)
     }
     fn replace_route_table_association(&self, builder: ReplaceRouteTableAssociationInputBuilder) -> impl Future<Output = Result<ReplaceRouteTableAssociationOutput, SdkError<ReplaceRouteTableAssociationError>>> {
-        (*self).replace_route_table_association(builder)
+        self.deref().replace_route_table_association(builder)
     }
     fn replace_transit_gateway_route(&self, builder: ReplaceTransitGatewayRouteInputBuilder) -> impl Future<Output = Result<ReplaceTransitGatewayRouteOutput, SdkError<ReplaceTransitGatewayRouteError>>> {
-        (*self).replace_transit_gateway_route(builder)
+        self.deref().replace_transit_gateway_route(builder)
     }
     fn replace_vpn_tunnel(&self, builder: ReplaceVpnTunnelInputBuilder) -> impl Future<Output = Result<ReplaceVpnTunnelOutput, SdkError<ReplaceVpnTunnelError>>> {
-        (*self).replace_vpn_tunnel(builder)
+        self.deref().replace_vpn_tunnel(builder)
     }
     fn report_instance_status(&self, builder: ReportInstanceStatusInputBuilder) -> impl Future<Output = Result<ReportInstanceStatusOutput, SdkError<ReportInstanceStatusError>>> {
-        (*self).report_instance_status(builder)
+        self.deref().report_instance_status(builder)
     }
     fn request_spot_fleet(&self, builder: RequestSpotFleetInputBuilder) -> impl Future<Output = Result<RequestSpotFleetOutput, SdkError<RequestSpotFleetError>>> {
-        (*self).request_spot_fleet(builder)
+        self.deref().request_spot_fleet(builder)
     }
     fn request_spot_instances(&self, builder: RequestSpotInstancesInputBuilder) -> impl Future<Output = Result<RequestSpotInstancesOutput, SdkError<RequestSpotInstancesError>>> {
-        (*self).request_spot_instances(builder)
+        self.deref().request_spot_instances(builder)
     }
     fn reset_address_attribute(&self, builder: ResetAddressAttributeInputBuilder) -> impl Future<Output = Result<ResetAddressAttributeOutput, SdkError<ResetAddressAttributeError>>> {
-        (*self).reset_address_attribute(builder)
+        self.deref().reset_address_attribute(builder)
     }
     fn reset_ebs_default_kms_key_id(&self, builder: ResetEbsDefaultKmsKeyIdInputBuilder) -> impl Future<Output = Result<ResetEbsDefaultKmsKeyIdOutput, SdkError<ResetEbsDefaultKmsKeyIdError>>> {
-        (*self).reset_ebs_default_kms_key_id(builder)
+        self.deref().reset_ebs_default_kms_key_id(builder)
     }
     fn reset_fpga_image_attribute(&self, builder: ResetFpgaImageAttributeInputBuilder) -> impl Future<Output = Result<ResetFpgaImageAttributeOutput, SdkError<ResetFpgaImageAttributeError>>> {
-        (*self).reset_fpga_image_attribute(builder)
+        self.deref().reset_fpga_image_attribute(builder)
     }
     fn reset_image_attribute(&self, builder: ResetImageAttributeInputBuilder) -> impl Future<Output = Result<ResetImageAttributeOutput, SdkError<ResetImageAttributeError>>> {
-        (*self).reset_image_attribute(builder)
+        self.deref().reset_image_attribute(builder)
     }
     fn reset_instance_attribute(&self, builder: ResetInstanceAttributeInputBuilder) -> impl Future<Output = Result<ResetInstanceAttributeOutput, SdkError<ResetInstanceAttributeError>>> {
-        (*self).reset_instance_attribute(builder)
+        self.deref().reset_instance_attribute(builder)
     }
     fn reset_network_interface_attribute(&self, builder: ResetNetworkInterfaceAttributeInputBuilder) -> impl Future<Output = Result<ResetNetworkInterfaceAttributeOutput, SdkError<ResetNetworkInterfaceAttributeError>>> {
-        (*self).reset_network_interface_attribute(builder)
+        self.deref().reset_network_interface_attribute(builder)
     }
     fn reset_snapshot_attribute(&self, builder: ResetSnapshotAttributeInputBuilder) -> impl Future<Output = Result<ResetSnapshotAttributeOutput, SdkError<ResetSnapshotAttributeError>>> {
-        (*self).reset_snapshot_attribute(builder)
+        self.deref().reset_snapshot_attribute(builder)
     }
     fn restore_address_to_classic(&self, builder: RestoreAddressToClassicInputBuilder) -> impl Future<Output = Result<RestoreAddressToClassicOutput, SdkError<RestoreAddressToClassicError>>> {
-        (*self).restore_address_to_classic(builder)
+        self.deref().restore_address_to_classic(builder)
     }
     fn restore_image_from_recycle_bin(&self, builder: RestoreImageFromRecycleBinInputBuilder) -> impl Future<Output = Result<RestoreImageFromRecycleBinOutput, SdkError<RestoreImageFromRecycleBinError>>> {
-        (*self).restore_image_from_recycle_bin(builder)
+        self.deref().restore_image_from_recycle_bin(builder)
     }
     fn restore_managed_prefix_list_version(&self, builder: RestoreManagedPrefixListVersionInputBuilder) -> impl Future<Output = Result<RestoreManagedPrefixListVersionOutput, SdkError<RestoreManagedPrefixListVersionError>>> {
-        (*self).restore_managed_prefix_list_version(builder)
+        self.deref().restore_managed_prefix_list_version(builder)
     }
     fn restore_snapshot_from_recycle_bin(&self, builder: RestoreSnapshotFromRecycleBinInputBuilder) -> impl Future<Output = Result<RestoreSnapshotFromRecycleBinOutput, SdkError<RestoreSnapshotFromRecycleBinError>>> {
-        (*self).restore_snapshot_from_recycle_bin(builder)
+        self.deref().restore_snapshot_from_recycle_bin(builder)
     }
     fn restore_snapshot_tier(&self, builder: RestoreSnapshotTierInputBuilder) -> impl Future<Output = Result<RestoreSnapshotTierOutput, SdkError<RestoreSnapshotTierError>>> {
-        (*self).restore_snapshot_tier(builder)
+        self.deref().restore_snapshot_tier(builder)
     }
     fn revoke_client_vpn_ingress(&self, builder: RevokeClientVpnIngressInputBuilder) -> impl Future<Output = Result<RevokeClientVpnIngressOutput, SdkError<RevokeClientVpnIngressError>>> {
-        (*self).revoke_client_vpn_ingress(builder)
+        self.deref().revoke_client_vpn_ingress(builder)
     }
     fn revoke_security_group_egress(&self, builder: RevokeSecurityGroupEgressInputBuilder) -> impl Future<Output = Result<RevokeSecurityGroupEgressOutput, SdkError<RevokeSecurityGroupEgressError>>> {
-        (*self).revoke_security_group_egress(builder)
+        self.deref().revoke_security_group_egress(builder)
     }
     fn revoke_security_group_ingress(&self, builder: RevokeSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<RevokeSecurityGroupIngressOutput, SdkError<RevokeSecurityGroupIngressError>>> {
-        (*self).revoke_security_group_ingress(builder)
+        self.deref().revoke_security_group_ingress(builder)
     }
     fn run_instances(&self, builder: RunInstancesInputBuilder) -> impl Future<Output = Result<RunInstancesOutput, SdkError<RunInstancesError>>> {
-        (*self).run_instances(builder)
+        self.deref().run_instances(builder)
     }
     fn run_scheduled_instances(&self, builder: RunScheduledInstancesInputBuilder) -> impl Future<Output = Result<RunScheduledInstancesOutput, SdkError<RunScheduledInstancesError>>> {
-        (*self).run_scheduled_instances(builder)
+        self.deref().run_scheduled_instances(builder)
     }
     fn search_local_gateway_routes(&self, builder: SearchLocalGatewayRoutesInputBuilder) -> impl Future<Output = Result<SearchLocalGatewayRoutesOutput, SdkError<SearchLocalGatewayRoutesError>>> {
-        (*self).search_local_gateway_routes(builder)
+        self.deref().search_local_gateway_routes(builder)
     }
     fn search_transit_gateway_multicast_groups(&self, builder: SearchTransitGatewayMulticastGroupsInputBuilder) -> impl Future<Output = Result<SearchTransitGatewayMulticastGroupsOutput, SdkError<SearchTransitGatewayMulticastGroupsError>>> {
-        (*self).search_transit_gateway_multicast_groups(builder)
+        self.deref().search_transit_gateway_multicast_groups(builder)
     }
     fn search_transit_gateway_routes(&self, builder: SearchTransitGatewayRoutesInputBuilder) -> impl Future<Output = Result<SearchTransitGatewayRoutesOutput, SdkError<SearchTransitGatewayRoutesError>>> {
-        (*self).search_transit_gateway_routes(builder)
+        self.deref().search_transit_gateway_routes(builder)
     }
     fn send_diagnostic_interrupt(&self, builder: SendDiagnosticInterruptInputBuilder) -> impl Future<Output = Result<SendDiagnosticInterruptOutput, SdkError<SendDiagnosticInterruptError>>> {
-        (*self).send_diagnostic_interrupt(builder)
+        self.deref().send_diagnostic_interrupt(builder)
     }
     fn start_instances(&self, builder: StartInstancesInputBuilder) -> impl Future<Output = Result<StartInstancesOutput, SdkError<StartInstancesError>>> {
-        (*self).start_instances(builder)
+        self.deref().start_instances(builder)
     }
     fn start_network_insights_access_scope_analysis(&self, builder: StartNetworkInsightsAccessScopeAnalysisInputBuilder) -> impl Future<Output = Result<StartNetworkInsightsAccessScopeAnalysisOutput, SdkError<StartNetworkInsightsAccessScopeAnalysisError>>> {
-        (*self).start_network_insights_access_scope_analysis(builder)
+        self.deref().start_network_insights_access_scope_analysis(builder)
     }
     fn start_network_insights_analysis(&self, builder: StartNetworkInsightsAnalysisInputBuilder) -> impl Future<Output = Result<StartNetworkInsightsAnalysisOutput, SdkError<StartNetworkInsightsAnalysisError>>> {
-        (*self).start_network_insights_analysis(builder)
+        self.deref().start_network_insights_analysis(builder)
     }
     fn start_vpc_endpoint_service_private_dns_verification(&self, builder: StartVpcEndpointServicePrivateDnsVerificationInputBuilder) -> impl Future<Output = Result<StartVpcEndpointServicePrivateDnsVerificationOutput, SdkError<StartVpcEndpointServicePrivateDnsVerificationError>>> {
-        (*self).start_vpc_endpoint_service_private_dns_verification(builder)
+        self.deref().start_vpc_endpoint_service_private_dns_verification(builder)
     }
     fn stop_instances(&self, builder: StopInstancesInputBuilder) -> impl Future<Output = Result<StopInstancesOutput, SdkError<StopInstancesError>>> {
-        (*self).stop_instances(builder)
+        self.deref().stop_instances(builder)
     }
     fn terminate_client_vpn_connections(&self, builder: TerminateClientVpnConnectionsInputBuilder) -> impl Future<Output = Result<TerminateClientVpnConnectionsOutput, SdkError<TerminateClientVpnConnectionsError>>> {
-        (*self).terminate_client_vpn_connections(builder)
+        self.deref().terminate_client_vpn_connections(builder)
     }
     fn terminate_instances(&self, builder: TerminateInstancesInputBuilder) -> impl Future<Output = Result<TerminateInstancesOutput, SdkError<TerminateInstancesError>>> {
-        (*self).terminate_instances(builder)
+        self.deref().terminate_instances(builder)
     }
     fn unassign_ipv6_addresses(&self, builder: UnassignIpv6AddressesInputBuilder) -> impl Future<Output = Result<UnassignIpv6AddressesOutput, SdkError<UnassignIpv6AddressesError>>> {
-        (*self).unassign_ipv6_addresses(builder)
+        self.deref().unassign_ipv6_addresses(builder)
     }
     fn unassign_private_ip_addresses(&self, builder: UnassignPrivateIpAddressesInputBuilder) -> impl Future<Output = Result<UnassignPrivateIpAddressesOutput, SdkError<UnassignPrivateIpAddressesError>>> {
-        (*self).unassign_private_ip_addresses(builder)
+        self.deref().unassign_private_ip_addresses(builder)
     }
     fn unassign_private_nat_gateway_address(&self, builder: UnassignPrivateNatGatewayAddressInputBuilder) -> impl Future<Output = Result<UnassignPrivateNatGatewayAddressOutput, SdkError<UnassignPrivateNatGatewayAddressError>>> {
-        (*self).unassign_private_nat_gateway_address(builder)
+        self.deref().unassign_private_nat_gateway_address(builder)
     }
     fn unlock_snapshot(&self, builder: UnlockSnapshotInputBuilder) -> impl Future<Output = Result<UnlockSnapshotOutput, SdkError<UnlockSnapshotError>>> {
-        (*self).unlock_snapshot(builder)
+        self.deref().unlock_snapshot(builder)
     }
     fn unmonitor_instances(&self, builder: UnmonitorInstancesInputBuilder) -> impl Future<Output = Result<UnmonitorInstancesOutput, SdkError<UnmonitorInstancesError>>> {
-        (*self).unmonitor_instances(builder)
+        self.deref().unmonitor_instances(builder)
     }
     fn update_security_group_rule_descriptions_egress(&self, builder: UpdateSecurityGroupRuleDescriptionsEgressInputBuilder) -> impl Future<Output = Result<UpdateSecurityGroupRuleDescriptionsEgressOutput, SdkError<UpdateSecurityGroupRuleDescriptionsEgressError>>> {
-        (*self).update_security_group_rule_descriptions_egress(builder)
+        self.deref().update_security_group_rule_descriptions_egress(builder)
     }
     fn update_security_group_rule_descriptions_ingress(&self, builder: UpdateSecurityGroupRuleDescriptionsIngressInputBuilder) -> impl Future<Output = Result<UpdateSecurityGroupRuleDescriptionsIngressOutput, SdkError<UpdateSecurityGroupRuleDescriptionsIngressError>>> {
-        (*self).update_security_group_rule_descriptions_ingress(builder)
+        self.deref().update_security_group_rule_descriptions_ingress(builder)
     }
     fn withdraw_byoip_cidr(&self, builder: WithdrawByoipCidrInputBuilder) -> impl Future<Output = Result<WithdrawByoipCidrOutput, SdkError<WithdrawByoipCidrError>>> {
-        (*self).withdraw_byoip_cidr(builder)
+        self.deref().withdraw_byoip_cidr(builder)
     }
 }
 #[cfg(feature = "mockall")]

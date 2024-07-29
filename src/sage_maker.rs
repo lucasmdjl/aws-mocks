@@ -355,6 +355,7 @@ use aws_sdk_sagemaker::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_sagemaker::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_sagemaker::*;
 
@@ -1706,1011 +1707,1013 @@ impl SageMakerClient for SageMakerClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: SageMakerClient> SageMakerClient for &T {
+impl <T> SageMakerClient for T
+where T: Deref,
+      T::Target: SageMakerClient {
     fn add_association(&self, builder: AddAssociationInputBuilder) -> impl Future<Output = Result<AddAssociationOutput, SdkError<AddAssociationError>>> {
-        (*self).add_association(builder)
+        self.deref().add_association(builder)
     }
     fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>> {
-        (*self).add_tags(builder)
+        self.deref().add_tags(builder)
     }
     fn associate_trial_component(&self, builder: AssociateTrialComponentInputBuilder) -> impl Future<Output = Result<AssociateTrialComponentOutput, SdkError<AssociateTrialComponentError>>> {
-        (*self).associate_trial_component(builder)
+        self.deref().associate_trial_component(builder)
     }
     fn batch_describe_model_package(&self, builder: BatchDescribeModelPackageInputBuilder) -> impl Future<Output = Result<BatchDescribeModelPackageOutput, SdkError<BatchDescribeModelPackageError>>> {
-        (*self).batch_describe_model_package(builder)
+        self.deref().batch_describe_model_package(builder)
     }
     fn create_action(&self, builder: CreateActionInputBuilder) -> impl Future<Output = Result<CreateActionOutput, SdkError<CreateActionError>>> {
-        (*self).create_action(builder)
+        self.deref().create_action(builder)
     }
     fn create_algorithm(&self, builder: CreateAlgorithmInputBuilder) -> impl Future<Output = Result<CreateAlgorithmOutput, SdkError<CreateAlgorithmError>>> {
-        (*self).create_algorithm(builder)
+        self.deref().create_algorithm(builder)
     }
     fn create_app(&self, builder: CreateAppInputBuilder) -> impl Future<Output = Result<CreateAppOutput, SdkError<CreateAppError>>> {
-        (*self).create_app(builder)
+        self.deref().create_app(builder)
     }
     fn create_app_image_config(&self, builder: CreateAppImageConfigInputBuilder) -> impl Future<Output = Result<CreateAppImageConfigOutput, SdkError<CreateAppImageConfigError>>> {
-        (*self).create_app_image_config(builder)
+        self.deref().create_app_image_config(builder)
     }
     fn create_artifact(&self, builder: CreateArtifactInputBuilder) -> impl Future<Output = Result<CreateArtifactOutput, SdkError<CreateArtifactError>>> {
-        (*self).create_artifact(builder)
+        self.deref().create_artifact(builder)
     }
     fn create_auto_ml_job(&self, builder: CreateAutoMlJobInputBuilder) -> impl Future<Output = Result<CreateAutoMlJobOutput, SdkError<CreateAutoMLJobError>>> {
-        (*self).create_auto_ml_job(builder)
+        self.deref().create_auto_ml_job(builder)
     }
     fn create_auto_ml_job_v2(&self, builder: CreateAutoMlJobV2InputBuilder) -> impl Future<Output = Result<CreateAutoMlJobV2Output, SdkError<CreateAutoMLJobV2Error>>> {
-        (*self).create_auto_ml_job_v2(builder)
+        self.deref().create_auto_ml_job_v2(builder)
     }
     fn create_cluster(&self, builder: CreateClusterInputBuilder) -> impl Future<Output = Result<CreateClusterOutput, SdkError<CreateClusterError>>> {
-        (*self).create_cluster(builder)
+        self.deref().create_cluster(builder)
     }
     fn create_code_repository(&self, builder: CreateCodeRepositoryInputBuilder) -> impl Future<Output = Result<CreateCodeRepositoryOutput, SdkError<CreateCodeRepositoryError>>> {
-        (*self).create_code_repository(builder)
+        self.deref().create_code_repository(builder)
     }
     fn create_compilation_job(&self, builder: CreateCompilationJobInputBuilder) -> impl Future<Output = Result<CreateCompilationJobOutput, SdkError<CreateCompilationJobError>>> {
-        (*self).create_compilation_job(builder)
+        self.deref().create_compilation_job(builder)
     }
     fn create_context(&self, builder: CreateContextInputBuilder) -> impl Future<Output = Result<CreateContextOutput, SdkError<CreateContextError>>> {
-        (*self).create_context(builder)
+        self.deref().create_context(builder)
     }
     fn create_data_quality_job_definition(&self, builder: CreateDataQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<CreateDataQualityJobDefinitionOutput, SdkError<CreateDataQualityJobDefinitionError>>> {
-        (*self).create_data_quality_job_definition(builder)
+        self.deref().create_data_quality_job_definition(builder)
     }
     fn create_device_fleet(&self, builder: CreateDeviceFleetInputBuilder) -> impl Future<Output = Result<CreateDeviceFleetOutput, SdkError<CreateDeviceFleetError>>> {
-        (*self).create_device_fleet(builder)
+        self.deref().create_device_fleet(builder)
     }
     fn create_domain(&self, builder: CreateDomainInputBuilder) -> impl Future<Output = Result<CreateDomainOutput, SdkError<CreateDomainError>>> {
-        (*self).create_domain(builder)
+        self.deref().create_domain(builder)
     }
     fn create_edge_deployment_plan(&self, builder: CreateEdgeDeploymentPlanInputBuilder) -> impl Future<Output = Result<CreateEdgeDeploymentPlanOutput, SdkError<CreateEdgeDeploymentPlanError>>> {
-        (*self).create_edge_deployment_plan(builder)
+        self.deref().create_edge_deployment_plan(builder)
     }
     fn create_edge_deployment_stage(&self, builder: CreateEdgeDeploymentStageInputBuilder) -> impl Future<Output = Result<CreateEdgeDeploymentStageOutput, SdkError<CreateEdgeDeploymentStageError>>> {
-        (*self).create_edge_deployment_stage(builder)
+        self.deref().create_edge_deployment_stage(builder)
     }
     fn create_edge_packaging_job(&self, builder: CreateEdgePackagingJobInputBuilder) -> impl Future<Output = Result<CreateEdgePackagingJobOutput, SdkError<CreateEdgePackagingJobError>>> {
-        (*self).create_edge_packaging_job(builder)
+        self.deref().create_edge_packaging_job(builder)
     }
     fn create_endpoint(&self, builder: CreateEndpointInputBuilder) -> impl Future<Output = Result<CreateEndpointOutput, SdkError<CreateEndpointError>>> {
-        (*self).create_endpoint(builder)
+        self.deref().create_endpoint(builder)
     }
     fn create_endpoint_config(&self, builder: CreateEndpointConfigInputBuilder) -> impl Future<Output = Result<CreateEndpointConfigOutput, SdkError<CreateEndpointConfigError>>> {
-        (*self).create_endpoint_config(builder)
+        self.deref().create_endpoint_config(builder)
     }
     fn create_experiment(&self, builder: CreateExperimentInputBuilder) -> impl Future<Output = Result<CreateExperimentOutput, SdkError<CreateExperimentError>>> {
-        (*self).create_experiment(builder)
+        self.deref().create_experiment(builder)
     }
     fn create_feature_group(&self, builder: CreateFeatureGroupInputBuilder) -> impl Future<Output = Result<CreateFeatureGroupOutput, SdkError<CreateFeatureGroupError>>> {
-        (*self).create_feature_group(builder)
+        self.deref().create_feature_group(builder)
     }
     fn create_flow_definition(&self, builder: CreateFlowDefinitionInputBuilder) -> impl Future<Output = Result<CreateFlowDefinitionOutput, SdkError<CreateFlowDefinitionError>>> {
-        (*self).create_flow_definition(builder)
+        self.deref().create_flow_definition(builder)
     }
     fn create_hub(&self, builder: CreateHubInputBuilder) -> impl Future<Output = Result<CreateHubOutput, SdkError<CreateHubError>>> {
-        (*self).create_hub(builder)
+        self.deref().create_hub(builder)
     }
     fn create_hub_content_reference(&self, builder: CreateHubContentReferenceInputBuilder) -> impl Future<Output = Result<CreateHubContentReferenceOutput, SdkError<CreateHubContentReferenceError>>> {
-        (*self).create_hub_content_reference(builder)
+        self.deref().create_hub_content_reference(builder)
     }
     fn create_human_task_ui(&self, builder: CreateHumanTaskUiInputBuilder) -> impl Future<Output = Result<CreateHumanTaskUiOutput, SdkError<CreateHumanTaskUiError>>> {
-        (*self).create_human_task_ui(builder)
+        self.deref().create_human_task_ui(builder)
     }
     fn create_hyper_parameter_tuning_job(&self, builder: CreateHyperParameterTuningJobInputBuilder) -> impl Future<Output = Result<CreateHyperParameterTuningJobOutput, SdkError<CreateHyperParameterTuningJobError>>> {
-        (*self).create_hyper_parameter_tuning_job(builder)
+        self.deref().create_hyper_parameter_tuning_job(builder)
     }
     fn create_image(&self, builder: CreateImageInputBuilder) -> impl Future<Output = Result<CreateImageOutput, SdkError<CreateImageError>>> {
-        (*self).create_image(builder)
+        self.deref().create_image(builder)
     }
     fn create_image_version(&self, builder: CreateImageVersionInputBuilder) -> impl Future<Output = Result<CreateImageVersionOutput, SdkError<CreateImageVersionError>>> {
-        (*self).create_image_version(builder)
+        self.deref().create_image_version(builder)
     }
     fn create_inference_component(&self, builder: CreateInferenceComponentInputBuilder) -> impl Future<Output = Result<CreateInferenceComponentOutput, SdkError<CreateInferenceComponentError>>> {
-        (*self).create_inference_component(builder)
+        self.deref().create_inference_component(builder)
     }
     fn create_inference_experiment(&self, builder: CreateInferenceExperimentInputBuilder) -> impl Future<Output = Result<CreateInferenceExperimentOutput, SdkError<CreateInferenceExperimentError>>> {
-        (*self).create_inference_experiment(builder)
+        self.deref().create_inference_experiment(builder)
     }
     fn create_inference_recommendations_job(&self, builder: CreateInferenceRecommendationsJobInputBuilder) -> impl Future<Output = Result<CreateInferenceRecommendationsJobOutput, SdkError<CreateInferenceRecommendationsJobError>>> {
-        (*self).create_inference_recommendations_job(builder)
+        self.deref().create_inference_recommendations_job(builder)
     }
     fn create_labeling_job(&self, builder: CreateLabelingJobInputBuilder) -> impl Future<Output = Result<CreateLabelingJobOutput, SdkError<CreateLabelingJobError>>> {
-        (*self).create_labeling_job(builder)
+        self.deref().create_labeling_job(builder)
     }
     fn create_mlflow_tracking_server(&self, builder: CreateMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<CreateMlflowTrackingServerOutput, SdkError<CreateMlflowTrackingServerError>>> {
-        (*self).create_mlflow_tracking_server(builder)
+        self.deref().create_mlflow_tracking_server(builder)
     }
     fn create_model(&self, builder: CreateModelInputBuilder) -> impl Future<Output = Result<CreateModelOutput, SdkError<CreateModelError>>> {
-        (*self).create_model(builder)
+        self.deref().create_model(builder)
     }
     fn create_model_bias_job_definition(&self, builder: CreateModelBiasJobDefinitionInputBuilder) -> impl Future<Output = Result<CreateModelBiasJobDefinitionOutput, SdkError<CreateModelBiasJobDefinitionError>>> {
-        (*self).create_model_bias_job_definition(builder)
+        self.deref().create_model_bias_job_definition(builder)
     }
     fn create_model_card(&self, builder: CreateModelCardInputBuilder) -> impl Future<Output = Result<CreateModelCardOutput, SdkError<CreateModelCardError>>> {
-        (*self).create_model_card(builder)
+        self.deref().create_model_card(builder)
     }
     fn create_model_card_export_job(&self, builder: CreateModelCardExportJobInputBuilder) -> impl Future<Output = Result<CreateModelCardExportJobOutput, SdkError<CreateModelCardExportJobError>>> {
-        (*self).create_model_card_export_job(builder)
+        self.deref().create_model_card_export_job(builder)
     }
     fn create_model_explainability_job_definition(&self, builder: CreateModelExplainabilityJobDefinitionInputBuilder) -> impl Future<Output = Result<CreateModelExplainabilityJobDefinitionOutput, SdkError<CreateModelExplainabilityJobDefinitionError>>> {
-        (*self).create_model_explainability_job_definition(builder)
+        self.deref().create_model_explainability_job_definition(builder)
     }
     fn create_model_package(&self, builder: CreateModelPackageInputBuilder) -> impl Future<Output = Result<CreateModelPackageOutput, SdkError<CreateModelPackageError>>> {
-        (*self).create_model_package(builder)
+        self.deref().create_model_package(builder)
     }
     fn create_model_package_group(&self, builder: CreateModelPackageGroupInputBuilder) -> impl Future<Output = Result<CreateModelPackageGroupOutput, SdkError<CreateModelPackageGroupError>>> {
-        (*self).create_model_package_group(builder)
+        self.deref().create_model_package_group(builder)
     }
     fn create_model_quality_job_definition(&self, builder: CreateModelQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<CreateModelQualityJobDefinitionOutput, SdkError<CreateModelQualityJobDefinitionError>>> {
-        (*self).create_model_quality_job_definition(builder)
+        self.deref().create_model_quality_job_definition(builder)
     }
     fn create_monitoring_schedule(&self, builder: CreateMonitoringScheduleInputBuilder) -> impl Future<Output = Result<CreateMonitoringScheduleOutput, SdkError<CreateMonitoringScheduleError>>> {
-        (*self).create_monitoring_schedule(builder)
+        self.deref().create_monitoring_schedule(builder)
     }
     fn create_notebook_instance(&self, builder: CreateNotebookInstanceInputBuilder) -> impl Future<Output = Result<CreateNotebookInstanceOutput, SdkError<CreateNotebookInstanceError>>> {
-        (*self).create_notebook_instance(builder)
+        self.deref().create_notebook_instance(builder)
     }
     fn create_notebook_instance_lifecycle_config(&self, builder: CreateNotebookInstanceLifecycleConfigInputBuilder) -> impl Future<Output = Result<CreateNotebookInstanceLifecycleConfigOutput, SdkError<CreateNotebookInstanceLifecycleConfigError>>> {
-        (*self).create_notebook_instance_lifecycle_config(builder)
+        self.deref().create_notebook_instance_lifecycle_config(builder)
     }
     fn create_optimization_job(&self, builder: CreateOptimizationJobInputBuilder) -> impl Future<Output = Result<CreateOptimizationJobOutput, SdkError<CreateOptimizationJobError>>> {
-        (*self).create_optimization_job(builder)
+        self.deref().create_optimization_job(builder)
     }
     fn create_pipeline(&self, builder: CreatePipelineInputBuilder) -> impl Future<Output = Result<CreatePipelineOutput, SdkError<CreatePipelineError>>> {
-        (*self).create_pipeline(builder)
+        self.deref().create_pipeline(builder)
     }
     fn create_presigned_domain_url(&self, builder: CreatePresignedDomainUrlInputBuilder) -> impl Future<Output = Result<CreatePresignedDomainUrlOutput, SdkError<CreatePresignedDomainUrlError>>> {
-        (*self).create_presigned_domain_url(builder)
+        self.deref().create_presigned_domain_url(builder)
     }
     fn create_presigned_mlflow_tracking_server_url(&self, builder: CreatePresignedMlflowTrackingServerUrlInputBuilder) -> impl Future<Output = Result<CreatePresignedMlflowTrackingServerUrlOutput, SdkError<CreatePresignedMlflowTrackingServerUrlError>>> {
-        (*self).create_presigned_mlflow_tracking_server_url(builder)
+        self.deref().create_presigned_mlflow_tracking_server_url(builder)
     }
     fn create_presigned_notebook_instance_url(&self, builder: CreatePresignedNotebookInstanceUrlInputBuilder) -> impl Future<Output = Result<CreatePresignedNotebookInstanceUrlOutput, SdkError<CreatePresignedNotebookInstanceUrlError>>> {
-        (*self).create_presigned_notebook_instance_url(builder)
+        self.deref().create_presigned_notebook_instance_url(builder)
     }
     fn create_processing_job(&self, builder: CreateProcessingJobInputBuilder) -> impl Future<Output = Result<CreateProcessingJobOutput, SdkError<CreateProcessingJobError>>> {
-        (*self).create_processing_job(builder)
+        self.deref().create_processing_job(builder)
     }
     fn create_project(&self, builder: CreateProjectInputBuilder) -> impl Future<Output = Result<CreateProjectOutput, SdkError<CreateProjectError>>> {
-        (*self).create_project(builder)
+        self.deref().create_project(builder)
     }
     fn create_space(&self, builder: CreateSpaceInputBuilder) -> impl Future<Output = Result<CreateSpaceOutput, SdkError<CreateSpaceError>>> {
-        (*self).create_space(builder)
+        self.deref().create_space(builder)
     }
     fn create_studio_lifecycle_config(&self, builder: CreateStudioLifecycleConfigInputBuilder) -> impl Future<Output = Result<CreateStudioLifecycleConfigOutput, SdkError<CreateStudioLifecycleConfigError>>> {
-        (*self).create_studio_lifecycle_config(builder)
+        self.deref().create_studio_lifecycle_config(builder)
     }
     fn create_training_job(&self, builder: CreateTrainingJobInputBuilder) -> impl Future<Output = Result<CreateTrainingJobOutput, SdkError<CreateTrainingJobError>>> {
-        (*self).create_training_job(builder)
+        self.deref().create_training_job(builder)
     }
     fn create_transform_job(&self, builder: CreateTransformJobInputBuilder) -> impl Future<Output = Result<CreateTransformJobOutput, SdkError<CreateTransformJobError>>> {
-        (*self).create_transform_job(builder)
+        self.deref().create_transform_job(builder)
     }
     fn create_trial(&self, builder: CreateTrialInputBuilder) -> impl Future<Output = Result<CreateTrialOutput, SdkError<CreateTrialError>>> {
-        (*self).create_trial(builder)
+        self.deref().create_trial(builder)
     }
     fn create_trial_component(&self, builder: CreateTrialComponentInputBuilder) -> impl Future<Output = Result<CreateTrialComponentOutput, SdkError<CreateTrialComponentError>>> {
-        (*self).create_trial_component(builder)
+        self.deref().create_trial_component(builder)
     }
     fn create_user_profile(&self, builder: CreateUserProfileInputBuilder) -> impl Future<Output = Result<CreateUserProfileOutput, SdkError<CreateUserProfileError>>> {
-        (*self).create_user_profile(builder)
+        self.deref().create_user_profile(builder)
     }
     fn create_workforce(&self, builder: CreateWorkforceInputBuilder) -> impl Future<Output = Result<CreateWorkforceOutput, SdkError<CreateWorkforceError>>> {
-        (*self).create_workforce(builder)
+        self.deref().create_workforce(builder)
     }
     fn create_workteam(&self, builder: CreateWorkteamInputBuilder) -> impl Future<Output = Result<CreateWorkteamOutput, SdkError<CreateWorkteamError>>> {
-        (*self).create_workteam(builder)
+        self.deref().create_workteam(builder)
     }
     fn delete_action(&self, builder: DeleteActionInputBuilder) -> impl Future<Output = Result<DeleteActionOutput, SdkError<DeleteActionError>>> {
-        (*self).delete_action(builder)
+        self.deref().delete_action(builder)
     }
     fn delete_algorithm(&self, builder: DeleteAlgorithmInputBuilder) -> impl Future<Output = Result<DeleteAlgorithmOutput, SdkError<DeleteAlgorithmError>>> {
-        (*self).delete_algorithm(builder)
+        self.deref().delete_algorithm(builder)
     }
     fn delete_app(&self, builder: DeleteAppInputBuilder) -> impl Future<Output = Result<DeleteAppOutput, SdkError<DeleteAppError>>> {
-        (*self).delete_app(builder)
+        self.deref().delete_app(builder)
     }
     fn delete_app_image_config(&self, builder: DeleteAppImageConfigInputBuilder) -> impl Future<Output = Result<DeleteAppImageConfigOutput, SdkError<DeleteAppImageConfigError>>> {
-        (*self).delete_app_image_config(builder)
+        self.deref().delete_app_image_config(builder)
     }
     fn delete_artifact(&self, builder: DeleteArtifactInputBuilder) -> impl Future<Output = Result<DeleteArtifactOutput, SdkError<DeleteArtifactError>>> {
-        (*self).delete_artifact(builder)
+        self.deref().delete_artifact(builder)
     }
     fn delete_association(&self, builder: DeleteAssociationInputBuilder) -> impl Future<Output = Result<DeleteAssociationOutput, SdkError<DeleteAssociationError>>> {
-        (*self).delete_association(builder)
+        self.deref().delete_association(builder)
     }
     fn delete_cluster(&self, builder: DeleteClusterInputBuilder) -> impl Future<Output = Result<DeleteClusterOutput, SdkError<DeleteClusterError>>> {
-        (*self).delete_cluster(builder)
+        self.deref().delete_cluster(builder)
     }
     fn delete_code_repository(&self, builder: DeleteCodeRepositoryInputBuilder) -> impl Future<Output = Result<DeleteCodeRepositoryOutput, SdkError<DeleteCodeRepositoryError>>> {
-        (*self).delete_code_repository(builder)
+        self.deref().delete_code_repository(builder)
     }
     fn delete_compilation_job(&self, builder: DeleteCompilationJobInputBuilder) -> impl Future<Output = Result<DeleteCompilationJobOutput, SdkError<DeleteCompilationJobError>>> {
-        (*self).delete_compilation_job(builder)
+        self.deref().delete_compilation_job(builder)
     }
     fn delete_context(&self, builder: DeleteContextInputBuilder) -> impl Future<Output = Result<DeleteContextOutput, SdkError<DeleteContextError>>> {
-        (*self).delete_context(builder)
+        self.deref().delete_context(builder)
     }
     fn delete_data_quality_job_definition(&self, builder: DeleteDataQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<DeleteDataQualityJobDefinitionOutput, SdkError<DeleteDataQualityJobDefinitionError>>> {
-        (*self).delete_data_quality_job_definition(builder)
+        self.deref().delete_data_quality_job_definition(builder)
     }
     fn delete_device_fleet(&self, builder: DeleteDeviceFleetInputBuilder) -> impl Future<Output = Result<DeleteDeviceFleetOutput, SdkError<DeleteDeviceFleetError>>> {
-        (*self).delete_device_fleet(builder)
+        self.deref().delete_device_fleet(builder)
     }
     fn delete_domain(&self, builder: DeleteDomainInputBuilder) -> impl Future<Output = Result<DeleteDomainOutput, SdkError<DeleteDomainError>>> {
-        (*self).delete_domain(builder)
+        self.deref().delete_domain(builder)
     }
     fn delete_edge_deployment_plan(&self, builder: DeleteEdgeDeploymentPlanInputBuilder) -> impl Future<Output = Result<DeleteEdgeDeploymentPlanOutput, SdkError<DeleteEdgeDeploymentPlanError>>> {
-        (*self).delete_edge_deployment_plan(builder)
+        self.deref().delete_edge_deployment_plan(builder)
     }
     fn delete_edge_deployment_stage(&self, builder: DeleteEdgeDeploymentStageInputBuilder) -> impl Future<Output = Result<DeleteEdgeDeploymentStageOutput, SdkError<DeleteEdgeDeploymentStageError>>> {
-        (*self).delete_edge_deployment_stage(builder)
+        self.deref().delete_edge_deployment_stage(builder)
     }
     fn delete_endpoint(&self, builder: DeleteEndpointInputBuilder) -> impl Future<Output = Result<DeleteEndpointOutput, SdkError<DeleteEndpointError>>> {
-        (*self).delete_endpoint(builder)
+        self.deref().delete_endpoint(builder)
     }
     fn delete_endpoint_config(&self, builder: DeleteEndpointConfigInputBuilder) -> impl Future<Output = Result<DeleteEndpointConfigOutput, SdkError<DeleteEndpointConfigError>>> {
-        (*self).delete_endpoint_config(builder)
+        self.deref().delete_endpoint_config(builder)
     }
     fn delete_experiment(&self, builder: DeleteExperimentInputBuilder) -> impl Future<Output = Result<DeleteExperimentOutput, SdkError<DeleteExperimentError>>> {
-        (*self).delete_experiment(builder)
+        self.deref().delete_experiment(builder)
     }
     fn delete_feature_group(&self, builder: DeleteFeatureGroupInputBuilder) -> impl Future<Output = Result<DeleteFeatureGroupOutput, SdkError<DeleteFeatureGroupError>>> {
-        (*self).delete_feature_group(builder)
+        self.deref().delete_feature_group(builder)
     }
     fn delete_flow_definition(&self, builder: DeleteFlowDefinitionInputBuilder) -> impl Future<Output = Result<DeleteFlowDefinitionOutput, SdkError<DeleteFlowDefinitionError>>> {
-        (*self).delete_flow_definition(builder)
+        self.deref().delete_flow_definition(builder)
     }
     fn delete_hub(&self, builder: DeleteHubInputBuilder) -> impl Future<Output = Result<DeleteHubOutput, SdkError<DeleteHubError>>> {
-        (*self).delete_hub(builder)
+        self.deref().delete_hub(builder)
     }
     fn delete_hub_content(&self, builder: DeleteHubContentInputBuilder) -> impl Future<Output = Result<DeleteHubContentOutput, SdkError<DeleteHubContentError>>> {
-        (*self).delete_hub_content(builder)
+        self.deref().delete_hub_content(builder)
     }
     fn delete_hub_content_reference(&self, builder: DeleteHubContentReferenceInputBuilder) -> impl Future<Output = Result<DeleteHubContentReferenceOutput, SdkError<DeleteHubContentReferenceError>>> {
-        (*self).delete_hub_content_reference(builder)
+        self.deref().delete_hub_content_reference(builder)
     }
     fn delete_human_task_ui(&self, builder: DeleteHumanTaskUiInputBuilder) -> impl Future<Output = Result<DeleteHumanTaskUiOutput, SdkError<DeleteHumanTaskUiError>>> {
-        (*self).delete_human_task_ui(builder)
+        self.deref().delete_human_task_ui(builder)
     }
     fn delete_hyper_parameter_tuning_job(&self, builder: DeleteHyperParameterTuningJobInputBuilder) -> impl Future<Output = Result<DeleteHyperParameterTuningJobOutput, SdkError<DeleteHyperParameterTuningJobError>>> {
-        (*self).delete_hyper_parameter_tuning_job(builder)
+        self.deref().delete_hyper_parameter_tuning_job(builder)
     }
     fn delete_image(&self, builder: DeleteImageInputBuilder) -> impl Future<Output = Result<DeleteImageOutput, SdkError<DeleteImageError>>> {
-        (*self).delete_image(builder)
+        self.deref().delete_image(builder)
     }
     fn delete_image_version(&self, builder: DeleteImageVersionInputBuilder) -> impl Future<Output = Result<DeleteImageVersionOutput, SdkError<DeleteImageVersionError>>> {
-        (*self).delete_image_version(builder)
+        self.deref().delete_image_version(builder)
     }
     fn delete_inference_component(&self, builder: DeleteInferenceComponentInputBuilder) -> impl Future<Output = Result<DeleteInferenceComponentOutput, SdkError<DeleteInferenceComponentError>>> {
-        (*self).delete_inference_component(builder)
+        self.deref().delete_inference_component(builder)
     }
     fn delete_inference_experiment(&self, builder: DeleteInferenceExperimentInputBuilder) -> impl Future<Output = Result<DeleteInferenceExperimentOutput, SdkError<DeleteInferenceExperimentError>>> {
-        (*self).delete_inference_experiment(builder)
+        self.deref().delete_inference_experiment(builder)
     }
     fn delete_mlflow_tracking_server(&self, builder: DeleteMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<DeleteMlflowTrackingServerOutput, SdkError<DeleteMlflowTrackingServerError>>> {
-        (*self).delete_mlflow_tracking_server(builder)
+        self.deref().delete_mlflow_tracking_server(builder)
     }
     fn delete_model(&self, builder: DeleteModelInputBuilder) -> impl Future<Output = Result<DeleteModelOutput, SdkError<DeleteModelError>>> {
-        (*self).delete_model(builder)
+        self.deref().delete_model(builder)
     }
     fn delete_model_bias_job_definition(&self, builder: DeleteModelBiasJobDefinitionInputBuilder) -> impl Future<Output = Result<DeleteModelBiasJobDefinitionOutput, SdkError<DeleteModelBiasJobDefinitionError>>> {
-        (*self).delete_model_bias_job_definition(builder)
+        self.deref().delete_model_bias_job_definition(builder)
     }
     fn delete_model_card(&self, builder: DeleteModelCardInputBuilder) -> impl Future<Output = Result<DeleteModelCardOutput, SdkError<DeleteModelCardError>>> {
-        (*self).delete_model_card(builder)
+        self.deref().delete_model_card(builder)
     }
     fn delete_model_explainability_job_definition(&self, builder: DeleteModelExplainabilityJobDefinitionInputBuilder) -> impl Future<Output = Result<DeleteModelExplainabilityJobDefinitionOutput, SdkError<DeleteModelExplainabilityJobDefinitionError>>> {
-        (*self).delete_model_explainability_job_definition(builder)
+        self.deref().delete_model_explainability_job_definition(builder)
     }
     fn delete_model_package(&self, builder: DeleteModelPackageInputBuilder) -> impl Future<Output = Result<DeleteModelPackageOutput, SdkError<DeleteModelPackageError>>> {
-        (*self).delete_model_package(builder)
+        self.deref().delete_model_package(builder)
     }
     fn delete_model_package_group(&self, builder: DeleteModelPackageGroupInputBuilder) -> impl Future<Output = Result<DeleteModelPackageGroupOutput, SdkError<DeleteModelPackageGroupError>>> {
-        (*self).delete_model_package_group(builder)
+        self.deref().delete_model_package_group(builder)
     }
     fn delete_model_package_group_policy(&self, builder: DeleteModelPackageGroupPolicyInputBuilder) -> impl Future<Output = Result<DeleteModelPackageGroupPolicyOutput, SdkError<DeleteModelPackageGroupPolicyError>>> {
-        (*self).delete_model_package_group_policy(builder)
+        self.deref().delete_model_package_group_policy(builder)
     }
     fn delete_model_quality_job_definition(&self, builder: DeleteModelQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<DeleteModelQualityJobDefinitionOutput, SdkError<DeleteModelQualityJobDefinitionError>>> {
-        (*self).delete_model_quality_job_definition(builder)
+        self.deref().delete_model_quality_job_definition(builder)
     }
     fn delete_monitoring_schedule(&self, builder: DeleteMonitoringScheduleInputBuilder) -> impl Future<Output = Result<DeleteMonitoringScheduleOutput, SdkError<DeleteMonitoringScheduleError>>> {
-        (*self).delete_monitoring_schedule(builder)
+        self.deref().delete_monitoring_schedule(builder)
     }
     fn delete_notebook_instance(&self, builder: DeleteNotebookInstanceInputBuilder) -> impl Future<Output = Result<DeleteNotebookInstanceOutput, SdkError<DeleteNotebookInstanceError>>> {
-        (*self).delete_notebook_instance(builder)
+        self.deref().delete_notebook_instance(builder)
     }
     fn delete_notebook_instance_lifecycle_config(&self, builder: DeleteNotebookInstanceLifecycleConfigInputBuilder) -> impl Future<Output = Result<DeleteNotebookInstanceLifecycleConfigOutput, SdkError<DeleteNotebookInstanceLifecycleConfigError>>> {
-        (*self).delete_notebook_instance_lifecycle_config(builder)
+        self.deref().delete_notebook_instance_lifecycle_config(builder)
     }
     fn delete_optimization_job(&self, builder: DeleteOptimizationJobInputBuilder) -> impl Future<Output = Result<DeleteOptimizationJobOutput, SdkError<DeleteOptimizationJobError>>> {
-        (*self).delete_optimization_job(builder)
+        self.deref().delete_optimization_job(builder)
     }
     fn delete_pipeline(&self, builder: DeletePipelineInputBuilder) -> impl Future<Output = Result<DeletePipelineOutput, SdkError<DeletePipelineError>>> {
-        (*self).delete_pipeline(builder)
+        self.deref().delete_pipeline(builder)
     }
     fn delete_project(&self, builder: DeleteProjectInputBuilder) -> impl Future<Output = Result<DeleteProjectOutput, SdkError<DeleteProjectError>>> {
-        (*self).delete_project(builder)
+        self.deref().delete_project(builder)
     }
     fn delete_space(&self, builder: DeleteSpaceInputBuilder) -> impl Future<Output = Result<DeleteSpaceOutput, SdkError<DeleteSpaceError>>> {
-        (*self).delete_space(builder)
+        self.deref().delete_space(builder)
     }
     fn delete_studio_lifecycle_config(&self, builder: DeleteStudioLifecycleConfigInputBuilder) -> impl Future<Output = Result<DeleteStudioLifecycleConfigOutput, SdkError<DeleteStudioLifecycleConfigError>>> {
-        (*self).delete_studio_lifecycle_config(builder)
+        self.deref().delete_studio_lifecycle_config(builder)
     }
     fn delete_tags(&self, builder: DeleteTagsInputBuilder) -> impl Future<Output = Result<DeleteTagsOutput, SdkError<DeleteTagsError>>> {
-        (*self).delete_tags(builder)
+        self.deref().delete_tags(builder)
     }
     fn delete_trial(&self, builder: DeleteTrialInputBuilder) -> impl Future<Output = Result<DeleteTrialOutput, SdkError<DeleteTrialError>>> {
-        (*self).delete_trial(builder)
+        self.deref().delete_trial(builder)
     }
     fn delete_trial_component(&self, builder: DeleteTrialComponentInputBuilder) -> impl Future<Output = Result<DeleteTrialComponentOutput, SdkError<DeleteTrialComponentError>>> {
-        (*self).delete_trial_component(builder)
+        self.deref().delete_trial_component(builder)
     }
     fn delete_user_profile(&self, builder: DeleteUserProfileInputBuilder) -> impl Future<Output = Result<DeleteUserProfileOutput, SdkError<DeleteUserProfileError>>> {
-        (*self).delete_user_profile(builder)
+        self.deref().delete_user_profile(builder)
     }
     fn delete_workforce(&self, builder: DeleteWorkforceInputBuilder) -> impl Future<Output = Result<DeleteWorkforceOutput, SdkError<DeleteWorkforceError>>> {
-        (*self).delete_workforce(builder)
+        self.deref().delete_workforce(builder)
     }
     fn delete_workteam(&self, builder: DeleteWorkteamInputBuilder) -> impl Future<Output = Result<DeleteWorkteamOutput, SdkError<DeleteWorkteamError>>> {
-        (*self).delete_workteam(builder)
+        self.deref().delete_workteam(builder)
     }
     fn deregister_devices(&self, builder: DeregisterDevicesInputBuilder) -> impl Future<Output = Result<DeregisterDevicesOutput, SdkError<DeregisterDevicesError>>> {
-        (*self).deregister_devices(builder)
+        self.deref().deregister_devices(builder)
     }
     fn describe_action(&self, builder: DescribeActionInputBuilder) -> impl Future<Output = Result<DescribeActionOutput, SdkError<DescribeActionError>>> {
-        (*self).describe_action(builder)
+        self.deref().describe_action(builder)
     }
     fn describe_algorithm(&self, builder: DescribeAlgorithmInputBuilder) -> impl Future<Output = Result<DescribeAlgorithmOutput, SdkError<DescribeAlgorithmError>>> {
-        (*self).describe_algorithm(builder)
+        self.deref().describe_algorithm(builder)
     }
     fn describe_app(&self, builder: DescribeAppInputBuilder) -> impl Future<Output = Result<DescribeAppOutput, SdkError<DescribeAppError>>> {
-        (*self).describe_app(builder)
+        self.deref().describe_app(builder)
     }
     fn describe_app_image_config(&self, builder: DescribeAppImageConfigInputBuilder) -> impl Future<Output = Result<DescribeAppImageConfigOutput, SdkError<DescribeAppImageConfigError>>> {
-        (*self).describe_app_image_config(builder)
+        self.deref().describe_app_image_config(builder)
     }
     fn describe_artifact(&self, builder: DescribeArtifactInputBuilder) -> impl Future<Output = Result<DescribeArtifactOutput, SdkError<DescribeArtifactError>>> {
-        (*self).describe_artifact(builder)
+        self.deref().describe_artifact(builder)
     }
     fn describe_auto_ml_job(&self, builder: DescribeAutoMlJobInputBuilder) -> impl Future<Output = Result<DescribeAutoMlJobOutput, SdkError<DescribeAutoMLJobError>>> {
-        (*self).describe_auto_ml_job(builder)
+        self.deref().describe_auto_ml_job(builder)
     }
     fn describe_auto_ml_job_v2(&self, builder: DescribeAutoMlJobV2InputBuilder) -> impl Future<Output = Result<DescribeAutoMlJobV2Output, SdkError<DescribeAutoMLJobV2Error>>> {
-        (*self).describe_auto_ml_job_v2(builder)
+        self.deref().describe_auto_ml_job_v2(builder)
     }
     fn describe_cluster(&self, builder: DescribeClusterInputBuilder) -> impl Future<Output = Result<DescribeClusterOutput, SdkError<DescribeClusterError>>> {
-        (*self).describe_cluster(builder)
+        self.deref().describe_cluster(builder)
     }
     fn describe_cluster_node(&self, builder: DescribeClusterNodeInputBuilder) -> impl Future<Output = Result<DescribeClusterNodeOutput, SdkError<DescribeClusterNodeError>>> {
-        (*self).describe_cluster_node(builder)
+        self.deref().describe_cluster_node(builder)
     }
     fn describe_code_repository(&self, builder: DescribeCodeRepositoryInputBuilder) -> impl Future<Output = Result<DescribeCodeRepositoryOutput, SdkError<DescribeCodeRepositoryError>>> {
-        (*self).describe_code_repository(builder)
+        self.deref().describe_code_repository(builder)
     }
     fn describe_compilation_job(&self, builder: DescribeCompilationJobInputBuilder) -> impl Future<Output = Result<DescribeCompilationJobOutput, SdkError<DescribeCompilationJobError>>> {
-        (*self).describe_compilation_job(builder)
+        self.deref().describe_compilation_job(builder)
     }
     fn describe_context(&self, builder: DescribeContextInputBuilder) -> impl Future<Output = Result<DescribeContextOutput, SdkError<DescribeContextError>>> {
-        (*self).describe_context(builder)
+        self.deref().describe_context(builder)
     }
     fn describe_data_quality_job_definition(&self, builder: DescribeDataQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<DescribeDataQualityJobDefinitionOutput, SdkError<DescribeDataQualityJobDefinitionError>>> {
-        (*self).describe_data_quality_job_definition(builder)
+        self.deref().describe_data_quality_job_definition(builder)
     }
     fn describe_device(&self, builder: DescribeDeviceInputBuilder) -> impl Future<Output = Result<DescribeDeviceOutput, SdkError<DescribeDeviceError>>> {
-        (*self).describe_device(builder)
+        self.deref().describe_device(builder)
     }
     fn describe_device_fleet(&self, builder: DescribeDeviceFleetInputBuilder) -> impl Future<Output = Result<DescribeDeviceFleetOutput, SdkError<DescribeDeviceFleetError>>> {
-        (*self).describe_device_fleet(builder)
+        self.deref().describe_device_fleet(builder)
     }
     fn describe_domain(&self, builder: DescribeDomainInputBuilder) -> impl Future<Output = Result<DescribeDomainOutput, SdkError<DescribeDomainError>>> {
-        (*self).describe_domain(builder)
+        self.deref().describe_domain(builder)
     }
     fn describe_edge_deployment_plan(&self, builder: DescribeEdgeDeploymentPlanInputBuilder) -> impl Future<Output = Result<DescribeEdgeDeploymentPlanOutput, SdkError<DescribeEdgeDeploymentPlanError>>> {
-        (*self).describe_edge_deployment_plan(builder)
+        self.deref().describe_edge_deployment_plan(builder)
     }
     fn describe_edge_packaging_job(&self, builder: DescribeEdgePackagingJobInputBuilder) -> impl Future<Output = Result<DescribeEdgePackagingJobOutput, SdkError<DescribeEdgePackagingJobError>>> {
-        (*self).describe_edge_packaging_job(builder)
+        self.deref().describe_edge_packaging_job(builder)
     }
     fn describe_endpoint(&self, builder: DescribeEndpointInputBuilder) -> impl Future<Output = Result<DescribeEndpointOutput, SdkError<DescribeEndpointError>>> {
-        (*self).describe_endpoint(builder)
+        self.deref().describe_endpoint(builder)
     }
     fn describe_endpoint_config(&self, builder: DescribeEndpointConfigInputBuilder) -> impl Future<Output = Result<DescribeEndpointConfigOutput, SdkError<DescribeEndpointConfigError>>> {
-        (*self).describe_endpoint_config(builder)
+        self.deref().describe_endpoint_config(builder)
     }
     fn describe_experiment(&self, builder: DescribeExperimentInputBuilder) -> impl Future<Output = Result<DescribeExperimentOutput, SdkError<DescribeExperimentError>>> {
-        (*self).describe_experiment(builder)
+        self.deref().describe_experiment(builder)
     }
     fn describe_feature_group(&self, builder: DescribeFeatureGroupInputBuilder) -> impl Future<Output = Result<DescribeFeatureGroupOutput, SdkError<DescribeFeatureGroupError>>> {
-        (*self).describe_feature_group(builder)
+        self.deref().describe_feature_group(builder)
     }
     fn describe_feature_metadata(&self, builder: DescribeFeatureMetadataInputBuilder) -> impl Future<Output = Result<DescribeFeatureMetadataOutput, SdkError<DescribeFeatureMetadataError>>> {
-        (*self).describe_feature_metadata(builder)
+        self.deref().describe_feature_metadata(builder)
     }
     fn describe_flow_definition(&self, builder: DescribeFlowDefinitionInputBuilder) -> impl Future<Output = Result<DescribeFlowDefinitionOutput, SdkError<DescribeFlowDefinitionError>>> {
-        (*self).describe_flow_definition(builder)
+        self.deref().describe_flow_definition(builder)
     }
     fn describe_hub(&self, builder: DescribeHubInputBuilder) -> impl Future<Output = Result<DescribeHubOutput, SdkError<DescribeHubError>>> {
-        (*self).describe_hub(builder)
+        self.deref().describe_hub(builder)
     }
     fn describe_hub_content(&self, builder: DescribeHubContentInputBuilder) -> impl Future<Output = Result<DescribeHubContentOutput, SdkError<DescribeHubContentError>>> {
-        (*self).describe_hub_content(builder)
+        self.deref().describe_hub_content(builder)
     }
     fn describe_human_task_ui(&self, builder: DescribeHumanTaskUiInputBuilder) -> impl Future<Output = Result<DescribeHumanTaskUiOutput, SdkError<DescribeHumanTaskUiError>>> {
-        (*self).describe_human_task_ui(builder)
+        self.deref().describe_human_task_ui(builder)
     }
     fn describe_hyper_parameter_tuning_job(&self, builder: DescribeHyperParameterTuningJobInputBuilder) -> impl Future<Output = Result<DescribeHyperParameterTuningJobOutput, SdkError<DescribeHyperParameterTuningJobError>>> {
-        (*self).describe_hyper_parameter_tuning_job(builder)
+        self.deref().describe_hyper_parameter_tuning_job(builder)
     }
     fn describe_image(&self, builder: DescribeImageInputBuilder) -> impl Future<Output = Result<DescribeImageOutput, SdkError<DescribeImageError>>> {
-        (*self).describe_image(builder)
+        self.deref().describe_image(builder)
     }
     fn describe_image_version(&self, builder: DescribeImageVersionInputBuilder) -> impl Future<Output = Result<DescribeImageVersionOutput, SdkError<DescribeImageVersionError>>> {
-        (*self).describe_image_version(builder)
+        self.deref().describe_image_version(builder)
     }
     fn describe_inference_component(&self, builder: DescribeInferenceComponentInputBuilder) -> impl Future<Output = Result<DescribeInferenceComponentOutput, SdkError<DescribeInferenceComponentError>>> {
-        (*self).describe_inference_component(builder)
+        self.deref().describe_inference_component(builder)
     }
     fn describe_inference_experiment(&self, builder: DescribeInferenceExperimentInputBuilder) -> impl Future<Output = Result<DescribeInferenceExperimentOutput, SdkError<DescribeInferenceExperimentError>>> {
-        (*self).describe_inference_experiment(builder)
+        self.deref().describe_inference_experiment(builder)
     }
     fn describe_inference_recommendations_job(&self, builder: DescribeInferenceRecommendationsJobInputBuilder) -> impl Future<Output = Result<DescribeInferenceRecommendationsJobOutput, SdkError<DescribeInferenceRecommendationsJobError>>> {
-        (*self).describe_inference_recommendations_job(builder)
+        self.deref().describe_inference_recommendations_job(builder)
     }
     fn describe_labeling_job(&self, builder: DescribeLabelingJobInputBuilder) -> impl Future<Output = Result<DescribeLabelingJobOutput, SdkError<DescribeLabelingJobError>>> {
-        (*self).describe_labeling_job(builder)
+        self.deref().describe_labeling_job(builder)
     }
     fn describe_lineage_group(&self, builder: DescribeLineageGroupInputBuilder) -> impl Future<Output = Result<DescribeLineageGroupOutput, SdkError<DescribeLineageGroupError>>> {
-        (*self).describe_lineage_group(builder)
+        self.deref().describe_lineage_group(builder)
     }
     fn describe_mlflow_tracking_server(&self, builder: DescribeMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<DescribeMlflowTrackingServerOutput, SdkError<DescribeMlflowTrackingServerError>>> {
-        (*self).describe_mlflow_tracking_server(builder)
+        self.deref().describe_mlflow_tracking_server(builder)
     }
     fn describe_model(&self, builder: DescribeModelInputBuilder) -> impl Future<Output = Result<DescribeModelOutput, SdkError<DescribeModelError>>> {
-        (*self).describe_model(builder)
+        self.deref().describe_model(builder)
     }
     fn describe_model_bias_job_definition(&self, builder: DescribeModelBiasJobDefinitionInputBuilder) -> impl Future<Output = Result<DescribeModelBiasJobDefinitionOutput, SdkError<DescribeModelBiasJobDefinitionError>>> {
-        (*self).describe_model_bias_job_definition(builder)
+        self.deref().describe_model_bias_job_definition(builder)
     }
     fn describe_model_card(&self, builder: DescribeModelCardInputBuilder) -> impl Future<Output = Result<DescribeModelCardOutput, SdkError<DescribeModelCardError>>> {
-        (*self).describe_model_card(builder)
+        self.deref().describe_model_card(builder)
     }
     fn describe_model_card_export_job(&self, builder: DescribeModelCardExportJobInputBuilder) -> impl Future<Output = Result<DescribeModelCardExportJobOutput, SdkError<DescribeModelCardExportJobError>>> {
-        (*self).describe_model_card_export_job(builder)
+        self.deref().describe_model_card_export_job(builder)
     }
     fn describe_model_explainability_job_definition(&self, builder: DescribeModelExplainabilityJobDefinitionInputBuilder) -> impl Future<Output = Result<DescribeModelExplainabilityJobDefinitionOutput, SdkError<DescribeModelExplainabilityJobDefinitionError>>> {
-        (*self).describe_model_explainability_job_definition(builder)
+        self.deref().describe_model_explainability_job_definition(builder)
     }
     fn describe_model_package(&self, builder: DescribeModelPackageInputBuilder) -> impl Future<Output = Result<DescribeModelPackageOutput, SdkError<DescribeModelPackageError>>> {
-        (*self).describe_model_package(builder)
+        self.deref().describe_model_package(builder)
     }
     fn describe_model_package_group(&self, builder: DescribeModelPackageGroupInputBuilder) -> impl Future<Output = Result<DescribeModelPackageGroupOutput, SdkError<DescribeModelPackageGroupError>>> {
-        (*self).describe_model_package_group(builder)
+        self.deref().describe_model_package_group(builder)
     }
     fn describe_model_quality_job_definition(&self, builder: DescribeModelQualityJobDefinitionInputBuilder) -> impl Future<Output = Result<DescribeModelQualityJobDefinitionOutput, SdkError<DescribeModelQualityJobDefinitionError>>> {
-        (*self).describe_model_quality_job_definition(builder)
+        self.deref().describe_model_quality_job_definition(builder)
     }
     fn describe_monitoring_schedule(&self, builder: DescribeMonitoringScheduleInputBuilder) -> impl Future<Output = Result<DescribeMonitoringScheduleOutput, SdkError<DescribeMonitoringScheduleError>>> {
-        (*self).describe_monitoring_schedule(builder)
+        self.deref().describe_monitoring_schedule(builder)
     }
     fn describe_notebook_instance(&self, builder: DescribeNotebookInstanceInputBuilder) -> impl Future<Output = Result<DescribeNotebookInstanceOutput, SdkError<DescribeNotebookInstanceError>>> {
-        (*self).describe_notebook_instance(builder)
+        self.deref().describe_notebook_instance(builder)
     }
     fn describe_notebook_instance_lifecycle_config(&self, builder: DescribeNotebookInstanceLifecycleConfigInputBuilder) -> impl Future<Output = Result<DescribeNotebookInstanceLifecycleConfigOutput, SdkError<DescribeNotebookInstanceLifecycleConfigError>>> {
-        (*self).describe_notebook_instance_lifecycle_config(builder)
+        self.deref().describe_notebook_instance_lifecycle_config(builder)
     }
     fn describe_optimization_job(&self, builder: DescribeOptimizationJobInputBuilder) -> impl Future<Output = Result<DescribeOptimizationJobOutput, SdkError<DescribeOptimizationJobError>>> {
-        (*self).describe_optimization_job(builder)
+        self.deref().describe_optimization_job(builder)
     }
     fn describe_pipeline(&self, builder: DescribePipelineInputBuilder) -> impl Future<Output = Result<DescribePipelineOutput, SdkError<DescribePipelineError>>> {
-        (*self).describe_pipeline(builder)
+        self.deref().describe_pipeline(builder)
     }
     fn describe_pipeline_definition_for_execution(&self, builder: DescribePipelineDefinitionForExecutionInputBuilder) -> impl Future<Output = Result<DescribePipelineDefinitionForExecutionOutput, SdkError<DescribePipelineDefinitionForExecutionError>>> {
-        (*self).describe_pipeline_definition_for_execution(builder)
+        self.deref().describe_pipeline_definition_for_execution(builder)
     }
     fn describe_pipeline_execution(&self, builder: DescribePipelineExecutionInputBuilder) -> impl Future<Output = Result<DescribePipelineExecutionOutput, SdkError<DescribePipelineExecutionError>>> {
-        (*self).describe_pipeline_execution(builder)
+        self.deref().describe_pipeline_execution(builder)
     }
     fn describe_processing_job(&self, builder: DescribeProcessingJobInputBuilder) -> impl Future<Output = Result<DescribeProcessingJobOutput, SdkError<DescribeProcessingJobError>>> {
-        (*self).describe_processing_job(builder)
+        self.deref().describe_processing_job(builder)
     }
     fn describe_project(&self, builder: DescribeProjectInputBuilder) -> impl Future<Output = Result<DescribeProjectOutput, SdkError<DescribeProjectError>>> {
-        (*self).describe_project(builder)
+        self.deref().describe_project(builder)
     }
     fn describe_space(&self, builder: DescribeSpaceInputBuilder) -> impl Future<Output = Result<DescribeSpaceOutput, SdkError<DescribeSpaceError>>> {
-        (*self).describe_space(builder)
+        self.deref().describe_space(builder)
     }
     fn describe_studio_lifecycle_config(&self, builder: DescribeStudioLifecycleConfigInputBuilder) -> impl Future<Output = Result<DescribeStudioLifecycleConfigOutput, SdkError<DescribeStudioLifecycleConfigError>>> {
-        (*self).describe_studio_lifecycle_config(builder)
+        self.deref().describe_studio_lifecycle_config(builder)
     }
     fn describe_subscribed_workteam(&self, builder: DescribeSubscribedWorkteamInputBuilder) -> impl Future<Output = Result<DescribeSubscribedWorkteamOutput, SdkError<DescribeSubscribedWorkteamError>>> {
-        (*self).describe_subscribed_workteam(builder)
+        self.deref().describe_subscribed_workteam(builder)
     }
     fn describe_training_job(&self, builder: DescribeTrainingJobInputBuilder) -> impl Future<Output = Result<DescribeTrainingJobOutput, SdkError<DescribeTrainingJobError>>> {
-        (*self).describe_training_job(builder)
+        self.deref().describe_training_job(builder)
     }
     fn describe_transform_job(&self, builder: DescribeTransformJobInputBuilder) -> impl Future<Output = Result<DescribeTransformJobOutput, SdkError<DescribeTransformJobError>>> {
-        (*self).describe_transform_job(builder)
+        self.deref().describe_transform_job(builder)
     }
     fn describe_trial(&self, builder: DescribeTrialInputBuilder) -> impl Future<Output = Result<DescribeTrialOutput, SdkError<DescribeTrialError>>> {
-        (*self).describe_trial(builder)
+        self.deref().describe_trial(builder)
     }
     fn describe_trial_component(&self, builder: DescribeTrialComponentInputBuilder) -> impl Future<Output = Result<DescribeTrialComponentOutput, SdkError<DescribeTrialComponentError>>> {
-        (*self).describe_trial_component(builder)
+        self.deref().describe_trial_component(builder)
     }
     fn describe_user_profile(&self, builder: DescribeUserProfileInputBuilder) -> impl Future<Output = Result<DescribeUserProfileOutput, SdkError<DescribeUserProfileError>>> {
-        (*self).describe_user_profile(builder)
+        self.deref().describe_user_profile(builder)
     }
     fn describe_workforce(&self, builder: DescribeWorkforceInputBuilder) -> impl Future<Output = Result<DescribeWorkforceOutput, SdkError<DescribeWorkforceError>>> {
-        (*self).describe_workforce(builder)
+        self.deref().describe_workforce(builder)
     }
     fn describe_workteam(&self, builder: DescribeWorkteamInputBuilder) -> impl Future<Output = Result<DescribeWorkteamOutput, SdkError<DescribeWorkteamError>>> {
-        (*self).describe_workteam(builder)
+        self.deref().describe_workteam(builder)
     }
     fn disable_sagemaker_servicecatalog_portfolio(&self, builder: DisableSagemakerServicecatalogPortfolioInputBuilder) -> impl Future<Output = Result<DisableSagemakerServicecatalogPortfolioOutput, SdkError<DisableSagemakerServicecatalogPortfolioError>>> {
-        (*self).disable_sagemaker_servicecatalog_portfolio(builder)
+        self.deref().disable_sagemaker_servicecatalog_portfolio(builder)
     }
     fn disassociate_trial_component(&self, builder: DisassociateTrialComponentInputBuilder) -> impl Future<Output = Result<DisassociateTrialComponentOutput, SdkError<DisassociateTrialComponentError>>> {
-        (*self).disassociate_trial_component(builder)
+        self.deref().disassociate_trial_component(builder)
     }
     fn enable_sagemaker_servicecatalog_portfolio(&self, builder: EnableSagemakerServicecatalogPortfolioInputBuilder) -> impl Future<Output = Result<EnableSagemakerServicecatalogPortfolioOutput, SdkError<EnableSagemakerServicecatalogPortfolioError>>> {
-        (*self).enable_sagemaker_servicecatalog_portfolio(builder)
+        self.deref().enable_sagemaker_servicecatalog_portfolio(builder)
     }
     fn get_device_fleet_report(&self, builder: GetDeviceFleetReportInputBuilder) -> impl Future<Output = Result<GetDeviceFleetReportOutput, SdkError<GetDeviceFleetReportError>>> {
-        (*self).get_device_fleet_report(builder)
+        self.deref().get_device_fleet_report(builder)
     }
     fn get_lineage_group_policy(&self, builder: GetLineageGroupPolicyInputBuilder) -> impl Future<Output = Result<GetLineageGroupPolicyOutput, SdkError<GetLineageGroupPolicyError>>> {
-        (*self).get_lineage_group_policy(builder)
+        self.deref().get_lineage_group_policy(builder)
     }
     fn get_model_package_group_policy(&self, builder: GetModelPackageGroupPolicyInputBuilder) -> impl Future<Output = Result<GetModelPackageGroupPolicyOutput, SdkError<GetModelPackageGroupPolicyError>>> {
-        (*self).get_model_package_group_policy(builder)
+        self.deref().get_model_package_group_policy(builder)
     }
     fn get_sagemaker_servicecatalog_portfolio_status(&self, builder: GetSagemakerServicecatalogPortfolioStatusInputBuilder) -> impl Future<Output = Result<GetSagemakerServicecatalogPortfolioStatusOutput, SdkError<GetSagemakerServicecatalogPortfolioStatusError>>> {
-        (*self).get_sagemaker_servicecatalog_portfolio_status(builder)
+        self.deref().get_sagemaker_servicecatalog_portfolio_status(builder)
     }
     fn get_scaling_configuration_recommendation(&self, builder: GetScalingConfigurationRecommendationInputBuilder) -> impl Future<Output = Result<GetScalingConfigurationRecommendationOutput, SdkError<GetScalingConfigurationRecommendationError>>> {
-        (*self).get_scaling_configuration_recommendation(builder)
+        self.deref().get_scaling_configuration_recommendation(builder)
     }
     fn get_search_suggestions(&self, builder: GetSearchSuggestionsInputBuilder) -> impl Future<Output = Result<GetSearchSuggestionsOutput, SdkError<GetSearchSuggestionsError>>> {
-        (*self).get_search_suggestions(builder)
+        self.deref().get_search_suggestions(builder)
     }
     fn import_hub_content(&self, builder: ImportHubContentInputBuilder) -> impl Future<Output = Result<ImportHubContentOutput, SdkError<ImportHubContentError>>> {
-        (*self).import_hub_content(builder)
+        self.deref().import_hub_content(builder)
     }
     fn list_actions(&self, builder: ListActionsInputBuilder) -> impl Future<Output = Result<ListActionsOutput, SdkError<ListActionsError>>> {
-        (*self).list_actions(builder)
+        self.deref().list_actions(builder)
     }
     fn list_algorithms(&self, builder: ListAlgorithmsInputBuilder) -> impl Future<Output = Result<ListAlgorithmsOutput, SdkError<ListAlgorithmsError>>> {
-        (*self).list_algorithms(builder)
+        self.deref().list_algorithms(builder)
     }
     fn list_aliases(&self, builder: ListAliasesInputBuilder) -> impl Future<Output = Result<ListAliasesOutput, SdkError<ListAliasesError>>> {
-        (*self).list_aliases(builder)
+        self.deref().list_aliases(builder)
     }
     fn list_app_image_configs(&self, builder: ListAppImageConfigsInputBuilder) -> impl Future<Output = Result<ListAppImageConfigsOutput, SdkError<ListAppImageConfigsError>>> {
-        (*self).list_app_image_configs(builder)
+        self.deref().list_app_image_configs(builder)
     }
     fn list_apps(&self, builder: ListAppsInputBuilder) -> impl Future<Output = Result<ListAppsOutput, SdkError<ListAppsError>>> {
-        (*self).list_apps(builder)
+        self.deref().list_apps(builder)
     }
     fn list_artifacts(&self, builder: ListArtifactsInputBuilder) -> impl Future<Output = Result<ListArtifactsOutput, SdkError<ListArtifactsError>>> {
-        (*self).list_artifacts(builder)
+        self.deref().list_artifacts(builder)
     }
     fn list_associations(&self, builder: ListAssociationsInputBuilder) -> impl Future<Output = Result<ListAssociationsOutput, SdkError<ListAssociationsError>>> {
-        (*self).list_associations(builder)
+        self.deref().list_associations(builder)
     }
     fn list_auto_ml_jobs(&self, builder: ListAutoMlJobsInputBuilder) -> impl Future<Output = Result<ListAutoMlJobsOutput, SdkError<ListAutoMLJobsError>>> {
-        (*self).list_auto_ml_jobs(builder)
+        self.deref().list_auto_ml_jobs(builder)
     }
     fn list_candidates_for_auto_ml_job(&self, builder: ListCandidatesForAutoMlJobInputBuilder) -> impl Future<Output = Result<ListCandidatesForAutoMlJobOutput, SdkError<ListCandidatesForAutoMLJobError>>> {
-        (*self).list_candidates_for_auto_ml_job(builder)
+        self.deref().list_candidates_for_auto_ml_job(builder)
     }
     fn list_cluster_nodes(&self, builder: ListClusterNodesInputBuilder) -> impl Future<Output = Result<ListClusterNodesOutput, SdkError<ListClusterNodesError>>> {
-        (*self).list_cluster_nodes(builder)
+        self.deref().list_cluster_nodes(builder)
     }
     fn list_clusters(&self, builder: ListClustersInputBuilder) -> impl Future<Output = Result<ListClustersOutput, SdkError<ListClustersError>>> {
-        (*self).list_clusters(builder)
+        self.deref().list_clusters(builder)
     }
     fn list_code_repositories(&self, builder: ListCodeRepositoriesInputBuilder) -> impl Future<Output = Result<ListCodeRepositoriesOutput, SdkError<ListCodeRepositoriesError>>> {
-        (*self).list_code_repositories(builder)
+        self.deref().list_code_repositories(builder)
     }
     fn list_compilation_jobs(&self, builder: ListCompilationJobsInputBuilder) -> impl Future<Output = Result<ListCompilationJobsOutput, SdkError<ListCompilationJobsError>>> {
-        (*self).list_compilation_jobs(builder)
+        self.deref().list_compilation_jobs(builder)
     }
     fn list_contexts(&self, builder: ListContextsInputBuilder) -> impl Future<Output = Result<ListContextsOutput, SdkError<ListContextsError>>> {
-        (*self).list_contexts(builder)
+        self.deref().list_contexts(builder)
     }
     fn list_data_quality_job_definitions(&self, builder: ListDataQualityJobDefinitionsInputBuilder) -> impl Future<Output = Result<ListDataQualityJobDefinitionsOutput, SdkError<ListDataQualityJobDefinitionsError>>> {
-        (*self).list_data_quality_job_definitions(builder)
+        self.deref().list_data_quality_job_definitions(builder)
     }
     fn list_device_fleets(&self, builder: ListDeviceFleetsInputBuilder) -> impl Future<Output = Result<ListDeviceFleetsOutput, SdkError<ListDeviceFleetsError>>> {
-        (*self).list_device_fleets(builder)
+        self.deref().list_device_fleets(builder)
     }
     fn list_devices(&self, builder: ListDevicesInputBuilder) -> impl Future<Output = Result<ListDevicesOutput, SdkError<ListDevicesError>>> {
-        (*self).list_devices(builder)
+        self.deref().list_devices(builder)
     }
     fn list_domains(&self, builder: ListDomainsInputBuilder) -> impl Future<Output = Result<ListDomainsOutput, SdkError<ListDomainsError>>> {
-        (*self).list_domains(builder)
+        self.deref().list_domains(builder)
     }
     fn list_edge_deployment_plans(&self, builder: ListEdgeDeploymentPlansInputBuilder) -> impl Future<Output = Result<ListEdgeDeploymentPlansOutput, SdkError<ListEdgeDeploymentPlansError>>> {
-        (*self).list_edge_deployment_plans(builder)
+        self.deref().list_edge_deployment_plans(builder)
     }
     fn list_edge_packaging_jobs(&self, builder: ListEdgePackagingJobsInputBuilder) -> impl Future<Output = Result<ListEdgePackagingJobsOutput, SdkError<ListEdgePackagingJobsError>>> {
-        (*self).list_edge_packaging_jobs(builder)
+        self.deref().list_edge_packaging_jobs(builder)
     }
     fn list_endpoint_configs(&self, builder: ListEndpointConfigsInputBuilder) -> impl Future<Output = Result<ListEndpointConfigsOutput, SdkError<ListEndpointConfigsError>>> {
-        (*self).list_endpoint_configs(builder)
+        self.deref().list_endpoint_configs(builder)
     }
     fn list_endpoints(&self, builder: ListEndpointsInputBuilder) -> impl Future<Output = Result<ListEndpointsOutput, SdkError<ListEndpointsError>>> {
-        (*self).list_endpoints(builder)
+        self.deref().list_endpoints(builder)
     }
     fn list_experiments(&self, builder: ListExperimentsInputBuilder) -> impl Future<Output = Result<ListExperimentsOutput, SdkError<ListExperimentsError>>> {
-        (*self).list_experiments(builder)
+        self.deref().list_experiments(builder)
     }
     fn list_feature_groups(&self, builder: ListFeatureGroupsInputBuilder) -> impl Future<Output = Result<ListFeatureGroupsOutput, SdkError<ListFeatureGroupsError>>> {
-        (*self).list_feature_groups(builder)
+        self.deref().list_feature_groups(builder)
     }
     fn list_flow_definitions(&self, builder: ListFlowDefinitionsInputBuilder) -> impl Future<Output = Result<ListFlowDefinitionsOutput, SdkError<ListFlowDefinitionsError>>> {
-        (*self).list_flow_definitions(builder)
+        self.deref().list_flow_definitions(builder)
     }
     fn list_hub_content_versions(&self, builder: ListHubContentVersionsInputBuilder) -> impl Future<Output = Result<ListHubContentVersionsOutput, SdkError<ListHubContentVersionsError>>> {
-        (*self).list_hub_content_versions(builder)
+        self.deref().list_hub_content_versions(builder)
     }
     fn list_hub_contents(&self, builder: ListHubContentsInputBuilder) -> impl Future<Output = Result<ListHubContentsOutput, SdkError<ListHubContentsError>>> {
-        (*self).list_hub_contents(builder)
+        self.deref().list_hub_contents(builder)
     }
     fn list_hubs(&self, builder: ListHubsInputBuilder) -> impl Future<Output = Result<ListHubsOutput, SdkError<ListHubsError>>> {
-        (*self).list_hubs(builder)
+        self.deref().list_hubs(builder)
     }
     fn list_human_task_uis(&self, builder: ListHumanTaskUisInputBuilder) -> impl Future<Output = Result<ListHumanTaskUisOutput, SdkError<ListHumanTaskUisError>>> {
-        (*self).list_human_task_uis(builder)
+        self.deref().list_human_task_uis(builder)
     }
     fn list_hyper_parameter_tuning_jobs(&self, builder: ListHyperParameterTuningJobsInputBuilder) -> impl Future<Output = Result<ListHyperParameterTuningJobsOutput, SdkError<ListHyperParameterTuningJobsError>>> {
-        (*self).list_hyper_parameter_tuning_jobs(builder)
+        self.deref().list_hyper_parameter_tuning_jobs(builder)
     }
     fn list_image_versions(&self, builder: ListImageVersionsInputBuilder) -> impl Future<Output = Result<ListImageVersionsOutput, SdkError<ListImageVersionsError>>> {
-        (*self).list_image_versions(builder)
+        self.deref().list_image_versions(builder)
     }
     fn list_images(&self, builder: ListImagesInputBuilder) -> impl Future<Output = Result<ListImagesOutput, SdkError<ListImagesError>>> {
-        (*self).list_images(builder)
+        self.deref().list_images(builder)
     }
     fn list_inference_components(&self, builder: ListInferenceComponentsInputBuilder) -> impl Future<Output = Result<ListInferenceComponentsOutput, SdkError<ListInferenceComponentsError>>> {
-        (*self).list_inference_components(builder)
+        self.deref().list_inference_components(builder)
     }
     fn list_inference_experiments(&self, builder: ListInferenceExperimentsInputBuilder) -> impl Future<Output = Result<ListInferenceExperimentsOutput, SdkError<ListInferenceExperimentsError>>> {
-        (*self).list_inference_experiments(builder)
+        self.deref().list_inference_experiments(builder)
     }
     fn list_inference_recommendations_job_steps(&self, builder: ListInferenceRecommendationsJobStepsInputBuilder) -> impl Future<Output = Result<ListInferenceRecommendationsJobStepsOutput, SdkError<ListInferenceRecommendationsJobStepsError>>> {
-        (*self).list_inference_recommendations_job_steps(builder)
+        self.deref().list_inference_recommendations_job_steps(builder)
     }
     fn list_inference_recommendations_jobs(&self, builder: ListInferenceRecommendationsJobsInputBuilder) -> impl Future<Output = Result<ListInferenceRecommendationsJobsOutput, SdkError<ListInferenceRecommendationsJobsError>>> {
-        (*self).list_inference_recommendations_jobs(builder)
+        self.deref().list_inference_recommendations_jobs(builder)
     }
     fn list_labeling_jobs(&self, builder: ListLabelingJobsInputBuilder) -> impl Future<Output = Result<ListLabelingJobsOutput, SdkError<ListLabelingJobsError>>> {
-        (*self).list_labeling_jobs(builder)
+        self.deref().list_labeling_jobs(builder)
     }
     fn list_labeling_jobs_for_workteam(&self, builder: ListLabelingJobsForWorkteamInputBuilder) -> impl Future<Output = Result<ListLabelingJobsForWorkteamOutput, SdkError<ListLabelingJobsForWorkteamError>>> {
-        (*self).list_labeling_jobs_for_workteam(builder)
+        self.deref().list_labeling_jobs_for_workteam(builder)
     }
     fn list_lineage_groups(&self, builder: ListLineageGroupsInputBuilder) -> impl Future<Output = Result<ListLineageGroupsOutput, SdkError<ListLineageGroupsError>>> {
-        (*self).list_lineage_groups(builder)
+        self.deref().list_lineage_groups(builder)
     }
     fn list_mlflow_tracking_servers(&self, builder: ListMlflowTrackingServersInputBuilder) -> impl Future<Output = Result<ListMlflowTrackingServersOutput, SdkError<ListMlflowTrackingServersError>>> {
-        (*self).list_mlflow_tracking_servers(builder)
+        self.deref().list_mlflow_tracking_servers(builder)
     }
     fn list_model_bias_job_definitions(&self, builder: ListModelBiasJobDefinitionsInputBuilder) -> impl Future<Output = Result<ListModelBiasJobDefinitionsOutput, SdkError<ListModelBiasJobDefinitionsError>>> {
-        (*self).list_model_bias_job_definitions(builder)
+        self.deref().list_model_bias_job_definitions(builder)
     }
     fn list_model_card_export_jobs(&self, builder: ListModelCardExportJobsInputBuilder) -> impl Future<Output = Result<ListModelCardExportJobsOutput, SdkError<ListModelCardExportJobsError>>> {
-        (*self).list_model_card_export_jobs(builder)
+        self.deref().list_model_card_export_jobs(builder)
     }
     fn list_model_card_versions(&self, builder: ListModelCardVersionsInputBuilder) -> impl Future<Output = Result<ListModelCardVersionsOutput, SdkError<ListModelCardVersionsError>>> {
-        (*self).list_model_card_versions(builder)
+        self.deref().list_model_card_versions(builder)
     }
     fn list_model_cards(&self, builder: ListModelCardsInputBuilder) -> impl Future<Output = Result<ListModelCardsOutput, SdkError<ListModelCardsError>>> {
-        (*self).list_model_cards(builder)
+        self.deref().list_model_cards(builder)
     }
     fn list_model_explainability_job_definitions(&self, builder: ListModelExplainabilityJobDefinitionsInputBuilder) -> impl Future<Output = Result<ListModelExplainabilityJobDefinitionsOutput, SdkError<ListModelExplainabilityJobDefinitionsError>>> {
-        (*self).list_model_explainability_job_definitions(builder)
+        self.deref().list_model_explainability_job_definitions(builder)
     }
     fn list_model_metadata(&self, builder: ListModelMetadataInputBuilder) -> impl Future<Output = Result<ListModelMetadataOutput, SdkError<ListModelMetadataError>>> {
-        (*self).list_model_metadata(builder)
+        self.deref().list_model_metadata(builder)
     }
     fn list_model_package_groups(&self, builder: ListModelPackageGroupsInputBuilder) -> impl Future<Output = Result<ListModelPackageGroupsOutput, SdkError<ListModelPackageGroupsError>>> {
-        (*self).list_model_package_groups(builder)
+        self.deref().list_model_package_groups(builder)
     }
     fn list_model_packages(&self, builder: ListModelPackagesInputBuilder) -> impl Future<Output = Result<ListModelPackagesOutput, SdkError<ListModelPackagesError>>> {
-        (*self).list_model_packages(builder)
+        self.deref().list_model_packages(builder)
     }
     fn list_model_quality_job_definitions(&self, builder: ListModelQualityJobDefinitionsInputBuilder) -> impl Future<Output = Result<ListModelQualityJobDefinitionsOutput, SdkError<ListModelQualityJobDefinitionsError>>> {
-        (*self).list_model_quality_job_definitions(builder)
+        self.deref().list_model_quality_job_definitions(builder)
     }
     fn list_models(&self, builder: ListModelsInputBuilder) -> impl Future<Output = Result<ListModelsOutput, SdkError<ListModelsError>>> {
-        (*self).list_models(builder)
+        self.deref().list_models(builder)
     }
     fn list_monitoring_alert_history(&self, builder: ListMonitoringAlertHistoryInputBuilder) -> impl Future<Output = Result<ListMonitoringAlertHistoryOutput, SdkError<ListMonitoringAlertHistoryError>>> {
-        (*self).list_monitoring_alert_history(builder)
+        self.deref().list_monitoring_alert_history(builder)
     }
     fn list_monitoring_alerts(&self, builder: ListMonitoringAlertsInputBuilder) -> impl Future<Output = Result<ListMonitoringAlertsOutput, SdkError<ListMonitoringAlertsError>>> {
-        (*self).list_monitoring_alerts(builder)
+        self.deref().list_monitoring_alerts(builder)
     }
     fn list_monitoring_executions(&self, builder: ListMonitoringExecutionsInputBuilder) -> impl Future<Output = Result<ListMonitoringExecutionsOutput, SdkError<ListMonitoringExecutionsError>>> {
-        (*self).list_monitoring_executions(builder)
+        self.deref().list_monitoring_executions(builder)
     }
     fn list_monitoring_schedules(&self, builder: ListMonitoringSchedulesInputBuilder) -> impl Future<Output = Result<ListMonitoringSchedulesOutput, SdkError<ListMonitoringSchedulesError>>> {
-        (*self).list_monitoring_schedules(builder)
+        self.deref().list_monitoring_schedules(builder)
     }
     fn list_notebook_instance_lifecycle_configs(&self, builder: ListNotebookInstanceLifecycleConfigsInputBuilder) -> impl Future<Output = Result<ListNotebookInstanceLifecycleConfigsOutput, SdkError<ListNotebookInstanceLifecycleConfigsError>>> {
-        (*self).list_notebook_instance_lifecycle_configs(builder)
+        self.deref().list_notebook_instance_lifecycle_configs(builder)
     }
     fn list_notebook_instances(&self, builder: ListNotebookInstancesInputBuilder) -> impl Future<Output = Result<ListNotebookInstancesOutput, SdkError<ListNotebookInstancesError>>> {
-        (*self).list_notebook_instances(builder)
+        self.deref().list_notebook_instances(builder)
     }
     fn list_optimization_jobs(&self, builder: ListOptimizationJobsInputBuilder) -> impl Future<Output = Result<ListOptimizationJobsOutput, SdkError<ListOptimizationJobsError>>> {
-        (*self).list_optimization_jobs(builder)
+        self.deref().list_optimization_jobs(builder)
     }
     fn list_pipeline_execution_steps(&self, builder: ListPipelineExecutionStepsInputBuilder) -> impl Future<Output = Result<ListPipelineExecutionStepsOutput, SdkError<ListPipelineExecutionStepsError>>> {
-        (*self).list_pipeline_execution_steps(builder)
+        self.deref().list_pipeline_execution_steps(builder)
     }
     fn list_pipeline_executions(&self, builder: ListPipelineExecutionsInputBuilder) -> impl Future<Output = Result<ListPipelineExecutionsOutput, SdkError<ListPipelineExecutionsError>>> {
-        (*self).list_pipeline_executions(builder)
+        self.deref().list_pipeline_executions(builder)
     }
     fn list_pipeline_parameters_for_execution(&self, builder: ListPipelineParametersForExecutionInputBuilder) -> impl Future<Output = Result<ListPipelineParametersForExecutionOutput, SdkError<ListPipelineParametersForExecutionError>>> {
-        (*self).list_pipeline_parameters_for_execution(builder)
+        self.deref().list_pipeline_parameters_for_execution(builder)
     }
     fn list_pipelines(&self, builder: ListPipelinesInputBuilder) -> impl Future<Output = Result<ListPipelinesOutput, SdkError<ListPipelinesError>>> {
-        (*self).list_pipelines(builder)
+        self.deref().list_pipelines(builder)
     }
     fn list_processing_jobs(&self, builder: ListProcessingJobsInputBuilder) -> impl Future<Output = Result<ListProcessingJobsOutput, SdkError<ListProcessingJobsError>>> {
-        (*self).list_processing_jobs(builder)
+        self.deref().list_processing_jobs(builder)
     }
     fn list_projects(&self, builder: ListProjectsInputBuilder) -> impl Future<Output = Result<ListProjectsOutput, SdkError<ListProjectsError>>> {
-        (*self).list_projects(builder)
+        self.deref().list_projects(builder)
     }
     fn list_resource_catalogs(&self, builder: ListResourceCatalogsInputBuilder) -> impl Future<Output = Result<ListResourceCatalogsOutput, SdkError<ListResourceCatalogsError>>> {
-        (*self).list_resource_catalogs(builder)
+        self.deref().list_resource_catalogs(builder)
     }
     fn list_spaces(&self, builder: ListSpacesInputBuilder) -> impl Future<Output = Result<ListSpacesOutput, SdkError<ListSpacesError>>> {
-        (*self).list_spaces(builder)
+        self.deref().list_spaces(builder)
     }
     fn list_stage_devices(&self, builder: ListStageDevicesInputBuilder) -> impl Future<Output = Result<ListStageDevicesOutput, SdkError<ListStageDevicesError>>> {
-        (*self).list_stage_devices(builder)
+        self.deref().list_stage_devices(builder)
     }
     fn list_studio_lifecycle_configs(&self, builder: ListStudioLifecycleConfigsInputBuilder) -> impl Future<Output = Result<ListStudioLifecycleConfigsOutput, SdkError<ListStudioLifecycleConfigsError>>> {
-        (*self).list_studio_lifecycle_configs(builder)
+        self.deref().list_studio_lifecycle_configs(builder)
     }
     fn list_subscribed_workteams(&self, builder: ListSubscribedWorkteamsInputBuilder) -> impl Future<Output = Result<ListSubscribedWorkteamsOutput, SdkError<ListSubscribedWorkteamsError>>> {
-        (*self).list_subscribed_workteams(builder)
+        self.deref().list_subscribed_workteams(builder)
     }
     fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> {
-        (*self).list_tags(builder)
+        self.deref().list_tags(builder)
     }
     fn list_training_jobs(&self, builder: ListTrainingJobsInputBuilder) -> impl Future<Output = Result<ListTrainingJobsOutput, SdkError<ListTrainingJobsError>>> {
-        (*self).list_training_jobs(builder)
+        self.deref().list_training_jobs(builder)
     }
     fn list_training_jobs_for_hyper_parameter_tuning_job(&self, builder: ListTrainingJobsForHyperParameterTuningJobInputBuilder) -> impl Future<Output = Result<ListTrainingJobsForHyperParameterTuningJobOutput, SdkError<ListTrainingJobsForHyperParameterTuningJobError>>> {
-        (*self).list_training_jobs_for_hyper_parameter_tuning_job(builder)
+        self.deref().list_training_jobs_for_hyper_parameter_tuning_job(builder)
     }
     fn list_transform_jobs(&self, builder: ListTransformJobsInputBuilder) -> impl Future<Output = Result<ListTransformJobsOutput, SdkError<ListTransformJobsError>>> {
-        (*self).list_transform_jobs(builder)
+        self.deref().list_transform_jobs(builder)
     }
     fn list_trial_components(&self, builder: ListTrialComponentsInputBuilder) -> impl Future<Output = Result<ListTrialComponentsOutput, SdkError<ListTrialComponentsError>>> {
-        (*self).list_trial_components(builder)
+        self.deref().list_trial_components(builder)
     }
     fn list_trials(&self, builder: ListTrialsInputBuilder) -> impl Future<Output = Result<ListTrialsOutput, SdkError<ListTrialsError>>> {
-        (*self).list_trials(builder)
+        self.deref().list_trials(builder)
     }
     fn list_user_profiles(&self, builder: ListUserProfilesInputBuilder) -> impl Future<Output = Result<ListUserProfilesOutput, SdkError<ListUserProfilesError>>> {
-        (*self).list_user_profiles(builder)
+        self.deref().list_user_profiles(builder)
     }
     fn list_workforces(&self, builder: ListWorkforcesInputBuilder) -> impl Future<Output = Result<ListWorkforcesOutput, SdkError<ListWorkforcesError>>> {
-        (*self).list_workforces(builder)
+        self.deref().list_workforces(builder)
     }
     fn list_workteams(&self, builder: ListWorkteamsInputBuilder) -> impl Future<Output = Result<ListWorkteamsOutput, SdkError<ListWorkteamsError>>> {
-        (*self).list_workteams(builder)
+        self.deref().list_workteams(builder)
     }
     fn put_model_package_group_policy(&self, builder: PutModelPackageGroupPolicyInputBuilder) -> impl Future<Output = Result<PutModelPackageGroupPolicyOutput, SdkError<PutModelPackageGroupPolicyError>>> {
-        (*self).put_model_package_group_policy(builder)
+        self.deref().put_model_package_group_policy(builder)
     }
     fn query_lineage(&self, builder: QueryLineageInputBuilder) -> impl Future<Output = Result<QueryLineageOutput, SdkError<QueryLineageError>>> {
-        (*self).query_lineage(builder)
+        self.deref().query_lineage(builder)
     }
     fn register_devices(&self, builder: RegisterDevicesInputBuilder) -> impl Future<Output = Result<RegisterDevicesOutput, SdkError<RegisterDevicesError>>> {
-        (*self).register_devices(builder)
+        self.deref().register_devices(builder)
     }
     fn render_ui_template(&self, builder: RenderUiTemplateInputBuilder) -> impl Future<Output = Result<RenderUiTemplateOutput, SdkError<RenderUiTemplateError>>> {
-        (*self).render_ui_template(builder)
+        self.deref().render_ui_template(builder)
     }
     fn retry_pipeline_execution(&self, builder: RetryPipelineExecutionInputBuilder) -> impl Future<Output = Result<RetryPipelineExecutionOutput, SdkError<RetryPipelineExecutionError>>> {
-        (*self).retry_pipeline_execution(builder)
+        self.deref().retry_pipeline_execution(builder)
     }
     fn search(&self, builder: SearchInputBuilder) -> impl Future<Output = Result<SearchOutput, SdkError<SearchError>>> {
-        (*self).search(builder)
+        self.deref().search(builder)
     }
     fn send_pipeline_execution_step_failure(&self, builder: SendPipelineExecutionStepFailureInputBuilder) -> impl Future<Output = Result<SendPipelineExecutionStepFailureOutput, SdkError<SendPipelineExecutionStepFailureError>>> {
-        (*self).send_pipeline_execution_step_failure(builder)
+        self.deref().send_pipeline_execution_step_failure(builder)
     }
     fn send_pipeline_execution_step_success(&self, builder: SendPipelineExecutionStepSuccessInputBuilder) -> impl Future<Output = Result<SendPipelineExecutionStepSuccessOutput, SdkError<SendPipelineExecutionStepSuccessError>>> {
-        (*self).send_pipeline_execution_step_success(builder)
+        self.deref().send_pipeline_execution_step_success(builder)
     }
     fn start_edge_deployment_stage(&self, builder: StartEdgeDeploymentStageInputBuilder) -> impl Future<Output = Result<StartEdgeDeploymentStageOutput, SdkError<StartEdgeDeploymentStageError>>> {
-        (*self).start_edge_deployment_stage(builder)
+        self.deref().start_edge_deployment_stage(builder)
     }
     fn start_inference_experiment(&self, builder: StartInferenceExperimentInputBuilder) -> impl Future<Output = Result<StartInferenceExperimentOutput, SdkError<StartInferenceExperimentError>>> {
-        (*self).start_inference_experiment(builder)
+        self.deref().start_inference_experiment(builder)
     }
     fn start_mlflow_tracking_server(&self, builder: StartMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<StartMlflowTrackingServerOutput, SdkError<StartMlflowTrackingServerError>>> {
-        (*self).start_mlflow_tracking_server(builder)
+        self.deref().start_mlflow_tracking_server(builder)
     }
     fn start_monitoring_schedule(&self, builder: StartMonitoringScheduleInputBuilder) -> impl Future<Output = Result<StartMonitoringScheduleOutput, SdkError<StartMonitoringScheduleError>>> {
-        (*self).start_monitoring_schedule(builder)
+        self.deref().start_monitoring_schedule(builder)
     }
     fn start_notebook_instance(&self, builder: StartNotebookInstanceInputBuilder) -> impl Future<Output = Result<StartNotebookInstanceOutput, SdkError<StartNotebookInstanceError>>> {
-        (*self).start_notebook_instance(builder)
+        self.deref().start_notebook_instance(builder)
     }
     fn start_pipeline_execution(&self, builder: StartPipelineExecutionInputBuilder) -> impl Future<Output = Result<StartPipelineExecutionOutput, SdkError<StartPipelineExecutionError>>> {
-        (*self).start_pipeline_execution(builder)
+        self.deref().start_pipeline_execution(builder)
     }
     fn stop_auto_ml_job(&self, builder: StopAutoMlJobInputBuilder) -> impl Future<Output = Result<StopAutoMlJobOutput, SdkError<StopAutoMLJobError>>> {
-        (*self).stop_auto_ml_job(builder)
+        self.deref().stop_auto_ml_job(builder)
     }
     fn stop_compilation_job(&self, builder: StopCompilationJobInputBuilder) -> impl Future<Output = Result<StopCompilationJobOutput, SdkError<StopCompilationJobError>>> {
-        (*self).stop_compilation_job(builder)
+        self.deref().stop_compilation_job(builder)
     }
     fn stop_edge_deployment_stage(&self, builder: StopEdgeDeploymentStageInputBuilder) -> impl Future<Output = Result<StopEdgeDeploymentStageOutput, SdkError<StopEdgeDeploymentStageError>>> {
-        (*self).stop_edge_deployment_stage(builder)
+        self.deref().stop_edge_deployment_stage(builder)
     }
     fn stop_edge_packaging_job(&self, builder: StopEdgePackagingJobInputBuilder) -> impl Future<Output = Result<StopEdgePackagingJobOutput, SdkError<StopEdgePackagingJobError>>> {
-        (*self).stop_edge_packaging_job(builder)
+        self.deref().stop_edge_packaging_job(builder)
     }
     fn stop_hyper_parameter_tuning_job(&self, builder: StopHyperParameterTuningJobInputBuilder) -> impl Future<Output = Result<StopHyperParameterTuningJobOutput, SdkError<StopHyperParameterTuningJobError>>> {
-        (*self).stop_hyper_parameter_tuning_job(builder)
+        self.deref().stop_hyper_parameter_tuning_job(builder)
     }
     fn stop_inference_experiment(&self, builder: StopInferenceExperimentInputBuilder) -> impl Future<Output = Result<StopInferenceExperimentOutput, SdkError<StopInferenceExperimentError>>> {
-        (*self).stop_inference_experiment(builder)
+        self.deref().stop_inference_experiment(builder)
     }
     fn stop_inference_recommendations_job(&self, builder: StopInferenceRecommendationsJobInputBuilder) -> impl Future<Output = Result<StopInferenceRecommendationsJobOutput, SdkError<StopInferenceRecommendationsJobError>>> {
-        (*self).stop_inference_recommendations_job(builder)
+        self.deref().stop_inference_recommendations_job(builder)
     }
     fn stop_labeling_job(&self, builder: StopLabelingJobInputBuilder) -> impl Future<Output = Result<StopLabelingJobOutput, SdkError<StopLabelingJobError>>> {
-        (*self).stop_labeling_job(builder)
+        self.deref().stop_labeling_job(builder)
     }
     fn stop_mlflow_tracking_server(&self, builder: StopMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<StopMlflowTrackingServerOutput, SdkError<StopMlflowTrackingServerError>>> {
-        (*self).stop_mlflow_tracking_server(builder)
+        self.deref().stop_mlflow_tracking_server(builder)
     }
     fn stop_monitoring_schedule(&self, builder: StopMonitoringScheduleInputBuilder) -> impl Future<Output = Result<StopMonitoringScheduleOutput, SdkError<StopMonitoringScheduleError>>> {
-        (*self).stop_monitoring_schedule(builder)
+        self.deref().stop_monitoring_schedule(builder)
     }
     fn stop_notebook_instance(&self, builder: StopNotebookInstanceInputBuilder) -> impl Future<Output = Result<StopNotebookInstanceOutput, SdkError<StopNotebookInstanceError>>> {
-        (*self).stop_notebook_instance(builder)
+        self.deref().stop_notebook_instance(builder)
     }
     fn stop_optimization_job(&self, builder: StopOptimizationJobInputBuilder) -> impl Future<Output = Result<StopOptimizationJobOutput, SdkError<StopOptimizationJobError>>> {
-        (*self).stop_optimization_job(builder)
+        self.deref().stop_optimization_job(builder)
     }
     fn stop_pipeline_execution(&self, builder: StopPipelineExecutionInputBuilder) -> impl Future<Output = Result<StopPipelineExecutionOutput, SdkError<StopPipelineExecutionError>>> {
-        (*self).stop_pipeline_execution(builder)
+        self.deref().stop_pipeline_execution(builder)
     }
     fn stop_processing_job(&self, builder: StopProcessingJobInputBuilder) -> impl Future<Output = Result<StopProcessingJobOutput, SdkError<StopProcessingJobError>>> {
-        (*self).stop_processing_job(builder)
+        self.deref().stop_processing_job(builder)
     }
     fn stop_training_job(&self, builder: StopTrainingJobInputBuilder) -> impl Future<Output = Result<StopTrainingJobOutput, SdkError<StopTrainingJobError>>> {
-        (*self).stop_training_job(builder)
+        self.deref().stop_training_job(builder)
     }
     fn stop_transform_job(&self, builder: StopTransformJobInputBuilder) -> impl Future<Output = Result<StopTransformJobOutput, SdkError<StopTransformJobError>>> {
-        (*self).stop_transform_job(builder)
+        self.deref().stop_transform_job(builder)
     }
     fn update_action(&self, builder: UpdateActionInputBuilder) -> impl Future<Output = Result<UpdateActionOutput, SdkError<UpdateActionError>>> {
-        (*self).update_action(builder)
+        self.deref().update_action(builder)
     }
     fn update_app_image_config(&self, builder: UpdateAppImageConfigInputBuilder) -> impl Future<Output = Result<UpdateAppImageConfigOutput, SdkError<UpdateAppImageConfigError>>> {
-        (*self).update_app_image_config(builder)
+        self.deref().update_app_image_config(builder)
     }
     fn update_artifact(&self, builder: UpdateArtifactInputBuilder) -> impl Future<Output = Result<UpdateArtifactOutput, SdkError<UpdateArtifactError>>> {
-        (*self).update_artifact(builder)
+        self.deref().update_artifact(builder)
     }
     fn update_cluster(&self, builder: UpdateClusterInputBuilder) -> impl Future<Output = Result<UpdateClusterOutput, SdkError<UpdateClusterError>>> {
-        (*self).update_cluster(builder)
+        self.deref().update_cluster(builder)
     }
     fn update_cluster_software(&self, builder: UpdateClusterSoftwareInputBuilder) -> impl Future<Output = Result<UpdateClusterSoftwareOutput, SdkError<UpdateClusterSoftwareError>>> {
-        (*self).update_cluster_software(builder)
+        self.deref().update_cluster_software(builder)
     }
     fn update_code_repository(&self, builder: UpdateCodeRepositoryInputBuilder) -> impl Future<Output = Result<UpdateCodeRepositoryOutput, SdkError<UpdateCodeRepositoryError>>> {
-        (*self).update_code_repository(builder)
+        self.deref().update_code_repository(builder)
     }
     fn update_context(&self, builder: UpdateContextInputBuilder) -> impl Future<Output = Result<UpdateContextOutput, SdkError<UpdateContextError>>> {
-        (*self).update_context(builder)
+        self.deref().update_context(builder)
     }
     fn update_device_fleet(&self, builder: UpdateDeviceFleetInputBuilder) -> impl Future<Output = Result<UpdateDeviceFleetOutput, SdkError<UpdateDeviceFleetError>>> {
-        (*self).update_device_fleet(builder)
+        self.deref().update_device_fleet(builder)
     }
     fn update_devices(&self, builder: UpdateDevicesInputBuilder) -> impl Future<Output = Result<UpdateDevicesOutput, SdkError<UpdateDevicesError>>> {
-        (*self).update_devices(builder)
+        self.deref().update_devices(builder)
     }
     fn update_domain(&self, builder: UpdateDomainInputBuilder) -> impl Future<Output = Result<UpdateDomainOutput, SdkError<UpdateDomainError>>> {
-        (*self).update_domain(builder)
+        self.deref().update_domain(builder)
     }
     fn update_endpoint(&self, builder: UpdateEndpointInputBuilder) -> impl Future<Output = Result<UpdateEndpointOutput, SdkError<UpdateEndpointError>>> {
-        (*self).update_endpoint(builder)
+        self.deref().update_endpoint(builder)
     }
     fn update_endpoint_weights_and_capacities(&self, builder: UpdateEndpointWeightsAndCapacitiesInputBuilder) -> impl Future<Output = Result<UpdateEndpointWeightsAndCapacitiesOutput, SdkError<UpdateEndpointWeightsAndCapacitiesError>>> {
-        (*self).update_endpoint_weights_and_capacities(builder)
+        self.deref().update_endpoint_weights_and_capacities(builder)
     }
     fn update_experiment(&self, builder: UpdateExperimentInputBuilder) -> impl Future<Output = Result<UpdateExperimentOutput, SdkError<UpdateExperimentError>>> {
-        (*self).update_experiment(builder)
+        self.deref().update_experiment(builder)
     }
     fn update_feature_group(&self, builder: UpdateFeatureGroupInputBuilder) -> impl Future<Output = Result<UpdateFeatureGroupOutput, SdkError<UpdateFeatureGroupError>>> {
-        (*self).update_feature_group(builder)
+        self.deref().update_feature_group(builder)
     }
     fn update_feature_metadata(&self, builder: UpdateFeatureMetadataInputBuilder) -> impl Future<Output = Result<UpdateFeatureMetadataOutput, SdkError<UpdateFeatureMetadataError>>> {
-        (*self).update_feature_metadata(builder)
+        self.deref().update_feature_metadata(builder)
     }
     fn update_hub(&self, builder: UpdateHubInputBuilder) -> impl Future<Output = Result<UpdateHubOutput, SdkError<UpdateHubError>>> {
-        (*self).update_hub(builder)
+        self.deref().update_hub(builder)
     }
     fn update_image(&self, builder: UpdateImageInputBuilder) -> impl Future<Output = Result<UpdateImageOutput, SdkError<UpdateImageError>>> {
-        (*self).update_image(builder)
+        self.deref().update_image(builder)
     }
     fn update_image_version(&self, builder: UpdateImageVersionInputBuilder) -> impl Future<Output = Result<UpdateImageVersionOutput, SdkError<UpdateImageVersionError>>> {
-        (*self).update_image_version(builder)
+        self.deref().update_image_version(builder)
     }
     fn update_inference_component(&self, builder: UpdateInferenceComponentInputBuilder) -> impl Future<Output = Result<UpdateInferenceComponentOutput, SdkError<UpdateInferenceComponentError>>> {
-        (*self).update_inference_component(builder)
+        self.deref().update_inference_component(builder)
     }
     fn update_inference_component_runtime_config(&self, builder: UpdateInferenceComponentRuntimeConfigInputBuilder) -> impl Future<Output = Result<UpdateInferenceComponentRuntimeConfigOutput, SdkError<UpdateInferenceComponentRuntimeConfigError>>> {
-        (*self).update_inference_component_runtime_config(builder)
+        self.deref().update_inference_component_runtime_config(builder)
     }
     fn update_inference_experiment(&self, builder: UpdateInferenceExperimentInputBuilder) -> impl Future<Output = Result<UpdateInferenceExperimentOutput, SdkError<UpdateInferenceExperimentError>>> {
-        (*self).update_inference_experiment(builder)
+        self.deref().update_inference_experiment(builder)
     }
     fn update_mlflow_tracking_server(&self, builder: UpdateMlflowTrackingServerInputBuilder) -> impl Future<Output = Result<UpdateMlflowTrackingServerOutput, SdkError<UpdateMlflowTrackingServerError>>> {
-        (*self).update_mlflow_tracking_server(builder)
+        self.deref().update_mlflow_tracking_server(builder)
     }
     fn update_model_card(&self, builder: UpdateModelCardInputBuilder) -> impl Future<Output = Result<UpdateModelCardOutput, SdkError<UpdateModelCardError>>> {
-        (*self).update_model_card(builder)
+        self.deref().update_model_card(builder)
     }
     fn update_model_package(&self, builder: UpdateModelPackageInputBuilder) -> impl Future<Output = Result<UpdateModelPackageOutput, SdkError<UpdateModelPackageError>>> {
-        (*self).update_model_package(builder)
+        self.deref().update_model_package(builder)
     }
     fn update_monitoring_alert(&self, builder: UpdateMonitoringAlertInputBuilder) -> impl Future<Output = Result<UpdateMonitoringAlertOutput, SdkError<UpdateMonitoringAlertError>>> {
-        (*self).update_monitoring_alert(builder)
+        self.deref().update_monitoring_alert(builder)
     }
     fn update_monitoring_schedule(&self, builder: UpdateMonitoringScheduleInputBuilder) -> impl Future<Output = Result<UpdateMonitoringScheduleOutput, SdkError<UpdateMonitoringScheduleError>>> {
-        (*self).update_monitoring_schedule(builder)
+        self.deref().update_monitoring_schedule(builder)
     }
     fn update_notebook_instance(&self, builder: UpdateNotebookInstanceInputBuilder) -> impl Future<Output = Result<UpdateNotebookInstanceOutput, SdkError<UpdateNotebookInstanceError>>> {
-        (*self).update_notebook_instance(builder)
+        self.deref().update_notebook_instance(builder)
     }
     fn update_notebook_instance_lifecycle_config(&self, builder: UpdateNotebookInstanceLifecycleConfigInputBuilder) -> impl Future<Output = Result<UpdateNotebookInstanceLifecycleConfigOutput, SdkError<UpdateNotebookInstanceLifecycleConfigError>>> {
-        (*self).update_notebook_instance_lifecycle_config(builder)
+        self.deref().update_notebook_instance_lifecycle_config(builder)
     }
     fn update_pipeline(&self, builder: UpdatePipelineInputBuilder) -> impl Future<Output = Result<UpdatePipelineOutput, SdkError<UpdatePipelineError>>> {
-        (*self).update_pipeline(builder)
+        self.deref().update_pipeline(builder)
     }
     fn update_pipeline_execution(&self, builder: UpdatePipelineExecutionInputBuilder) -> impl Future<Output = Result<UpdatePipelineExecutionOutput, SdkError<UpdatePipelineExecutionError>>> {
-        (*self).update_pipeline_execution(builder)
+        self.deref().update_pipeline_execution(builder)
     }
     fn update_project(&self, builder: UpdateProjectInputBuilder) -> impl Future<Output = Result<UpdateProjectOutput, SdkError<UpdateProjectError>>> {
-        (*self).update_project(builder)
+        self.deref().update_project(builder)
     }
     fn update_space(&self, builder: UpdateSpaceInputBuilder) -> impl Future<Output = Result<UpdateSpaceOutput, SdkError<UpdateSpaceError>>> {
-        (*self).update_space(builder)
+        self.deref().update_space(builder)
     }
     fn update_training_job(&self, builder: UpdateTrainingJobInputBuilder) -> impl Future<Output = Result<UpdateTrainingJobOutput, SdkError<UpdateTrainingJobError>>> {
-        (*self).update_training_job(builder)
+        self.deref().update_training_job(builder)
     }
     fn update_trial(&self, builder: UpdateTrialInputBuilder) -> impl Future<Output = Result<UpdateTrialOutput, SdkError<UpdateTrialError>>> {
-        (*self).update_trial(builder)
+        self.deref().update_trial(builder)
     }
     fn update_trial_component(&self, builder: UpdateTrialComponentInputBuilder) -> impl Future<Output = Result<UpdateTrialComponentOutput, SdkError<UpdateTrialComponentError>>> {
-        (*self).update_trial_component(builder)
+        self.deref().update_trial_component(builder)
     }
     fn update_user_profile(&self, builder: UpdateUserProfileInputBuilder) -> impl Future<Output = Result<UpdateUserProfileOutput, SdkError<UpdateUserProfileError>>> {
-        (*self).update_user_profile(builder)
+        self.deref().update_user_profile(builder)
     }
     fn update_workforce(&self, builder: UpdateWorkforceInputBuilder) -> impl Future<Output = Result<UpdateWorkforceOutput, SdkError<UpdateWorkforceError>>> {
-        (*self).update_workforce(builder)
+        self.deref().update_workforce(builder)
     }
     fn update_workteam(&self, builder: UpdateWorkteamInputBuilder) -> impl Future<Output = Result<UpdateWorkteamOutput, SdkError<UpdateWorkteamError>>> {
-        (*self).update_workteam(builder)
+        self.deref().update_workteam(builder)
     }
 }
 #[cfg(feature = "mockall")]

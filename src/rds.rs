@@ -181,6 +181,7 @@ use aws_sdk_rds::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_rds::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_rds::*;
 
@@ -836,489 +837,491 @@ impl RDSClient for RDSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: RDSClient> RDSClient for &T {
+impl <T> RDSClient for T
+where T: Deref,
+      T::Target: RDSClient {
     fn add_role_to_db_cluster(&self, builder: AddRoleToDbClusterInputBuilder) -> impl Future<Output = Result<AddRoleToDbClusterOutput, SdkError<AddRoleToDBClusterError>>> {
-        (*self).add_role_to_db_cluster(builder)
+        self.deref().add_role_to_db_cluster(builder)
     }
     fn add_role_to_db_instance(&self, builder: AddRoleToDbInstanceInputBuilder) -> impl Future<Output = Result<AddRoleToDbInstanceOutput, SdkError<AddRoleToDBInstanceError>>> {
-        (*self).add_role_to_db_instance(builder)
+        self.deref().add_role_to_db_instance(builder)
     }
     fn add_source_identifier_to_subscription(&self, builder: AddSourceIdentifierToSubscriptionInputBuilder) -> impl Future<Output = Result<AddSourceIdentifierToSubscriptionOutput, SdkError<AddSourceIdentifierToSubscriptionError>>> {
-        (*self).add_source_identifier_to_subscription(builder)
+        self.deref().add_source_identifier_to_subscription(builder)
     }
     fn add_tags_to_resource(&self, builder: AddTagsToResourceInputBuilder) -> impl Future<Output = Result<AddTagsToResourceOutput, SdkError<AddTagsToResourceError>>> {
-        (*self).add_tags_to_resource(builder)
+        self.deref().add_tags_to_resource(builder)
     }
     fn apply_pending_maintenance_action(&self, builder: ApplyPendingMaintenanceActionInputBuilder) -> impl Future<Output = Result<ApplyPendingMaintenanceActionOutput, SdkError<ApplyPendingMaintenanceActionError>>> {
-        (*self).apply_pending_maintenance_action(builder)
+        self.deref().apply_pending_maintenance_action(builder)
     }
     fn authorize_db_security_group_ingress(&self, builder: AuthorizeDbSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<AuthorizeDbSecurityGroupIngressOutput, SdkError<AuthorizeDBSecurityGroupIngressError>>> {
-        (*self).authorize_db_security_group_ingress(builder)
+        self.deref().authorize_db_security_group_ingress(builder)
     }
     fn backtrack_db_cluster(&self, builder: BacktrackDbClusterInputBuilder) -> impl Future<Output = Result<BacktrackDbClusterOutput, SdkError<BacktrackDBClusterError>>> {
-        (*self).backtrack_db_cluster(builder)
+        self.deref().backtrack_db_cluster(builder)
     }
     fn cancel_export_task(&self, builder: CancelExportTaskInputBuilder) -> impl Future<Output = Result<CancelExportTaskOutput, SdkError<CancelExportTaskError>>> {
-        (*self).cancel_export_task(builder)
+        self.deref().cancel_export_task(builder)
     }
     fn copy_db_cluster_parameter_group(&self, builder: CopyDbClusterParameterGroupInputBuilder) -> impl Future<Output = Result<CopyDbClusterParameterGroupOutput, SdkError<CopyDBClusterParameterGroupError>>> {
-        (*self).copy_db_cluster_parameter_group(builder)
+        self.deref().copy_db_cluster_parameter_group(builder)
     }
     fn copy_db_cluster_snapshot(&self, builder: CopyDbClusterSnapshotInputBuilder) -> impl Future<Output = Result<CopyDbClusterSnapshotOutput, SdkError<CopyDBClusterSnapshotError>>> {
-        (*self).copy_db_cluster_snapshot(builder)
+        self.deref().copy_db_cluster_snapshot(builder)
     }
     fn copy_db_parameter_group(&self, builder: CopyDbParameterGroupInputBuilder) -> impl Future<Output = Result<CopyDbParameterGroupOutput, SdkError<CopyDBParameterGroupError>>> {
-        (*self).copy_db_parameter_group(builder)
+        self.deref().copy_db_parameter_group(builder)
     }
     fn copy_db_snapshot(&self, builder: CopyDbSnapshotInputBuilder) -> impl Future<Output = Result<CopyDbSnapshotOutput, SdkError<CopyDBSnapshotError>>> {
-        (*self).copy_db_snapshot(builder)
+        self.deref().copy_db_snapshot(builder)
     }
     fn copy_option_group(&self, builder: CopyOptionGroupInputBuilder) -> impl Future<Output = Result<CopyOptionGroupOutput, SdkError<CopyOptionGroupError>>> {
-        (*self).copy_option_group(builder)
+        self.deref().copy_option_group(builder)
     }
     fn create_blue_green_deployment(&self, builder: CreateBlueGreenDeploymentInputBuilder) -> impl Future<Output = Result<CreateBlueGreenDeploymentOutput, SdkError<CreateBlueGreenDeploymentError>>> {
-        (*self).create_blue_green_deployment(builder)
+        self.deref().create_blue_green_deployment(builder)
     }
     fn create_custom_db_engine_version(&self, builder: CreateCustomDbEngineVersionInputBuilder) -> impl Future<Output = Result<CreateCustomDbEngineVersionOutput, SdkError<CreateCustomDBEngineVersionError>>> {
-        (*self).create_custom_db_engine_version(builder)
+        self.deref().create_custom_db_engine_version(builder)
     }
     fn create_db_cluster(&self, builder: CreateDbClusterInputBuilder) -> impl Future<Output = Result<CreateDbClusterOutput, SdkError<CreateDBClusterError>>> {
-        (*self).create_db_cluster(builder)
+        self.deref().create_db_cluster(builder)
     }
     fn create_db_cluster_endpoint(&self, builder: CreateDbClusterEndpointInputBuilder) -> impl Future<Output = Result<CreateDbClusterEndpointOutput, SdkError<CreateDBClusterEndpointError>>> {
-        (*self).create_db_cluster_endpoint(builder)
+        self.deref().create_db_cluster_endpoint(builder)
     }
     fn create_db_cluster_parameter_group(&self, builder: CreateDbClusterParameterGroupInputBuilder) -> impl Future<Output = Result<CreateDbClusterParameterGroupOutput, SdkError<CreateDBClusterParameterGroupError>>> {
-        (*self).create_db_cluster_parameter_group(builder)
+        self.deref().create_db_cluster_parameter_group(builder)
     }
     fn create_db_cluster_snapshot(&self, builder: CreateDbClusterSnapshotInputBuilder) -> impl Future<Output = Result<CreateDbClusterSnapshotOutput, SdkError<CreateDBClusterSnapshotError>>> {
-        (*self).create_db_cluster_snapshot(builder)
+        self.deref().create_db_cluster_snapshot(builder)
     }
     fn create_db_instance(&self, builder: CreateDbInstanceInputBuilder) -> impl Future<Output = Result<CreateDbInstanceOutput, SdkError<CreateDBInstanceError>>> {
-        (*self).create_db_instance(builder)
+        self.deref().create_db_instance(builder)
     }
     fn create_db_instance_read_replica(&self, builder: CreateDbInstanceReadReplicaInputBuilder) -> impl Future<Output = Result<CreateDbInstanceReadReplicaOutput, SdkError<CreateDBInstanceReadReplicaError>>> {
-        (*self).create_db_instance_read_replica(builder)
+        self.deref().create_db_instance_read_replica(builder)
     }
     fn create_db_parameter_group(&self, builder: CreateDbParameterGroupInputBuilder) -> impl Future<Output = Result<CreateDbParameterGroupOutput, SdkError<CreateDBParameterGroupError>>> {
-        (*self).create_db_parameter_group(builder)
+        self.deref().create_db_parameter_group(builder)
     }
     fn create_db_proxy(&self, builder: CreateDbProxyInputBuilder) -> impl Future<Output = Result<CreateDbProxyOutput, SdkError<CreateDBProxyError>>> {
-        (*self).create_db_proxy(builder)
+        self.deref().create_db_proxy(builder)
     }
     fn create_db_proxy_endpoint(&self, builder: CreateDbProxyEndpointInputBuilder) -> impl Future<Output = Result<CreateDbProxyEndpointOutput, SdkError<CreateDBProxyEndpointError>>> {
-        (*self).create_db_proxy_endpoint(builder)
+        self.deref().create_db_proxy_endpoint(builder)
     }
     fn create_db_security_group(&self, builder: CreateDbSecurityGroupInputBuilder) -> impl Future<Output = Result<CreateDbSecurityGroupOutput, SdkError<CreateDBSecurityGroupError>>> {
-        (*self).create_db_security_group(builder)
+        self.deref().create_db_security_group(builder)
     }
     fn create_db_shard_group(&self, builder: CreateDbShardGroupInputBuilder) -> impl Future<Output = Result<CreateDbShardGroupOutput, SdkError<CreateDBShardGroupError>>> {
-        (*self).create_db_shard_group(builder)
+        self.deref().create_db_shard_group(builder)
     }
     fn create_db_snapshot(&self, builder: CreateDbSnapshotInputBuilder) -> impl Future<Output = Result<CreateDbSnapshotOutput, SdkError<CreateDBSnapshotError>>> {
-        (*self).create_db_snapshot(builder)
+        self.deref().create_db_snapshot(builder)
     }
     fn create_db_subnet_group(&self, builder: CreateDbSubnetGroupInputBuilder) -> impl Future<Output = Result<CreateDbSubnetGroupOutput, SdkError<CreateDBSubnetGroupError>>> {
-        (*self).create_db_subnet_group(builder)
+        self.deref().create_db_subnet_group(builder)
     }
     fn create_event_subscription(&self, builder: CreateEventSubscriptionInputBuilder) -> impl Future<Output = Result<CreateEventSubscriptionOutput, SdkError<CreateEventSubscriptionError>>> {
-        (*self).create_event_subscription(builder)
+        self.deref().create_event_subscription(builder)
     }
     fn create_global_cluster(&self, builder: CreateGlobalClusterInputBuilder) -> impl Future<Output = Result<CreateGlobalClusterOutput, SdkError<CreateGlobalClusterError>>> {
-        (*self).create_global_cluster(builder)
+        self.deref().create_global_cluster(builder)
     }
     fn create_integration(&self, builder: CreateIntegrationInputBuilder) -> impl Future<Output = Result<CreateIntegrationOutput, SdkError<CreateIntegrationError>>> {
-        (*self).create_integration(builder)
+        self.deref().create_integration(builder)
     }
     fn create_option_group(&self, builder: CreateOptionGroupInputBuilder) -> impl Future<Output = Result<CreateOptionGroupOutput, SdkError<CreateOptionGroupError>>> {
-        (*self).create_option_group(builder)
+        self.deref().create_option_group(builder)
     }
     fn create_tenant_database(&self, builder: CreateTenantDatabaseInputBuilder) -> impl Future<Output = Result<CreateTenantDatabaseOutput, SdkError<CreateTenantDatabaseError>>> {
-        (*self).create_tenant_database(builder)
+        self.deref().create_tenant_database(builder)
     }
     fn delete_blue_green_deployment(&self, builder: DeleteBlueGreenDeploymentInputBuilder) -> impl Future<Output = Result<DeleteBlueGreenDeploymentOutput, SdkError<DeleteBlueGreenDeploymentError>>> {
-        (*self).delete_blue_green_deployment(builder)
+        self.deref().delete_blue_green_deployment(builder)
     }
     fn delete_custom_db_engine_version(&self, builder: DeleteCustomDbEngineVersionInputBuilder) -> impl Future<Output = Result<DeleteCustomDbEngineVersionOutput, SdkError<DeleteCustomDBEngineVersionError>>> {
-        (*self).delete_custom_db_engine_version(builder)
+        self.deref().delete_custom_db_engine_version(builder)
     }
     fn delete_db_cluster(&self, builder: DeleteDbClusterInputBuilder) -> impl Future<Output = Result<DeleteDbClusterOutput, SdkError<DeleteDBClusterError>>> {
-        (*self).delete_db_cluster(builder)
+        self.deref().delete_db_cluster(builder)
     }
     fn delete_db_cluster_automated_backup(&self, builder: DeleteDbClusterAutomatedBackupInputBuilder) -> impl Future<Output = Result<DeleteDbClusterAutomatedBackupOutput, SdkError<DeleteDBClusterAutomatedBackupError>>> {
-        (*self).delete_db_cluster_automated_backup(builder)
+        self.deref().delete_db_cluster_automated_backup(builder)
     }
     fn delete_db_cluster_endpoint(&self, builder: DeleteDbClusterEndpointInputBuilder) -> impl Future<Output = Result<DeleteDbClusterEndpointOutput, SdkError<DeleteDBClusterEndpointError>>> {
-        (*self).delete_db_cluster_endpoint(builder)
+        self.deref().delete_db_cluster_endpoint(builder)
     }
     fn delete_db_cluster_parameter_group(&self, builder: DeleteDbClusterParameterGroupInputBuilder) -> impl Future<Output = Result<DeleteDbClusterParameterGroupOutput, SdkError<DeleteDBClusterParameterGroupError>>> {
-        (*self).delete_db_cluster_parameter_group(builder)
+        self.deref().delete_db_cluster_parameter_group(builder)
     }
     fn delete_db_cluster_snapshot(&self, builder: DeleteDbClusterSnapshotInputBuilder) -> impl Future<Output = Result<DeleteDbClusterSnapshotOutput, SdkError<DeleteDBClusterSnapshotError>>> {
-        (*self).delete_db_cluster_snapshot(builder)
+        self.deref().delete_db_cluster_snapshot(builder)
     }
     fn delete_db_instance(&self, builder: DeleteDbInstanceInputBuilder) -> impl Future<Output = Result<DeleteDbInstanceOutput, SdkError<DeleteDBInstanceError>>> {
-        (*self).delete_db_instance(builder)
+        self.deref().delete_db_instance(builder)
     }
     fn delete_db_instance_automated_backup(&self, builder: DeleteDbInstanceAutomatedBackupInputBuilder) -> impl Future<Output = Result<DeleteDbInstanceAutomatedBackupOutput, SdkError<DeleteDBInstanceAutomatedBackupError>>> {
-        (*self).delete_db_instance_automated_backup(builder)
+        self.deref().delete_db_instance_automated_backup(builder)
     }
     fn delete_db_parameter_group(&self, builder: DeleteDbParameterGroupInputBuilder) -> impl Future<Output = Result<DeleteDbParameterGroupOutput, SdkError<DeleteDBParameterGroupError>>> {
-        (*self).delete_db_parameter_group(builder)
+        self.deref().delete_db_parameter_group(builder)
     }
     fn delete_db_proxy(&self, builder: DeleteDbProxyInputBuilder) -> impl Future<Output = Result<DeleteDbProxyOutput, SdkError<DeleteDBProxyError>>> {
-        (*self).delete_db_proxy(builder)
+        self.deref().delete_db_proxy(builder)
     }
     fn delete_db_proxy_endpoint(&self, builder: DeleteDbProxyEndpointInputBuilder) -> impl Future<Output = Result<DeleteDbProxyEndpointOutput, SdkError<DeleteDBProxyEndpointError>>> {
-        (*self).delete_db_proxy_endpoint(builder)
+        self.deref().delete_db_proxy_endpoint(builder)
     }
     fn delete_db_security_group(&self, builder: DeleteDbSecurityGroupInputBuilder) -> impl Future<Output = Result<DeleteDbSecurityGroupOutput, SdkError<DeleteDBSecurityGroupError>>> {
-        (*self).delete_db_security_group(builder)
+        self.deref().delete_db_security_group(builder)
     }
     fn delete_db_shard_group(&self, builder: DeleteDbShardGroupInputBuilder) -> impl Future<Output = Result<DeleteDbShardGroupOutput, SdkError<DeleteDBShardGroupError>>> {
-        (*self).delete_db_shard_group(builder)
+        self.deref().delete_db_shard_group(builder)
     }
     fn delete_db_snapshot(&self, builder: DeleteDbSnapshotInputBuilder) -> impl Future<Output = Result<DeleteDbSnapshotOutput, SdkError<DeleteDBSnapshotError>>> {
-        (*self).delete_db_snapshot(builder)
+        self.deref().delete_db_snapshot(builder)
     }
     fn delete_db_subnet_group(&self, builder: DeleteDbSubnetGroupInputBuilder) -> impl Future<Output = Result<DeleteDbSubnetGroupOutput, SdkError<DeleteDBSubnetGroupError>>> {
-        (*self).delete_db_subnet_group(builder)
+        self.deref().delete_db_subnet_group(builder)
     }
     fn delete_event_subscription(&self, builder: DeleteEventSubscriptionInputBuilder) -> impl Future<Output = Result<DeleteEventSubscriptionOutput, SdkError<DeleteEventSubscriptionError>>> {
-        (*self).delete_event_subscription(builder)
+        self.deref().delete_event_subscription(builder)
     }
     fn delete_global_cluster(&self, builder: DeleteGlobalClusterInputBuilder) -> impl Future<Output = Result<DeleteGlobalClusterOutput, SdkError<DeleteGlobalClusterError>>> {
-        (*self).delete_global_cluster(builder)
+        self.deref().delete_global_cluster(builder)
     }
     fn delete_integration(&self, builder: DeleteIntegrationInputBuilder) -> impl Future<Output = Result<DeleteIntegrationOutput, SdkError<DeleteIntegrationError>>> {
-        (*self).delete_integration(builder)
+        self.deref().delete_integration(builder)
     }
     fn delete_option_group(&self, builder: DeleteOptionGroupInputBuilder) -> impl Future<Output = Result<DeleteOptionGroupOutput, SdkError<DeleteOptionGroupError>>> {
-        (*self).delete_option_group(builder)
+        self.deref().delete_option_group(builder)
     }
     fn delete_tenant_database(&self, builder: DeleteTenantDatabaseInputBuilder) -> impl Future<Output = Result<DeleteTenantDatabaseOutput, SdkError<DeleteTenantDatabaseError>>> {
-        (*self).delete_tenant_database(builder)
+        self.deref().delete_tenant_database(builder)
     }
     fn deregister_db_proxy_targets(&self, builder: DeregisterDbProxyTargetsInputBuilder) -> impl Future<Output = Result<DeregisterDbProxyTargetsOutput, SdkError<DeregisterDBProxyTargetsError>>> {
-        (*self).deregister_db_proxy_targets(builder)
+        self.deref().deregister_db_proxy_targets(builder)
     }
     fn describe_account_attributes(&self, builder: DescribeAccountAttributesInputBuilder) -> impl Future<Output = Result<DescribeAccountAttributesOutput, SdkError<DescribeAccountAttributesError>>> {
-        (*self).describe_account_attributes(builder)
+        self.deref().describe_account_attributes(builder)
     }
     fn describe_blue_green_deployments(&self, builder: DescribeBlueGreenDeploymentsInputBuilder) -> impl Future<Output = Result<DescribeBlueGreenDeploymentsOutput, SdkError<DescribeBlueGreenDeploymentsError>>> {
-        (*self).describe_blue_green_deployments(builder)
+        self.deref().describe_blue_green_deployments(builder)
     }
     fn describe_certificates(&self, builder: DescribeCertificatesInputBuilder) -> impl Future<Output = Result<DescribeCertificatesOutput, SdkError<DescribeCertificatesError>>> {
-        (*self).describe_certificates(builder)
+        self.deref().describe_certificates(builder)
     }
     fn describe_db_cluster_automated_backups(&self, builder: DescribeDbClusterAutomatedBackupsInputBuilder) -> impl Future<Output = Result<DescribeDbClusterAutomatedBackupsOutput, SdkError<DescribeDBClusterAutomatedBackupsError>>> {
-        (*self).describe_db_cluster_automated_backups(builder)
+        self.deref().describe_db_cluster_automated_backups(builder)
     }
     fn describe_db_cluster_backtracks(&self, builder: DescribeDbClusterBacktracksInputBuilder) -> impl Future<Output = Result<DescribeDbClusterBacktracksOutput, SdkError<DescribeDBClusterBacktracksError>>> {
-        (*self).describe_db_cluster_backtracks(builder)
+        self.deref().describe_db_cluster_backtracks(builder)
     }
     fn describe_db_cluster_endpoints(&self, builder: DescribeDbClusterEndpointsInputBuilder) -> impl Future<Output = Result<DescribeDbClusterEndpointsOutput, SdkError<DescribeDBClusterEndpointsError>>> {
-        (*self).describe_db_cluster_endpoints(builder)
+        self.deref().describe_db_cluster_endpoints(builder)
     }
     fn describe_db_cluster_parameter_groups(&self, builder: DescribeDbClusterParameterGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbClusterParameterGroupsOutput, SdkError<DescribeDBClusterParameterGroupsError>>> {
-        (*self).describe_db_cluster_parameter_groups(builder)
+        self.deref().describe_db_cluster_parameter_groups(builder)
     }
     fn describe_db_cluster_parameters(&self, builder: DescribeDbClusterParametersInputBuilder) -> impl Future<Output = Result<DescribeDbClusterParametersOutput, SdkError<DescribeDBClusterParametersError>>> {
-        (*self).describe_db_cluster_parameters(builder)
+        self.deref().describe_db_cluster_parameters(builder)
     }
     fn describe_db_cluster_snapshot_attributes(&self, builder: DescribeDbClusterSnapshotAttributesInputBuilder) -> impl Future<Output = Result<DescribeDbClusterSnapshotAttributesOutput, SdkError<DescribeDBClusterSnapshotAttributesError>>> {
-        (*self).describe_db_cluster_snapshot_attributes(builder)
+        self.deref().describe_db_cluster_snapshot_attributes(builder)
     }
     fn describe_db_cluster_snapshots(&self, builder: DescribeDbClusterSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeDbClusterSnapshotsOutput, SdkError<DescribeDBClusterSnapshotsError>>> {
-        (*self).describe_db_cluster_snapshots(builder)
+        self.deref().describe_db_cluster_snapshots(builder)
     }
     fn describe_db_clusters(&self, builder: DescribeDbClustersInputBuilder) -> impl Future<Output = Result<DescribeDbClustersOutput, SdkError<DescribeDBClustersError>>> {
-        (*self).describe_db_clusters(builder)
+        self.deref().describe_db_clusters(builder)
     }
     fn describe_db_engine_versions(&self, builder: DescribeDbEngineVersionsInputBuilder) -> impl Future<Output = Result<DescribeDbEngineVersionsOutput, SdkError<DescribeDBEngineVersionsError>>> {
-        (*self).describe_db_engine_versions(builder)
+        self.deref().describe_db_engine_versions(builder)
     }
     fn describe_db_instance_automated_backups(&self, builder: DescribeDbInstanceAutomatedBackupsInputBuilder) -> impl Future<Output = Result<DescribeDbInstanceAutomatedBackupsOutput, SdkError<DescribeDBInstanceAutomatedBackupsError>>> {
-        (*self).describe_db_instance_automated_backups(builder)
+        self.deref().describe_db_instance_automated_backups(builder)
     }
     fn describe_db_instances(&self, builder: DescribeDbInstancesInputBuilder) -> impl Future<Output = Result<DescribeDbInstancesOutput, SdkError<DescribeDBInstancesError>>> {
-        (*self).describe_db_instances(builder)
+        self.deref().describe_db_instances(builder)
     }
     fn describe_db_log_files(&self, builder: DescribeDbLogFilesInputBuilder) -> impl Future<Output = Result<DescribeDbLogFilesOutput, SdkError<DescribeDBLogFilesError>>> {
-        (*self).describe_db_log_files(builder)
+        self.deref().describe_db_log_files(builder)
     }
     fn describe_db_parameter_groups(&self, builder: DescribeDbParameterGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbParameterGroupsOutput, SdkError<DescribeDBParameterGroupsError>>> {
-        (*self).describe_db_parameter_groups(builder)
+        self.deref().describe_db_parameter_groups(builder)
     }
     fn describe_db_parameters(&self, builder: DescribeDbParametersInputBuilder) -> impl Future<Output = Result<DescribeDbParametersOutput, SdkError<DescribeDBParametersError>>> {
-        (*self).describe_db_parameters(builder)
+        self.deref().describe_db_parameters(builder)
     }
     fn describe_db_proxies(&self, builder: DescribeDbProxiesInputBuilder) -> impl Future<Output = Result<DescribeDbProxiesOutput, SdkError<DescribeDBProxiesError>>> {
-        (*self).describe_db_proxies(builder)
+        self.deref().describe_db_proxies(builder)
     }
     fn describe_db_proxy_endpoints(&self, builder: DescribeDbProxyEndpointsInputBuilder) -> impl Future<Output = Result<DescribeDbProxyEndpointsOutput, SdkError<DescribeDBProxyEndpointsError>>> {
-        (*self).describe_db_proxy_endpoints(builder)
+        self.deref().describe_db_proxy_endpoints(builder)
     }
     fn describe_db_proxy_target_groups(&self, builder: DescribeDbProxyTargetGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbProxyTargetGroupsOutput, SdkError<DescribeDBProxyTargetGroupsError>>> {
-        (*self).describe_db_proxy_target_groups(builder)
+        self.deref().describe_db_proxy_target_groups(builder)
     }
     fn describe_db_proxy_targets(&self, builder: DescribeDbProxyTargetsInputBuilder) -> impl Future<Output = Result<DescribeDbProxyTargetsOutput, SdkError<DescribeDBProxyTargetsError>>> {
-        (*self).describe_db_proxy_targets(builder)
+        self.deref().describe_db_proxy_targets(builder)
     }
     fn describe_db_recommendations(&self, builder: DescribeDbRecommendationsInputBuilder) -> impl Future<Output = Result<DescribeDbRecommendationsOutput, SdkError<DescribeDBRecommendationsError>>> {
-        (*self).describe_db_recommendations(builder)
+        self.deref().describe_db_recommendations(builder)
     }
     fn describe_db_security_groups(&self, builder: DescribeDbSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbSecurityGroupsOutput, SdkError<DescribeDBSecurityGroupsError>>> {
-        (*self).describe_db_security_groups(builder)
+        self.deref().describe_db_security_groups(builder)
     }
     fn describe_db_shard_groups(&self, builder: DescribeDbShardGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbShardGroupsOutput, SdkError<DescribeDBShardGroupsError>>> {
-        (*self).describe_db_shard_groups(builder)
+        self.deref().describe_db_shard_groups(builder)
     }
     fn describe_db_snapshot_attributes(&self, builder: DescribeDbSnapshotAttributesInputBuilder) -> impl Future<Output = Result<DescribeDbSnapshotAttributesOutput, SdkError<DescribeDBSnapshotAttributesError>>> {
-        (*self).describe_db_snapshot_attributes(builder)
+        self.deref().describe_db_snapshot_attributes(builder)
     }
     fn describe_db_snapshot_tenant_databases(&self, builder: DescribeDbSnapshotTenantDatabasesInputBuilder) -> impl Future<Output = Result<DescribeDbSnapshotTenantDatabasesOutput, SdkError<DescribeDBSnapshotTenantDatabasesError>>> {
-        (*self).describe_db_snapshot_tenant_databases(builder)
+        self.deref().describe_db_snapshot_tenant_databases(builder)
     }
     fn describe_db_snapshots(&self, builder: DescribeDbSnapshotsInputBuilder) -> impl Future<Output = Result<DescribeDbSnapshotsOutput, SdkError<DescribeDBSnapshotsError>>> {
-        (*self).describe_db_snapshots(builder)
+        self.deref().describe_db_snapshots(builder)
     }
     fn describe_db_subnet_groups(&self, builder: DescribeDbSubnetGroupsInputBuilder) -> impl Future<Output = Result<DescribeDbSubnetGroupsOutput, SdkError<DescribeDBSubnetGroupsError>>> {
-        (*self).describe_db_subnet_groups(builder)
+        self.deref().describe_db_subnet_groups(builder)
     }
     fn describe_engine_default_cluster_parameters(&self, builder: DescribeEngineDefaultClusterParametersInputBuilder) -> impl Future<Output = Result<DescribeEngineDefaultClusterParametersOutput, SdkError<DescribeEngineDefaultClusterParametersError>>> {
-        (*self).describe_engine_default_cluster_parameters(builder)
+        self.deref().describe_engine_default_cluster_parameters(builder)
     }
     fn describe_engine_default_parameters(&self, builder: DescribeEngineDefaultParametersInputBuilder) -> impl Future<Output = Result<DescribeEngineDefaultParametersOutput, SdkError<DescribeEngineDefaultParametersError>>> {
-        (*self).describe_engine_default_parameters(builder)
+        self.deref().describe_engine_default_parameters(builder)
     }
     fn describe_event_categories(&self, builder: DescribeEventCategoriesInputBuilder) -> impl Future<Output = Result<DescribeEventCategoriesOutput, SdkError<DescribeEventCategoriesError>>> {
-        (*self).describe_event_categories(builder)
+        self.deref().describe_event_categories(builder)
     }
     fn describe_event_subscriptions(&self, builder: DescribeEventSubscriptionsInputBuilder) -> impl Future<Output = Result<DescribeEventSubscriptionsOutput, SdkError<DescribeEventSubscriptionsError>>> {
-        (*self).describe_event_subscriptions(builder)
+        self.deref().describe_event_subscriptions(builder)
     }
     fn describe_events(&self, builder: DescribeEventsInputBuilder) -> impl Future<Output = Result<DescribeEventsOutput, SdkError<DescribeEventsError>>> {
-        (*self).describe_events(builder)
+        self.deref().describe_events(builder)
     }
     fn describe_export_tasks(&self, builder: DescribeExportTasksInputBuilder) -> impl Future<Output = Result<DescribeExportTasksOutput, SdkError<DescribeExportTasksError>>> {
-        (*self).describe_export_tasks(builder)
+        self.deref().describe_export_tasks(builder)
     }
     fn describe_global_clusters(&self, builder: DescribeGlobalClustersInputBuilder) -> impl Future<Output = Result<DescribeGlobalClustersOutput, SdkError<DescribeGlobalClustersError>>> {
-        (*self).describe_global_clusters(builder)
+        self.deref().describe_global_clusters(builder)
     }
     fn describe_integrations(&self, builder: DescribeIntegrationsInputBuilder) -> impl Future<Output = Result<DescribeIntegrationsOutput, SdkError<DescribeIntegrationsError>>> {
-        (*self).describe_integrations(builder)
+        self.deref().describe_integrations(builder)
     }
     fn describe_option_group_options(&self, builder: DescribeOptionGroupOptionsInputBuilder) -> impl Future<Output = Result<DescribeOptionGroupOptionsOutput, SdkError<DescribeOptionGroupOptionsError>>> {
-        (*self).describe_option_group_options(builder)
+        self.deref().describe_option_group_options(builder)
     }
     fn describe_option_groups(&self, builder: DescribeOptionGroupsInputBuilder) -> impl Future<Output = Result<DescribeOptionGroupsOutput, SdkError<DescribeOptionGroupsError>>> {
-        (*self).describe_option_groups(builder)
+        self.deref().describe_option_groups(builder)
     }
     fn describe_orderable_db_instance_options(&self, builder: DescribeOrderableDbInstanceOptionsInputBuilder) -> impl Future<Output = Result<DescribeOrderableDbInstanceOptionsOutput, SdkError<DescribeOrderableDBInstanceOptionsError>>> {
-        (*self).describe_orderable_db_instance_options(builder)
+        self.deref().describe_orderable_db_instance_options(builder)
     }
     fn describe_pending_maintenance_actions(&self, builder: DescribePendingMaintenanceActionsInputBuilder) -> impl Future<Output = Result<DescribePendingMaintenanceActionsOutput, SdkError<DescribePendingMaintenanceActionsError>>> {
-        (*self).describe_pending_maintenance_actions(builder)
+        self.deref().describe_pending_maintenance_actions(builder)
     }
     fn describe_reserved_db_instances(&self, builder: DescribeReservedDbInstancesInputBuilder) -> impl Future<Output = Result<DescribeReservedDbInstancesOutput, SdkError<DescribeReservedDBInstancesError>>> {
-        (*self).describe_reserved_db_instances(builder)
+        self.deref().describe_reserved_db_instances(builder)
     }
     fn describe_reserved_db_instances_offerings(&self, builder: DescribeReservedDbInstancesOfferingsInputBuilder) -> impl Future<Output = Result<DescribeReservedDbInstancesOfferingsOutput, SdkError<DescribeReservedDBInstancesOfferingsError>>> {
-        (*self).describe_reserved_db_instances_offerings(builder)
+        self.deref().describe_reserved_db_instances_offerings(builder)
     }
     fn describe_source_regions(&self, builder: DescribeSourceRegionsInputBuilder) -> impl Future<Output = Result<DescribeSourceRegionsOutput, SdkError<DescribeSourceRegionsError>>> {
-        (*self).describe_source_regions(builder)
+        self.deref().describe_source_regions(builder)
     }
     fn describe_tenant_databases(&self, builder: DescribeTenantDatabasesInputBuilder) -> impl Future<Output = Result<DescribeTenantDatabasesOutput, SdkError<DescribeTenantDatabasesError>>> {
-        (*self).describe_tenant_databases(builder)
+        self.deref().describe_tenant_databases(builder)
     }
     fn describe_valid_db_instance_modifications(&self, builder: DescribeValidDbInstanceModificationsInputBuilder) -> impl Future<Output = Result<DescribeValidDbInstanceModificationsOutput, SdkError<DescribeValidDBInstanceModificationsError>>> {
-        (*self).describe_valid_db_instance_modifications(builder)
+        self.deref().describe_valid_db_instance_modifications(builder)
     }
     fn disable_http_endpoint(&self, builder: DisableHttpEndpointInputBuilder) -> impl Future<Output = Result<DisableHttpEndpointOutput, SdkError<DisableHttpEndpointError>>> {
-        (*self).disable_http_endpoint(builder)
+        self.deref().disable_http_endpoint(builder)
     }
     fn download_db_log_file_portion(&self, builder: DownloadDbLogFilePortionInputBuilder) -> impl Future<Output = Result<DownloadDbLogFilePortionOutput, SdkError<DownloadDBLogFilePortionError>>> {
-        (*self).download_db_log_file_portion(builder)
+        self.deref().download_db_log_file_portion(builder)
     }
     fn enable_http_endpoint(&self, builder: EnableHttpEndpointInputBuilder) -> impl Future<Output = Result<EnableHttpEndpointOutput, SdkError<EnableHttpEndpointError>>> {
-        (*self).enable_http_endpoint(builder)
+        self.deref().enable_http_endpoint(builder)
     }
     fn failover_db_cluster(&self, builder: FailoverDbClusterInputBuilder) -> impl Future<Output = Result<FailoverDbClusterOutput, SdkError<FailoverDBClusterError>>> {
-        (*self).failover_db_cluster(builder)
+        self.deref().failover_db_cluster(builder)
     }
     fn failover_global_cluster(&self, builder: FailoverGlobalClusterInputBuilder) -> impl Future<Output = Result<FailoverGlobalClusterOutput, SdkError<FailoverGlobalClusterError>>> {
-        (*self).failover_global_cluster(builder)
+        self.deref().failover_global_cluster(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn modify_activity_stream(&self, builder: ModifyActivityStreamInputBuilder) -> impl Future<Output = Result<ModifyActivityStreamOutput, SdkError<ModifyActivityStreamError>>> {
-        (*self).modify_activity_stream(builder)
+        self.deref().modify_activity_stream(builder)
     }
     fn modify_certificates(&self, builder: ModifyCertificatesInputBuilder) -> impl Future<Output = Result<ModifyCertificatesOutput, SdkError<ModifyCertificatesError>>> {
-        (*self).modify_certificates(builder)
+        self.deref().modify_certificates(builder)
     }
     fn modify_current_db_cluster_capacity(&self, builder: ModifyCurrentDbClusterCapacityInputBuilder) -> impl Future<Output = Result<ModifyCurrentDbClusterCapacityOutput, SdkError<ModifyCurrentDBClusterCapacityError>>> {
-        (*self).modify_current_db_cluster_capacity(builder)
+        self.deref().modify_current_db_cluster_capacity(builder)
     }
     fn modify_custom_db_engine_version(&self, builder: ModifyCustomDbEngineVersionInputBuilder) -> impl Future<Output = Result<ModifyCustomDbEngineVersionOutput, SdkError<ModifyCustomDBEngineVersionError>>> {
-        (*self).modify_custom_db_engine_version(builder)
+        self.deref().modify_custom_db_engine_version(builder)
     }
     fn modify_db_cluster(&self, builder: ModifyDbClusterInputBuilder) -> impl Future<Output = Result<ModifyDbClusterOutput, SdkError<ModifyDBClusterError>>> {
-        (*self).modify_db_cluster(builder)
+        self.deref().modify_db_cluster(builder)
     }
     fn modify_db_cluster_endpoint(&self, builder: ModifyDbClusterEndpointInputBuilder) -> impl Future<Output = Result<ModifyDbClusterEndpointOutput, SdkError<ModifyDBClusterEndpointError>>> {
-        (*self).modify_db_cluster_endpoint(builder)
+        self.deref().modify_db_cluster_endpoint(builder)
     }
     fn modify_db_cluster_parameter_group(&self, builder: ModifyDbClusterParameterGroupInputBuilder) -> impl Future<Output = Result<ModifyDbClusterParameterGroupOutput, SdkError<ModifyDBClusterParameterGroupError>>> {
-        (*self).modify_db_cluster_parameter_group(builder)
+        self.deref().modify_db_cluster_parameter_group(builder)
     }
     fn modify_db_cluster_snapshot_attribute(&self, builder: ModifyDbClusterSnapshotAttributeInputBuilder) -> impl Future<Output = Result<ModifyDbClusterSnapshotAttributeOutput, SdkError<ModifyDBClusterSnapshotAttributeError>>> {
-        (*self).modify_db_cluster_snapshot_attribute(builder)
+        self.deref().modify_db_cluster_snapshot_attribute(builder)
     }
     fn modify_db_instance(&self, builder: ModifyDbInstanceInputBuilder) -> impl Future<Output = Result<ModifyDbInstanceOutput, SdkError<ModifyDBInstanceError>>> {
-        (*self).modify_db_instance(builder)
+        self.deref().modify_db_instance(builder)
     }
     fn modify_db_parameter_group(&self, builder: ModifyDbParameterGroupInputBuilder) -> impl Future<Output = Result<ModifyDbParameterGroupOutput, SdkError<ModifyDBParameterGroupError>>> {
-        (*self).modify_db_parameter_group(builder)
+        self.deref().modify_db_parameter_group(builder)
     }
     fn modify_db_proxy(&self, builder: ModifyDbProxyInputBuilder) -> impl Future<Output = Result<ModifyDbProxyOutput, SdkError<ModifyDBProxyError>>> {
-        (*self).modify_db_proxy(builder)
+        self.deref().modify_db_proxy(builder)
     }
     fn modify_db_proxy_endpoint(&self, builder: ModifyDbProxyEndpointInputBuilder) -> impl Future<Output = Result<ModifyDbProxyEndpointOutput, SdkError<ModifyDBProxyEndpointError>>> {
-        (*self).modify_db_proxy_endpoint(builder)
+        self.deref().modify_db_proxy_endpoint(builder)
     }
     fn modify_db_proxy_target_group(&self, builder: ModifyDbProxyTargetGroupInputBuilder) -> impl Future<Output = Result<ModifyDbProxyTargetGroupOutput, SdkError<ModifyDBProxyTargetGroupError>>> {
-        (*self).modify_db_proxy_target_group(builder)
+        self.deref().modify_db_proxy_target_group(builder)
     }
     fn modify_db_recommendation(&self, builder: ModifyDbRecommendationInputBuilder) -> impl Future<Output = Result<ModifyDbRecommendationOutput, SdkError<ModifyDBRecommendationError>>> {
-        (*self).modify_db_recommendation(builder)
+        self.deref().modify_db_recommendation(builder)
     }
     fn modify_db_shard_group(&self, builder: ModifyDbShardGroupInputBuilder) -> impl Future<Output = Result<ModifyDbShardGroupOutput, SdkError<ModifyDBShardGroupError>>> {
-        (*self).modify_db_shard_group(builder)
+        self.deref().modify_db_shard_group(builder)
     }
     fn modify_db_snapshot(&self, builder: ModifyDbSnapshotInputBuilder) -> impl Future<Output = Result<ModifyDbSnapshotOutput, SdkError<ModifyDBSnapshotError>>> {
-        (*self).modify_db_snapshot(builder)
+        self.deref().modify_db_snapshot(builder)
     }
     fn modify_db_snapshot_attribute(&self, builder: ModifyDbSnapshotAttributeInputBuilder) -> impl Future<Output = Result<ModifyDbSnapshotAttributeOutput, SdkError<ModifyDBSnapshotAttributeError>>> {
-        (*self).modify_db_snapshot_attribute(builder)
+        self.deref().modify_db_snapshot_attribute(builder)
     }
     fn modify_db_subnet_group(&self, builder: ModifyDbSubnetGroupInputBuilder) -> impl Future<Output = Result<ModifyDbSubnetGroupOutput, SdkError<ModifyDBSubnetGroupError>>> {
-        (*self).modify_db_subnet_group(builder)
+        self.deref().modify_db_subnet_group(builder)
     }
     fn modify_event_subscription(&self, builder: ModifyEventSubscriptionInputBuilder) -> impl Future<Output = Result<ModifyEventSubscriptionOutput, SdkError<ModifyEventSubscriptionError>>> {
-        (*self).modify_event_subscription(builder)
+        self.deref().modify_event_subscription(builder)
     }
     fn modify_global_cluster(&self, builder: ModifyGlobalClusterInputBuilder) -> impl Future<Output = Result<ModifyGlobalClusterOutput, SdkError<ModifyGlobalClusterError>>> {
-        (*self).modify_global_cluster(builder)
+        self.deref().modify_global_cluster(builder)
     }
     fn modify_integration(&self, builder: ModifyIntegrationInputBuilder) -> impl Future<Output = Result<ModifyIntegrationOutput, SdkError<ModifyIntegrationError>>> {
-        (*self).modify_integration(builder)
+        self.deref().modify_integration(builder)
     }
     fn modify_tenant_database(&self, builder: ModifyTenantDatabaseInputBuilder) -> impl Future<Output = Result<ModifyTenantDatabaseOutput, SdkError<ModifyTenantDatabaseError>>> {
-        (*self).modify_tenant_database(builder)
+        self.deref().modify_tenant_database(builder)
     }
     fn promote_read_replica(&self, builder: PromoteReadReplicaInputBuilder) -> impl Future<Output = Result<PromoteReadReplicaOutput, SdkError<PromoteReadReplicaError>>> {
-        (*self).promote_read_replica(builder)
+        self.deref().promote_read_replica(builder)
     }
     fn promote_read_replica_db_cluster(&self, builder: PromoteReadReplicaDbClusterInputBuilder) -> impl Future<Output = Result<PromoteReadReplicaDbClusterOutput, SdkError<PromoteReadReplicaDBClusterError>>> {
-        (*self).promote_read_replica_db_cluster(builder)
+        self.deref().promote_read_replica_db_cluster(builder)
     }
     fn purchase_reserved_db_instances_offering(&self, builder: PurchaseReservedDbInstancesOfferingInputBuilder) -> impl Future<Output = Result<PurchaseReservedDbInstancesOfferingOutput, SdkError<PurchaseReservedDBInstancesOfferingError>>> {
-        (*self).purchase_reserved_db_instances_offering(builder)
+        self.deref().purchase_reserved_db_instances_offering(builder)
     }
     fn reboot_db_cluster(&self, builder: RebootDbClusterInputBuilder) -> impl Future<Output = Result<RebootDbClusterOutput, SdkError<RebootDBClusterError>>> {
-        (*self).reboot_db_cluster(builder)
+        self.deref().reboot_db_cluster(builder)
     }
     fn reboot_db_instance(&self, builder: RebootDbInstanceInputBuilder) -> impl Future<Output = Result<RebootDbInstanceOutput, SdkError<RebootDBInstanceError>>> {
-        (*self).reboot_db_instance(builder)
+        self.deref().reboot_db_instance(builder)
     }
     fn reboot_db_shard_group(&self, builder: RebootDbShardGroupInputBuilder) -> impl Future<Output = Result<RebootDbShardGroupOutput, SdkError<RebootDBShardGroupError>>> {
-        (*self).reboot_db_shard_group(builder)
+        self.deref().reboot_db_shard_group(builder)
     }
     fn register_db_proxy_targets(&self, builder: RegisterDbProxyTargetsInputBuilder) -> impl Future<Output = Result<RegisterDbProxyTargetsOutput, SdkError<RegisterDBProxyTargetsError>>> {
-        (*self).register_db_proxy_targets(builder)
+        self.deref().register_db_proxy_targets(builder)
     }
     fn remove_from_global_cluster(&self, builder: RemoveFromGlobalClusterInputBuilder) -> impl Future<Output = Result<RemoveFromGlobalClusterOutput, SdkError<RemoveFromGlobalClusterError>>> {
-        (*self).remove_from_global_cluster(builder)
+        self.deref().remove_from_global_cluster(builder)
     }
     fn remove_role_from_db_cluster(&self, builder: RemoveRoleFromDbClusterInputBuilder) -> impl Future<Output = Result<RemoveRoleFromDbClusterOutput, SdkError<RemoveRoleFromDBClusterError>>> {
-        (*self).remove_role_from_db_cluster(builder)
+        self.deref().remove_role_from_db_cluster(builder)
     }
     fn remove_role_from_db_instance(&self, builder: RemoveRoleFromDbInstanceInputBuilder) -> impl Future<Output = Result<RemoveRoleFromDbInstanceOutput, SdkError<RemoveRoleFromDBInstanceError>>> {
-        (*self).remove_role_from_db_instance(builder)
+        self.deref().remove_role_from_db_instance(builder)
     }
     fn remove_source_identifier_from_subscription(&self, builder: RemoveSourceIdentifierFromSubscriptionInputBuilder) -> impl Future<Output = Result<RemoveSourceIdentifierFromSubscriptionOutput, SdkError<RemoveSourceIdentifierFromSubscriptionError>>> {
-        (*self).remove_source_identifier_from_subscription(builder)
+        self.deref().remove_source_identifier_from_subscription(builder)
     }
     fn remove_tags_from_resource(&self, builder: RemoveTagsFromResourceInputBuilder) -> impl Future<Output = Result<RemoveTagsFromResourceOutput, SdkError<RemoveTagsFromResourceError>>> {
-        (*self).remove_tags_from_resource(builder)
+        self.deref().remove_tags_from_resource(builder)
     }
     fn reset_db_cluster_parameter_group(&self, builder: ResetDbClusterParameterGroupInputBuilder) -> impl Future<Output = Result<ResetDbClusterParameterGroupOutput, SdkError<ResetDBClusterParameterGroupError>>> {
-        (*self).reset_db_cluster_parameter_group(builder)
+        self.deref().reset_db_cluster_parameter_group(builder)
     }
     fn reset_db_parameter_group(&self, builder: ResetDbParameterGroupInputBuilder) -> impl Future<Output = Result<ResetDbParameterGroupOutput, SdkError<ResetDBParameterGroupError>>> {
-        (*self).reset_db_parameter_group(builder)
+        self.deref().reset_db_parameter_group(builder)
     }
     fn restore_db_cluster_from_s3(&self, builder: RestoreDbClusterFromS3InputBuilder) -> impl Future<Output = Result<RestoreDbClusterFromS3Output, SdkError<RestoreDBClusterFromS3Error>>> {
-        (*self).restore_db_cluster_from_s3(builder)
+        self.deref().restore_db_cluster_from_s3(builder)
     }
     fn restore_db_cluster_from_snapshot(&self, builder: RestoreDbClusterFromSnapshotInputBuilder) -> impl Future<Output = Result<RestoreDbClusterFromSnapshotOutput, SdkError<RestoreDBClusterFromSnapshotError>>> {
-        (*self).restore_db_cluster_from_snapshot(builder)
+        self.deref().restore_db_cluster_from_snapshot(builder)
     }
     fn restore_db_cluster_to_point_in_time(&self, builder: RestoreDbClusterToPointInTimeInputBuilder) -> impl Future<Output = Result<RestoreDbClusterToPointInTimeOutput, SdkError<RestoreDBClusterToPointInTimeError>>> {
-        (*self).restore_db_cluster_to_point_in_time(builder)
+        self.deref().restore_db_cluster_to_point_in_time(builder)
     }
     fn restore_db_instance_from_db_snapshot(&self, builder: RestoreDbInstanceFromDbSnapshotInputBuilder) -> impl Future<Output = Result<RestoreDbInstanceFromDbSnapshotOutput, SdkError<RestoreDBInstanceFromDBSnapshotError>>> {
-        (*self).restore_db_instance_from_db_snapshot(builder)
+        self.deref().restore_db_instance_from_db_snapshot(builder)
     }
     fn restore_db_instance_from_s3(&self, builder: RestoreDbInstanceFromS3InputBuilder) -> impl Future<Output = Result<RestoreDbInstanceFromS3Output, SdkError<RestoreDBInstanceFromS3Error>>> {
-        (*self).restore_db_instance_from_s3(builder)
+        self.deref().restore_db_instance_from_s3(builder)
     }
     fn restore_db_instance_to_point_in_time(&self, builder: RestoreDbInstanceToPointInTimeInputBuilder) -> impl Future<Output = Result<RestoreDbInstanceToPointInTimeOutput, SdkError<RestoreDBInstanceToPointInTimeError>>> {
-        (*self).restore_db_instance_to_point_in_time(builder)
+        self.deref().restore_db_instance_to_point_in_time(builder)
     }
     fn revoke_db_security_group_ingress(&self, builder: RevokeDbSecurityGroupIngressInputBuilder) -> impl Future<Output = Result<RevokeDbSecurityGroupIngressOutput, SdkError<RevokeDBSecurityGroupIngressError>>> {
-        (*self).revoke_db_security_group_ingress(builder)
+        self.deref().revoke_db_security_group_ingress(builder)
     }
     fn start_activity_stream(&self, builder: StartActivityStreamInputBuilder) -> impl Future<Output = Result<StartActivityStreamOutput, SdkError<StartActivityStreamError>>> {
-        (*self).start_activity_stream(builder)
+        self.deref().start_activity_stream(builder)
     }
     fn start_db_cluster(&self, builder: StartDbClusterInputBuilder) -> impl Future<Output = Result<StartDbClusterOutput, SdkError<StartDBClusterError>>> {
-        (*self).start_db_cluster(builder)
+        self.deref().start_db_cluster(builder)
     }
     fn start_db_instance(&self, builder: StartDbInstanceInputBuilder) -> impl Future<Output = Result<StartDbInstanceOutput, SdkError<StartDBInstanceError>>> {
-        (*self).start_db_instance(builder)
+        self.deref().start_db_instance(builder)
     }
     fn start_db_instance_automated_backups_replication(&self, builder: StartDbInstanceAutomatedBackupsReplicationInputBuilder) -> impl Future<Output = Result<StartDbInstanceAutomatedBackupsReplicationOutput, SdkError<StartDBInstanceAutomatedBackupsReplicationError>>> {
-        (*self).start_db_instance_automated_backups_replication(builder)
+        self.deref().start_db_instance_automated_backups_replication(builder)
     }
     fn start_export_task(&self, builder: StartExportTaskInputBuilder) -> impl Future<Output = Result<StartExportTaskOutput, SdkError<StartExportTaskError>>> {
-        (*self).start_export_task(builder)
+        self.deref().start_export_task(builder)
     }
     fn stop_activity_stream(&self, builder: StopActivityStreamInputBuilder) -> impl Future<Output = Result<StopActivityStreamOutput, SdkError<StopActivityStreamError>>> {
-        (*self).stop_activity_stream(builder)
+        self.deref().stop_activity_stream(builder)
     }
     fn stop_db_cluster(&self, builder: StopDbClusterInputBuilder) -> impl Future<Output = Result<StopDbClusterOutput, SdkError<StopDBClusterError>>> {
-        (*self).stop_db_cluster(builder)
+        self.deref().stop_db_cluster(builder)
     }
     fn stop_db_instance(&self, builder: StopDbInstanceInputBuilder) -> impl Future<Output = Result<StopDbInstanceOutput, SdkError<StopDBInstanceError>>> {
-        (*self).stop_db_instance(builder)
+        self.deref().stop_db_instance(builder)
     }
     fn stop_db_instance_automated_backups_replication(&self, builder: StopDbInstanceAutomatedBackupsReplicationInputBuilder) -> impl Future<Output = Result<StopDbInstanceAutomatedBackupsReplicationOutput, SdkError<StopDBInstanceAutomatedBackupsReplicationError>>> {
-        (*self).stop_db_instance_automated_backups_replication(builder)
+        self.deref().stop_db_instance_automated_backups_replication(builder)
     }
     fn switchover_blue_green_deployment(&self, builder: SwitchoverBlueGreenDeploymentInputBuilder) -> impl Future<Output = Result<SwitchoverBlueGreenDeploymentOutput, SdkError<SwitchoverBlueGreenDeploymentError>>> {
-        (*self).switchover_blue_green_deployment(builder)
+        self.deref().switchover_blue_green_deployment(builder)
     }
     fn switchover_global_cluster(&self, builder: SwitchoverGlobalClusterInputBuilder) -> impl Future<Output = Result<SwitchoverGlobalClusterOutput, SdkError<SwitchoverGlobalClusterError>>> {
-        (*self).switchover_global_cluster(builder)
+        self.deref().switchover_global_cluster(builder)
     }
     fn switchover_read_replica(&self, builder: SwitchoverReadReplicaInputBuilder) -> impl Future<Output = Result<SwitchoverReadReplicaOutput, SdkError<SwitchoverReadReplicaError>>> {
-        (*self).switchover_read_replica(builder)
+        self.deref().switchover_read_replica(builder)
     }
 }
 #[cfg(feature = "mockall")]

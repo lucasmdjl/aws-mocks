@@ -197,6 +197,7 @@ use aws_sdk_quicksight::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_quicksight::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_quicksight::*;
 
@@ -916,537 +917,539 @@ impl QuickSightClient for QuickSightClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: QuickSightClient> QuickSightClient for &T {
+impl <T> QuickSightClient for T
+where T: Deref,
+      T::Target: QuickSightClient {
     fn batch_create_topic_reviewed_answer(&self, builder: BatchCreateTopicReviewedAnswerInputBuilder) -> impl Future<Output = Result<BatchCreateTopicReviewedAnswerOutput, SdkError<BatchCreateTopicReviewedAnswerError>>> {
-        (*self).batch_create_topic_reviewed_answer(builder)
+        self.deref().batch_create_topic_reviewed_answer(builder)
     }
     fn batch_delete_topic_reviewed_answer(&self, builder: BatchDeleteTopicReviewedAnswerInputBuilder) -> impl Future<Output = Result<BatchDeleteTopicReviewedAnswerOutput, SdkError<BatchDeleteTopicReviewedAnswerError>>> {
-        (*self).batch_delete_topic_reviewed_answer(builder)
+        self.deref().batch_delete_topic_reviewed_answer(builder)
     }
     fn cancel_ingestion(&self, builder: CancelIngestionInputBuilder) -> impl Future<Output = Result<CancelIngestionOutput, SdkError<CancelIngestionError>>> {
-        (*self).cancel_ingestion(builder)
+        self.deref().cancel_ingestion(builder)
     }
     fn create_account_customization(&self, builder: CreateAccountCustomizationInputBuilder) -> impl Future<Output = Result<CreateAccountCustomizationOutput, SdkError<CreateAccountCustomizationError>>> {
-        (*self).create_account_customization(builder)
+        self.deref().create_account_customization(builder)
     }
     fn create_account_subscription(&self, builder: CreateAccountSubscriptionInputBuilder) -> impl Future<Output = Result<CreateAccountSubscriptionOutput, SdkError<CreateAccountSubscriptionError>>> {
-        (*self).create_account_subscription(builder)
+        self.deref().create_account_subscription(builder)
     }
     fn create_analysis(&self, builder: CreateAnalysisInputBuilder) -> impl Future<Output = Result<CreateAnalysisOutput, SdkError<CreateAnalysisError>>> {
-        (*self).create_analysis(builder)
+        self.deref().create_analysis(builder)
     }
     fn create_dashboard(&self, builder: CreateDashboardInputBuilder) -> impl Future<Output = Result<CreateDashboardOutput, SdkError<CreateDashboardError>>> {
-        (*self).create_dashboard(builder)
+        self.deref().create_dashboard(builder)
     }
     fn create_data_set(&self, builder: CreateDataSetInputBuilder) -> impl Future<Output = Result<CreateDataSetOutput, SdkError<CreateDataSetError>>> {
-        (*self).create_data_set(builder)
+        self.deref().create_data_set(builder)
     }
     fn create_data_source(&self, builder: CreateDataSourceInputBuilder) -> impl Future<Output = Result<CreateDataSourceOutput, SdkError<CreateDataSourceError>>> {
-        (*self).create_data_source(builder)
+        self.deref().create_data_source(builder)
     }
     fn create_folder(&self, builder: CreateFolderInputBuilder) -> impl Future<Output = Result<CreateFolderOutput, SdkError<CreateFolderError>>> {
-        (*self).create_folder(builder)
+        self.deref().create_folder(builder)
     }
     fn create_folder_membership(&self, builder: CreateFolderMembershipInputBuilder) -> impl Future<Output = Result<CreateFolderMembershipOutput, SdkError<CreateFolderMembershipError>>> {
-        (*self).create_folder_membership(builder)
+        self.deref().create_folder_membership(builder)
     }
     fn create_group(&self, builder: CreateGroupInputBuilder) -> impl Future<Output = Result<CreateGroupOutput, SdkError<CreateGroupError>>> {
-        (*self).create_group(builder)
+        self.deref().create_group(builder)
     }
     fn create_group_membership(&self, builder: CreateGroupMembershipInputBuilder) -> impl Future<Output = Result<CreateGroupMembershipOutput, SdkError<CreateGroupMembershipError>>> {
-        (*self).create_group_membership(builder)
+        self.deref().create_group_membership(builder)
     }
     fn create_iam_policy_assignment(&self, builder: CreateIamPolicyAssignmentInputBuilder) -> impl Future<Output = Result<CreateIamPolicyAssignmentOutput, SdkError<CreateIAMPolicyAssignmentError>>> {
-        (*self).create_iam_policy_assignment(builder)
+        self.deref().create_iam_policy_assignment(builder)
     }
     fn create_ingestion(&self, builder: CreateIngestionInputBuilder) -> impl Future<Output = Result<CreateIngestionOutput, SdkError<CreateIngestionError>>> {
-        (*self).create_ingestion(builder)
+        self.deref().create_ingestion(builder)
     }
     fn create_namespace(&self, builder: CreateNamespaceInputBuilder) -> impl Future<Output = Result<CreateNamespaceOutput, SdkError<CreateNamespaceError>>> {
-        (*self).create_namespace(builder)
+        self.deref().create_namespace(builder)
     }
     fn create_refresh_schedule(&self, builder: CreateRefreshScheduleInputBuilder) -> impl Future<Output = Result<CreateRefreshScheduleOutput, SdkError<CreateRefreshScheduleError>>> {
-        (*self).create_refresh_schedule(builder)
+        self.deref().create_refresh_schedule(builder)
     }
     fn create_role_membership(&self, builder: CreateRoleMembershipInputBuilder) -> impl Future<Output = Result<CreateRoleMembershipOutput, SdkError<CreateRoleMembershipError>>> {
-        (*self).create_role_membership(builder)
+        self.deref().create_role_membership(builder)
     }
     fn create_template(&self, builder: CreateTemplateInputBuilder) -> impl Future<Output = Result<CreateTemplateOutput, SdkError<CreateTemplateError>>> {
-        (*self).create_template(builder)
+        self.deref().create_template(builder)
     }
     fn create_template_alias(&self, builder: CreateTemplateAliasInputBuilder) -> impl Future<Output = Result<CreateTemplateAliasOutput, SdkError<CreateTemplateAliasError>>> {
-        (*self).create_template_alias(builder)
+        self.deref().create_template_alias(builder)
     }
     fn create_theme(&self, builder: CreateThemeInputBuilder) -> impl Future<Output = Result<CreateThemeOutput, SdkError<CreateThemeError>>> {
-        (*self).create_theme(builder)
+        self.deref().create_theme(builder)
     }
     fn create_theme_alias(&self, builder: CreateThemeAliasInputBuilder) -> impl Future<Output = Result<CreateThemeAliasOutput, SdkError<CreateThemeAliasError>>> {
-        (*self).create_theme_alias(builder)
+        self.deref().create_theme_alias(builder)
     }
     fn create_topic(&self, builder: CreateTopicInputBuilder) -> impl Future<Output = Result<CreateTopicOutput, SdkError<CreateTopicError>>> {
-        (*self).create_topic(builder)
+        self.deref().create_topic(builder)
     }
     fn create_topic_refresh_schedule(&self, builder: CreateTopicRefreshScheduleInputBuilder) -> impl Future<Output = Result<CreateTopicRefreshScheduleOutput, SdkError<CreateTopicRefreshScheduleError>>> {
-        (*self).create_topic_refresh_schedule(builder)
+        self.deref().create_topic_refresh_schedule(builder)
     }
     fn create_vpc_connection(&self, builder: CreateVpcConnectionInputBuilder) -> impl Future<Output = Result<CreateVpcConnectionOutput, SdkError<CreateVPCConnectionError>>> {
-        (*self).create_vpc_connection(builder)
+        self.deref().create_vpc_connection(builder)
     }
     fn delete_account_customization(&self, builder: DeleteAccountCustomizationInputBuilder) -> impl Future<Output = Result<DeleteAccountCustomizationOutput, SdkError<DeleteAccountCustomizationError>>> {
-        (*self).delete_account_customization(builder)
+        self.deref().delete_account_customization(builder)
     }
     fn delete_account_subscription(&self, builder: DeleteAccountSubscriptionInputBuilder) -> impl Future<Output = Result<DeleteAccountSubscriptionOutput, SdkError<DeleteAccountSubscriptionError>>> {
-        (*self).delete_account_subscription(builder)
+        self.deref().delete_account_subscription(builder)
     }
     fn delete_analysis(&self, builder: DeleteAnalysisInputBuilder) -> impl Future<Output = Result<DeleteAnalysisOutput, SdkError<DeleteAnalysisError>>> {
-        (*self).delete_analysis(builder)
+        self.deref().delete_analysis(builder)
     }
     fn delete_dashboard(&self, builder: DeleteDashboardInputBuilder) -> impl Future<Output = Result<DeleteDashboardOutput, SdkError<DeleteDashboardError>>> {
-        (*self).delete_dashboard(builder)
+        self.deref().delete_dashboard(builder)
     }
     fn delete_data_set(&self, builder: DeleteDataSetInputBuilder) -> impl Future<Output = Result<DeleteDataSetOutput, SdkError<DeleteDataSetError>>> {
-        (*self).delete_data_set(builder)
+        self.deref().delete_data_set(builder)
     }
     fn delete_data_set_refresh_properties(&self, builder: DeleteDataSetRefreshPropertiesInputBuilder) -> impl Future<Output = Result<DeleteDataSetRefreshPropertiesOutput, SdkError<DeleteDataSetRefreshPropertiesError>>> {
-        (*self).delete_data_set_refresh_properties(builder)
+        self.deref().delete_data_set_refresh_properties(builder)
     }
     fn delete_data_source(&self, builder: DeleteDataSourceInputBuilder) -> impl Future<Output = Result<DeleteDataSourceOutput, SdkError<DeleteDataSourceError>>> {
-        (*self).delete_data_source(builder)
+        self.deref().delete_data_source(builder)
     }
     fn delete_folder(&self, builder: DeleteFolderInputBuilder) -> impl Future<Output = Result<DeleteFolderOutput, SdkError<DeleteFolderError>>> {
-        (*self).delete_folder(builder)
+        self.deref().delete_folder(builder)
     }
     fn delete_folder_membership(&self, builder: DeleteFolderMembershipInputBuilder) -> impl Future<Output = Result<DeleteFolderMembershipOutput, SdkError<DeleteFolderMembershipError>>> {
-        (*self).delete_folder_membership(builder)
+        self.deref().delete_folder_membership(builder)
     }
     fn delete_group(&self, builder: DeleteGroupInputBuilder) -> impl Future<Output = Result<DeleteGroupOutput, SdkError<DeleteGroupError>>> {
-        (*self).delete_group(builder)
+        self.deref().delete_group(builder)
     }
     fn delete_group_membership(&self, builder: DeleteGroupMembershipInputBuilder) -> impl Future<Output = Result<DeleteGroupMembershipOutput, SdkError<DeleteGroupMembershipError>>> {
-        (*self).delete_group_membership(builder)
+        self.deref().delete_group_membership(builder)
     }
     fn delete_iam_policy_assignment(&self, builder: DeleteIamPolicyAssignmentInputBuilder) -> impl Future<Output = Result<DeleteIamPolicyAssignmentOutput, SdkError<DeleteIAMPolicyAssignmentError>>> {
-        (*self).delete_iam_policy_assignment(builder)
+        self.deref().delete_iam_policy_assignment(builder)
     }
     fn delete_identity_propagation_config(&self, builder: DeleteIdentityPropagationConfigInputBuilder) -> impl Future<Output = Result<DeleteIdentityPropagationConfigOutput, SdkError<DeleteIdentityPropagationConfigError>>> {
-        (*self).delete_identity_propagation_config(builder)
+        self.deref().delete_identity_propagation_config(builder)
     }
     fn delete_namespace(&self, builder: DeleteNamespaceInputBuilder) -> impl Future<Output = Result<DeleteNamespaceOutput, SdkError<DeleteNamespaceError>>> {
-        (*self).delete_namespace(builder)
+        self.deref().delete_namespace(builder)
     }
     fn delete_refresh_schedule(&self, builder: DeleteRefreshScheduleInputBuilder) -> impl Future<Output = Result<DeleteRefreshScheduleOutput, SdkError<DeleteRefreshScheduleError>>> {
-        (*self).delete_refresh_schedule(builder)
+        self.deref().delete_refresh_schedule(builder)
     }
     fn delete_role_custom_permission(&self, builder: DeleteRoleCustomPermissionInputBuilder) -> impl Future<Output = Result<DeleteRoleCustomPermissionOutput, SdkError<DeleteRoleCustomPermissionError>>> {
-        (*self).delete_role_custom_permission(builder)
+        self.deref().delete_role_custom_permission(builder)
     }
     fn delete_role_membership(&self, builder: DeleteRoleMembershipInputBuilder) -> impl Future<Output = Result<DeleteRoleMembershipOutput, SdkError<DeleteRoleMembershipError>>> {
-        (*self).delete_role_membership(builder)
+        self.deref().delete_role_membership(builder)
     }
     fn delete_template(&self, builder: DeleteTemplateInputBuilder) -> impl Future<Output = Result<DeleteTemplateOutput, SdkError<DeleteTemplateError>>> {
-        (*self).delete_template(builder)
+        self.deref().delete_template(builder)
     }
     fn delete_template_alias(&self, builder: DeleteTemplateAliasInputBuilder) -> impl Future<Output = Result<DeleteTemplateAliasOutput, SdkError<DeleteTemplateAliasError>>> {
-        (*self).delete_template_alias(builder)
+        self.deref().delete_template_alias(builder)
     }
     fn delete_theme(&self, builder: DeleteThemeInputBuilder) -> impl Future<Output = Result<DeleteThemeOutput, SdkError<DeleteThemeError>>> {
-        (*self).delete_theme(builder)
+        self.deref().delete_theme(builder)
     }
     fn delete_theme_alias(&self, builder: DeleteThemeAliasInputBuilder) -> impl Future<Output = Result<DeleteThemeAliasOutput, SdkError<DeleteThemeAliasError>>> {
-        (*self).delete_theme_alias(builder)
+        self.deref().delete_theme_alias(builder)
     }
     fn delete_topic(&self, builder: DeleteTopicInputBuilder) -> impl Future<Output = Result<DeleteTopicOutput, SdkError<DeleteTopicError>>> {
-        (*self).delete_topic(builder)
+        self.deref().delete_topic(builder)
     }
     fn delete_topic_refresh_schedule(&self, builder: DeleteTopicRefreshScheduleInputBuilder) -> impl Future<Output = Result<DeleteTopicRefreshScheduleOutput, SdkError<DeleteTopicRefreshScheduleError>>> {
-        (*self).delete_topic_refresh_schedule(builder)
+        self.deref().delete_topic_refresh_schedule(builder)
     }
     fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> {
-        (*self).delete_user(builder)
+        self.deref().delete_user(builder)
     }
     fn delete_user_by_principal_id(&self, builder: DeleteUserByPrincipalIdInputBuilder) -> impl Future<Output = Result<DeleteUserByPrincipalIdOutput, SdkError<DeleteUserByPrincipalIdError>>> {
-        (*self).delete_user_by_principal_id(builder)
+        self.deref().delete_user_by_principal_id(builder)
     }
     fn delete_vpc_connection(&self, builder: DeleteVpcConnectionInputBuilder) -> impl Future<Output = Result<DeleteVpcConnectionOutput, SdkError<DeleteVPCConnectionError>>> {
-        (*self).delete_vpc_connection(builder)
+        self.deref().delete_vpc_connection(builder)
     }
     fn describe_account_customization(&self, builder: DescribeAccountCustomizationInputBuilder) -> impl Future<Output = Result<DescribeAccountCustomizationOutput, SdkError<DescribeAccountCustomizationError>>> {
-        (*self).describe_account_customization(builder)
+        self.deref().describe_account_customization(builder)
     }
     fn describe_account_settings(&self, builder: DescribeAccountSettingsInputBuilder) -> impl Future<Output = Result<DescribeAccountSettingsOutput, SdkError<DescribeAccountSettingsError>>> {
-        (*self).describe_account_settings(builder)
+        self.deref().describe_account_settings(builder)
     }
     fn describe_account_subscription(&self, builder: DescribeAccountSubscriptionInputBuilder) -> impl Future<Output = Result<DescribeAccountSubscriptionOutput, SdkError<DescribeAccountSubscriptionError>>> {
-        (*self).describe_account_subscription(builder)
+        self.deref().describe_account_subscription(builder)
     }
     fn describe_analysis(&self, builder: DescribeAnalysisInputBuilder) -> impl Future<Output = Result<DescribeAnalysisOutput, SdkError<DescribeAnalysisError>>> {
-        (*self).describe_analysis(builder)
+        self.deref().describe_analysis(builder)
     }
     fn describe_analysis_definition(&self, builder: DescribeAnalysisDefinitionInputBuilder) -> impl Future<Output = Result<DescribeAnalysisDefinitionOutput, SdkError<DescribeAnalysisDefinitionError>>> {
-        (*self).describe_analysis_definition(builder)
+        self.deref().describe_analysis_definition(builder)
     }
     fn describe_analysis_permissions(&self, builder: DescribeAnalysisPermissionsInputBuilder) -> impl Future<Output = Result<DescribeAnalysisPermissionsOutput, SdkError<DescribeAnalysisPermissionsError>>> {
-        (*self).describe_analysis_permissions(builder)
+        self.deref().describe_analysis_permissions(builder)
     }
     fn describe_asset_bundle_export_job(&self, builder: DescribeAssetBundleExportJobInputBuilder) -> impl Future<Output = Result<DescribeAssetBundleExportJobOutput, SdkError<DescribeAssetBundleExportJobError>>> {
-        (*self).describe_asset_bundle_export_job(builder)
+        self.deref().describe_asset_bundle_export_job(builder)
     }
     fn describe_asset_bundle_import_job(&self, builder: DescribeAssetBundleImportJobInputBuilder) -> impl Future<Output = Result<DescribeAssetBundleImportJobOutput, SdkError<DescribeAssetBundleImportJobError>>> {
-        (*self).describe_asset_bundle_import_job(builder)
+        self.deref().describe_asset_bundle_import_job(builder)
     }
     fn describe_dashboard(&self, builder: DescribeDashboardInputBuilder) -> impl Future<Output = Result<DescribeDashboardOutput, SdkError<DescribeDashboardError>>> {
-        (*self).describe_dashboard(builder)
+        self.deref().describe_dashboard(builder)
     }
     fn describe_dashboard_definition(&self, builder: DescribeDashboardDefinitionInputBuilder) -> impl Future<Output = Result<DescribeDashboardDefinitionOutput, SdkError<DescribeDashboardDefinitionError>>> {
-        (*self).describe_dashboard_definition(builder)
+        self.deref().describe_dashboard_definition(builder)
     }
     fn describe_dashboard_permissions(&self, builder: DescribeDashboardPermissionsInputBuilder) -> impl Future<Output = Result<DescribeDashboardPermissionsOutput, SdkError<DescribeDashboardPermissionsError>>> {
-        (*self).describe_dashboard_permissions(builder)
+        self.deref().describe_dashboard_permissions(builder)
     }
     fn describe_dashboard_snapshot_job(&self, builder: DescribeDashboardSnapshotJobInputBuilder) -> impl Future<Output = Result<DescribeDashboardSnapshotJobOutput, SdkError<DescribeDashboardSnapshotJobError>>> {
-        (*self).describe_dashboard_snapshot_job(builder)
+        self.deref().describe_dashboard_snapshot_job(builder)
     }
     fn describe_dashboard_snapshot_job_result(&self, builder: DescribeDashboardSnapshotJobResultInputBuilder) -> impl Future<Output = Result<DescribeDashboardSnapshotJobResultOutput, SdkError<DescribeDashboardSnapshotJobResultError>>> {
-        (*self).describe_dashboard_snapshot_job_result(builder)
+        self.deref().describe_dashboard_snapshot_job_result(builder)
     }
     fn describe_data_set(&self, builder: DescribeDataSetInputBuilder) -> impl Future<Output = Result<DescribeDataSetOutput, SdkError<DescribeDataSetError>>> {
-        (*self).describe_data_set(builder)
+        self.deref().describe_data_set(builder)
     }
     fn describe_data_set_permissions(&self, builder: DescribeDataSetPermissionsInputBuilder) -> impl Future<Output = Result<DescribeDataSetPermissionsOutput, SdkError<DescribeDataSetPermissionsError>>> {
-        (*self).describe_data_set_permissions(builder)
+        self.deref().describe_data_set_permissions(builder)
     }
     fn describe_data_set_refresh_properties(&self, builder: DescribeDataSetRefreshPropertiesInputBuilder) -> impl Future<Output = Result<DescribeDataSetRefreshPropertiesOutput, SdkError<DescribeDataSetRefreshPropertiesError>>> {
-        (*self).describe_data_set_refresh_properties(builder)
+        self.deref().describe_data_set_refresh_properties(builder)
     }
     fn describe_data_source(&self, builder: DescribeDataSourceInputBuilder) -> impl Future<Output = Result<DescribeDataSourceOutput, SdkError<DescribeDataSourceError>>> {
-        (*self).describe_data_source(builder)
+        self.deref().describe_data_source(builder)
     }
     fn describe_data_source_permissions(&self, builder: DescribeDataSourcePermissionsInputBuilder) -> impl Future<Output = Result<DescribeDataSourcePermissionsOutput, SdkError<DescribeDataSourcePermissionsError>>> {
-        (*self).describe_data_source_permissions(builder)
+        self.deref().describe_data_source_permissions(builder)
     }
     fn describe_folder(&self, builder: DescribeFolderInputBuilder) -> impl Future<Output = Result<DescribeFolderOutput, SdkError<DescribeFolderError>>> {
-        (*self).describe_folder(builder)
+        self.deref().describe_folder(builder)
     }
     fn describe_folder_permissions(&self, builder: DescribeFolderPermissionsInputBuilder) -> impl Future<Output = Result<DescribeFolderPermissionsOutput, SdkError<DescribeFolderPermissionsError>>> {
-        (*self).describe_folder_permissions(builder)
+        self.deref().describe_folder_permissions(builder)
     }
     fn describe_folder_resolved_permissions(&self, builder: DescribeFolderResolvedPermissionsInputBuilder) -> impl Future<Output = Result<DescribeFolderResolvedPermissionsOutput, SdkError<DescribeFolderResolvedPermissionsError>>> {
-        (*self).describe_folder_resolved_permissions(builder)
+        self.deref().describe_folder_resolved_permissions(builder)
     }
     fn describe_group(&self, builder: DescribeGroupInputBuilder) -> impl Future<Output = Result<DescribeGroupOutput, SdkError<DescribeGroupError>>> {
-        (*self).describe_group(builder)
+        self.deref().describe_group(builder)
     }
     fn describe_group_membership(&self, builder: DescribeGroupMembershipInputBuilder) -> impl Future<Output = Result<DescribeGroupMembershipOutput, SdkError<DescribeGroupMembershipError>>> {
-        (*self).describe_group_membership(builder)
+        self.deref().describe_group_membership(builder)
     }
     fn describe_iam_policy_assignment(&self, builder: DescribeIamPolicyAssignmentInputBuilder) -> impl Future<Output = Result<DescribeIamPolicyAssignmentOutput, SdkError<DescribeIAMPolicyAssignmentError>>> {
-        (*self).describe_iam_policy_assignment(builder)
+        self.deref().describe_iam_policy_assignment(builder)
     }
     fn describe_ingestion(&self, builder: DescribeIngestionInputBuilder) -> impl Future<Output = Result<DescribeIngestionOutput, SdkError<DescribeIngestionError>>> {
-        (*self).describe_ingestion(builder)
+        self.deref().describe_ingestion(builder)
     }
     fn describe_ip_restriction(&self, builder: DescribeIpRestrictionInputBuilder) -> impl Future<Output = Result<DescribeIpRestrictionOutput, SdkError<DescribeIpRestrictionError>>> {
-        (*self).describe_ip_restriction(builder)
+        self.deref().describe_ip_restriction(builder)
     }
     fn describe_key_registration(&self, builder: DescribeKeyRegistrationInputBuilder) -> impl Future<Output = Result<DescribeKeyRegistrationOutput, SdkError<DescribeKeyRegistrationError>>> {
-        (*self).describe_key_registration(builder)
+        self.deref().describe_key_registration(builder)
     }
     fn describe_namespace(&self, builder: DescribeNamespaceInputBuilder) -> impl Future<Output = Result<DescribeNamespaceOutput, SdkError<DescribeNamespaceError>>> {
-        (*self).describe_namespace(builder)
+        self.deref().describe_namespace(builder)
     }
     fn describe_refresh_schedule(&self, builder: DescribeRefreshScheduleInputBuilder) -> impl Future<Output = Result<DescribeRefreshScheduleOutput, SdkError<DescribeRefreshScheduleError>>> {
-        (*self).describe_refresh_schedule(builder)
+        self.deref().describe_refresh_schedule(builder)
     }
     fn describe_role_custom_permission(&self, builder: DescribeRoleCustomPermissionInputBuilder) -> impl Future<Output = Result<DescribeRoleCustomPermissionOutput, SdkError<DescribeRoleCustomPermissionError>>> {
-        (*self).describe_role_custom_permission(builder)
+        self.deref().describe_role_custom_permission(builder)
     }
     fn describe_template(&self, builder: DescribeTemplateInputBuilder) -> impl Future<Output = Result<DescribeTemplateOutput, SdkError<DescribeTemplateError>>> {
-        (*self).describe_template(builder)
+        self.deref().describe_template(builder)
     }
     fn describe_template_alias(&self, builder: DescribeTemplateAliasInputBuilder) -> impl Future<Output = Result<DescribeTemplateAliasOutput, SdkError<DescribeTemplateAliasError>>> {
-        (*self).describe_template_alias(builder)
+        self.deref().describe_template_alias(builder)
     }
     fn describe_template_definition(&self, builder: DescribeTemplateDefinitionInputBuilder) -> impl Future<Output = Result<DescribeTemplateDefinitionOutput, SdkError<DescribeTemplateDefinitionError>>> {
-        (*self).describe_template_definition(builder)
+        self.deref().describe_template_definition(builder)
     }
     fn describe_template_permissions(&self, builder: DescribeTemplatePermissionsInputBuilder) -> impl Future<Output = Result<DescribeTemplatePermissionsOutput, SdkError<DescribeTemplatePermissionsError>>> {
-        (*self).describe_template_permissions(builder)
+        self.deref().describe_template_permissions(builder)
     }
     fn describe_theme(&self, builder: DescribeThemeInputBuilder) -> impl Future<Output = Result<DescribeThemeOutput, SdkError<DescribeThemeError>>> {
-        (*self).describe_theme(builder)
+        self.deref().describe_theme(builder)
     }
     fn describe_theme_alias(&self, builder: DescribeThemeAliasInputBuilder) -> impl Future<Output = Result<DescribeThemeAliasOutput, SdkError<DescribeThemeAliasError>>> {
-        (*self).describe_theme_alias(builder)
+        self.deref().describe_theme_alias(builder)
     }
     fn describe_theme_permissions(&self, builder: DescribeThemePermissionsInputBuilder) -> impl Future<Output = Result<DescribeThemePermissionsOutput, SdkError<DescribeThemePermissionsError>>> {
-        (*self).describe_theme_permissions(builder)
+        self.deref().describe_theme_permissions(builder)
     }
     fn describe_topic(&self, builder: DescribeTopicInputBuilder) -> impl Future<Output = Result<DescribeTopicOutput, SdkError<DescribeTopicError>>> {
-        (*self).describe_topic(builder)
+        self.deref().describe_topic(builder)
     }
     fn describe_topic_permissions(&self, builder: DescribeTopicPermissionsInputBuilder) -> impl Future<Output = Result<DescribeTopicPermissionsOutput, SdkError<DescribeTopicPermissionsError>>> {
-        (*self).describe_topic_permissions(builder)
+        self.deref().describe_topic_permissions(builder)
     }
     fn describe_topic_refresh(&self, builder: DescribeTopicRefreshInputBuilder) -> impl Future<Output = Result<DescribeTopicRefreshOutput, SdkError<DescribeTopicRefreshError>>> {
-        (*self).describe_topic_refresh(builder)
+        self.deref().describe_topic_refresh(builder)
     }
     fn describe_topic_refresh_schedule(&self, builder: DescribeTopicRefreshScheduleInputBuilder) -> impl Future<Output = Result<DescribeTopicRefreshScheduleOutput, SdkError<DescribeTopicRefreshScheduleError>>> {
-        (*self).describe_topic_refresh_schedule(builder)
+        self.deref().describe_topic_refresh_schedule(builder)
     }
     fn describe_user(&self, builder: DescribeUserInputBuilder) -> impl Future<Output = Result<DescribeUserOutput, SdkError<DescribeUserError>>> {
-        (*self).describe_user(builder)
+        self.deref().describe_user(builder)
     }
     fn describe_vpc_connection(&self, builder: DescribeVpcConnectionInputBuilder) -> impl Future<Output = Result<DescribeVpcConnectionOutput, SdkError<DescribeVPCConnectionError>>> {
-        (*self).describe_vpc_connection(builder)
+        self.deref().describe_vpc_connection(builder)
     }
     fn generate_embed_url_for_anonymous_user(&self, builder: GenerateEmbedUrlForAnonymousUserInputBuilder) -> impl Future<Output = Result<GenerateEmbedUrlForAnonymousUserOutput, SdkError<GenerateEmbedUrlForAnonymousUserError>>> {
-        (*self).generate_embed_url_for_anonymous_user(builder)
+        self.deref().generate_embed_url_for_anonymous_user(builder)
     }
     fn generate_embed_url_for_registered_user(&self, builder: GenerateEmbedUrlForRegisteredUserInputBuilder) -> impl Future<Output = Result<GenerateEmbedUrlForRegisteredUserOutput, SdkError<GenerateEmbedUrlForRegisteredUserError>>> {
-        (*self).generate_embed_url_for_registered_user(builder)
+        self.deref().generate_embed_url_for_registered_user(builder)
     }
     fn get_dashboard_embed_url(&self, builder: GetDashboardEmbedUrlInputBuilder) -> impl Future<Output = Result<GetDashboardEmbedUrlOutput, SdkError<GetDashboardEmbedUrlError>>> {
-        (*self).get_dashboard_embed_url(builder)
+        self.deref().get_dashboard_embed_url(builder)
     }
     fn get_session_embed_url(&self, builder: GetSessionEmbedUrlInputBuilder) -> impl Future<Output = Result<GetSessionEmbedUrlOutput, SdkError<GetSessionEmbedUrlError>>> {
-        (*self).get_session_embed_url(builder)
+        self.deref().get_session_embed_url(builder)
     }
     fn list_analyses(&self, builder: ListAnalysesInputBuilder) -> impl Future<Output = Result<ListAnalysesOutput, SdkError<ListAnalysesError>>> {
-        (*self).list_analyses(builder)
+        self.deref().list_analyses(builder)
     }
     fn list_asset_bundle_export_jobs(&self, builder: ListAssetBundleExportJobsInputBuilder) -> impl Future<Output = Result<ListAssetBundleExportJobsOutput, SdkError<ListAssetBundleExportJobsError>>> {
-        (*self).list_asset_bundle_export_jobs(builder)
+        self.deref().list_asset_bundle_export_jobs(builder)
     }
     fn list_asset_bundle_import_jobs(&self, builder: ListAssetBundleImportJobsInputBuilder) -> impl Future<Output = Result<ListAssetBundleImportJobsOutput, SdkError<ListAssetBundleImportJobsError>>> {
-        (*self).list_asset_bundle_import_jobs(builder)
+        self.deref().list_asset_bundle_import_jobs(builder)
     }
     fn list_dashboard_versions(&self, builder: ListDashboardVersionsInputBuilder) -> impl Future<Output = Result<ListDashboardVersionsOutput, SdkError<ListDashboardVersionsError>>> {
-        (*self).list_dashboard_versions(builder)
+        self.deref().list_dashboard_versions(builder)
     }
     fn list_dashboards(&self, builder: ListDashboardsInputBuilder) -> impl Future<Output = Result<ListDashboardsOutput, SdkError<ListDashboardsError>>> {
-        (*self).list_dashboards(builder)
+        self.deref().list_dashboards(builder)
     }
     fn list_data_sets(&self, builder: ListDataSetsInputBuilder) -> impl Future<Output = Result<ListDataSetsOutput, SdkError<ListDataSetsError>>> {
-        (*self).list_data_sets(builder)
+        self.deref().list_data_sets(builder)
     }
     fn list_data_sources(&self, builder: ListDataSourcesInputBuilder) -> impl Future<Output = Result<ListDataSourcesOutput, SdkError<ListDataSourcesError>>> {
-        (*self).list_data_sources(builder)
+        self.deref().list_data_sources(builder)
     }
     fn list_folder_members(&self, builder: ListFolderMembersInputBuilder) -> impl Future<Output = Result<ListFolderMembersOutput, SdkError<ListFolderMembersError>>> {
-        (*self).list_folder_members(builder)
+        self.deref().list_folder_members(builder)
     }
     fn list_folders(&self, builder: ListFoldersInputBuilder) -> impl Future<Output = Result<ListFoldersOutput, SdkError<ListFoldersError>>> {
-        (*self).list_folders(builder)
+        self.deref().list_folders(builder)
     }
     fn list_group_memberships(&self, builder: ListGroupMembershipsInputBuilder) -> impl Future<Output = Result<ListGroupMembershipsOutput, SdkError<ListGroupMembershipsError>>> {
-        (*self).list_group_memberships(builder)
+        self.deref().list_group_memberships(builder)
     }
     fn list_groups(&self, builder: ListGroupsInputBuilder) -> impl Future<Output = Result<ListGroupsOutput, SdkError<ListGroupsError>>> {
-        (*self).list_groups(builder)
+        self.deref().list_groups(builder)
     }
     fn list_iam_policy_assignments(&self, builder: ListIamPolicyAssignmentsInputBuilder) -> impl Future<Output = Result<ListIamPolicyAssignmentsOutput, SdkError<ListIAMPolicyAssignmentsError>>> {
-        (*self).list_iam_policy_assignments(builder)
+        self.deref().list_iam_policy_assignments(builder)
     }
     fn list_iam_policy_assignments_for_user(&self, builder: ListIamPolicyAssignmentsForUserInputBuilder) -> impl Future<Output = Result<ListIamPolicyAssignmentsForUserOutput, SdkError<ListIAMPolicyAssignmentsForUserError>>> {
-        (*self).list_iam_policy_assignments_for_user(builder)
+        self.deref().list_iam_policy_assignments_for_user(builder)
     }
     fn list_identity_propagation_configs(&self, builder: ListIdentityPropagationConfigsInputBuilder) -> impl Future<Output = Result<ListIdentityPropagationConfigsOutput, SdkError<ListIdentityPropagationConfigsError>>> {
-        (*self).list_identity_propagation_configs(builder)
+        self.deref().list_identity_propagation_configs(builder)
     }
     fn list_ingestions(&self, builder: ListIngestionsInputBuilder) -> impl Future<Output = Result<ListIngestionsOutput, SdkError<ListIngestionsError>>> {
-        (*self).list_ingestions(builder)
+        self.deref().list_ingestions(builder)
     }
     fn list_namespaces(&self, builder: ListNamespacesInputBuilder) -> impl Future<Output = Result<ListNamespacesOutput, SdkError<ListNamespacesError>>> {
-        (*self).list_namespaces(builder)
+        self.deref().list_namespaces(builder)
     }
     fn list_refresh_schedules(&self, builder: ListRefreshSchedulesInputBuilder) -> impl Future<Output = Result<ListRefreshSchedulesOutput, SdkError<ListRefreshSchedulesError>>> {
-        (*self).list_refresh_schedules(builder)
+        self.deref().list_refresh_schedules(builder)
     }
     fn list_role_memberships(&self, builder: ListRoleMembershipsInputBuilder) -> impl Future<Output = Result<ListRoleMembershipsOutput, SdkError<ListRoleMembershipsError>>> {
-        (*self).list_role_memberships(builder)
+        self.deref().list_role_memberships(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_template_aliases(&self, builder: ListTemplateAliasesInputBuilder) -> impl Future<Output = Result<ListTemplateAliasesOutput, SdkError<ListTemplateAliasesError>>> {
-        (*self).list_template_aliases(builder)
+        self.deref().list_template_aliases(builder)
     }
     fn list_template_versions(&self, builder: ListTemplateVersionsInputBuilder) -> impl Future<Output = Result<ListTemplateVersionsOutput, SdkError<ListTemplateVersionsError>>> {
-        (*self).list_template_versions(builder)
+        self.deref().list_template_versions(builder)
     }
     fn list_templates(&self, builder: ListTemplatesInputBuilder) -> impl Future<Output = Result<ListTemplatesOutput, SdkError<ListTemplatesError>>> {
-        (*self).list_templates(builder)
+        self.deref().list_templates(builder)
     }
     fn list_theme_aliases(&self, builder: ListThemeAliasesInputBuilder) -> impl Future<Output = Result<ListThemeAliasesOutput, SdkError<ListThemeAliasesError>>> {
-        (*self).list_theme_aliases(builder)
+        self.deref().list_theme_aliases(builder)
     }
     fn list_theme_versions(&self, builder: ListThemeVersionsInputBuilder) -> impl Future<Output = Result<ListThemeVersionsOutput, SdkError<ListThemeVersionsError>>> {
-        (*self).list_theme_versions(builder)
+        self.deref().list_theme_versions(builder)
     }
     fn list_themes(&self, builder: ListThemesInputBuilder) -> impl Future<Output = Result<ListThemesOutput, SdkError<ListThemesError>>> {
-        (*self).list_themes(builder)
+        self.deref().list_themes(builder)
     }
     fn list_topic_refresh_schedules(&self, builder: ListTopicRefreshSchedulesInputBuilder) -> impl Future<Output = Result<ListTopicRefreshSchedulesOutput, SdkError<ListTopicRefreshSchedulesError>>> {
-        (*self).list_topic_refresh_schedules(builder)
+        self.deref().list_topic_refresh_schedules(builder)
     }
     fn list_topic_reviewed_answers(&self, builder: ListTopicReviewedAnswersInputBuilder) -> impl Future<Output = Result<ListTopicReviewedAnswersOutput, SdkError<ListTopicReviewedAnswersError>>> {
-        (*self).list_topic_reviewed_answers(builder)
+        self.deref().list_topic_reviewed_answers(builder)
     }
     fn list_topics(&self, builder: ListTopicsInputBuilder) -> impl Future<Output = Result<ListTopicsOutput, SdkError<ListTopicsError>>> {
-        (*self).list_topics(builder)
+        self.deref().list_topics(builder)
     }
     fn list_user_groups(&self, builder: ListUserGroupsInputBuilder) -> impl Future<Output = Result<ListUserGroupsOutput, SdkError<ListUserGroupsError>>> {
-        (*self).list_user_groups(builder)
+        self.deref().list_user_groups(builder)
     }
     fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>> {
-        (*self).list_users(builder)
+        self.deref().list_users(builder)
     }
     fn list_vpc_connections(&self, builder: ListVpcConnectionsInputBuilder) -> impl Future<Output = Result<ListVpcConnectionsOutput, SdkError<ListVPCConnectionsError>>> {
-        (*self).list_vpc_connections(builder)
+        self.deref().list_vpc_connections(builder)
     }
     fn put_data_set_refresh_properties(&self, builder: PutDataSetRefreshPropertiesInputBuilder) -> impl Future<Output = Result<PutDataSetRefreshPropertiesOutput, SdkError<PutDataSetRefreshPropertiesError>>> {
-        (*self).put_data_set_refresh_properties(builder)
+        self.deref().put_data_set_refresh_properties(builder)
     }
     fn register_user(&self, builder: RegisterUserInputBuilder) -> impl Future<Output = Result<RegisterUserOutput, SdkError<RegisterUserError>>> {
-        (*self).register_user(builder)
+        self.deref().register_user(builder)
     }
     fn restore_analysis(&self, builder: RestoreAnalysisInputBuilder) -> impl Future<Output = Result<RestoreAnalysisOutput, SdkError<RestoreAnalysisError>>> {
-        (*self).restore_analysis(builder)
+        self.deref().restore_analysis(builder)
     }
     fn search_analyses(&self, builder: SearchAnalysesInputBuilder) -> impl Future<Output = Result<SearchAnalysesOutput, SdkError<SearchAnalysesError>>> {
-        (*self).search_analyses(builder)
+        self.deref().search_analyses(builder)
     }
     fn search_dashboards(&self, builder: SearchDashboardsInputBuilder) -> impl Future<Output = Result<SearchDashboardsOutput, SdkError<SearchDashboardsError>>> {
-        (*self).search_dashboards(builder)
+        self.deref().search_dashboards(builder)
     }
     fn search_data_sets(&self, builder: SearchDataSetsInputBuilder) -> impl Future<Output = Result<SearchDataSetsOutput, SdkError<SearchDataSetsError>>> {
-        (*self).search_data_sets(builder)
+        self.deref().search_data_sets(builder)
     }
     fn search_data_sources(&self, builder: SearchDataSourcesInputBuilder) -> impl Future<Output = Result<SearchDataSourcesOutput, SdkError<SearchDataSourcesError>>> {
-        (*self).search_data_sources(builder)
+        self.deref().search_data_sources(builder)
     }
     fn search_folders(&self, builder: SearchFoldersInputBuilder) -> impl Future<Output = Result<SearchFoldersOutput, SdkError<SearchFoldersError>>> {
-        (*self).search_folders(builder)
+        self.deref().search_folders(builder)
     }
     fn search_groups(&self, builder: SearchGroupsInputBuilder) -> impl Future<Output = Result<SearchGroupsOutput, SdkError<SearchGroupsError>>> {
-        (*self).search_groups(builder)
+        self.deref().search_groups(builder)
     }
     fn start_asset_bundle_export_job(&self, builder: StartAssetBundleExportJobInputBuilder) -> impl Future<Output = Result<StartAssetBundleExportJobOutput, SdkError<StartAssetBundleExportJobError>>> {
-        (*self).start_asset_bundle_export_job(builder)
+        self.deref().start_asset_bundle_export_job(builder)
     }
     fn start_asset_bundle_import_job(&self, builder: StartAssetBundleImportJobInputBuilder) -> impl Future<Output = Result<StartAssetBundleImportJobOutput, SdkError<StartAssetBundleImportJobError>>> {
-        (*self).start_asset_bundle_import_job(builder)
+        self.deref().start_asset_bundle_import_job(builder)
     }
     fn start_dashboard_snapshot_job(&self, builder: StartDashboardSnapshotJobInputBuilder) -> impl Future<Output = Result<StartDashboardSnapshotJobOutput, SdkError<StartDashboardSnapshotJobError>>> {
-        (*self).start_dashboard_snapshot_job(builder)
+        self.deref().start_dashboard_snapshot_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_account_customization(&self, builder: UpdateAccountCustomizationInputBuilder) -> impl Future<Output = Result<UpdateAccountCustomizationOutput, SdkError<UpdateAccountCustomizationError>>> {
-        (*self).update_account_customization(builder)
+        self.deref().update_account_customization(builder)
     }
     fn update_account_settings(&self, builder: UpdateAccountSettingsInputBuilder) -> impl Future<Output = Result<UpdateAccountSettingsOutput, SdkError<UpdateAccountSettingsError>>> {
-        (*self).update_account_settings(builder)
+        self.deref().update_account_settings(builder)
     }
     fn update_analysis(&self, builder: UpdateAnalysisInputBuilder) -> impl Future<Output = Result<UpdateAnalysisOutput, SdkError<UpdateAnalysisError>>> {
-        (*self).update_analysis(builder)
+        self.deref().update_analysis(builder)
     }
     fn update_analysis_permissions(&self, builder: UpdateAnalysisPermissionsInputBuilder) -> impl Future<Output = Result<UpdateAnalysisPermissionsOutput, SdkError<UpdateAnalysisPermissionsError>>> {
-        (*self).update_analysis_permissions(builder)
+        self.deref().update_analysis_permissions(builder)
     }
     fn update_dashboard(&self, builder: UpdateDashboardInputBuilder) -> impl Future<Output = Result<UpdateDashboardOutput, SdkError<UpdateDashboardError>>> {
-        (*self).update_dashboard(builder)
+        self.deref().update_dashboard(builder)
     }
     fn update_dashboard_links(&self, builder: UpdateDashboardLinksInputBuilder) -> impl Future<Output = Result<UpdateDashboardLinksOutput, SdkError<UpdateDashboardLinksError>>> {
-        (*self).update_dashboard_links(builder)
+        self.deref().update_dashboard_links(builder)
     }
     fn update_dashboard_permissions(&self, builder: UpdateDashboardPermissionsInputBuilder) -> impl Future<Output = Result<UpdateDashboardPermissionsOutput, SdkError<UpdateDashboardPermissionsError>>> {
-        (*self).update_dashboard_permissions(builder)
+        self.deref().update_dashboard_permissions(builder)
     }
     fn update_dashboard_published_version(&self, builder: UpdateDashboardPublishedVersionInputBuilder) -> impl Future<Output = Result<UpdateDashboardPublishedVersionOutput, SdkError<UpdateDashboardPublishedVersionError>>> {
-        (*self).update_dashboard_published_version(builder)
+        self.deref().update_dashboard_published_version(builder)
     }
     fn update_data_set(&self, builder: UpdateDataSetInputBuilder) -> impl Future<Output = Result<UpdateDataSetOutput, SdkError<UpdateDataSetError>>> {
-        (*self).update_data_set(builder)
+        self.deref().update_data_set(builder)
     }
     fn update_data_set_permissions(&self, builder: UpdateDataSetPermissionsInputBuilder) -> impl Future<Output = Result<UpdateDataSetPermissionsOutput, SdkError<UpdateDataSetPermissionsError>>> {
-        (*self).update_data_set_permissions(builder)
+        self.deref().update_data_set_permissions(builder)
     }
     fn update_data_source(&self, builder: UpdateDataSourceInputBuilder) -> impl Future<Output = Result<UpdateDataSourceOutput, SdkError<UpdateDataSourceError>>> {
-        (*self).update_data_source(builder)
+        self.deref().update_data_source(builder)
     }
     fn update_data_source_permissions(&self, builder: UpdateDataSourcePermissionsInputBuilder) -> impl Future<Output = Result<UpdateDataSourcePermissionsOutput, SdkError<UpdateDataSourcePermissionsError>>> {
-        (*self).update_data_source_permissions(builder)
+        self.deref().update_data_source_permissions(builder)
     }
     fn update_folder(&self, builder: UpdateFolderInputBuilder) -> impl Future<Output = Result<UpdateFolderOutput, SdkError<UpdateFolderError>>> {
-        (*self).update_folder(builder)
+        self.deref().update_folder(builder)
     }
     fn update_folder_permissions(&self, builder: UpdateFolderPermissionsInputBuilder) -> impl Future<Output = Result<UpdateFolderPermissionsOutput, SdkError<UpdateFolderPermissionsError>>> {
-        (*self).update_folder_permissions(builder)
+        self.deref().update_folder_permissions(builder)
     }
     fn update_group(&self, builder: UpdateGroupInputBuilder) -> impl Future<Output = Result<UpdateGroupOutput, SdkError<UpdateGroupError>>> {
-        (*self).update_group(builder)
+        self.deref().update_group(builder)
     }
     fn update_iam_policy_assignment(&self, builder: UpdateIamPolicyAssignmentInputBuilder) -> impl Future<Output = Result<UpdateIamPolicyAssignmentOutput, SdkError<UpdateIAMPolicyAssignmentError>>> {
-        (*self).update_iam_policy_assignment(builder)
+        self.deref().update_iam_policy_assignment(builder)
     }
     fn update_identity_propagation_config(&self, builder: UpdateIdentityPropagationConfigInputBuilder) -> impl Future<Output = Result<UpdateIdentityPropagationConfigOutput, SdkError<UpdateIdentityPropagationConfigError>>> {
-        (*self).update_identity_propagation_config(builder)
+        self.deref().update_identity_propagation_config(builder)
     }
     fn update_ip_restriction(&self, builder: UpdateIpRestrictionInputBuilder) -> impl Future<Output = Result<UpdateIpRestrictionOutput, SdkError<UpdateIpRestrictionError>>> {
-        (*self).update_ip_restriction(builder)
+        self.deref().update_ip_restriction(builder)
     }
     fn update_key_registration(&self, builder: UpdateKeyRegistrationInputBuilder) -> impl Future<Output = Result<UpdateKeyRegistrationOutput, SdkError<UpdateKeyRegistrationError>>> {
-        (*self).update_key_registration(builder)
+        self.deref().update_key_registration(builder)
     }
     fn update_public_sharing_settings(&self, builder: UpdatePublicSharingSettingsInputBuilder) -> impl Future<Output = Result<UpdatePublicSharingSettingsOutput, SdkError<UpdatePublicSharingSettingsError>>> {
-        (*self).update_public_sharing_settings(builder)
+        self.deref().update_public_sharing_settings(builder)
     }
     fn update_refresh_schedule(&self, builder: UpdateRefreshScheduleInputBuilder) -> impl Future<Output = Result<UpdateRefreshScheduleOutput, SdkError<UpdateRefreshScheduleError>>> {
-        (*self).update_refresh_schedule(builder)
+        self.deref().update_refresh_schedule(builder)
     }
     fn update_role_custom_permission(&self, builder: UpdateRoleCustomPermissionInputBuilder) -> impl Future<Output = Result<UpdateRoleCustomPermissionOutput, SdkError<UpdateRoleCustomPermissionError>>> {
-        (*self).update_role_custom_permission(builder)
+        self.deref().update_role_custom_permission(builder)
     }
     fn update_spice_capacity_configuration(&self, builder: UpdateSpiceCapacityConfigurationInputBuilder) -> impl Future<Output = Result<UpdateSpiceCapacityConfigurationOutput, SdkError<UpdateSPICECapacityConfigurationError>>> {
-        (*self).update_spice_capacity_configuration(builder)
+        self.deref().update_spice_capacity_configuration(builder)
     }
     fn update_template(&self, builder: UpdateTemplateInputBuilder) -> impl Future<Output = Result<UpdateTemplateOutput, SdkError<UpdateTemplateError>>> {
-        (*self).update_template(builder)
+        self.deref().update_template(builder)
     }
     fn update_template_alias(&self, builder: UpdateTemplateAliasInputBuilder) -> impl Future<Output = Result<UpdateTemplateAliasOutput, SdkError<UpdateTemplateAliasError>>> {
-        (*self).update_template_alias(builder)
+        self.deref().update_template_alias(builder)
     }
     fn update_template_permissions(&self, builder: UpdateTemplatePermissionsInputBuilder) -> impl Future<Output = Result<UpdateTemplatePermissionsOutput, SdkError<UpdateTemplatePermissionsError>>> {
-        (*self).update_template_permissions(builder)
+        self.deref().update_template_permissions(builder)
     }
     fn update_theme(&self, builder: UpdateThemeInputBuilder) -> impl Future<Output = Result<UpdateThemeOutput, SdkError<UpdateThemeError>>> {
-        (*self).update_theme(builder)
+        self.deref().update_theme(builder)
     }
     fn update_theme_alias(&self, builder: UpdateThemeAliasInputBuilder) -> impl Future<Output = Result<UpdateThemeAliasOutput, SdkError<UpdateThemeAliasError>>> {
-        (*self).update_theme_alias(builder)
+        self.deref().update_theme_alias(builder)
     }
     fn update_theme_permissions(&self, builder: UpdateThemePermissionsInputBuilder) -> impl Future<Output = Result<UpdateThemePermissionsOutput, SdkError<UpdateThemePermissionsError>>> {
-        (*self).update_theme_permissions(builder)
+        self.deref().update_theme_permissions(builder)
     }
     fn update_topic(&self, builder: UpdateTopicInputBuilder) -> impl Future<Output = Result<UpdateTopicOutput, SdkError<UpdateTopicError>>> {
-        (*self).update_topic(builder)
+        self.deref().update_topic(builder)
     }
     fn update_topic_permissions(&self, builder: UpdateTopicPermissionsInputBuilder) -> impl Future<Output = Result<UpdateTopicPermissionsOutput, SdkError<UpdateTopicPermissionsError>>> {
-        (*self).update_topic_permissions(builder)
+        self.deref().update_topic_permissions(builder)
     }
     fn update_topic_refresh_schedule(&self, builder: UpdateTopicRefreshScheduleInputBuilder) -> impl Future<Output = Result<UpdateTopicRefreshScheduleOutput, SdkError<UpdateTopicRefreshScheduleError>>> {
-        (*self).update_topic_refresh_schedule(builder)
+        self.deref().update_topic_refresh_schedule(builder)
     }
     fn update_user(&self, builder: UpdateUserInputBuilder) -> impl Future<Output = Result<UpdateUserOutput, SdkError<UpdateUserError>>> {
-        (*self).update_user(builder)
+        self.deref().update_user(builder)
     }
     fn update_vpc_connection(&self, builder: UpdateVpcConnectionInputBuilder) -> impl Future<Output = Result<UpdateVpcConnectionOutput, SdkError<UpdateVPCConnectionError>>> {
-        (*self).update_vpc_connection(builder)
+        self.deref().update_vpc_connection(builder)
     }
 }
 #[cfg(feature = "mockall")]

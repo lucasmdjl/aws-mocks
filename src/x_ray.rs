@@ -50,6 +50,7 @@ use aws_sdk_xray::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_xray::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_xray::*;
 
@@ -181,96 +182,98 @@ impl XRayClient for XRayClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: XRayClient> XRayClient for &T {
+impl <T> XRayClient for T
+where T: Deref,
+      T::Target: XRayClient {
     fn batch_get_traces(&self, builder: BatchGetTracesInputBuilder) -> impl Future<Output = Result<BatchGetTracesOutput, SdkError<BatchGetTracesError>>> {
-        (*self).batch_get_traces(builder)
+        self.deref().batch_get_traces(builder)
     }
     fn create_group(&self, builder: CreateGroupInputBuilder) -> impl Future<Output = Result<CreateGroupOutput, SdkError<CreateGroupError>>> {
-        (*self).create_group(builder)
+        self.deref().create_group(builder)
     }
     fn create_sampling_rule(&self, builder: CreateSamplingRuleInputBuilder) -> impl Future<Output = Result<CreateSamplingRuleOutput, SdkError<CreateSamplingRuleError>>> {
-        (*self).create_sampling_rule(builder)
+        self.deref().create_sampling_rule(builder)
     }
     fn delete_group(&self, builder: DeleteGroupInputBuilder) -> impl Future<Output = Result<DeleteGroupOutput, SdkError<DeleteGroupError>>> {
-        (*self).delete_group(builder)
+        self.deref().delete_group(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_sampling_rule(&self, builder: DeleteSamplingRuleInputBuilder) -> impl Future<Output = Result<DeleteSamplingRuleOutput, SdkError<DeleteSamplingRuleError>>> {
-        (*self).delete_sampling_rule(builder)
+        self.deref().delete_sampling_rule(builder)
     }
     fn get_encryption_config(&self, builder: GetEncryptionConfigInputBuilder) -> impl Future<Output = Result<GetEncryptionConfigOutput, SdkError<GetEncryptionConfigError>>> {
-        (*self).get_encryption_config(builder)
+        self.deref().get_encryption_config(builder)
     }
     fn get_group(&self, builder: GetGroupInputBuilder) -> impl Future<Output = Result<GetGroupOutput, SdkError<GetGroupError>>> {
-        (*self).get_group(builder)
+        self.deref().get_group(builder)
     }
     fn get_groups(&self, builder: GetGroupsInputBuilder) -> impl Future<Output = Result<GetGroupsOutput, SdkError<GetGroupsError>>> {
-        (*self).get_groups(builder)
+        self.deref().get_groups(builder)
     }
     fn get_insight(&self, builder: GetInsightInputBuilder) -> impl Future<Output = Result<GetInsightOutput, SdkError<GetInsightError>>> {
-        (*self).get_insight(builder)
+        self.deref().get_insight(builder)
     }
     fn get_insight_events(&self, builder: GetInsightEventsInputBuilder) -> impl Future<Output = Result<GetInsightEventsOutput, SdkError<GetInsightEventsError>>> {
-        (*self).get_insight_events(builder)
+        self.deref().get_insight_events(builder)
     }
     fn get_insight_impact_graph(&self, builder: GetInsightImpactGraphInputBuilder) -> impl Future<Output = Result<GetInsightImpactGraphOutput, SdkError<GetInsightImpactGraphError>>> {
-        (*self).get_insight_impact_graph(builder)
+        self.deref().get_insight_impact_graph(builder)
     }
     fn get_insight_summaries(&self, builder: GetInsightSummariesInputBuilder) -> impl Future<Output = Result<GetInsightSummariesOutput, SdkError<GetInsightSummariesError>>> {
-        (*self).get_insight_summaries(builder)
+        self.deref().get_insight_summaries(builder)
     }
     fn get_sampling_rules(&self, builder: GetSamplingRulesInputBuilder) -> impl Future<Output = Result<GetSamplingRulesOutput, SdkError<GetSamplingRulesError>>> {
-        (*self).get_sampling_rules(builder)
+        self.deref().get_sampling_rules(builder)
     }
     fn get_sampling_statistic_summaries(&self, builder: GetSamplingStatisticSummariesInputBuilder) -> impl Future<Output = Result<GetSamplingStatisticSummariesOutput, SdkError<GetSamplingStatisticSummariesError>>> {
-        (*self).get_sampling_statistic_summaries(builder)
+        self.deref().get_sampling_statistic_summaries(builder)
     }
     fn get_sampling_targets(&self, builder: GetSamplingTargetsInputBuilder) -> impl Future<Output = Result<GetSamplingTargetsOutput, SdkError<GetSamplingTargetsError>>> {
-        (*self).get_sampling_targets(builder)
+        self.deref().get_sampling_targets(builder)
     }
     fn get_service_graph(&self, builder: GetServiceGraphInputBuilder) -> impl Future<Output = Result<GetServiceGraphOutput, SdkError<GetServiceGraphError>>> {
-        (*self).get_service_graph(builder)
+        self.deref().get_service_graph(builder)
     }
     fn get_time_series_service_statistics(&self, builder: GetTimeSeriesServiceStatisticsInputBuilder) -> impl Future<Output = Result<GetTimeSeriesServiceStatisticsOutput, SdkError<GetTimeSeriesServiceStatisticsError>>> {
-        (*self).get_time_series_service_statistics(builder)
+        self.deref().get_time_series_service_statistics(builder)
     }
     fn get_trace_graph(&self, builder: GetTraceGraphInputBuilder) -> impl Future<Output = Result<GetTraceGraphOutput, SdkError<GetTraceGraphError>>> {
-        (*self).get_trace_graph(builder)
+        self.deref().get_trace_graph(builder)
     }
     fn get_trace_summaries(&self, builder: GetTraceSummariesInputBuilder) -> impl Future<Output = Result<GetTraceSummariesOutput, SdkError<GetTraceSummariesError>>> {
-        (*self).get_trace_summaries(builder)
+        self.deref().get_trace_summaries(builder)
     }
     fn list_resource_policies(&self, builder: ListResourcePoliciesInputBuilder) -> impl Future<Output = Result<ListResourcePoliciesOutput, SdkError<ListResourcePoliciesError>>> {
-        (*self).list_resource_policies(builder)
+        self.deref().list_resource_policies(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn put_encryption_config(&self, builder: PutEncryptionConfigInputBuilder) -> impl Future<Output = Result<PutEncryptionConfigOutput, SdkError<PutEncryptionConfigError>>> {
-        (*self).put_encryption_config(builder)
+        self.deref().put_encryption_config(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn put_telemetry_records(&self, builder: PutTelemetryRecordsInputBuilder) -> impl Future<Output = Result<PutTelemetryRecordsOutput, SdkError<PutTelemetryRecordsError>>> {
-        (*self).put_telemetry_records(builder)
+        self.deref().put_telemetry_records(builder)
     }
     fn put_trace_segments(&self, builder: PutTraceSegmentsInputBuilder) -> impl Future<Output = Result<PutTraceSegmentsOutput, SdkError<PutTraceSegmentsError>>> {
-        (*self).put_trace_segments(builder)
+        self.deref().put_trace_segments(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_group(&self, builder: UpdateGroupInputBuilder) -> impl Future<Output = Result<UpdateGroupOutput, SdkError<UpdateGroupError>>> {
-        (*self).update_group(builder)
+        self.deref().update_group(builder)
     }
     fn update_sampling_rule(&self, builder: UpdateSamplingRuleInputBuilder) -> impl Future<Output = Result<UpdateSamplingRuleOutput, SdkError<UpdateSamplingRuleError>>> {
-        (*self).update_sampling_rule(builder)
+        self.deref().update_sampling_rule(builder)
     }
 }
 #[cfg(feature = "mockall")]

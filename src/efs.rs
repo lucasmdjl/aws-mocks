@@ -48,6 +48,7 @@ use aws_sdk_efs::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_efs::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_efs::*;
 
@@ -171,90 +172,92 @@ impl EFSClient for EFSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: EFSClient> EFSClient for &T {
+impl <T> EFSClient for T
+where T: Deref,
+      T::Target: EFSClient {
     fn create_access_point(&self, builder: CreateAccessPointInputBuilder) -> impl Future<Output = Result<CreateAccessPointOutput, SdkError<CreateAccessPointError>>> {
-        (*self).create_access_point(builder)
+        self.deref().create_access_point(builder)
     }
     fn create_file_system(&self, builder: CreateFileSystemInputBuilder) -> impl Future<Output = Result<CreateFileSystemOutput, SdkError<CreateFileSystemError>>> {
-        (*self).create_file_system(builder)
+        self.deref().create_file_system(builder)
     }
     fn create_mount_target(&self, builder: CreateMountTargetInputBuilder) -> impl Future<Output = Result<CreateMountTargetOutput, SdkError<CreateMountTargetError>>> {
-        (*self).create_mount_target(builder)
+        self.deref().create_mount_target(builder)
     }
     fn create_replication_configuration(&self, builder: CreateReplicationConfigurationInputBuilder) -> impl Future<Output = Result<CreateReplicationConfigurationOutput, SdkError<CreateReplicationConfigurationError>>> {
-        (*self).create_replication_configuration(builder)
+        self.deref().create_replication_configuration(builder)
     }
     fn delete_access_point(&self, builder: DeleteAccessPointInputBuilder) -> impl Future<Output = Result<DeleteAccessPointOutput, SdkError<DeleteAccessPointError>>> {
-        (*self).delete_access_point(builder)
+        self.deref().delete_access_point(builder)
     }
     fn delete_file_system(&self, builder: DeleteFileSystemInputBuilder) -> impl Future<Output = Result<DeleteFileSystemOutput, SdkError<DeleteFileSystemError>>> {
-        (*self).delete_file_system(builder)
+        self.deref().delete_file_system(builder)
     }
     fn delete_file_system_policy(&self, builder: DeleteFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DeleteFileSystemPolicyOutput, SdkError<DeleteFileSystemPolicyError>>> {
-        (*self).delete_file_system_policy(builder)
+        self.deref().delete_file_system_policy(builder)
     }
     fn delete_mount_target(&self, builder: DeleteMountTargetInputBuilder) -> impl Future<Output = Result<DeleteMountTargetOutput, SdkError<DeleteMountTargetError>>> {
-        (*self).delete_mount_target(builder)
+        self.deref().delete_mount_target(builder)
     }
     fn delete_replication_configuration(&self, builder: DeleteReplicationConfigurationInputBuilder) -> impl Future<Output = Result<DeleteReplicationConfigurationOutput, SdkError<DeleteReplicationConfigurationError>>> {
-        (*self).delete_replication_configuration(builder)
+        self.deref().delete_replication_configuration(builder)
     }
     fn describe_access_points(&self, builder: DescribeAccessPointsInputBuilder) -> impl Future<Output = Result<DescribeAccessPointsOutput, SdkError<DescribeAccessPointsError>>> {
-        (*self).describe_access_points(builder)
+        self.deref().describe_access_points(builder)
     }
     fn describe_account_preferences(&self, builder: DescribeAccountPreferencesInputBuilder) -> impl Future<Output = Result<DescribeAccountPreferencesOutput, SdkError<DescribeAccountPreferencesError>>> {
-        (*self).describe_account_preferences(builder)
+        self.deref().describe_account_preferences(builder)
     }
     fn describe_backup_policy(&self, builder: DescribeBackupPolicyInputBuilder) -> impl Future<Output = Result<DescribeBackupPolicyOutput, SdkError<DescribeBackupPolicyError>>> {
-        (*self).describe_backup_policy(builder)
+        self.deref().describe_backup_policy(builder)
     }
     fn describe_file_system_policy(&self, builder: DescribeFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DescribeFileSystemPolicyOutput, SdkError<DescribeFileSystemPolicyError>>> {
-        (*self).describe_file_system_policy(builder)
+        self.deref().describe_file_system_policy(builder)
     }
     fn describe_file_systems(&self, builder: DescribeFileSystemsInputBuilder) -> impl Future<Output = Result<DescribeFileSystemsOutput, SdkError<DescribeFileSystemsError>>> {
-        (*self).describe_file_systems(builder)
+        self.deref().describe_file_systems(builder)
     }
     fn describe_lifecycle_configuration(&self, builder: DescribeLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<DescribeLifecycleConfigurationOutput, SdkError<DescribeLifecycleConfigurationError>>> {
-        (*self).describe_lifecycle_configuration(builder)
+        self.deref().describe_lifecycle_configuration(builder)
     }
     fn describe_mount_target_security_groups(&self, builder: DescribeMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetSecurityGroupsOutput, SdkError<DescribeMountTargetSecurityGroupsError>>> {
-        (*self).describe_mount_target_security_groups(builder)
+        self.deref().describe_mount_target_security_groups(builder)
     }
     fn describe_mount_targets(&self, builder: DescribeMountTargetsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetsOutput, SdkError<DescribeMountTargetsError>>> {
-        (*self).describe_mount_targets(builder)
+        self.deref().describe_mount_targets(builder)
     }
     fn describe_replication_configurations(&self, builder: DescribeReplicationConfigurationsInputBuilder) -> impl Future<Output = Result<DescribeReplicationConfigurationsOutput, SdkError<DescribeReplicationConfigurationsError>>> {
-        (*self).describe_replication_configurations(builder)
+        self.deref().describe_replication_configurations(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn modify_mount_target_security_groups(&self, builder: ModifyMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<ModifyMountTargetSecurityGroupsOutput, SdkError<ModifyMountTargetSecurityGroupsError>>> {
-        (*self).modify_mount_target_security_groups(builder)
+        self.deref().modify_mount_target_security_groups(builder)
     }
     fn put_account_preferences(&self, builder: PutAccountPreferencesInputBuilder) -> impl Future<Output = Result<PutAccountPreferencesOutput, SdkError<PutAccountPreferencesError>>> {
-        (*self).put_account_preferences(builder)
+        self.deref().put_account_preferences(builder)
     }
     fn put_backup_policy(&self, builder: PutBackupPolicyInputBuilder) -> impl Future<Output = Result<PutBackupPolicyOutput, SdkError<PutBackupPolicyError>>> {
-        (*self).put_backup_policy(builder)
+        self.deref().put_backup_policy(builder)
     }
     fn put_file_system_policy(&self, builder: PutFileSystemPolicyInputBuilder) -> impl Future<Output = Result<PutFileSystemPolicyOutput, SdkError<PutFileSystemPolicyError>>> {
-        (*self).put_file_system_policy(builder)
+        self.deref().put_file_system_policy(builder)
     }
     fn put_lifecycle_configuration(&self, builder: PutLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<PutLifecycleConfigurationOutput, SdkError<PutLifecycleConfigurationError>>> {
-        (*self).put_lifecycle_configuration(builder)
+        self.deref().put_lifecycle_configuration(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_file_system(&self, builder: UpdateFileSystemInputBuilder) -> impl Future<Output = Result<UpdateFileSystemOutput, SdkError<UpdateFileSystemError>>> {
-        (*self).update_file_system(builder)
+        self.deref().update_file_system(builder)
     }
     fn update_file_system_protection(&self, builder: UpdateFileSystemProtectionInputBuilder) -> impl Future<Output = Result<UpdateFileSystemProtectionOutput, SdkError<UpdateFileSystemProtectionError>>> {
-        (*self).update_file_system_protection(builder)
+        self.deref().update_file_system_protection(builder)
     }
 }
 #[cfg(feature = "mockall")]

@@ -79,6 +79,7 @@ use aws_sdk_directconnect::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_directconnect::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_directconnect::*;
 
@@ -326,183 +327,185 @@ impl DirectConnectClient for DirectConnectClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: DirectConnectClient> DirectConnectClient for &T {
+impl <T> DirectConnectClient for T
+where T: Deref,
+      T::Target: DirectConnectClient {
     fn accept_direct_connect_gateway_association_proposal(&self, builder: AcceptDirectConnectGatewayAssociationProposalInputBuilder) -> impl Future<Output = Result<AcceptDirectConnectGatewayAssociationProposalOutput, SdkError<AcceptDirectConnectGatewayAssociationProposalError>>> {
-        (*self).accept_direct_connect_gateway_association_proposal(builder)
+        self.deref().accept_direct_connect_gateway_association_proposal(builder)
     }
     fn allocate_hosted_connection(&self, builder: AllocateHostedConnectionInputBuilder) -> impl Future<Output = Result<AllocateHostedConnectionOutput, SdkError<AllocateHostedConnectionError>>> {
-        (*self).allocate_hosted_connection(builder)
+        self.deref().allocate_hosted_connection(builder)
     }
     fn allocate_private_virtual_interface(&self, builder: AllocatePrivateVirtualInterfaceInputBuilder) -> impl Future<Output = Result<AllocatePrivateVirtualInterfaceOutput, SdkError<AllocatePrivateVirtualInterfaceError>>> {
-        (*self).allocate_private_virtual_interface(builder)
+        self.deref().allocate_private_virtual_interface(builder)
     }
     fn allocate_public_virtual_interface(&self, builder: AllocatePublicVirtualInterfaceInputBuilder) -> impl Future<Output = Result<AllocatePublicVirtualInterfaceOutput, SdkError<AllocatePublicVirtualInterfaceError>>> {
-        (*self).allocate_public_virtual_interface(builder)
+        self.deref().allocate_public_virtual_interface(builder)
     }
     fn allocate_transit_virtual_interface(&self, builder: AllocateTransitVirtualInterfaceInputBuilder) -> impl Future<Output = Result<AllocateTransitVirtualInterfaceOutput, SdkError<AllocateTransitVirtualInterfaceError>>> {
-        (*self).allocate_transit_virtual_interface(builder)
+        self.deref().allocate_transit_virtual_interface(builder)
     }
     fn associate_connection_with_lag(&self, builder: AssociateConnectionWithLagInputBuilder) -> impl Future<Output = Result<AssociateConnectionWithLagOutput, SdkError<AssociateConnectionWithLagError>>> {
-        (*self).associate_connection_with_lag(builder)
+        self.deref().associate_connection_with_lag(builder)
     }
     fn associate_hosted_connection(&self, builder: AssociateHostedConnectionInputBuilder) -> impl Future<Output = Result<AssociateHostedConnectionOutput, SdkError<AssociateHostedConnectionError>>> {
-        (*self).associate_hosted_connection(builder)
+        self.deref().associate_hosted_connection(builder)
     }
     fn associate_mac_sec_key(&self, builder: AssociateMacSecKeyInputBuilder) -> impl Future<Output = Result<AssociateMacSecKeyOutput, SdkError<AssociateMacSecKeyError>>> {
-        (*self).associate_mac_sec_key(builder)
+        self.deref().associate_mac_sec_key(builder)
     }
     fn associate_virtual_interface(&self, builder: AssociateVirtualInterfaceInputBuilder) -> impl Future<Output = Result<AssociateVirtualInterfaceOutput, SdkError<AssociateVirtualInterfaceError>>> {
-        (*self).associate_virtual_interface(builder)
+        self.deref().associate_virtual_interface(builder)
     }
     fn confirm_connection(&self, builder: ConfirmConnectionInputBuilder) -> impl Future<Output = Result<ConfirmConnectionOutput, SdkError<ConfirmConnectionError>>> {
-        (*self).confirm_connection(builder)
+        self.deref().confirm_connection(builder)
     }
     fn confirm_customer_agreement(&self, builder: ConfirmCustomerAgreementInputBuilder) -> impl Future<Output = Result<ConfirmCustomerAgreementOutput, SdkError<ConfirmCustomerAgreementError>>> {
-        (*self).confirm_customer_agreement(builder)
+        self.deref().confirm_customer_agreement(builder)
     }
     fn confirm_private_virtual_interface(&self, builder: ConfirmPrivateVirtualInterfaceInputBuilder) -> impl Future<Output = Result<ConfirmPrivateVirtualInterfaceOutput, SdkError<ConfirmPrivateVirtualInterfaceError>>> {
-        (*self).confirm_private_virtual_interface(builder)
+        self.deref().confirm_private_virtual_interface(builder)
     }
     fn confirm_public_virtual_interface(&self, builder: ConfirmPublicVirtualInterfaceInputBuilder) -> impl Future<Output = Result<ConfirmPublicVirtualInterfaceOutput, SdkError<ConfirmPublicVirtualInterfaceError>>> {
-        (*self).confirm_public_virtual_interface(builder)
+        self.deref().confirm_public_virtual_interface(builder)
     }
     fn confirm_transit_virtual_interface(&self, builder: ConfirmTransitVirtualInterfaceInputBuilder) -> impl Future<Output = Result<ConfirmTransitVirtualInterfaceOutput, SdkError<ConfirmTransitVirtualInterfaceError>>> {
-        (*self).confirm_transit_virtual_interface(builder)
+        self.deref().confirm_transit_virtual_interface(builder)
     }
     fn create_bgp_peer(&self, builder: CreateBgpPeerInputBuilder) -> impl Future<Output = Result<CreateBgpPeerOutput, SdkError<CreateBGPPeerError>>> {
-        (*self).create_bgp_peer(builder)
+        self.deref().create_bgp_peer(builder)
     }
     fn create_connection(&self, builder: CreateConnectionInputBuilder) -> impl Future<Output = Result<CreateConnectionOutput, SdkError<CreateConnectionError>>> {
-        (*self).create_connection(builder)
+        self.deref().create_connection(builder)
     }
     fn create_direct_connect_gateway(&self, builder: CreateDirectConnectGatewayInputBuilder) -> impl Future<Output = Result<CreateDirectConnectGatewayOutput, SdkError<CreateDirectConnectGatewayError>>> {
-        (*self).create_direct_connect_gateway(builder)
+        self.deref().create_direct_connect_gateway(builder)
     }
     fn create_direct_connect_gateway_association(&self, builder: CreateDirectConnectGatewayAssociationInputBuilder) -> impl Future<Output = Result<CreateDirectConnectGatewayAssociationOutput, SdkError<CreateDirectConnectGatewayAssociationError>>> {
-        (*self).create_direct_connect_gateway_association(builder)
+        self.deref().create_direct_connect_gateway_association(builder)
     }
     fn create_direct_connect_gateway_association_proposal(&self, builder: CreateDirectConnectGatewayAssociationProposalInputBuilder) -> impl Future<Output = Result<CreateDirectConnectGatewayAssociationProposalOutput, SdkError<CreateDirectConnectGatewayAssociationProposalError>>> {
-        (*self).create_direct_connect_gateway_association_proposal(builder)
+        self.deref().create_direct_connect_gateway_association_proposal(builder)
     }
     fn create_interconnect(&self, builder: CreateInterconnectInputBuilder) -> impl Future<Output = Result<CreateInterconnectOutput, SdkError<CreateInterconnectError>>> {
-        (*self).create_interconnect(builder)
+        self.deref().create_interconnect(builder)
     }
     fn create_lag(&self, builder: CreateLagInputBuilder) -> impl Future<Output = Result<CreateLagOutput, SdkError<CreateLagError>>> {
-        (*self).create_lag(builder)
+        self.deref().create_lag(builder)
     }
     fn create_private_virtual_interface(&self, builder: CreatePrivateVirtualInterfaceInputBuilder) -> impl Future<Output = Result<CreatePrivateVirtualInterfaceOutput, SdkError<CreatePrivateVirtualInterfaceError>>> {
-        (*self).create_private_virtual_interface(builder)
+        self.deref().create_private_virtual_interface(builder)
     }
     fn create_public_virtual_interface(&self, builder: CreatePublicVirtualInterfaceInputBuilder) -> impl Future<Output = Result<CreatePublicVirtualInterfaceOutput, SdkError<CreatePublicVirtualInterfaceError>>> {
-        (*self).create_public_virtual_interface(builder)
+        self.deref().create_public_virtual_interface(builder)
     }
     fn create_transit_virtual_interface(&self, builder: CreateTransitVirtualInterfaceInputBuilder) -> impl Future<Output = Result<CreateTransitVirtualInterfaceOutput, SdkError<CreateTransitVirtualInterfaceError>>> {
-        (*self).create_transit_virtual_interface(builder)
+        self.deref().create_transit_virtual_interface(builder)
     }
     fn delete_bgp_peer(&self, builder: DeleteBgpPeerInputBuilder) -> impl Future<Output = Result<DeleteBgpPeerOutput, SdkError<DeleteBGPPeerError>>> {
-        (*self).delete_bgp_peer(builder)
+        self.deref().delete_bgp_peer(builder)
     }
     fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>> {
-        (*self).delete_connection(builder)
+        self.deref().delete_connection(builder)
     }
     fn delete_direct_connect_gateway(&self, builder: DeleteDirectConnectGatewayInputBuilder) -> impl Future<Output = Result<DeleteDirectConnectGatewayOutput, SdkError<DeleteDirectConnectGatewayError>>> {
-        (*self).delete_direct_connect_gateway(builder)
+        self.deref().delete_direct_connect_gateway(builder)
     }
     fn delete_direct_connect_gateway_association(&self, builder: DeleteDirectConnectGatewayAssociationInputBuilder) -> impl Future<Output = Result<DeleteDirectConnectGatewayAssociationOutput, SdkError<DeleteDirectConnectGatewayAssociationError>>> {
-        (*self).delete_direct_connect_gateway_association(builder)
+        self.deref().delete_direct_connect_gateway_association(builder)
     }
     fn delete_direct_connect_gateway_association_proposal(&self, builder: DeleteDirectConnectGatewayAssociationProposalInputBuilder) -> impl Future<Output = Result<DeleteDirectConnectGatewayAssociationProposalOutput, SdkError<DeleteDirectConnectGatewayAssociationProposalError>>> {
-        (*self).delete_direct_connect_gateway_association_proposal(builder)
+        self.deref().delete_direct_connect_gateway_association_proposal(builder)
     }
     fn delete_interconnect(&self, builder: DeleteInterconnectInputBuilder) -> impl Future<Output = Result<DeleteInterconnectOutput, SdkError<DeleteInterconnectError>>> {
-        (*self).delete_interconnect(builder)
+        self.deref().delete_interconnect(builder)
     }
     fn delete_lag(&self, builder: DeleteLagInputBuilder) -> impl Future<Output = Result<DeleteLagOutput, SdkError<DeleteLagError>>> {
-        (*self).delete_lag(builder)
+        self.deref().delete_lag(builder)
     }
     fn delete_virtual_interface(&self, builder: DeleteVirtualInterfaceInputBuilder) -> impl Future<Output = Result<DeleteVirtualInterfaceOutput, SdkError<DeleteVirtualInterfaceError>>> {
-        (*self).delete_virtual_interface(builder)
+        self.deref().delete_virtual_interface(builder)
     }
     fn describe_connections(&self, builder: DescribeConnectionsInputBuilder) -> impl Future<Output = Result<DescribeConnectionsOutput, SdkError<DescribeConnectionsError>>> {
-        (*self).describe_connections(builder)
+        self.deref().describe_connections(builder)
     }
     fn describe_customer_metadata(&self, builder: DescribeCustomerMetadataInputBuilder) -> impl Future<Output = Result<DescribeCustomerMetadataOutput, SdkError<DescribeCustomerMetadataError>>> {
-        (*self).describe_customer_metadata(builder)
+        self.deref().describe_customer_metadata(builder)
     }
     fn describe_direct_connect_gateway_association_proposals(&self, builder: DescribeDirectConnectGatewayAssociationProposalsInputBuilder) -> impl Future<Output = Result<DescribeDirectConnectGatewayAssociationProposalsOutput, SdkError<DescribeDirectConnectGatewayAssociationProposalsError>>> {
-        (*self).describe_direct_connect_gateway_association_proposals(builder)
+        self.deref().describe_direct_connect_gateway_association_proposals(builder)
     }
     fn describe_direct_connect_gateway_associations(&self, builder: DescribeDirectConnectGatewayAssociationsInputBuilder) -> impl Future<Output = Result<DescribeDirectConnectGatewayAssociationsOutput, SdkError<DescribeDirectConnectGatewayAssociationsError>>> {
-        (*self).describe_direct_connect_gateway_associations(builder)
+        self.deref().describe_direct_connect_gateway_associations(builder)
     }
     fn describe_direct_connect_gateway_attachments(&self, builder: DescribeDirectConnectGatewayAttachmentsInputBuilder) -> impl Future<Output = Result<DescribeDirectConnectGatewayAttachmentsOutput, SdkError<DescribeDirectConnectGatewayAttachmentsError>>> {
-        (*self).describe_direct_connect_gateway_attachments(builder)
+        self.deref().describe_direct_connect_gateway_attachments(builder)
     }
     fn describe_direct_connect_gateways(&self, builder: DescribeDirectConnectGatewaysInputBuilder) -> impl Future<Output = Result<DescribeDirectConnectGatewaysOutput, SdkError<DescribeDirectConnectGatewaysError>>> {
-        (*self).describe_direct_connect_gateways(builder)
+        self.deref().describe_direct_connect_gateways(builder)
     }
     fn describe_hosted_connections(&self, builder: DescribeHostedConnectionsInputBuilder) -> impl Future<Output = Result<DescribeHostedConnectionsOutput, SdkError<DescribeHostedConnectionsError>>> {
-        (*self).describe_hosted_connections(builder)
+        self.deref().describe_hosted_connections(builder)
     }
     fn describe_interconnects(&self, builder: DescribeInterconnectsInputBuilder) -> impl Future<Output = Result<DescribeInterconnectsOutput, SdkError<DescribeInterconnectsError>>> {
-        (*self).describe_interconnects(builder)
+        self.deref().describe_interconnects(builder)
     }
     fn describe_lags(&self, builder: DescribeLagsInputBuilder) -> impl Future<Output = Result<DescribeLagsOutput, SdkError<DescribeLagsError>>> {
-        (*self).describe_lags(builder)
+        self.deref().describe_lags(builder)
     }
     fn describe_loa(&self, builder: DescribeLoaInputBuilder) -> impl Future<Output = Result<DescribeLoaOutput, SdkError<DescribeLoaError>>> {
-        (*self).describe_loa(builder)
+        self.deref().describe_loa(builder)
     }
     fn describe_locations(&self, builder: DescribeLocationsInputBuilder) -> impl Future<Output = Result<DescribeLocationsOutput, SdkError<DescribeLocationsError>>> {
-        (*self).describe_locations(builder)
+        self.deref().describe_locations(builder)
     }
     fn describe_router_configuration(&self, builder: DescribeRouterConfigurationInputBuilder) -> impl Future<Output = Result<DescribeRouterConfigurationOutput, SdkError<DescribeRouterConfigurationError>>> {
-        (*self).describe_router_configuration(builder)
+        self.deref().describe_router_configuration(builder)
     }
     fn describe_tags(&self, builder: DescribeTagsInputBuilder) -> impl Future<Output = Result<DescribeTagsOutput, SdkError<DescribeTagsError>>> {
-        (*self).describe_tags(builder)
+        self.deref().describe_tags(builder)
     }
     fn describe_virtual_gateways(&self, builder: DescribeVirtualGatewaysInputBuilder) -> impl Future<Output = Result<DescribeVirtualGatewaysOutput, SdkError<DescribeVirtualGatewaysError>>> {
-        (*self).describe_virtual_gateways(builder)
+        self.deref().describe_virtual_gateways(builder)
     }
     fn describe_virtual_interfaces(&self, builder: DescribeVirtualInterfacesInputBuilder) -> impl Future<Output = Result<DescribeVirtualInterfacesOutput, SdkError<DescribeVirtualInterfacesError>>> {
-        (*self).describe_virtual_interfaces(builder)
+        self.deref().describe_virtual_interfaces(builder)
     }
     fn disassociate_connection_from_lag(&self, builder: DisassociateConnectionFromLagInputBuilder) -> impl Future<Output = Result<DisassociateConnectionFromLagOutput, SdkError<DisassociateConnectionFromLagError>>> {
-        (*self).disassociate_connection_from_lag(builder)
+        self.deref().disassociate_connection_from_lag(builder)
     }
     fn disassociate_mac_sec_key(&self, builder: DisassociateMacSecKeyInputBuilder) -> impl Future<Output = Result<DisassociateMacSecKeyOutput, SdkError<DisassociateMacSecKeyError>>> {
-        (*self).disassociate_mac_sec_key(builder)
+        self.deref().disassociate_mac_sec_key(builder)
     }
     fn list_virtual_interface_test_history(&self, builder: ListVirtualInterfaceTestHistoryInputBuilder) -> impl Future<Output = Result<ListVirtualInterfaceTestHistoryOutput, SdkError<ListVirtualInterfaceTestHistoryError>>> {
-        (*self).list_virtual_interface_test_history(builder)
+        self.deref().list_virtual_interface_test_history(builder)
     }
     fn start_bgp_failover_test(&self, builder: StartBgpFailoverTestInputBuilder) -> impl Future<Output = Result<StartBgpFailoverTestOutput, SdkError<StartBgpFailoverTestError>>> {
-        (*self).start_bgp_failover_test(builder)
+        self.deref().start_bgp_failover_test(builder)
     }
     fn stop_bgp_failover_test(&self, builder: StopBgpFailoverTestInputBuilder) -> impl Future<Output = Result<StopBgpFailoverTestOutput, SdkError<StopBgpFailoverTestError>>> {
-        (*self).stop_bgp_failover_test(builder)
+        self.deref().stop_bgp_failover_test(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_connection(&self, builder: UpdateConnectionInputBuilder) -> impl Future<Output = Result<UpdateConnectionOutput, SdkError<UpdateConnectionError>>> {
-        (*self).update_connection(builder)
+        self.deref().update_connection(builder)
     }
     fn update_direct_connect_gateway(&self, builder: UpdateDirectConnectGatewayInputBuilder) -> impl Future<Output = Result<UpdateDirectConnectGatewayOutput, SdkError<UpdateDirectConnectGatewayError>>> {
-        (*self).update_direct_connect_gateway(builder)
+        self.deref().update_direct_connect_gateway(builder)
     }
     fn update_direct_connect_gateway_association(&self, builder: UpdateDirectConnectGatewayAssociationInputBuilder) -> impl Future<Output = Result<UpdateDirectConnectGatewayAssociationOutput, SdkError<UpdateDirectConnectGatewayAssociationError>>> {
-        (*self).update_direct_connect_gateway_association(builder)
+        self.deref().update_direct_connect_gateway_association(builder)
     }
     fn update_lag(&self, builder: UpdateLagInputBuilder) -> impl Future<Output = Result<UpdateLagOutput, SdkError<UpdateLagError>>> {
-        (*self).update_lag(builder)
+        self.deref().update_lag(builder)
     }
     fn update_virtual_interface_attributes(&self, builder: UpdateVirtualInterfaceAttributesInputBuilder) -> impl Future<Output = Result<UpdateVirtualInterfaceAttributesOutput, SdkError<UpdateVirtualInterfaceAttributesError>>> {
-        (*self).update_virtual_interface_attributes(builder)
+        self.deref().update_virtual_interface_attributes(builder)
     }
 }
 #[cfg(feature = "mockall")]

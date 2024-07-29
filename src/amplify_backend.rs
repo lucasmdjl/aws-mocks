@@ -51,6 +51,7 @@ use aws_sdk_amplifybackend::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_amplifybackend::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_amplifybackend::*;
 
@@ -186,99 +187,101 @@ impl AmplifyBackendClient for AmplifyBackendClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AmplifyBackendClient> AmplifyBackendClient for &T {
+impl <T> AmplifyBackendClient for T
+where T: Deref,
+      T::Target: AmplifyBackendClient {
     fn clone_backend(&self, builder: CloneBackendInputBuilder) -> impl Future<Output = Result<CloneBackendOutput, SdkError<CloneBackendError>>> {
-        (*self).clone_backend(builder)
+        self.deref().clone_backend(builder)
     }
     fn create_backend(&self, builder: CreateBackendInputBuilder) -> impl Future<Output = Result<CreateBackendOutput, SdkError<CreateBackendError>>> {
-        (*self).create_backend(builder)
+        self.deref().create_backend(builder)
     }
     fn create_backend_api(&self, builder: CreateBackendApiInputBuilder) -> impl Future<Output = Result<CreateBackendApiOutput, SdkError<CreateBackendAPIError>>> {
-        (*self).create_backend_api(builder)
+        self.deref().create_backend_api(builder)
     }
     fn create_backend_auth(&self, builder: CreateBackendAuthInputBuilder) -> impl Future<Output = Result<CreateBackendAuthOutput, SdkError<CreateBackendAuthError>>> {
-        (*self).create_backend_auth(builder)
+        self.deref().create_backend_auth(builder)
     }
     fn create_backend_config(&self, builder: CreateBackendConfigInputBuilder) -> impl Future<Output = Result<CreateBackendConfigOutput, SdkError<CreateBackendConfigError>>> {
-        (*self).create_backend_config(builder)
+        self.deref().create_backend_config(builder)
     }
     fn create_backend_storage(&self, builder: CreateBackendStorageInputBuilder) -> impl Future<Output = Result<CreateBackendStorageOutput, SdkError<CreateBackendStorageError>>> {
-        (*self).create_backend_storage(builder)
+        self.deref().create_backend_storage(builder)
     }
     fn create_token(&self, builder: CreateTokenInputBuilder) -> impl Future<Output = Result<CreateTokenOutput, SdkError<CreateTokenError>>> {
-        (*self).create_token(builder)
+        self.deref().create_token(builder)
     }
     fn delete_backend(&self, builder: DeleteBackendInputBuilder) -> impl Future<Output = Result<DeleteBackendOutput, SdkError<DeleteBackendError>>> {
-        (*self).delete_backend(builder)
+        self.deref().delete_backend(builder)
     }
     fn delete_backend_api(&self, builder: DeleteBackendApiInputBuilder) -> impl Future<Output = Result<DeleteBackendApiOutput, SdkError<DeleteBackendAPIError>>> {
-        (*self).delete_backend_api(builder)
+        self.deref().delete_backend_api(builder)
     }
     fn delete_backend_auth(&self, builder: DeleteBackendAuthInputBuilder) -> impl Future<Output = Result<DeleteBackendAuthOutput, SdkError<DeleteBackendAuthError>>> {
-        (*self).delete_backend_auth(builder)
+        self.deref().delete_backend_auth(builder)
     }
     fn delete_backend_storage(&self, builder: DeleteBackendStorageInputBuilder) -> impl Future<Output = Result<DeleteBackendStorageOutput, SdkError<DeleteBackendStorageError>>> {
-        (*self).delete_backend_storage(builder)
+        self.deref().delete_backend_storage(builder)
     }
     fn delete_token(&self, builder: DeleteTokenInputBuilder) -> impl Future<Output = Result<DeleteTokenOutput, SdkError<DeleteTokenError>>> {
-        (*self).delete_token(builder)
+        self.deref().delete_token(builder)
     }
     fn generate_backend_api_models(&self, builder: GenerateBackendApiModelsInputBuilder) -> impl Future<Output = Result<GenerateBackendApiModelsOutput, SdkError<GenerateBackendAPIModelsError>>> {
-        (*self).generate_backend_api_models(builder)
+        self.deref().generate_backend_api_models(builder)
     }
     fn get_backend(&self, builder: GetBackendInputBuilder) -> impl Future<Output = Result<GetBackendOutput, SdkError<GetBackendError>>> {
-        (*self).get_backend(builder)
+        self.deref().get_backend(builder)
     }
     fn get_backend_api(&self, builder: GetBackendApiInputBuilder) -> impl Future<Output = Result<GetBackendApiOutput, SdkError<GetBackendAPIError>>> {
-        (*self).get_backend_api(builder)
+        self.deref().get_backend_api(builder)
     }
     fn get_backend_api_models(&self, builder: GetBackendApiModelsInputBuilder) -> impl Future<Output = Result<GetBackendApiModelsOutput, SdkError<GetBackendAPIModelsError>>> {
-        (*self).get_backend_api_models(builder)
+        self.deref().get_backend_api_models(builder)
     }
     fn get_backend_auth(&self, builder: GetBackendAuthInputBuilder) -> impl Future<Output = Result<GetBackendAuthOutput, SdkError<GetBackendAuthError>>> {
-        (*self).get_backend_auth(builder)
+        self.deref().get_backend_auth(builder)
     }
     fn get_backend_job(&self, builder: GetBackendJobInputBuilder) -> impl Future<Output = Result<GetBackendJobOutput, SdkError<GetBackendJobError>>> {
-        (*self).get_backend_job(builder)
+        self.deref().get_backend_job(builder)
     }
     fn get_backend_storage(&self, builder: GetBackendStorageInputBuilder) -> impl Future<Output = Result<GetBackendStorageOutput, SdkError<GetBackendStorageError>>> {
-        (*self).get_backend_storage(builder)
+        self.deref().get_backend_storage(builder)
     }
     fn get_token(&self, builder: GetTokenInputBuilder) -> impl Future<Output = Result<GetTokenOutput, SdkError<GetTokenError>>> {
-        (*self).get_token(builder)
+        self.deref().get_token(builder)
     }
     fn import_backend_auth(&self, builder: ImportBackendAuthInputBuilder) -> impl Future<Output = Result<ImportBackendAuthOutput, SdkError<ImportBackendAuthError>>> {
-        (*self).import_backend_auth(builder)
+        self.deref().import_backend_auth(builder)
     }
     fn import_backend_storage(&self, builder: ImportBackendStorageInputBuilder) -> impl Future<Output = Result<ImportBackendStorageOutput, SdkError<ImportBackendStorageError>>> {
-        (*self).import_backend_storage(builder)
+        self.deref().import_backend_storage(builder)
     }
     fn list_backend_jobs(&self, builder: ListBackendJobsInputBuilder) -> impl Future<Output = Result<ListBackendJobsOutput, SdkError<ListBackendJobsError>>> {
-        (*self).list_backend_jobs(builder)
+        self.deref().list_backend_jobs(builder)
     }
     fn list_s3_buckets(&self, builder: ListS3BucketsInputBuilder) -> impl Future<Output = Result<ListS3BucketsOutput, SdkError<ListS3BucketsError>>> {
-        (*self).list_s3_buckets(builder)
+        self.deref().list_s3_buckets(builder)
     }
     fn remove_all_backends(&self, builder: RemoveAllBackendsInputBuilder) -> impl Future<Output = Result<RemoveAllBackendsOutput, SdkError<RemoveAllBackendsError>>> {
-        (*self).remove_all_backends(builder)
+        self.deref().remove_all_backends(builder)
     }
     fn remove_backend_config(&self, builder: RemoveBackendConfigInputBuilder) -> impl Future<Output = Result<RemoveBackendConfigOutput, SdkError<RemoveBackendConfigError>>> {
-        (*self).remove_backend_config(builder)
+        self.deref().remove_backend_config(builder)
     }
     fn update_backend_api(&self, builder: UpdateBackendApiInputBuilder) -> impl Future<Output = Result<UpdateBackendApiOutput, SdkError<UpdateBackendAPIError>>> {
-        (*self).update_backend_api(builder)
+        self.deref().update_backend_api(builder)
     }
     fn update_backend_auth(&self, builder: UpdateBackendAuthInputBuilder) -> impl Future<Output = Result<UpdateBackendAuthOutput, SdkError<UpdateBackendAuthError>>> {
-        (*self).update_backend_auth(builder)
+        self.deref().update_backend_auth(builder)
     }
     fn update_backend_config(&self, builder: UpdateBackendConfigInputBuilder) -> impl Future<Output = Result<UpdateBackendConfigOutput, SdkError<UpdateBackendConfigError>>> {
-        (*self).update_backend_config(builder)
+        self.deref().update_backend_config(builder)
     }
     fn update_backend_job(&self, builder: UpdateBackendJobInputBuilder) -> impl Future<Output = Result<UpdateBackendJobOutput, SdkError<UpdateBackendJobError>>> {
-        (*self).update_backend_job(builder)
+        self.deref().update_backend_job(builder)
     }
     fn update_backend_storage(&self, builder: UpdateBackendStorageInputBuilder) -> impl Future<Output = Result<UpdateBackendStorageOutput, SdkError<UpdateBackendStorageError>>> {
-        (*self).update_backend_storage(builder)
+        self.deref().update_backend_storage(builder)
     }
 }
 #[cfg(feature = "mockall")]

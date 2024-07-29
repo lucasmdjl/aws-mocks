@@ -55,6 +55,7 @@ use aws_sdk_accessanalyzer::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_accessanalyzer::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_accessanalyzer::*;
 
@@ -206,111 +207,113 @@ impl AccessAnalyzerClient for AccessAnalyzerClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AccessAnalyzerClient> AccessAnalyzerClient for &T {
+impl <T> AccessAnalyzerClient for T
+where T: Deref,
+      T::Target: AccessAnalyzerClient {
     fn apply_archive_rule(&self, builder: ApplyArchiveRuleInputBuilder) -> impl Future<Output = Result<ApplyArchiveRuleOutput, SdkError<ApplyArchiveRuleError>>> {
-        (*self).apply_archive_rule(builder)
+        self.deref().apply_archive_rule(builder)
     }
     fn cancel_policy_generation(&self, builder: CancelPolicyGenerationInputBuilder) -> impl Future<Output = Result<CancelPolicyGenerationOutput, SdkError<CancelPolicyGenerationError>>> {
-        (*self).cancel_policy_generation(builder)
+        self.deref().cancel_policy_generation(builder)
     }
     fn check_access_not_granted(&self, builder: CheckAccessNotGrantedInputBuilder) -> impl Future<Output = Result<CheckAccessNotGrantedOutput, SdkError<CheckAccessNotGrantedError>>> {
-        (*self).check_access_not_granted(builder)
+        self.deref().check_access_not_granted(builder)
     }
     fn check_no_new_access(&self, builder: CheckNoNewAccessInputBuilder) -> impl Future<Output = Result<CheckNoNewAccessOutput, SdkError<CheckNoNewAccessError>>> {
-        (*self).check_no_new_access(builder)
+        self.deref().check_no_new_access(builder)
     }
     fn check_no_public_access(&self, builder: CheckNoPublicAccessInputBuilder) -> impl Future<Output = Result<CheckNoPublicAccessOutput, SdkError<CheckNoPublicAccessError>>> {
-        (*self).check_no_public_access(builder)
+        self.deref().check_no_public_access(builder)
     }
     fn create_access_preview(&self, builder: CreateAccessPreviewInputBuilder) -> impl Future<Output = Result<CreateAccessPreviewOutput, SdkError<CreateAccessPreviewError>>> {
-        (*self).create_access_preview(builder)
+        self.deref().create_access_preview(builder)
     }
     fn create_analyzer(&self, builder: CreateAnalyzerInputBuilder) -> impl Future<Output = Result<CreateAnalyzerOutput, SdkError<CreateAnalyzerError>>> {
-        (*self).create_analyzer(builder)
+        self.deref().create_analyzer(builder)
     }
     fn create_archive_rule(&self, builder: CreateArchiveRuleInputBuilder) -> impl Future<Output = Result<CreateArchiveRuleOutput, SdkError<CreateArchiveRuleError>>> {
-        (*self).create_archive_rule(builder)
+        self.deref().create_archive_rule(builder)
     }
     fn delete_analyzer(&self, builder: DeleteAnalyzerInputBuilder) -> impl Future<Output = Result<DeleteAnalyzerOutput, SdkError<DeleteAnalyzerError>>> {
-        (*self).delete_analyzer(builder)
+        self.deref().delete_analyzer(builder)
     }
     fn delete_archive_rule(&self, builder: DeleteArchiveRuleInputBuilder) -> impl Future<Output = Result<DeleteArchiveRuleOutput, SdkError<DeleteArchiveRuleError>>> {
-        (*self).delete_archive_rule(builder)
+        self.deref().delete_archive_rule(builder)
     }
     fn generate_finding_recommendation(&self, builder: GenerateFindingRecommendationInputBuilder) -> impl Future<Output = Result<GenerateFindingRecommendationOutput, SdkError<GenerateFindingRecommendationError>>> {
-        (*self).generate_finding_recommendation(builder)
+        self.deref().generate_finding_recommendation(builder)
     }
     fn get_access_preview(&self, builder: GetAccessPreviewInputBuilder) -> impl Future<Output = Result<GetAccessPreviewOutput, SdkError<GetAccessPreviewError>>> {
-        (*self).get_access_preview(builder)
+        self.deref().get_access_preview(builder)
     }
     fn get_analyzed_resource(&self, builder: GetAnalyzedResourceInputBuilder) -> impl Future<Output = Result<GetAnalyzedResourceOutput, SdkError<GetAnalyzedResourceError>>> {
-        (*self).get_analyzed_resource(builder)
+        self.deref().get_analyzed_resource(builder)
     }
     fn get_analyzer(&self, builder: GetAnalyzerInputBuilder) -> impl Future<Output = Result<GetAnalyzerOutput, SdkError<GetAnalyzerError>>> {
-        (*self).get_analyzer(builder)
+        self.deref().get_analyzer(builder)
     }
     fn get_archive_rule(&self, builder: GetArchiveRuleInputBuilder) -> impl Future<Output = Result<GetArchiveRuleOutput, SdkError<GetArchiveRuleError>>> {
-        (*self).get_archive_rule(builder)
+        self.deref().get_archive_rule(builder)
     }
     fn get_finding(&self, builder: GetFindingInputBuilder) -> impl Future<Output = Result<GetFindingOutput, SdkError<GetFindingError>>> {
-        (*self).get_finding(builder)
+        self.deref().get_finding(builder)
     }
     fn get_finding_recommendation(&self, builder: GetFindingRecommendationInputBuilder) -> impl Future<Output = Result<GetFindingRecommendationOutput, SdkError<GetFindingRecommendationError>>> {
-        (*self).get_finding_recommendation(builder)
+        self.deref().get_finding_recommendation(builder)
     }
     fn get_finding_v2(&self, builder: GetFindingV2InputBuilder) -> impl Future<Output = Result<GetFindingV2Output, SdkError<GetFindingV2Error>>> {
-        (*self).get_finding_v2(builder)
+        self.deref().get_finding_v2(builder)
     }
     fn get_generated_policy(&self, builder: GetGeneratedPolicyInputBuilder) -> impl Future<Output = Result<GetGeneratedPolicyOutput, SdkError<GetGeneratedPolicyError>>> {
-        (*self).get_generated_policy(builder)
+        self.deref().get_generated_policy(builder)
     }
     fn list_access_preview_findings(&self, builder: ListAccessPreviewFindingsInputBuilder) -> impl Future<Output = Result<ListAccessPreviewFindingsOutput, SdkError<ListAccessPreviewFindingsError>>> {
-        (*self).list_access_preview_findings(builder)
+        self.deref().list_access_preview_findings(builder)
     }
     fn list_access_previews(&self, builder: ListAccessPreviewsInputBuilder) -> impl Future<Output = Result<ListAccessPreviewsOutput, SdkError<ListAccessPreviewsError>>> {
-        (*self).list_access_previews(builder)
+        self.deref().list_access_previews(builder)
     }
     fn list_analyzed_resources(&self, builder: ListAnalyzedResourcesInputBuilder) -> impl Future<Output = Result<ListAnalyzedResourcesOutput, SdkError<ListAnalyzedResourcesError>>> {
-        (*self).list_analyzed_resources(builder)
+        self.deref().list_analyzed_resources(builder)
     }
     fn list_analyzers(&self, builder: ListAnalyzersInputBuilder) -> impl Future<Output = Result<ListAnalyzersOutput, SdkError<ListAnalyzersError>>> {
-        (*self).list_analyzers(builder)
+        self.deref().list_analyzers(builder)
     }
     fn list_archive_rules(&self, builder: ListArchiveRulesInputBuilder) -> impl Future<Output = Result<ListArchiveRulesOutput, SdkError<ListArchiveRulesError>>> {
-        (*self).list_archive_rules(builder)
+        self.deref().list_archive_rules(builder)
     }
     fn list_findings(&self, builder: ListFindingsInputBuilder) -> impl Future<Output = Result<ListFindingsOutput, SdkError<ListFindingsError>>> {
-        (*self).list_findings(builder)
+        self.deref().list_findings(builder)
     }
     fn list_findings_v2(&self, builder: ListFindingsV2InputBuilder) -> impl Future<Output = Result<ListFindingsV2Output, SdkError<ListFindingsV2Error>>> {
-        (*self).list_findings_v2(builder)
+        self.deref().list_findings_v2(builder)
     }
     fn list_policy_generations(&self, builder: ListPolicyGenerationsInputBuilder) -> impl Future<Output = Result<ListPolicyGenerationsOutput, SdkError<ListPolicyGenerationsError>>> {
-        (*self).list_policy_generations(builder)
+        self.deref().list_policy_generations(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn start_policy_generation(&self, builder: StartPolicyGenerationInputBuilder) -> impl Future<Output = Result<StartPolicyGenerationOutput, SdkError<StartPolicyGenerationError>>> {
-        (*self).start_policy_generation(builder)
+        self.deref().start_policy_generation(builder)
     }
     fn start_resource_scan(&self, builder: StartResourceScanInputBuilder) -> impl Future<Output = Result<StartResourceScanOutput, SdkError<StartResourceScanError>>> {
-        (*self).start_resource_scan(builder)
+        self.deref().start_resource_scan(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_archive_rule(&self, builder: UpdateArchiveRuleInputBuilder) -> impl Future<Output = Result<UpdateArchiveRuleOutput, SdkError<UpdateArchiveRuleError>>> {
-        (*self).update_archive_rule(builder)
+        self.deref().update_archive_rule(builder)
     }
     fn update_findings(&self, builder: UpdateFindingsInputBuilder) -> impl Future<Output = Result<UpdateFindingsOutput, SdkError<UpdateFindingsError>>> {
-        (*self).update_findings(builder)
+        self.deref().update_findings(builder)
     }
     fn validate_policy(&self, builder: ValidatePolicyInputBuilder) -> impl Future<Output = Result<ValidatePolicyOutput, SdkError<ValidatePolicyError>>> {
-        (*self).validate_policy(builder)
+        self.deref().validate_policy(builder)
     }
 }
 #[cfg(feature = "mockall")]

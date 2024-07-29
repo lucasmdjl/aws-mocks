@@ -64,6 +64,7 @@ use aws_sdk_databrew::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_databrew::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_databrew::*;
 
@@ -251,138 +252,140 @@ impl DataBrewClient for DataBrewClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: DataBrewClient> DataBrewClient for &T {
+impl <T> DataBrewClient for T
+where T: Deref,
+      T::Target: DataBrewClient {
     fn batch_delete_recipe_version(&self, builder: BatchDeleteRecipeVersionInputBuilder) -> impl Future<Output = Result<BatchDeleteRecipeVersionOutput, SdkError<BatchDeleteRecipeVersionError>>> {
-        (*self).batch_delete_recipe_version(builder)
+        self.deref().batch_delete_recipe_version(builder)
     }
     fn create_dataset(&self, builder: CreateDatasetInputBuilder) -> impl Future<Output = Result<CreateDatasetOutput, SdkError<CreateDatasetError>>> {
-        (*self).create_dataset(builder)
+        self.deref().create_dataset(builder)
     }
     fn create_profile_job(&self, builder: CreateProfileJobInputBuilder) -> impl Future<Output = Result<CreateProfileJobOutput, SdkError<CreateProfileJobError>>> {
-        (*self).create_profile_job(builder)
+        self.deref().create_profile_job(builder)
     }
     fn create_project(&self, builder: CreateProjectInputBuilder) -> impl Future<Output = Result<CreateProjectOutput, SdkError<CreateProjectError>>> {
-        (*self).create_project(builder)
+        self.deref().create_project(builder)
     }
     fn create_recipe(&self, builder: CreateRecipeInputBuilder) -> impl Future<Output = Result<CreateRecipeOutput, SdkError<CreateRecipeError>>> {
-        (*self).create_recipe(builder)
+        self.deref().create_recipe(builder)
     }
     fn create_recipe_job(&self, builder: CreateRecipeJobInputBuilder) -> impl Future<Output = Result<CreateRecipeJobOutput, SdkError<CreateRecipeJobError>>> {
-        (*self).create_recipe_job(builder)
+        self.deref().create_recipe_job(builder)
     }
     fn create_ruleset(&self, builder: CreateRulesetInputBuilder) -> impl Future<Output = Result<CreateRulesetOutput, SdkError<CreateRulesetError>>> {
-        (*self).create_ruleset(builder)
+        self.deref().create_ruleset(builder)
     }
     fn create_schedule(&self, builder: CreateScheduleInputBuilder) -> impl Future<Output = Result<CreateScheduleOutput, SdkError<CreateScheduleError>>> {
-        (*self).create_schedule(builder)
+        self.deref().create_schedule(builder)
     }
     fn delete_dataset(&self, builder: DeleteDatasetInputBuilder) -> impl Future<Output = Result<DeleteDatasetOutput, SdkError<DeleteDatasetError>>> {
-        (*self).delete_dataset(builder)
+        self.deref().delete_dataset(builder)
     }
     fn delete_job(&self, builder: DeleteJobInputBuilder) -> impl Future<Output = Result<DeleteJobOutput, SdkError<DeleteJobError>>> {
-        (*self).delete_job(builder)
+        self.deref().delete_job(builder)
     }
     fn delete_project(&self, builder: DeleteProjectInputBuilder) -> impl Future<Output = Result<DeleteProjectOutput, SdkError<DeleteProjectError>>> {
-        (*self).delete_project(builder)
+        self.deref().delete_project(builder)
     }
     fn delete_recipe_version(&self, builder: DeleteRecipeVersionInputBuilder) -> impl Future<Output = Result<DeleteRecipeVersionOutput, SdkError<DeleteRecipeVersionError>>> {
-        (*self).delete_recipe_version(builder)
+        self.deref().delete_recipe_version(builder)
     }
     fn delete_ruleset(&self, builder: DeleteRulesetInputBuilder) -> impl Future<Output = Result<DeleteRulesetOutput, SdkError<DeleteRulesetError>>> {
-        (*self).delete_ruleset(builder)
+        self.deref().delete_ruleset(builder)
     }
     fn delete_schedule(&self, builder: DeleteScheduleInputBuilder) -> impl Future<Output = Result<DeleteScheduleOutput, SdkError<DeleteScheduleError>>> {
-        (*self).delete_schedule(builder)
+        self.deref().delete_schedule(builder)
     }
     fn describe_dataset(&self, builder: DescribeDatasetInputBuilder) -> impl Future<Output = Result<DescribeDatasetOutput, SdkError<DescribeDatasetError>>> {
-        (*self).describe_dataset(builder)
+        self.deref().describe_dataset(builder)
     }
     fn describe_job(&self, builder: DescribeJobInputBuilder) -> impl Future<Output = Result<DescribeJobOutput, SdkError<DescribeJobError>>> {
-        (*self).describe_job(builder)
+        self.deref().describe_job(builder)
     }
     fn describe_job_run(&self, builder: DescribeJobRunInputBuilder) -> impl Future<Output = Result<DescribeJobRunOutput, SdkError<DescribeJobRunError>>> {
-        (*self).describe_job_run(builder)
+        self.deref().describe_job_run(builder)
     }
     fn describe_project(&self, builder: DescribeProjectInputBuilder) -> impl Future<Output = Result<DescribeProjectOutput, SdkError<DescribeProjectError>>> {
-        (*self).describe_project(builder)
+        self.deref().describe_project(builder)
     }
     fn describe_recipe(&self, builder: DescribeRecipeInputBuilder) -> impl Future<Output = Result<DescribeRecipeOutput, SdkError<DescribeRecipeError>>> {
-        (*self).describe_recipe(builder)
+        self.deref().describe_recipe(builder)
     }
     fn describe_ruleset(&self, builder: DescribeRulesetInputBuilder) -> impl Future<Output = Result<DescribeRulesetOutput, SdkError<DescribeRulesetError>>> {
-        (*self).describe_ruleset(builder)
+        self.deref().describe_ruleset(builder)
     }
     fn describe_schedule(&self, builder: DescribeScheduleInputBuilder) -> impl Future<Output = Result<DescribeScheduleOutput, SdkError<DescribeScheduleError>>> {
-        (*self).describe_schedule(builder)
+        self.deref().describe_schedule(builder)
     }
     fn list_datasets(&self, builder: ListDatasetsInputBuilder) -> impl Future<Output = Result<ListDatasetsOutput, SdkError<ListDatasetsError>>> {
-        (*self).list_datasets(builder)
+        self.deref().list_datasets(builder)
     }
     fn list_job_runs(&self, builder: ListJobRunsInputBuilder) -> impl Future<Output = Result<ListJobRunsOutput, SdkError<ListJobRunsError>>> {
-        (*self).list_job_runs(builder)
+        self.deref().list_job_runs(builder)
     }
     fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>> {
-        (*self).list_jobs(builder)
+        self.deref().list_jobs(builder)
     }
     fn list_projects(&self, builder: ListProjectsInputBuilder) -> impl Future<Output = Result<ListProjectsOutput, SdkError<ListProjectsError>>> {
-        (*self).list_projects(builder)
+        self.deref().list_projects(builder)
     }
     fn list_recipe_versions(&self, builder: ListRecipeVersionsInputBuilder) -> impl Future<Output = Result<ListRecipeVersionsOutput, SdkError<ListRecipeVersionsError>>> {
-        (*self).list_recipe_versions(builder)
+        self.deref().list_recipe_versions(builder)
     }
     fn list_recipes(&self, builder: ListRecipesInputBuilder) -> impl Future<Output = Result<ListRecipesOutput, SdkError<ListRecipesError>>> {
-        (*self).list_recipes(builder)
+        self.deref().list_recipes(builder)
     }
     fn list_rulesets(&self, builder: ListRulesetsInputBuilder) -> impl Future<Output = Result<ListRulesetsOutput, SdkError<ListRulesetsError>>> {
-        (*self).list_rulesets(builder)
+        self.deref().list_rulesets(builder)
     }
     fn list_schedules(&self, builder: ListSchedulesInputBuilder) -> impl Future<Output = Result<ListSchedulesOutput, SdkError<ListSchedulesError>>> {
-        (*self).list_schedules(builder)
+        self.deref().list_schedules(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn publish_recipe(&self, builder: PublishRecipeInputBuilder) -> impl Future<Output = Result<PublishRecipeOutput, SdkError<PublishRecipeError>>> {
-        (*self).publish_recipe(builder)
+        self.deref().publish_recipe(builder)
     }
     fn send_project_session_action(&self, builder: SendProjectSessionActionInputBuilder) -> impl Future<Output = Result<SendProjectSessionActionOutput, SdkError<SendProjectSessionActionError>>> {
-        (*self).send_project_session_action(builder)
+        self.deref().send_project_session_action(builder)
     }
     fn start_job_run(&self, builder: StartJobRunInputBuilder) -> impl Future<Output = Result<StartJobRunOutput, SdkError<StartJobRunError>>> {
-        (*self).start_job_run(builder)
+        self.deref().start_job_run(builder)
     }
     fn start_project_session(&self, builder: StartProjectSessionInputBuilder) -> impl Future<Output = Result<StartProjectSessionOutput, SdkError<StartProjectSessionError>>> {
-        (*self).start_project_session(builder)
+        self.deref().start_project_session(builder)
     }
     fn stop_job_run(&self, builder: StopJobRunInputBuilder) -> impl Future<Output = Result<StopJobRunOutput, SdkError<StopJobRunError>>> {
-        (*self).stop_job_run(builder)
+        self.deref().stop_job_run(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_dataset(&self, builder: UpdateDatasetInputBuilder) -> impl Future<Output = Result<UpdateDatasetOutput, SdkError<UpdateDatasetError>>> {
-        (*self).update_dataset(builder)
+        self.deref().update_dataset(builder)
     }
     fn update_profile_job(&self, builder: UpdateProfileJobInputBuilder) -> impl Future<Output = Result<UpdateProfileJobOutput, SdkError<UpdateProfileJobError>>> {
-        (*self).update_profile_job(builder)
+        self.deref().update_profile_job(builder)
     }
     fn update_project(&self, builder: UpdateProjectInputBuilder) -> impl Future<Output = Result<UpdateProjectOutput, SdkError<UpdateProjectError>>> {
-        (*self).update_project(builder)
+        self.deref().update_project(builder)
     }
     fn update_recipe(&self, builder: UpdateRecipeInputBuilder) -> impl Future<Output = Result<UpdateRecipeOutput, SdkError<UpdateRecipeError>>> {
-        (*self).update_recipe(builder)
+        self.deref().update_recipe(builder)
     }
     fn update_recipe_job(&self, builder: UpdateRecipeJobInputBuilder) -> impl Future<Output = Result<UpdateRecipeJobOutput, SdkError<UpdateRecipeJobError>>> {
-        (*self).update_recipe_job(builder)
+        self.deref().update_recipe_job(builder)
     }
     fn update_ruleset(&self, builder: UpdateRulesetInputBuilder) -> impl Future<Output = Result<UpdateRulesetOutput, SdkError<UpdateRulesetError>>> {
-        (*self).update_ruleset(builder)
+        self.deref().update_ruleset(builder)
     }
     fn update_schedule(&self, builder: UpdateScheduleInputBuilder) -> impl Future<Output = Result<UpdateScheduleOutput, SdkError<UpdateScheduleError>>> {
-        (*self).update_schedule(builder)
+        self.deref().update_schedule(builder)
     }
 }
 #[cfg(feature = "mockall")]

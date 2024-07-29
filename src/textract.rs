@@ -45,6 +45,7 @@ use aws_sdk_textract::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_textract::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_textract::*;
 
@@ -156,81 +157,83 @@ impl TextractClient for TextractClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: TextractClient> TextractClient for &T {
+impl <T> TextractClient for T
+where T: Deref,
+      T::Target: TextractClient {
     fn analyze_document(&self, builder: AnalyzeDocumentInputBuilder) -> impl Future<Output = Result<AnalyzeDocumentOutput, SdkError<AnalyzeDocumentError>>> {
-        (*self).analyze_document(builder)
+        self.deref().analyze_document(builder)
     }
     fn analyze_expense(&self, builder: AnalyzeExpenseInputBuilder) -> impl Future<Output = Result<AnalyzeExpenseOutput, SdkError<AnalyzeExpenseError>>> {
-        (*self).analyze_expense(builder)
+        self.deref().analyze_expense(builder)
     }
     fn analyze_id(&self, builder: AnalyzeIdInputBuilder) -> impl Future<Output = Result<AnalyzeIdOutput, SdkError<AnalyzeIDError>>> {
-        (*self).analyze_id(builder)
+        self.deref().analyze_id(builder)
     }
     fn create_adapter(&self, builder: CreateAdapterInputBuilder) -> impl Future<Output = Result<CreateAdapterOutput, SdkError<CreateAdapterError>>> {
-        (*self).create_adapter(builder)
+        self.deref().create_adapter(builder)
     }
     fn create_adapter_version(&self, builder: CreateAdapterVersionInputBuilder) -> impl Future<Output = Result<CreateAdapterVersionOutput, SdkError<CreateAdapterVersionError>>> {
-        (*self).create_adapter_version(builder)
+        self.deref().create_adapter_version(builder)
     }
     fn delete_adapter(&self, builder: DeleteAdapterInputBuilder) -> impl Future<Output = Result<DeleteAdapterOutput, SdkError<DeleteAdapterError>>> {
-        (*self).delete_adapter(builder)
+        self.deref().delete_adapter(builder)
     }
     fn delete_adapter_version(&self, builder: DeleteAdapterVersionInputBuilder) -> impl Future<Output = Result<DeleteAdapterVersionOutput, SdkError<DeleteAdapterVersionError>>> {
-        (*self).delete_adapter_version(builder)
+        self.deref().delete_adapter_version(builder)
     }
     fn detect_document_text(&self, builder: DetectDocumentTextInputBuilder) -> impl Future<Output = Result<DetectDocumentTextOutput, SdkError<DetectDocumentTextError>>> {
-        (*self).detect_document_text(builder)
+        self.deref().detect_document_text(builder)
     }
     fn get_adapter(&self, builder: GetAdapterInputBuilder) -> impl Future<Output = Result<GetAdapterOutput, SdkError<GetAdapterError>>> {
-        (*self).get_adapter(builder)
+        self.deref().get_adapter(builder)
     }
     fn get_adapter_version(&self, builder: GetAdapterVersionInputBuilder) -> impl Future<Output = Result<GetAdapterVersionOutput, SdkError<GetAdapterVersionError>>> {
-        (*self).get_adapter_version(builder)
+        self.deref().get_adapter_version(builder)
     }
     fn get_document_analysis(&self, builder: GetDocumentAnalysisInputBuilder) -> impl Future<Output = Result<GetDocumentAnalysisOutput, SdkError<GetDocumentAnalysisError>>> {
-        (*self).get_document_analysis(builder)
+        self.deref().get_document_analysis(builder)
     }
     fn get_document_text_detection(&self, builder: GetDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<GetDocumentTextDetectionOutput, SdkError<GetDocumentTextDetectionError>>> {
-        (*self).get_document_text_detection(builder)
+        self.deref().get_document_text_detection(builder)
     }
     fn get_expense_analysis(&self, builder: GetExpenseAnalysisInputBuilder) -> impl Future<Output = Result<GetExpenseAnalysisOutput, SdkError<GetExpenseAnalysisError>>> {
-        (*self).get_expense_analysis(builder)
+        self.deref().get_expense_analysis(builder)
     }
     fn get_lending_analysis(&self, builder: GetLendingAnalysisInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisOutput, SdkError<GetLendingAnalysisError>>> {
-        (*self).get_lending_analysis(builder)
+        self.deref().get_lending_analysis(builder)
     }
     fn get_lending_analysis_summary(&self, builder: GetLendingAnalysisSummaryInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisSummaryOutput, SdkError<GetLendingAnalysisSummaryError>>> {
-        (*self).get_lending_analysis_summary(builder)
+        self.deref().get_lending_analysis_summary(builder)
     }
     fn list_adapter_versions(&self, builder: ListAdapterVersionsInputBuilder) -> impl Future<Output = Result<ListAdapterVersionsOutput, SdkError<ListAdapterVersionsError>>> {
-        (*self).list_adapter_versions(builder)
+        self.deref().list_adapter_versions(builder)
     }
     fn list_adapters(&self, builder: ListAdaptersInputBuilder) -> impl Future<Output = Result<ListAdaptersOutput, SdkError<ListAdaptersError>>> {
-        (*self).list_adapters(builder)
+        self.deref().list_adapters(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn start_document_analysis(&self, builder: StartDocumentAnalysisInputBuilder) -> impl Future<Output = Result<StartDocumentAnalysisOutput, SdkError<StartDocumentAnalysisError>>> {
-        (*self).start_document_analysis(builder)
+        self.deref().start_document_analysis(builder)
     }
     fn start_document_text_detection(&self, builder: StartDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<StartDocumentTextDetectionOutput, SdkError<StartDocumentTextDetectionError>>> {
-        (*self).start_document_text_detection(builder)
+        self.deref().start_document_text_detection(builder)
     }
     fn start_expense_analysis(&self, builder: StartExpenseAnalysisInputBuilder) -> impl Future<Output = Result<StartExpenseAnalysisOutput, SdkError<StartExpenseAnalysisError>>> {
-        (*self).start_expense_analysis(builder)
+        self.deref().start_expense_analysis(builder)
     }
     fn start_lending_analysis(&self, builder: StartLendingAnalysisInputBuilder) -> impl Future<Output = Result<StartLendingAnalysisOutput, SdkError<StartLendingAnalysisError>>> {
-        (*self).start_lending_analysis(builder)
+        self.deref().start_lending_analysis(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_adapter(&self, builder: UpdateAdapterInputBuilder) -> impl Future<Output = Result<UpdateAdapterOutput, SdkError<UpdateAdapterError>>> {
-        (*self).update_adapter(builder)
+        self.deref().update_adapter(builder)
     }
 }
 #[cfg(feature = "mockall")]

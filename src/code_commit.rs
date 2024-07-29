@@ -99,6 +99,7 @@ use aws_sdk_codecommit::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_codecommit::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_codecommit::*;
 
@@ -426,243 +427,245 @@ impl CodeCommitClient for CodeCommitClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: CodeCommitClient> CodeCommitClient for &T {
+impl <T> CodeCommitClient for T
+where T: Deref,
+      T::Target: CodeCommitClient {
     fn associate_approval_rule_template_with_repository(&self, builder: AssociateApprovalRuleTemplateWithRepositoryInputBuilder) -> impl Future<Output = Result<AssociateApprovalRuleTemplateWithRepositoryOutput, SdkError<AssociateApprovalRuleTemplateWithRepositoryError>>> {
-        (*self).associate_approval_rule_template_with_repository(builder)
+        self.deref().associate_approval_rule_template_with_repository(builder)
     }
     fn batch_associate_approval_rule_template_with_repositories(&self, builder: BatchAssociateApprovalRuleTemplateWithRepositoriesInputBuilder) -> impl Future<Output = Result<BatchAssociateApprovalRuleTemplateWithRepositoriesOutput, SdkError<BatchAssociateApprovalRuleTemplateWithRepositoriesError>>> {
-        (*self).batch_associate_approval_rule_template_with_repositories(builder)
+        self.deref().batch_associate_approval_rule_template_with_repositories(builder)
     }
     fn batch_describe_merge_conflicts(&self, builder: BatchDescribeMergeConflictsInputBuilder) -> impl Future<Output = Result<BatchDescribeMergeConflictsOutput, SdkError<BatchDescribeMergeConflictsError>>> {
-        (*self).batch_describe_merge_conflicts(builder)
+        self.deref().batch_describe_merge_conflicts(builder)
     }
     fn batch_disassociate_approval_rule_template_from_repositories(&self, builder: BatchDisassociateApprovalRuleTemplateFromRepositoriesInputBuilder) -> impl Future<Output = Result<BatchDisassociateApprovalRuleTemplateFromRepositoriesOutput, SdkError<BatchDisassociateApprovalRuleTemplateFromRepositoriesError>>> {
-        (*self).batch_disassociate_approval_rule_template_from_repositories(builder)
+        self.deref().batch_disassociate_approval_rule_template_from_repositories(builder)
     }
     fn batch_get_commits(&self, builder: BatchGetCommitsInputBuilder) -> impl Future<Output = Result<BatchGetCommitsOutput, SdkError<BatchGetCommitsError>>> {
-        (*self).batch_get_commits(builder)
+        self.deref().batch_get_commits(builder)
     }
     fn batch_get_repositories(&self, builder: BatchGetRepositoriesInputBuilder) -> impl Future<Output = Result<BatchGetRepositoriesOutput, SdkError<BatchGetRepositoriesError>>> {
-        (*self).batch_get_repositories(builder)
+        self.deref().batch_get_repositories(builder)
     }
     fn create_approval_rule_template(&self, builder: CreateApprovalRuleTemplateInputBuilder) -> impl Future<Output = Result<CreateApprovalRuleTemplateOutput, SdkError<CreateApprovalRuleTemplateError>>> {
-        (*self).create_approval_rule_template(builder)
+        self.deref().create_approval_rule_template(builder)
     }
     fn create_branch(&self, builder: CreateBranchInputBuilder) -> impl Future<Output = Result<CreateBranchOutput, SdkError<CreateBranchError>>> {
-        (*self).create_branch(builder)
+        self.deref().create_branch(builder)
     }
     fn create_commit(&self, builder: CreateCommitInputBuilder) -> impl Future<Output = Result<CreateCommitOutput, SdkError<CreateCommitError>>> {
-        (*self).create_commit(builder)
+        self.deref().create_commit(builder)
     }
     fn create_pull_request(&self, builder: CreatePullRequestInputBuilder) -> impl Future<Output = Result<CreatePullRequestOutput, SdkError<CreatePullRequestError>>> {
-        (*self).create_pull_request(builder)
+        self.deref().create_pull_request(builder)
     }
     fn create_pull_request_approval_rule(&self, builder: CreatePullRequestApprovalRuleInputBuilder) -> impl Future<Output = Result<CreatePullRequestApprovalRuleOutput, SdkError<CreatePullRequestApprovalRuleError>>> {
-        (*self).create_pull_request_approval_rule(builder)
+        self.deref().create_pull_request_approval_rule(builder)
     }
     fn create_repository(&self, builder: CreateRepositoryInputBuilder) -> impl Future<Output = Result<CreateRepositoryOutput, SdkError<CreateRepositoryError>>> {
-        (*self).create_repository(builder)
+        self.deref().create_repository(builder)
     }
     fn create_unreferenced_merge_commit(&self, builder: CreateUnreferencedMergeCommitInputBuilder) -> impl Future<Output = Result<CreateUnreferencedMergeCommitOutput, SdkError<CreateUnreferencedMergeCommitError>>> {
-        (*self).create_unreferenced_merge_commit(builder)
+        self.deref().create_unreferenced_merge_commit(builder)
     }
     fn delete_approval_rule_template(&self, builder: DeleteApprovalRuleTemplateInputBuilder) -> impl Future<Output = Result<DeleteApprovalRuleTemplateOutput, SdkError<DeleteApprovalRuleTemplateError>>> {
-        (*self).delete_approval_rule_template(builder)
+        self.deref().delete_approval_rule_template(builder)
     }
     fn delete_branch(&self, builder: DeleteBranchInputBuilder) -> impl Future<Output = Result<DeleteBranchOutput, SdkError<DeleteBranchError>>> {
-        (*self).delete_branch(builder)
+        self.deref().delete_branch(builder)
     }
     fn delete_comment_content(&self, builder: DeleteCommentContentInputBuilder) -> impl Future<Output = Result<DeleteCommentContentOutput, SdkError<DeleteCommentContentError>>> {
-        (*self).delete_comment_content(builder)
+        self.deref().delete_comment_content(builder)
     }
     fn delete_file(&self, builder: DeleteFileInputBuilder) -> impl Future<Output = Result<DeleteFileOutput, SdkError<DeleteFileError>>> {
-        (*self).delete_file(builder)
+        self.deref().delete_file(builder)
     }
     fn delete_pull_request_approval_rule(&self, builder: DeletePullRequestApprovalRuleInputBuilder) -> impl Future<Output = Result<DeletePullRequestApprovalRuleOutput, SdkError<DeletePullRequestApprovalRuleError>>> {
-        (*self).delete_pull_request_approval_rule(builder)
+        self.deref().delete_pull_request_approval_rule(builder)
     }
     fn delete_repository(&self, builder: DeleteRepositoryInputBuilder) -> impl Future<Output = Result<DeleteRepositoryOutput, SdkError<DeleteRepositoryError>>> {
-        (*self).delete_repository(builder)
+        self.deref().delete_repository(builder)
     }
     fn describe_merge_conflicts(&self, builder: DescribeMergeConflictsInputBuilder) -> impl Future<Output = Result<DescribeMergeConflictsOutput, SdkError<DescribeMergeConflictsError>>> {
-        (*self).describe_merge_conflicts(builder)
+        self.deref().describe_merge_conflicts(builder)
     }
     fn describe_pull_request_events(&self, builder: DescribePullRequestEventsInputBuilder) -> impl Future<Output = Result<DescribePullRequestEventsOutput, SdkError<DescribePullRequestEventsError>>> {
-        (*self).describe_pull_request_events(builder)
+        self.deref().describe_pull_request_events(builder)
     }
     fn disassociate_approval_rule_template_from_repository(&self, builder: DisassociateApprovalRuleTemplateFromRepositoryInputBuilder) -> impl Future<Output = Result<DisassociateApprovalRuleTemplateFromRepositoryOutput, SdkError<DisassociateApprovalRuleTemplateFromRepositoryError>>> {
-        (*self).disassociate_approval_rule_template_from_repository(builder)
+        self.deref().disassociate_approval_rule_template_from_repository(builder)
     }
     fn evaluate_pull_request_approval_rules(&self, builder: EvaluatePullRequestApprovalRulesInputBuilder) -> impl Future<Output = Result<EvaluatePullRequestApprovalRulesOutput, SdkError<EvaluatePullRequestApprovalRulesError>>> {
-        (*self).evaluate_pull_request_approval_rules(builder)
+        self.deref().evaluate_pull_request_approval_rules(builder)
     }
     fn get_approval_rule_template(&self, builder: GetApprovalRuleTemplateInputBuilder) -> impl Future<Output = Result<GetApprovalRuleTemplateOutput, SdkError<GetApprovalRuleTemplateError>>> {
-        (*self).get_approval_rule_template(builder)
+        self.deref().get_approval_rule_template(builder)
     }
     fn get_blob(&self, builder: GetBlobInputBuilder) -> impl Future<Output = Result<GetBlobOutput, SdkError<GetBlobError>>> {
-        (*self).get_blob(builder)
+        self.deref().get_blob(builder)
     }
     fn get_branch(&self, builder: GetBranchInputBuilder) -> impl Future<Output = Result<GetBranchOutput, SdkError<GetBranchError>>> {
-        (*self).get_branch(builder)
+        self.deref().get_branch(builder)
     }
     fn get_comment(&self, builder: GetCommentInputBuilder) -> impl Future<Output = Result<GetCommentOutput, SdkError<GetCommentError>>> {
-        (*self).get_comment(builder)
+        self.deref().get_comment(builder)
     }
     fn get_comment_reactions(&self, builder: GetCommentReactionsInputBuilder) -> impl Future<Output = Result<GetCommentReactionsOutput, SdkError<GetCommentReactionsError>>> {
-        (*self).get_comment_reactions(builder)
+        self.deref().get_comment_reactions(builder)
     }
     fn get_comments_for_compared_commit(&self, builder: GetCommentsForComparedCommitInputBuilder) -> impl Future<Output = Result<GetCommentsForComparedCommitOutput, SdkError<GetCommentsForComparedCommitError>>> {
-        (*self).get_comments_for_compared_commit(builder)
+        self.deref().get_comments_for_compared_commit(builder)
     }
     fn get_comments_for_pull_request(&self, builder: GetCommentsForPullRequestInputBuilder) -> impl Future<Output = Result<GetCommentsForPullRequestOutput, SdkError<GetCommentsForPullRequestError>>> {
-        (*self).get_comments_for_pull_request(builder)
+        self.deref().get_comments_for_pull_request(builder)
     }
     fn get_commit(&self, builder: GetCommitInputBuilder) -> impl Future<Output = Result<GetCommitOutput, SdkError<GetCommitError>>> {
-        (*self).get_commit(builder)
+        self.deref().get_commit(builder)
     }
     fn get_differences(&self, builder: GetDifferencesInputBuilder) -> impl Future<Output = Result<GetDifferencesOutput, SdkError<GetDifferencesError>>> {
-        (*self).get_differences(builder)
+        self.deref().get_differences(builder)
     }
     fn get_file(&self, builder: GetFileInputBuilder) -> impl Future<Output = Result<GetFileOutput, SdkError<GetFileError>>> {
-        (*self).get_file(builder)
+        self.deref().get_file(builder)
     }
     fn get_folder(&self, builder: GetFolderInputBuilder) -> impl Future<Output = Result<GetFolderOutput, SdkError<GetFolderError>>> {
-        (*self).get_folder(builder)
+        self.deref().get_folder(builder)
     }
     fn get_merge_commit(&self, builder: GetMergeCommitInputBuilder) -> impl Future<Output = Result<GetMergeCommitOutput, SdkError<GetMergeCommitError>>> {
-        (*self).get_merge_commit(builder)
+        self.deref().get_merge_commit(builder)
     }
     fn get_merge_conflicts(&self, builder: GetMergeConflictsInputBuilder) -> impl Future<Output = Result<GetMergeConflictsOutput, SdkError<GetMergeConflictsError>>> {
-        (*self).get_merge_conflicts(builder)
+        self.deref().get_merge_conflicts(builder)
     }
     fn get_merge_options(&self, builder: GetMergeOptionsInputBuilder) -> impl Future<Output = Result<GetMergeOptionsOutput, SdkError<GetMergeOptionsError>>> {
-        (*self).get_merge_options(builder)
+        self.deref().get_merge_options(builder)
     }
     fn get_pull_request(&self, builder: GetPullRequestInputBuilder) -> impl Future<Output = Result<GetPullRequestOutput, SdkError<GetPullRequestError>>> {
-        (*self).get_pull_request(builder)
+        self.deref().get_pull_request(builder)
     }
     fn get_pull_request_approval_states(&self, builder: GetPullRequestApprovalStatesInputBuilder) -> impl Future<Output = Result<GetPullRequestApprovalStatesOutput, SdkError<GetPullRequestApprovalStatesError>>> {
-        (*self).get_pull_request_approval_states(builder)
+        self.deref().get_pull_request_approval_states(builder)
     }
     fn get_pull_request_override_state(&self, builder: GetPullRequestOverrideStateInputBuilder) -> impl Future<Output = Result<GetPullRequestOverrideStateOutput, SdkError<GetPullRequestOverrideStateError>>> {
-        (*self).get_pull_request_override_state(builder)
+        self.deref().get_pull_request_override_state(builder)
     }
     fn get_repository(&self, builder: GetRepositoryInputBuilder) -> impl Future<Output = Result<GetRepositoryOutput, SdkError<GetRepositoryError>>> {
-        (*self).get_repository(builder)
+        self.deref().get_repository(builder)
     }
     fn get_repository_triggers(&self, builder: GetRepositoryTriggersInputBuilder) -> impl Future<Output = Result<GetRepositoryTriggersOutput, SdkError<GetRepositoryTriggersError>>> {
-        (*self).get_repository_triggers(builder)
+        self.deref().get_repository_triggers(builder)
     }
     fn list_approval_rule_templates(&self, builder: ListApprovalRuleTemplatesInputBuilder) -> impl Future<Output = Result<ListApprovalRuleTemplatesOutput, SdkError<ListApprovalRuleTemplatesError>>> {
-        (*self).list_approval_rule_templates(builder)
+        self.deref().list_approval_rule_templates(builder)
     }
     fn list_associated_approval_rule_templates_for_repository(&self, builder: ListAssociatedApprovalRuleTemplatesForRepositoryInputBuilder) -> impl Future<Output = Result<ListAssociatedApprovalRuleTemplatesForRepositoryOutput, SdkError<ListAssociatedApprovalRuleTemplatesForRepositoryError>>> {
-        (*self).list_associated_approval_rule_templates_for_repository(builder)
+        self.deref().list_associated_approval_rule_templates_for_repository(builder)
     }
     fn list_branches(&self, builder: ListBranchesInputBuilder) -> impl Future<Output = Result<ListBranchesOutput, SdkError<ListBranchesError>>> {
-        (*self).list_branches(builder)
+        self.deref().list_branches(builder)
     }
     fn list_file_commit_history(&self, builder: ListFileCommitHistoryInputBuilder) -> impl Future<Output = Result<ListFileCommitHistoryOutput, SdkError<ListFileCommitHistoryError>>> {
-        (*self).list_file_commit_history(builder)
+        self.deref().list_file_commit_history(builder)
     }
     fn list_pull_requests(&self, builder: ListPullRequestsInputBuilder) -> impl Future<Output = Result<ListPullRequestsOutput, SdkError<ListPullRequestsError>>> {
-        (*self).list_pull_requests(builder)
+        self.deref().list_pull_requests(builder)
     }
     fn list_repositories(&self, builder: ListRepositoriesInputBuilder) -> impl Future<Output = Result<ListRepositoriesOutput, SdkError<ListRepositoriesError>>> {
-        (*self).list_repositories(builder)
+        self.deref().list_repositories(builder)
     }
     fn list_repositories_for_approval_rule_template(&self, builder: ListRepositoriesForApprovalRuleTemplateInputBuilder) -> impl Future<Output = Result<ListRepositoriesForApprovalRuleTemplateOutput, SdkError<ListRepositoriesForApprovalRuleTemplateError>>> {
-        (*self).list_repositories_for_approval_rule_template(builder)
+        self.deref().list_repositories_for_approval_rule_template(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn merge_branches_by_fast_forward(&self, builder: MergeBranchesByFastForwardInputBuilder) -> impl Future<Output = Result<MergeBranchesByFastForwardOutput, SdkError<MergeBranchesByFastForwardError>>> {
-        (*self).merge_branches_by_fast_forward(builder)
+        self.deref().merge_branches_by_fast_forward(builder)
     }
     fn merge_branches_by_squash(&self, builder: MergeBranchesBySquashInputBuilder) -> impl Future<Output = Result<MergeBranchesBySquashOutput, SdkError<MergeBranchesBySquashError>>> {
-        (*self).merge_branches_by_squash(builder)
+        self.deref().merge_branches_by_squash(builder)
     }
     fn merge_branches_by_three_way(&self, builder: MergeBranchesByThreeWayInputBuilder) -> impl Future<Output = Result<MergeBranchesByThreeWayOutput, SdkError<MergeBranchesByThreeWayError>>> {
-        (*self).merge_branches_by_three_way(builder)
+        self.deref().merge_branches_by_three_way(builder)
     }
     fn merge_pull_request_by_fast_forward(&self, builder: MergePullRequestByFastForwardInputBuilder) -> impl Future<Output = Result<MergePullRequestByFastForwardOutput, SdkError<MergePullRequestByFastForwardError>>> {
-        (*self).merge_pull_request_by_fast_forward(builder)
+        self.deref().merge_pull_request_by_fast_forward(builder)
     }
     fn merge_pull_request_by_squash(&self, builder: MergePullRequestBySquashInputBuilder) -> impl Future<Output = Result<MergePullRequestBySquashOutput, SdkError<MergePullRequestBySquashError>>> {
-        (*self).merge_pull_request_by_squash(builder)
+        self.deref().merge_pull_request_by_squash(builder)
     }
     fn merge_pull_request_by_three_way(&self, builder: MergePullRequestByThreeWayInputBuilder) -> impl Future<Output = Result<MergePullRequestByThreeWayOutput, SdkError<MergePullRequestByThreeWayError>>> {
-        (*self).merge_pull_request_by_three_way(builder)
+        self.deref().merge_pull_request_by_three_way(builder)
     }
     fn override_pull_request_approval_rules(&self, builder: OverridePullRequestApprovalRulesInputBuilder) -> impl Future<Output = Result<OverridePullRequestApprovalRulesOutput, SdkError<OverridePullRequestApprovalRulesError>>> {
-        (*self).override_pull_request_approval_rules(builder)
+        self.deref().override_pull_request_approval_rules(builder)
     }
     fn post_comment_for_compared_commit(&self, builder: PostCommentForComparedCommitInputBuilder) -> impl Future<Output = Result<PostCommentForComparedCommitOutput, SdkError<PostCommentForComparedCommitError>>> {
-        (*self).post_comment_for_compared_commit(builder)
+        self.deref().post_comment_for_compared_commit(builder)
     }
     fn post_comment_for_pull_request(&self, builder: PostCommentForPullRequestInputBuilder) -> impl Future<Output = Result<PostCommentForPullRequestOutput, SdkError<PostCommentForPullRequestError>>> {
-        (*self).post_comment_for_pull_request(builder)
+        self.deref().post_comment_for_pull_request(builder)
     }
     fn post_comment_reply(&self, builder: PostCommentReplyInputBuilder) -> impl Future<Output = Result<PostCommentReplyOutput, SdkError<PostCommentReplyError>>> {
-        (*self).post_comment_reply(builder)
+        self.deref().post_comment_reply(builder)
     }
     fn put_comment_reaction(&self, builder: PutCommentReactionInputBuilder) -> impl Future<Output = Result<PutCommentReactionOutput, SdkError<PutCommentReactionError>>> {
-        (*self).put_comment_reaction(builder)
+        self.deref().put_comment_reaction(builder)
     }
     fn put_file(&self, builder: PutFileInputBuilder) -> impl Future<Output = Result<PutFileOutput, SdkError<PutFileError>>> {
-        (*self).put_file(builder)
+        self.deref().put_file(builder)
     }
     fn put_repository_triggers(&self, builder: PutRepositoryTriggersInputBuilder) -> impl Future<Output = Result<PutRepositoryTriggersOutput, SdkError<PutRepositoryTriggersError>>> {
-        (*self).put_repository_triggers(builder)
+        self.deref().put_repository_triggers(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn test_repository_triggers(&self, builder: TestRepositoryTriggersInputBuilder) -> impl Future<Output = Result<TestRepositoryTriggersOutput, SdkError<TestRepositoryTriggersError>>> {
-        (*self).test_repository_triggers(builder)
+        self.deref().test_repository_triggers(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_approval_rule_template_content(&self, builder: UpdateApprovalRuleTemplateContentInputBuilder) -> impl Future<Output = Result<UpdateApprovalRuleTemplateContentOutput, SdkError<UpdateApprovalRuleTemplateContentError>>> {
-        (*self).update_approval_rule_template_content(builder)
+        self.deref().update_approval_rule_template_content(builder)
     }
     fn update_approval_rule_template_description(&self, builder: UpdateApprovalRuleTemplateDescriptionInputBuilder) -> impl Future<Output = Result<UpdateApprovalRuleTemplateDescriptionOutput, SdkError<UpdateApprovalRuleTemplateDescriptionError>>> {
-        (*self).update_approval_rule_template_description(builder)
+        self.deref().update_approval_rule_template_description(builder)
     }
     fn update_approval_rule_template_name(&self, builder: UpdateApprovalRuleTemplateNameInputBuilder) -> impl Future<Output = Result<UpdateApprovalRuleTemplateNameOutput, SdkError<UpdateApprovalRuleTemplateNameError>>> {
-        (*self).update_approval_rule_template_name(builder)
+        self.deref().update_approval_rule_template_name(builder)
     }
     fn update_comment(&self, builder: UpdateCommentInputBuilder) -> impl Future<Output = Result<UpdateCommentOutput, SdkError<UpdateCommentError>>> {
-        (*self).update_comment(builder)
+        self.deref().update_comment(builder)
     }
     fn update_default_branch(&self, builder: UpdateDefaultBranchInputBuilder) -> impl Future<Output = Result<UpdateDefaultBranchOutput, SdkError<UpdateDefaultBranchError>>> {
-        (*self).update_default_branch(builder)
+        self.deref().update_default_branch(builder)
     }
     fn update_pull_request_approval_rule_content(&self, builder: UpdatePullRequestApprovalRuleContentInputBuilder) -> impl Future<Output = Result<UpdatePullRequestApprovalRuleContentOutput, SdkError<UpdatePullRequestApprovalRuleContentError>>> {
-        (*self).update_pull_request_approval_rule_content(builder)
+        self.deref().update_pull_request_approval_rule_content(builder)
     }
     fn update_pull_request_approval_state(&self, builder: UpdatePullRequestApprovalStateInputBuilder) -> impl Future<Output = Result<UpdatePullRequestApprovalStateOutput, SdkError<UpdatePullRequestApprovalStateError>>> {
-        (*self).update_pull_request_approval_state(builder)
+        self.deref().update_pull_request_approval_state(builder)
     }
     fn update_pull_request_description(&self, builder: UpdatePullRequestDescriptionInputBuilder) -> impl Future<Output = Result<UpdatePullRequestDescriptionOutput, SdkError<UpdatePullRequestDescriptionError>>> {
-        (*self).update_pull_request_description(builder)
+        self.deref().update_pull_request_description(builder)
     }
     fn update_pull_request_status(&self, builder: UpdatePullRequestStatusInputBuilder) -> impl Future<Output = Result<UpdatePullRequestStatusOutput, SdkError<UpdatePullRequestStatusError>>> {
-        (*self).update_pull_request_status(builder)
+        self.deref().update_pull_request_status(builder)
     }
     fn update_pull_request_title(&self, builder: UpdatePullRequestTitleInputBuilder) -> impl Future<Output = Result<UpdatePullRequestTitleOutput, SdkError<UpdatePullRequestTitleError>>> {
-        (*self).update_pull_request_title(builder)
+        self.deref().update_pull_request_title(builder)
     }
     fn update_repository_description(&self, builder: UpdateRepositoryDescriptionInputBuilder) -> impl Future<Output = Result<UpdateRepositoryDescriptionOutput, SdkError<UpdateRepositoryDescriptionError>>> {
-        (*self).update_repository_description(builder)
+        self.deref().update_repository_description(builder)
     }
     fn update_repository_encryption_key(&self, builder: UpdateRepositoryEncryptionKeyInputBuilder) -> impl Future<Output = Result<UpdateRepositoryEncryptionKeyOutput, SdkError<UpdateRepositoryEncryptionKeyError>>> {
-        (*self).update_repository_encryption_key(builder)
+        self.deref().update_repository_encryption_key(builder)
     }
     fn update_repository_name(&self, builder: UpdateRepositoryNameInputBuilder) -> impl Future<Output = Result<UpdateRepositoryNameOutput, SdkError<UpdateRepositoryNameError>>> {
-        (*self).update_repository_name(builder)
+        self.deref().update_repository_name(builder)
     }
 }
 #[cfg(feature = "mockall")]

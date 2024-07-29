@@ -84,6 +84,7 @@ use aws_sdk_lambda::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_lambda::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_lambda::*;
 
@@ -351,198 +352,200 @@ impl LambdaClient for LambdaClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: LambdaClient> LambdaClient for &T {
+impl <T> LambdaClient for T
+where T: Deref,
+      T::Target: LambdaClient {
     fn add_layer_version_permission(&self, builder: AddLayerVersionPermissionInputBuilder) -> impl Future<Output = Result<AddLayerVersionPermissionOutput, SdkError<AddLayerVersionPermissionError>>> {
-        (*self).add_layer_version_permission(builder)
+        self.deref().add_layer_version_permission(builder)
     }
     fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>> {
-        (*self).add_permission(builder)
+        self.deref().add_permission(builder)
     }
     fn create_alias(&self, builder: CreateAliasInputBuilder) -> impl Future<Output = Result<CreateAliasOutput, SdkError<CreateAliasError>>> {
-        (*self).create_alias(builder)
+        self.deref().create_alias(builder)
     }
     fn create_code_signing_config(&self, builder: CreateCodeSigningConfigInputBuilder) -> impl Future<Output = Result<CreateCodeSigningConfigOutput, SdkError<CreateCodeSigningConfigError>>> {
-        (*self).create_code_signing_config(builder)
+        self.deref().create_code_signing_config(builder)
     }
     fn create_event_source_mapping(&self, builder: CreateEventSourceMappingInputBuilder) -> impl Future<Output = Result<CreateEventSourceMappingOutput, SdkError<CreateEventSourceMappingError>>> {
-        (*self).create_event_source_mapping(builder)
+        self.deref().create_event_source_mapping(builder)
     }
     fn create_function(&self, builder: CreateFunctionInputBuilder) -> impl Future<Output = Result<CreateFunctionOutput, SdkError<CreateFunctionError>>> {
-        (*self).create_function(builder)
+        self.deref().create_function(builder)
     }
     fn create_function_url_config(&self, builder: CreateFunctionUrlConfigInputBuilder) -> impl Future<Output = Result<CreateFunctionUrlConfigOutput, SdkError<CreateFunctionUrlConfigError>>> {
-        (*self).create_function_url_config(builder)
+        self.deref().create_function_url_config(builder)
     }
     fn delete_alias(&self, builder: DeleteAliasInputBuilder) -> impl Future<Output = Result<DeleteAliasOutput, SdkError<DeleteAliasError>>> {
-        (*self).delete_alias(builder)
+        self.deref().delete_alias(builder)
     }
     fn delete_code_signing_config(&self, builder: DeleteCodeSigningConfigInputBuilder) -> impl Future<Output = Result<DeleteCodeSigningConfigOutput, SdkError<DeleteCodeSigningConfigError>>> {
-        (*self).delete_code_signing_config(builder)
+        self.deref().delete_code_signing_config(builder)
     }
     fn delete_event_source_mapping(&self, builder: DeleteEventSourceMappingInputBuilder) -> impl Future<Output = Result<DeleteEventSourceMappingOutput, SdkError<DeleteEventSourceMappingError>>> {
-        (*self).delete_event_source_mapping(builder)
+        self.deref().delete_event_source_mapping(builder)
     }
     fn delete_function(&self, builder: DeleteFunctionInputBuilder) -> impl Future<Output = Result<DeleteFunctionOutput, SdkError<DeleteFunctionError>>> {
-        (*self).delete_function(builder)
+        self.deref().delete_function(builder)
     }
     fn delete_function_code_signing_config(&self, builder: DeleteFunctionCodeSigningConfigInputBuilder) -> impl Future<Output = Result<DeleteFunctionCodeSigningConfigOutput, SdkError<DeleteFunctionCodeSigningConfigError>>> {
-        (*self).delete_function_code_signing_config(builder)
+        self.deref().delete_function_code_signing_config(builder)
     }
     fn delete_function_concurrency(&self, builder: DeleteFunctionConcurrencyInputBuilder) -> impl Future<Output = Result<DeleteFunctionConcurrencyOutput, SdkError<DeleteFunctionConcurrencyError>>> {
-        (*self).delete_function_concurrency(builder)
+        self.deref().delete_function_concurrency(builder)
     }
     fn delete_function_event_invoke_config(&self, builder: DeleteFunctionEventInvokeConfigInputBuilder) -> impl Future<Output = Result<DeleteFunctionEventInvokeConfigOutput, SdkError<DeleteFunctionEventInvokeConfigError>>> {
-        (*self).delete_function_event_invoke_config(builder)
+        self.deref().delete_function_event_invoke_config(builder)
     }
     fn delete_function_url_config(&self, builder: DeleteFunctionUrlConfigInputBuilder) -> impl Future<Output = Result<DeleteFunctionUrlConfigOutput, SdkError<DeleteFunctionUrlConfigError>>> {
-        (*self).delete_function_url_config(builder)
+        self.deref().delete_function_url_config(builder)
     }
     fn delete_layer_version(&self, builder: DeleteLayerVersionInputBuilder) -> impl Future<Output = Result<DeleteLayerVersionOutput, SdkError<DeleteLayerVersionError>>> {
-        (*self).delete_layer_version(builder)
+        self.deref().delete_layer_version(builder)
     }
     fn delete_provisioned_concurrency_config(&self, builder: DeleteProvisionedConcurrencyConfigInputBuilder) -> impl Future<Output = Result<DeleteProvisionedConcurrencyConfigOutput, SdkError<DeleteProvisionedConcurrencyConfigError>>> {
-        (*self).delete_provisioned_concurrency_config(builder)
+        self.deref().delete_provisioned_concurrency_config(builder)
     }
     fn get_account_settings(&self, builder: GetAccountSettingsInputBuilder) -> impl Future<Output = Result<GetAccountSettingsOutput, SdkError<GetAccountSettingsError>>> {
-        (*self).get_account_settings(builder)
+        self.deref().get_account_settings(builder)
     }
     fn get_alias(&self, builder: GetAliasInputBuilder) -> impl Future<Output = Result<GetAliasOutput, SdkError<GetAliasError>>> {
-        (*self).get_alias(builder)
+        self.deref().get_alias(builder)
     }
     fn get_code_signing_config(&self, builder: GetCodeSigningConfigInputBuilder) -> impl Future<Output = Result<GetCodeSigningConfigOutput, SdkError<GetCodeSigningConfigError>>> {
-        (*self).get_code_signing_config(builder)
+        self.deref().get_code_signing_config(builder)
     }
     fn get_event_source_mapping(&self, builder: GetEventSourceMappingInputBuilder) -> impl Future<Output = Result<GetEventSourceMappingOutput, SdkError<GetEventSourceMappingError>>> {
-        (*self).get_event_source_mapping(builder)
+        self.deref().get_event_source_mapping(builder)
     }
     fn get_function(&self, builder: GetFunctionInputBuilder) -> impl Future<Output = Result<GetFunctionOutput, SdkError<GetFunctionError>>> {
-        (*self).get_function(builder)
+        self.deref().get_function(builder)
     }
     fn get_function_code_signing_config(&self, builder: GetFunctionCodeSigningConfigInputBuilder) -> impl Future<Output = Result<GetFunctionCodeSigningConfigOutput, SdkError<GetFunctionCodeSigningConfigError>>> {
-        (*self).get_function_code_signing_config(builder)
+        self.deref().get_function_code_signing_config(builder)
     }
     fn get_function_concurrency(&self, builder: GetFunctionConcurrencyInputBuilder) -> impl Future<Output = Result<GetFunctionConcurrencyOutput, SdkError<GetFunctionConcurrencyError>>> {
-        (*self).get_function_concurrency(builder)
+        self.deref().get_function_concurrency(builder)
     }
     fn get_function_configuration(&self, builder: GetFunctionConfigurationInputBuilder) -> impl Future<Output = Result<GetFunctionConfigurationOutput, SdkError<GetFunctionConfigurationError>>> {
-        (*self).get_function_configuration(builder)
+        self.deref().get_function_configuration(builder)
     }
     fn get_function_event_invoke_config(&self, builder: GetFunctionEventInvokeConfigInputBuilder) -> impl Future<Output = Result<GetFunctionEventInvokeConfigOutput, SdkError<GetFunctionEventInvokeConfigError>>> {
-        (*self).get_function_event_invoke_config(builder)
+        self.deref().get_function_event_invoke_config(builder)
     }
     fn get_function_url_config(&self, builder: GetFunctionUrlConfigInputBuilder) -> impl Future<Output = Result<GetFunctionUrlConfigOutput, SdkError<GetFunctionUrlConfigError>>> {
-        (*self).get_function_url_config(builder)
+        self.deref().get_function_url_config(builder)
     }
     fn get_layer_version(&self, builder: GetLayerVersionInputBuilder) -> impl Future<Output = Result<GetLayerVersionOutput, SdkError<GetLayerVersionError>>> {
-        (*self).get_layer_version(builder)
+        self.deref().get_layer_version(builder)
     }
     fn get_layer_version_by_arn(&self, builder: GetLayerVersionByArnInputBuilder) -> impl Future<Output = Result<GetLayerVersionByArnOutput, SdkError<GetLayerVersionByArnError>>> {
-        (*self).get_layer_version_by_arn(builder)
+        self.deref().get_layer_version_by_arn(builder)
     }
     fn get_layer_version_policy(&self, builder: GetLayerVersionPolicyInputBuilder) -> impl Future<Output = Result<GetLayerVersionPolicyOutput, SdkError<GetLayerVersionPolicyError>>> {
-        (*self).get_layer_version_policy(builder)
+        self.deref().get_layer_version_policy(builder)
     }
     fn get_policy(&self, builder: GetPolicyInputBuilder) -> impl Future<Output = Result<GetPolicyOutput, SdkError<GetPolicyError>>> {
-        (*self).get_policy(builder)
+        self.deref().get_policy(builder)
     }
     fn get_provisioned_concurrency_config(&self, builder: GetProvisionedConcurrencyConfigInputBuilder) -> impl Future<Output = Result<GetProvisionedConcurrencyConfigOutput, SdkError<GetProvisionedConcurrencyConfigError>>> {
-        (*self).get_provisioned_concurrency_config(builder)
+        self.deref().get_provisioned_concurrency_config(builder)
     }
     fn get_runtime_management_config(&self, builder: GetRuntimeManagementConfigInputBuilder) -> impl Future<Output = Result<GetRuntimeManagementConfigOutput, SdkError<GetRuntimeManagementConfigError>>> {
-        (*self).get_runtime_management_config(builder)
+        self.deref().get_runtime_management_config(builder)
     }
     fn invoke(&self, builder: InvokeInputBuilder) -> impl Future<Output = Result<InvokeOutput, SdkError<InvokeError>>> {
-        (*self).invoke(builder)
+        self.deref().invoke(builder)
     }
     fn list_aliases(&self, builder: ListAliasesInputBuilder) -> impl Future<Output = Result<ListAliasesOutput, SdkError<ListAliasesError>>> {
-        (*self).list_aliases(builder)
+        self.deref().list_aliases(builder)
     }
     fn list_code_signing_configs(&self, builder: ListCodeSigningConfigsInputBuilder) -> impl Future<Output = Result<ListCodeSigningConfigsOutput, SdkError<ListCodeSigningConfigsError>>> {
-        (*self).list_code_signing_configs(builder)
+        self.deref().list_code_signing_configs(builder)
     }
     fn list_event_source_mappings(&self, builder: ListEventSourceMappingsInputBuilder) -> impl Future<Output = Result<ListEventSourceMappingsOutput, SdkError<ListEventSourceMappingsError>>> {
-        (*self).list_event_source_mappings(builder)
+        self.deref().list_event_source_mappings(builder)
     }
     fn list_function_event_invoke_configs(&self, builder: ListFunctionEventInvokeConfigsInputBuilder) -> impl Future<Output = Result<ListFunctionEventInvokeConfigsOutput, SdkError<ListFunctionEventInvokeConfigsError>>> {
-        (*self).list_function_event_invoke_configs(builder)
+        self.deref().list_function_event_invoke_configs(builder)
     }
     fn list_function_url_configs(&self, builder: ListFunctionUrlConfigsInputBuilder) -> impl Future<Output = Result<ListFunctionUrlConfigsOutput, SdkError<ListFunctionUrlConfigsError>>> {
-        (*self).list_function_url_configs(builder)
+        self.deref().list_function_url_configs(builder)
     }
     fn list_functions(&self, builder: ListFunctionsInputBuilder) -> impl Future<Output = Result<ListFunctionsOutput, SdkError<ListFunctionsError>>> {
-        (*self).list_functions(builder)
+        self.deref().list_functions(builder)
     }
     fn list_functions_by_code_signing_config(&self, builder: ListFunctionsByCodeSigningConfigInputBuilder) -> impl Future<Output = Result<ListFunctionsByCodeSigningConfigOutput, SdkError<ListFunctionsByCodeSigningConfigError>>> {
-        (*self).list_functions_by_code_signing_config(builder)
+        self.deref().list_functions_by_code_signing_config(builder)
     }
     fn list_layer_versions(&self, builder: ListLayerVersionsInputBuilder) -> impl Future<Output = Result<ListLayerVersionsOutput, SdkError<ListLayerVersionsError>>> {
-        (*self).list_layer_versions(builder)
+        self.deref().list_layer_versions(builder)
     }
     fn list_layers(&self, builder: ListLayersInputBuilder) -> impl Future<Output = Result<ListLayersOutput, SdkError<ListLayersError>>> {
-        (*self).list_layers(builder)
+        self.deref().list_layers(builder)
     }
     fn list_provisioned_concurrency_configs(&self, builder: ListProvisionedConcurrencyConfigsInputBuilder) -> impl Future<Output = Result<ListProvisionedConcurrencyConfigsOutput, SdkError<ListProvisionedConcurrencyConfigsError>>> {
-        (*self).list_provisioned_concurrency_configs(builder)
+        self.deref().list_provisioned_concurrency_configs(builder)
     }
     fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> {
-        (*self).list_tags(builder)
+        self.deref().list_tags(builder)
     }
     fn list_versions_by_function(&self, builder: ListVersionsByFunctionInputBuilder) -> impl Future<Output = Result<ListVersionsByFunctionOutput, SdkError<ListVersionsByFunctionError>>> {
-        (*self).list_versions_by_function(builder)
+        self.deref().list_versions_by_function(builder)
     }
     fn publish_layer_version(&self, builder: PublishLayerVersionInputBuilder) -> impl Future<Output = Result<PublishLayerVersionOutput, SdkError<PublishLayerVersionError>>> {
-        (*self).publish_layer_version(builder)
+        self.deref().publish_layer_version(builder)
     }
     fn publish_version(&self, builder: PublishVersionInputBuilder) -> impl Future<Output = Result<PublishVersionOutput, SdkError<PublishVersionError>>> {
-        (*self).publish_version(builder)
+        self.deref().publish_version(builder)
     }
     fn put_function_code_signing_config(&self, builder: PutFunctionCodeSigningConfigInputBuilder) -> impl Future<Output = Result<PutFunctionCodeSigningConfigOutput, SdkError<PutFunctionCodeSigningConfigError>>> {
-        (*self).put_function_code_signing_config(builder)
+        self.deref().put_function_code_signing_config(builder)
     }
     fn put_function_concurrency(&self, builder: PutFunctionConcurrencyInputBuilder) -> impl Future<Output = Result<PutFunctionConcurrencyOutput, SdkError<PutFunctionConcurrencyError>>> {
-        (*self).put_function_concurrency(builder)
+        self.deref().put_function_concurrency(builder)
     }
     fn put_function_event_invoke_config(&self, builder: PutFunctionEventInvokeConfigInputBuilder) -> impl Future<Output = Result<PutFunctionEventInvokeConfigOutput, SdkError<PutFunctionEventInvokeConfigError>>> {
-        (*self).put_function_event_invoke_config(builder)
+        self.deref().put_function_event_invoke_config(builder)
     }
     fn put_provisioned_concurrency_config(&self, builder: PutProvisionedConcurrencyConfigInputBuilder) -> impl Future<Output = Result<PutProvisionedConcurrencyConfigOutput, SdkError<PutProvisionedConcurrencyConfigError>>> {
-        (*self).put_provisioned_concurrency_config(builder)
+        self.deref().put_provisioned_concurrency_config(builder)
     }
     fn put_runtime_management_config(&self, builder: PutRuntimeManagementConfigInputBuilder) -> impl Future<Output = Result<PutRuntimeManagementConfigOutput, SdkError<PutRuntimeManagementConfigError>>> {
-        (*self).put_runtime_management_config(builder)
+        self.deref().put_runtime_management_config(builder)
     }
     fn remove_layer_version_permission(&self, builder: RemoveLayerVersionPermissionInputBuilder) -> impl Future<Output = Result<RemoveLayerVersionPermissionOutput, SdkError<RemoveLayerVersionPermissionError>>> {
-        (*self).remove_layer_version_permission(builder)
+        self.deref().remove_layer_version_permission(builder)
     }
     fn remove_permission(&self, builder: RemovePermissionInputBuilder) -> impl Future<Output = Result<RemovePermissionOutput, SdkError<RemovePermissionError>>> {
-        (*self).remove_permission(builder)
+        self.deref().remove_permission(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_alias(&self, builder: UpdateAliasInputBuilder) -> impl Future<Output = Result<UpdateAliasOutput, SdkError<UpdateAliasError>>> {
-        (*self).update_alias(builder)
+        self.deref().update_alias(builder)
     }
     fn update_code_signing_config(&self, builder: UpdateCodeSigningConfigInputBuilder) -> impl Future<Output = Result<UpdateCodeSigningConfigOutput, SdkError<UpdateCodeSigningConfigError>>> {
-        (*self).update_code_signing_config(builder)
+        self.deref().update_code_signing_config(builder)
     }
     fn update_event_source_mapping(&self, builder: UpdateEventSourceMappingInputBuilder) -> impl Future<Output = Result<UpdateEventSourceMappingOutput, SdkError<UpdateEventSourceMappingError>>> {
-        (*self).update_event_source_mapping(builder)
+        self.deref().update_event_source_mapping(builder)
     }
     fn update_function_code(&self, builder: UpdateFunctionCodeInputBuilder) -> impl Future<Output = Result<UpdateFunctionCodeOutput, SdkError<UpdateFunctionCodeError>>> {
-        (*self).update_function_code(builder)
+        self.deref().update_function_code(builder)
     }
     fn update_function_configuration(&self, builder: UpdateFunctionConfigurationInputBuilder) -> impl Future<Output = Result<UpdateFunctionConfigurationOutput, SdkError<UpdateFunctionConfigurationError>>> {
-        (*self).update_function_configuration(builder)
+        self.deref().update_function_configuration(builder)
     }
     fn update_function_event_invoke_config(&self, builder: UpdateFunctionEventInvokeConfigInputBuilder) -> impl Future<Output = Result<UpdateFunctionEventInvokeConfigOutput, SdkError<UpdateFunctionEventInvokeConfigError>>> {
-        (*self).update_function_event_invoke_config(builder)
+        self.deref().update_function_event_invoke_config(builder)
     }
     fn update_function_url_config(&self, builder: UpdateFunctionUrlConfigInputBuilder) -> impl Future<Output = Result<UpdateFunctionUrlConfigOutput, SdkError<UpdateFunctionUrlConfigError>>> {
-        (*self).update_function_url_config(builder)
+        self.deref().update_function_url_config(builder)
     }
 }
 #[cfg(feature = "mockall")]

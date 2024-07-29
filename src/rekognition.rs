@@ -95,6 +95,7 @@ use aws_sdk_rekognition::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_rekognition::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_rekognition::*;
 
@@ -406,231 +407,233 @@ impl RekognitionClient for RekognitionClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: RekognitionClient> RekognitionClient for &T {
+impl <T> RekognitionClient for T
+where T: Deref,
+      T::Target: RekognitionClient {
     fn associate_faces(&self, builder: AssociateFacesInputBuilder) -> impl Future<Output = Result<AssociateFacesOutput, SdkError<AssociateFacesError>>> {
-        (*self).associate_faces(builder)
+        self.deref().associate_faces(builder)
     }
     fn compare_faces(&self, builder: CompareFacesInputBuilder) -> impl Future<Output = Result<CompareFacesOutput, SdkError<CompareFacesError>>> {
-        (*self).compare_faces(builder)
+        self.deref().compare_faces(builder)
     }
     fn copy_project_version(&self, builder: CopyProjectVersionInputBuilder) -> impl Future<Output = Result<CopyProjectVersionOutput, SdkError<CopyProjectVersionError>>> {
-        (*self).copy_project_version(builder)
+        self.deref().copy_project_version(builder)
     }
     fn create_collection(&self, builder: CreateCollectionInputBuilder) -> impl Future<Output = Result<CreateCollectionOutput, SdkError<CreateCollectionError>>> {
-        (*self).create_collection(builder)
+        self.deref().create_collection(builder)
     }
     fn create_dataset(&self, builder: CreateDatasetInputBuilder) -> impl Future<Output = Result<CreateDatasetOutput, SdkError<CreateDatasetError>>> {
-        (*self).create_dataset(builder)
+        self.deref().create_dataset(builder)
     }
     fn create_face_liveness_session(&self, builder: CreateFaceLivenessSessionInputBuilder) -> impl Future<Output = Result<CreateFaceLivenessSessionOutput, SdkError<CreateFaceLivenessSessionError>>> {
-        (*self).create_face_liveness_session(builder)
+        self.deref().create_face_liveness_session(builder)
     }
     fn create_project(&self, builder: CreateProjectInputBuilder) -> impl Future<Output = Result<CreateProjectOutput, SdkError<CreateProjectError>>> {
-        (*self).create_project(builder)
+        self.deref().create_project(builder)
     }
     fn create_project_version(&self, builder: CreateProjectVersionInputBuilder) -> impl Future<Output = Result<CreateProjectVersionOutput, SdkError<CreateProjectVersionError>>> {
-        (*self).create_project_version(builder)
+        self.deref().create_project_version(builder)
     }
     fn create_stream_processor(&self, builder: CreateStreamProcessorInputBuilder) -> impl Future<Output = Result<CreateStreamProcessorOutput, SdkError<CreateStreamProcessorError>>> {
-        (*self).create_stream_processor(builder)
+        self.deref().create_stream_processor(builder)
     }
     fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>> {
-        (*self).create_user(builder)
+        self.deref().create_user(builder)
     }
     fn delete_collection(&self, builder: DeleteCollectionInputBuilder) -> impl Future<Output = Result<DeleteCollectionOutput, SdkError<DeleteCollectionError>>> {
-        (*self).delete_collection(builder)
+        self.deref().delete_collection(builder)
     }
     fn delete_dataset(&self, builder: DeleteDatasetInputBuilder) -> impl Future<Output = Result<DeleteDatasetOutput, SdkError<DeleteDatasetError>>> {
-        (*self).delete_dataset(builder)
+        self.deref().delete_dataset(builder)
     }
     fn delete_faces(&self, builder: DeleteFacesInputBuilder) -> impl Future<Output = Result<DeleteFacesOutput, SdkError<DeleteFacesError>>> {
-        (*self).delete_faces(builder)
+        self.deref().delete_faces(builder)
     }
     fn delete_project(&self, builder: DeleteProjectInputBuilder) -> impl Future<Output = Result<DeleteProjectOutput, SdkError<DeleteProjectError>>> {
-        (*self).delete_project(builder)
+        self.deref().delete_project(builder)
     }
     fn delete_project_policy(&self, builder: DeleteProjectPolicyInputBuilder) -> impl Future<Output = Result<DeleteProjectPolicyOutput, SdkError<DeleteProjectPolicyError>>> {
-        (*self).delete_project_policy(builder)
+        self.deref().delete_project_policy(builder)
     }
     fn delete_project_version(&self, builder: DeleteProjectVersionInputBuilder) -> impl Future<Output = Result<DeleteProjectVersionOutput, SdkError<DeleteProjectVersionError>>> {
-        (*self).delete_project_version(builder)
+        self.deref().delete_project_version(builder)
     }
     fn delete_stream_processor(&self, builder: DeleteStreamProcessorInputBuilder) -> impl Future<Output = Result<DeleteStreamProcessorOutput, SdkError<DeleteStreamProcessorError>>> {
-        (*self).delete_stream_processor(builder)
+        self.deref().delete_stream_processor(builder)
     }
     fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> {
-        (*self).delete_user(builder)
+        self.deref().delete_user(builder)
     }
     fn describe_collection(&self, builder: DescribeCollectionInputBuilder) -> impl Future<Output = Result<DescribeCollectionOutput, SdkError<DescribeCollectionError>>> {
-        (*self).describe_collection(builder)
+        self.deref().describe_collection(builder)
     }
     fn describe_dataset(&self, builder: DescribeDatasetInputBuilder) -> impl Future<Output = Result<DescribeDatasetOutput, SdkError<DescribeDatasetError>>> {
-        (*self).describe_dataset(builder)
+        self.deref().describe_dataset(builder)
     }
     fn describe_project_versions(&self, builder: DescribeProjectVersionsInputBuilder) -> impl Future<Output = Result<DescribeProjectVersionsOutput, SdkError<DescribeProjectVersionsError>>> {
-        (*self).describe_project_versions(builder)
+        self.deref().describe_project_versions(builder)
     }
     fn describe_projects(&self, builder: DescribeProjectsInputBuilder) -> impl Future<Output = Result<DescribeProjectsOutput, SdkError<DescribeProjectsError>>> {
-        (*self).describe_projects(builder)
+        self.deref().describe_projects(builder)
     }
     fn describe_stream_processor(&self, builder: DescribeStreamProcessorInputBuilder) -> impl Future<Output = Result<DescribeStreamProcessorOutput, SdkError<DescribeStreamProcessorError>>> {
-        (*self).describe_stream_processor(builder)
+        self.deref().describe_stream_processor(builder)
     }
     fn detect_custom_labels(&self, builder: DetectCustomLabelsInputBuilder) -> impl Future<Output = Result<DetectCustomLabelsOutput, SdkError<DetectCustomLabelsError>>> {
-        (*self).detect_custom_labels(builder)
+        self.deref().detect_custom_labels(builder)
     }
     fn detect_faces(&self, builder: DetectFacesInputBuilder) -> impl Future<Output = Result<DetectFacesOutput, SdkError<DetectFacesError>>> {
-        (*self).detect_faces(builder)
+        self.deref().detect_faces(builder)
     }
     fn detect_labels(&self, builder: DetectLabelsInputBuilder) -> impl Future<Output = Result<DetectLabelsOutput, SdkError<DetectLabelsError>>> {
-        (*self).detect_labels(builder)
+        self.deref().detect_labels(builder)
     }
     fn detect_moderation_labels(&self, builder: DetectModerationLabelsInputBuilder) -> impl Future<Output = Result<DetectModerationLabelsOutput, SdkError<DetectModerationLabelsError>>> {
-        (*self).detect_moderation_labels(builder)
+        self.deref().detect_moderation_labels(builder)
     }
     fn detect_protective_equipment(&self, builder: DetectProtectiveEquipmentInputBuilder) -> impl Future<Output = Result<DetectProtectiveEquipmentOutput, SdkError<DetectProtectiveEquipmentError>>> {
-        (*self).detect_protective_equipment(builder)
+        self.deref().detect_protective_equipment(builder)
     }
     fn detect_text(&self, builder: DetectTextInputBuilder) -> impl Future<Output = Result<DetectTextOutput, SdkError<DetectTextError>>> {
-        (*self).detect_text(builder)
+        self.deref().detect_text(builder)
     }
     fn disassociate_faces(&self, builder: DisassociateFacesInputBuilder) -> impl Future<Output = Result<DisassociateFacesOutput, SdkError<DisassociateFacesError>>> {
-        (*self).disassociate_faces(builder)
+        self.deref().disassociate_faces(builder)
     }
     fn distribute_dataset_entries(&self, builder: DistributeDatasetEntriesInputBuilder) -> impl Future<Output = Result<DistributeDatasetEntriesOutput, SdkError<DistributeDatasetEntriesError>>> {
-        (*self).distribute_dataset_entries(builder)
+        self.deref().distribute_dataset_entries(builder)
     }
     fn get_celebrity_info(&self, builder: GetCelebrityInfoInputBuilder) -> impl Future<Output = Result<GetCelebrityInfoOutput, SdkError<GetCelebrityInfoError>>> {
-        (*self).get_celebrity_info(builder)
+        self.deref().get_celebrity_info(builder)
     }
     fn get_celebrity_recognition(&self, builder: GetCelebrityRecognitionInputBuilder) -> impl Future<Output = Result<GetCelebrityRecognitionOutput, SdkError<GetCelebrityRecognitionError>>> {
-        (*self).get_celebrity_recognition(builder)
+        self.deref().get_celebrity_recognition(builder)
     }
     fn get_content_moderation(&self, builder: GetContentModerationInputBuilder) -> impl Future<Output = Result<GetContentModerationOutput, SdkError<GetContentModerationError>>> {
-        (*self).get_content_moderation(builder)
+        self.deref().get_content_moderation(builder)
     }
     fn get_face_detection(&self, builder: GetFaceDetectionInputBuilder) -> impl Future<Output = Result<GetFaceDetectionOutput, SdkError<GetFaceDetectionError>>> {
-        (*self).get_face_detection(builder)
+        self.deref().get_face_detection(builder)
     }
     fn get_face_liveness_session_results(&self, builder: GetFaceLivenessSessionResultsInputBuilder) -> impl Future<Output = Result<GetFaceLivenessSessionResultsOutput, SdkError<GetFaceLivenessSessionResultsError>>> {
-        (*self).get_face_liveness_session_results(builder)
+        self.deref().get_face_liveness_session_results(builder)
     }
     fn get_face_search(&self, builder: GetFaceSearchInputBuilder) -> impl Future<Output = Result<GetFaceSearchOutput, SdkError<GetFaceSearchError>>> {
-        (*self).get_face_search(builder)
+        self.deref().get_face_search(builder)
     }
     fn get_label_detection(&self, builder: GetLabelDetectionInputBuilder) -> impl Future<Output = Result<GetLabelDetectionOutput, SdkError<GetLabelDetectionError>>> {
-        (*self).get_label_detection(builder)
+        self.deref().get_label_detection(builder)
     }
     fn get_media_analysis_job(&self, builder: GetMediaAnalysisJobInputBuilder) -> impl Future<Output = Result<GetMediaAnalysisJobOutput, SdkError<GetMediaAnalysisJobError>>> {
-        (*self).get_media_analysis_job(builder)
+        self.deref().get_media_analysis_job(builder)
     }
     fn get_person_tracking(&self, builder: GetPersonTrackingInputBuilder) -> impl Future<Output = Result<GetPersonTrackingOutput, SdkError<GetPersonTrackingError>>> {
-        (*self).get_person_tracking(builder)
+        self.deref().get_person_tracking(builder)
     }
     fn get_segment_detection(&self, builder: GetSegmentDetectionInputBuilder) -> impl Future<Output = Result<GetSegmentDetectionOutput, SdkError<GetSegmentDetectionError>>> {
-        (*self).get_segment_detection(builder)
+        self.deref().get_segment_detection(builder)
     }
     fn get_text_detection(&self, builder: GetTextDetectionInputBuilder) -> impl Future<Output = Result<GetTextDetectionOutput, SdkError<GetTextDetectionError>>> {
-        (*self).get_text_detection(builder)
+        self.deref().get_text_detection(builder)
     }
     fn index_faces(&self, builder: IndexFacesInputBuilder) -> impl Future<Output = Result<IndexFacesOutput, SdkError<IndexFacesError>>> {
-        (*self).index_faces(builder)
+        self.deref().index_faces(builder)
     }
     fn list_collections(&self, builder: ListCollectionsInputBuilder) -> impl Future<Output = Result<ListCollectionsOutput, SdkError<ListCollectionsError>>> {
-        (*self).list_collections(builder)
+        self.deref().list_collections(builder)
     }
     fn list_dataset_entries(&self, builder: ListDatasetEntriesInputBuilder) -> impl Future<Output = Result<ListDatasetEntriesOutput, SdkError<ListDatasetEntriesError>>> {
-        (*self).list_dataset_entries(builder)
+        self.deref().list_dataset_entries(builder)
     }
     fn list_dataset_labels(&self, builder: ListDatasetLabelsInputBuilder) -> impl Future<Output = Result<ListDatasetLabelsOutput, SdkError<ListDatasetLabelsError>>> {
-        (*self).list_dataset_labels(builder)
+        self.deref().list_dataset_labels(builder)
     }
     fn list_faces(&self, builder: ListFacesInputBuilder) -> impl Future<Output = Result<ListFacesOutput, SdkError<ListFacesError>>> {
-        (*self).list_faces(builder)
+        self.deref().list_faces(builder)
     }
     fn list_media_analysis_jobs(&self, builder: ListMediaAnalysisJobsInputBuilder) -> impl Future<Output = Result<ListMediaAnalysisJobsOutput, SdkError<ListMediaAnalysisJobsError>>> {
-        (*self).list_media_analysis_jobs(builder)
+        self.deref().list_media_analysis_jobs(builder)
     }
     fn list_project_policies(&self, builder: ListProjectPoliciesInputBuilder) -> impl Future<Output = Result<ListProjectPoliciesOutput, SdkError<ListProjectPoliciesError>>> {
-        (*self).list_project_policies(builder)
+        self.deref().list_project_policies(builder)
     }
     fn list_stream_processors(&self, builder: ListStreamProcessorsInputBuilder) -> impl Future<Output = Result<ListStreamProcessorsOutput, SdkError<ListStreamProcessorsError>>> {
-        (*self).list_stream_processors(builder)
+        self.deref().list_stream_processors(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>> {
-        (*self).list_users(builder)
+        self.deref().list_users(builder)
     }
     fn put_project_policy(&self, builder: PutProjectPolicyInputBuilder) -> impl Future<Output = Result<PutProjectPolicyOutput, SdkError<PutProjectPolicyError>>> {
-        (*self).put_project_policy(builder)
+        self.deref().put_project_policy(builder)
     }
     fn recognize_celebrities(&self, builder: RecognizeCelebritiesInputBuilder) -> impl Future<Output = Result<RecognizeCelebritiesOutput, SdkError<RecognizeCelebritiesError>>> {
-        (*self).recognize_celebrities(builder)
+        self.deref().recognize_celebrities(builder)
     }
     fn search_faces(&self, builder: SearchFacesInputBuilder) -> impl Future<Output = Result<SearchFacesOutput, SdkError<SearchFacesError>>> {
-        (*self).search_faces(builder)
+        self.deref().search_faces(builder)
     }
     fn search_faces_by_image(&self, builder: SearchFacesByImageInputBuilder) -> impl Future<Output = Result<SearchFacesByImageOutput, SdkError<SearchFacesByImageError>>> {
-        (*self).search_faces_by_image(builder)
+        self.deref().search_faces_by_image(builder)
     }
     fn search_users(&self, builder: SearchUsersInputBuilder) -> impl Future<Output = Result<SearchUsersOutput, SdkError<SearchUsersError>>> {
-        (*self).search_users(builder)
+        self.deref().search_users(builder)
     }
     fn search_users_by_image(&self, builder: SearchUsersByImageInputBuilder) -> impl Future<Output = Result<SearchUsersByImageOutput, SdkError<SearchUsersByImageError>>> {
-        (*self).search_users_by_image(builder)
+        self.deref().search_users_by_image(builder)
     }
     fn start_celebrity_recognition(&self, builder: StartCelebrityRecognitionInputBuilder) -> impl Future<Output = Result<StartCelebrityRecognitionOutput, SdkError<StartCelebrityRecognitionError>>> {
-        (*self).start_celebrity_recognition(builder)
+        self.deref().start_celebrity_recognition(builder)
     }
     fn start_content_moderation(&self, builder: StartContentModerationInputBuilder) -> impl Future<Output = Result<StartContentModerationOutput, SdkError<StartContentModerationError>>> {
-        (*self).start_content_moderation(builder)
+        self.deref().start_content_moderation(builder)
     }
     fn start_face_detection(&self, builder: StartFaceDetectionInputBuilder) -> impl Future<Output = Result<StartFaceDetectionOutput, SdkError<StartFaceDetectionError>>> {
-        (*self).start_face_detection(builder)
+        self.deref().start_face_detection(builder)
     }
     fn start_face_search(&self, builder: StartFaceSearchInputBuilder) -> impl Future<Output = Result<StartFaceSearchOutput, SdkError<StartFaceSearchError>>> {
-        (*self).start_face_search(builder)
+        self.deref().start_face_search(builder)
     }
     fn start_label_detection(&self, builder: StartLabelDetectionInputBuilder) -> impl Future<Output = Result<StartLabelDetectionOutput, SdkError<StartLabelDetectionError>>> {
-        (*self).start_label_detection(builder)
+        self.deref().start_label_detection(builder)
     }
     fn start_media_analysis_job(&self, builder: StartMediaAnalysisJobInputBuilder) -> impl Future<Output = Result<StartMediaAnalysisJobOutput, SdkError<StartMediaAnalysisJobError>>> {
-        (*self).start_media_analysis_job(builder)
+        self.deref().start_media_analysis_job(builder)
     }
     fn start_person_tracking(&self, builder: StartPersonTrackingInputBuilder) -> impl Future<Output = Result<StartPersonTrackingOutput, SdkError<StartPersonTrackingError>>> {
-        (*self).start_person_tracking(builder)
+        self.deref().start_person_tracking(builder)
     }
     fn start_project_version(&self, builder: StartProjectVersionInputBuilder) -> impl Future<Output = Result<StartProjectVersionOutput, SdkError<StartProjectVersionError>>> {
-        (*self).start_project_version(builder)
+        self.deref().start_project_version(builder)
     }
     fn start_segment_detection(&self, builder: StartSegmentDetectionInputBuilder) -> impl Future<Output = Result<StartSegmentDetectionOutput, SdkError<StartSegmentDetectionError>>> {
-        (*self).start_segment_detection(builder)
+        self.deref().start_segment_detection(builder)
     }
     fn start_stream_processor(&self, builder: StartStreamProcessorInputBuilder) -> impl Future<Output = Result<StartStreamProcessorOutput, SdkError<StartStreamProcessorError>>> {
-        (*self).start_stream_processor(builder)
+        self.deref().start_stream_processor(builder)
     }
     fn start_text_detection(&self, builder: StartTextDetectionInputBuilder) -> impl Future<Output = Result<StartTextDetectionOutput, SdkError<StartTextDetectionError>>> {
-        (*self).start_text_detection(builder)
+        self.deref().start_text_detection(builder)
     }
     fn stop_project_version(&self, builder: StopProjectVersionInputBuilder) -> impl Future<Output = Result<StopProjectVersionOutput, SdkError<StopProjectVersionError>>> {
-        (*self).stop_project_version(builder)
+        self.deref().stop_project_version(builder)
     }
     fn stop_stream_processor(&self, builder: StopStreamProcessorInputBuilder) -> impl Future<Output = Result<StopStreamProcessorOutput, SdkError<StopStreamProcessorError>>> {
-        (*self).stop_stream_processor(builder)
+        self.deref().stop_stream_processor(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_dataset_entries(&self, builder: UpdateDatasetEntriesInputBuilder) -> impl Future<Output = Result<UpdateDatasetEntriesOutput, SdkError<UpdateDatasetEntriesError>>> {
-        (*self).update_dataset_entries(builder)
+        self.deref().update_dataset_entries(builder)
     }
     fn update_stream_processor(&self, builder: UpdateStreamProcessorInputBuilder) -> impl Future<Output = Result<UpdateStreamProcessorOutput, SdkError<UpdateStreamProcessorError>>> {
-        (*self).update_stream_processor(builder)
+        self.deref().update_stream_processor(builder)
     }
 }
 #[cfg(feature = "mockall")]

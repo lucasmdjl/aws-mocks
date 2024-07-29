@@ -73,6 +73,7 @@ use aws_sdk_kms::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_kms::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_kms::*;
 
@@ -296,165 +297,167 @@ impl KMSClient for KMSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: KMSClient> KMSClient for &T {
+impl <T> KMSClient for T
+where T: Deref,
+      T::Target: KMSClient {
     fn cancel_key_deletion(&self, builder: CancelKeyDeletionInputBuilder) -> impl Future<Output = Result<CancelKeyDeletionOutput, SdkError<CancelKeyDeletionError>>> {
-        (*self).cancel_key_deletion(builder)
+        self.deref().cancel_key_deletion(builder)
     }
     fn connect_custom_key_store(&self, builder: ConnectCustomKeyStoreInputBuilder) -> impl Future<Output = Result<ConnectCustomKeyStoreOutput, SdkError<ConnectCustomKeyStoreError>>> {
-        (*self).connect_custom_key_store(builder)
+        self.deref().connect_custom_key_store(builder)
     }
     fn create_alias(&self, builder: CreateAliasInputBuilder) -> impl Future<Output = Result<CreateAliasOutput, SdkError<CreateAliasError>>> {
-        (*self).create_alias(builder)
+        self.deref().create_alias(builder)
     }
     fn create_custom_key_store(&self, builder: CreateCustomKeyStoreInputBuilder) -> impl Future<Output = Result<CreateCustomKeyStoreOutput, SdkError<CreateCustomKeyStoreError>>> {
-        (*self).create_custom_key_store(builder)
+        self.deref().create_custom_key_store(builder)
     }
     fn create_grant(&self, builder: CreateGrantInputBuilder) -> impl Future<Output = Result<CreateGrantOutput, SdkError<CreateGrantError>>> {
-        (*self).create_grant(builder)
+        self.deref().create_grant(builder)
     }
     fn create_key(&self, builder: CreateKeyInputBuilder) -> impl Future<Output = Result<CreateKeyOutput, SdkError<CreateKeyError>>> {
-        (*self).create_key(builder)
+        self.deref().create_key(builder)
     }
     fn decrypt(&self, builder: DecryptInputBuilder) -> impl Future<Output = Result<DecryptOutput, SdkError<DecryptError>>> {
-        (*self).decrypt(builder)
+        self.deref().decrypt(builder)
     }
     fn delete_alias(&self, builder: DeleteAliasInputBuilder) -> impl Future<Output = Result<DeleteAliasOutput, SdkError<DeleteAliasError>>> {
-        (*self).delete_alias(builder)
+        self.deref().delete_alias(builder)
     }
     fn delete_custom_key_store(&self, builder: DeleteCustomKeyStoreInputBuilder) -> impl Future<Output = Result<DeleteCustomKeyStoreOutput, SdkError<DeleteCustomKeyStoreError>>> {
-        (*self).delete_custom_key_store(builder)
+        self.deref().delete_custom_key_store(builder)
     }
     fn delete_imported_key_material(&self, builder: DeleteImportedKeyMaterialInputBuilder) -> impl Future<Output = Result<DeleteImportedKeyMaterialOutput, SdkError<DeleteImportedKeyMaterialError>>> {
-        (*self).delete_imported_key_material(builder)
+        self.deref().delete_imported_key_material(builder)
     }
     fn derive_shared_secret(&self, builder: DeriveSharedSecretInputBuilder) -> impl Future<Output = Result<DeriveSharedSecretOutput, SdkError<DeriveSharedSecretError>>> {
-        (*self).derive_shared_secret(builder)
+        self.deref().derive_shared_secret(builder)
     }
     fn describe_custom_key_stores(&self, builder: DescribeCustomKeyStoresInputBuilder) -> impl Future<Output = Result<DescribeCustomKeyStoresOutput, SdkError<DescribeCustomKeyStoresError>>> {
-        (*self).describe_custom_key_stores(builder)
+        self.deref().describe_custom_key_stores(builder)
     }
     fn describe_key(&self, builder: DescribeKeyInputBuilder) -> impl Future<Output = Result<DescribeKeyOutput, SdkError<DescribeKeyError>>> {
-        (*self).describe_key(builder)
+        self.deref().describe_key(builder)
     }
     fn disable_key(&self, builder: DisableKeyInputBuilder) -> impl Future<Output = Result<DisableKeyOutput, SdkError<DisableKeyError>>> {
-        (*self).disable_key(builder)
+        self.deref().disable_key(builder)
     }
     fn disable_key_rotation(&self, builder: DisableKeyRotationInputBuilder) -> impl Future<Output = Result<DisableKeyRotationOutput, SdkError<DisableKeyRotationError>>> {
-        (*self).disable_key_rotation(builder)
+        self.deref().disable_key_rotation(builder)
     }
     fn disconnect_custom_key_store(&self, builder: DisconnectCustomKeyStoreInputBuilder) -> impl Future<Output = Result<DisconnectCustomKeyStoreOutput, SdkError<DisconnectCustomKeyStoreError>>> {
-        (*self).disconnect_custom_key_store(builder)
+        self.deref().disconnect_custom_key_store(builder)
     }
     fn enable_key(&self, builder: EnableKeyInputBuilder) -> impl Future<Output = Result<EnableKeyOutput, SdkError<EnableKeyError>>> {
-        (*self).enable_key(builder)
+        self.deref().enable_key(builder)
     }
     fn enable_key_rotation(&self, builder: EnableKeyRotationInputBuilder) -> impl Future<Output = Result<EnableKeyRotationOutput, SdkError<EnableKeyRotationError>>> {
-        (*self).enable_key_rotation(builder)
+        self.deref().enable_key_rotation(builder)
     }
     fn encrypt(&self, builder: EncryptInputBuilder) -> impl Future<Output = Result<EncryptOutput, SdkError<EncryptError>>> {
-        (*self).encrypt(builder)
+        self.deref().encrypt(builder)
     }
     fn generate_data_key(&self, builder: GenerateDataKeyInputBuilder) -> impl Future<Output = Result<GenerateDataKeyOutput, SdkError<GenerateDataKeyError>>> {
-        (*self).generate_data_key(builder)
+        self.deref().generate_data_key(builder)
     }
     fn generate_data_key_pair(&self, builder: GenerateDataKeyPairInputBuilder) -> impl Future<Output = Result<GenerateDataKeyPairOutput, SdkError<GenerateDataKeyPairError>>> {
-        (*self).generate_data_key_pair(builder)
+        self.deref().generate_data_key_pair(builder)
     }
     fn generate_data_key_pair_without_plaintext(&self, builder: GenerateDataKeyPairWithoutPlaintextInputBuilder) -> impl Future<Output = Result<GenerateDataKeyPairWithoutPlaintextOutput, SdkError<GenerateDataKeyPairWithoutPlaintextError>>> {
-        (*self).generate_data_key_pair_without_plaintext(builder)
+        self.deref().generate_data_key_pair_without_plaintext(builder)
     }
     fn generate_data_key_without_plaintext(&self, builder: GenerateDataKeyWithoutPlaintextInputBuilder) -> impl Future<Output = Result<GenerateDataKeyWithoutPlaintextOutput, SdkError<GenerateDataKeyWithoutPlaintextError>>> {
-        (*self).generate_data_key_without_plaintext(builder)
+        self.deref().generate_data_key_without_plaintext(builder)
     }
     fn generate_mac(&self, builder: GenerateMacInputBuilder) -> impl Future<Output = Result<GenerateMacOutput, SdkError<GenerateMacError>>> {
-        (*self).generate_mac(builder)
+        self.deref().generate_mac(builder)
     }
     fn generate_random(&self, builder: GenerateRandomInputBuilder) -> impl Future<Output = Result<GenerateRandomOutput, SdkError<GenerateRandomError>>> {
-        (*self).generate_random(builder)
+        self.deref().generate_random(builder)
     }
     fn get_key_policy(&self, builder: GetKeyPolicyInputBuilder) -> impl Future<Output = Result<GetKeyPolicyOutput, SdkError<GetKeyPolicyError>>> {
-        (*self).get_key_policy(builder)
+        self.deref().get_key_policy(builder)
     }
     fn get_key_rotation_status(&self, builder: GetKeyRotationStatusInputBuilder) -> impl Future<Output = Result<GetKeyRotationStatusOutput, SdkError<GetKeyRotationStatusError>>> {
-        (*self).get_key_rotation_status(builder)
+        self.deref().get_key_rotation_status(builder)
     }
     fn get_parameters_for_import(&self, builder: GetParametersForImportInputBuilder) -> impl Future<Output = Result<GetParametersForImportOutput, SdkError<GetParametersForImportError>>> {
-        (*self).get_parameters_for_import(builder)
+        self.deref().get_parameters_for_import(builder)
     }
     fn get_public_key(&self, builder: GetPublicKeyInputBuilder) -> impl Future<Output = Result<GetPublicKeyOutput, SdkError<GetPublicKeyError>>> {
-        (*self).get_public_key(builder)
+        self.deref().get_public_key(builder)
     }
     fn import_key_material(&self, builder: ImportKeyMaterialInputBuilder) -> impl Future<Output = Result<ImportKeyMaterialOutput, SdkError<ImportKeyMaterialError>>> {
-        (*self).import_key_material(builder)
+        self.deref().import_key_material(builder)
     }
     fn list_aliases(&self, builder: ListAliasesInputBuilder) -> impl Future<Output = Result<ListAliasesOutput, SdkError<ListAliasesError>>> {
-        (*self).list_aliases(builder)
+        self.deref().list_aliases(builder)
     }
     fn list_grants(&self, builder: ListGrantsInputBuilder) -> impl Future<Output = Result<ListGrantsOutput, SdkError<ListGrantsError>>> {
-        (*self).list_grants(builder)
+        self.deref().list_grants(builder)
     }
     fn list_key_policies(&self, builder: ListKeyPoliciesInputBuilder) -> impl Future<Output = Result<ListKeyPoliciesOutput, SdkError<ListKeyPoliciesError>>> {
-        (*self).list_key_policies(builder)
+        self.deref().list_key_policies(builder)
     }
     fn list_key_rotations(&self, builder: ListKeyRotationsInputBuilder) -> impl Future<Output = Result<ListKeyRotationsOutput, SdkError<ListKeyRotationsError>>> {
-        (*self).list_key_rotations(builder)
+        self.deref().list_key_rotations(builder)
     }
     fn list_keys(&self, builder: ListKeysInputBuilder) -> impl Future<Output = Result<ListKeysOutput, SdkError<ListKeysError>>> {
-        (*self).list_keys(builder)
+        self.deref().list_keys(builder)
     }
     fn list_resource_tags(&self, builder: ListResourceTagsInputBuilder) -> impl Future<Output = Result<ListResourceTagsOutput, SdkError<ListResourceTagsError>>> {
-        (*self).list_resource_tags(builder)
+        self.deref().list_resource_tags(builder)
     }
     fn list_retirable_grants(&self, builder: ListRetirableGrantsInputBuilder) -> impl Future<Output = Result<ListRetirableGrantsOutput, SdkError<ListRetirableGrantsError>>> {
-        (*self).list_retirable_grants(builder)
+        self.deref().list_retirable_grants(builder)
     }
     fn put_key_policy(&self, builder: PutKeyPolicyInputBuilder) -> impl Future<Output = Result<PutKeyPolicyOutput, SdkError<PutKeyPolicyError>>> {
-        (*self).put_key_policy(builder)
+        self.deref().put_key_policy(builder)
     }
     fn re_encrypt(&self, builder: ReEncryptInputBuilder) -> impl Future<Output = Result<ReEncryptOutput, SdkError<ReEncryptError>>> {
-        (*self).re_encrypt(builder)
+        self.deref().re_encrypt(builder)
     }
     fn replicate_key(&self, builder: ReplicateKeyInputBuilder) -> impl Future<Output = Result<ReplicateKeyOutput, SdkError<ReplicateKeyError>>> {
-        (*self).replicate_key(builder)
+        self.deref().replicate_key(builder)
     }
     fn retire_grant(&self, builder: RetireGrantInputBuilder) -> impl Future<Output = Result<RetireGrantOutput, SdkError<RetireGrantError>>> {
-        (*self).retire_grant(builder)
+        self.deref().retire_grant(builder)
     }
     fn revoke_grant(&self, builder: RevokeGrantInputBuilder) -> impl Future<Output = Result<RevokeGrantOutput, SdkError<RevokeGrantError>>> {
-        (*self).revoke_grant(builder)
+        self.deref().revoke_grant(builder)
     }
     fn rotate_key_on_demand(&self, builder: RotateKeyOnDemandInputBuilder) -> impl Future<Output = Result<RotateKeyOnDemandOutput, SdkError<RotateKeyOnDemandError>>> {
-        (*self).rotate_key_on_demand(builder)
+        self.deref().rotate_key_on_demand(builder)
     }
     fn schedule_key_deletion(&self, builder: ScheduleKeyDeletionInputBuilder) -> impl Future<Output = Result<ScheduleKeyDeletionOutput, SdkError<ScheduleKeyDeletionError>>> {
-        (*self).schedule_key_deletion(builder)
+        self.deref().schedule_key_deletion(builder)
     }
     fn sign(&self, builder: SignInputBuilder) -> impl Future<Output = Result<SignOutput, SdkError<SignError>>> {
-        (*self).sign(builder)
+        self.deref().sign(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_alias(&self, builder: UpdateAliasInputBuilder) -> impl Future<Output = Result<UpdateAliasOutput, SdkError<UpdateAliasError>>> {
-        (*self).update_alias(builder)
+        self.deref().update_alias(builder)
     }
     fn update_custom_key_store(&self, builder: UpdateCustomKeyStoreInputBuilder) -> impl Future<Output = Result<UpdateCustomKeyStoreOutput, SdkError<UpdateCustomKeyStoreError>>> {
-        (*self).update_custom_key_store(builder)
+        self.deref().update_custom_key_store(builder)
     }
     fn update_key_description(&self, builder: UpdateKeyDescriptionInputBuilder) -> impl Future<Output = Result<UpdateKeyDescriptionOutput, SdkError<UpdateKeyDescriptionError>>> {
-        (*self).update_key_description(builder)
+        self.deref().update_key_description(builder)
     }
     fn update_primary_region(&self, builder: UpdatePrimaryRegionInputBuilder) -> impl Future<Output = Result<UpdatePrimaryRegionOutput, SdkError<UpdatePrimaryRegionError>>> {
-        (*self).update_primary_region(builder)
+        self.deref().update_primary_region(builder)
     }
     fn verify(&self, builder: VerifyInputBuilder) -> impl Future<Output = Result<VerifyOutput, SdkError<VerifyError>>> {
-        (*self).verify(builder)
+        self.deref().verify(builder)
     }
     fn verify_mac(&self, builder: VerifyMacInputBuilder) -> impl Future<Output = Result<VerifyMacOutput, SdkError<VerifyMacError>>> {
-        (*self).verify_mac(builder)
+        self.deref().verify_mac(builder)
     }
 }
 #[cfg(feature = "mockall")]

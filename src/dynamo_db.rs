@@ -77,6 +77,7 @@ use aws_sdk_dynamodb::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_dynamodb::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_dynamodb::*;
 
@@ -316,177 +317,179 @@ impl DynamoDBClient for DynamoDBClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: DynamoDBClient> DynamoDBClient for &T {
+impl <T> DynamoDBClient for T
+where T: Deref,
+      T::Target: DynamoDBClient {
     fn batch_execute_statement(&self, builder: BatchExecuteStatementInputBuilder) -> impl Future<Output = Result<BatchExecuteStatementOutput, SdkError<BatchExecuteStatementError>>> {
-        (*self).batch_execute_statement(builder)
+        self.deref().batch_execute_statement(builder)
     }
     fn batch_get_item(&self, builder: BatchGetItemInputBuilder) -> impl Future<Output = Result<BatchGetItemOutput, SdkError<BatchGetItemError>>> {
-        (*self).batch_get_item(builder)
+        self.deref().batch_get_item(builder)
     }
     fn batch_write_item(&self, builder: BatchWriteItemInputBuilder) -> impl Future<Output = Result<BatchWriteItemOutput, SdkError<BatchWriteItemError>>> {
-        (*self).batch_write_item(builder)
+        self.deref().batch_write_item(builder)
     }
     fn create_backup(&self, builder: CreateBackupInputBuilder) -> impl Future<Output = Result<CreateBackupOutput, SdkError<CreateBackupError>>> {
-        (*self).create_backup(builder)
+        self.deref().create_backup(builder)
     }
     fn create_global_table(&self, builder: CreateGlobalTableInputBuilder) -> impl Future<Output = Result<CreateGlobalTableOutput, SdkError<CreateGlobalTableError>>> {
-        (*self).create_global_table(builder)
+        self.deref().create_global_table(builder)
     }
     fn create_table(&self, builder: CreateTableInputBuilder) -> impl Future<Output = Result<CreateTableOutput, SdkError<CreateTableError>>> {
-        (*self).create_table(builder)
+        self.deref().create_table(builder)
     }
     fn delete_backup(&self, builder: DeleteBackupInputBuilder) -> impl Future<Output = Result<DeleteBackupOutput, SdkError<DeleteBackupError>>> {
-        (*self).delete_backup(builder)
+        self.deref().delete_backup(builder)
     }
     fn delete_item(&self, builder: DeleteItemInputBuilder) -> impl Future<Output = Result<DeleteItemOutput, SdkError<DeleteItemError>>> {
-        (*self).delete_item(builder)
+        self.deref().delete_item(builder)
     }
     fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> {
-        (*self).delete_resource_policy(builder)
+        self.deref().delete_resource_policy(builder)
     }
     fn delete_table(&self, builder: DeleteTableInputBuilder) -> impl Future<Output = Result<DeleteTableOutput, SdkError<DeleteTableError>>> {
-        (*self).delete_table(builder)
+        self.deref().delete_table(builder)
     }
     fn describe_backup(&self, builder: DescribeBackupInputBuilder) -> impl Future<Output = Result<DescribeBackupOutput, SdkError<DescribeBackupError>>> {
-        (*self).describe_backup(builder)
+        self.deref().describe_backup(builder)
     }
     fn describe_continuous_backups(&self, builder: DescribeContinuousBackupsInputBuilder) -> impl Future<Output = Result<DescribeContinuousBackupsOutput, SdkError<DescribeContinuousBackupsError>>> {
-        (*self).describe_continuous_backups(builder)
+        self.deref().describe_continuous_backups(builder)
     }
     fn describe_contributor_insights(&self, builder: DescribeContributorInsightsInputBuilder) -> impl Future<Output = Result<DescribeContributorInsightsOutput, SdkError<DescribeContributorInsightsError>>> {
-        (*self).describe_contributor_insights(builder)
+        self.deref().describe_contributor_insights(builder)
     }
     fn describe_endpoints(&self, builder: DescribeEndpointsInputBuilder) -> impl Future<Output = Result<DescribeEndpointsOutput, SdkError<DescribeEndpointsError>>> {
-        (*self).describe_endpoints(builder)
+        self.deref().describe_endpoints(builder)
     }
     fn describe_export(&self, builder: DescribeExportInputBuilder) -> impl Future<Output = Result<DescribeExportOutput, SdkError<DescribeExportError>>> {
-        (*self).describe_export(builder)
+        self.deref().describe_export(builder)
     }
     fn describe_global_table(&self, builder: DescribeGlobalTableInputBuilder) -> impl Future<Output = Result<DescribeGlobalTableOutput, SdkError<DescribeGlobalTableError>>> {
-        (*self).describe_global_table(builder)
+        self.deref().describe_global_table(builder)
     }
     fn describe_global_table_settings(&self, builder: DescribeGlobalTableSettingsInputBuilder) -> impl Future<Output = Result<DescribeGlobalTableSettingsOutput, SdkError<DescribeGlobalTableSettingsError>>> {
-        (*self).describe_global_table_settings(builder)
+        self.deref().describe_global_table_settings(builder)
     }
     fn describe_import(&self, builder: DescribeImportInputBuilder) -> impl Future<Output = Result<DescribeImportOutput, SdkError<DescribeImportError>>> {
-        (*self).describe_import(builder)
+        self.deref().describe_import(builder)
     }
     fn describe_kinesis_streaming_destination(&self, builder: DescribeKinesisStreamingDestinationInputBuilder) -> impl Future<Output = Result<DescribeKinesisStreamingDestinationOutput, SdkError<DescribeKinesisStreamingDestinationError>>> {
-        (*self).describe_kinesis_streaming_destination(builder)
+        self.deref().describe_kinesis_streaming_destination(builder)
     }
     fn describe_limits(&self, builder: DescribeLimitsInputBuilder) -> impl Future<Output = Result<DescribeLimitsOutput, SdkError<DescribeLimitsError>>> {
-        (*self).describe_limits(builder)
+        self.deref().describe_limits(builder)
     }
     fn describe_table(&self, builder: DescribeTableInputBuilder) -> impl Future<Output = Result<DescribeTableOutput, SdkError<DescribeTableError>>> {
-        (*self).describe_table(builder)
+        self.deref().describe_table(builder)
     }
     fn describe_table_replica_auto_scaling(&self, builder: DescribeTableReplicaAutoScalingInputBuilder) -> impl Future<Output = Result<DescribeTableReplicaAutoScalingOutput, SdkError<DescribeTableReplicaAutoScalingError>>> {
-        (*self).describe_table_replica_auto_scaling(builder)
+        self.deref().describe_table_replica_auto_scaling(builder)
     }
     fn describe_time_to_live(&self, builder: DescribeTimeToLiveInputBuilder) -> impl Future<Output = Result<DescribeTimeToLiveOutput, SdkError<DescribeTimeToLiveError>>> {
-        (*self).describe_time_to_live(builder)
+        self.deref().describe_time_to_live(builder)
     }
     fn disable_kinesis_streaming_destination(&self, builder: DisableKinesisStreamingDestinationInputBuilder) -> impl Future<Output = Result<DisableKinesisStreamingDestinationOutput, SdkError<DisableKinesisStreamingDestinationError>>> {
-        (*self).disable_kinesis_streaming_destination(builder)
+        self.deref().disable_kinesis_streaming_destination(builder)
     }
     fn enable_kinesis_streaming_destination(&self, builder: EnableKinesisStreamingDestinationInputBuilder) -> impl Future<Output = Result<EnableKinesisStreamingDestinationOutput, SdkError<EnableKinesisStreamingDestinationError>>> {
-        (*self).enable_kinesis_streaming_destination(builder)
+        self.deref().enable_kinesis_streaming_destination(builder)
     }
     fn execute_statement(&self, builder: ExecuteStatementInputBuilder) -> impl Future<Output = Result<ExecuteStatementOutput, SdkError<ExecuteStatementError>>> {
-        (*self).execute_statement(builder)
+        self.deref().execute_statement(builder)
     }
     fn execute_transaction(&self, builder: ExecuteTransactionInputBuilder) -> impl Future<Output = Result<ExecuteTransactionOutput, SdkError<ExecuteTransactionError>>> {
-        (*self).execute_transaction(builder)
+        self.deref().execute_transaction(builder)
     }
     fn export_table_to_point_in_time(&self, builder: ExportTableToPointInTimeInputBuilder) -> impl Future<Output = Result<ExportTableToPointInTimeOutput, SdkError<ExportTableToPointInTimeError>>> {
-        (*self).export_table_to_point_in_time(builder)
+        self.deref().export_table_to_point_in_time(builder)
     }
     fn get_item(&self, builder: GetItemInputBuilder) -> impl Future<Output = Result<GetItemOutput, SdkError<GetItemError>>> {
-        (*self).get_item(builder)
+        self.deref().get_item(builder)
     }
     fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> {
-        (*self).get_resource_policy(builder)
+        self.deref().get_resource_policy(builder)
     }
     fn import_table(&self, builder: ImportTableInputBuilder) -> impl Future<Output = Result<ImportTableOutput, SdkError<ImportTableError>>> {
-        (*self).import_table(builder)
+        self.deref().import_table(builder)
     }
     fn list_backups(&self, builder: ListBackupsInputBuilder) -> impl Future<Output = Result<ListBackupsOutput, SdkError<ListBackupsError>>> {
-        (*self).list_backups(builder)
+        self.deref().list_backups(builder)
     }
     fn list_contributor_insights(&self, builder: ListContributorInsightsInputBuilder) -> impl Future<Output = Result<ListContributorInsightsOutput, SdkError<ListContributorInsightsError>>> {
-        (*self).list_contributor_insights(builder)
+        self.deref().list_contributor_insights(builder)
     }
     fn list_exports(&self, builder: ListExportsInputBuilder) -> impl Future<Output = Result<ListExportsOutput, SdkError<ListExportsError>>> {
-        (*self).list_exports(builder)
+        self.deref().list_exports(builder)
     }
     fn list_global_tables(&self, builder: ListGlobalTablesInputBuilder) -> impl Future<Output = Result<ListGlobalTablesOutput, SdkError<ListGlobalTablesError>>> {
-        (*self).list_global_tables(builder)
+        self.deref().list_global_tables(builder)
     }
     fn list_imports(&self, builder: ListImportsInputBuilder) -> impl Future<Output = Result<ListImportsOutput, SdkError<ListImportsError>>> {
-        (*self).list_imports(builder)
+        self.deref().list_imports(builder)
     }
     fn list_tables(&self, builder: ListTablesInputBuilder) -> impl Future<Output = Result<ListTablesOutput, SdkError<ListTablesError>>> {
-        (*self).list_tables(builder)
+        self.deref().list_tables(builder)
     }
     fn list_tags_of_resource(&self, builder: ListTagsOfResourceInputBuilder) -> impl Future<Output = Result<ListTagsOfResourceOutput, SdkError<ListTagsOfResourceError>>> {
-        (*self).list_tags_of_resource(builder)
+        self.deref().list_tags_of_resource(builder)
     }
     fn put_item(&self, builder: PutItemInputBuilder) -> impl Future<Output = Result<PutItemOutput, SdkError<PutItemError>>> {
-        (*self).put_item(builder)
+        self.deref().put_item(builder)
     }
     fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> {
-        (*self).put_resource_policy(builder)
+        self.deref().put_resource_policy(builder)
     }
     fn query(&self, builder: QueryInputBuilder) -> impl Future<Output = Result<QueryOutput, SdkError<QueryError>>> {
-        (*self).query(builder)
+        self.deref().query(builder)
     }
     fn restore_table_from_backup(&self, builder: RestoreTableFromBackupInputBuilder) -> impl Future<Output = Result<RestoreTableFromBackupOutput, SdkError<RestoreTableFromBackupError>>> {
-        (*self).restore_table_from_backup(builder)
+        self.deref().restore_table_from_backup(builder)
     }
     fn restore_table_to_point_in_time(&self, builder: RestoreTableToPointInTimeInputBuilder) -> impl Future<Output = Result<RestoreTableToPointInTimeOutput, SdkError<RestoreTableToPointInTimeError>>> {
-        (*self).restore_table_to_point_in_time(builder)
+        self.deref().restore_table_to_point_in_time(builder)
     }
     fn scan(&self, builder: ScanInputBuilder) -> impl Future<Output = Result<ScanOutput, SdkError<ScanError>>> {
-        (*self).scan(builder)
+        self.deref().scan(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn transact_get_items(&self, builder: TransactGetItemsInputBuilder) -> impl Future<Output = Result<TransactGetItemsOutput, SdkError<TransactGetItemsError>>> {
-        (*self).transact_get_items(builder)
+        self.deref().transact_get_items(builder)
     }
     fn transact_write_items(&self, builder: TransactWriteItemsInputBuilder) -> impl Future<Output = Result<TransactWriteItemsOutput, SdkError<TransactWriteItemsError>>> {
-        (*self).transact_write_items(builder)
+        self.deref().transact_write_items(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_continuous_backups(&self, builder: UpdateContinuousBackupsInputBuilder) -> impl Future<Output = Result<UpdateContinuousBackupsOutput, SdkError<UpdateContinuousBackupsError>>> {
-        (*self).update_continuous_backups(builder)
+        self.deref().update_continuous_backups(builder)
     }
     fn update_contributor_insights(&self, builder: UpdateContributorInsightsInputBuilder) -> impl Future<Output = Result<UpdateContributorInsightsOutput, SdkError<UpdateContributorInsightsError>>> {
-        (*self).update_contributor_insights(builder)
+        self.deref().update_contributor_insights(builder)
     }
     fn update_global_table(&self, builder: UpdateGlobalTableInputBuilder) -> impl Future<Output = Result<UpdateGlobalTableOutput, SdkError<UpdateGlobalTableError>>> {
-        (*self).update_global_table(builder)
+        self.deref().update_global_table(builder)
     }
     fn update_global_table_settings(&self, builder: UpdateGlobalTableSettingsInputBuilder) -> impl Future<Output = Result<UpdateGlobalTableSettingsOutput, SdkError<UpdateGlobalTableSettingsError>>> {
-        (*self).update_global_table_settings(builder)
+        self.deref().update_global_table_settings(builder)
     }
     fn update_item(&self, builder: UpdateItemInputBuilder) -> impl Future<Output = Result<UpdateItemOutput, SdkError<UpdateItemError>>> {
-        (*self).update_item(builder)
+        self.deref().update_item(builder)
     }
     fn update_kinesis_streaming_destination(&self, builder: UpdateKinesisStreamingDestinationInputBuilder) -> impl Future<Output = Result<UpdateKinesisStreamingDestinationOutput, SdkError<UpdateKinesisStreamingDestinationError>>> {
-        (*self).update_kinesis_streaming_destination(builder)
+        self.deref().update_kinesis_streaming_destination(builder)
     }
     fn update_table(&self, builder: UpdateTableInputBuilder) -> impl Future<Output = Result<UpdateTableOutput, SdkError<UpdateTableError>>> {
-        (*self).update_table(builder)
+        self.deref().update_table(builder)
     }
     fn update_table_replica_auto_scaling(&self, builder: UpdateTableReplicaAutoScalingInputBuilder) -> impl Future<Output = Result<UpdateTableReplicaAutoScalingOutput, SdkError<UpdateTableReplicaAutoScalingError>>> {
-        (*self).update_table_replica_auto_scaling(builder)
+        self.deref().update_table_replica_auto_scaling(builder)
     }
     fn update_time_to_live(&self, builder: UpdateTimeToLiveInputBuilder) -> impl Future<Output = Result<UpdateTimeToLiveOutput, SdkError<UpdateTimeToLiveError>>> {
-        (*self).update_time_to_live(builder)
+        self.deref().update_time_to_live(builder)
     }
 }
 #[cfg(feature = "mockall")]

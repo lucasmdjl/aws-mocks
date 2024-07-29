@@ -43,6 +43,7 @@ use aws_sdk_sqs::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_sqs::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_sqs::*;
 
@@ -146,75 +147,77 @@ impl SQSClient for SQSClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: SQSClient> SQSClient for &T {
+impl <T> SQSClient for T
+where T: Deref,
+      T::Target: SQSClient {
     fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>> {
-        (*self).add_permission(builder)
+        self.deref().add_permission(builder)
     }
     fn cancel_message_move_task(&self, builder: CancelMessageMoveTaskInputBuilder) -> impl Future<Output = Result<CancelMessageMoveTaskOutput, SdkError<CancelMessageMoveTaskError>>> {
-        (*self).cancel_message_move_task(builder)
+        self.deref().cancel_message_move_task(builder)
     }
     fn change_message_visibility(&self, builder: ChangeMessageVisibilityInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityOutput, SdkError<ChangeMessageVisibilityError>>> {
-        (*self).change_message_visibility(builder)
+        self.deref().change_message_visibility(builder)
     }
     fn change_message_visibility_batch(&self, builder: ChangeMessageVisibilityBatchInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityBatchOutput, SdkError<ChangeMessageVisibilityBatchError>>> {
-        (*self).change_message_visibility_batch(builder)
+        self.deref().change_message_visibility_batch(builder)
     }
     fn create_queue(&self, builder: CreateQueueInputBuilder) -> impl Future<Output = Result<CreateQueueOutput, SdkError<CreateQueueError>>> {
-        (*self).create_queue(builder)
+        self.deref().create_queue(builder)
     }
     fn delete_message(&self, builder: DeleteMessageInputBuilder) -> impl Future<Output = Result<DeleteMessageOutput, SdkError<DeleteMessageError>>> {
-        (*self).delete_message(builder)
+        self.deref().delete_message(builder)
     }
     fn delete_message_batch(&self, builder: DeleteMessageBatchInputBuilder) -> impl Future<Output = Result<DeleteMessageBatchOutput, SdkError<DeleteMessageBatchError>>> {
-        (*self).delete_message_batch(builder)
+        self.deref().delete_message_batch(builder)
     }
     fn delete_queue(&self, builder: DeleteQueueInputBuilder) -> impl Future<Output = Result<DeleteQueueOutput, SdkError<DeleteQueueError>>> {
-        (*self).delete_queue(builder)
+        self.deref().delete_queue(builder)
     }
     fn get_queue_attributes(&self, builder: GetQueueAttributesInputBuilder) -> impl Future<Output = Result<GetQueueAttributesOutput, SdkError<GetQueueAttributesError>>> {
-        (*self).get_queue_attributes(builder)
+        self.deref().get_queue_attributes(builder)
     }
     fn get_queue_url(&self, builder: GetQueueUrlInputBuilder) -> impl Future<Output = Result<GetQueueUrlOutput, SdkError<GetQueueUrlError>>> {
-        (*self).get_queue_url(builder)
+        self.deref().get_queue_url(builder)
     }
     fn list_dead_letter_source_queues(&self, builder: ListDeadLetterSourceQueuesInputBuilder) -> impl Future<Output = Result<ListDeadLetterSourceQueuesOutput, SdkError<ListDeadLetterSourceQueuesError>>> {
-        (*self).list_dead_letter_source_queues(builder)
+        self.deref().list_dead_letter_source_queues(builder)
     }
     fn list_message_move_tasks(&self, builder: ListMessageMoveTasksInputBuilder) -> impl Future<Output = Result<ListMessageMoveTasksOutput, SdkError<ListMessageMoveTasksError>>> {
-        (*self).list_message_move_tasks(builder)
+        self.deref().list_message_move_tasks(builder)
     }
     fn list_queue_tags(&self, builder: ListQueueTagsInputBuilder) -> impl Future<Output = Result<ListQueueTagsOutput, SdkError<ListQueueTagsError>>> {
-        (*self).list_queue_tags(builder)
+        self.deref().list_queue_tags(builder)
     }
     fn list_queues(&self, builder: ListQueuesInputBuilder) -> impl Future<Output = Result<ListQueuesOutput, SdkError<ListQueuesError>>> {
-        (*self).list_queues(builder)
+        self.deref().list_queues(builder)
     }
     fn purge_queue(&self, builder: PurgeQueueInputBuilder) -> impl Future<Output = Result<PurgeQueueOutput, SdkError<PurgeQueueError>>> {
-        (*self).purge_queue(builder)
+        self.deref().purge_queue(builder)
     }
     fn receive_message(&self, builder: ReceiveMessageInputBuilder) -> impl Future<Output = Result<ReceiveMessageOutput, SdkError<ReceiveMessageError>>> {
-        (*self).receive_message(builder)
+        self.deref().receive_message(builder)
     }
     fn remove_permission(&self, builder: RemovePermissionInputBuilder) -> impl Future<Output = Result<RemovePermissionOutput, SdkError<RemovePermissionError>>> {
-        (*self).remove_permission(builder)
+        self.deref().remove_permission(builder)
     }
     fn send_message(&self, builder: SendMessageInputBuilder) -> impl Future<Output = Result<SendMessageOutput, SdkError<SendMessageError>>> {
-        (*self).send_message(builder)
+        self.deref().send_message(builder)
     }
     fn send_message_batch(&self, builder: SendMessageBatchInputBuilder) -> impl Future<Output = Result<SendMessageBatchOutput, SdkError<SendMessageBatchError>>> {
-        (*self).send_message_batch(builder)
+        self.deref().send_message_batch(builder)
     }
     fn set_queue_attributes(&self, builder: SetQueueAttributesInputBuilder) -> impl Future<Output = Result<SetQueueAttributesOutput, SdkError<SetQueueAttributesError>>> {
-        (*self).set_queue_attributes(builder)
+        self.deref().set_queue_attributes(builder)
     }
     fn start_message_move_task(&self, builder: StartMessageMoveTaskInputBuilder) -> impl Future<Output = Result<StartMessageMoveTaskOutput, SdkError<StartMessageMoveTaskError>>> {
-        (*self).start_message_move_task(builder)
+        self.deref().start_message_move_task(builder)
     }
     fn tag_queue(&self, builder: TagQueueInputBuilder) -> impl Future<Output = Result<TagQueueOutput, SdkError<TagQueueError>>> {
-        (*self).tag_queue(builder)
+        self.deref().tag_queue(builder)
     }
     fn untag_queue(&self, builder: UntagQueueInputBuilder) -> impl Future<Output = Result<UntagQueueOutput, SdkError<UntagQueueError>>> {
-        (*self).untag_queue(builder)
+        self.deref().untag_queue(builder)
     }
 }
 #[cfg(feature = "mockall")]

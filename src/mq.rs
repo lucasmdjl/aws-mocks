@@ -43,6 +43,7 @@ use aws_sdk_mq::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_mq::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_mq::*;
 
@@ -146,75 +147,77 @@ impl MQClient for MQClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: MQClient> MQClient for &T {
+impl <T> MQClient for T
+where T: Deref,
+      T::Target: MQClient {
     fn create_broker(&self, builder: CreateBrokerInputBuilder) -> impl Future<Output = Result<CreateBrokerOutput, SdkError<CreateBrokerError>>> {
-        (*self).create_broker(builder)
+        self.deref().create_broker(builder)
     }
     fn create_configuration(&self, builder: CreateConfigurationInputBuilder) -> impl Future<Output = Result<CreateConfigurationOutput, SdkError<CreateConfigurationError>>> {
-        (*self).create_configuration(builder)
+        self.deref().create_configuration(builder)
     }
     fn create_tags(&self, builder: CreateTagsInputBuilder) -> impl Future<Output = Result<CreateTagsOutput, SdkError<CreateTagsError>>> {
-        (*self).create_tags(builder)
+        self.deref().create_tags(builder)
     }
     fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>> {
-        (*self).create_user(builder)
+        self.deref().create_user(builder)
     }
     fn delete_broker(&self, builder: DeleteBrokerInputBuilder) -> impl Future<Output = Result<DeleteBrokerOutput, SdkError<DeleteBrokerError>>> {
-        (*self).delete_broker(builder)
+        self.deref().delete_broker(builder)
     }
     fn delete_tags(&self, builder: DeleteTagsInputBuilder) -> impl Future<Output = Result<DeleteTagsOutput, SdkError<DeleteTagsError>>> {
-        (*self).delete_tags(builder)
+        self.deref().delete_tags(builder)
     }
     fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> {
-        (*self).delete_user(builder)
+        self.deref().delete_user(builder)
     }
     fn describe_broker(&self, builder: DescribeBrokerInputBuilder) -> impl Future<Output = Result<DescribeBrokerOutput, SdkError<DescribeBrokerError>>> {
-        (*self).describe_broker(builder)
+        self.deref().describe_broker(builder)
     }
     fn describe_broker_engine_types(&self, builder: DescribeBrokerEngineTypesInputBuilder) -> impl Future<Output = Result<DescribeBrokerEngineTypesOutput, SdkError<DescribeBrokerEngineTypesError>>> {
-        (*self).describe_broker_engine_types(builder)
+        self.deref().describe_broker_engine_types(builder)
     }
     fn describe_broker_instance_options(&self, builder: DescribeBrokerInstanceOptionsInputBuilder) -> impl Future<Output = Result<DescribeBrokerInstanceOptionsOutput, SdkError<DescribeBrokerInstanceOptionsError>>> {
-        (*self).describe_broker_instance_options(builder)
+        self.deref().describe_broker_instance_options(builder)
     }
     fn describe_configuration(&self, builder: DescribeConfigurationInputBuilder) -> impl Future<Output = Result<DescribeConfigurationOutput, SdkError<DescribeConfigurationError>>> {
-        (*self).describe_configuration(builder)
+        self.deref().describe_configuration(builder)
     }
     fn describe_configuration_revision(&self, builder: DescribeConfigurationRevisionInputBuilder) -> impl Future<Output = Result<DescribeConfigurationRevisionOutput, SdkError<DescribeConfigurationRevisionError>>> {
-        (*self).describe_configuration_revision(builder)
+        self.deref().describe_configuration_revision(builder)
     }
     fn describe_user(&self, builder: DescribeUserInputBuilder) -> impl Future<Output = Result<DescribeUserOutput, SdkError<DescribeUserError>>> {
-        (*self).describe_user(builder)
+        self.deref().describe_user(builder)
     }
     fn list_brokers(&self, builder: ListBrokersInputBuilder) -> impl Future<Output = Result<ListBrokersOutput, SdkError<ListBrokersError>>> {
-        (*self).list_brokers(builder)
+        self.deref().list_brokers(builder)
     }
     fn list_configuration_revisions(&self, builder: ListConfigurationRevisionsInputBuilder) -> impl Future<Output = Result<ListConfigurationRevisionsOutput, SdkError<ListConfigurationRevisionsError>>> {
-        (*self).list_configuration_revisions(builder)
+        self.deref().list_configuration_revisions(builder)
     }
     fn list_configurations(&self, builder: ListConfigurationsInputBuilder) -> impl Future<Output = Result<ListConfigurationsOutput, SdkError<ListConfigurationsError>>> {
-        (*self).list_configurations(builder)
+        self.deref().list_configurations(builder)
     }
     fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> {
-        (*self).list_tags(builder)
+        self.deref().list_tags(builder)
     }
     fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>> {
-        (*self).list_users(builder)
+        self.deref().list_users(builder)
     }
     fn promote(&self, builder: PromoteInputBuilder) -> impl Future<Output = Result<PromoteOutput, SdkError<PromoteError>>> {
-        (*self).promote(builder)
+        self.deref().promote(builder)
     }
     fn reboot_broker(&self, builder: RebootBrokerInputBuilder) -> impl Future<Output = Result<RebootBrokerOutput, SdkError<RebootBrokerError>>> {
-        (*self).reboot_broker(builder)
+        self.deref().reboot_broker(builder)
     }
     fn update_broker(&self, builder: UpdateBrokerInputBuilder) -> impl Future<Output = Result<UpdateBrokerOutput, SdkError<UpdateBrokerError>>> {
-        (*self).update_broker(builder)
+        self.deref().update_broker(builder)
     }
     fn update_configuration(&self, builder: UpdateConfigurationInputBuilder) -> impl Future<Output = Result<UpdateConfigurationOutput, SdkError<UpdateConfigurationError>>> {
-        (*self).update_configuration(builder)
+        self.deref().update_configuration(builder)
     }
     fn update_user(&self, builder: UpdateUserInputBuilder) -> impl Future<Output = Result<UpdateUserOutput, SdkError<UpdateUserError>>> {
-        (*self).update_user(builder)
+        self.deref().update_user(builder)
     }
 }
 #[cfg(feature = "mockall")]

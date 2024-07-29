@@ -140,6 +140,7 @@ use aws_sdk_apigateway::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_apigateway::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_apigateway::*;
 
@@ -631,366 +632,368 @@ impl ApiGatewayClient for ApiGatewayClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: ApiGatewayClient> ApiGatewayClient for &T {
+impl <T> ApiGatewayClient for T
+where T: Deref,
+      T::Target: ApiGatewayClient {
     fn create_api_key(&self, builder: CreateApiKeyInputBuilder) -> impl Future<Output = Result<CreateApiKeyOutput, SdkError<CreateApiKeyError>>> {
-        (*self).create_api_key(builder)
+        self.deref().create_api_key(builder)
     }
     fn create_authorizer(&self, builder: CreateAuthorizerInputBuilder) -> impl Future<Output = Result<CreateAuthorizerOutput, SdkError<CreateAuthorizerError>>> {
-        (*self).create_authorizer(builder)
+        self.deref().create_authorizer(builder)
     }
     fn create_base_path_mapping(&self, builder: CreateBasePathMappingInputBuilder) -> impl Future<Output = Result<CreateBasePathMappingOutput, SdkError<CreateBasePathMappingError>>> {
-        (*self).create_base_path_mapping(builder)
+        self.deref().create_base_path_mapping(builder)
     }
     fn create_deployment(&self, builder: CreateDeploymentInputBuilder) -> impl Future<Output = Result<CreateDeploymentOutput, SdkError<CreateDeploymentError>>> {
-        (*self).create_deployment(builder)
+        self.deref().create_deployment(builder)
     }
     fn create_documentation_part(&self, builder: CreateDocumentationPartInputBuilder) -> impl Future<Output = Result<CreateDocumentationPartOutput, SdkError<CreateDocumentationPartError>>> {
-        (*self).create_documentation_part(builder)
+        self.deref().create_documentation_part(builder)
     }
     fn create_documentation_version(&self, builder: CreateDocumentationVersionInputBuilder) -> impl Future<Output = Result<CreateDocumentationVersionOutput, SdkError<CreateDocumentationVersionError>>> {
-        (*self).create_documentation_version(builder)
+        self.deref().create_documentation_version(builder)
     }
     fn create_domain_name(&self, builder: CreateDomainNameInputBuilder) -> impl Future<Output = Result<CreateDomainNameOutput, SdkError<CreateDomainNameError>>> {
-        (*self).create_domain_name(builder)
+        self.deref().create_domain_name(builder)
     }
     fn create_model(&self, builder: CreateModelInputBuilder) -> impl Future<Output = Result<CreateModelOutput, SdkError<CreateModelError>>> {
-        (*self).create_model(builder)
+        self.deref().create_model(builder)
     }
     fn create_request_validator(&self, builder: CreateRequestValidatorInputBuilder) -> impl Future<Output = Result<CreateRequestValidatorOutput, SdkError<CreateRequestValidatorError>>> {
-        (*self).create_request_validator(builder)
+        self.deref().create_request_validator(builder)
     }
     fn create_resource(&self, builder: CreateResourceInputBuilder) -> impl Future<Output = Result<CreateResourceOutput, SdkError<CreateResourceError>>> {
-        (*self).create_resource(builder)
+        self.deref().create_resource(builder)
     }
     fn create_rest_api(&self, builder: CreateRestApiInputBuilder) -> impl Future<Output = Result<CreateRestApiOutput, SdkError<CreateRestApiError>>> {
-        (*self).create_rest_api(builder)
+        self.deref().create_rest_api(builder)
     }
     fn create_stage(&self, builder: CreateStageInputBuilder) -> impl Future<Output = Result<CreateStageOutput, SdkError<CreateStageError>>> {
-        (*self).create_stage(builder)
+        self.deref().create_stage(builder)
     }
     fn create_usage_plan(&self, builder: CreateUsagePlanInputBuilder) -> impl Future<Output = Result<CreateUsagePlanOutput, SdkError<CreateUsagePlanError>>> {
-        (*self).create_usage_plan(builder)
+        self.deref().create_usage_plan(builder)
     }
     fn create_usage_plan_key(&self, builder: CreateUsagePlanKeyInputBuilder) -> impl Future<Output = Result<CreateUsagePlanKeyOutput, SdkError<CreateUsagePlanKeyError>>> {
-        (*self).create_usage_plan_key(builder)
+        self.deref().create_usage_plan_key(builder)
     }
     fn create_vpc_link(&self, builder: CreateVpcLinkInputBuilder) -> impl Future<Output = Result<CreateVpcLinkOutput, SdkError<CreateVpcLinkError>>> {
-        (*self).create_vpc_link(builder)
+        self.deref().create_vpc_link(builder)
     }
     fn delete_api_key(&self, builder: DeleteApiKeyInputBuilder) -> impl Future<Output = Result<DeleteApiKeyOutput, SdkError<DeleteApiKeyError>>> {
-        (*self).delete_api_key(builder)
+        self.deref().delete_api_key(builder)
     }
     fn delete_authorizer(&self, builder: DeleteAuthorizerInputBuilder) -> impl Future<Output = Result<DeleteAuthorizerOutput, SdkError<DeleteAuthorizerError>>> {
-        (*self).delete_authorizer(builder)
+        self.deref().delete_authorizer(builder)
     }
     fn delete_base_path_mapping(&self, builder: DeleteBasePathMappingInputBuilder) -> impl Future<Output = Result<DeleteBasePathMappingOutput, SdkError<DeleteBasePathMappingError>>> {
-        (*self).delete_base_path_mapping(builder)
+        self.deref().delete_base_path_mapping(builder)
     }
     fn delete_client_certificate(&self, builder: DeleteClientCertificateInputBuilder) -> impl Future<Output = Result<DeleteClientCertificateOutput, SdkError<DeleteClientCertificateError>>> {
-        (*self).delete_client_certificate(builder)
+        self.deref().delete_client_certificate(builder)
     }
     fn delete_deployment(&self, builder: DeleteDeploymentInputBuilder) -> impl Future<Output = Result<DeleteDeploymentOutput, SdkError<DeleteDeploymentError>>> {
-        (*self).delete_deployment(builder)
+        self.deref().delete_deployment(builder)
     }
     fn delete_documentation_part(&self, builder: DeleteDocumentationPartInputBuilder) -> impl Future<Output = Result<DeleteDocumentationPartOutput, SdkError<DeleteDocumentationPartError>>> {
-        (*self).delete_documentation_part(builder)
+        self.deref().delete_documentation_part(builder)
     }
     fn delete_documentation_version(&self, builder: DeleteDocumentationVersionInputBuilder) -> impl Future<Output = Result<DeleteDocumentationVersionOutput, SdkError<DeleteDocumentationVersionError>>> {
-        (*self).delete_documentation_version(builder)
+        self.deref().delete_documentation_version(builder)
     }
     fn delete_domain_name(&self, builder: DeleteDomainNameInputBuilder) -> impl Future<Output = Result<DeleteDomainNameOutput, SdkError<DeleteDomainNameError>>> {
-        (*self).delete_domain_name(builder)
+        self.deref().delete_domain_name(builder)
     }
     fn delete_gateway_response(&self, builder: DeleteGatewayResponseInputBuilder) -> impl Future<Output = Result<DeleteGatewayResponseOutput, SdkError<DeleteGatewayResponseError>>> {
-        (*self).delete_gateway_response(builder)
+        self.deref().delete_gateway_response(builder)
     }
     fn delete_integration(&self, builder: DeleteIntegrationInputBuilder) -> impl Future<Output = Result<DeleteIntegrationOutput, SdkError<DeleteIntegrationError>>> {
-        (*self).delete_integration(builder)
+        self.deref().delete_integration(builder)
     }
     fn delete_integration_response(&self, builder: DeleteIntegrationResponseInputBuilder) -> impl Future<Output = Result<DeleteIntegrationResponseOutput, SdkError<DeleteIntegrationResponseError>>> {
-        (*self).delete_integration_response(builder)
+        self.deref().delete_integration_response(builder)
     }
     fn delete_method(&self, builder: DeleteMethodInputBuilder) -> impl Future<Output = Result<DeleteMethodOutput, SdkError<DeleteMethodError>>> {
-        (*self).delete_method(builder)
+        self.deref().delete_method(builder)
     }
     fn delete_method_response(&self, builder: DeleteMethodResponseInputBuilder) -> impl Future<Output = Result<DeleteMethodResponseOutput, SdkError<DeleteMethodResponseError>>> {
-        (*self).delete_method_response(builder)
+        self.deref().delete_method_response(builder)
     }
     fn delete_model(&self, builder: DeleteModelInputBuilder) -> impl Future<Output = Result<DeleteModelOutput, SdkError<DeleteModelError>>> {
-        (*self).delete_model(builder)
+        self.deref().delete_model(builder)
     }
     fn delete_request_validator(&self, builder: DeleteRequestValidatorInputBuilder) -> impl Future<Output = Result<DeleteRequestValidatorOutput, SdkError<DeleteRequestValidatorError>>> {
-        (*self).delete_request_validator(builder)
+        self.deref().delete_request_validator(builder)
     }
     fn delete_resource(&self, builder: DeleteResourceInputBuilder) -> impl Future<Output = Result<DeleteResourceOutput, SdkError<DeleteResourceError>>> {
-        (*self).delete_resource(builder)
+        self.deref().delete_resource(builder)
     }
     fn delete_rest_api(&self, builder: DeleteRestApiInputBuilder) -> impl Future<Output = Result<DeleteRestApiOutput, SdkError<DeleteRestApiError>>> {
-        (*self).delete_rest_api(builder)
+        self.deref().delete_rest_api(builder)
     }
     fn delete_stage(&self, builder: DeleteStageInputBuilder) -> impl Future<Output = Result<DeleteStageOutput, SdkError<DeleteStageError>>> {
-        (*self).delete_stage(builder)
+        self.deref().delete_stage(builder)
     }
     fn delete_usage_plan(&self, builder: DeleteUsagePlanInputBuilder) -> impl Future<Output = Result<DeleteUsagePlanOutput, SdkError<DeleteUsagePlanError>>> {
-        (*self).delete_usage_plan(builder)
+        self.deref().delete_usage_plan(builder)
     }
     fn delete_usage_plan_key(&self, builder: DeleteUsagePlanKeyInputBuilder) -> impl Future<Output = Result<DeleteUsagePlanKeyOutput, SdkError<DeleteUsagePlanKeyError>>> {
-        (*self).delete_usage_plan_key(builder)
+        self.deref().delete_usage_plan_key(builder)
     }
     fn delete_vpc_link(&self, builder: DeleteVpcLinkInputBuilder) -> impl Future<Output = Result<DeleteVpcLinkOutput, SdkError<DeleteVpcLinkError>>> {
-        (*self).delete_vpc_link(builder)
+        self.deref().delete_vpc_link(builder)
     }
     fn flush_stage_authorizers_cache(&self, builder: FlushStageAuthorizersCacheInputBuilder) -> impl Future<Output = Result<FlushStageAuthorizersCacheOutput, SdkError<FlushStageAuthorizersCacheError>>> {
-        (*self).flush_stage_authorizers_cache(builder)
+        self.deref().flush_stage_authorizers_cache(builder)
     }
     fn flush_stage_cache(&self, builder: FlushStageCacheInputBuilder) -> impl Future<Output = Result<FlushStageCacheOutput, SdkError<FlushStageCacheError>>> {
-        (*self).flush_stage_cache(builder)
+        self.deref().flush_stage_cache(builder)
     }
     fn generate_client_certificate(&self, builder: GenerateClientCertificateInputBuilder) -> impl Future<Output = Result<GenerateClientCertificateOutput, SdkError<GenerateClientCertificateError>>> {
-        (*self).generate_client_certificate(builder)
+        self.deref().generate_client_certificate(builder)
     }
     fn get_account(&self, builder: GetAccountInputBuilder) -> impl Future<Output = Result<GetAccountOutput, SdkError<GetAccountError>>> {
-        (*self).get_account(builder)
+        self.deref().get_account(builder)
     }
     fn get_api_key(&self, builder: GetApiKeyInputBuilder) -> impl Future<Output = Result<GetApiKeyOutput, SdkError<GetApiKeyError>>> {
-        (*self).get_api_key(builder)
+        self.deref().get_api_key(builder)
     }
     fn get_api_keys(&self, builder: GetApiKeysInputBuilder) -> impl Future<Output = Result<GetApiKeysOutput, SdkError<GetApiKeysError>>> {
-        (*self).get_api_keys(builder)
+        self.deref().get_api_keys(builder)
     }
     fn get_authorizer(&self, builder: GetAuthorizerInputBuilder) -> impl Future<Output = Result<GetAuthorizerOutput, SdkError<GetAuthorizerError>>> {
-        (*self).get_authorizer(builder)
+        self.deref().get_authorizer(builder)
     }
     fn get_authorizers(&self, builder: GetAuthorizersInputBuilder) -> impl Future<Output = Result<GetAuthorizersOutput, SdkError<GetAuthorizersError>>> {
-        (*self).get_authorizers(builder)
+        self.deref().get_authorizers(builder)
     }
     fn get_base_path_mapping(&self, builder: GetBasePathMappingInputBuilder) -> impl Future<Output = Result<GetBasePathMappingOutput, SdkError<GetBasePathMappingError>>> {
-        (*self).get_base_path_mapping(builder)
+        self.deref().get_base_path_mapping(builder)
     }
     fn get_base_path_mappings(&self, builder: GetBasePathMappingsInputBuilder) -> impl Future<Output = Result<GetBasePathMappingsOutput, SdkError<GetBasePathMappingsError>>> {
-        (*self).get_base_path_mappings(builder)
+        self.deref().get_base_path_mappings(builder)
     }
     fn get_client_certificate(&self, builder: GetClientCertificateInputBuilder) -> impl Future<Output = Result<GetClientCertificateOutput, SdkError<GetClientCertificateError>>> {
-        (*self).get_client_certificate(builder)
+        self.deref().get_client_certificate(builder)
     }
     fn get_client_certificates(&self, builder: GetClientCertificatesInputBuilder) -> impl Future<Output = Result<GetClientCertificatesOutput, SdkError<GetClientCertificatesError>>> {
-        (*self).get_client_certificates(builder)
+        self.deref().get_client_certificates(builder)
     }
     fn get_deployment(&self, builder: GetDeploymentInputBuilder) -> impl Future<Output = Result<GetDeploymentOutput, SdkError<GetDeploymentError>>> {
-        (*self).get_deployment(builder)
+        self.deref().get_deployment(builder)
     }
     fn get_deployments(&self, builder: GetDeploymentsInputBuilder) -> impl Future<Output = Result<GetDeploymentsOutput, SdkError<GetDeploymentsError>>> {
-        (*self).get_deployments(builder)
+        self.deref().get_deployments(builder)
     }
     fn get_documentation_part(&self, builder: GetDocumentationPartInputBuilder) -> impl Future<Output = Result<GetDocumentationPartOutput, SdkError<GetDocumentationPartError>>> {
-        (*self).get_documentation_part(builder)
+        self.deref().get_documentation_part(builder)
     }
     fn get_documentation_parts(&self, builder: GetDocumentationPartsInputBuilder) -> impl Future<Output = Result<GetDocumentationPartsOutput, SdkError<GetDocumentationPartsError>>> {
-        (*self).get_documentation_parts(builder)
+        self.deref().get_documentation_parts(builder)
     }
     fn get_documentation_version(&self, builder: GetDocumentationVersionInputBuilder) -> impl Future<Output = Result<GetDocumentationVersionOutput, SdkError<GetDocumentationVersionError>>> {
-        (*self).get_documentation_version(builder)
+        self.deref().get_documentation_version(builder)
     }
     fn get_documentation_versions(&self, builder: GetDocumentationVersionsInputBuilder) -> impl Future<Output = Result<GetDocumentationVersionsOutput, SdkError<GetDocumentationVersionsError>>> {
-        (*self).get_documentation_versions(builder)
+        self.deref().get_documentation_versions(builder)
     }
     fn get_domain_name(&self, builder: GetDomainNameInputBuilder) -> impl Future<Output = Result<GetDomainNameOutput, SdkError<GetDomainNameError>>> {
-        (*self).get_domain_name(builder)
+        self.deref().get_domain_name(builder)
     }
     fn get_domain_names(&self, builder: GetDomainNamesInputBuilder) -> impl Future<Output = Result<GetDomainNamesOutput, SdkError<GetDomainNamesError>>> {
-        (*self).get_domain_names(builder)
+        self.deref().get_domain_names(builder)
     }
     fn get_export(&self, builder: GetExportInputBuilder) -> impl Future<Output = Result<GetExportOutput, SdkError<GetExportError>>> {
-        (*self).get_export(builder)
+        self.deref().get_export(builder)
     }
     fn get_gateway_response(&self, builder: GetGatewayResponseInputBuilder) -> impl Future<Output = Result<GetGatewayResponseOutput, SdkError<GetGatewayResponseError>>> {
-        (*self).get_gateway_response(builder)
+        self.deref().get_gateway_response(builder)
     }
     fn get_gateway_responses(&self, builder: GetGatewayResponsesInputBuilder) -> impl Future<Output = Result<GetGatewayResponsesOutput, SdkError<GetGatewayResponsesError>>> {
-        (*self).get_gateway_responses(builder)
+        self.deref().get_gateway_responses(builder)
     }
     fn get_integration(&self, builder: GetIntegrationInputBuilder) -> impl Future<Output = Result<GetIntegrationOutput, SdkError<GetIntegrationError>>> {
-        (*self).get_integration(builder)
+        self.deref().get_integration(builder)
     }
     fn get_integration_response(&self, builder: GetIntegrationResponseInputBuilder) -> impl Future<Output = Result<GetIntegrationResponseOutput, SdkError<GetIntegrationResponseError>>> {
-        (*self).get_integration_response(builder)
+        self.deref().get_integration_response(builder)
     }
     fn get_method(&self, builder: GetMethodInputBuilder) -> impl Future<Output = Result<GetMethodOutput, SdkError<GetMethodError>>> {
-        (*self).get_method(builder)
+        self.deref().get_method(builder)
     }
     fn get_method_response(&self, builder: GetMethodResponseInputBuilder) -> impl Future<Output = Result<GetMethodResponseOutput, SdkError<GetMethodResponseError>>> {
-        (*self).get_method_response(builder)
+        self.deref().get_method_response(builder)
     }
     fn get_model(&self, builder: GetModelInputBuilder) -> impl Future<Output = Result<GetModelOutput, SdkError<GetModelError>>> {
-        (*self).get_model(builder)
+        self.deref().get_model(builder)
     }
     fn get_model_template(&self, builder: GetModelTemplateInputBuilder) -> impl Future<Output = Result<GetModelTemplateOutput, SdkError<GetModelTemplateError>>> {
-        (*self).get_model_template(builder)
+        self.deref().get_model_template(builder)
     }
     fn get_models(&self, builder: GetModelsInputBuilder) -> impl Future<Output = Result<GetModelsOutput, SdkError<GetModelsError>>> {
-        (*self).get_models(builder)
+        self.deref().get_models(builder)
     }
     fn get_request_validator(&self, builder: GetRequestValidatorInputBuilder) -> impl Future<Output = Result<GetRequestValidatorOutput, SdkError<GetRequestValidatorError>>> {
-        (*self).get_request_validator(builder)
+        self.deref().get_request_validator(builder)
     }
     fn get_request_validators(&self, builder: GetRequestValidatorsInputBuilder) -> impl Future<Output = Result<GetRequestValidatorsOutput, SdkError<GetRequestValidatorsError>>> {
-        (*self).get_request_validators(builder)
+        self.deref().get_request_validators(builder)
     }
     fn get_resource(&self, builder: GetResourceInputBuilder) -> impl Future<Output = Result<GetResourceOutput, SdkError<GetResourceError>>> {
-        (*self).get_resource(builder)
+        self.deref().get_resource(builder)
     }
     fn get_resources(&self, builder: GetResourcesInputBuilder) -> impl Future<Output = Result<GetResourcesOutput, SdkError<GetResourcesError>>> {
-        (*self).get_resources(builder)
+        self.deref().get_resources(builder)
     }
     fn get_rest_api(&self, builder: GetRestApiInputBuilder) -> impl Future<Output = Result<GetRestApiOutput, SdkError<GetRestApiError>>> {
-        (*self).get_rest_api(builder)
+        self.deref().get_rest_api(builder)
     }
     fn get_rest_apis(&self, builder: GetRestApisInputBuilder) -> impl Future<Output = Result<GetRestApisOutput, SdkError<GetRestApisError>>> {
-        (*self).get_rest_apis(builder)
+        self.deref().get_rest_apis(builder)
     }
     fn get_sdk(&self, builder: GetSdkInputBuilder) -> impl Future<Output = Result<GetSdkOutput, SdkError<GetSdkError>>> {
-        (*self).get_sdk(builder)
+        self.deref().get_sdk(builder)
     }
     fn get_sdk_type(&self, builder: GetSdkTypeInputBuilder) -> impl Future<Output = Result<GetSdkTypeOutput, SdkError<GetSdkTypeError>>> {
-        (*self).get_sdk_type(builder)
+        self.deref().get_sdk_type(builder)
     }
     fn get_sdk_types(&self, builder: GetSdkTypesInputBuilder) -> impl Future<Output = Result<GetSdkTypesOutput, SdkError<GetSdkTypesError>>> {
-        (*self).get_sdk_types(builder)
+        self.deref().get_sdk_types(builder)
     }
     fn get_stage(&self, builder: GetStageInputBuilder) -> impl Future<Output = Result<GetStageOutput, SdkError<GetStageError>>> {
-        (*self).get_stage(builder)
+        self.deref().get_stage(builder)
     }
     fn get_stages(&self, builder: GetStagesInputBuilder) -> impl Future<Output = Result<GetStagesOutput, SdkError<GetStagesError>>> {
-        (*self).get_stages(builder)
+        self.deref().get_stages(builder)
     }
     fn get_tags(&self, builder: GetTagsInputBuilder) -> impl Future<Output = Result<GetTagsOutput, SdkError<GetTagsError>>> {
-        (*self).get_tags(builder)
+        self.deref().get_tags(builder)
     }
     fn get_usage(&self, builder: GetUsageInputBuilder) -> impl Future<Output = Result<GetUsageOutput, SdkError<GetUsageError>>> {
-        (*self).get_usage(builder)
+        self.deref().get_usage(builder)
     }
     fn get_usage_plan(&self, builder: GetUsagePlanInputBuilder) -> impl Future<Output = Result<GetUsagePlanOutput, SdkError<GetUsagePlanError>>> {
-        (*self).get_usage_plan(builder)
+        self.deref().get_usage_plan(builder)
     }
     fn get_usage_plan_key(&self, builder: GetUsagePlanKeyInputBuilder) -> impl Future<Output = Result<GetUsagePlanKeyOutput, SdkError<GetUsagePlanKeyError>>> {
-        (*self).get_usage_plan_key(builder)
+        self.deref().get_usage_plan_key(builder)
     }
     fn get_usage_plan_keys(&self, builder: GetUsagePlanKeysInputBuilder) -> impl Future<Output = Result<GetUsagePlanKeysOutput, SdkError<GetUsagePlanKeysError>>> {
-        (*self).get_usage_plan_keys(builder)
+        self.deref().get_usage_plan_keys(builder)
     }
     fn get_usage_plans(&self, builder: GetUsagePlansInputBuilder) -> impl Future<Output = Result<GetUsagePlansOutput, SdkError<GetUsagePlansError>>> {
-        (*self).get_usage_plans(builder)
+        self.deref().get_usage_plans(builder)
     }
     fn get_vpc_link(&self, builder: GetVpcLinkInputBuilder) -> impl Future<Output = Result<GetVpcLinkOutput, SdkError<GetVpcLinkError>>> {
-        (*self).get_vpc_link(builder)
+        self.deref().get_vpc_link(builder)
     }
     fn get_vpc_links(&self, builder: GetVpcLinksInputBuilder) -> impl Future<Output = Result<GetVpcLinksOutput, SdkError<GetVpcLinksError>>> {
-        (*self).get_vpc_links(builder)
+        self.deref().get_vpc_links(builder)
     }
     fn import_api_keys(&self, builder: ImportApiKeysInputBuilder) -> impl Future<Output = Result<ImportApiKeysOutput, SdkError<ImportApiKeysError>>> {
-        (*self).import_api_keys(builder)
+        self.deref().import_api_keys(builder)
     }
     fn import_documentation_parts(&self, builder: ImportDocumentationPartsInputBuilder) -> impl Future<Output = Result<ImportDocumentationPartsOutput, SdkError<ImportDocumentationPartsError>>> {
-        (*self).import_documentation_parts(builder)
+        self.deref().import_documentation_parts(builder)
     }
     fn import_rest_api(&self, builder: ImportRestApiInputBuilder) -> impl Future<Output = Result<ImportRestApiOutput, SdkError<ImportRestApiError>>> {
-        (*self).import_rest_api(builder)
+        self.deref().import_rest_api(builder)
     }
     fn put_gateway_response(&self, builder: PutGatewayResponseInputBuilder) -> impl Future<Output = Result<PutGatewayResponseOutput, SdkError<PutGatewayResponseError>>> {
-        (*self).put_gateway_response(builder)
+        self.deref().put_gateway_response(builder)
     }
     fn put_integration(&self, builder: PutIntegrationInputBuilder) -> impl Future<Output = Result<PutIntegrationOutput, SdkError<PutIntegrationError>>> {
-        (*self).put_integration(builder)
+        self.deref().put_integration(builder)
     }
     fn put_integration_response(&self, builder: PutIntegrationResponseInputBuilder) -> impl Future<Output = Result<PutIntegrationResponseOutput, SdkError<PutIntegrationResponseError>>> {
-        (*self).put_integration_response(builder)
+        self.deref().put_integration_response(builder)
     }
     fn put_method(&self, builder: PutMethodInputBuilder) -> impl Future<Output = Result<PutMethodOutput, SdkError<PutMethodError>>> {
-        (*self).put_method(builder)
+        self.deref().put_method(builder)
     }
     fn put_method_response(&self, builder: PutMethodResponseInputBuilder) -> impl Future<Output = Result<PutMethodResponseOutput, SdkError<PutMethodResponseError>>> {
-        (*self).put_method_response(builder)
+        self.deref().put_method_response(builder)
     }
     fn put_rest_api(&self, builder: PutRestApiInputBuilder) -> impl Future<Output = Result<PutRestApiOutput, SdkError<PutRestApiError>>> {
-        (*self).put_rest_api(builder)
+        self.deref().put_rest_api(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn test_invoke_authorizer(&self, builder: TestInvokeAuthorizerInputBuilder) -> impl Future<Output = Result<TestInvokeAuthorizerOutput, SdkError<TestInvokeAuthorizerError>>> {
-        (*self).test_invoke_authorizer(builder)
+        self.deref().test_invoke_authorizer(builder)
     }
     fn test_invoke_method(&self, builder: TestInvokeMethodInputBuilder) -> impl Future<Output = Result<TestInvokeMethodOutput, SdkError<TestInvokeMethodError>>> {
-        (*self).test_invoke_method(builder)
+        self.deref().test_invoke_method(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_account(&self, builder: UpdateAccountInputBuilder) -> impl Future<Output = Result<UpdateAccountOutput, SdkError<UpdateAccountError>>> {
-        (*self).update_account(builder)
+        self.deref().update_account(builder)
     }
     fn update_api_key(&self, builder: UpdateApiKeyInputBuilder) -> impl Future<Output = Result<UpdateApiKeyOutput, SdkError<UpdateApiKeyError>>> {
-        (*self).update_api_key(builder)
+        self.deref().update_api_key(builder)
     }
     fn update_authorizer(&self, builder: UpdateAuthorizerInputBuilder) -> impl Future<Output = Result<UpdateAuthorizerOutput, SdkError<UpdateAuthorizerError>>> {
-        (*self).update_authorizer(builder)
+        self.deref().update_authorizer(builder)
     }
     fn update_base_path_mapping(&self, builder: UpdateBasePathMappingInputBuilder) -> impl Future<Output = Result<UpdateBasePathMappingOutput, SdkError<UpdateBasePathMappingError>>> {
-        (*self).update_base_path_mapping(builder)
+        self.deref().update_base_path_mapping(builder)
     }
     fn update_client_certificate(&self, builder: UpdateClientCertificateInputBuilder) -> impl Future<Output = Result<UpdateClientCertificateOutput, SdkError<UpdateClientCertificateError>>> {
-        (*self).update_client_certificate(builder)
+        self.deref().update_client_certificate(builder)
     }
     fn update_deployment(&self, builder: UpdateDeploymentInputBuilder) -> impl Future<Output = Result<UpdateDeploymentOutput, SdkError<UpdateDeploymentError>>> {
-        (*self).update_deployment(builder)
+        self.deref().update_deployment(builder)
     }
     fn update_documentation_part(&self, builder: UpdateDocumentationPartInputBuilder) -> impl Future<Output = Result<UpdateDocumentationPartOutput, SdkError<UpdateDocumentationPartError>>> {
-        (*self).update_documentation_part(builder)
+        self.deref().update_documentation_part(builder)
     }
     fn update_documentation_version(&self, builder: UpdateDocumentationVersionInputBuilder) -> impl Future<Output = Result<UpdateDocumentationVersionOutput, SdkError<UpdateDocumentationVersionError>>> {
-        (*self).update_documentation_version(builder)
+        self.deref().update_documentation_version(builder)
     }
     fn update_domain_name(&self, builder: UpdateDomainNameInputBuilder) -> impl Future<Output = Result<UpdateDomainNameOutput, SdkError<UpdateDomainNameError>>> {
-        (*self).update_domain_name(builder)
+        self.deref().update_domain_name(builder)
     }
     fn update_gateway_response(&self, builder: UpdateGatewayResponseInputBuilder) -> impl Future<Output = Result<UpdateGatewayResponseOutput, SdkError<UpdateGatewayResponseError>>> {
-        (*self).update_gateway_response(builder)
+        self.deref().update_gateway_response(builder)
     }
     fn update_integration(&self, builder: UpdateIntegrationInputBuilder) -> impl Future<Output = Result<UpdateIntegrationOutput, SdkError<UpdateIntegrationError>>> {
-        (*self).update_integration(builder)
+        self.deref().update_integration(builder)
     }
     fn update_integration_response(&self, builder: UpdateIntegrationResponseInputBuilder) -> impl Future<Output = Result<UpdateIntegrationResponseOutput, SdkError<UpdateIntegrationResponseError>>> {
-        (*self).update_integration_response(builder)
+        self.deref().update_integration_response(builder)
     }
     fn update_method(&self, builder: UpdateMethodInputBuilder) -> impl Future<Output = Result<UpdateMethodOutput, SdkError<UpdateMethodError>>> {
-        (*self).update_method(builder)
+        self.deref().update_method(builder)
     }
     fn update_method_response(&self, builder: UpdateMethodResponseInputBuilder) -> impl Future<Output = Result<UpdateMethodResponseOutput, SdkError<UpdateMethodResponseError>>> {
-        (*self).update_method_response(builder)
+        self.deref().update_method_response(builder)
     }
     fn update_model(&self, builder: UpdateModelInputBuilder) -> impl Future<Output = Result<UpdateModelOutput, SdkError<UpdateModelError>>> {
-        (*self).update_model(builder)
+        self.deref().update_model(builder)
     }
     fn update_request_validator(&self, builder: UpdateRequestValidatorInputBuilder) -> impl Future<Output = Result<UpdateRequestValidatorOutput, SdkError<UpdateRequestValidatorError>>> {
-        (*self).update_request_validator(builder)
+        self.deref().update_request_validator(builder)
     }
     fn update_resource(&self, builder: UpdateResourceInputBuilder) -> impl Future<Output = Result<UpdateResourceOutput, SdkError<UpdateResourceError>>> {
-        (*self).update_resource(builder)
+        self.deref().update_resource(builder)
     }
     fn update_rest_api(&self, builder: UpdateRestApiInputBuilder) -> impl Future<Output = Result<UpdateRestApiOutput, SdkError<UpdateRestApiError>>> {
-        (*self).update_rest_api(builder)
+        self.deref().update_rest_api(builder)
     }
     fn update_stage(&self, builder: UpdateStageInputBuilder) -> impl Future<Output = Result<UpdateStageOutput, SdkError<UpdateStageError>>> {
-        (*self).update_stage(builder)
+        self.deref().update_stage(builder)
     }
     fn update_usage(&self, builder: UpdateUsageInputBuilder) -> impl Future<Output = Result<UpdateUsageOutput, SdkError<UpdateUsageError>>> {
-        (*self).update_usage(builder)
+        self.deref().update_usage(builder)
     }
     fn update_usage_plan(&self, builder: UpdateUsagePlanInputBuilder) -> impl Future<Output = Result<UpdateUsagePlanOutput, SdkError<UpdateUsagePlanError>>> {
-        (*self).update_usage_plan(builder)
+        self.deref().update_usage_plan(builder)
     }
     fn update_vpc_link(&self, builder: UpdateVpcLinkInputBuilder) -> impl Future<Output = Result<UpdateVpcLinkOutput, SdkError<UpdateVpcLinkError>>> {
-        (*self).update_vpc_link(builder)
+        self.deref().update_vpc_link(builder)
     }
 }
 #[cfg(feature = "mockall")]

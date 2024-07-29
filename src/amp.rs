@@ -46,6 +46,7 @@ use aws_sdk_amp::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_amp::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_amp::*;
 
@@ -161,84 +162,86 @@ impl AMPClient for AMPClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: AMPClient> AMPClient for &T {
+impl <T> AMPClient for T
+where T: Deref,
+      T::Target: AMPClient {
     fn create_alert_manager_definition(&self, builder: CreateAlertManagerDefinitionInputBuilder) -> impl Future<Output = Result<CreateAlertManagerDefinitionOutput, SdkError<CreateAlertManagerDefinitionError>>> {
-        (*self).create_alert_manager_definition(builder)
+        self.deref().create_alert_manager_definition(builder)
     }
     fn create_logging_configuration(&self, builder: CreateLoggingConfigurationInputBuilder) -> impl Future<Output = Result<CreateLoggingConfigurationOutput, SdkError<CreateLoggingConfigurationError>>> {
-        (*self).create_logging_configuration(builder)
+        self.deref().create_logging_configuration(builder)
     }
     fn create_rule_groups_namespace(&self, builder: CreateRuleGroupsNamespaceInputBuilder) -> impl Future<Output = Result<CreateRuleGroupsNamespaceOutput, SdkError<CreateRuleGroupsNamespaceError>>> {
-        (*self).create_rule_groups_namespace(builder)
+        self.deref().create_rule_groups_namespace(builder)
     }
     fn create_scraper(&self, builder: CreateScraperInputBuilder) -> impl Future<Output = Result<CreateScraperOutput, SdkError<CreateScraperError>>> {
-        (*self).create_scraper(builder)
+        self.deref().create_scraper(builder)
     }
     fn create_workspace(&self, builder: CreateWorkspaceInputBuilder) -> impl Future<Output = Result<CreateWorkspaceOutput, SdkError<CreateWorkspaceError>>> {
-        (*self).create_workspace(builder)
+        self.deref().create_workspace(builder)
     }
     fn delete_alert_manager_definition(&self, builder: DeleteAlertManagerDefinitionInputBuilder) -> impl Future<Output = Result<DeleteAlertManagerDefinitionOutput, SdkError<DeleteAlertManagerDefinitionError>>> {
-        (*self).delete_alert_manager_definition(builder)
+        self.deref().delete_alert_manager_definition(builder)
     }
     fn delete_logging_configuration(&self, builder: DeleteLoggingConfigurationInputBuilder) -> impl Future<Output = Result<DeleteLoggingConfigurationOutput, SdkError<DeleteLoggingConfigurationError>>> {
-        (*self).delete_logging_configuration(builder)
+        self.deref().delete_logging_configuration(builder)
     }
     fn delete_rule_groups_namespace(&self, builder: DeleteRuleGroupsNamespaceInputBuilder) -> impl Future<Output = Result<DeleteRuleGroupsNamespaceOutput, SdkError<DeleteRuleGroupsNamespaceError>>> {
-        (*self).delete_rule_groups_namespace(builder)
+        self.deref().delete_rule_groups_namespace(builder)
     }
     fn delete_scraper(&self, builder: DeleteScraperInputBuilder) -> impl Future<Output = Result<DeleteScraperOutput, SdkError<DeleteScraperError>>> {
-        (*self).delete_scraper(builder)
+        self.deref().delete_scraper(builder)
     }
     fn delete_workspace(&self, builder: DeleteWorkspaceInputBuilder) -> impl Future<Output = Result<DeleteWorkspaceOutput, SdkError<DeleteWorkspaceError>>> {
-        (*self).delete_workspace(builder)
+        self.deref().delete_workspace(builder)
     }
     fn describe_alert_manager_definition(&self, builder: DescribeAlertManagerDefinitionInputBuilder) -> impl Future<Output = Result<DescribeAlertManagerDefinitionOutput, SdkError<DescribeAlertManagerDefinitionError>>> {
-        (*self).describe_alert_manager_definition(builder)
+        self.deref().describe_alert_manager_definition(builder)
     }
     fn describe_logging_configuration(&self, builder: DescribeLoggingConfigurationInputBuilder) -> impl Future<Output = Result<DescribeLoggingConfigurationOutput, SdkError<DescribeLoggingConfigurationError>>> {
-        (*self).describe_logging_configuration(builder)
+        self.deref().describe_logging_configuration(builder)
     }
     fn describe_rule_groups_namespace(&self, builder: DescribeRuleGroupsNamespaceInputBuilder) -> impl Future<Output = Result<DescribeRuleGroupsNamespaceOutput, SdkError<DescribeRuleGroupsNamespaceError>>> {
-        (*self).describe_rule_groups_namespace(builder)
+        self.deref().describe_rule_groups_namespace(builder)
     }
     fn describe_scraper(&self, builder: DescribeScraperInputBuilder) -> impl Future<Output = Result<DescribeScraperOutput, SdkError<DescribeScraperError>>> {
-        (*self).describe_scraper(builder)
+        self.deref().describe_scraper(builder)
     }
     fn describe_workspace(&self, builder: DescribeWorkspaceInputBuilder) -> impl Future<Output = Result<DescribeWorkspaceOutput, SdkError<DescribeWorkspaceError>>> {
-        (*self).describe_workspace(builder)
+        self.deref().describe_workspace(builder)
     }
     fn get_default_scraper_configuration(&self, builder: GetDefaultScraperConfigurationInputBuilder) -> impl Future<Output = Result<GetDefaultScraperConfigurationOutput, SdkError<GetDefaultScraperConfigurationError>>> {
-        (*self).get_default_scraper_configuration(builder)
+        self.deref().get_default_scraper_configuration(builder)
     }
     fn list_rule_groups_namespaces(&self, builder: ListRuleGroupsNamespacesInputBuilder) -> impl Future<Output = Result<ListRuleGroupsNamespacesOutput, SdkError<ListRuleGroupsNamespacesError>>> {
-        (*self).list_rule_groups_namespaces(builder)
+        self.deref().list_rule_groups_namespaces(builder)
     }
     fn list_scrapers(&self, builder: ListScrapersInputBuilder) -> impl Future<Output = Result<ListScrapersOutput, SdkError<ListScrapersError>>> {
-        (*self).list_scrapers(builder)
+        self.deref().list_scrapers(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn list_workspaces(&self, builder: ListWorkspacesInputBuilder) -> impl Future<Output = Result<ListWorkspacesOutput, SdkError<ListWorkspacesError>>> {
-        (*self).list_workspaces(builder)
+        self.deref().list_workspaces(builder)
     }
     fn put_alert_manager_definition(&self, builder: PutAlertManagerDefinitionInputBuilder) -> impl Future<Output = Result<PutAlertManagerDefinitionOutput, SdkError<PutAlertManagerDefinitionError>>> {
-        (*self).put_alert_manager_definition(builder)
+        self.deref().put_alert_manager_definition(builder)
     }
     fn put_rule_groups_namespace(&self, builder: PutRuleGroupsNamespaceInputBuilder) -> impl Future<Output = Result<PutRuleGroupsNamespaceOutput, SdkError<PutRuleGroupsNamespaceError>>> {
-        (*self).put_rule_groups_namespace(builder)
+        self.deref().put_rule_groups_namespace(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_logging_configuration(&self, builder: UpdateLoggingConfigurationInputBuilder) -> impl Future<Output = Result<UpdateLoggingConfigurationOutput, SdkError<UpdateLoggingConfigurationError>>> {
-        (*self).update_logging_configuration(builder)
+        self.deref().update_logging_configuration(builder)
     }
     fn update_workspace_alias(&self, builder: UpdateWorkspaceAliasInputBuilder) -> impl Future<Output = Result<UpdateWorkspaceAliasOutput, SdkError<UpdateWorkspaceAliasError>>> {
-        (*self).update_workspace_alias(builder)
+        self.deref().update_workspace_alias(builder)
     }
 }
 #[cfg(feature = "mockall")]

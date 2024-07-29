@@ -111,6 +111,7 @@ use aws_sdk_backup::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_backup::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_backup::*;
 
@@ -486,279 +487,281 @@ impl BackupClient for BackupClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: BackupClient> BackupClient for &T {
+impl <T> BackupClient for T
+where T: Deref,
+      T::Target: BackupClient {
     fn cancel_legal_hold(&self, builder: CancelLegalHoldInputBuilder) -> impl Future<Output = Result<CancelLegalHoldOutput, SdkError<CancelLegalHoldError>>> {
-        (*self).cancel_legal_hold(builder)
+        self.deref().cancel_legal_hold(builder)
     }
     fn create_backup_plan(&self, builder: CreateBackupPlanInputBuilder) -> impl Future<Output = Result<CreateBackupPlanOutput, SdkError<CreateBackupPlanError>>> {
-        (*self).create_backup_plan(builder)
+        self.deref().create_backup_plan(builder)
     }
     fn create_backup_selection(&self, builder: CreateBackupSelectionInputBuilder) -> impl Future<Output = Result<CreateBackupSelectionOutput, SdkError<CreateBackupSelectionError>>> {
-        (*self).create_backup_selection(builder)
+        self.deref().create_backup_selection(builder)
     }
     fn create_backup_vault(&self, builder: CreateBackupVaultInputBuilder) -> impl Future<Output = Result<CreateBackupVaultOutput, SdkError<CreateBackupVaultError>>> {
-        (*self).create_backup_vault(builder)
+        self.deref().create_backup_vault(builder)
     }
     fn create_framework(&self, builder: CreateFrameworkInputBuilder) -> impl Future<Output = Result<CreateFrameworkOutput, SdkError<CreateFrameworkError>>> {
-        (*self).create_framework(builder)
+        self.deref().create_framework(builder)
     }
     fn create_legal_hold(&self, builder: CreateLegalHoldInputBuilder) -> impl Future<Output = Result<CreateLegalHoldOutput, SdkError<CreateLegalHoldError>>> {
-        (*self).create_legal_hold(builder)
+        self.deref().create_legal_hold(builder)
     }
     fn create_logically_air_gapped_backup_vault(&self, builder: CreateLogicallyAirGappedBackupVaultInputBuilder) -> impl Future<Output = Result<CreateLogicallyAirGappedBackupVaultOutput, SdkError<CreateLogicallyAirGappedBackupVaultError>>> {
-        (*self).create_logically_air_gapped_backup_vault(builder)
+        self.deref().create_logically_air_gapped_backup_vault(builder)
     }
     fn create_report_plan(&self, builder: CreateReportPlanInputBuilder) -> impl Future<Output = Result<CreateReportPlanOutput, SdkError<CreateReportPlanError>>> {
-        (*self).create_report_plan(builder)
+        self.deref().create_report_plan(builder)
     }
     fn create_restore_testing_plan(&self, builder: CreateRestoreTestingPlanInputBuilder) -> impl Future<Output = Result<CreateRestoreTestingPlanOutput, SdkError<CreateRestoreTestingPlanError>>> {
-        (*self).create_restore_testing_plan(builder)
+        self.deref().create_restore_testing_plan(builder)
     }
     fn create_restore_testing_selection(&self, builder: CreateRestoreTestingSelectionInputBuilder) -> impl Future<Output = Result<CreateRestoreTestingSelectionOutput, SdkError<CreateRestoreTestingSelectionError>>> {
-        (*self).create_restore_testing_selection(builder)
+        self.deref().create_restore_testing_selection(builder)
     }
     fn delete_backup_plan(&self, builder: DeleteBackupPlanInputBuilder) -> impl Future<Output = Result<DeleteBackupPlanOutput, SdkError<DeleteBackupPlanError>>> {
-        (*self).delete_backup_plan(builder)
+        self.deref().delete_backup_plan(builder)
     }
     fn delete_backup_selection(&self, builder: DeleteBackupSelectionInputBuilder) -> impl Future<Output = Result<DeleteBackupSelectionOutput, SdkError<DeleteBackupSelectionError>>> {
-        (*self).delete_backup_selection(builder)
+        self.deref().delete_backup_selection(builder)
     }
     fn delete_backup_vault(&self, builder: DeleteBackupVaultInputBuilder) -> impl Future<Output = Result<DeleteBackupVaultOutput, SdkError<DeleteBackupVaultError>>> {
-        (*self).delete_backup_vault(builder)
+        self.deref().delete_backup_vault(builder)
     }
     fn delete_backup_vault_access_policy(&self, builder: DeleteBackupVaultAccessPolicyInputBuilder) -> impl Future<Output = Result<DeleteBackupVaultAccessPolicyOutput, SdkError<DeleteBackupVaultAccessPolicyError>>> {
-        (*self).delete_backup_vault_access_policy(builder)
+        self.deref().delete_backup_vault_access_policy(builder)
     }
     fn delete_backup_vault_lock_configuration(&self, builder: DeleteBackupVaultLockConfigurationInputBuilder) -> impl Future<Output = Result<DeleteBackupVaultLockConfigurationOutput, SdkError<DeleteBackupVaultLockConfigurationError>>> {
-        (*self).delete_backup_vault_lock_configuration(builder)
+        self.deref().delete_backup_vault_lock_configuration(builder)
     }
     fn delete_backup_vault_notifications(&self, builder: DeleteBackupVaultNotificationsInputBuilder) -> impl Future<Output = Result<DeleteBackupVaultNotificationsOutput, SdkError<DeleteBackupVaultNotificationsError>>> {
-        (*self).delete_backup_vault_notifications(builder)
+        self.deref().delete_backup_vault_notifications(builder)
     }
     fn delete_framework(&self, builder: DeleteFrameworkInputBuilder) -> impl Future<Output = Result<DeleteFrameworkOutput, SdkError<DeleteFrameworkError>>> {
-        (*self).delete_framework(builder)
+        self.deref().delete_framework(builder)
     }
     fn delete_recovery_point(&self, builder: DeleteRecoveryPointInputBuilder) -> impl Future<Output = Result<DeleteRecoveryPointOutput, SdkError<DeleteRecoveryPointError>>> {
-        (*self).delete_recovery_point(builder)
+        self.deref().delete_recovery_point(builder)
     }
     fn delete_report_plan(&self, builder: DeleteReportPlanInputBuilder) -> impl Future<Output = Result<DeleteReportPlanOutput, SdkError<DeleteReportPlanError>>> {
-        (*self).delete_report_plan(builder)
+        self.deref().delete_report_plan(builder)
     }
     fn delete_restore_testing_plan(&self, builder: DeleteRestoreTestingPlanInputBuilder) -> impl Future<Output = Result<DeleteRestoreTestingPlanOutput, SdkError<DeleteRestoreTestingPlanError>>> {
-        (*self).delete_restore_testing_plan(builder)
+        self.deref().delete_restore_testing_plan(builder)
     }
     fn delete_restore_testing_selection(&self, builder: DeleteRestoreTestingSelectionInputBuilder) -> impl Future<Output = Result<DeleteRestoreTestingSelectionOutput, SdkError<DeleteRestoreTestingSelectionError>>> {
-        (*self).delete_restore_testing_selection(builder)
+        self.deref().delete_restore_testing_selection(builder)
     }
     fn describe_backup_job(&self, builder: DescribeBackupJobInputBuilder) -> impl Future<Output = Result<DescribeBackupJobOutput, SdkError<DescribeBackupJobError>>> {
-        (*self).describe_backup_job(builder)
+        self.deref().describe_backup_job(builder)
     }
     fn describe_backup_vault(&self, builder: DescribeBackupVaultInputBuilder) -> impl Future<Output = Result<DescribeBackupVaultOutput, SdkError<DescribeBackupVaultError>>> {
-        (*self).describe_backup_vault(builder)
+        self.deref().describe_backup_vault(builder)
     }
     fn describe_copy_job(&self, builder: DescribeCopyJobInputBuilder) -> impl Future<Output = Result<DescribeCopyJobOutput, SdkError<DescribeCopyJobError>>> {
-        (*self).describe_copy_job(builder)
+        self.deref().describe_copy_job(builder)
     }
     fn describe_framework(&self, builder: DescribeFrameworkInputBuilder) -> impl Future<Output = Result<DescribeFrameworkOutput, SdkError<DescribeFrameworkError>>> {
-        (*self).describe_framework(builder)
+        self.deref().describe_framework(builder)
     }
     fn describe_global_settings(&self, builder: DescribeGlobalSettingsInputBuilder) -> impl Future<Output = Result<DescribeGlobalSettingsOutput, SdkError<DescribeGlobalSettingsError>>> {
-        (*self).describe_global_settings(builder)
+        self.deref().describe_global_settings(builder)
     }
     fn describe_protected_resource(&self, builder: DescribeProtectedResourceInputBuilder) -> impl Future<Output = Result<DescribeProtectedResourceOutput, SdkError<DescribeProtectedResourceError>>> {
-        (*self).describe_protected_resource(builder)
+        self.deref().describe_protected_resource(builder)
     }
     fn describe_recovery_point(&self, builder: DescribeRecoveryPointInputBuilder) -> impl Future<Output = Result<DescribeRecoveryPointOutput, SdkError<DescribeRecoveryPointError>>> {
-        (*self).describe_recovery_point(builder)
+        self.deref().describe_recovery_point(builder)
     }
     fn describe_region_settings(&self, builder: DescribeRegionSettingsInputBuilder) -> impl Future<Output = Result<DescribeRegionSettingsOutput, SdkError<DescribeRegionSettingsError>>> {
-        (*self).describe_region_settings(builder)
+        self.deref().describe_region_settings(builder)
     }
     fn describe_report_job(&self, builder: DescribeReportJobInputBuilder) -> impl Future<Output = Result<DescribeReportJobOutput, SdkError<DescribeReportJobError>>> {
-        (*self).describe_report_job(builder)
+        self.deref().describe_report_job(builder)
     }
     fn describe_report_plan(&self, builder: DescribeReportPlanInputBuilder) -> impl Future<Output = Result<DescribeReportPlanOutput, SdkError<DescribeReportPlanError>>> {
-        (*self).describe_report_plan(builder)
+        self.deref().describe_report_plan(builder)
     }
     fn describe_restore_job(&self, builder: DescribeRestoreJobInputBuilder) -> impl Future<Output = Result<DescribeRestoreJobOutput, SdkError<DescribeRestoreJobError>>> {
-        (*self).describe_restore_job(builder)
+        self.deref().describe_restore_job(builder)
     }
     fn disassociate_recovery_point(&self, builder: DisassociateRecoveryPointInputBuilder) -> impl Future<Output = Result<DisassociateRecoveryPointOutput, SdkError<DisassociateRecoveryPointError>>> {
-        (*self).disassociate_recovery_point(builder)
+        self.deref().disassociate_recovery_point(builder)
     }
     fn disassociate_recovery_point_from_parent(&self, builder: DisassociateRecoveryPointFromParentInputBuilder) -> impl Future<Output = Result<DisassociateRecoveryPointFromParentOutput, SdkError<DisassociateRecoveryPointFromParentError>>> {
-        (*self).disassociate_recovery_point_from_parent(builder)
+        self.deref().disassociate_recovery_point_from_parent(builder)
     }
     fn export_backup_plan_template(&self, builder: ExportBackupPlanTemplateInputBuilder) -> impl Future<Output = Result<ExportBackupPlanTemplateOutput, SdkError<ExportBackupPlanTemplateError>>> {
-        (*self).export_backup_plan_template(builder)
+        self.deref().export_backup_plan_template(builder)
     }
     fn get_backup_plan(&self, builder: GetBackupPlanInputBuilder) -> impl Future<Output = Result<GetBackupPlanOutput, SdkError<GetBackupPlanError>>> {
-        (*self).get_backup_plan(builder)
+        self.deref().get_backup_plan(builder)
     }
     fn get_backup_plan_from_json(&self, builder: GetBackupPlanFromJsonInputBuilder) -> impl Future<Output = Result<GetBackupPlanFromJsonOutput, SdkError<GetBackupPlanFromJSONError>>> {
-        (*self).get_backup_plan_from_json(builder)
+        self.deref().get_backup_plan_from_json(builder)
     }
     fn get_backup_plan_from_template(&self, builder: GetBackupPlanFromTemplateInputBuilder) -> impl Future<Output = Result<GetBackupPlanFromTemplateOutput, SdkError<GetBackupPlanFromTemplateError>>> {
-        (*self).get_backup_plan_from_template(builder)
+        self.deref().get_backup_plan_from_template(builder)
     }
     fn get_backup_selection(&self, builder: GetBackupSelectionInputBuilder) -> impl Future<Output = Result<GetBackupSelectionOutput, SdkError<GetBackupSelectionError>>> {
-        (*self).get_backup_selection(builder)
+        self.deref().get_backup_selection(builder)
     }
     fn get_backup_vault_access_policy(&self, builder: GetBackupVaultAccessPolicyInputBuilder) -> impl Future<Output = Result<GetBackupVaultAccessPolicyOutput, SdkError<GetBackupVaultAccessPolicyError>>> {
-        (*self).get_backup_vault_access_policy(builder)
+        self.deref().get_backup_vault_access_policy(builder)
     }
     fn get_backup_vault_notifications(&self, builder: GetBackupVaultNotificationsInputBuilder) -> impl Future<Output = Result<GetBackupVaultNotificationsOutput, SdkError<GetBackupVaultNotificationsError>>> {
-        (*self).get_backup_vault_notifications(builder)
+        self.deref().get_backup_vault_notifications(builder)
     }
     fn get_legal_hold(&self, builder: GetLegalHoldInputBuilder) -> impl Future<Output = Result<GetLegalHoldOutput, SdkError<GetLegalHoldError>>> {
-        (*self).get_legal_hold(builder)
+        self.deref().get_legal_hold(builder)
     }
     fn get_recovery_point_restore_metadata(&self, builder: GetRecoveryPointRestoreMetadataInputBuilder) -> impl Future<Output = Result<GetRecoveryPointRestoreMetadataOutput, SdkError<GetRecoveryPointRestoreMetadataError>>> {
-        (*self).get_recovery_point_restore_metadata(builder)
+        self.deref().get_recovery_point_restore_metadata(builder)
     }
     fn get_restore_job_metadata(&self, builder: GetRestoreJobMetadataInputBuilder) -> impl Future<Output = Result<GetRestoreJobMetadataOutput, SdkError<GetRestoreJobMetadataError>>> {
-        (*self).get_restore_job_metadata(builder)
+        self.deref().get_restore_job_metadata(builder)
     }
     fn get_restore_testing_inferred_metadata(&self, builder: GetRestoreTestingInferredMetadataInputBuilder) -> impl Future<Output = Result<GetRestoreTestingInferredMetadataOutput, SdkError<GetRestoreTestingInferredMetadataError>>> {
-        (*self).get_restore_testing_inferred_metadata(builder)
+        self.deref().get_restore_testing_inferred_metadata(builder)
     }
     fn get_restore_testing_plan(&self, builder: GetRestoreTestingPlanInputBuilder) -> impl Future<Output = Result<GetRestoreTestingPlanOutput, SdkError<GetRestoreTestingPlanError>>> {
-        (*self).get_restore_testing_plan(builder)
+        self.deref().get_restore_testing_plan(builder)
     }
     fn get_restore_testing_selection(&self, builder: GetRestoreTestingSelectionInputBuilder) -> impl Future<Output = Result<GetRestoreTestingSelectionOutput, SdkError<GetRestoreTestingSelectionError>>> {
-        (*self).get_restore_testing_selection(builder)
+        self.deref().get_restore_testing_selection(builder)
     }
     fn get_supported_resource_types(&self, builder: GetSupportedResourceTypesInputBuilder) -> impl Future<Output = Result<GetSupportedResourceTypesOutput, SdkError<GetSupportedResourceTypesError>>> {
-        (*self).get_supported_resource_types(builder)
+        self.deref().get_supported_resource_types(builder)
     }
     fn list_backup_job_summaries(&self, builder: ListBackupJobSummariesInputBuilder) -> impl Future<Output = Result<ListBackupJobSummariesOutput, SdkError<ListBackupJobSummariesError>>> {
-        (*self).list_backup_job_summaries(builder)
+        self.deref().list_backup_job_summaries(builder)
     }
     fn list_backup_jobs(&self, builder: ListBackupJobsInputBuilder) -> impl Future<Output = Result<ListBackupJobsOutput, SdkError<ListBackupJobsError>>> {
-        (*self).list_backup_jobs(builder)
+        self.deref().list_backup_jobs(builder)
     }
     fn list_backup_plan_templates(&self, builder: ListBackupPlanTemplatesInputBuilder) -> impl Future<Output = Result<ListBackupPlanTemplatesOutput, SdkError<ListBackupPlanTemplatesError>>> {
-        (*self).list_backup_plan_templates(builder)
+        self.deref().list_backup_plan_templates(builder)
     }
     fn list_backup_plan_versions(&self, builder: ListBackupPlanVersionsInputBuilder) -> impl Future<Output = Result<ListBackupPlanVersionsOutput, SdkError<ListBackupPlanVersionsError>>> {
-        (*self).list_backup_plan_versions(builder)
+        self.deref().list_backup_plan_versions(builder)
     }
     fn list_backup_plans(&self, builder: ListBackupPlansInputBuilder) -> impl Future<Output = Result<ListBackupPlansOutput, SdkError<ListBackupPlansError>>> {
-        (*self).list_backup_plans(builder)
+        self.deref().list_backup_plans(builder)
     }
     fn list_backup_selections(&self, builder: ListBackupSelectionsInputBuilder) -> impl Future<Output = Result<ListBackupSelectionsOutput, SdkError<ListBackupSelectionsError>>> {
-        (*self).list_backup_selections(builder)
+        self.deref().list_backup_selections(builder)
     }
     fn list_backup_vaults(&self, builder: ListBackupVaultsInputBuilder) -> impl Future<Output = Result<ListBackupVaultsOutput, SdkError<ListBackupVaultsError>>> {
-        (*self).list_backup_vaults(builder)
+        self.deref().list_backup_vaults(builder)
     }
     fn list_copy_job_summaries(&self, builder: ListCopyJobSummariesInputBuilder) -> impl Future<Output = Result<ListCopyJobSummariesOutput, SdkError<ListCopyJobSummariesError>>> {
-        (*self).list_copy_job_summaries(builder)
+        self.deref().list_copy_job_summaries(builder)
     }
     fn list_copy_jobs(&self, builder: ListCopyJobsInputBuilder) -> impl Future<Output = Result<ListCopyJobsOutput, SdkError<ListCopyJobsError>>> {
-        (*self).list_copy_jobs(builder)
+        self.deref().list_copy_jobs(builder)
     }
     fn list_frameworks(&self, builder: ListFrameworksInputBuilder) -> impl Future<Output = Result<ListFrameworksOutput, SdkError<ListFrameworksError>>> {
-        (*self).list_frameworks(builder)
+        self.deref().list_frameworks(builder)
     }
     fn list_legal_holds(&self, builder: ListLegalHoldsInputBuilder) -> impl Future<Output = Result<ListLegalHoldsOutput, SdkError<ListLegalHoldsError>>> {
-        (*self).list_legal_holds(builder)
+        self.deref().list_legal_holds(builder)
     }
     fn list_protected_resources(&self, builder: ListProtectedResourcesInputBuilder) -> impl Future<Output = Result<ListProtectedResourcesOutput, SdkError<ListProtectedResourcesError>>> {
-        (*self).list_protected_resources(builder)
+        self.deref().list_protected_resources(builder)
     }
     fn list_protected_resources_by_backup_vault(&self, builder: ListProtectedResourcesByBackupVaultInputBuilder) -> impl Future<Output = Result<ListProtectedResourcesByBackupVaultOutput, SdkError<ListProtectedResourcesByBackupVaultError>>> {
-        (*self).list_protected_resources_by_backup_vault(builder)
+        self.deref().list_protected_resources_by_backup_vault(builder)
     }
     fn list_recovery_points_by_backup_vault(&self, builder: ListRecoveryPointsByBackupVaultInputBuilder) -> impl Future<Output = Result<ListRecoveryPointsByBackupVaultOutput, SdkError<ListRecoveryPointsByBackupVaultError>>> {
-        (*self).list_recovery_points_by_backup_vault(builder)
+        self.deref().list_recovery_points_by_backup_vault(builder)
     }
     fn list_recovery_points_by_legal_hold(&self, builder: ListRecoveryPointsByLegalHoldInputBuilder) -> impl Future<Output = Result<ListRecoveryPointsByLegalHoldOutput, SdkError<ListRecoveryPointsByLegalHoldError>>> {
-        (*self).list_recovery_points_by_legal_hold(builder)
+        self.deref().list_recovery_points_by_legal_hold(builder)
     }
     fn list_recovery_points_by_resource(&self, builder: ListRecoveryPointsByResourceInputBuilder) -> impl Future<Output = Result<ListRecoveryPointsByResourceOutput, SdkError<ListRecoveryPointsByResourceError>>> {
-        (*self).list_recovery_points_by_resource(builder)
+        self.deref().list_recovery_points_by_resource(builder)
     }
     fn list_report_jobs(&self, builder: ListReportJobsInputBuilder) -> impl Future<Output = Result<ListReportJobsOutput, SdkError<ListReportJobsError>>> {
-        (*self).list_report_jobs(builder)
+        self.deref().list_report_jobs(builder)
     }
     fn list_report_plans(&self, builder: ListReportPlansInputBuilder) -> impl Future<Output = Result<ListReportPlansOutput, SdkError<ListReportPlansError>>> {
-        (*self).list_report_plans(builder)
+        self.deref().list_report_plans(builder)
     }
     fn list_restore_job_summaries(&self, builder: ListRestoreJobSummariesInputBuilder) -> impl Future<Output = Result<ListRestoreJobSummariesOutput, SdkError<ListRestoreJobSummariesError>>> {
-        (*self).list_restore_job_summaries(builder)
+        self.deref().list_restore_job_summaries(builder)
     }
     fn list_restore_jobs(&self, builder: ListRestoreJobsInputBuilder) -> impl Future<Output = Result<ListRestoreJobsOutput, SdkError<ListRestoreJobsError>>> {
-        (*self).list_restore_jobs(builder)
+        self.deref().list_restore_jobs(builder)
     }
     fn list_restore_jobs_by_protected_resource(&self, builder: ListRestoreJobsByProtectedResourceInputBuilder) -> impl Future<Output = Result<ListRestoreJobsByProtectedResourceOutput, SdkError<ListRestoreJobsByProtectedResourceError>>> {
-        (*self).list_restore_jobs_by_protected_resource(builder)
+        self.deref().list_restore_jobs_by_protected_resource(builder)
     }
     fn list_restore_testing_plans(&self, builder: ListRestoreTestingPlansInputBuilder) -> impl Future<Output = Result<ListRestoreTestingPlansOutput, SdkError<ListRestoreTestingPlansError>>> {
-        (*self).list_restore_testing_plans(builder)
+        self.deref().list_restore_testing_plans(builder)
     }
     fn list_restore_testing_selections(&self, builder: ListRestoreTestingSelectionsInputBuilder) -> impl Future<Output = Result<ListRestoreTestingSelectionsOutput, SdkError<ListRestoreTestingSelectionsError>>> {
-        (*self).list_restore_testing_selections(builder)
+        self.deref().list_restore_testing_selections(builder)
     }
     fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> {
-        (*self).list_tags(builder)
+        self.deref().list_tags(builder)
     }
     fn put_backup_vault_access_policy(&self, builder: PutBackupVaultAccessPolicyInputBuilder) -> impl Future<Output = Result<PutBackupVaultAccessPolicyOutput, SdkError<PutBackupVaultAccessPolicyError>>> {
-        (*self).put_backup_vault_access_policy(builder)
+        self.deref().put_backup_vault_access_policy(builder)
     }
     fn put_backup_vault_lock_configuration(&self, builder: PutBackupVaultLockConfigurationInputBuilder) -> impl Future<Output = Result<PutBackupVaultLockConfigurationOutput, SdkError<PutBackupVaultLockConfigurationError>>> {
-        (*self).put_backup_vault_lock_configuration(builder)
+        self.deref().put_backup_vault_lock_configuration(builder)
     }
     fn put_backup_vault_notifications(&self, builder: PutBackupVaultNotificationsInputBuilder) -> impl Future<Output = Result<PutBackupVaultNotificationsOutput, SdkError<PutBackupVaultNotificationsError>>> {
-        (*self).put_backup_vault_notifications(builder)
+        self.deref().put_backup_vault_notifications(builder)
     }
     fn put_restore_validation_result(&self, builder: PutRestoreValidationResultInputBuilder) -> impl Future<Output = Result<PutRestoreValidationResultOutput, SdkError<PutRestoreValidationResultError>>> {
-        (*self).put_restore_validation_result(builder)
+        self.deref().put_restore_validation_result(builder)
     }
     fn start_backup_job(&self, builder: StartBackupJobInputBuilder) -> impl Future<Output = Result<StartBackupJobOutput, SdkError<StartBackupJobError>>> {
-        (*self).start_backup_job(builder)
+        self.deref().start_backup_job(builder)
     }
     fn start_copy_job(&self, builder: StartCopyJobInputBuilder) -> impl Future<Output = Result<StartCopyJobOutput, SdkError<StartCopyJobError>>> {
-        (*self).start_copy_job(builder)
+        self.deref().start_copy_job(builder)
     }
     fn start_report_job(&self, builder: StartReportJobInputBuilder) -> impl Future<Output = Result<StartReportJobOutput, SdkError<StartReportJobError>>> {
-        (*self).start_report_job(builder)
+        self.deref().start_report_job(builder)
     }
     fn start_restore_job(&self, builder: StartRestoreJobInputBuilder) -> impl Future<Output = Result<StartRestoreJobOutput, SdkError<StartRestoreJobError>>> {
-        (*self).start_restore_job(builder)
+        self.deref().start_restore_job(builder)
     }
     fn stop_backup_job(&self, builder: StopBackupJobInputBuilder) -> impl Future<Output = Result<StopBackupJobOutput, SdkError<StopBackupJobError>>> {
-        (*self).stop_backup_job(builder)
+        self.deref().stop_backup_job(builder)
     }
     fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> {
-        (*self).tag_resource(builder)
+        self.deref().tag_resource(builder)
     }
     fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> {
-        (*self).untag_resource(builder)
+        self.deref().untag_resource(builder)
     }
     fn update_backup_plan(&self, builder: UpdateBackupPlanInputBuilder) -> impl Future<Output = Result<UpdateBackupPlanOutput, SdkError<UpdateBackupPlanError>>> {
-        (*self).update_backup_plan(builder)
+        self.deref().update_backup_plan(builder)
     }
     fn update_framework(&self, builder: UpdateFrameworkInputBuilder) -> impl Future<Output = Result<UpdateFrameworkOutput, SdkError<UpdateFrameworkError>>> {
-        (*self).update_framework(builder)
+        self.deref().update_framework(builder)
     }
     fn update_global_settings(&self, builder: UpdateGlobalSettingsInputBuilder) -> impl Future<Output = Result<UpdateGlobalSettingsOutput, SdkError<UpdateGlobalSettingsError>>> {
-        (*self).update_global_settings(builder)
+        self.deref().update_global_settings(builder)
     }
     fn update_recovery_point_lifecycle(&self, builder: UpdateRecoveryPointLifecycleInputBuilder) -> impl Future<Output = Result<UpdateRecoveryPointLifecycleOutput, SdkError<UpdateRecoveryPointLifecycleError>>> {
-        (*self).update_recovery_point_lifecycle(builder)
+        self.deref().update_recovery_point_lifecycle(builder)
     }
     fn update_region_settings(&self, builder: UpdateRegionSettingsInputBuilder) -> impl Future<Output = Result<UpdateRegionSettingsOutput, SdkError<UpdateRegionSettingsError>>> {
-        (*self).update_region_settings(builder)
+        self.deref().update_region_settings(builder)
     }
     fn update_report_plan(&self, builder: UpdateReportPlanInputBuilder) -> impl Future<Output = Result<UpdateReportPlanOutput, SdkError<UpdateReportPlanError>>> {
-        (*self).update_report_plan(builder)
+        self.deref().update_report_plan(builder)
     }
     fn update_restore_testing_plan(&self, builder: UpdateRestoreTestingPlanInputBuilder) -> impl Future<Output = Result<UpdateRestoreTestingPlanOutput, SdkError<UpdateRestoreTestingPlanError>>> {
-        (*self).update_restore_testing_plan(builder)
+        self.deref().update_restore_testing_plan(builder)
     }
     fn update_restore_testing_selection(&self, builder: UpdateRestoreTestingSelectionInputBuilder) -> impl Future<Output = Result<UpdateRestoreTestingSelectionOutput, SdkError<UpdateRestoreTestingSelectionError>>> {
-        (*self).update_restore_testing_selection(builder)
+        self.deref().update_restore_testing_selection(builder)
     }
 }
 #[cfg(feature = "mockall")]

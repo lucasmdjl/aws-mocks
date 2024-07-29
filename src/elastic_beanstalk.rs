@@ -67,6 +67,7 @@ use aws_sdk_elasticbeanstalk::error::SdkError;
 use std::future::Future;
 use aws_config::SdkConfig;
 use aws_sdk_elasticbeanstalk::Client;
+use std::ops::Deref;
 
 pub use aws_sdk_elasticbeanstalk::*;
 
@@ -266,147 +267,149 @@ impl ElasticBeanstalkClient for ElasticBeanstalkClientImpl {
         builder.send_with(&self.0)
     }
 }
-impl <T: ElasticBeanstalkClient> ElasticBeanstalkClient for &T {
+impl <T> ElasticBeanstalkClient for T
+where T: Deref,
+      T::Target: ElasticBeanstalkClient {
     fn abort_environment_update(&self, builder: AbortEnvironmentUpdateInputBuilder) -> impl Future<Output = Result<AbortEnvironmentUpdateOutput, SdkError<AbortEnvironmentUpdateError>>> {
-        (*self).abort_environment_update(builder)
+        self.deref().abort_environment_update(builder)
     }
     fn apply_environment_managed_action(&self, builder: ApplyEnvironmentManagedActionInputBuilder) -> impl Future<Output = Result<ApplyEnvironmentManagedActionOutput, SdkError<ApplyEnvironmentManagedActionError>>> {
-        (*self).apply_environment_managed_action(builder)
+        self.deref().apply_environment_managed_action(builder)
     }
     fn associate_environment_operations_role(&self, builder: AssociateEnvironmentOperationsRoleInputBuilder) -> impl Future<Output = Result<AssociateEnvironmentOperationsRoleOutput, SdkError<AssociateEnvironmentOperationsRoleError>>> {
-        (*self).associate_environment_operations_role(builder)
+        self.deref().associate_environment_operations_role(builder)
     }
     fn check_dns_availability(&self, builder: CheckDnsAvailabilityInputBuilder) -> impl Future<Output = Result<CheckDnsAvailabilityOutput, SdkError<CheckDNSAvailabilityError>>> {
-        (*self).check_dns_availability(builder)
+        self.deref().check_dns_availability(builder)
     }
     fn compose_environments(&self, builder: ComposeEnvironmentsInputBuilder) -> impl Future<Output = Result<ComposeEnvironmentsOutput, SdkError<ComposeEnvironmentsError>>> {
-        (*self).compose_environments(builder)
+        self.deref().compose_environments(builder)
     }
     fn create_application(&self, builder: CreateApplicationInputBuilder) -> impl Future<Output = Result<CreateApplicationOutput, SdkError<CreateApplicationError>>> {
-        (*self).create_application(builder)
+        self.deref().create_application(builder)
     }
     fn create_application_version(&self, builder: CreateApplicationVersionInputBuilder) -> impl Future<Output = Result<CreateApplicationVersionOutput, SdkError<CreateApplicationVersionError>>> {
-        (*self).create_application_version(builder)
+        self.deref().create_application_version(builder)
     }
     fn create_configuration_template(&self, builder: CreateConfigurationTemplateInputBuilder) -> impl Future<Output = Result<CreateConfigurationTemplateOutput, SdkError<CreateConfigurationTemplateError>>> {
-        (*self).create_configuration_template(builder)
+        self.deref().create_configuration_template(builder)
     }
     fn create_environment(&self, builder: CreateEnvironmentInputBuilder) -> impl Future<Output = Result<CreateEnvironmentOutput, SdkError<CreateEnvironmentError>>> {
-        (*self).create_environment(builder)
+        self.deref().create_environment(builder)
     }
     fn create_platform_version(&self, builder: CreatePlatformVersionInputBuilder) -> impl Future<Output = Result<CreatePlatformVersionOutput, SdkError<CreatePlatformVersionError>>> {
-        (*self).create_platform_version(builder)
+        self.deref().create_platform_version(builder)
     }
     fn create_storage_location(&self, builder: CreateStorageLocationInputBuilder) -> impl Future<Output = Result<CreateStorageLocationOutput, SdkError<CreateStorageLocationError>>> {
-        (*self).create_storage_location(builder)
+        self.deref().create_storage_location(builder)
     }
     fn delete_application(&self, builder: DeleteApplicationInputBuilder) -> impl Future<Output = Result<DeleteApplicationOutput, SdkError<DeleteApplicationError>>> {
-        (*self).delete_application(builder)
+        self.deref().delete_application(builder)
     }
     fn delete_application_version(&self, builder: DeleteApplicationVersionInputBuilder) -> impl Future<Output = Result<DeleteApplicationVersionOutput, SdkError<DeleteApplicationVersionError>>> {
-        (*self).delete_application_version(builder)
+        self.deref().delete_application_version(builder)
     }
     fn delete_configuration_template(&self, builder: DeleteConfigurationTemplateInputBuilder) -> impl Future<Output = Result<DeleteConfigurationTemplateOutput, SdkError<DeleteConfigurationTemplateError>>> {
-        (*self).delete_configuration_template(builder)
+        self.deref().delete_configuration_template(builder)
     }
     fn delete_environment_configuration(&self, builder: DeleteEnvironmentConfigurationInputBuilder) -> impl Future<Output = Result<DeleteEnvironmentConfigurationOutput, SdkError<DeleteEnvironmentConfigurationError>>> {
-        (*self).delete_environment_configuration(builder)
+        self.deref().delete_environment_configuration(builder)
     }
     fn delete_platform_version(&self, builder: DeletePlatformVersionInputBuilder) -> impl Future<Output = Result<DeletePlatformVersionOutput, SdkError<DeletePlatformVersionError>>> {
-        (*self).delete_platform_version(builder)
+        self.deref().delete_platform_version(builder)
     }
     fn describe_account_attributes(&self, builder: DescribeAccountAttributesInputBuilder) -> impl Future<Output = Result<DescribeAccountAttributesOutput, SdkError<DescribeAccountAttributesError>>> {
-        (*self).describe_account_attributes(builder)
+        self.deref().describe_account_attributes(builder)
     }
     fn describe_application_versions(&self, builder: DescribeApplicationVersionsInputBuilder) -> impl Future<Output = Result<DescribeApplicationVersionsOutput, SdkError<DescribeApplicationVersionsError>>> {
-        (*self).describe_application_versions(builder)
+        self.deref().describe_application_versions(builder)
     }
     fn describe_applications(&self, builder: DescribeApplicationsInputBuilder) -> impl Future<Output = Result<DescribeApplicationsOutput, SdkError<DescribeApplicationsError>>> {
-        (*self).describe_applications(builder)
+        self.deref().describe_applications(builder)
     }
     fn describe_configuration_options(&self, builder: DescribeConfigurationOptionsInputBuilder) -> impl Future<Output = Result<DescribeConfigurationOptionsOutput, SdkError<DescribeConfigurationOptionsError>>> {
-        (*self).describe_configuration_options(builder)
+        self.deref().describe_configuration_options(builder)
     }
     fn describe_configuration_settings(&self, builder: DescribeConfigurationSettingsInputBuilder) -> impl Future<Output = Result<DescribeConfigurationSettingsOutput, SdkError<DescribeConfigurationSettingsError>>> {
-        (*self).describe_configuration_settings(builder)
+        self.deref().describe_configuration_settings(builder)
     }
     fn describe_environment_health(&self, builder: DescribeEnvironmentHealthInputBuilder) -> impl Future<Output = Result<DescribeEnvironmentHealthOutput, SdkError<DescribeEnvironmentHealthError>>> {
-        (*self).describe_environment_health(builder)
+        self.deref().describe_environment_health(builder)
     }
     fn describe_environment_managed_action_history(&self, builder: DescribeEnvironmentManagedActionHistoryInputBuilder) -> impl Future<Output = Result<DescribeEnvironmentManagedActionHistoryOutput, SdkError<DescribeEnvironmentManagedActionHistoryError>>> {
-        (*self).describe_environment_managed_action_history(builder)
+        self.deref().describe_environment_managed_action_history(builder)
     }
     fn describe_environment_managed_actions(&self, builder: DescribeEnvironmentManagedActionsInputBuilder) -> impl Future<Output = Result<DescribeEnvironmentManagedActionsOutput, SdkError<DescribeEnvironmentManagedActionsError>>> {
-        (*self).describe_environment_managed_actions(builder)
+        self.deref().describe_environment_managed_actions(builder)
     }
     fn describe_environment_resources(&self, builder: DescribeEnvironmentResourcesInputBuilder) -> impl Future<Output = Result<DescribeEnvironmentResourcesOutput, SdkError<DescribeEnvironmentResourcesError>>> {
-        (*self).describe_environment_resources(builder)
+        self.deref().describe_environment_resources(builder)
     }
     fn describe_environments(&self, builder: DescribeEnvironmentsInputBuilder) -> impl Future<Output = Result<DescribeEnvironmentsOutput, SdkError<DescribeEnvironmentsError>>> {
-        (*self).describe_environments(builder)
+        self.deref().describe_environments(builder)
     }
     fn describe_events(&self, builder: DescribeEventsInputBuilder) -> impl Future<Output = Result<DescribeEventsOutput, SdkError<DescribeEventsError>>> {
-        (*self).describe_events(builder)
+        self.deref().describe_events(builder)
     }
     fn describe_instances_health(&self, builder: DescribeInstancesHealthInputBuilder) -> impl Future<Output = Result<DescribeInstancesHealthOutput, SdkError<DescribeInstancesHealthError>>> {
-        (*self).describe_instances_health(builder)
+        self.deref().describe_instances_health(builder)
     }
     fn describe_platform_version(&self, builder: DescribePlatformVersionInputBuilder) -> impl Future<Output = Result<DescribePlatformVersionOutput, SdkError<DescribePlatformVersionError>>> {
-        (*self).describe_platform_version(builder)
+        self.deref().describe_platform_version(builder)
     }
     fn disassociate_environment_operations_role(&self, builder: DisassociateEnvironmentOperationsRoleInputBuilder) -> impl Future<Output = Result<DisassociateEnvironmentOperationsRoleOutput, SdkError<DisassociateEnvironmentOperationsRoleError>>> {
-        (*self).disassociate_environment_operations_role(builder)
+        self.deref().disassociate_environment_operations_role(builder)
     }
     fn list_available_solution_stacks(&self, builder: ListAvailableSolutionStacksInputBuilder) -> impl Future<Output = Result<ListAvailableSolutionStacksOutput, SdkError<ListAvailableSolutionStacksError>>> {
-        (*self).list_available_solution_stacks(builder)
+        self.deref().list_available_solution_stacks(builder)
     }
     fn list_platform_branches(&self, builder: ListPlatformBranchesInputBuilder) -> impl Future<Output = Result<ListPlatformBranchesOutput, SdkError<ListPlatformBranchesError>>> {
-        (*self).list_platform_branches(builder)
+        self.deref().list_platform_branches(builder)
     }
     fn list_platform_versions(&self, builder: ListPlatformVersionsInputBuilder) -> impl Future<Output = Result<ListPlatformVersionsOutput, SdkError<ListPlatformVersionsError>>> {
-        (*self).list_platform_versions(builder)
+        self.deref().list_platform_versions(builder)
     }
     fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> {
-        (*self).list_tags_for_resource(builder)
+        self.deref().list_tags_for_resource(builder)
     }
     fn rebuild_environment(&self, builder: RebuildEnvironmentInputBuilder) -> impl Future<Output = Result<RebuildEnvironmentOutput, SdkError<RebuildEnvironmentError>>> {
-        (*self).rebuild_environment(builder)
+        self.deref().rebuild_environment(builder)
     }
     fn request_environment_info(&self, builder: RequestEnvironmentInfoInputBuilder) -> impl Future<Output = Result<RequestEnvironmentInfoOutput, SdkError<RequestEnvironmentInfoError>>> {
-        (*self).request_environment_info(builder)
+        self.deref().request_environment_info(builder)
     }
     fn restart_app_server(&self, builder: RestartAppServerInputBuilder) -> impl Future<Output = Result<RestartAppServerOutput, SdkError<RestartAppServerError>>> {
-        (*self).restart_app_server(builder)
+        self.deref().restart_app_server(builder)
     }
     fn retrieve_environment_info(&self, builder: RetrieveEnvironmentInfoInputBuilder) -> impl Future<Output = Result<RetrieveEnvironmentInfoOutput, SdkError<RetrieveEnvironmentInfoError>>> {
-        (*self).retrieve_environment_info(builder)
+        self.deref().retrieve_environment_info(builder)
     }
     fn swap_environment_cnames(&self, builder: SwapEnvironmentCnamEsInputBuilder) -> impl Future<Output = Result<SwapEnvironmentCnamEsOutput, SdkError<SwapEnvironmentCNAMEsError>>> {
-        (*self).swap_environment_cnames(builder)
+        self.deref().swap_environment_cnames(builder)
     }
     fn terminate_environment(&self, builder: TerminateEnvironmentInputBuilder) -> impl Future<Output = Result<TerminateEnvironmentOutput, SdkError<TerminateEnvironmentError>>> {
-        (*self).terminate_environment(builder)
+        self.deref().terminate_environment(builder)
     }
     fn update_application(&self, builder: UpdateApplicationInputBuilder) -> impl Future<Output = Result<UpdateApplicationOutput, SdkError<UpdateApplicationError>>> {
-        (*self).update_application(builder)
+        self.deref().update_application(builder)
     }
     fn update_application_resource_lifecycle(&self, builder: UpdateApplicationResourceLifecycleInputBuilder) -> impl Future<Output = Result<UpdateApplicationResourceLifecycleOutput, SdkError<UpdateApplicationResourceLifecycleError>>> {
-        (*self).update_application_resource_lifecycle(builder)
+        self.deref().update_application_resource_lifecycle(builder)
     }
     fn update_application_version(&self, builder: UpdateApplicationVersionInputBuilder) -> impl Future<Output = Result<UpdateApplicationVersionOutput, SdkError<UpdateApplicationVersionError>>> {
-        (*self).update_application_version(builder)
+        self.deref().update_application_version(builder)
     }
     fn update_configuration_template(&self, builder: UpdateConfigurationTemplateInputBuilder) -> impl Future<Output = Result<UpdateConfigurationTemplateOutput, SdkError<UpdateConfigurationTemplateError>>> {
-        (*self).update_configuration_template(builder)
+        self.deref().update_configuration_template(builder)
     }
     fn update_environment(&self, builder: UpdateEnvironmentInputBuilder) -> impl Future<Output = Result<UpdateEnvironmentOutput, SdkError<UpdateEnvironmentError>>> {
-        (*self).update_environment(builder)
+        self.deref().update_environment(builder)
     }
     fn update_tags_for_resource(&self, builder: UpdateTagsForResourceInputBuilder) -> impl Future<Output = Result<UpdateTagsForResourceOutput, SdkError<UpdateTagsForResourceError>>> {
-        (*self).update_tags_for_resource(builder)
+        self.deref().update_tags_for_resource(builder)
     }
     fn validate_configuration_settings(&self, builder: ValidateConfigurationSettingsInputBuilder) -> impl Future<Output = Result<ValidateConfigurationSettingsOutput, SdkError<ValidateConfigurationSettingsError>>> {
-        (*self).validate_configuration_settings(builder)
+        self.deref().validate_configuration_settings(builder)
     }
 }
 #[cfg(feature = "mockall")]
