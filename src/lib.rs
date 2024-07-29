@@ -38,6 +38,8 @@ pub mod api_gateway;
 pub mod api_gateway_management;
 #[cfg(feature="api-gateway-v2")]
 pub mod api_gateway_v2;
+#[cfg(feature="app-config")]
+pub mod app_config;
 #[cfg(feature="app-sync")]
 pub mod app_sync;
 #[cfg(feature="athena")]

@@ -106,6 +106,7 @@ dependencies = [
  "aws-sdk-apigateway",
  "aws-sdk-apigatewaymanagement",
  "aws-sdk-apigatewayv2",
+ "aws-sdk-appconfig",
  "aws-sdk-appsync",
  "aws-sdk-athena",
  "aws-sdk-backup",
@@ -407,6 +408,28 @@ name = "aws-sdk-apigatewayv2"
 version = "1.35.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "693a32754042934bcc2049ed9e982ff11b7ddcf11152e6988d5fb3187c8db0a7"
+dependencies = [
+ "aws-credential-types",
+ "aws-runtime",
+ "aws-smithy-async",
+ "aws-smithy-http",
+ "aws-smithy-json",
+ "aws-smithy-runtime",
+ "aws-smithy-runtime-api",
+ "aws-smithy-types",
+ "aws-types",
+ "bytes",
+ "http 0.2.12",
+ "once_cell",
+ "regex-lite",
+ "tracing",
+]
+
+[[package]]
+name = "aws-sdk-appconfig"
+version = "1.37.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ff11daa1a22cdd6a9836d8efaee23906d13025730a673379bc809822b3a1551b"
 dependencies = [
  "aws-credential-types",
  "aws-runtime",

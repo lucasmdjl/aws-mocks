@@ -72,6 +72,7 @@ The following are the AWS services currently supported and the features to enabl
 | ApiGateway              | api-gateway               |
 | ApiGateway Management   | api-gateway-management    |
 | ApiGateway V2           | api-gateway-v2            |
+| AppConfig               | app-config                |
 | AppSync                 | app-sync                  |
 | Athena                  | athena                    |
 | Backup                  | backup                    |

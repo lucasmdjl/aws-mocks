@@ -23,6 +23,7 @@ aws-sdk-amplifyuibuilder = { version = "1", optional = true }
 aws-sdk-apigateway = { version = "1", optional = true }
 aws-sdk-apigatewaymanagement = { version = "1", optional = true }
 aws-sdk-apigatewayv2 = { version = "1", optional = true }
+aws-sdk-appconfig = {  version = "1", optional = true }
 aws-sdk-appsync = { version = "1", optional = true }
 aws-sdk-athena = { version = "1", optional = true }
 aws-sdk-backup = { version = "1", optional = true }
@@ -83,6 +84,7 @@ amplify-ui-builder = ["dep:aws-sdk-amplifyuibuilder"]
 api-gateway = ["dep:aws-sdk-apigateway"]
 api-gateway-management = ["dep:aws-sdk-apigatewaymanagement"]
 api-gateway-v2 = ["dep:aws-sdk-apigatewayv2"]
+app-config = ["dep:aws-sdk-appconfig"]
 app-sync = ["dep:aws-sdk-appsync"]
 athena = ["dep:aws-sdk-athena"]
 backup = ["dep:aws-sdk-backup"]
