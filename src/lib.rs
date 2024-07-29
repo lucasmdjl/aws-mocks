@@ -48,6 +48,8 @@ pub mod app_fabric;
 pub mod app_flow;
 #[cfg(feature="app-integrations")]
 pub mod app_integrations;
+#[cfg(feature="app-mesh")]
+pub mod app_mesh;
 #[cfg(feature="app-runner")]
 pub mod app_runner;
 #[cfg(feature="app-sync")]

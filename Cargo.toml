@@ -28,6 +28,7 @@ aws-sdk-appconfigdata = { version = "1", optional = true }
 aws-sdk-appfabric = { version = "1", optional = true }
 aws-sdk-appflow = { version = "1", optional = true }
 aws-sdk-appintegrations = { version = "1", optional = true }
+aws-sdk-appmesh = { version = "1", optional = true }
 aws-sdk-apprunner = { version = "1", optional = true }
 aws-sdk-appsync = { version = "1", optional = true }
 aws-sdk-apptest = { version = "1", optional = true }
@@ -95,6 +96,7 @@ app-config-data = ["dep:aws-sdk-appconfigdata"]
 app-fabric = ["dep:aws-sdk-appfabric"]
 app-flow = ["dep:aws-sdk-appflow"]
 app-integrations = ["dep:aws-sdk-appintegrations"]
+app-mesh = ["dep:aws-sdk-appmesh"]
 app-runner = ["dep:aws-sdk-apprunner"]
 app-sync = ["dep:aws-sdk-appsync"]
 app-test = ["dep:aws-sdk-apptest"]
