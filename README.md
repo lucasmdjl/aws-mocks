@@ -76,6 +76,7 @@ The following are the AWS services currently supported and the features to enabl
 | AppConfigData           | app-config-data           |
 | AppFabric               | app-fabric                |
 | AppFlow                 | app-flow                  |
+| AppIntegrations         | app-integrations          |
 | AppRunner               | app-runner                |
 | AppSync                 | app-sync                  |
 | AppTest                 | app-test                  |
