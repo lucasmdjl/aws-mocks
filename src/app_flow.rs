@@ -55,31 +55,31 @@ impl AppFlowClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AppFlowClient {
-    fn cancel_flow_executions(&self, builder: CancelFlowExecutionsInputBuilder) -> impl Future<Output = Result<CancelFlowExecutionsOutput, SdkError<CancelFlowExecutionsError>>>;
-    fn create_connector_profile(&self, builder: CreateConnectorProfileInputBuilder) -> impl Future<Output = Result<CreateConnectorProfileOutput, SdkError<CreateConnectorProfileError>>>;
-    fn create_flow(&self, builder: CreateFlowInputBuilder) -> impl Future<Output = Result<CreateFlowOutput, SdkError<CreateFlowError>>>;
-    fn delete_connector_profile(&self, builder: DeleteConnectorProfileInputBuilder) -> impl Future<Output = Result<DeleteConnectorProfileOutput, SdkError<DeleteConnectorProfileError>>>;
-    fn delete_flow(&self, builder: DeleteFlowInputBuilder) -> impl Future<Output = Result<DeleteFlowOutput, SdkError<DeleteFlowError>>>;
-    fn describe_connector(&self, builder: DescribeConnectorInputBuilder) -> impl Future<Output = Result<DescribeConnectorOutput, SdkError<DescribeConnectorError>>>;
-    fn describe_connector_entity(&self, builder: DescribeConnectorEntityInputBuilder) -> impl Future<Output = Result<DescribeConnectorEntityOutput, SdkError<DescribeConnectorEntityError>>>;
-    fn describe_connector_profiles(&self, builder: DescribeConnectorProfilesInputBuilder) -> impl Future<Output = Result<DescribeConnectorProfilesOutput, SdkError<DescribeConnectorProfilesError>>>;
-    fn describe_connectors(&self, builder: DescribeConnectorsInputBuilder) -> impl Future<Output = Result<DescribeConnectorsOutput, SdkError<DescribeConnectorsError>>>;
-    fn describe_flow(&self, builder: DescribeFlowInputBuilder) -> impl Future<Output = Result<DescribeFlowOutput, SdkError<DescribeFlowError>>>;
-    fn describe_flow_execution_records(&self, builder: DescribeFlowExecutionRecordsInputBuilder) -> impl Future<Output = Result<DescribeFlowExecutionRecordsOutput, SdkError<DescribeFlowExecutionRecordsError>>>;
-    fn list_connector_entities(&self, builder: ListConnectorEntitiesInputBuilder) -> impl Future<Output = Result<ListConnectorEntitiesOutput, SdkError<ListConnectorEntitiesError>>>;
-    fn list_connectors(&self, builder: ListConnectorsInputBuilder) -> impl Future<Output = Result<ListConnectorsOutput, SdkError<ListConnectorsError>>>;
-    fn list_flows(&self, builder: ListFlowsInputBuilder) -> impl Future<Output = Result<ListFlowsOutput, SdkError<ListFlowsError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn register_connector(&self, builder: RegisterConnectorInputBuilder) -> impl Future<Output = Result<RegisterConnectorOutput, SdkError<RegisterConnectorError>>>;
-    fn reset_connector_metadata_cache(&self, builder: ResetConnectorMetadataCacheInputBuilder) -> impl Future<Output = Result<ResetConnectorMetadataCacheOutput, SdkError<ResetConnectorMetadataCacheError>>>;
-    fn start_flow(&self, builder: StartFlowInputBuilder) -> impl Future<Output = Result<StartFlowOutput, SdkError<StartFlowError>>>;
-    fn stop_flow(&self, builder: StopFlowInputBuilder) -> impl Future<Output = Result<StopFlowOutput, SdkError<StopFlowError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn unregister_connector(&self, builder: UnregisterConnectorInputBuilder) -> impl Future<Output = Result<UnregisterConnectorOutput, SdkError<UnregisterConnectorError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_connector_profile(&self, builder: UpdateConnectorProfileInputBuilder) -> impl Future<Output = Result<UpdateConnectorProfileOutput, SdkError<UpdateConnectorProfileError>>>;
-    fn update_connector_registration(&self, builder: UpdateConnectorRegistrationInputBuilder) -> impl Future<Output = Result<UpdateConnectorRegistrationOutput, SdkError<UpdateConnectorRegistrationError>>>;
-    fn update_flow(&self, builder: UpdateFlowInputBuilder) -> impl Future<Output = Result<UpdateFlowOutput, SdkError<UpdateFlowError>>>;
+    fn cancel_flow_executions(&self, builder: CancelFlowExecutionsInputBuilder) -> impl Future<Output = Result<CancelFlowExecutionsOutput, SdkError<CancelFlowExecutionsError>>> + Send;
+    fn create_connector_profile(&self, builder: CreateConnectorProfileInputBuilder) -> impl Future<Output = Result<CreateConnectorProfileOutput, SdkError<CreateConnectorProfileError>>> + Send;
+    fn create_flow(&self, builder: CreateFlowInputBuilder) -> impl Future<Output = Result<CreateFlowOutput, SdkError<CreateFlowError>>> + Send;
+    fn delete_connector_profile(&self, builder: DeleteConnectorProfileInputBuilder) -> impl Future<Output = Result<DeleteConnectorProfileOutput, SdkError<DeleteConnectorProfileError>>> + Send;
+    fn delete_flow(&self, builder: DeleteFlowInputBuilder) -> impl Future<Output = Result<DeleteFlowOutput, SdkError<DeleteFlowError>>> + Send;
+    fn describe_connector(&self, builder: DescribeConnectorInputBuilder) -> impl Future<Output = Result<DescribeConnectorOutput, SdkError<DescribeConnectorError>>> + Send;
+    fn describe_connector_entity(&self, builder: DescribeConnectorEntityInputBuilder) -> impl Future<Output = Result<DescribeConnectorEntityOutput, SdkError<DescribeConnectorEntityError>>> + Send;
+    fn describe_connector_profiles(&self, builder: DescribeConnectorProfilesInputBuilder) -> impl Future<Output = Result<DescribeConnectorProfilesOutput, SdkError<DescribeConnectorProfilesError>>> + Send;
+    fn describe_connectors(&self, builder: DescribeConnectorsInputBuilder) -> impl Future<Output = Result<DescribeConnectorsOutput, SdkError<DescribeConnectorsError>>> + Send;
+    fn describe_flow(&self, builder: DescribeFlowInputBuilder) -> impl Future<Output = Result<DescribeFlowOutput, SdkError<DescribeFlowError>>> + Send;
+    fn describe_flow_execution_records(&self, builder: DescribeFlowExecutionRecordsInputBuilder) -> impl Future<Output = Result<DescribeFlowExecutionRecordsOutput, SdkError<DescribeFlowExecutionRecordsError>>> + Send;
+    fn list_connector_entities(&self, builder: ListConnectorEntitiesInputBuilder) -> impl Future<Output = Result<ListConnectorEntitiesOutput, SdkError<ListConnectorEntitiesError>>> + Send;
+    fn list_connectors(&self, builder: ListConnectorsInputBuilder) -> impl Future<Output = Result<ListConnectorsOutput, SdkError<ListConnectorsError>>> + Send;
+    fn list_flows(&self, builder: ListFlowsInputBuilder) -> impl Future<Output = Result<ListFlowsOutput, SdkError<ListFlowsError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn register_connector(&self, builder: RegisterConnectorInputBuilder) -> impl Future<Output = Result<RegisterConnectorOutput, SdkError<RegisterConnectorError>>> + Send;
+    fn reset_connector_metadata_cache(&self, builder: ResetConnectorMetadataCacheInputBuilder) -> impl Future<Output = Result<ResetConnectorMetadataCacheOutput, SdkError<ResetConnectorMetadataCacheError>>> + Send;
+    fn start_flow(&self, builder: StartFlowInputBuilder) -> impl Future<Output = Result<StartFlowOutput, SdkError<StartFlowError>>> + Send;
+    fn stop_flow(&self, builder: StopFlowInputBuilder) -> impl Future<Output = Result<StopFlowOutput, SdkError<StopFlowError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn unregister_connector(&self, builder: UnregisterConnectorInputBuilder) -> impl Future<Output = Result<UnregisterConnectorOutput, SdkError<UnregisterConnectorError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_connector_profile(&self, builder: UpdateConnectorProfileInputBuilder) -> impl Future<Output = Result<UpdateConnectorProfileOutput, SdkError<UpdateConnectorProfileError>>> + Send;
+    fn update_connector_registration(&self, builder: UpdateConnectorRegistrationInputBuilder) -> impl Future<Output = Result<UpdateConnectorRegistrationOutput, SdkError<UpdateConnectorRegistrationError>>> + Send;
+    fn update_flow(&self, builder: UpdateFlowInputBuilder) -> impl Future<Output = Result<UpdateFlowOutput, SdkError<UpdateFlowError>>> + Send;
 }
 impl AppFlowClient for AppFlowClientImpl {
     fn cancel_flow_executions(&self, builder: CancelFlowExecutionsInputBuilder) -> impl Future<Output = Result<CancelFlowExecutionsOutput, SdkError<CancelFlowExecutionsError>>> {

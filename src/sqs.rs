@@ -53,29 +53,29 @@ impl SQSClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait SQSClient {
-    fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>>;
-    fn cancel_message_move_task(&self, builder: CancelMessageMoveTaskInputBuilder) -> impl Future<Output = Result<CancelMessageMoveTaskOutput, SdkError<CancelMessageMoveTaskError>>>;
-    fn change_message_visibility(&self, builder: ChangeMessageVisibilityInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityOutput, SdkError<ChangeMessageVisibilityError>>>;
-    fn change_message_visibility_batch(&self, builder: ChangeMessageVisibilityBatchInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityBatchOutput, SdkError<ChangeMessageVisibilityBatchError>>>;
-    fn create_queue(&self, builder: CreateQueueInputBuilder) -> impl Future<Output = Result<CreateQueueOutput, SdkError<CreateQueueError>>>;
-    fn delete_message(&self, builder: DeleteMessageInputBuilder) -> impl Future<Output = Result<DeleteMessageOutput, SdkError<DeleteMessageError>>>;
-    fn delete_message_batch(&self, builder: DeleteMessageBatchInputBuilder) -> impl Future<Output = Result<DeleteMessageBatchOutput, SdkError<DeleteMessageBatchError>>>;
-    fn delete_queue(&self, builder: DeleteQueueInputBuilder) -> impl Future<Output = Result<DeleteQueueOutput, SdkError<DeleteQueueError>>>;
-    fn get_queue_attributes(&self, builder: GetQueueAttributesInputBuilder) -> impl Future<Output = Result<GetQueueAttributesOutput, SdkError<GetQueueAttributesError>>>;
-    fn get_queue_url(&self, builder: GetQueueUrlInputBuilder) -> impl Future<Output = Result<GetQueueUrlOutput, SdkError<GetQueueUrlError>>>;
-    fn list_dead_letter_source_queues(&self, builder: ListDeadLetterSourceQueuesInputBuilder) -> impl Future<Output = Result<ListDeadLetterSourceQueuesOutput, SdkError<ListDeadLetterSourceQueuesError>>>;
-    fn list_message_move_tasks(&self, builder: ListMessageMoveTasksInputBuilder) -> impl Future<Output = Result<ListMessageMoveTasksOutput, SdkError<ListMessageMoveTasksError>>>;
-    fn list_queue_tags(&self, builder: ListQueueTagsInputBuilder) -> impl Future<Output = Result<ListQueueTagsOutput, SdkError<ListQueueTagsError>>>;
-    fn list_queues(&self, builder: ListQueuesInputBuilder) -> impl Future<Output = Result<ListQueuesOutput, SdkError<ListQueuesError>>>;
-    fn purge_queue(&self, builder: PurgeQueueInputBuilder) -> impl Future<Output = Result<PurgeQueueOutput, SdkError<PurgeQueueError>>>;
-    fn receive_message(&self, builder: ReceiveMessageInputBuilder) -> impl Future<Output = Result<ReceiveMessageOutput, SdkError<ReceiveMessageError>>>;
-    fn remove_permission(&self, builder: RemovePermissionInputBuilder) -> impl Future<Output = Result<RemovePermissionOutput, SdkError<RemovePermissionError>>>;
-    fn send_message(&self, builder: SendMessageInputBuilder) -> impl Future<Output = Result<SendMessageOutput, SdkError<SendMessageError>>>;
-    fn send_message_batch(&self, builder: SendMessageBatchInputBuilder) -> impl Future<Output = Result<SendMessageBatchOutput, SdkError<SendMessageBatchError>>>;
-    fn set_queue_attributes(&self, builder: SetQueueAttributesInputBuilder) -> impl Future<Output = Result<SetQueueAttributesOutput, SdkError<SetQueueAttributesError>>>;
-    fn start_message_move_task(&self, builder: StartMessageMoveTaskInputBuilder) -> impl Future<Output = Result<StartMessageMoveTaskOutput, SdkError<StartMessageMoveTaskError>>>;
-    fn tag_queue(&self, builder: TagQueueInputBuilder) -> impl Future<Output = Result<TagQueueOutput, SdkError<TagQueueError>>>;
-    fn untag_queue(&self, builder: UntagQueueInputBuilder) -> impl Future<Output = Result<UntagQueueOutput, SdkError<UntagQueueError>>>;
+    fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>> + Send;
+    fn cancel_message_move_task(&self, builder: CancelMessageMoveTaskInputBuilder) -> impl Future<Output = Result<CancelMessageMoveTaskOutput, SdkError<CancelMessageMoveTaskError>>> + Send;
+    fn change_message_visibility(&self, builder: ChangeMessageVisibilityInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityOutput, SdkError<ChangeMessageVisibilityError>>> + Send;
+    fn change_message_visibility_batch(&self, builder: ChangeMessageVisibilityBatchInputBuilder) -> impl Future<Output = Result<ChangeMessageVisibilityBatchOutput, SdkError<ChangeMessageVisibilityBatchError>>> + Send;
+    fn create_queue(&self, builder: CreateQueueInputBuilder) -> impl Future<Output = Result<CreateQueueOutput, SdkError<CreateQueueError>>> + Send;
+    fn delete_message(&self, builder: DeleteMessageInputBuilder) -> impl Future<Output = Result<DeleteMessageOutput, SdkError<DeleteMessageError>>> + Send;
+    fn delete_message_batch(&self, builder: DeleteMessageBatchInputBuilder) -> impl Future<Output = Result<DeleteMessageBatchOutput, SdkError<DeleteMessageBatchError>>> + Send;
+    fn delete_queue(&self, builder: DeleteQueueInputBuilder) -> impl Future<Output = Result<DeleteQueueOutput, SdkError<DeleteQueueError>>> + Send;
+    fn get_queue_attributes(&self, builder: GetQueueAttributesInputBuilder) -> impl Future<Output = Result<GetQueueAttributesOutput, SdkError<GetQueueAttributesError>>> + Send;
+    fn get_queue_url(&self, builder: GetQueueUrlInputBuilder) -> impl Future<Output = Result<GetQueueUrlOutput, SdkError<GetQueueUrlError>>> + Send;
+    fn list_dead_letter_source_queues(&self, builder: ListDeadLetterSourceQueuesInputBuilder) -> impl Future<Output = Result<ListDeadLetterSourceQueuesOutput, SdkError<ListDeadLetterSourceQueuesError>>> + Send;
+    fn list_message_move_tasks(&self, builder: ListMessageMoveTasksInputBuilder) -> impl Future<Output = Result<ListMessageMoveTasksOutput, SdkError<ListMessageMoveTasksError>>> + Send;
+    fn list_queue_tags(&self, builder: ListQueueTagsInputBuilder) -> impl Future<Output = Result<ListQueueTagsOutput, SdkError<ListQueueTagsError>>> + Send;
+    fn list_queues(&self, builder: ListQueuesInputBuilder) -> impl Future<Output = Result<ListQueuesOutput, SdkError<ListQueuesError>>> + Send;
+    fn purge_queue(&self, builder: PurgeQueueInputBuilder) -> impl Future<Output = Result<PurgeQueueOutput, SdkError<PurgeQueueError>>> + Send;
+    fn receive_message(&self, builder: ReceiveMessageInputBuilder) -> impl Future<Output = Result<ReceiveMessageOutput, SdkError<ReceiveMessageError>>> + Send;
+    fn remove_permission(&self, builder: RemovePermissionInputBuilder) -> impl Future<Output = Result<RemovePermissionOutput, SdkError<RemovePermissionError>>> + Send;
+    fn send_message(&self, builder: SendMessageInputBuilder) -> impl Future<Output = Result<SendMessageOutput, SdkError<SendMessageError>>> + Send;
+    fn send_message_batch(&self, builder: SendMessageBatchInputBuilder) -> impl Future<Output = Result<SendMessageBatchOutput, SdkError<SendMessageBatchError>>> + Send;
+    fn set_queue_attributes(&self, builder: SetQueueAttributesInputBuilder) -> impl Future<Output = Result<SetQueueAttributesOutput, SdkError<SetQueueAttributesError>>> + Send;
+    fn start_message_move_task(&self, builder: StartMessageMoveTaskInputBuilder) -> impl Future<Output = Result<StartMessageMoveTaskOutput, SdkError<StartMessageMoveTaskError>>> + Send;
+    fn tag_queue(&self, builder: TagQueueInputBuilder) -> impl Future<Output = Result<TagQueueOutput, SdkError<TagQueueError>>> + Send;
+    fn untag_queue(&self, builder: UntagQueueInputBuilder) -> impl Future<Output = Result<UntagQueueOutput, SdkError<UntagQueueError>>> + Send;
 }
 impl SQSClient for SQSClientImpl {
     fn add_permission(&self, builder: AddPermissionInputBuilder) -> impl Future<Output = Result<AddPermissionOutput, SdkError<AddPermissionError>>> {

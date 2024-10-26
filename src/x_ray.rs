@@ -60,36 +60,36 @@ impl XRayClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait XRayClient {
-    fn batch_get_traces(&self, builder: BatchGetTracesInputBuilder) -> impl Future<Output = Result<BatchGetTracesOutput, SdkError<BatchGetTracesError>>>;
-    fn create_group(&self, builder: CreateGroupInputBuilder) -> impl Future<Output = Result<CreateGroupOutput, SdkError<CreateGroupError>>>;
-    fn create_sampling_rule(&self, builder: CreateSamplingRuleInputBuilder) -> impl Future<Output = Result<CreateSamplingRuleOutput, SdkError<CreateSamplingRuleError>>>;
-    fn delete_group(&self, builder: DeleteGroupInputBuilder) -> impl Future<Output = Result<DeleteGroupOutput, SdkError<DeleteGroupError>>>;
-    fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>>;
-    fn delete_sampling_rule(&self, builder: DeleteSamplingRuleInputBuilder) -> impl Future<Output = Result<DeleteSamplingRuleOutput, SdkError<DeleteSamplingRuleError>>>;
-    fn get_encryption_config(&self, builder: GetEncryptionConfigInputBuilder) -> impl Future<Output = Result<GetEncryptionConfigOutput, SdkError<GetEncryptionConfigError>>>;
-    fn get_group(&self, builder: GetGroupInputBuilder) -> impl Future<Output = Result<GetGroupOutput, SdkError<GetGroupError>>>;
-    fn get_groups(&self, builder: GetGroupsInputBuilder) -> impl Future<Output = Result<GetGroupsOutput, SdkError<GetGroupsError>>>;
-    fn get_insight(&self, builder: GetInsightInputBuilder) -> impl Future<Output = Result<GetInsightOutput, SdkError<GetInsightError>>>;
-    fn get_insight_events(&self, builder: GetInsightEventsInputBuilder) -> impl Future<Output = Result<GetInsightEventsOutput, SdkError<GetInsightEventsError>>>;
-    fn get_insight_impact_graph(&self, builder: GetInsightImpactGraphInputBuilder) -> impl Future<Output = Result<GetInsightImpactGraphOutput, SdkError<GetInsightImpactGraphError>>>;
-    fn get_insight_summaries(&self, builder: GetInsightSummariesInputBuilder) -> impl Future<Output = Result<GetInsightSummariesOutput, SdkError<GetInsightSummariesError>>>;
-    fn get_sampling_rules(&self, builder: GetSamplingRulesInputBuilder) -> impl Future<Output = Result<GetSamplingRulesOutput, SdkError<GetSamplingRulesError>>>;
-    fn get_sampling_statistic_summaries(&self, builder: GetSamplingStatisticSummariesInputBuilder) -> impl Future<Output = Result<GetSamplingStatisticSummariesOutput, SdkError<GetSamplingStatisticSummariesError>>>;
-    fn get_sampling_targets(&self, builder: GetSamplingTargetsInputBuilder) -> impl Future<Output = Result<GetSamplingTargetsOutput, SdkError<GetSamplingTargetsError>>>;
-    fn get_service_graph(&self, builder: GetServiceGraphInputBuilder) -> impl Future<Output = Result<GetServiceGraphOutput, SdkError<GetServiceGraphError>>>;
-    fn get_time_series_service_statistics(&self, builder: GetTimeSeriesServiceStatisticsInputBuilder) -> impl Future<Output = Result<GetTimeSeriesServiceStatisticsOutput, SdkError<GetTimeSeriesServiceStatisticsError>>>;
-    fn get_trace_graph(&self, builder: GetTraceGraphInputBuilder) -> impl Future<Output = Result<GetTraceGraphOutput, SdkError<GetTraceGraphError>>>;
-    fn get_trace_summaries(&self, builder: GetTraceSummariesInputBuilder) -> impl Future<Output = Result<GetTraceSummariesOutput, SdkError<GetTraceSummariesError>>>;
-    fn list_resource_policies(&self, builder: ListResourcePoliciesInputBuilder) -> impl Future<Output = Result<ListResourcePoliciesOutput, SdkError<ListResourcePoliciesError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn put_encryption_config(&self, builder: PutEncryptionConfigInputBuilder) -> impl Future<Output = Result<PutEncryptionConfigOutput, SdkError<PutEncryptionConfigError>>>;
-    fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>>;
-    fn put_telemetry_records(&self, builder: PutTelemetryRecordsInputBuilder) -> impl Future<Output = Result<PutTelemetryRecordsOutput, SdkError<PutTelemetryRecordsError>>>;
-    fn put_trace_segments(&self, builder: PutTraceSegmentsInputBuilder) -> impl Future<Output = Result<PutTraceSegmentsOutput, SdkError<PutTraceSegmentsError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_group(&self, builder: UpdateGroupInputBuilder) -> impl Future<Output = Result<UpdateGroupOutput, SdkError<UpdateGroupError>>>;
-    fn update_sampling_rule(&self, builder: UpdateSamplingRuleInputBuilder) -> impl Future<Output = Result<UpdateSamplingRuleOutput, SdkError<UpdateSamplingRuleError>>>;
+    fn batch_get_traces(&self, builder: BatchGetTracesInputBuilder) -> impl Future<Output = Result<BatchGetTracesOutput, SdkError<BatchGetTracesError>>> + Send;
+    fn create_group(&self, builder: CreateGroupInputBuilder) -> impl Future<Output = Result<CreateGroupOutput, SdkError<CreateGroupError>>> + Send;
+    fn create_sampling_rule(&self, builder: CreateSamplingRuleInputBuilder) -> impl Future<Output = Result<CreateSamplingRuleOutput, SdkError<CreateSamplingRuleError>>> + Send;
+    fn delete_group(&self, builder: DeleteGroupInputBuilder) -> impl Future<Output = Result<DeleteGroupOutput, SdkError<DeleteGroupError>>> + Send;
+    fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> + Send;
+    fn delete_sampling_rule(&self, builder: DeleteSamplingRuleInputBuilder) -> impl Future<Output = Result<DeleteSamplingRuleOutput, SdkError<DeleteSamplingRuleError>>> + Send;
+    fn get_encryption_config(&self, builder: GetEncryptionConfigInputBuilder) -> impl Future<Output = Result<GetEncryptionConfigOutput, SdkError<GetEncryptionConfigError>>> + Send;
+    fn get_group(&self, builder: GetGroupInputBuilder) -> impl Future<Output = Result<GetGroupOutput, SdkError<GetGroupError>>> + Send;
+    fn get_groups(&self, builder: GetGroupsInputBuilder) -> impl Future<Output = Result<GetGroupsOutput, SdkError<GetGroupsError>>> + Send;
+    fn get_insight(&self, builder: GetInsightInputBuilder) -> impl Future<Output = Result<GetInsightOutput, SdkError<GetInsightError>>> + Send;
+    fn get_insight_events(&self, builder: GetInsightEventsInputBuilder) -> impl Future<Output = Result<GetInsightEventsOutput, SdkError<GetInsightEventsError>>> + Send;
+    fn get_insight_impact_graph(&self, builder: GetInsightImpactGraphInputBuilder) -> impl Future<Output = Result<GetInsightImpactGraphOutput, SdkError<GetInsightImpactGraphError>>> + Send;
+    fn get_insight_summaries(&self, builder: GetInsightSummariesInputBuilder) -> impl Future<Output = Result<GetInsightSummariesOutput, SdkError<GetInsightSummariesError>>> + Send;
+    fn get_sampling_rules(&self, builder: GetSamplingRulesInputBuilder) -> impl Future<Output = Result<GetSamplingRulesOutput, SdkError<GetSamplingRulesError>>> + Send;
+    fn get_sampling_statistic_summaries(&self, builder: GetSamplingStatisticSummariesInputBuilder) -> impl Future<Output = Result<GetSamplingStatisticSummariesOutput, SdkError<GetSamplingStatisticSummariesError>>> + Send;
+    fn get_sampling_targets(&self, builder: GetSamplingTargetsInputBuilder) -> impl Future<Output = Result<GetSamplingTargetsOutput, SdkError<GetSamplingTargetsError>>> + Send;
+    fn get_service_graph(&self, builder: GetServiceGraphInputBuilder) -> impl Future<Output = Result<GetServiceGraphOutput, SdkError<GetServiceGraphError>>> + Send;
+    fn get_time_series_service_statistics(&self, builder: GetTimeSeriesServiceStatisticsInputBuilder) -> impl Future<Output = Result<GetTimeSeriesServiceStatisticsOutput, SdkError<GetTimeSeriesServiceStatisticsError>>> + Send;
+    fn get_trace_graph(&self, builder: GetTraceGraphInputBuilder) -> impl Future<Output = Result<GetTraceGraphOutput, SdkError<GetTraceGraphError>>> + Send;
+    fn get_trace_summaries(&self, builder: GetTraceSummariesInputBuilder) -> impl Future<Output = Result<GetTraceSummariesOutput, SdkError<GetTraceSummariesError>>> + Send;
+    fn list_resource_policies(&self, builder: ListResourcePoliciesInputBuilder) -> impl Future<Output = Result<ListResourcePoliciesOutput, SdkError<ListResourcePoliciesError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn put_encryption_config(&self, builder: PutEncryptionConfigInputBuilder) -> impl Future<Output = Result<PutEncryptionConfigOutput, SdkError<PutEncryptionConfigError>>> + Send;
+    fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> + Send;
+    fn put_telemetry_records(&self, builder: PutTelemetryRecordsInputBuilder) -> impl Future<Output = Result<PutTelemetryRecordsOutput, SdkError<PutTelemetryRecordsError>>> + Send;
+    fn put_trace_segments(&self, builder: PutTraceSegmentsInputBuilder) -> impl Future<Output = Result<PutTraceSegmentsOutput, SdkError<PutTraceSegmentsError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_group(&self, builder: UpdateGroupInputBuilder) -> impl Future<Output = Result<UpdateGroupOutput, SdkError<UpdateGroupError>>> + Send;
+    fn update_sampling_rule(&self, builder: UpdateSamplingRuleInputBuilder) -> impl Future<Output = Result<UpdateSamplingRuleOutput, SdkError<UpdateSamplingRuleError>>> + Send;
 }
 impl XRayClient for XRayClientImpl {
     fn batch_get_traces(&self, builder: BatchGetTracesInputBuilder) -> impl Future<Output = Result<BatchGetTracesOutput, SdkError<BatchGetTracesError>>> {

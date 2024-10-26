@@ -51,27 +51,27 @@ impl AppIntegrationsClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AppIntegrationsClient {
-    fn create_application(&self, builder: CreateApplicationInputBuilder) -> impl Future<Output = Result<CreateApplicationOutput, SdkError<CreateApplicationError>>>;
-    fn create_data_integration(&self, builder: CreateDataIntegrationInputBuilder) -> impl Future<Output = Result<CreateDataIntegrationOutput, SdkError<CreateDataIntegrationError>>>;
-    fn create_event_integration(&self, builder: CreateEventIntegrationInputBuilder) -> impl Future<Output = Result<CreateEventIntegrationOutput, SdkError<CreateEventIntegrationError>>>;
-    fn delete_application(&self, builder: DeleteApplicationInputBuilder) -> impl Future<Output = Result<DeleteApplicationOutput, SdkError<DeleteApplicationError>>>;
-    fn delete_data_integration(&self, builder: DeleteDataIntegrationInputBuilder) -> impl Future<Output = Result<DeleteDataIntegrationOutput, SdkError<DeleteDataIntegrationError>>>;
-    fn delete_event_integration(&self, builder: DeleteEventIntegrationInputBuilder) -> impl Future<Output = Result<DeleteEventIntegrationOutput, SdkError<DeleteEventIntegrationError>>>;
-    fn get_application(&self, builder: GetApplicationInputBuilder) -> impl Future<Output = Result<GetApplicationOutput, SdkError<GetApplicationError>>>;
-    fn get_data_integration(&self, builder: GetDataIntegrationInputBuilder) -> impl Future<Output = Result<GetDataIntegrationOutput, SdkError<GetDataIntegrationError>>>;
-    fn get_event_integration(&self, builder: GetEventIntegrationInputBuilder) -> impl Future<Output = Result<GetEventIntegrationOutput, SdkError<GetEventIntegrationError>>>;
-    fn list_application_associations(&self, builder: ListApplicationAssociationsInputBuilder) -> impl Future<Output = Result<ListApplicationAssociationsOutput, SdkError<ListApplicationAssociationsError>>>;
-    fn list_applications(&self, builder: ListApplicationsInputBuilder) -> impl Future<Output = Result<ListApplicationsOutput, SdkError<ListApplicationsError>>>;
-    fn list_data_integration_associations(&self, builder: ListDataIntegrationAssociationsInputBuilder) -> impl Future<Output = Result<ListDataIntegrationAssociationsOutput, SdkError<ListDataIntegrationAssociationsError>>>;
-    fn list_data_integrations(&self, builder: ListDataIntegrationsInputBuilder) -> impl Future<Output = Result<ListDataIntegrationsOutput, SdkError<ListDataIntegrationsError>>>;
-    fn list_event_integration_associations(&self, builder: ListEventIntegrationAssociationsInputBuilder) -> impl Future<Output = Result<ListEventIntegrationAssociationsOutput, SdkError<ListEventIntegrationAssociationsError>>>;
-    fn list_event_integrations(&self, builder: ListEventIntegrationsInputBuilder) -> impl Future<Output = Result<ListEventIntegrationsOutput, SdkError<ListEventIntegrationsError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_application(&self, builder: UpdateApplicationInputBuilder) -> impl Future<Output = Result<UpdateApplicationOutput, SdkError<UpdateApplicationError>>>;
-    fn update_data_integration(&self, builder: UpdateDataIntegrationInputBuilder) -> impl Future<Output = Result<UpdateDataIntegrationOutput, SdkError<UpdateDataIntegrationError>>>;
-    fn update_event_integration(&self, builder: UpdateEventIntegrationInputBuilder) -> impl Future<Output = Result<UpdateEventIntegrationOutput, SdkError<UpdateEventIntegrationError>>>;
+    fn create_application(&self, builder: CreateApplicationInputBuilder) -> impl Future<Output = Result<CreateApplicationOutput, SdkError<CreateApplicationError>>> + Send;
+    fn create_data_integration(&self, builder: CreateDataIntegrationInputBuilder) -> impl Future<Output = Result<CreateDataIntegrationOutput, SdkError<CreateDataIntegrationError>>> + Send;
+    fn create_event_integration(&self, builder: CreateEventIntegrationInputBuilder) -> impl Future<Output = Result<CreateEventIntegrationOutput, SdkError<CreateEventIntegrationError>>> + Send;
+    fn delete_application(&self, builder: DeleteApplicationInputBuilder) -> impl Future<Output = Result<DeleteApplicationOutput, SdkError<DeleteApplicationError>>> + Send;
+    fn delete_data_integration(&self, builder: DeleteDataIntegrationInputBuilder) -> impl Future<Output = Result<DeleteDataIntegrationOutput, SdkError<DeleteDataIntegrationError>>> + Send;
+    fn delete_event_integration(&self, builder: DeleteEventIntegrationInputBuilder) -> impl Future<Output = Result<DeleteEventIntegrationOutput, SdkError<DeleteEventIntegrationError>>> + Send;
+    fn get_application(&self, builder: GetApplicationInputBuilder) -> impl Future<Output = Result<GetApplicationOutput, SdkError<GetApplicationError>>> + Send;
+    fn get_data_integration(&self, builder: GetDataIntegrationInputBuilder) -> impl Future<Output = Result<GetDataIntegrationOutput, SdkError<GetDataIntegrationError>>> + Send;
+    fn get_event_integration(&self, builder: GetEventIntegrationInputBuilder) -> impl Future<Output = Result<GetEventIntegrationOutput, SdkError<GetEventIntegrationError>>> + Send;
+    fn list_application_associations(&self, builder: ListApplicationAssociationsInputBuilder) -> impl Future<Output = Result<ListApplicationAssociationsOutput, SdkError<ListApplicationAssociationsError>>> + Send;
+    fn list_applications(&self, builder: ListApplicationsInputBuilder) -> impl Future<Output = Result<ListApplicationsOutput, SdkError<ListApplicationsError>>> + Send;
+    fn list_data_integration_associations(&self, builder: ListDataIntegrationAssociationsInputBuilder) -> impl Future<Output = Result<ListDataIntegrationAssociationsOutput, SdkError<ListDataIntegrationAssociationsError>>> + Send;
+    fn list_data_integrations(&self, builder: ListDataIntegrationsInputBuilder) -> impl Future<Output = Result<ListDataIntegrationsOutput, SdkError<ListDataIntegrationsError>>> + Send;
+    fn list_event_integration_associations(&self, builder: ListEventIntegrationAssociationsInputBuilder) -> impl Future<Output = Result<ListEventIntegrationAssociationsOutput, SdkError<ListEventIntegrationAssociationsError>>> + Send;
+    fn list_event_integrations(&self, builder: ListEventIntegrationsInputBuilder) -> impl Future<Output = Result<ListEventIntegrationsOutput, SdkError<ListEventIntegrationsError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_application(&self, builder: UpdateApplicationInputBuilder) -> impl Future<Output = Result<UpdateApplicationOutput, SdkError<UpdateApplicationError>>> + Send;
+    fn update_data_integration(&self, builder: UpdateDataIntegrationInputBuilder) -> impl Future<Output = Result<UpdateDataIntegrationOutput, SdkError<UpdateDataIntegrationError>>> + Send;
+    fn update_event_integration(&self, builder: UpdateEventIntegrationInputBuilder) -> impl Future<Output = Result<UpdateEventIntegrationOutput, SdkError<UpdateEventIntegrationError>>> + Send;
 }
 impl AppIntegrationsClient for AppIntegrationsClientImpl {
     fn create_application(&self, builder: CreateApplicationInputBuilder) -> impl Future<Output = Result<CreateApplicationOutput, SdkError<CreateApplicationError>>> {

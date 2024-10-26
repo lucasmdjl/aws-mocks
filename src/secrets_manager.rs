@@ -53,29 +53,29 @@ impl SecretsManagerClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait SecretsManagerClient {
-    fn batch_get_secret_value(&self, builder: BatchGetSecretValueInputBuilder) -> impl Future<Output = Result<BatchGetSecretValueOutput, SdkError<BatchGetSecretValueError>>>;
-    fn cancel_rotate_secret(&self, builder: CancelRotateSecretInputBuilder) -> impl Future<Output = Result<CancelRotateSecretOutput, SdkError<CancelRotateSecretError>>>;
-    fn create_secret(&self, builder: CreateSecretInputBuilder) -> impl Future<Output = Result<CreateSecretOutput, SdkError<CreateSecretError>>>;
-    fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>>;
-    fn delete_secret(&self, builder: DeleteSecretInputBuilder) -> impl Future<Output = Result<DeleteSecretOutput, SdkError<DeleteSecretError>>>;
-    fn describe_secret(&self, builder: DescribeSecretInputBuilder) -> impl Future<Output = Result<DescribeSecretOutput, SdkError<DescribeSecretError>>>;
-    fn get_random_password(&self, builder: GetRandomPasswordInputBuilder) -> impl Future<Output = Result<GetRandomPasswordOutput, SdkError<GetRandomPasswordError>>>;
-    fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>>;
-    fn get_secret_value(&self, builder: GetSecretValueInputBuilder) -> impl Future<Output = Result<GetSecretValueOutput, SdkError<GetSecretValueError>>>;
-    fn list_secret_version_ids(&self, builder: ListSecretVersionIdsInputBuilder) -> impl Future<Output = Result<ListSecretVersionIdsOutput, SdkError<ListSecretVersionIdsError>>>;
-    fn list_secrets(&self, builder: ListSecretsInputBuilder) -> impl Future<Output = Result<ListSecretsOutput, SdkError<ListSecretsError>>>;
-    fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>>;
-    fn put_secret_value(&self, builder: PutSecretValueInputBuilder) -> impl Future<Output = Result<PutSecretValueOutput, SdkError<PutSecretValueError>>>;
-    fn remove_regions_from_replication(&self, builder: RemoveRegionsFromReplicationInputBuilder) -> impl Future<Output = Result<RemoveRegionsFromReplicationOutput, SdkError<RemoveRegionsFromReplicationError>>>;
-    fn replicate_secret_to_regions(&self, builder: ReplicateSecretToRegionsInputBuilder) -> impl Future<Output = Result<ReplicateSecretToRegionsOutput, SdkError<ReplicateSecretToRegionsError>>>;
-    fn restore_secret(&self, builder: RestoreSecretInputBuilder) -> impl Future<Output = Result<RestoreSecretOutput, SdkError<RestoreSecretError>>>;
-    fn rotate_secret(&self, builder: RotateSecretInputBuilder) -> impl Future<Output = Result<RotateSecretOutput, SdkError<RotateSecretError>>>;
-    fn stop_replication_to_replica(&self, builder: StopReplicationToReplicaInputBuilder) -> impl Future<Output = Result<StopReplicationToReplicaOutput, SdkError<StopReplicationToReplicaError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_secret(&self, builder: UpdateSecretInputBuilder) -> impl Future<Output = Result<UpdateSecretOutput, SdkError<UpdateSecretError>>>;
-    fn update_secret_version_stage(&self, builder: UpdateSecretVersionStageInputBuilder) -> impl Future<Output = Result<UpdateSecretVersionStageOutput, SdkError<UpdateSecretVersionStageError>>>;
-    fn validate_resource_policy(&self, builder: ValidateResourcePolicyInputBuilder) -> impl Future<Output = Result<ValidateResourcePolicyOutput, SdkError<ValidateResourcePolicyError>>>;
+    fn batch_get_secret_value(&self, builder: BatchGetSecretValueInputBuilder) -> impl Future<Output = Result<BatchGetSecretValueOutput, SdkError<BatchGetSecretValueError>>> + Send;
+    fn cancel_rotate_secret(&self, builder: CancelRotateSecretInputBuilder) -> impl Future<Output = Result<CancelRotateSecretOutput, SdkError<CancelRotateSecretError>>> + Send;
+    fn create_secret(&self, builder: CreateSecretInputBuilder) -> impl Future<Output = Result<CreateSecretOutput, SdkError<CreateSecretError>>> + Send;
+    fn delete_resource_policy(&self, builder: DeleteResourcePolicyInputBuilder) -> impl Future<Output = Result<DeleteResourcePolicyOutput, SdkError<DeleteResourcePolicyError>>> + Send;
+    fn delete_secret(&self, builder: DeleteSecretInputBuilder) -> impl Future<Output = Result<DeleteSecretOutput, SdkError<DeleteSecretError>>> + Send;
+    fn describe_secret(&self, builder: DescribeSecretInputBuilder) -> impl Future<Output = Result<DescribeSecretOutput, SdkError<DescribeSecretError>>> + Send;
+    fn get_random_password(&self, builder: GetRandomPasswordInputBuilder) -> impl Future<Output = Result<GetRandomPasswordOutput, SdkError<GetRandomPasswordError>>> + Send;
+    fn get_resource_policy(&self, builder: GetResourcePolicyInputBuilder) -> impl Future<Output = Result<GetResourcePolicyOutput, SdkError<GetResourcePolicyError>>> + Send;
+    fn get_secret_value(&self, builder: GetSecretValueInputBuilder) -> impl Future<Output = Result<GetSecretValueOutput, SdkError<GetSecretValueError>>> + Send;
+    fn list_secret_version_ids(&self, builder: ListSecretVersionIdsInputBuilder) -> impl Future<Output = Result<ListSecretVersionIdsOutput, SdkError<ListSecretVersionIdsError>>> + Send;
+    fn list_secrets(&self, builder: ListSecretsInputBuilder) -> impl Future<Output = Result<ListSecretsOutput, SdkError<ListSecretsError>>> + Send;
+    fn put_resource_policy(&self, builder: PutResourcePolicyInputBuilder) -> impl Future<Output = Result<PutResourcePolicyOutput, SdkError<PutResourcePolicyError>>> + Send;
+    fn put_secret_value(&self, builder: PutSecretValueInputBuilder) -> impl Future<Output = Result<PutSecretValueOutput, SdkError<PutSecretValueError>>> + Send;
+    fn remove_regions_from_replication(&self, builder: RemoveRegionsFromReplicationInputBuilder) -> impl Future<Output = Result<RemoveRegionsFromReplicationOutput, SdkError<RemoveRegionsFromReplicationError>>> + Send;
+    fn replicate_secret_to_regions(&self, builder: ReplicateSecretToRegionsInputBuilder) -> impl Future<Output = Result<ReplicateSecretToRegionsOutput, SdkError<ReplicateSecretToRegionsError>>> + Send;
+    fn restore_secret(&self, builder: RestoreSecretInputBuilder) -> impl Future<Output = Result<RestoreSecretOutput, SdkError<RestoreSecretError>>> + Send;
+    fn rotate_secret(&self, builder: RotateSecretInputBuilder) -> impl Future<Output = Result<RotateSecretOutput, SdkError<RotateSecretError>>> + Send;
+    fn stop_replication_to_replica(&self, builder: StopReplicationToReplicaInputBuilder) -> impl Future<Output = Result<StopReplicationToReplicaOutput, SdkError<StopReplicationToReplicaError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_secret(&self, builder: UpdateSecretInputBuilder) -> impl Future<Output = Result<UpdateSecretOutput, SdkError<UpdateSecretError>>> + Send;
+    fn update_secret_version_stage(&self, builder: UpdateSecretVersionStageInputBuilder) -> impl Future<Output = Result<UpdateSecretVersionStageOutput, SdkError<UpdateSecretVersionStageError>>> + Send;
+    fn validate_resource_policy(&self, builder: ValidateResourcePolicyInputBuilder) -> impl Future<Output = Result<ValidateResourcePolicyOutput, SdkError<ValidateResourcePolicyError>>> + Send;
 }
 impl SecretsManagerClient for SecretsManagerClientImpl {
     fn batch_get_secret_value(&self, builder: BatchGetSecretValueInputBuilder) -> impl Future<Output = Result<BatchGetSecretValueOutput, SdkError<BatchGetSecretValueError>>> {

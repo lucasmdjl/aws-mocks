@@ -49,25 +49,25 @@ impl TranslateClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait TranslateClient {
-    fn create_parallel_data(&self, builder: CreateParallelDataInputBuilder) -> impl Future<Output = Result<CreateParallelDataOutput, SdkError<CreateParallelDataError>>>;
-    fn delete_parallel_data(&self, builder: DeleteParallelDataInputBuilder) -> impl Future<Output = Result<DeleteParallelDataOutput, SdkError<DeleteParallelDataError>>>;
-    fn delete_terminology(&self, builder: DeleteTerminologyInputBuilder) -> impl Future<Output = Result<DeleteTerminologyOutput, SdkError<DeleteTerminologyError>>>;
-    fn describe_text_translation_job(&self, builder: DescribeTextTranslationJobInputBuilder) -> impl Future<Output = Result<DescribeTextTranslationJobOutput, SdkError<DescribeTextTranslationJobError>>>;
-    fn get_parallel_data(&self, builder: GetParallelDataInputBuilder) -> impl Future<Output = Result<GetParallelDataOutput, SdkError<GetParallelDataError>>>;
-    fn get_terminology(&self, builder: GetTerminologyInputBuilder) -> impl Future<Output = Result<GetTerminologyOutput, SdkError<GetTerminologyError>>>;
-    fn import_terminology(&self, builder: ImportTerminologyInputBuilder) -> impl Future<Output = Result<ImportTerminologyOutput, SdkError<ImportTerminologyError>>>;
-    fn list_languages(&self, builder: ListLanguagesInputBuilder) -> impl Future<Output = Result<ListLanguagesOutput, SdkError<ListLanguagesError>>>;
-    fn list_parallel_data(&self, builder: ListParallelDataInputBuilder) -> impl Future<Output = Result<ListParallelDataOutput, SdkError<ListParallelDataError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn list_terminologies(&self, builder: ListTerminologiesInputBuilder) -> impl Future<Output = Result<ListTerminologiesOutput, SdkError<ListTerminologiesError>>>;
-    fn list_text_translation_jobs(&self, builder: ListTextTranslationJobsInputBuilder) -> impl Future<Output = Result<ListTextTranslationJobsOutput, SdkError<ListTextTranslationJobsError>>>;
-    fn start_text_translation_job(&self, builder: StartTextTranslationJobInputBuilder) -> impl Future<Output = Result<StartTextTranslationJobOutput, SdkError<StartTextTranslationJobError>>>;
-    fn stop_text_translation_job(&self, builder: StopTextTranslationJobInputBuilder) -> impl Future<Output = Result<StopTextTranslationJobOutput, SdkError<StopTextTranslationJobError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn translate_document(&self, builder: TranslateDocumentInputBuilder) -> impl Future<Output = Result<TranslateDocumentOutput, SdkError<TranslateDocumentError>>>;
-    fn translate_text(&self, builder: TranslateTextInputBuilder) -> impl Future<Output = Result<TranslateTextOutput, SdkError<TranslateTextError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_parallel_data(&self, builder: UpdateParallelDataInputBuilder) -> impl Future<Output = Result<UpdateParallelDataOutput, SdkError<UpdateParallelDataError>>>;
+    fn create_parallel_data(&self, builder: CreateParallelDataInputBuilder) -> impl Future<Output = Result<CreateParallelDataOutput, SdkError<CreateParallelDataError>>> + Send;
+    fn delete_parallel_data(&self, builder: DeleteParallelDataInputBuilder) -> impl Future<Output = Result<DeleteParallelDataOutput, SdkError<DeleteParallelDataError>>> + Send;
+    fn delete_terminology(&self, builder: DeleteTerminologyInputBuilder) -> impl Future<Output = Result<DeleteTerminologyOutput, SdkError<DeleteTerminologyError>>> + Send;
+    fn describe_text_translation_job(&self, builder: DescribeTextTranslationJobInputBuilder) -> impl Future<Output = Result<DescribeTextTranslationJobOutput, SdkError<DescribeTextTranslationJobError>>> + Send;
+    fn get_parallel_data(&self, builder: GetParallelDataInputBuilder) -> impl Future<Output = Result<GetParallelDataOutput, SdkError<GetParallelDataError>>> + Send;
+    fn get_terminology(&self, builder: GetTerminologyInputBuilder) -> impl Future<Output = Result<GetTerminologyOutput, SdkError<GetTerminologyError>>> + Send;
+    fn import_terminology(&self, builder: ImportTerminologyInputBuilder) -> impl Future<Output = Result<ImportTerminologyOutput, SdkError<ImportTerminologyError>>> + Send;
+    fn list_languages(&self, builder: ListLanguagesInputBuilder) -> impl Future<Output = Result<ListLanguagesOutput, SdkError<ListLanguagesError>>> + Send;
+    fn list_parallel_data(&self, builder: ListParallelDataInputBuilder) -> impl Future<Output = Result<ListParallelDataOutput, SdkError<ListParallelDataError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn list_terminologies(&self, builder: ListTerminologiesInputBuilder) -> impl Future<Output = Result<ListTerminologiesOutput, SdkError<ListTerminologiesError>>> + Send;
+    fn list_text_translation_jobs(&self, builder: ListTextTranslationJobsInputBuilder) -> impl Future<Output = Result<ListTextTranslationJobsOutput, SdkError<ListTextTranslationJobsError>>> + Send;
+    fn start_text_translation_job(&self, builder: StartTextTranslationJobInputBuilder) -> impl Future<Output = Result<StartTextTranslationJobOutput, SdkError<StartTextTranslationJobError>>> + Send;
+    fn stop_text_translation_job(&self, builder: StopTextTranslationJobInputBuilder) -> impl Future<Output = Result<StopTextTranslationJobOutput, SdkError<StopTextTranslationJobError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn translate_document(&self, builder: TranslateDocumentInputBuilder) -> impl Future<Output = Result<TranslateDocumentOutput, SdkError<TranslateDocumentError>>> + Send;
+    fn translate_text(&self, builder: TranslateTextInputBuilder) -> impl Future<Output = Result<TranslateTextOutput, SdkError<TranslateTextError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_parallel_data(&self, builder: UpdateParallelDataInputBuilder) -> impl Future<Output = Result<UpdateParallelDataOutput, SdkError<UpdateParallelDataError>>> + Send;
 }
 impl TranslateClient for TranslateClientImpl {
     fn create_parallel_data(&self, builder: CreateParallelDataInputBuilder) -> impl Future<Output = Result<CreateParallelDataOutput, SdkError<CreateParallelDataError>>> {

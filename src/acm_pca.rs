@@ -53,29 +53,29 @@ impl AcmPcaClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AcmPcaClient {
-    fn create_certificate_authority(&self, builder: CreateCertificateAuthorityInputBuilder) -> impl Future<Output = Result<CreateCertificateAuthorityOutput, SdkError<CreateCertificateAuthorityError>>>;
-    fn create_certificate_authority_audit_report(&self, builder: CreateCertificateAuthorityAuditReportInputBuilder) -> impl Future<Output = Result<CreateCertificateAuthorityAuditReportOutput, SdkError<CreateCertificateAuthorityAuditReportError>>>;
-    fn create_permission(&self, builder: CreatePermissionInputBuilder) -> impl Future<Output = Result<CreatePermissionOutput, SdkError<CreatePermissionError>>>;
-    fn delete_certificate_authority(&self, builder: DeleteCertificateAuthorityInputBuilder) -> impl Future<Output = Result<DeleteCertificateAuthorityOutput, SdkError<DeleteCertificateAuthorityError>>>;
-    fn delete_permission(&self, builder: DeletePermissionInputBuilder) -> impl Future<Output = Result<DeletePermissionOutput, SdkError<DeletePermissionError>>>;
-    fn delete_policy(&self, builder: DeletePolicyInputBuilder) -> impl Future<Output = Result<DeletePolicyOutput, SdkError<DeletePolicyError>>>;
-    fn describe_certificate_authority(&self, builder: DescribeCertificateAuthorityInputBuilder) -> impl Future<Output = Result<DescribeCertificateAuthorityOutput, SdkError<DescribeCertificateAuthorityError>>>;
-    fn describe_certificate_authority_audit_report(&self, builder: DescribeCertificateAuthorityAuditReportInputBuilder) -> impl Future<Output = Result<DescribeCertificateAuthorityAuditReportOutput, SdkError<DescribeCertificateAuthorityAuditReportError>>>;
-    fn get_certificate(&self, builder: GetCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateOutput, SdkError<GetCertificateError>>>;
-    fn get_certificate_authority_certificate(&self, builder: GetCertificateAuthorityCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateAuthorityCertificateOutput, SdkError<GetCertificateAuthorityCertificateError>>>;
-    fn get_certificate_authority_csr(&self, builder: GetCertificateAuthorityCsrInputBuilder) -> impl Future<Output = Result<GetCertificateAuthorityCsrOutput, SdkError<GetCertificateAuthorityCsrError>>>;
-    fn get_policy(&self, builder: GetPolicyInputBuilder) -> impl Future<Output = Result<GetPolicyOutput, SdkError<GetPolicyError>>>;
-    fn import_certificate_authority_certificate(&self, builder: ImportCertificateAuthorityCertificateInputBuilder) -> impl Future<Output = Result<ImportCertificateAuthorityCertificateOutput, SdkError<ImportCertificateAuthorityCertificateError>>>;
-    fn issue_certificate(&self, builder: IssueCertificateInputBuilder) -> impl Future<Output = Result<IssueCertificateOutput, SdkError<IssueCertificateError>>>;
-    fn list_certificate_authorities(&self, builder: ListCertificateAuthoritiesInputBuilder) -> impl Future<Output = Result<ListCertificateAuthoritiesOutput, SdkError<ListCertificateAuthoritiesError>>>;
-    fn list_permissions(&self, builder: ListPermissionsInputBuilder) -> impl Future<Output = Result<ListPermissionsOutput, SdkError<ListPermissionsError>>>;
-    fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>>;
-    fn put_policy(&self, builder: PutPolicyInputBuilder) -> impl Future<Output = Result<PutPolicyOutput, SdkError<PutPolicyError>>>;
-    fn restore_certificate_authority(&self, builder: RestoreCertificateAuthorityInputBuilder) -> impl Future<Output = Result<RestoreCertificateAuthorityOutput, SdkError<RestoreCertificateAuthorityError>>>;
-    fn revoke_certificate(&self, builder: RevokeCertificateInputBuilder) -> impl Future<Output = Result<RevokeCertificateOutput, SdkError<RevokeCertificateError>>>;
-    fn tag_certificate_authority(&self, builder: TagCertificateAuthorityInputBuilder) -> impl Future<Output = Result<TagCertificateAuthorityOutput, SdkError<TagCertificateAuthorityError>>>;
-    fn untag_certificate_authority(&self, builder: UntagCertificateAuthorityInputBuilder) -> impl Future<Output = Result<UntagCertificateAuthorityOutput, SdkError<UntagCertificateAuthorityError>>>;
-    fn update_certificate_authority(&self, builder: UpdateCertificateAuthorityInputBuilder) -> impl Future<Output = Result<UpdateCertificateAuthorityOutput, SdkError<UpdateCertificateAuthorityError>>>;
+    fn create_certificate_authority(&self, builder: CreateCertificateAuthorityInputBuilder) -> impl Future<Output = Result<CreateCertificateAuthorityOutput, SdkError<CreateCertificateAuthorityError>>> + Send;
+    fn create_certificate_authority_audit_report(&self, builder: CreateCertificateAuthorityAuditReportInputBuilder) -> impl Future<Output = Result<CreateCertificateAuthorityAuditReportOutput, SdkError<CreateCertificateAuthorityAuditReportError>>> + Send;
+    fn create_permission(&self, builder: CreatePermissionInputBuilder) -> impl Future<Output = Result<CreatePermissionOutput, SdkError<CreatePermissionError>>> + Send;
+    fn delete_certificate_authority(&self, builder: DeleteCertificateAuthorityInputBuilder) -> impl Future<Output = Result<DeleteCertificateAuthorityOutput, SdkError<DeleteCertificateAuthorityError>>> + Send;
+    fn delete_permission(&self, builder: DeletePermissionInputBuilder) -> impl Future<Output = Result<DeletePermissionOutput, SdkError<DeletePermissionError>>> + Send;
+    fn delete_policy(&self, builder: DeletePolicyInputBuilder) -> impl Future<Output = Result<DeletePolicyOutput, SdkError<DeletePolicyError>>> + Send;
+    fn describe_certificate_authority(&self, builder: DescribeCertificateAuthorityInputBuilder) -> impl Future<Output = Result<DescribeCertificateAuthorityOutput, SdkError<DescribeCertificateAuthorityError>>> + Send;
+    fn describe_certificate_authority_audit_report(&self, builder: DescribeCertificateAuthorityAuditReportInputBuilder) -> impl Future<Output = Result<DescribeCertificateAuthorityAuditReportOutput, SdkError<DescribeCertificateAuthorityAuditReportError>>> + Send;
+    fn get_certificate(&self, builder: GetCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateOutput, SdkError<GetCertificateError>>> + Send;
+    fn get_certificate_authority_certificate(&self, builder: GetCertificateAuthorityCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateAuthorityCertificateOutput, SdkError<GetCertificateAuthorityCertificateError>>> + Send;
+    fn get_certificate_authority_csr(&self, builder: GetCertificateAuthorityCsrInputBuilder) -> impl Future<Output = Result<GetCertificateAuthorityCsrOutput, SdkError<GetCertificateAuthorityCsrError>>> + Send;
+    fn get_policy(&self, builder: GetPolicyInputBuilder) -> impl Future<Output = Result<GetPolicyOutput, SdkError<GetPolicyError>>> + Send;
+    fn import_certificate_authority_certificate(&self, builder: ImportCertificateAuthorityCertificateInputBuilder) -> impl Future<Output = Result<ImportCertificateAuthorityCertificateOutput, SdkError<ImportCertificateAuthorityCertificateError>>> + Send;
+    fn issue_certificate(&self, builder: IssueCertificateInputBuilder) -> impl Future<Output = Result<IssueCertificateOutput, SdkError<IssueCertificateError>>> + Send;
+    fn list_certificate_authorities(&self, builder: ListCertificateAuthoritiesInputBuilder) -> impl Future<Output = Result<ListCertificateAuthoritiesOutput, SdkError<ListCertificateAuthoritiesError>>> + Send;
+    fn list_permissions(&self, builder: ListPermissionsInputBuilder) -> impl Future<Output = Result<ListPermissionsOutput, SdkError<ListPermissionsError>>> + Send;
+    fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> + Send;
+    fn put_policy(&self, builder: PutPolicyInputBuilder) -> impl Future<Output = Result<PutPolicyOutput, SdkError<PutPolicyError>>> + Send;
+    fn restore_certificate_authority(&self, builder: RestoreCertificateAuthorityInputBuilder) -> impl Future<Output = Result<RestoreCertificateAuthorityOutput, SdkError<RestoreCertificateAuthorityError>>> + Send;
+    fn revoke_certificate(&self, builder: RevokeCertificateInputBuilder) -> impl Future<Output = Result<RevokeCertificateOutput, SdkError<RevokeCertificateError>>> + Send;
+    fn tag_certificate_authority(&self, builder: TagCertificateAuthorityInputBuilder) -> impl Future<Output = Result<TagCertificateAuthorityOutput, SdkError<TagCertificateAuthorityError>>> + Send;
+    fn untag_certificate_authority(&self, builder: UntagCertificateAuthorityInputBuilder) -> impl Future<Output = Result<UntagCertificateAuthorityOutput, SdkError<UntagCertificateAuthorityError>>> + Send;
+    fn update_certificate_authority(&self, builder: UpdateCertificateAuthorityInputBuilder) -> impl Future<Output = Result<UpdateCertificateAuthorityOutput, SdkError<UpdateCertificateAuthorityError>>> + Send;
 }
 impl AcmPcaClient for AcmPcaClientImpl {
     fn create_certificate_authority(&self, builder: CreateCertificateAuthorityInputBuilder) -> impl Future<Output = Result<CreateCertificateAuthorityOutput, SdkError<CreateCertificateAuthorityError>>> {

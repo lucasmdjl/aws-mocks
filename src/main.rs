@@ -172,7 +172,7 @@ fn create_trait_methods(methods: &[&str]) -> String {
     methods.iter().map(|method| {
         let camel_method = snake_to_camel(method);
         format!(
-"    fn {method}(&self, builder: {camel_method}InputBuilder) -> impl Future<Output = Result<{camel_method}Output, SdkError<{camel_method}Error>>>;"
+"    fn {method}(&self, builder: {camel_method}InputBuilder) -> impl Future<Output = Result<{camel_method}Output, SdkError<{camel_method}Error>>> + Send;"
         )
     }).collect::<Vec<_>>().join("\n")
 }

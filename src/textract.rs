@@ -55,31 +55,31 @@ impl TextractClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait TextractClient {
-    fn analyze_document(&self, builder: AnalyzeDocumentInputBuilder) -> impl Future<Output = Result<AnalyzeDocumentOutput, SdkError<AnalyzeDocumentError>>>;
-    fn analyze_expense(&self, builder: AnalyzeExpenseInputBuilder) -> impl Future<Output = Result<AnalyzeExpenseOutput, SdkError<AnalyzeExpenseError>>>;
-    fn analyze_id(&self, builder: AnalyzeIdInputBuilder) -> impl Future<Output = Result<AnalyzeIdOutput, SdkError<AnalyzeIDError>>>;
-    fn create_adapter(&self, builder: CreateAdapterInputBuilder) -> impl Future<Output = Result<CreateAdapterOutput, SdkError<CreateAdapterError>>>;
-    fn create_adapter_version(&self, builder: CreateAdapterVersionInputBuilder) -> impl Future<Output = Result<CreateAdapterVersionOutput, SdkError<CreateAdapterVersionError>>>;
-    fn delete_adapter(&self, builder: DeleteAdapterInputBuilder) -> impl Future<Output = Result<DeleteAdapterOutput, SdkError<DeleteAdapterError>>>;
-    fn delete_adapter_version(&self, builder: DeleteAdapterVersionInputBuilder) -> impl Future<Output = Result<DeleteAdapterVersionOutput, SdkError<DeleteAdapterVersionError>>>;
-    fn detect_document_text(&self, builder: DetectDocumentTextInputBuilder) -> impl Future<Output = Result<DetectDocumentTextOutput, SdkError<DetectDocumentTextError>>>;
-    fn get_adapter(&self, builder: GetAdapterInputBuilder) -> impl Future<Output = Result<GetAdapterOutput, SdkError<GetAdapterError>>>;
-    fn get_adapter_version(&self, builder: GetAdapterVersionInputBuilder) -> impl Future<Output = Result<GetAdapterVersionOutput, SdkError<GetAdapterVersionError>>>;
-    fn get_document_analysis(&self, builder: GetDocumentAnalysisInputBuilder) -> impl Future<Output = Result<GetDocumentAnalysisOutput, SdkError<GetDocumentAnalysisError>>>;
-    fn get_document_text_detection(&self, builder: GetDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<GetDocumentTextDetectionOutput, SdkError<GetDocumentTextDetectionError>>>;
-    fn get_expense_analysis(&self, builder: GetExpenseAnalysisInputBuilder) -> impl Future<Output = Result<GetExpenseAnalysisOutput, SdkError<GetExpenseAnalysisError>>>;
-    fn get_lending_analysis(&self, builder: GetLendingAnalysisInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisOutput, SdkError<GetLendingAnalysisError>>>;
-    fn get_lending_analysis_summary(&self, builder: GetLendingAnalysisSummaryInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisSummaryOutput, SdkError<GetLendingAnalysisSummaryError>>>;
-    fn list_adapter_versions(&self, builder: ListAdapterVersionsInputBuilder) -> impl Future<Output = Result<ListAdapterVersionsOutput, SdkError<ListAdapterVersionsError>>>;
-    fn list_adapters(&self, builder: ListAdaptersInputBuilder) -> impl Future<Output = Result<ListAdaptersOutput, SdkError<ListAdaptersError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn start_document_analysis(&self, builder: StartDocumentAnalysisInputBuilder) -> impl Future<Output = Result<StartDocumentAnalysisOutput, SdkError<StartDocumentAnalysisError>>>;
-    fn start_document_text_detection(&self, builder: StartDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<StartDocumentTextDetectionOutput, SdkError<StartDocumentTextDetectionError>>>;
-    fn start_expense_analysis(&self, builder: StartExpenseAnalysisInputBuilder) -> impl Future<Output = Result<StartExpenseAnalysisOutput, SdkError<StartExpenseAnalysisError>>>;
-    fn start_lending_analysis(&self, builder: StartLendingAnalysisInputBuilder) -> impl Future<Output = Result<StartLendingAnalysisOutput, SdkError<StartLendingAnalysisError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_adapter(&self, builder: UpdateAdapterInputBuilder) -> impl Future<Output = Result<UpdateAdapterOutput, SdkError<UpdateAdapterError>>>;
+    fn analyze_document(&self, builder: AnalyzeDocumentInputBuilder) -> impl Future<Output = Result<AnalyzeDocumentOutput, SdkError<AnalyzeDocumentError>>> + Send;
+    fn analyze_expense(&self, builder: AnalyzeExpenseInputBuilder) -> impl Future<Output = Result<AnalyzeExpenseOutput, SdkError<AnalyzeExpenseError>>> + Send;
+    fn analyze_id(&self, builder: AnalyzeIdInputBuilder) -> impl Future<Output = Result<AnalyzeIdOutput, SdkError<AnalyzeIDError>>> + Send;
+    fn create_adapter(&self, builder: CreateAdapterInputBuilder) -> impl Future<Output = Result<CreateAdapterOutput, SdkError<CreateAdapterError>>> + Send;
+    fn create_adapter_version(&self, builder: CreateAdapterVersionInputBuilder) -> impl Future<Output = Result<CreateAdapterVersionOutput, SdkError<CreateAdapterVersionError>>> + Send;
+    fn delete_adapter(&self, builder: DeleteAdapterInputBuilder) -> impl Future<Output = Result<DeleteAdapterOutput, SdkError<DeleteAdapterError>>> + Send;
+    fn delete_adapter_version(&self, builder: DeleteAdapterVersionInputBuilder) -> impl Future<Output = Result<DeleteAdapterVersionOutput, SdkError<DeleteAdapterVersionError>>> + Send;
+    fn detect_document_text(&self, builder: DetectDocumentTextInputBuilder) -> impl Future<Output = Result<DetectDocumentTextOutput, SdkError<DetectDocumentTextError>>> + Send;
+    fn get_adapter(&self, builder: GetAdapterInputBuilder) -> impl Future<Output = Result<GetAdapterOutput, SdkError<GetAdapterError>>> + Send;
+    fn get_adapter_version(&self, builder: GetAdapterVersionInputBuilder) -> impl Future<Output = Result<GetAdapterVersionOutput, SdkError<GetAdapterVersionError>>> + Send;
+    fn get_document_analysis(&self, builder: GetDocumentAnalysisInputBuilder) -> impl Future<Output = Result<GetDocumentAnalysisOutput, SdkError<GetDocumentAnalysisError>>> + Send;
+    fn get_document_text_detection(&self, builder: GetDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<GetDocumentTextDetectionOutput, SdkError<GetDocumentTextDetectionError>>> + Send;
+    fn get_expense_analysis(&self, builder: GetExpenseAnalysisInputBuilder) -> impl Future<Output = Result<GetExpenseAnalysisOutput, SdkError<GetExpenseAnalysisError>>> + Send;
+    fn get_lending_analysis(&self, builder: GetLendingAnalysisInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisOutput, SdkError<GetLendingAnalysisError>>> + Send;
+    fn get_lending_analysis_summary(&self, builder: GetLendingAnalysisSummaryInputBuilder) -> impl Future<Output = Result<GetLendingAnalysisSummaryOutput, SdkError<GetLendingAnalysisSummaryError>>> + Send;
+    fn list_adapter_versions(&self, builder: ListAdapterVersionsInputBuilder) -> impl Future<Output = Result<ListAdapterVersionsOutput, SdkError<ListAdapterVersionsError>>> + Send;
+    fn list_adapters(&self, builder: ListAdaptersInputBuilder) -> impl Future<Output = Result<ListAdaptersOutput, SdkError<ListAdaptersError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn start_document_analysis(&self, builder: StartDocumentAnalysisInputBuilder) -> impl Future<Output = Result<StartDocumentAnalysisOutput, SdkError<StartDocumentAnalysisError>>> + Send;
+    fn start_document_text_detection(&self, builder: StartDocumentTextDetectionInputBuilder) -> impl Future<Output = Result<StartDocumentTextDetectionOutput, SdkError<StartDocumentTextDetectionError>>> + Send;
+    fn start_expense_analysis(&self, builder: StartExpenseAnalysisInputBuilder) -> impl Future<Output = Result<StartExpenseAnalysisOutput, SdkError<StartExpenseAnalysisError>>> + Send;
+    fn start_lending_analysis(&self, builder: StartLendingAnalysisInputBuilder) -> impl Future<Output = Result<StartLendingAnalysisOutput, SdkError<StartLendingAnalysisError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_adapter(&self, builder: UpdateAdapterInputBuilder) -> impl Future<Output = Result<UpdateAdapterOutput, SdkError<UpdateAdapterError>>> + Send;
 }
 impl TextractClient for TextractClientImpl {
     fn analyze_document(&self, builder: AnalyzeDocumentInputBuilder) -> impl Future<Output = Result<AnalyzeDocumentOutput, SdkError<AnalyzeDocumentError>>> {
