@@ -32,8 +32,8 @@ impl AppConfigDataClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AppConfigDataClient {
-    fn get_latest_configuration(&self, builder: GetLatestConfigurationInputBuilder) -> impl Future<Output = Result<GetLatestConfigurationOutput, SdkError<GetLatestConfigurationError>>>;
-    fn start_configuration_session(&self, builder: StartConfigurationSessionInputBuilder) -> impl Future<Output = Result<StartConfigurationSessionOutput, SdkError<StartConfigurationSessionError>>>;
+    fn get_latest_configuration(&self, builder: GetLatestConfigurationInputBuilder) -> impl Future<Output = Result<GetLatestConfigurationOutput, SdkError<GetLatestConfigurationError>>> + Send;
+    fn start_configuration_session(&self, builder: StartConfigurationSessionInputBuilder) -> impl Future<Output = Result<StartConfigurationSessionOutput, SdkError<StartConfigurationSessionError>>> + Send;
 }
 impl AppConfigDataClient for AppConfigDataClientImpl {
     fn get_latest_configuration(&self, builder: GetLatestConfigurationInputBuilder) -> impl Future<Output = Result<GetLatestConfigurationOutput, SdkError<GetLatestConfigurationError>>> {

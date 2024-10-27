@@ -39,15 +39,15 @@ impl PollyClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait PollyClient {
-    fn delete_lexicon(&self, builder: DeleteLexiconInputBuilder) -> impl Future<Output = Result<DeleteLexiconOutput, SdkError<DeleteLexiconError>>>;
-    fn describe_voices(&self, builder: DescribeVoicesInputBuilder) -> impl Future<Output = Result<DescribeVoicesOutput, SdkError<DescribeVoicesError>>>;
-    fn get_lexicon(&self, builder: GetLexiconInputBuilder) -> impl Future<Output = Result<GetLexiconOutput, SdkError<GetLexiconError>>>;
-    fn get_speech_synthesis_task(&self, builder: GetSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<GetSpeechSynthesisTaskOutput, SdkError<GetSpeechSynthesisTaskError>>>;
-    fn list_lexicons(&self, builder: ListLexiconsInputBuilder) -> impl Future<Output = Result<ListLexiconsOutput, SdkError<ListLexiconsError>>>;
-    fn list_speech_synthesis_tasks(&self, builder: ListSpeechSynthesisTasksInputBuilder) -> impl Future<Output = Result<ListSpeechSynthesisTasksOutput, SdkError<ListSpeechSynthesisTasksError>>>;
-    fn put_lexicon(&self, builder: PutLexiconInputBuilder) -> impl Future<Output = Result<PutLexiconOutput, SdkError<PutLexiconError>>>;
-    fn start_speech_synthesis_task(&self, builder: StartSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<StartSpeechSynthesisTaskOutput, SdkError<StartSpeechSynthesisTaskError>>>;
-    fn synthesize_speech(&self, builder: SynthesizeSpeechInputBuilder) -> impl Future<Output = Result<SynthesizeSpeechOutput, SdkError<SynthesizeSpeechError>>>;
+    fn delete_lexicon(&self, builder: DeleteLexiconInputBuilder) -> impl Future<Output = Result<DeleteLexiconOutput, SdkError<DeleteLexiconError>>> + Send;
+    fn describe_voices(&self, builder: DescribeVoicesInputBuilder) -> impl Future<Output = Result<DescribeVoicesOutput, SdkError<DescribeVoicesError>>> + Send;
+    fn get_lexicon(&self, builder: GetLexiconInputBuilder) -> impl Future<Output = Result<GetLexiconOutput, SdkError<GetLexiconError>>> + Send;
+    fn get_speech_synthesis_task(&self, builder: GetSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<GetSpeechSynthesisTaskOutput, SdkError<GetSpeechSynthesisTaskError>>> + Send;
+    fn list_lexicons(&self, builder: ListLexiconsInputBuilder) -> impl Future<Output = Result<ListLexiconsOutput, SdkError<ListLexiconsError>>> + Send;
+    fn list_speech_synthesis_tasks(&self, builder: ListSpeechSynthesisTasksInputBuilder) -> impl Future<Output = Result<ListSpeechSynthesisTasksOutput, SdkError<ListSpeechSynthesisTasksError>>> + Send;
+    fn put_lexicon(&self, builder: PutLexiconInputBuilder) -> impl Future<Output = Result<PutLexiconOutput, SdkError<PutLexiconError>>> + Send;
+    fn start_speech_synthesis_task(&self, builder: StartSpeechSynthesisTaskInputBuilder) -> impl Future<Output = Result<StartSpeechSynthesisTaskOutput, SdkError<StartSpeechSynthesisTaskError>>> + Send;
+    fn synthesize_speech(&self, builder: SynthesizeSpeechInputBuilder) -> impl Future<Output = Result<SynthesizeSpeechOutput, SdkError<SynthesizeSpeechError>>> + Send;
 }
 impl PollyClient for PollyClientImpl {
     fn delete_lexicon(&self, builder: DeleteLexiconInputBuilder) -> impl Future<Output = Result<DeleteLexiconOutput, SdkError<DeleteLexiconError>>> {

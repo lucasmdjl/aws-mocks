@@ -45,21 +45,21 @@ impl ACMClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait ACMClient {
-    fn add_tags_to_certificate(&self, builder: AddTagsToCertificateInputBuilder) -> impl Future<Output = Result<AddTagsToCertificateOutput, SdkError<AddTagsToCertificateError>>>;
-    fn delete_certificate(&self, builder: DeleteCertificateInputBuilder) -> impl Future<Output = Result<DeleteCertificateOutput, SdkError<DeleteCertificateError>>>;
-    fn describe_certificate(&self, builder: DescribeCertificateInputBuilder) -> impl Future<Output = Result<DescribeCertificateOutput, SdkError<DescribeCertificateError>>>;
-    fn export_certificate(&self, builder: ExportCertificateInputBuilder) -> impl Future<Output = Result<ExportCertificateOutput, SdkError<ExportCertificateError>>>;
-    fn get_account_configuration(&self, builder: GetAccountConfigurationInputBuilder) -> impl Future<Output = Result<GetAccountConfigurationOutput, SdkError<GetAccountConfigurationError>>>;
-    fn get_certificate(&self, builder: GetCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateOutput, SdkError<GetCertificateError>>>;
-    fn import_certificate(&self, builder: ImportCertificateInputBuilder) -> impl Future<Output = Result<ImportCertificateOutput, SdkError<ImportCertificateError>>>;
-    fn list_certificates(&self, builder: ListCertificatesInputBuilder) -> impl Future<Output = Result<ListCertificatesOutput, SdkError<ListCertificatesError>>>;
-    fn list_tags_for_certificate(&self, builder: ListTagsForCertificateInputBuilder) -> impl Future<Output = Result<ListTagsForCertificateOutput, SdkError<ListTagsForCertificateError>>>;
-    fn put_account_configuration(&self, builder: PutAccountConfigurationInputBuilder) -> impl Future<Output = Result<PutAccountConfigurationOutput, SdkError<PutAccountConfigurationError>>>;
-    fn remove_tags_from_certificate(&self, builder: RemoveTagsFromCertificateInputBuilder) -> impl Future<Output = Result<RemoveTagsFromCertificateOutput, SdkError<RemoveTagsFromCertificateError>>>;
-    fn renew_certificate(&self, builder: RenewCertificateInputBuilder) -> impl Future<Output = Result<RenewCertificateOutput, SdkError<RenewCertificateError>>>;
-    fn request_certificate(&self, builder: RequestCertificateInputBuilder) -> impl Future<Output = Result<RequestCertificateOutput, SdkError<RequestCertificateError>>>;
-    fn resend_validation_email(&self, builder: ResendValidationEmailInputBuilder) -> impl Future<Output = Result<ResendValidationEmailOutput, SdkError<ResendValidationEmailError>>>;
-    fn update_certificate_options(&self, builder: UpdateCertificateOptionsInputBuilder) -> impl Future<Output = Result<UpdateCertificateOptionsOutput, SdkError<UpdateCertificateOptionsError>>>;
+    fn add_tags_to_certificate(&self, builder: AddTagsToCertificateInputBuilder) -> impl Future<Output = Result<AddTagsToCertificateOutput, SdkError<AddTagsToCertificateError>>> + Send;
+    fn delete_certificate(&self, builder: DeleteCertificateInputBuilder) -> impl Future<Output = Result<DeleteCertificateOutput, SdkError<DeleteCertificateError>>> + Send;
+    fn describe_certificate(&self, builder: DescribeCertificateInputBuilder) -> impl Future<Output = Result<DescribeCertificateOutput, SdkError<DescribeCertificateError>>> + Send;
+    fn export_certificate(&self, builder: ExportCertificateInputBuilder) -> impl Future<Output = Result<ExportCertificateOutput, SdkError<ExportCertificateError>>> + Send;
+    fn get_account_configuration(&self, builder: GetAccountConfigurationInputBuilder) -> impl Future<Output = Result<GetAccountConfigurationOutput, SdkError<GetAccountConfigurationError>>> + Send;
+    fn get_certificate(&self, builder: GetCertificateInputBuilder) -> impl Future<Output = Result<GetCertificateOutput, SdkError<GetCertificateError>>> + Send;
+    fn import_certificate(&self, builder: ImportCertificateInputBuilder) -> impl Future<Output = Result<ImportCertificateOutput, SdkError<ImportCertificateError>>> + Send;
+    fn list_certificates(&self, builder: ListCertificatesInputBuilder) -> impl Future<Output = Result<ListCertificatesOutput, SdkError<ListCertificatesError>>> + Send;
+    fn list_tags_for_certificate(&self, builder: ListTagsForCertificateInputBuilder) -> impl Future<Output = Result<ListTagsForCertificateOutput, SdkError<ListTagsForCertificateError>>> + Send;
+    fn put_account_configuration(&self, builder: PutAccountConfigurationInputBuilder) -> impl Future<Output = Result<PutAccountConfigurationOutput, SdkError<PutAccountConfigurationError>>> + Send;
+    fn remove_tags_from_certificate(&self, builder: RemoveTagsFromCertificateInputBuilder) -> impl Future<Output = Result<RemoveTagsFromCertificateOutput, SdkError<RemoveTagsFromCertificateError>>> + Send;
+    fn renew_certificate(&self, builder: RenewCertificateInputBuilder) -> impl Future<Output = Result<RenewCertificateOutput, SdkError<RenewCertificateError>>> + Send;
+    fn request_certificate(&self, builder: RequestCertificateInputBuilder) -> impl Future<Output = Result<RequestCertificateOutput, SdkError<RequestCertificateError>>> + Send;
+    fn resend_validation_email(&self, builder: ResendValidationEmailInputBuilder) -> impl Future<Output = Result<ResendValidationEmailOutput, SdkError<ResendValidationEmailError>>> + Send;
+    fn update_certificate_options(&self, builder: UpdateCertificateOptionsInputBuilder) -> impl Future<Output = Result<UpdateCertificateOptionsOutput, SdkError<UpdateCertificateOptionsError>>> + Send;
 }
 impl ACMClient for ACMClientImpl {
     fn add_tags_to_certificate(&self, builder: AddTagsToCertificateInputBuilder) -> impl Future<Output = Result<AddTagsToCertificateOutput, SdkError<AddTagsToCertificateError>>> {

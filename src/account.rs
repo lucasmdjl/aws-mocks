@@ -42,18 +42,18 @@ impl AccountClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AccountClient {
-    fn accept_primary_email_update(&self, builder: AcceptPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<AcceptPrimaryEmailUpdateOutput, SdkError<AcceptPrimaryEmailUpdateError>>>;
-    fn delete_alternate_contact(&self, builder: DeleteAlternateContactInputBuilder) -> impl Future<Output = Result<DeleteAlternateContactOutput, SdkError<DeleteAlternateContactError>>>;
-    fn disable_region(&self, builder: DisableRegionInputBuilder) -> impl Future<Output = Result<DisableRegionOutput, SdkError<DisableRegionError>>>;
-    fn enable_region(&self, builder: EnableRegionInputBuilder) -> impl Future<Output = Result<EnableRegionOutput, SdkError<EnableRegionError>>>;
-    fn get_alternate_contact(&self, builder: GetAlternateContactInputBuilder) -> impl Future<Output = Result<GetAlternateContactOutput, SdkError<GetAlternateContactError>>>;
-    fn get_contact_information(&self, builder: GetContactInformationInputBuilder) -> impl Future<Output = Result<GetContactInformationOutput, SdkError<GetContactInformationError>>>;
-    fn get_primary_email(&self, builder: GetPrimaryEmailInputBuilder) -> impl Future<Output = Result<GetPrimaryEmailOutput, SdkError<GetPrimaryEmailError>>>;
-    fn get_region_opt_status(&self, builder: GetRegionOptStatusInputBuilder) -> impl Future<Output = Result<GetRegionOptStatusOutput, SdkError<GetRegionOptStatusError>>>;
-    fn list_regions(&self, builder: ListRegionsInputBuilder) -> impl Future<Output = Result<ListRegionsOutput, SdkError<ListRegionsError>>>;
-    fn put_alternate_contact(&self, builder: PutAlternateContactInputBuilder) -> impl Future<Output = Result<PutAlternateContactOutput, SdkError<PutAlternateContactError>>>;
-    fn put_contact_information(&self, builder: PutContactInformationInputBuilder) -> impl Future<Output = Result<PutContactInformationOutput, SdkError<PutContactInformationError>>>;
-    fn start_primary_email_update(&self, builder: StartPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<StartPrimaryEmailUpdateOutput, SdkError<StartPrimaryEmailUpdateError>>>;
+    fn accept_primary_email_update(&self, builder: AcceptPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<AcceptPrimaryEmailUpdateOutput, SdkError<AcceptPrimaryEmailUpdateError>>> + Send;
+    fn delete_alternate_contact(&self, builder: DeleteAlternateContactInputBuilder) -> impl Future<Output = Result<DeleteAlternateContactOutput, SdkError<DeleteAlternateContactError>>> + Send;
+    fn disable_region(&self, builder: DisableRegionInputBuilder) -> impl Future<Output = Result<DisableRegionOutput, SdkError<DisableRegionError>>> + Send;
+    fn enable_region(&self, builder: EnableRegionInputBuilder) -> impl Future<Output = Result<EnableRegionOutput, SdkError<EnableRegionError>>> + Send;
+    fn get_alternate_contact(&self, builder: GetAlternateContactInputBuilder) -> impl Future<Output = Result<GetAlternateContactOutput, SdkError<GetAlternateContactError>>> + Send;
+    fn get_contact_information(&self, builder: GetContactInformationInputBuilder) -> impl Future<Output = Result<GetContactInformationOutput, SdkError<GetContactInformationError>>> + Send;
+    fn get_primary_email(&self, builder: GetPrimaryEmailInputBuilder) -> impl Future<Output = Result<GetPrimaryEmailOutput, SdkError<GetPrimaryEmailError>>> + Send;
+    fn get_region_opt_status(&self, builder: GetRegionOptStatusInputBuilder) -> impl Future<Output = Result<GetRegionOptStatusOutput, SdkError<GetRegionOptStatusError>>> + Send;
+    fn list_regions(&self, builder: ListRegionsInputBuilder) -> impl Future<Output = Result<ListRegionsOutput, SdkError<ListRegionsError>>> + Send;
+    fn put_alternate_contact(&self, builder: PutAlternateContactInputBuilder) -> impl Future<Output = Result<PutAlternateContactOutput, SdkError<PutAlternateContactError>>> + Send;
+    fn put_contact_information(&self, builder: PutContactInformationInputBuilder) -> impl Future<Output = Result<PutContactInformationOutput, SdkError<PutContactInformationError>>> + Send;
+    fn start_primary_email_update(&self, builder: StartPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<StartPrimaryEmailUpdateOutput, SdkError<StartPrimaryEmailUpdateError>>> + Send;
 }
 impl AccountClient for AccountClientImpl {
     fn accept_primary_email_update(&self, builder: AcceptPrimaryEmailUpdateInputBuilder) -> impl Future<Output = Result<AcceptPrimaryEmailUpdateOutput, SdkError<AcceptPrimaryEmailUpdateError>>> {

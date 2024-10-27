@@ -58,34 +58,34 @@ impl EFSClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait EFSClient {
-    fn create_access_point(&self, builder: CreateAccessPointInputBuilder) -> impl Future<Output = Result<CreateAccessPointOutput, SdkError<CreateAccessPointError>>>;
-    fn create_file_system(&self, builder: CreateFileSystemInputBuilder) -> impl Future<Output = Result<CreateFileSystemOutput, SdkError<CreateFileSystemError>>>;
-    fn create_mount_target(&self, builder: CreateMountTargetInputBuilder) -> impl Future<Output = Result<CreateMountTargetOutput, SdkError<CreateMountTargetError>>>;
-    fn create_replication_configuration(&self, builder: CreateReplicationConfigurationInputBuilder) -> impl Future<Output = Result<CreateReplicationConfigurationOutput, SdkError<CreateReplicationConfigurationError>>>;
-    fn delete_access_point(&self, builder: DeleteAccessPointInputBuilder) -> impl Future<Output = Result<DeleteAccessPointOutput, SdkError<DeleteAccessPointError>>>;
-    fn delete_file_system(&self, builder: DeleteFileSystemInputBuilder) -> impl Future<Output = Result<DeleteFileSystemOutput, SdkError<DeleteFileSystemError>>>;
-    fn delete_file_system_policy(&self, builder: DeleteFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DeleteFileSystemPolicyOutput, SdkError<DeleteFileSystemPolicyError>>>;
-    fn delete_mount_target(&self, builder: DeleteMountTargetInputBuilder) -> impl Future<Output = Result<DeleteMountTargetOutput, SdkError<DeleteMountTargetError>>>;
-    fn delete_replication_configuration(&self, builder: DeleteReplicationConfigurationInputBuilder) -> impl Future<Output = Result<DeleteReplicationConfigurationOutput, SdkError<DeleteReplicationConfigurationError>>>;
-    fn describe_access_points(&self, builder: DescribeAccessPointsInputBuilder) -> impl Future<Output = Result<DescribeAccessPointsOutput, SdkError<DescribeAccessPointsError>>>;
-    fn describe_account_preferences(&self, builder: DescribeAccountPreferencesInputBuilder) -> impl Future<Output = Result<DescribeAccountPreferencesOutput, SdkError<DescribeAccountPreferencesError>>>;
-    fn describe_backup_policy(&self, builder: DescribeBackupPolicyInputBuilder) -> impl Future<Output = Result<DescribeBackupPolicyOutput, SdkError<DescribeBackupPolicyError>>>;
-    fn describe_file_system_policy(&self, builder: DescribeFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DescribeFileSystemPolicyOutput, SdkError<DescribeFileSystemPolicyError>>>;
-    fn describe_file_systems(&self, builder: DescribeFileSystemsInputBuilder) -> impl Future<Output = Result<DescribeFileSystemsOutput, SdkError<DescribeFileSystemsError>>>;
-    fn describe_lifecycle_configuration(&self, builder: DescribeLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<DescribeLifecycleConfigurationOutput, SdkError<DescribeLifecycleConfigurationError>>>;
-    fn describe_mount_target_security_groups(&self, builder: DescribeMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetSecurityGroupsOutput, SdkError<DescribeMountTargetSecurityGroupsError>>>;
-    fn describe_mount_targets(&self, builder: DescribeMountTargetsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetsOutput, SdkError<DescribeMountTargetsError>>>;
-    fn describe_replication_configurations(&self, builder: DescribeReplicationConfigurationsInputBuilder) -> impl Future<Output = Result<DescribeReplicationConfigurationsOutput, SdkError<DescribeReplicationConfigurationsError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn modify_mount_target_security_groups(&self, builder: ModifyMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<ModifyMountTargetSecurityGroupsOutput, SdkError<ModifyMountTargetSecurityGroupsError>>>;
-    fn put_account_preferences(&self, builder: PutAccountPreferencesInputBuilder) -> impl Future<Output = Result<PutAccountPreferencesOutput, SdkError<PutAccountPreferencesError>>>;
-    fn put_backup_policy(&self, builder: PutBackupPolicyInputBuilder) -> impl Future<Output = Result<PutBackupPolicyOutput, SdkError<PutBackupPolicyError>>>;
-    fn put_file_system_policy(&self, builder: PutFileSystemPolicyInputBuilder) -> impl Future<Output = Result<PutFileSystemPolicyOutput, SdkError<PutFileSystemPolicyError>>>;
-    fn put_lifecycle_configuration(&self, builder: PutLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<PutLifecycleConfigurationOutput, SdkError<PutLifecycleConfigurationError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_file_system(&self, builder: UpdateFileSystemInputBuilder) -> impl Future<Output = Result<UpdateFileSystemOutput, SdkError<UpdateFileSystemError>>>;
-    fn update_file_system_protection(&self, builder: UpdateFileSystemProtectionInputBuilder) -> impl Future<Output = Result<UpdateFileSystemProtectionOutput, SdkError<UpdateFileSystemProtectionError>>>;
+    fn create_access_point(&self, builder: CreateAccessPointInputBuilder) -> impl Future<Output = Result<CreateAccessPointOutput, SdkError<CreateAccessPointError>>> + Send;
+    fn create_file_system(&self, builder: CreateFileSystemInputBuilder) -> impl Future<Output = Result<CreateFileSystemOutput, SdkError<CreateFileSystemError>>> + Send;
+    fn create_mount_target(&self, builder: CreateMountTargetInputBuilder) -> impl Future<Output = Result<CreateMountTargetOutput, SdkError<CreateMountTargetError>>> + Send;
+    fn create_replication_configuration(&self, builder: CreateReplicationConfigurationInputBuilder) -> impl Future<Output = Result<CreateReplicationConfigurationOutput, SdkError<CreateReplicationConfigurationError>>> + Send;
+    fn delete_access_point(&self, builder: DeleteAccessPointInputBuilder) -> impl Future<Output = Result<DeleteAccessPointOutput, SdkError<DeleteAccessPointError>>> + Send;
+    fn delete_file_system(&self, builder: DeleteFileSystemInputBuilder) -> impl Future<Output = Result<DeleteFileSystemOutput, SdkError<DeleteFileSystemError>>> + Send;
+    fn delete_file_system_policy(&self, builder: DeleteFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DeleteFileSystemPolicyOutput, SdkError<DeleteFileSystemPolicyError>>> + Send;
+    fn delete_mount_target(&self, builder: DeleteMountTargetInputBuilder) -> impl Future<Output = Result<DeleteMountTargetOutput, SdkError<DeleteMountTargetError>>> + Send;
+    fn delete_replication_configuration(&self, builder: DeleteReplicationConfigurationInputBuilder) -> impl Future<Output = Result<DeleteReplicationConfigurationOutput, SdkError<DeleteReplicationConfigurationError>>> + Send;
+    fn describe_access_points(&self, builder: DescribeAccessPointsInputBuilder) -> impl Future<Output = Result<DescribeAccessPointsOutput, SdkError<DescribeAccessPointsError>>> + Send;
+    fn describe_account_preferences(&self, builder: DescribeAccountPreferencesInputBuilder) -> impl Future<Output = Result<DescribeAccountPreferencesOutput, SdkError<DescribeAccountPreferencesError>>> + Send;
+    fn describe_backup_policy(&self, builder: DescribeBackupPolicyInputBuilder) -> impl Future<Output = Result<DescribeBackupPolicyOutput, SdkError<DescribeBackupPolicyError>>> + Send;
+    fn describe_file_system_policy(&self, builder: DescribeFileSystemPolicyInputBuilder) -> impl Future<Output = Result<DescribeFileSystemPolicyOutput, SdkError<DescribeFileSystemPolicyError>>> + Send;
+    fn describe_file_systems(&self, builder: DescribeFileSystemsInputBuilder) -> impl Future<Output = Result<DescribeFileSystemsOutput, SdkError<DescribeFileSystemsError>>> + Send;
+    fn describe_lifecycle_configuration(&self, builder: DescribeLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<DescribeLifecycleConfigurationOutput, SdkError<DescribeLifecycleConfigurationError>>> + Send;
+    fn describe_mount_target_security_groups(&self, builder: DescribeMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetSecurityGroupsOutput, SdkError<DescribeMountTargetSecurityGroupsError>>> + Send;
+    fn describe_mount_targets(&self, builder: DescribeMountTargetsInputBuilder) -> impl Future<Output = Result<DescribeMountTargetsOutput, SdkError<DescribeMountTargetsError>>> + Send;
+    fn describe_replication_configurations(&self, builder: DescribeReplicationConfigurationsInputBuilder) -> impl Future<Output = Result<DescribeReplicationConfigurationsOutput, SdkError<DescribeReplicationConfigurationsError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn modify_mount_target_security_groups(&self, builder: ModifyMountTargetSecurityGroupsInputBuilder) -> impl Future<Output = Result<ModifyMountTargetSecurityGroupsOutput, SdkError<ModifyMountTargetSecurityGroupsError>>> + Send;
+    fn put_account_preferences(&self, builder: PutAccountPreferencesInputBuilder) -> impl Future<Output = Result<PutAccountPreferencesOutput, SdkError<PutAccountPreferencesError>>> + Send;
+    fn put_backup_policy(&self, builder: PutBackupPolicyInputBuilder) -> impl Future<Output = Result<PutBackupPolicyOutput, SdkError<PutBackupPolicyError>>> + Send;
+    fn put_file_system_policy(&self, builder: PutFileSystemPolicyInputBuilder) -> impl Future<Output = Result<PutFileSystemPolicyOutput, SdkError<PutFileSystemPolicyError>>> + Send;
+    fn put_lifecycle_configuration(&self, builder: PutLifecycleConfigurationInputBuilder) -> impl Future<Output = Result<PutLifecycleConfigurationOutput, SdkError<PutLifecycleConfigurationError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_file_system(&self, builder: UpdateFileSystemInputBuilder) -> impl Future<Output = Result<UpdateFileSystemOutput, SdkError<UpdateFileSystemError>>> + Send;
+    fn update_file_system_protection(&self, builder: UpdateFileSystemProtectionInputBuilder) -> impl Future<Output = Result<UpdateFileSystemProtectionOutput, SdkError<UpdateFileSystemProtectionError>>> + Send;
 }
 impl EFSClient for EFSClientImpl {
     fn create_access_point(&self, builder: CreateAccessPointInputBuilder) -> impl Future<Output = Result<CreateAccessPointOutput, SdkError<CreateAccessPointError>>> {

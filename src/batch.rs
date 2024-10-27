@@ -55,31 +55,31 @@ impl BatchClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait BatchClient {
-    fn cancel_job(&self, builder: CancelJobInputBuilder) -> impl Future<Output = Result<CancelJobOutput, SdkError<CancelJobError>>>;
-    fn create_compute_environment(&self, builder: CreateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<CreateComputeEnvironmentOutput, SdkError<CreateComputeEnvironmentError>>>;
-    fn create_job_queue(&self, builder: CreateJobQueueInputBuilder) -> impl Future<Output = Result<CreateJobQueueOutput, SdkError<CreateJobQueueError>>>;
-    fn create_scheduling_policy(&self, builder: CreateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<CreateSchedulingPolicyOutput, SdkError<CreateSchedulingPolicyError>>>;
-    fn delete_compute_environment(&self, builder: DeleteComputeEnvironmentInputBuilder) -> impl Future<Output = Result<DeleteComputeEnvironmentOutput, SdkError<DeleteComputeEnvironmentError>>>;
-    fn delete_job_queue(&self, builder: DeleteJobQueueInputBuilder) -> impl Future<Output = Result<DeleteJobQueueOutput, SdkError<DeleteJobQueueError>>>;
-    fn delete_scheduling_policy(&self, builder: DeleteSchedulingPolicyInputBuilder) -> impl Future<Output = Result<DeleteSchedulingPolicyOutput, SdkError<DeleteSchedulingPolicyError>>>;
-    fn deregister_job_definition(&self, builder: DeregisterJobDefinitionInputBuilder) -> impl Future<Output = Result<DeregisterJobDefinitionOutput, SdkError<DeregisterJobDefinitionError>>>;
-    fn describe_compute_environments(&self, builder: DescribeComputeEnvironmentsInputBuilder) -> impl Future<Output = Result<DescribeComputeEnvironmentsOutput, SdkError<DescribeComputeEnvironmentsError>>>;
-    fn describe_job_definitions(&self, builder: DescribeJobDefinitionsInputBuilder) -> impl Future<Output = Result<DescribeJobDefinitionsOutput, SdkError<DescribeJobDefinitionsError>>>;
-    fn describe_job_queues(&self, builder: DescribeJobQueuesInputBuilder) -> impl Future<Output = Result<DescribeJobQueuesOutput, SdkError<DescribeJobQueuesError>>>;
-    fn describe_jobs(&self, builder: DescribeJobsInputBuilder) -> impl Future<Output = Result<DescribeJobsOutput, SdkError<DescribeJobsError>>>;
-    fn describe_scheduling_policies(&self, builder: DescribeSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<DescribeSchedulingPoliciesOutput, SdkError<DescribeSchedulingPoliciesError>>>;
-    fn get_job_queue_snapshot(&self, builder: GetJobQueueSnapshotInputBuilder) -> impl Future<Output = Result<GetJobQueueSnapshotOutput, SdkError<GetJobQueueSnapshotError>>>;
-    fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>>;
-    fn list_scheduling_policies(&self, builder: ListSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<ListSchedulingPoliciesOutput, SdkError<ListSchedulingPoliciesError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn register_job_definition(&self, builder: RegisterJobDefinitionInputBuilder) -> impl Future<Output = Result<RegisterJobDefinitionOutput, SdkError<RegisterJobDefinitionError>>>;
-    fn submit_job(&self, builder: SubmitJobInputBuilder) -> impl Future<Output = Result<SubmitJobOutput, SdkError<SubmitJobError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn terminate_job(&self, builder: TerminateJobInputBuilder) -> impl Future<Output = Result<TerminateJobOutput, SdkError<TerminateJobError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_compute_environment(&self, builder: UpdateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<UpdateComputeEnvironmentOutput, SdkError<UpdateComputeEnvironmentError>>>;
-    fn update_job_queue(&self, builder: UpdateJobQueueInputBuilder) -> impl Future<Output = Result<UpdateJobQueueOutput, SdkError<UpdateJobQueueError>>>;
-    fn update_scheduling_policy(&self, builder: UpdateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<UpdateSchedulingPolicyOutput, SdkError<UpdateSchedulingPolicyError>>>;
+    fn cancel_job(&self, builder: CancelJobInputBuilder) -> impl Future<Output = Result<CancelJobOutput, SdkError<CancelJobError>>> + Send;
+    fn create_compute_environment(&self, builder: CreateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<CreateComputeEnvironmentOutput, SdkError<CreateComputeEnvironmentError>>> + Send;
+    fn create_job_queue(&self, builder: CreateJobQueueInputBuilder) -> impl Future<Output = Result<CreateJobQueueOutput, SdkError<CreateJobQueueError>>> + Send;
+    fn create_scheduling_policy(&self, builder: CreateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<CreateSchedulingPolicyOutput, SdkError<CreateSchedulingPolicyError>>> + Send;
+    fn delete_compute_environment(&self, builder: DeleteComputeEnvironmentInputBuilder) -> impl Future<Output = Result<DeleteComputeEnvironmentOutput, SdkError<DeleteComputeEnvironmentError>>> + Send;
+    fn delete_job_queue(&self, builder: DeleteJobQueueInputBuilder) -> impl Future<Output = Result<DeleteJobQueueOutput, SdkError<DeleteJobQueueError>>> + Send;
+    fn delete_scheduling_policy(&self, builder: DeleteSchedulingPolicyInputBuilder) -> impl Future<Output = Result<DeleteSchedulingPolicyOutput, SdkError<DeleteSchedulingPolicyError>>> + Send;
+    fn deregister_job_definition(&self, builder: DeregisterJobDefinitionInputBuilder) -> impl Future<Output = Result<DeregisterJobDefinitionOutput, SdkError<DeregisterJobDefinitionError>>> + Send;
+    fn describe_compute_environments(&self, builder: DescribeComputeEnvironmentsInputBuilder) -> impl Future<Output = Result<DescribeComputeEnvironmentsOutput, SdkError<DescribeComputeEnvironmentsError>>> + Send;
+    fn describe_job_definitions(&self, builder: DescribeJobDefinitionsInputBuilder) -> impl Future<Output = Result<DescribeJobDefinitionsOutput, SdkError<DescribeJobDefinitionsError>>> + Send;
+    fn describe_job_queues(&self, builder: DescribeJobQueuesInputBuilder) -> impl Future<Output = Result<DescribeJobQueuesOutput, SdkError<DescribeJobQueuesError>>> + Send;
+    fn describe_jobs(&self, builder: DescribeJobsInputBuilder) -> impl Future<Output = Result<DescribeJobsOutput, SdkError<DescribeJobsError>>> + Send;
+    fn describe_scheduling_policies(&self, builder: DescribeSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<DescribeSchedulingPoliciesOutput, SdkError<DescribeSchedulingPoliciesError>>> + Send;
+    fn get_job_queue_snapshot(&self, builder: GetJobQueueSnapshotInputBuilder) -> impl Future<Output = Result<GetJobQueueSnapshotOutput, SdkError<GetJobQueueSnapshotError>>> + Send;
+    fn list_jobs(&self, builder: ListJobsInputBuilder) -> impl Future<Output = Result<ListJobsOutput, SdkError<ListJobsError>>> + Send;
+    fn list_scheduling_policies(&self, builder: ListSchedulingPoliciesInputBuilder) -> impl Future<Output = Result<ListSchedulingPoliciesOutput, SdkError<ListSchedulingPoliciesError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn register_job_definition(&self, builder: RegisterJobDefinitionInputBuilder) -> impl Future<Output = Result<RegisterJobDefinitionOutput, SdkError<RegisterJobDefinitionError>>> + Send;
+    fn submit_job(&self, builder: SubmitJobInputBuilder) -> impl Future<Output = Result<SubmitJobOutput, SdkError<SubmitJobError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn terminate_job(&self, builder: TerminateJobInputBuilder) -> impl Future<Output = Result<TerminateJobOutput, SdkError<TerminateJobError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_compute_environment(&self, builder: UpdateComputeEnvironmentInputBuilder) -> impl Future<Output = Result<UpdateComputeEnvironmentOutput, SdkError<UpdateComputeEnvironmentError>>> + Send;
+    fn update_job_queue(&self, builder: UpdateJobQueueInputBuilder) -> impl Future<Output = Result<UpdateJobQueueOutput, SdkError<UpdateJobQueueError>>> + Send;
+    fn update_scheduling_policy(&self, builder: UpdateSchedulingPolicyInputBuilder) -> impl Future<Output = Result<UpdateSchedulingPolicyOutput, SdkError<UpdateSchedulingPolicyError>>> + Send;
 }
 impl BatchClient for BatchClientImpl {
     fn cancel_job(&self, builder: CancelJobInputBuilder) -> impl Future<Output = Result<CancelJobOutput, SdkError<CancelJobError>>> {

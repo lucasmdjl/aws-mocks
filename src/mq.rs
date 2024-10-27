@@ -53,29 +53,29 @@ impl MQClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait MQClient {
-    fn create_broker(&self, builder: CreateBrokerInputBuilder) -> impl Future<Output = Result<CreateBrokerOutput, SdkError<CreateBrokerError>>>;
-    fn create_configuration(&self, builder: CreateConfigurationInputBuilder) -> impl Future<Output = Result<CreateConfigurationOutput, SdkError<CreateConfigurationError>>>;
-    fn create_tags(&self, builder: CreateTagsInputBuilder) -> impl Future<Output = Result<CreateTagsOutput, SdkError<CreateTagsError>>>;
-    fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>>;
-    fn delete_broker(&self, builder: DeleteBrokerInputBuilder) -> impl Future<Output = Result<DeleteBrokerOutput, SdkError<DeleteBrokerError>>>;
-    fn delete_tags(&self, builder: DeleteTagsInputBuilder) -> impl Future<Output = Result<DeleteTagsOutput, SdkError<DeleteTagsError>>>;
-    fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>>;
-    fn describe_broker(&self, builder: DescribeBrokerInputBuilder) -> impl Future<Output = Result<DescribeBrokerOutput, SdkError<DescribeBrokerError>>>;
-    fn describe_broker_engine_types(&self, builder: DescribeBrokerEngineTypesInputBuilder) -> impl Future<Output = Result<DescribeBrokerEngineTypesOutput, SdkError<DescribeBrokerEngineTypesError>>>;
-    fn describe_broker_instance_options(&self, builder: DescribeBrokerInstanceOptionsInputBuilder) -> impl Future<Output = Result<DescribeBrokerInstanceOptionsOutput, SdkError<DescribeBrokerInstanceOptionsError>>>;
-    fn describe_configuration(&self, builder: DescribeConfigurationInputBuilder) -> impl Future<Output = Result<DescribeConfigurationOutput, SdkError<DescribeConfigurationError>>>;
-    fn describe_configuration_revision(&self, builder: DescribeConfigurationRevisionInputBuilder) -> impl Future<Output = Result<DescribeConfigurationRevisionOutput, SdkError<DescribeConfigurationRevisionError>>>;
-    fn describe_user(&self, builder: DescribeUserInputBuilder) -> impl Future<Output = Result<DescribeUserOutput, SdkError<DescribeUserError>>>;
-    fn list_brokers(&self, builder: ListBrokersInputBuilder) -> impl Future<Output = Result<ListBrokersOutput, SdkError<ListBrokersError>>>;
-    fn list_configuration_revisions(&self, builder: ListConfigurationRevisionsInputBuilder) -> impl Future<Output = Result<ListConfigurationRevisionsOutput, SdkError<ListConfigurationRevisionsError>>>;
-    fn list_configurations(&self, builder: ListConfigurationsInputBuilder) -> impl Future<Output = Result<ListConfigurationsOutput, SdkError<ListConfigurationsError>>>;
-    fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>>;
-    fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>>;
-    fn promote(&self, builder: PromoteInputBuilder) -> impl Future<Output = Result<PromoteOutput, SdkError<PromoteError>>>;
-    fn reboot_broker(&self, builder: RebootBrokerInputBuilder) -> impl Future<Output = Result<RebootBrokerOutput, SdkError<RebootBrokerError>>>;
-    fn update_broker(&self, builder: UpdateBrokerInputBuilder) -> impl Future<Output = Result<UpdateBrokerOutput, SdkError<UpdateBrokerError>>>;
-    fn update_configuration(&self, builder: UpdateConfigurationInputBuilder) -> impl Future<Output = Result<UpdateConfigurationOutput, SdkError<UpdateConfigurationError>>>;
-    fn update_user(&self, builder: UpdateUserInputBuilder) -> impl Future<Output = Result<UpdateUserOutput, SdkError<UpdateUserError>>>;
+    fn create_broker(&self, builder: CreateBrokerInputBuilder) -> impl Future<Output = Result<CreateBrokerOutput, SdkError<CreateBrokerError>>> + Send;
+    fn create_configuration(&self, builder: CreateConfigurationInputBuilder) -> impl Future<Output = Result<CreateConfigurationOutput, SdkError<CreateConfigurationError>>> + Send;
+    fn create_tags(&self, builder: CreateTagsInputBuilder) -> impl Future<Output = Result<CreateTagsOutput, SdkError<CreateTagsError>>> + Send;
+    fn create_user(&self, builder: CreateUserInputBuilder) -> impl Future<Output = Result<CreateUserOutput, SdkError<CreateUserError>>> + Send;
+    fn delete_broker(&self, builder: DeleteBrokerInputBuilder) -> impl Future<Output = Result<DeleteBrokerOutput, SdkError<DeleteBrokerError>>> + Send;
+    fn delete_tags(&self, builder: DeleteTagsInputBuilder) -> impl Future<Output = Result<DeleteTagsOutput, SdkError<DeleteTagsError>>> + Send;
+    fn delete_user(&self, builder: DeleteUserInputBuilder) -> impl Future<Output = Result<DeleteUserOutput, SdkError<DeleteUserError>>> + Send;
+    fn describe_broker(&self, builder: DescribeBrokerInputBuilder) -> impl Future<Output = Result<DescribeBrokerOutput, SdkError<DescribeBrokerError>>> + Send;
+    fn describe_broker_engine_types(&self, builder: DescribeBrokerEngineTypesInputBuilder) -> impl Future<Output = Result<DescribeBrokerEngineTypesOutput, SdkError<DescribeBrokerEngineTypesError>>> + Send;
+    fn describe_broker_instance_options(&self, builder: DescribeBrokerInstanceOptionsInputBuilder) -> impl Future<Output = Result<DescribeBrokerInstanceOptionsOutput, SdkError<DescribeBrokerInstanceOptionsError>>> + Send;
+    fn describe_configuration(&self, builder: DescribeConfigurationInputBuilder) -> impl Future<Output = Result<DescribeConfigurationOutput, SdkError<DescribeConfigurationError>>> + Send;
+    fn describe_configuration_revision(&self, builder: DescribeConfigurationRevisionInputBuilder) -> impl Future<Output = Result<DescribeConfigurationRevisionOutput, SdkError<DescribeConfigurationRevisionError>>> + Send;
+    fn describe_user(&self, builder: DescribeUserInputBuilder) -> impl Future<Output = Result<DescribeUserOutput, SdkError<DescribeUserError>>> + Send;
+    fn list_brokers(&self, builder: ListBrokersInputBuilder) -> impl Future<Output = Result<ListBrokersOutput, SdkError<ListBrokersError>>> + Send;
+    fn list_configuration_revisions(&self, builder: ListConfigurationRevisionsInputBuilder) -> impl Future<Output = Result<ListConfigurationRevisionsOutput, SdkError<ListConfigurationRevisionsError>>> + Send;
+    fn list_configurations(&self, builder: ListConfigurationsInputBuilder) -> impl Future<Output = Result<ListConfigurationsOutput, SdkError<ListConfigurationsError>>> + Send;
+    fn list_tags(&self, builder: ListTagsInputBuilder) -> impl Future<Output = Result<ListTagsOutput, SdkError<ListTagsError>>> + Send;
+    fn list_users(&self, builder: ListUsersInputBuilder) -> impl Future<Output = Result<ListUsersOutput, SdkError<ListUsersError>>> + Send;
+    fn promote(&self, builder: PromoteInputBuilder) -> impl Future<Output = Result<PromoteOutput, SdkError<PromoteError>>> + Send;
+    fn reboot_broker(&self, builder: RebootBrokerInputBuilder) -> impl Future<Output = Result<RebootBrokerOutput, SdkError<RebootBrokerError>>> + Send;
+    fn update_broker(&self, builder: UpdateBrokerInputBuilder) -> impl Future<Output = Result<UpdateBrokerOutput, SdkError<UpdateBrokerError>>> + Send;
+    fn update_configuration(&self, builder: UpdateConfigurationInputBuilder) -> impl Future<Output = Result<UpdateConfigurationOutput, SdkError<UpdateConfigurationError>>> + Send;
+    fn update_user(&self, builder: UpdateUserInputBuilder) -> impl Future<Output = Result<UpdateUserOutput, SdkError<UpdateUserError>>> + Send;
 }
 impl MQClient for MQClientImpl {
     fn create_broker(&self, builder: CreateBrokerInputBuilder) -> impl Future<Output = Result<CreateBrokerOutput, SdkError<CreateBrokerError>>> {

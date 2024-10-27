@@ -54,30 +54,30 @@ impl AppTestClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AppTestClient {
-    fn create_test_case(&self, builder: CreateTestCaseInputBuilder) -> impl Future<Output = Result<CreateTestCaseOutput, SdkError<CreateTestCaseError>>>;
-    fn create_test_configuration(&self, builder: CreateTestConfigurationInputBuilder) -> impl Future<Output = Result<CreateTestConfigurationOutput, SdkError<CreateTestConfigurationError>>>;
-    fn create_test_suite(&self, builder: CreateTestSuiteInputBuilder) -> impl Future<Output = Result<CreateTestSuiteOutput, SdkError<CreateTestSuiteError>>>;
-    fn delete_test_case(&self, builder: DeleteTestCaseInputBuilder) -> impl Future<Output = Result<DeleteTestCaseOutput, SdkError<DeleteTestCaseError>>>;
-    fn delete_test_configuration(&self, builder: DeleteTestConfigurationInputBuilder) -> impl Future<Output = Result<DeleteTestConfigurationOutput, SdkError<DeleteTestConfigurationError>>>;
-    fn delete_test_run(&self, builder: DeleteTestRunInputBuilder) -> impl Future<Output = Result<DeleteTestRunOutput, SdkError<DeleteTestRunError>>>;
-    fn delete_test_suite(&self, builder: DeleteTestSuiteInputBuilder) -> impl Future<Output = Result<DeleteTestSuiteOutput, SdkError<DeleteTestSuiteError>>>;
-    fn get_test_case(&self, builder: GetTestCaseInputBuilder) -> impl Future<Output = Result<GetTestCaseOutput, SdkError<GetTestCaseError>>>;
-    fn get_test_configuration(&self, builder: GetTestConfigurationInputBuilder) -> impl Future<Output = Result<GetTestConfigurationOutput, SdkError<GetTestConfigurationError>>>;
-    fn get_test_run_step(&self, builder: GetTestRunStepInputBuilder) -> impl Future<Output = Result<GetTestRunStepOutput, SdkError<GetTestRunStepError>>>;
-    fn get_test_suite(&self, builder: GetTestSuiteInputBuilder) -> impl Future<Output = Result<GetTestSuiteOutput, SdkError<GetTestSuiteError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn list_test_cases(&self, builder: ListTestCasesInputBuilder) -> impl Future<Output = Result<ListTestCasesOutput, SdkError<ListTestCasesError>>>;
-    fn list_test_configurations(&self, builder: ListTestConfigurationsInputBuilder) -> impl Future<Output = Result<ListTestConfigurationsOutput, SdkError<ListTestConfigurationsError>>>;
-    fn list_test_run_steps(&self, builder: ListTestRunStepsInputBuilder) -> impl Future<Output = Result<ListTestRunStepsOutput, SdkError<ListTestRunStepsError>>>;
-    fn list_test_run_test_cases(&self, builder: ListTestRunTestCasesInputBuilder) -> impl Future<Output = Result<ListTestRunTestCasesOutput, SdkError<ListTestRunTestCasesError>>>;
-    fn list_test_runs(&self, builder: ListTestRunsInputBuilder) -> impl Future<Output = Result<ListTestRunsOutput, SdkError<ListTestRunsError>>>;
-    fn list_test_suites(&self, builder: ListTestSuitesInputBuilder) -> impl Future<Output = Result<ListTestSuitesOutput, SdkError<ListTestSuitesError>>>;
-    fn start_test_run(&self, builder: StartTestRunInputBuilder) -> impl Future<Output = Result<StartTestRunOutput, SdkError<StartTestRunError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_test_case(&self, builder: UpdateTestCaseInputBuilder) -> impl Future<Output = Result<UpdateTestCaseOutput, SdkError<UpdateTestCaseError>>>;
-    fn update_test_configuration(&self, builder: UpdateTestConfigurationInputBuilder) -> impl Future<Output = Result<UpdateTestConfigurationOutput, SdkError<UpdateTestConfigurationError>>>;
-    fn update_test_suite(&self, builder: UpdateTestSuiteInputBuilder) -> impl Future<Output = Result<UpdateTestSuiteOutput, SdkError<UpdateTestSuiteError>>>;
+    fn create_test_case(&self, builder: CreateTestCaseInputBuilder) -> impl Future<Output = Result<CreateTestCaseOutput, SdkError<CreateTestCaseError>>> + Send;
+    fn create_test_configuration(&self, builder: CreateTestConfigurationInputBuilder) -> impl Future<Output = Result<CreateTestConfigurationOutput, SdkError<CreateTestConfigurationError>>> + Send;
+    fn create_test_suite(&self, builder: CreateTestSuiteInputBuilder) -> impl Future<Output = Result<CreateTestSuiteOutput, SdkError<CreateTestSuiteError>>> + Send;
+    fn delete_test_case(&self, builder: DeleteTestCaseInputBuilder) -> impl Future<Output = Result<DeleteTestCaseOutput, SdkError<DeleteTestCaseError>>> + Send;
+    fn delete_test_configuration(&self, builder: DeleteTestConfigurationInputBuilder) -> impl Future<Output = Result<DeleteTestConfigurationOutput, SdkError<DeleteTestConfigurationError>>> + Send;
+    fn delete_test_run(&self, builder: DeleteTestRunInputBuilder) -> impl Future<Output = Result<DeleteTestRunOutput, SdkError<DeleteTestRunError>>> + Send;
+    fn delete_test_suite(&self, builder: DeleteTestSuiteInputBuilder) -> impl Future<Output = Result<DeleteTestSuiteOutput, SdkError<DeleteTestSuiteError>>> + Send;
+    fn get_test_case(&self, builder: GetTestCaseInputBuilder) -> impl Future<Output = Result<GetTestCaseOutput, SdkError<GetTestCaseError>>> + Send;
+    fn get_test_configuration(&self, builder: GetTestConfigurationInputBuilder) -> impl Future<Output = Result<GetTestConfigurationOutput, SdkError<GetTestConfigurationError>>> + Send;
+    fn get_test_run_step(&self, builder: GetTestRunStepInputBuilder) -> impl Future<Output = Result<GetTestRunStepOutput, SdkError<GetTestRunStepError>>> + Send;
+    fn get_test_suite(&self, builder: GetTestSuiteInputBuilder) -> impl Future<Output = Result<GetTestSuiteOutput, SdkError<GetTestSuiteError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn list_test_cases(&self, builder: ListTestCasesInputBuilder) -> impl Future<Output = Result<ListTestCasesOutput, SdkError<ListTestCasesError>>> + Send;
+    fn list_test_configurations(&self, builder: ListTestConfigurationsInputBuilder) -> impl Future<Output = Result<ListTestConfigurationsOutput, SdkError<ListTestConfigurationsError>>> + Send;
+    fn list_test_run_steps(&self, builder: ListTestRunStepsInputBuilder) -> impl Future<Output = Result<ListTestRunStepsOutput, SdkError<ListTestRunStepsError>>> + Send;
+    fn list_test_run_test_cases(&self, builder: ListTestRunTestCasesInputBuilder) -> impl Future<Output = Result<ListTestRunTestCasesOutput, SdkError<ListTestRunTestCasesError>>> + Send;
+    fn list_test_runs(&self, builder: ListTestRunsInputBuilder) -> impl Future<Output = Result<ListTestRunsOutput, SdkError<ListTestRunsError>>> + Send;
+    fn list_test_suites(&self, builder: ListTestSuitesInputBuilder) -> impl Future<Output = Result<ListTestSuitesOutput, SdkError<ListTestSuitesError>>> + Send;
+    fn start_test_run(&self, builder: StartTestRunInputBuilder) -> impl Future<Output = Result<StartTestRunOutput, SdkError<StartTestRunError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_test_case(&self, builder: UpdateTestCaseInputBuilder) -> impl Future<Output = Result<UpdateTestCaseOutput, SdkError<UpdateTestCaseError>>> + Send;
+    fn update_test_configuration(&self, builder: UpdateTestConfigurationInputBuilder) -> impl Future<Output = Result<UpdateTestConfigurationOutput, SdkError<UpdateTestConfigurationError>>> + Send;
+    fn update_test_suite(&self, builder: UpdateTestSuiteInputBuilder) -> impl Future<Output = Result<UpdateTestSuiteOutput, SdkError<UpdateTestSuiteError>>> + Send;
 }
 impl AppTestClient for AppTestClientImpl {
     fn create_test_case(&self, builder: CreateTestCaseInputBuilder) -> impl Future<Output = Result<CreateTestCaseOutput, SdkError<CreateTestCaseError>>> {

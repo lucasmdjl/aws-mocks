@@ -56,32 +56,32 @@ impl AppFabricClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait AppFabricClient {
-    fn batch_get_user_access_tasks(&self, builder: BatchGetUserAccessTasksInputBuilder) -> impl Future<Output = Result<BatchGetUserAccessTasksOutput, SdkError<BatchGetUserAccessTasksError>>>;
-    fn connect_app_authorization(&self, builder: ConnectAppAuthorizationInputBuilder) -> impl Future<Output = Result<ConnectAppAuthorizationOutput, SdkError<ConnectAppAuthorizationError>>>;
-    fn create_app_authorization(&self, builder: CreateAppAuthorizationInputBuilder) -> impl Future<Output = Result<CreateAppAuthorizationOutput, SdkError<CreateAppAuthorizationError>>>;
-    fn create_app_bundle(&self, builder: CreateAppBundleInputBuilder) -> impl Future<Output = Result<CreateAppBundleOutput, SdkError<CreateAppBundleError>>>;
-    fn create_ingestion(&self, builder: CreateIngestionInputBuilder) -> impl Future<Output = Result<CreateIngestionOutput, SdkError<CreateIngestionError>>>;
-    fn create_ingestion_destination(&self, builder: CreateIngestionDestinationInputBuilder) -> impl Future<Output = Result<CreateIngestionDestinationOutput, SdkError<CreateIngestionDestinationError>>>;
-    fn delete_app_authorization(&self, builder: DeleteAppAuthorizationInputBuilder) -> impl Future<Output = Result<DeleteAppAuthorizationOutput, SdkError<DeleteAppAuthorizationError>>>;
-    fn delete_app_bundle(&self, builder: DeleteAppBundleInputBuilder) -> impl Future<Output = Result<DeleteAppBundleOutput, SdkError<DeleteAppBundleError>>>;
-    fn delete_ingestion(&self, builder: DeleteIngestionInputBuilder) -> impl Future<Output = Result<DeleteIngestionOutput, SdkError<DeleteIngestionError>>>;
-    fn delete_ingestion_destination(&self, builder: DeleteIngestionDestinationInputBuilder) -> impl Future<Output = Result<DeleteIngestionDestinationOutput, SdkError<DeleteIngestionDestinationError>>>;
-    fn get_app_authorization(&self, builder: GetAppAuthorizationInputBuilder) -> impl Future<Output = Result<GetAppAuthorizationOutput, SdkError<GetAppAuthorizationError>>>;
-    fn get_app_bundle(&self, builder: GetAppBundleInputBuilder) -> impl Future<Output = Result<GetAppBundleOutput, SdkError<GetAppBundleError>>>;
-    fn get_ingestion(&self, builder: GetIngestionInputBuilder) -> impl Future<Output = Result<GetIngestionOutput, SdkError<GetIngestionError>>>;
-    fn get_ingestion_destination(&self, builder: GetIngestionDestinationInputBuilder) -> impl Future<Output = Result<GetIngestionDestinationOutput, SdkError<GetIngestionDestinationError>>>;
-    fn list_app_authorizations(&self, builder: ListAppAuthorizationsInputBuilder) -> impl Future<Output = Result<ListAppAuthorizationsOutput, SdkError<ListAppAuthorizationsError>>>;
-    fn list_app_bundles(&self, builder: ListAppBundlesInputBuilder) -> impl Future<Output = Result<ListAppBundlesOutput, SdkError<ListAppBundlesError>>>;
-    fn list_ingestion_destinations(&self, builder: ListIngestionDestinationsInputBuilder) -> impl Future<Output = Result<ListIngestionDestinationsOutput, SdkError<ListIngestionDestinationsError>>>;
-    fn list_ingestions(&self, builder: ListIngestionsInputBuilder) -> impl Future<Output = Result<ListIngestionsOutput, SdkError<ListIngestionsError>>>;
-    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>>;
-    fn start_ingestion(&self, builder: StartIngestionInputBuilder) -> impl Future<Output = Result<StartIngestionOutput, SdkError<StartIngestionError>>>;
-    fn start_user_access_tasks(&self, builder: StartUserAccessTasksInputBuilder) -> impl Future<Output = Result<StartUserAccessTasksOutput, SdkError<StartUserAccessTasksError>>>;
-    fn stop_ingestion(&self, builder: StopIngestionInputBuilder) -> impl Future<Output = Result<StopIngestionOutput, SdkError<StopIngestionError>>>;
-    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>>;
-    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>>;
-    fn update_app_authorization(&self, builder: UpdateAppAuthorizationInputBuilder) -> impl Future<Output = Result<UpdateAppAuthorizationOutput, SdkError<UpdateAppAuthorizationError>>>;
-    fn update_ingestion_destination(&self, builder: UpdateIngestionDestinationInputBuilder) -> impl Future<Output = Result<UpdateIngestionDestinationOutput, SdkError<UpdateIngestionDestinationError>>>;
+    fn batch_get_user_access_tasks(&self, builder: BatchGetUserAccessTasksInputBuilder) -> impl Future<Output = Result<BatchGetUserAccessTasksOutput, SdkError<BatchGetUserAccessTasksError>>> + Send;
+    fn connect_app_authorization(&self, builder: ConnectAppAuthorizationInputBuilder) -> impl Future<Output = Result<ConnectAppAuthorizationOutput, SdkError<ConnectAppAuthorizationError>>> + Send;
+    fn create_app_authorization(&self, builder: CreateAppAuthorizationInputBuilder) -> impl Future<Output = Result<CreateAppAuthorizationOutput, SdkError<CreateAppAuthorizationError>>> + Send;
+    fn create_app_bundle(&self, builder: CreateAppBundleInputBuilder) -> impl Future<Output = Result<CreateAppBundleOutput, SdkError<CreateAppBundleError>>> + Send;
+    fn create_ingestion(&self, builder: CreateIngestionInputBuilder) -> impl Future<Output = Result<CreateIngestionOutput, SdkError<CreateIngestionError>>> + Send;
+    fn create_ingestion_destination(&self, builder: CreateIngestionDestinationInputBuilder) -> impl Future<Output = Result<CreateIngestionDestinationOutput, SdkError<CreateIngestionDestinationError>>> + Send;
+    fn delete_app_authorization(&self, builder: DeleteAppAuthorizationInputBuilder) -> impl Future<Output = Result<DeleteAppAuthorizationOutput, SdkError<DeleteAppAuthorizationError>>> + Send;
+    fn delete_app_bundle(&self, builder: DeleteAppBundleInputBuilder) -> impl Future<Output = Result<DeleteAppBundleOutput, SdkError<DeleteAppBundleError>>> + Send;
+    fn delete_ingestion(&self, builder: DeleteIngestionInputBuilder) -> impl Future<Output = Result<DeleteIngestionOutput, SdkError<DeleteIngestionError>>> + Send;
+    fn delete_ingestion_destination(&self, builder: DeleteIngestionDestinationInputBuilder) -> impl Future<Output = Result<DeleteIngestionDestinationOutput, SdkError<DeleteIngestionDestinationError>>> + Send;
+    fn get_app_authorization(&self, builder: GetAppAuthorizationInputBuilder) -> impl Future<Output = Result<GetAppAuthorizationOutput, SdkError<GetAppAuthorizationError>>> + Send;
+    fn get_app_bundle(&self, builder: GetAppBundleInputBuilder) -> impl Future<Output = Result<GetAppBundleOutput, SdkError<GetAppBundleError>>> + Send;
+    fn get_ingestion(&self, builder: GetIngestionInputBuilder) -> impl Future<Output = Result<GetIngestionOutput, SdkError<GetIngestionError>>> + Send;
+    fn get_ingestion_destination(&self, builder: GetIngestionDestinationInputBuilder) -> impl Future<Output = Result<GetIngestionDestinationOutput, SdkError<GetIngestionDestinationError>>> + Send;
+    fn list_app_authorizations(&self, builder: ListAppAuthorizationsInputBuilder) -> impl Future<Output = Result<ListAppAuthorizationsOutput, SdkError<ListAppAuthorizationsError>>> + Send;
+    fn list_app_bundles(&self, builder: ListAppBundlesInputBuilder) -> impl Future<Output = Result<ListAppBundlesOutput, SdkError<ListAppBundlesError>>> + Send;
+    fn list_ingestion_destinations(&self, builder: ListIngestionDestinationsInputBuilder) -> impl Future<Output = Result<ListIngestionDestinationsOutput, SdkError<ListIngestionDestinationsError>>> + Send;
+    fn list_ingestions(&self, builder: ListIngestionsInputBuilder) -> impl Future<Output = Result<ListIngestionsOutput, SdkError<ListIngestionsError>>> + Send;
+    fn list_tags_for_resource(&self, builder: ListTagsForResourceInputBuilder) -> impl Future<Output = Result<ListTagsForResourceOutput, SdkError<ListTagsForResourceError>>> + Send;
+    fn start_ingestion(&self, builder: StartIngestionInputBuilder) -> impl Future<Output = Result<StartIngestionOutput, SdkError<StartIngestionError>>> + Send;
+    fn start_user_access_tasks(&self, builder: StartUserAccessTasksInputBuilder) -> impl Future<Output = Result<StartUserAccessTasksOutput, SdkError<StartUserAccessTasksError>>> + Send;
+    fn stop_ingestion(&self, builder: StopIngestionInputBuilder) -> impl Future<Output = Result<StopIngestionOutput, SdkError<StopIngestionError>>> + Send;
+    fn tag_resource(&self, builder: TagResourceInputBuilder) -> impl Future<Output = Result<TagResourceOutput, SdkError<TagResourceError>>> + Send;
+    fn untag_resource(&self, builder: UntagResourceInputBuilder) -> impl Future<Output = Result<UntagResourceOutput, SdkError<UntagResourceError>>> + Send;
+    fn update_app_authorization(&self, builder: UpdateAppAuthorizationInputBuilder) -> impl Future<Output = Result<UpdateAppAuthorizationOutput, SdkError<UpdateAppAuthorizationError>>> + Send;
+    fn update_ingestion_destination(&self, builder: UpdateIngestionDestinationInputBuilder) -> impl Future<Output = Result<UpdateIngestionDestinationOutput, SdkError<UpdateIngestionDestinationError>>> + Send;
 }
 impl AppFabricClient for AppFabricClientImpl {
     fn batch_get_user_access_tasks(&self, builder: BatchGetUserAccessTasksInputBuilder) -> impl Future<Output = Result<BatchGetUserAccessTasksOutput, SdkError<BatchGetUserAccessTasksError>>> {

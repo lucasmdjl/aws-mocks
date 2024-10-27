@@ -33,9 +33,9 @@ impl ApiGatewayManagementClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait ApiGatewayManagementClient {
-    fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>>;
-    fn get_connection(&self, builder: GetConnectionInputBuilder) -> impl Future<Output = Result<GetConnectionOutput, SdkError<GetConnectionError>>>;
-    fn post_to_connection(&self, builder: PostToConnectionInputBuilder) -> impl Future<Output = Result<PostToConnectionOutput, SdkError<PostToConnectionError>>>;
+    fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>> + Send;
+    fn get_connection(&self, builder: GetConnectionInputBuilder) -> impl Future<Output = Result<GetConnectionOutput, SdkError<GetConnectionError>>> + Send;
+    fn post_to_connection(&self, builder: PostToConnectionInputBuilder) -> impl Future<Output = Result<PostToConnectionOutput, SdkError<PostToConnectionError>>> + Send;
 }
 impl ApiGatewayManagementClient for ApiGatewayManagementClientImpl {
     fn delete_connection(&self, builder: DeleteConnectionInputBuilder) -> impl Future<Output = Result<DeleteConnectionOutput, SdkError<DeleteConnectionError>>> {

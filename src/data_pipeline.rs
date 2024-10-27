@@ -49,25 +49,25 @@ impl DataPipelineClientImpl {
     pub fn new(config: &SdkConfig) -> Self { Self(Client::new(config)) }
 }
 pub trait DataPipelineClient {
-    fn activate_pipeline(&self, builder: ActivatePipelineInputBuilder) -> impl Future<Output = Result<ActivatePipelineOutput, SdkError<ActivatePipelineError>>>;
-    fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>>;
-    fn create_pipeline(&self, builder: CreatePipelineInputBuilder) -> impl Future<Output = Result<CreatePipelineOutput, SdkError<CreatePipelineError>>>;
-    fn deactivate_pipeline(&self, builder: DeactivatePipelineInputBuilder) -> impl Future<Output = Result<DeactivatePipelineOutput, SdkError<DeactivatePipelineError>>>;
-    fn delete_pipeline(&self, builder: DeletePipelineInputBuilder) -> impl Future<Output = Result<DeletePipelineOutput, SdkError<DeletePipelineError>>>;
-    fn describe_objects(&self, builder: DescribeObjectsInputBuilder) -> impl Future<Output = Result<DescribeObjectsOutput, SdkError<DescribeObjectsError>>>;
-    fn describe_pipelines(&self, builder: DescribePipelinesInputBuilder) -> impl Future<Output = Result<DescribePipelinesOutput, SdkError<DescribePipelinesError>>>;
-    fn evaluate_expression(&self, builder: EvaluateExpressionInputBuilder) -> impl Future<Output = Result<EvaluateExpressionOutput, SdkError<EvaluateExpressionError>>>;
-    fn get_pipeline_definition(&self, builder: GetPipelineDefinitionInputBuilder) -> impl Future<Output = Result<GetPipelineDefinitionOutput, SdkError<GetPipelineDefinitionError>>>;
-    fn list_pipelines(&self, builder: ListPipelinesInputBuilder) -> impl Future<Output = Result<ListPipelinesOutput, SdkError<ListPipelinesError>>>;
-    fn poll_for_task(&self, builder: PollForTaskInputBuilder) -> impl Future<Output = Result<PollForTaskOutput, SdkError<PollForTaskError>>>;
-    fn put_pipeline_definition(&self, builder: PutPipelineDefinitionInputBuilder) -> impl Future<Output = Result<PutPipelineDefinitionOutput, SdkError<PutPipelineDefinitionError>>>;
-    fn query_objects(&self, builder: QueryObjectsInputBuilder) -> impl Future<Output = Result<QueryObjectsOutput, SdkError<QueryObjectsError>>>;
-    fn remove_tags(&self, builder: RemoveTagsInputBuilder) -> impl Future<Output = Result<RemoveTagsOutput, SdkError<RemoveTagsError>>>;
-    fn report_task_progress(&self, builder: ReportTaskProgressInputBuilder) -> impl Future<Output = Result<ReportTaskProgressOutput, SdkError<ReportTaskProgressError>>>;
-    fn report_task_runner_heartbeat(&self, builder: ReportTaskRunnerHeartbeatInputBuilder) -> impl Future<Output = Result<ReportTaskRunnerHeartbeatOutput, SdkError<ReportTaskRunnerHeartbeatError>>>;
-    fn set_status(&self, builder: SetStatusInputBuilder) -> impl Future<Output = Result<SetStatusOutput, SdkError<SetStatusError>>>;
-    fn set_task_status(&self, builder: SetTaskStatusInputBuilder) -> impl Future<Output = Result<SetTaskStatusOutput, SdkError<SetTaskStatusError>>>;
-    fn validate_pipeline_definition(&self, builder: ValidatePipelineDefinitionInputBuilder) -> impl Future<Output = Result<ValidatePipelineDefinitionOutput, SdkError<ValidatePipelineDefinitionError>>>;
+    fn activate_pipeline(&self, builder: ActivatePipelineInputBuilder) -> impl Future<Output = Result<ActivatePipelineOutput, SdkError<ActivatePipelineError>>> + Send;
+    fn add_tags(&self, builder: AddTagsInputBuilder) -> impl Future<Output = Result<AddTagsOutput, SdkError<AddTagsError>>> + Send;
+    fn create_pipeline(&self, builder: CreatePipelineInputBuilder) -> impl Future<Output = Result<CreatePipelineOutput, SdkError<CreatePipelineError>>> + Send;
+    fn deactivate_pipeline(&self, builder: DeactivatePipelineInputBuilder) -> impl Future<Output = Result<DeactivatePipelineOutput, SdkError<DeactivatePipelineError>>> + Send;
+    fn delete_pipeline(&self, builder: DeletePipelineInputBuilder) -> impl Future<Output = Result<DeletePipelineOutput, SdkError<DeletePipelineError>>> + Send;
+    fn describe_objects(&self, builder: DescribeObjectsInputBuilder) -> impl Future<Output = Result<DescribeObjectsOutput, SdkError<DescribeObjectsError>>> + Send;
+    fn describe_pipelines(&self, builder: DescribePipelinesInputBuilder) -> impl Future<Output = Result<DescribePipelinesOutput, SdkError<DescribePipelinesError>>> + Send;
+    fn evaluate_expression(&self, builder: EvaluateExpressionInputBuilder) -> impl Future<Output = Result<EvaluateExpressionOutput, SdkError<EvaluateExpressionError>>> + Send;
+    fn get_pipeline_definition(&self, builder: GetPipelineDefinitionInputBuilder) -> impl Future<Output = Result<GetPipelineDefinitionOutput, SdkError<GetPipelineDefinitionError>>> + Send;
+    fn list_pipelines(&self, builder: ListPipelinesInputBuilder) -> impl Future<Output = Result<ListPipelinesOutput, SdkError<ListPipelinesError>>> + Send;
+    fn poll_for_task(&self, builder: PollForTaskInputBuilder) -> impl Future<Output = Result<PollForTaskOutput, SdkError<PollForTaskError>>> + Send;
+    fn put_pipeline_definition(&self, builder: PutPipelineDefinitionInputBuilder) -> impl Future<Output = Result<PutPipelineDefinitionOutput, SdkError<PutPipelineDefinitionError>>> + Send;
+    fn query_objects(&self, builder: QueryObjectsInputBuilder) -> impl Future<Output = Result<QueryObjectsOutput, SdkError<QueryObjectsError>>> + Send;
+    fn remove_tags(&self, builder: RemoveTagsInputBuilder) -> impl Future<Output = Result<RemoveTagsOutput, SdkError<RemoveTagsError>>> + Send;
+    fn report_task_progress(&self, builder: ReportTaskProgressInputBuilder) -> impl Future<Output = Result<ReportTaskProgressOutput, SdkError<ReportTaskProgressError>>> + Send;
+    fn report_task_runner_heartbeat(&self, builder: ReportTaskRunnerHeartbeatInputBuilder) -> impl Future<Output = Result<ReportTaskRunnerHeartbeatOutput, SdkError<ReportTaskRunnerHeartbeatError>>> + Send;
+    fn set_status(&self, builder: SetStatusInputBuilder) -> impl Future<Output = Result<SetStatusOutput, SdkError<SetStatusError>>> + Send;
+    fn set_task_status(&self, builder: SetTaskStatusInputBuilder) -> impl Future<Output = Result<SetTaskStatusOutput, SdkError<SetTaskStatusError>>> + Send;
+    fn validate_pipeline_definition(&self, builder: ValidatePipelineDefinitionInputBuilder) -> impl Future<Output = Result<ValidatePipelineDefinitionOutput, SdkError<ValidatePipelineDefinitionError>>> + Send;
 }
 impl DataPipelineClient for DataPipelineClientImpl {
     fn activate_pipeline(&self, builder: ActivatePipelineInputBuilder) -> impl Future<Output = Result<ActivatePipelineOutput, SdkError<ActivatePipelineError>>> {
